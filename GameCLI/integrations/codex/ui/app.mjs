@@ -1,0 +1,385 @@
+import {setupPanelSplit} from './panel-split.mjs';
+import {groupedTemplates} from '../shared/template-groups.mjs';
+import {localDelta} from '../shared/inspector.mjs';
+import {createInspector} from './inspector.mjs';
+import {resolveLayout, captureBounds, captureChanges, offsets, setOffset} from '../shared/rect-transform.mjs';
+import { Bridge } from './bridge.mjs';
+import { createPreviewState, defaultAction, runPreviewAction } from '../shared/preview.mjs';
+import {instantiateTemplate} from '../shared/templates.mjs';
+import { starter, validateDesign, phoneDesign, pointInDesign, appendControl, textTarget, resizeNode, resizedRect, layerStyle, nodeName } from '../shared/design.mjs';
+const $ = id => document.getElementById(id);
+const bridge = new Bridge();
+let design = starter(), selected = 'EquipButton', revision = 0, dirty = false, scale = 1, preview = false, ready = false;
+const history = [];
+const library=new Map();
+async function loadTemplates() {
+  const area=$('template-library');
+  try {
+    const result=await bridge.call('templates');
+    const expanded=new Map([...area.querySelectorAll('[data-template-group]')].map(e=>[e.dataset.templateGroup,e.open]));
+    area.replaceChildren();library.clear();
+    for(const category of result.categories) {
+      const heading=document.createElement('div');heading.className='section-title prefab-title';heading.textContent=category.name;
+      const source=document.createElement('span');source.textContent=result.source==='postgresql'?'数据库':'内置';heading.append(source);area.append(heading);
+      for(const group of groupedTemplates(category.id,result.groups??[],result.templates)){
+      const folder=document.createElement('details');folder.className='template-group';folder.dataset.templateGroup=category.id+'/'+group.id;folder.open=expanded.get(folder.dataset.templateGroup)??true;
+      const summary=document.createElement('summary');const title=document.createElement('span');title.textContent=group.name;const count=document.createElement('span');count.className='group-count';count.textContent=group.templates.length;summary.append(title,count);folder.append(summary);area.append(folder);
+      for(const template of group.templates) {
+        library.set(template.id,template);
+        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=preview;
+        const icon=document.createElement('span');icon.className='control-icon';icon.textContent=category.id==='system'?'▦':'▣';
+        const label=document.createElement('span');label.textContent=template.name;const detail=document.createElement('small');detail.textContent=template.description;label.append(detail);button.append(icon,label);folder.append(button);bindControl(button);
+      }
+    }
+    }
+    const refresh=document.createElement('button');refresh.textContent='刷新模板库';refresh.onclick=loadTemplates;area.append(refresh);
+  } catch(e) {
+    area.replaceChildren();const message=document.createElement('p');message.className='palette-note';message.textContent=e.message;area.append(message);
+    const retry=document.createElement('button');retry.textContent='重新加载模板';retry.onclick=loadTemplates;area.append(retry);
+  }
+}
+let previewState = null;
+function applyPreviewState() {
+  for (const el of $('canvas').querySelectorAll('[data-node]')) el.hidden = design.nodes.find(n=>n.id===el.dataset.node)?.active===false || (preview && previewState.hidden.includes(el.dataset.node));
+  $('preview-back').hidden = $('preview-reset').hidden = !preview;
+  $('preview-back').disabled = !previewState?.history.length;
+}
+function performAction(action) {
+  previewState = runPreviewAction(design,previewState,action);
+  applyPreviewState();
+}
+const names = { Container: '容器', Text: '文本', Button: '按钮', Image: '图片', Progress: '进度条', ItemSlot: '道具框', ScrollPanel: '道具滚动面板', ConfirmDialog: '确认对话框', InventorySystem: '背包系统' };
+const roles = {background:'背景',icon:'图标',mask:'蒙版',count:'数量',frame:'外边框',content:'滚动内容'};
+const icons = { Container: '▣', Text: 'T', Button: '▭', Image: '▧', Progress: '▰' };
+const selectionBox = document.createElement('div'); selectionBox.id = 'selection-box'; selectionBox.hidden = true; $('canvas-wrap').append(selectionBox);
+const handles = {nw:'左上', n:'上', ne:'右上', e:'右', se:'右下', s:'下', sw:'左下', w:'左'};
+for (const [direction, label] of Object.entries(handles)) { const h = document.createElement('span'); h.className = `resize-handle ${direction}`; h.dataset.resize = direction; h.title = `${label}缩放`; h.setAttribute('aria-label', `${label}缩放`); selectionBox.append(h); }
+function updateSelection() {
+  const n = node(); selectionBox.hidden = !n || preview || n.active===false;
+  if (!n || preview || n.active===false) return;
+  const el=[...$('canvas').querySelectorAll('[data-node]')].find(e=>e.dataset.node===n.id);
+  if(!el||!el.getClientRects().length){selectionBox.hidden=true;return;}
+  const box=el.getBoundingClientRect(),wrap=$('canvas-wrap').getBoundingClientRect();
+  Object.assign(selectionBox.style,{left:`${box.left-wrap.left}px`,top:`${box.top-wrap.top}px`,width:`${box.width}px`,height:`${box.height}px`});
+  let current=n,unsupportedResize=false;while(current){unsupportedResize ||= !!current.rotation || (current.localScale?.x??1)<=0 || (current.localScale?.y??1)<=0;current=design.nodes.find(p=>p.id===current.parent);}
+  for(const h of selectionBox.children)h.hidden=unsupportedResize;
+}
+function syncNode(n) {
+  const el = [...$('canvas').querySelectorAll('[data-node]')].find(el => el.dataset.node === n.id);
+  if (!el) return;
+  Object.assign(el.style, {left:`${n.x}px`,top:`${n.y}px`,width:`${n.width}px`,height:`${n.height}px`,fontSize:`${n.fontSize}px`});
+  if (n.type === 'Text') el.textContent = n.text;
+}
+function notice(text, error = false) { $('notice').textContent = text; $('notice').classList.toggle('error', error); }
+function mark() { dirty = true; $('dirty').hidden = false; $('undo').disabled = !history.length; }
+function checkpoint() { history.push(JSON.stringify(design)); if (history.length > 60) history.shift(); }
+function edit(fn) {
+  const before = JSON.stringify(design);
+  try { fn(); captureChanges(design,JSON.parse(before)); design = validateDesign(design); if(JSON.stringify(design)===before){render();return;} history.push(before); if (history.length > 60) history.shift(); mark(); render(); }
+  catch (e) { design = JSON.parse(before); notice(e.message, true); render(); }
+}
+function node() { return design.nodes.find(n => n.id === selected); }
+function fit() {
+  const box = $('viewport').getBoundingClientRect();
+  scale = Math.max(.01, Math.min((box.width - 32) / design.width, (box.height - 32) / design.height, 1));
+  $('canvas').style.transform = `scale(${scale})`;
+  $('canvas-wrap').style.width = `${design.width * scale}px`; $('canvas-wrap').style.height = `${design.height * scale}px`;
+  $('zoom').textContent = `${Math.round(scale * 100)}%`;
+  updateSelection();
+}
+function select(id) { selected = id; $('inspector').open = true; render(); }
+function render() {
+  resolveLayout(design);
+  renderRectInspector();
+  $('design-title').textContent = 'Canvas';
+  $('root-node').classList.toggle('selected', !node());
+  $('resolution').textContent = `${design.width} × ${design.height}`;
+  $('design-name').value = design.name;
+  const preset = `${design.width}x${design.height}`;
+  const portrait = `${Math.min(design.width, design.height)}x${Math.max(design.width, design.height)}`;
+  $('preset').value = ['1080x1920','1080x2400','1170x2532'].includes(portrait) ? portrait : 'custom';
+  $('node-count').textContent = design.nodes.length + 1;
+  $('tree').replaceChildren(); $('canvas').replaceChildren();
+  $('canvas').style.width = `${design.width}px`; $('canvas').style.height = `${design.height}px`;
+  $('canvas').classList.toggle('preview', preview);
+  const draw = (parent, target, depth, parentVisible=true) => {
+    for (const n of design.nodes.filter(n => n.parent === parent)) {
+      const visible=parentVisible && n.active!==false;
+      const layer=document.createElement('div');layer.className='tree-node'+(n.id===selected?' selected':'')+(!visible?' inactive':'');
+      layer.style.paddingLeft=`${6+depth*10}px`;layer.setAttribute('role','treeitem');layer.setAttribute('aria-selected',n.id===selected);layer.setAttribute('aria-level',depth+1);layer.setAttribute('aria-label',icons[n.type]+' '+nodeName(n));layer.title=n.id;
+      const toggle=document.createElement('input');toggle.type='checkbox';toggle.className='node-visibility';toggle.checked=n.active!==false;toggle.dataset.visibility=n.id;
+      toggle.setAttribute('aria-label','显示 '+nodeName(n));toggle.title=parentVisible?'控制节点及其子节点显示':'父节点已隐藏；保留本节点自身的显示状态';
+      toggle.onclick=e=>e.stopPropagation();toggle.ondblclick=e=>e.stopPropagation();
+      toggle.onchange=()=>{const checked=toggle.checked,scroll=$('tree').scrollTop;edit(()=>{n.active=checked;});$('tree').scrollTop=scroll;[...$('tree').querySelectorAll('[data-visibility]')].find(e=>e.dataset.visibility===n.id)?.focus({preventScroll:true});};
+      const choose=document.createElement('button');choose.type='button';choose.className='node-select';choose.setAttribute('aria-label','选择 '+nodeName(n));
+      const icon=document.createElement('span');icon.className='node-icon';icon.textContent=icons[n.type];const label=document.createElement('span');label.className='node-label';label.textContent=nodeName(n);choose.append(icon,label);
+      choose.onclick=()=>select(n.id);choose.ondblclick=()=>{select(n.id);$('inspector').open=true;};layer.append(toggle,choose);$('tree').append(layer);
+      const el = document.createElement(n.type === 'Button' ? 'button' : 'div'); el.className = 'ui-node' + (!preview && n.id === selected ? ' selected' : ''); el.dataset.node = n.id; el.dataset.name = nodeName(n); el.dataset.type = n.type;
+      Object.assign(el.style, { left: `${n.x}px`, top: `${n.y}px`, width: `${n.width}px`, height: `${n.height}px`, backgroundColor: n.color, color: n.type === 'Text' ? n.color : '#101923', fontSize: `${n.fontSize}px` });
+      if (design.nodes.find(p => p.id === n.parent)?.type === 'Button') Object.assign(el.style, { display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' });
+      el.style.cssText += layerStyle(n);
+      if(n.type==='Button')el.disabled=preview&&n.interactable===false;
+      if (n.template === 'ScrollPanel') el.addEventListener('scroll', updateSelection);
+      if (['frame','mask'].includes(n.role) && selected !== n.id) el.style.pointerEvents = 'none';
+      if (preview) {
+        const interactive = !!defaultAction(design,n) || n.type === 'Button' || n.template === 'ItemSlot';
+        if (n.type === 'Image' || n.type === 'Text') el.style.pointerEvents = interactive ? 'auto' : 'none';
+        if (interactive) { el.style.cursor='pointer'; el.dataset.interactive='true'; if(n.type!=='Button') { el.tabIndex=0; el.setAttribute('role','button'); } }
+        if (n.template === 'ConfirmDialog') el.style.zIndex='100';
+      }
+      el.textContent = n.text; el.setAttribute('aria-label', nodeName(n)); target.append(el); draw(n.id, el, depth + 1, visible);
+    }
+  };
+  draw(null, $('canvas'), 0);
+  $('preview-progress').hidden=!preview;
+  $('preview-progress').replaceChildren();
+  for(const progress of design.nodes.filter(n=>n.type==='Progress')) {
+    updateProgress(progress.id,progress.progress??0);
+    if(preview) {
+      const label=document.createElement('label');label.textContent='模拟加载进度';label.style.margin='0';
+      const slider=document.createElement('input');slider.type='range';slider.min='0';slider.max='100';slider.value=String(Math.round((progress.progress??0)*100));slider.setAttribute('aria-label','模拟加载进度');
+      slider.oninput=()=>updateProgress(progress.id,Number(slider.value)/100);label.append(slider);$('preview-progress').append(label);
+    }
+  }
+  const n = node(); $('properties').hidden = !n; $('empty-selection').hidden = !!n; $('selected-type').textContent = n ? names[n.template] ?? names[n.type] : '—';
+  if (n) for (const key of ['id','x','y','width','height','color']) $('field-' + key).value = key === 'id' ? nodeName(n) : n[key];
+  const text = textTarget(design, n);
+  for (const key of ['text','fontSize']) { $('field-' + key).parentElement.hidden = !text; $('field-' + key).value = text?.[key] ?? ''; }
+  $('field-text').placeholder = n?.type === 'Button' ? '按钮文字' : '输入文本，支持换行';
+  $('field-opacity').value = n?.opacity ?? 1;
+  $('progress-property').hidden=n?.type!=='Progress';$('field-progress').value=Math.round((n?.progress??0)*100);
+  $('field-borderWidth').parentElement.hidden = n?.role !== 'frame'; $('field-borderWidth').value = n?.borderWidth ?? 6;
+  const action = n && defaultAction(design,n);
+  $('field-action').value = n?.action?.type ?? 'auto';
+  $('field-action').options[0].textContent = action?.type==='hide' && !n?.action ? '默认：关闭所属对话框' : '默认点击反馈';
+  $('action-target-label').hidden = !['show','hide','toggle','navigate'].includes(n?.action?.type);
+  $('field-action-target').replaceChildren(...design.nodes.map(target=>new Option(nodeName(target)+' · '+target.id,target.id)));
+  $('field-action-target').value = action?.target ?? n?.id ?? '';
+  $('field-preview-hidden').checked = n?.previewHidden ?? n?.template === 'ConfirmDialog';
+  applyPreviewState();
+  $('undo').disabled = !history.length; fit();
+}
+const renderRectInspector=createInspector({node,design:()=>design,edit});
+function updateProgress(id,value) {
+  const el=[...$('canvas').querySelectorAll('[data-node]')].find(e=>e.dataset.node===id);
+  if(!el)return;
+  el.setAttribute('role','progressbar');el.setAttribute('aria-valuenow',Math.round(value*100));el.setAttribute('aria-valuemin','0');el.setAttribute('aria-valuemax','100');
+  for(const child of el.children) {
+    if(child.dataset.name==='Fill')child.style.width=`${value*100}%`;
+    if(child.dataset.name==='Percentage')child.textContent=`Loading... ${Math.round(value*100)}%`;
+  }
+}
+$('field-progress').onchange=e=>{const value=Number(e.target.value)/100;edit(()=>{node().progress=value;});};
+$('properties').onsubmit = e => e.preventDefault();
+$('field-action').onchange = e => { const type=e.target.value; edit(()=>{ if(type==='auto') delete node().action; else node().action=['none','back'].includes(type)?{type}:{type,target:$('field-action-target').value || node().id}; }); };
+$('field-action-target').onchange = e => { const target=e.target.value; edit(()=>{ if(node().action) node().action.target=target; }); };
+$('field-preview-hidden').onchange = e => { const hidden=e.target.checked; edit(()=>{node().previewHidden=hidden;}); };
+for (const key of ['opacity','borderWidth']) $('field-'+key).addEventListener('change', e => { if (node()) edit(()=>{node()[key]=Number(e.target.value);}); });
+for (const key of ['id','color']) $('field-' + key).onchange = e => {
+  if (!node()) return;
+  const value = ['x','y','width','height','fontSize'].includes(key) ? Number(e.target.value) : e.target.value;
+  const oldId = selected;
+  edit(() => { const n = node();
+    if (key === 'width' || key === 'height') resizeNode(design, n, key === 'width' ? value : n.width, key === 'height' ? value : n.height);
+    else if (key === 'fontSize') { const t = textTarget(design, n); if (t) t.fontSize = value; }
+    else if (key === 'id') n.name = value;
+    else n[key] = value;
+
+  });
+
+};
+for (const key of ['x','y','width','height','fontSize']) {
+  const field = $('field-' + key); let recorded = false;
+  field.addEventListener('focus', () => { recorded = false; });
+  field.addEventListener('input', () => {
+    const n = node(), value = Number(field.value), min = ['x','y'].includes(key) ? -8192 : key === 'fontSize' ? 8 : 1, max = key === 'fontSize' ? 128 : 8192;
+    if (!n || field.value === '' || !Number.isFinite(value) || value < min || value > max) return;
+    if (!recorded) { checkpoint(); recorded = true; }
+    if (key === 'x' || key === 'y') { n[key] = value; captureBounds(design,n); syncNode(n); }
+    else if (key === 'fontSize') { const t = textTarget(design, n); if (t) { t.fontSize = value; syncNode(t); } }
+    else { resizeNode(design, n, key === 'width' ? value : n.width, key === 'height' ? value : n.height); syncNode(n); for (const child of design.nodes) syncNode(child); }
+    mark(); renderRectInspector(); updateSelection();
+  });
+  field.addEventListener('blur', () => { const n = node(); if (n) field.value = key === 'fontSize' ? textTarget(design,n)?.fontSize ?? '' : n[key]; });
+}
+let textBefore = null;
+$('field-text').addEventListener('focus', () => { textBefore = JSON.stringify(design); });
+$('field-text').addEventListener('input', e => { const t = textTarget(design, node()); if (!t) return; textBefore ??= JSON.stringify(design); t.text = e.target.value; syncNode(t); mark(); });
+$('field-text').addEventListener('blur', () => { if (textBefore && textBefore !== JSON.stringify(design)) { history.push(textBefore); if (history.length > 60) history.shift(); $('undo').disabled = false; } textBefore = null; });
+$('design-name').onchange = e => edit(() => { design.name = e.target.value; });
+$('root-node').onclick = () => select(null);
+$('preset').onchange = e => { const value = e.target.value; edit(() => { const landscape = design.width > design.height; [design.width, design.height] = value.split('x').map(Number); if (landscape) [design.width, design.height] = [design.height, design.width]; }); notice('已切换手机分辨率，控件按 RectTransform 锚点重新布局。'); };
+$('rotate').onclick = () => { edit(() => { [design.width, design.height] = [design.height, design.width]; }); notice('已切换横竖屏，控件按 RectTransform 锚点重新布局。'); };
+function insert(type, parent, point) {
+  if (!ready || preview) return;
+  edit(() => { selected = library.has(type) ? instantiateTemplate(design,library.get(type),parent,point) : appendControl(design, type, parent, point); });
+  notice(`已添加 ${selected} · 拖动调整位置，双击编辑属性。`);
+}
+let paletteDrag;
+let suppressClick = false;
+function clearDrop() { $('drag-ghost').hidden = true; $('canvas-wrap').classList.remove('drop-target'); }
+function dropControl(type, x, y) {
+  if (!insideCanvas(x, y)) { notice('已取消添加：请将控件放入手机画布。'); return; }
+  const hit = document.elementsFromPoint(x, y).find(el => el.dataset?.type === 'Container' && $('canvas').contains(el));
+  const parent = hit?.dataset.node ?? null;
+  const target = parent ? design.nodes.find(n => n.id === parent) : design;
+  insert(type, parent, pointInDesign(x, y, (hit ?? $('canvas')).getBoundingClientRect(), target.width, target.height));
+}
+function insideCanvas(x, y) { const r = $('canvas').getBoundingClientRect(); return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom; }
+function bindControl(control) {
+  control.draggable = false;
+  control.addEventListener('dragstart', e => e.preventDefault());
+  control.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || !ready || preview) return;
+    suppressClick = false;
+    paletteDrag = { type: control.dataset.control, id: e.pointerId, x: e.clientX, y: e.clientY, moved: false };
+    e.preventDefault();
+  });
+  control.addEventListener('click', () => { if (suppressClick) { suppressClick = false; return; } addCentered(control.dataset.control); });
+}
+for (const control of document.querySelectorAll('[data-control]')) bindControl(control);
+window.addEventListener('pointermove', e => {
+    if (!paletteDrag) return;
+    if (Math.hypot(e.clientX - paletteDrag.x, e.clientY - paletteDrag.y) > 4) paletteDrag.moved = true;
+    if (!paletteDrag.moved) return;
+    $('drag-ghost').hidden = false; $('drag-ghost').textContent = `＋ ${library.get(paletteDrag.type)?.name ?? names[paletteDrag.type]}`;
+    Object.assign($('drag-ghost').style, { left: `${e.clientX + 12}px`, top: `${e.clientY + 12}px` });
+    $('canvas-wrap').classList.toggle('drop-target', insideCanvas(e.clientX, e.clientY));
+});
+function finishPaletteDrag(e) {
+    if (!paletteDrag) return;
+    const state = paletteDrag; paletteDrag = null; $('drag-ghost').hidden = true; $('canvas-wrap').classList.remove('drop-target');
+    if (state.moved) {
+      suppressClick = true; dropControl(state.type, e.clientX, e.clientY);
+    }
+}
+window.addEventListener('pointerup', finishPaletteDrag);
+window.addEventListener('mouseup', finishPaletteDrag);
+window.addEventListener('pointercancel', () => { paletteDrag = null; clearDrop(); });
+window.addEventListener('blur', () => { paletteDrag = null; clearDrop(); });
+function addCentered(type) {
+  let target = node();
+  while (target && target.type !== 'Container') target = design.nodes.find(n => n.id === target.parent);
+  insert(type, target?.id ?? null, { x: (target?.width ?? design.width) / 2, y: (target?.height ?? design.height) / 2 });
+}
+function deleteSelected() {
+  if (!node()) return;
+  const remove = new Set([selected]); let count;
+  do { count = remove.size; for (const n of design.nodes) if (remove.has(n.parent)) remove.add(n.id); } while (count !== remove.size);
+  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); for(const n of design.nodes) if(remove.has(n.action?.target)) delete n.action; selected = design.nodes[0]?.id; });
+}
+$('delete').onclick = deleteSelected;
+window.addEventListener('keydown', e => {
+  const target = e.target;
+  if (target instanceof Element && (target.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"]),[role="textbox"],[role="separator"]') || target.isContentEditable)) return;
+  if (!ready || preview || !node() || e.isComposing || e.ctrlKey || e.metaKey || e.altKey || drag || resize || paletteDrag) return;
+  if (e.key === 'Delete') {
+    e.preventDefault();
+    if (!e.repeat) deleteSelected();
+    return;
+  }
+  const directions = { ArrowLeft: [-1,0], ArrowRight: [1,0], ArrowUp: [0,-1], ArrowDown: [0,1] };
+  const delta = directions[e.key]; if (!delta) return;
+  e.preventDefault();
+  const step = e.shiftKey ? 10 : 1;
+  edit(() => { const n = node(); n.x = Math.max(-8192, Math.min(8192, n.x + delta[0] * step)); n.y = Math.max(-8192, Math.min(8192, n.y + delta[1] * step)); });
+});
+$('undo').onclick = () => { if (history.length) { design = JSON.parse(history.pop()); mark(); render(); } };
+$('fit').onclick = fit;
+function setPreview(value) {
+  preview = value;
+  previewState = value ? createPreviewState(design) : null;
+  document.body.classList.toggle('rehearsing', preview);
+  $('preview').setAttribute('aria-pressed', preview);
+  $('preview').textContent = preview ? '退出预演' : '预演';
+  $('import').disabled = preview;
+  for (const c of document.querySelectorAll('[data-control]')) c.disabled = preview;
+  render();
+  notice(preview ? '预演模式 · 点击执行已配置的界面动作；可返回或重置。Esc 退出，预演不会修改布局。' : '编辑模式 · 选择控件，在“点击动作”中配置显示、关闭或跳转目标。');
+}
+$('preview').onclick = () => setPreview(!preview);
+$('preview-back').onclick = () => performAction({type:'back'});
+$('preview-reset').onclick = () => { previewState=createPreviewState(design); render(); notice('预演已重置。'); };
+window.addEventListener('keydown', e => { if (preview && e.key === 'Escape') { e.preventDefault(); setPreview(false); } });
+let drag, resize;
+selectionBox.addEventListener('pointerdown', e => {
+  const handle = e.target.dataset.resize;
+  if (!handle || !node() || preview || e.button !== 0) return;
+  e.preventDefault(); e.stopPropagation();
+  resize = {handle, startX:e.clientX, startY:e.clientY, rect:{...node()}, before:JSON.stringify(design), moved:false};
+  $('inspector').open = true;
+});
+window.addEventListener('pointermove', e => {
+  if (!resize) return;
+  const delta=localDelta(design,node().id,(e.clientX-resize.startX)/scale,(e.clientY-resize.startY)/scale);if(!delta)return;
+  const rect = resizedRect(resize.rect, resize.handle, delta.x, delta.y);
+  const n = node(); resizeNode(design, n, rect.width, rect.height); n.x = rect.x; n.y = rect.y; captureBounds(design,n); resolveLayout(design);
+  resize.moved = JSON.stringify(design) !== resize.before;
+  syncNode(n); for (const child of design.nodes) syncNode(child);
+  for (const key of ['x','y','width','height']) $('field-' + key).value = key === 'id' ? nodeName(n) : n[key];
+  renderRectInspector(); updateSelection();
+});
+function finishResize() { if (resize?.moved) { history.push(resize.before); if (history.length > 60) history.shift(); mark(); } resize = null; }
+window.addEventListener('pointerup', finishResize); window.addEventListener('mouseup', finishResize); window.addEventListener('pointercancel', finishResize); window.addEventListener('blur', finishResize);
+$('canvas').addEventListener('pointerdown', e => {
+  let target = e.target.closest('[data-node]'); if (!target || preview || e.button !== 0) return;
+  if (target.parentElement?.dataset.type === 'Button' && selected !== target.dataset.node) target = target.parentElement;
+  const hitNode = design.nodes.find(n=>n.id === target.dataset.node), parentNode = design.nodes.find(n=>n.id === hitNode?.parent);
+  if (parentNode?.template === 'ItemSlot' && selected !== hitNode.id) target = target.parentElement;
+  selected = target.dataset.node; const n = node();
+  $('inspector').open = true;
+  drag = { id: selected, pointer: e.pointerId, startX: e.clientX, startY: e.clientY, x: n.x, y: n.y, before: JSON.stringify(design), moved: false };
+  $('canvas').setPointerCapture(e.pointerId); e.preventDefault(); render();
+});
+window.addEventListener('pointermove', e => {
+  if (!drag || drag.pointer !== e.pointerId) return;
+  const delta=localDelta(design,node().parent,(e.clientX-drag.startX)/scale,(e.clientY-drag.startY)/scale);if(!delta)return;
+  const dx=delta.x,dy=delta.y;
+  if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 2) return;
+  drag.moved = true;
+  const n = node(); n.x = Math.max(-8192, Math.min(8192, Math.round(drag.x + dx))); n.y = Math.max(-8192, Math.min(8192, Math.round(drag.y + dy)));
+  captureBounds(design,n);
+  const el = [...$('canvas').querySelectorAll('[data-node]')].find(el => el.dataset.node === selected); el.style.left = `${n.x}px`; el.style.top = `${n.y}px`; $('field-x').value = n.x; $('field-y').value = n.y;
+  renderRectInspector(); updateSelection();
+});
+function finishDrag() { if (drag?.moved) { history.push(drag.before); if (history.length > 60) history.shift(); mark(); } drag = null; }
+window.addEventListener('pointerup', finishDrag); window.addEventListener('mouseup', finishDrag); window.addEventListener('pointercancel', finishDrag);
+$('canvas').addEventListener('dblclick', () => { if (!preview) { $('inspector').open = true; if (textTarget(design,node())) { $('field-text').focus(); $('field-text').select(); } } });
+$('canvas').addEventListener('click', e => {
+  if (!preview) return;
+  const el=e.target.closest('[data-interactive]'); if(!el) return;
+  const n=design.nodes.find(n=>n.id===el.dataset.node), action=defaultAction(design,n);
+  let owner=n;while(owner){if(owner.type==='Button'&&owner.interactable===false)return;owner=design.nodes.find(p=>p.id===owner.parent);}
+  if(action) { performAction(action); notice(`${n.id}：${({show:'显示',hide:'关闭',toggle:'切换显示',navigate:'跳转',back:'返回',none:'无动作'})[action.type]}${action.target ? ' → '+action.target : ''}`); }
+  else { el.animate([{filter:'brightness(1.5)'},{filter:'brightness(1)'}],{duration:220}); notice(`${n.id} 已点击。可在编辑模式的“点击动作”中指定目标界面。`); }
+});
+$('canvas').addEventListener('keydown', e => { const el=e.target.closest('[data-interactive]'); if(preview && el && el.tagName!=='BUTTON' && ['Enter',' '].includes(e.key)) {e.preventDefault();el.click();} });
+async function busy(id, fn) { $(id).disabled = true; try { await fn(); } catch (e) { notice(e.message, true); } finally { $(id).disabled = !ready; } }
+$('save').onclick = () => busy('save', async () => {
+  const sent = JSON.stringify(design), snapshot = await bridge.call('save', { design, revision }); revision = snapshot.revision;
+  if (JSON.stringify(design) === sent) { dirty = false; $('dirty').hidden = true; }
+  notice(`草稿已保存 · 版本 ${revision} · ${new Date(snapshot.savedAt).toLocaleTimeString('zh-CN')}${dirty ? ' · 当前仍有新的未保存修改' : ''}`);
+});
+function download(name, text, type) { const url = URL.createObjectURL(new Blob([text], { type })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 2000); }
+$('export').onclick = () => busy('export', async () => {
+  const result = await bridge.call('export', { design });
+  if (!bridge.embedded) { download(`${result.design.name}.html`, result.html, 'text/html'); download(`${result.design.name}.studio.json`, JSON.stringify(result.design, null, 2), 'application/json'); }
+  notice(`${result.notice} 文件目录：${result.directory}`);
+});
+$('import').onclick = () => $('import-file').click();
+$('import-file').onchange = async e => {
+  const file = e.target.files[0]; if (!file) return;
+  try { if (file.size > 1_000_000) throw new Error('草稿文件不能超过 1 MB。'); const next = validateDesign(phoneDesign(validateDesign(JSON.parse(await file.text())))); checkpoint(); design = next; selected = design.nodes[0]?.id; mark(); render(); notice('已导入草稿，点击保存写入本机；可撤销返回之前的设计。'); } catch (err) { notice(err.message, true); }
+  e.target.value = '';
+};
+bridge.onContext = () => { $('expand').hidden = !bridge.modes.includes('fullscreen'); };
+$('expand').onclick = async () => { try { await bridge.expand(); } catch (e) { notice(e.message, true); } };
+setupPanelSplit();
+new ResizeObserver(fit).observe($('viewport'));
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+render();
+async function start() {
+  try { const snapshot = await bridge.init(); const original = validateDesign(snapshot.design); design = validateDesign(phoneDesign(original)); revision = snapshot.revision; ready = true; $('save').disabled = $('export').disabled = false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机'; if (JSON.stringify(original) !== JSON.stringify(design)) { history.push(JSON.stringify(original)); mark(); } render(); notice(dirty ? '已适配手机画布并展开按钮文字节点。点击保存应用，可撤销。' : '从右侧拖入控件，双击节点编辑属性。'); }
+  catch (e) { $('connection').textContent = '连接失败'; notice(e.message, true); }
+}
+void start().then(loadTemplates);

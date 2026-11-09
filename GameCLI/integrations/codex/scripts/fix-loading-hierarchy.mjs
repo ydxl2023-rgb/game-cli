@@ -1,0 +1,7 @@
+import {writeFile} from 'node:fs/promises';
+import {groupLoadingFooter} from '../shared/loading-hierarchy.mjs';
+import {openDatabase} from '../server/database.mjs';
+import {createStore} from '../server/store.mjs';
+import {validateTemplate} from '../shared/templates.mjs';
+const db=await openDatabase();try{const current=(await db.pool.query('SELECT * FROM gamecli_ui.templates WHERE id=$1',['SvLoading'])).rows[0];await writeFile(`.data/imports/sv-loading/before-hierarchy-v${current.version}.json`,JSON.stringify(current,null,2));const payload=current.payload,count=groupLoadingFooter(payload.design);validateTemplate(payload);payload.source.hierarchyOverride='TipText, Ball, Haikyu and Rate grouped under visible RateBg; visual bounds preserved.';if(count){const result=await db.pool.query('UPDATE gamecli_ui.templates SET payload=$1::jsonb,version=version+1,updated_at=now() WHERE id=$2 AND version=$3 RETURNING version',[JSON.stringify(payload),'SvLoading',current.version]);if(result.rowCount!==1)throw new Error('Template changed');console.log('Template',result.rows[0],count);}await writeFile('.data/imports/sv-loading/active.json',JSON.stringify(payload,null,2));}finally{await db.close();}
+const store=createStore(),snap=await store.snapshot();await writeFile(`.data/imports/sv-loading/draft-before-hierarchy-${snap.revision}.json`,JSON.stringify(snap,null,2));const count=groupLoadingFooter(snap.design);if(count)await store.save(snap.design,snap.revision);console.log('Draft regrouped',count);

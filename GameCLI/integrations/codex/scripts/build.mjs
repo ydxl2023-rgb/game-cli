@@ -1,0 +1,11 @@
+import { build } from 'esbuild';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+const root = new URL('../', import.meta.url);
+const result = await build({ entryPoints: [fileURLToPath(new URL('ui/app.mjs', root))], bundle: true, write: false, format: 'iife', target: 'es2022', minify: true });
+let html = await readFile(new URL('ui/index.html', root), 'utf8');
+const css = await readFile(new URL('ui/style.css', root), 'utf8');
+html = html.replace('<!-- STUDIO_STYLE -->', () => `<style>${css}</style>`).replace('<!-- STUDIO_SCRIPT -->', () => `<script>${result.outputFiles[0].text.replaceAll('</script', '<\\/script')}</script>`);
+await mkdir(new URL('dist/', root), { recursive: true });
+await writeFile(new URL('dist/studio.html', root), html);
+console.log('Built dist/studio.html (self-contained MCP resource)');

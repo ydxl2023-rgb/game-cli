@@ -1,0 +1,6 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validateDesign,designHtml,layerStyle} from '../shared/design.mjs';
+const design=()=>({schemaVersion:1,name:'Demo',width:1920,height:1080,nodes:[{id:'RateBg',parent:null,type:'Container',x:-260,y:984,width:2440,height:100,color:'#ffffff',text:'',fontSize:20,image:'a'.repeat(64),imageBorder:{x:2,y:0,z:2,w:0},localScale:{x:1,y:1},opacity:0.5}]});
+test('sliced image retains geometry and no CSS border layout inset',()=>{const d=validateDesign(design());assert.deepEqual(d.nodes[0].imageBorder,{x:2,y:0,z:2,w:0});const html=designHtml(d);assert.match(html,/border-width:0/);assert.match(html,/fill \/ 0px 2px 0px 2px stretch/);assert.match(html,/opacity:0.5/);assert.equal(d.nodes[0].width,2440);});
+test('RawImage scale, alpha and UV repeat are preserved',()=>{const d=design();Object.assign(d.nodes[0],{imageBorder:undefined,uvRect:{x:0,y:0,width:1.3,height:1},localScale:{x:4.7625,y:.6},opacity:3/255});const n=validateDesign(d).nodes[0],style=layerStyle(n);assert.match(style,/scale\(4.7625,0.6\)/);assert.match(style,/repeat/);assert.equal(n.uvRect.width,1.3);assert.throws(()=>validateDesign({...d,nodes:[{...n,uvRect:{x:0,y:0,width:0,height:1}}]}));});
