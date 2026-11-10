@@ -11,6 +11,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 
 | 目录 | 适用任务 |
 | --- | --- |
+| [framework](framework/SKILL.md) | 一次性建立开发环境：包安装、CLI、生成器、最小启动与验收 |
 | [core](core/SKILL.md) | XApp、插件、系统生命周期与事件 |
 | [widget](widget/SKILL.md) | UIWidget、VM、Binding 与 Metadata |
 | [widget-extension](widget-extension/SKILL.md) | UISystem、页面打开关闭与 Fancy 列表 |
