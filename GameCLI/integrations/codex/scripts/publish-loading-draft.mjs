@@ -7,6 +7,7 @@ const store=createStore(),snap=await store.snapshot();
 const roots=snap.design.nodes.filter(n=>n.name==='Loading'&&n.parent===null);if(roots.length!==1)throw new Error('Expected exactly one Loading root');const root=roots[0];
 const ids=new Set([root.id]);let size;do{size=ids.size;for(const n of snap.design.nodes)if(ids.has(n.parent))ids.add(n.id);}while(ids.size!==size);
 const design={...structuredClone(snap.design),name:'SvLoading',nodes:structuredClone(snap.design.nodes.filter(n=>ids.has(n.id)))};
+if(design.animations)design.animations=design.animations.filter(a=>ids.has(a.hostNodeId));
 for(const n of design.nodes)if(n.action?.target&&!ids.has(n.action.target))throw new Error('External action target: '+n.id);
 const normalized=validateTemplate({root:root.id,design},'system');if(!isDeepStrictEqual(normalized.design.nodes,design.nodes))throw new Error('Template standardization would alter the edited design');
 const db=await openDatabase(),client=await db.pool.connect();

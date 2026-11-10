@@ -1,3 +1,5 @@
+import {playAnimations} from './animation-player.mjs';
+let stopAnimations=()=>{};
 import {setupPanelSplit} from './panel-split.mjs';
 import {groupedTemplates} from '../shared/template-groups.mjs';
 import {localDelta} from '../shared/inspector.mjs';
@@ -89,6 +91,7 @@ function fit() {
 }
 function select(id) { selected = id; $('inspector').open = true; render(); }
 function render() {
+  stopAnimations();
   resolveLayout(design);
   renderRectInspector();
   $('design-title').textContent = 'Canvas';
@@ -158,6 +161,7 @@ function render() {
   $('field-preview-hidden').checked = n?.previewHidden ?? n?.template === 'ConfirmDialog';
   applyPreviewState();
   $('undo').disabled = !history.length; fit();
+  if(preview)stopAnimations=playAnimations(design,$('canvas'));
 }
 const renderRectInspector=createInspector({node,design:()=>design,edit});
 function updateProgress(id,value) {
@@ -266,7 +270,7 @@ function deleteSelected() {
   if (!node()) return;
   const remove = new Set([selected]); let count;
   do { count = remove.size; for (const n of design.nodes) if (remove.has(n.parent)) remove.add(n.id); } while (count !== remove.size);
-  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); for(const n of design.nodes) if(remove.has(n.action?.target)) delete n.action; selected = design.nodes[0]?.id; });
+  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); if(design.animations)design.animations=design.animations.filter(a=>!remove.has(a.hostNodeId)).map(a=>({...a,clip:{...a.clip,curves:a.clip.curves.filter(c=>!remove.has(c.targetNodeId))}})).filter(a=>a.clip.curves.length); for(const n of design.nodes) if(remove.has(n.action?.target)) delete n.action; selected = design.nodes[0]?.id; });
 }
 $('delete').onclick = deleteSelected;
 window.addEventListener('keydown', e => {

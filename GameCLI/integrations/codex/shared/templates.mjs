@@ -1,3 +1,4 @@
+import {remapAnimations} from './animations.mjs';
 import {initialTemplateGroups} from './template-groups.mjs';
 import {ensureAnimationHost} from './animation-host.mjs';
 import {captureBounds} from './rect-transform.mjs';
@@ -40,6 +41,7 @@ export function instantiateTemplate(design, template, parent, point) {
   }
   const dimensions=template.category==='system' ? {width:source.design.width,height:source.design.height} : {width:design.width,height:design.height};
   const result={...design,...dimensions,nodes:[...design.nodes,...nodes]};
+  if(source.design.animations?.length)result.animations=[...(design.animations??[]),...remapAnimations(source.design.animations,remap,`T${i}`)];
   if(canvasRoot) {
     const sx=result.width/source.design.width, sy=result.height/source.design.height;
     for(const n of nodes) {n.x*=sx;n.y*=sy;n.width=Math.max(1,n.width*sx);n.height=Math.max(1,n.height*sy);}
@@ -50,7 +52,8 @@ export function instantiateTemplate(design, template, parent, point) {
     root.y=Math.round(Math.max(0,Math.min((container?.height??design.height)-root.height,point.y-root.height/2)));
   }
   for(const n of nodes)captureBounds(result,n);
-  design.nodes=validateDesign(result).nodes;
+  const validated=validateDesign(result);design.nodes=validated.nodes;
+  if(validated.animations)design.animations=validated.animations;
   design.width=result.width;design.height=result.height;
   return root.id;
 }
