@@ -1,4 +1,5 @@
 import {createRelations} from './relations.mjs';
+import {openCodeTemplate} from './code-template.mjs';
 import {createCardScripts} from './card-scripts.mjs';
 import {createCodePage} from './code-preview.mjs';
 import {setupTemplateDock} from './template-dock.mjs';
@@ -42,7 +43,15 @@ async function loadTemplates() {
         library.set(template.id,template);
         const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=!controlAllowed(template.id);
         const icon=document.createElement('span');icon.className='control-icon';icon.textContent=category.id==='system'?'▦':'▣';
-        const label=document.createElement('span');label.textContent=template.name;const detail=document.createElement('small');detail.textContent=template.description;label.append(detail);button.append(icon,label);folder.append(button);bindControl(button);
+        const label=document.createElement('span');label.textContent=template.name;const detail=document.createElement('small');detail.textContent=template.description;label.append(detail);button.append(icon,label);folder.append(button);
+        if(template.payload.kind==='code'){
+          icon.textContent='';icon.setAttribute('aria-label','逻辑系统');icon.title='逻辑系统';
+          const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','26');svg.setAttribute('height','26');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.6');svg.setAttribute('aria-hidden','true');
+          const lines=document.createElementNS(svg.namespaceURI,'path');lines.setAttribute('d','M12 8v4M5 16v-4h14v4');svg.append(lines);
+          for(const [x,y]of [[9,2],[2,16],[16,16]]){const box=document.createElementNS(svg.namespaceURI,'rect');box.setAttribute('x',String(x));box.setAttribute('y',String(y));box.setAttribute('width','6');box.setAttribute('height','6');box.setAttribute('rx','1.5');svg.append(box);}icon.append(svg);
+          detail.textContent='逻辑系统 · '+template.description.replace(/^纯代码\s*·\s*/,'');
+          button.title='逻辑系统：拖入关系区创建卡片；编辑页单击查看源码';
+        }bindControl(button);
       }
     }
     }
@@ -92,8 +101,8 @@ function checkpoint() { history.push(JSON.stringify(design)); if (history.length
 function edit(fn) {
   if(ready&&projectRole==='viewer'){notice('当前项目为只读权限。',true);return;}
   const before = JSON.stringify(design);
-  try { fn(); captureChanges(design,JSON.parse(before)); design = validateDesign(design); if(JSON.stringify(design)===before){render();return;} history.push(before); if (history.length > 60) history.shift(); mark(); render(); }
-  catch (e) { design = JSON.parse(before); notice(e.message, true); render(); }
+  try { fn(); captureChanges(design,JSON.parse(before)); design = validateDesign(design); if(JSON.stringify(design)===before){render();return;} history.push(before); if (history.length > 60) history.shift(); mark(); render(); return true; }
+  catch (e) { design = JSON.parse(before); notice(e.message, true); render(); return false; }
 }
 function node() { return design.nodes.find(n => n.id === selected); }
 let manualScale = null;
@@ -263,7 +272,7 @@ function dropControl(type, x, y) {
   if(centerMode==='relations'){
     const position=relationView.dropPosition(x,y);
     if(!position){notice('已取消添加：请将系统模板放入关系区。');return;}
-    edit(()=>{selected=instantiateTemplate(design,library.get(type),null,{x:0,y:0});design.nodes.find(n=>n.id===selected).relationPosition=position;});
+    if(!edit(()=>{selected=instantiateTemplate(design,library.get(type),null,{x:0,y:0},{allowCode:true});design.nodes.find(n=>n.id===selected).relationPosition=position;}))return;
     relationView.selectCard(selected);notice('已创建系统的项目副本，可连接其他 UI；点击保存写入当前项目。');return;
   }
   if (!insideCanvas(x, y)) { notice('已取消添加：请将控件放入手机画布。'); return; }
@@ -277,12 +286,12 @@ function bindControl(control) {
   control.draggable = false;
   control.addEventListener('dragstart', e => e.preventDefault());
   control.addEventListener('pointerdown', e => {
-    if (e.button !== 0 || !controlAllowed(control.dataset.control)) return;
+    if (e.button !== 0 || !controlAllowed(control.dataset.control) || (library.get(control.dataset.control)?.payload.kind==='code'&&centerMode!=='relations')) return;
     suppressClick = false;
     paletteDrag = { type: control.dataset.control, id: e.pointerId, x: e.clientX, y: e.clientY, moved: false };
     e.preventDefault();
   });
-  control.addEventListener('click', () => { if (suppressClick) { suppressClick = false; return; } addCentered(control.dataset.control); });
+  control.addEventListener('click', () => { if (suppressClick) { suppressClick = false; return; } const template=library.get(control.dataset.control);if(template?.payload.kind==='code'&&centerMode!=='relations'){openCodeTemplate(template);return;}addCentered(control.dataset.control); });
 }
 for (const control of document.querySelectorAll('[data-control]')) bindControl(control);
 window.addEventListener('pointermove', e => {

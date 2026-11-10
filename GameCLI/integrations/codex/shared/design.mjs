@@ -255,6 +255,7 @@ export function validateDesign(value) {
   for (const n of value.nodes) {
     if (!n || n.id === 'Canvas' || !/^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(n.id) || n.id === value.name || ids.has(n.id)) throw new Error('节点 ID 必须合法、唯一且不能与设计同名。');
     ids.add(n.id);
+    if(n.systemKind!==undefined&&(n.systemKind!=='code'||n.type!=='Container'||n.parent!==null||value.nodes.some(child=>child.parent===n.id)))throw new Error('代码系统必须为独立根节点，不能包含 UI 子节点。');
     if(n.templateSourceVersion!==undefined&&(!Number.isInteger(n.templateSourceVersion)||n.templateSourceVersion<1))throw new Error('模板来源版本无效。');
     if(n.scripts!==undefined&&n.scripts!==null){if(n.scripts.schemaVersion!==1||!Array.isArray(n.scripts.files)||n.scripts.files.length>128||n.scripts.files.some(f=>typeof f.path!=='string'||typeof f.content!=='string')||JSON.stringify(n.scripts).length>5*1024*1024)throw new Error('项目源码副本格式无效。');}
     for(const [key,axes] of [['localScale',['x','y']],['imageBorder',['x','y','z','w']],['uvRect',['x','y','width','height']]]) if(n[key]!==undefined && (!n[key] || !axes.every(a=>Number.isFinite(n[key][a])&&Math.abs(n[key][a])<=8192)))throw new Error('图片布局参数无效。');
@@ -295,12 +296,12 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {
   const d = validateDesign(input);
-  const render = parent => d.nodes.filter(n => n.parent === parent).map(n => {
+  const render = parent => d.nodes.filter(n => n.parent === parent && n.systemKind!=='code').map(n => {
     const owner=d.nodes.find(p=>p.id===n.parent);
     if(owner?.type==='Progress') {
       if(nodeName(n)==='Fill')n={...n,width:owner.width*(owner.progress??0)};

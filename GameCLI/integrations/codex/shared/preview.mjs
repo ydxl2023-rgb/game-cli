@@ -4,7 +4,7 @@ export function hierarchyVisibility(design, hidden = [], runtime = false) {
   const visible = n => {
     if (result.has(n.id)) return result.get(n.id);
     const parent = nodes.get(n.parent);
-    const value = (runtime || n.active !== false) && !excluded.has(n.id) && (!parent || visible(parent));
+    const value = n.systemKind!=='code' && (runtime || n.active !== false) && !excluded.has(n.id) && (!parent || visible(parent));
     result.set(n.id, value);
     return value;
   };
@@ -31,7 +31,7 @@ export function runPreviewAction(design, state, action) {
     return {hidden:state.history.at(-1),history:state.history.slice(0,-1)};
   }
   const target=design.nodes.find(n=>n.id===action.target);
-  if (!target) return state;
+  if (!target || target.systemKind==='code') return state;
   const hidden=new Set(state.hidden);
   if (action.type==='hide' || (action.type==='toggle' && !hidden.has(target.id))) hidden.add(target.id);
   else {

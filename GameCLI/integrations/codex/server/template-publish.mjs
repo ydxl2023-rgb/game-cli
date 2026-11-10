@@ -8,6 +8,10 @@ export function templateFromDraft(snapshot,target,current) {
   const source=snapshot.design,root=source.nodes.find(n=>n.id===target.rootId);
   if(!root||root.parent!==null)throw new Error('同步目标必须是 Canvas 下的模板根节点。');
   if(root.templateSourceId!==current.id&&current.payload.root!==root.id)throw new Error('节点未关联到此数据库模板。');
+  if(current.payload.kind==='code'){
+    if(root.systemKind!=='code')throw new Error('纯代码候选必须来自代码系统卡片。');
+    return {...current.payload,...validateTemplate(current.payload,current.category_id)};
+  }
   const ids=new Set([root.id]);let size;
   do{size=ids.size;for(const n of source.nodes)if(ids.has(n.parent))ids.add(n.id);}while(ids.size!==size);
   const design={...structuredClone(source),name:current.payload.design.name,nodes:structuredClone(source.nodes.filter(n=>ids.has(n.id)))};

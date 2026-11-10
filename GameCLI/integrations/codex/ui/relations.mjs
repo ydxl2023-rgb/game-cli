@@ -74,16 +74,16 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
       card.onclick=selectCard;
       card.onkeydown=e=>{if(e.target===card&&['Enter',' '].includes(e.key)){e.preventDefault();selectCard();}};
       const header=element('div','relation-card-header');header.title='拖动调整卡片位置';header.append(element('strong','',root.name));
-      const editButton=element('button','','编辑');editButton.onclick=()=>onEdit(root.id);const play=element('button','','预演');play.onclick=()=>onPreview(root.id);header.append(editButton,play);
+      const editButton=element('button','',root.systemKind==='code'?'代码':'编辑');editButton.onclick=()=>root.systemKind==='code'?selectCard():onEdit(root.id);header.append(editButton);if(root.systemKind!=='code'){const play=element('button','','预演');play.onclick=()=>onPreview(root.id);header.append(play);}
       header.onpointerdown=e=>{if(e.button!==0||e.target.closest('button'))return;e.preventDefault();const q=point(e);drag={id:root.id,start:q,original:{...p},card};header.setPointerCapture(e.pointerId);};card.append(header);
       const thumb=element('div','relation-thumbnail');thumb.inert=true;thumb.setAttribute('aria-hidden','true');
       const stage=element('div','relation-mini-stage');const factor=Math.min(216/design.width,128/design.height);stage.style.width=design.width+'px';stage.style.height=design.height+'px';stage.style.transform=`scale(${factor})`;stage.style.left=(216-design.width*factor)/2+'px';stage.style.top=(128-design.height*factor)/2+'px';
       const original=[...document.querySelectorAll('#canvas [data-node]')].find(e=>e.dataset.node===root.id);
       if(original){const clone=original.cloneNode(true),visibility=thumbnailVisibility(design,root.id);for(const el of [clone,...clone.querySelectorAll('*')]){if(el.dataset.node)el.hidden=!visibility.get(el.dataset.node);el.removeAttribute('id');el.classList.remove('selected');el.removeAttribute('data-node');el.removeAttribute('tabindex');}stage.append(clone);}
-      thumb.append(stage);card.append(thumb);
+      if(root.systemKind==='code'){thumb.append(element('strong','','代码系统'),element('p','',`${root.scripts?.files?.length??0} 个源码文件`),element('small','','选择卡片查看源码 · 连线仅记录关系'));thumb.style.cssText+='display:flex;flex-direction:column;align-items:center;justify-content:center;';}else thumb.append(stage);card.append(thumb);
       const row=element('div','relation-controls');const source=document.createElement('select');source.setAttribute('aria-label',root.name+' 触发节点');
       const candidates=design.nodes.filter(n=>systemRoot(design,n.id)?.id===root.id&&(n.id===root.id||n.type==='Button'||n.action));
-      for(const n of candidates){const option=document.createElement('option');option.value=n.id;option.textContent=n.id===root.id?'点击界面':n.name;source.append(option);}
+      for(const n of candidates){const option=document.createElement('option');option.value=n.id;option.textContent=n.id===root.id?(root.systemKind==='code'?'系统触发（仅记录）':'点击界面'):n.name;source.append(option);}
       source.value=candidates.some(n=>n.id===selections.get(root.id)?.source)?selections.get(root.id).source:(candidates.find(n=>n.type==='Button')?.id??root.id);
       const action=document.createElement('select');action.setAttribute('aria-label',root.name+' 连线动作');for(const [value,label]of Object.entries(labels)){const option=document.createElement('option');option.value=value;option.textContent=label;action.append(option);}action.value=selections.get(root.id)?.type??'navigate';
       const remember=()=>{selections.set(root.id,{source:source.value,type:action.value});pending=null;drawWires();};source.onchange=action.onchange=remember;row.append(source,action);card.append(row);

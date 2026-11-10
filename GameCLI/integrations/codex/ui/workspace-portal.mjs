@@ -1,3 +1,4 @@
+import {openCodeTemplate} from './code-template.mjs';
 import {mountCandidateDiff} from './candidate-diff.mjs';
 import {mountCandidatePreview} from './candidate-preview.mjs';
 
@@ -39,7 +40,7 @@ if(location.pathname==='/studio/templates'){
   let loaded=false;details.addEventListener('toggle',()=>{if(details.open&&!loaded){loaded=true;diff.textContent='正在加载布局与源码…';act(async()=>{try{const data=await api('admin/candidate-detail?id='+encodeURIComponent(c.id));diff.replaceChildren();mountCandidateDiff(diff,data);const download=el('button','下载完整布局与源码差异');download.onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),link=el('a');link.href=url;link.download='candidate-'+c.id+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};diff.append(download);}catch(e){loaded=false;diff.textContent='加载失败，请收起后重试。';throw e;}});}});card.append(details);$('content').append(card);
  }
  const library=await api('templates'),list=el('details');list.append(el('summary','已发布标准模板与版本历史'));
- for(const t of library.templates){const row=el('p'),button=el('button',t.name+' · v'+t.version+' · 查看历史');button.onclick=()=>act(async()=>{const v=await api('template-versions?id='+encodeURIComponent(t.id));row.append(el('pre',v.versions.map(x=>'v'+x.version+' · '+x.created_at).join('\n')));button.disabled=true;});row.append(button);list.append(row);}$('content').append(list);
+ for(const t of library.templates){const row=el('p'),button=el('button',t.name+' · v'+t.version+' · 查看历史');button.onclick=()=>act(async()=>{const v=await api('template-versions?id='+encodeURIComponent(t.id));row.append(el('pre',v.versions.map(x=>'v'+x.version+' · '+x.created_at).join('\n')));button.disabled=true;});row.append(button);if(t.payload.kind==='code'){const source=el('button','纯代码 · 查看源码');source.onclick=()=>openCodeTemplate(t);row.append(source);}list.append(row);}$('content').append(list);
  }
 }else{
  const form=el('form'),input=el('input'),create=el('button','创建独立项目');input.placeholder='项目名称';input.required=true;input.maxLength=80;form.append(input,create);form.onsubmit=e=>{e.preventDefault();act(async()=>{create.disabled=true;try{const project=await api('projects',{name:input.value});location.href='/studio/projects/'+encodeURIComponent(project.id);}finally{create.disabled=false;}});};$('content').append(form);
