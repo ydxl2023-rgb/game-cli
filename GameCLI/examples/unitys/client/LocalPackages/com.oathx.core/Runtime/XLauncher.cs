@@ -88,6 +88,17 @@ namespace Oathx.Core
         }
 
         /// <summary>
+        /// Keep the launch background visible without loading or download overlays.
+        /// </summary>
+        public void ShowBackground()
+        {
+            loading.SetActive(false);
+            update.SetActive(false);
+
+            Show();
+        }
+
+        /// <summary>
         /// Display the regular loading panel.
         /// </summary>
         /// <param name="message">Initial status message; progress is reset to zero.</param>

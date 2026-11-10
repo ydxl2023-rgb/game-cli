@@ -171,6 +171,10 @@ public static class GameCliUguiImporter
                     }
                 }
                 else if (type != "Container" || ((string)n["surface"] != "transparent" && (string)n["template"] != "ConfirmDialog" && (string)n["template"] != "InventorySystem")) graphic = go.AddComponent<Image>();
+                // Keep the hit graphic without drawing a background over child artwork.
+                if (type == "Button" && n["image"] == null && (string)n["surface"] == "transparent")
+                    color.a = 0f;
+
                 if(graphic!=null){graphic.color=color;graphic.raycastTarget=type=="Button";}
                 if(type=="Button") {var button=go.AddComponent<Button>(); button.targetGraphic=graphic;button.interactable=(bool?)n["interactable"]??true;}
                 if((bool?)n["animationHost"]==true) go.AddComponent<Animator>();

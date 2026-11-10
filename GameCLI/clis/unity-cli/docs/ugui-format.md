@@ -59,6 +59,8 @@ payload:
 
 ## 验证和安装
 
+无图片且 `surface: "transparent"` 的 Button 保留透明 Image 作为点击区域，其 Graphic alpha 必须为 0；子节点图片不受影响。不能用默认白色 Image 渲染透明按钮底板，否则禁用态会出现灰块。带图片按钮继续按原图片及颜色渲染。
+
 将 `UnityEditor/Editor/GameCliUguiImporter.cs` 和 `GameCliUguiAnimations.cs` 一起安装到 Unity `Assets/Editor/GameCLI/` 并刷新；依赖 UGUI、Newtonsoft.Json，已在 Unity 2022.3 验证。CLI 和 Editor 使用 Library 文件队列进行请求/响应，所有 Unity 对象操作在主线程执行。
 
 正式生成自动先预检。预检构建并销毁内存对象，不写 Assets；只写 Library 暂存文件。已有 Prefab 需 --overwrite。版本错误、重复 ID、根节点错误、环、悬空父/动作目标、未知节点类型、资源错误会失败。正式写入不是多文件事务，磁盘失败可能留下图片；请看错误结果后重试。
