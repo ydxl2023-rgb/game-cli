@@ -1,3 +1,32 @@
+export function setupWorkspaceSplit(){
+ const editor=document.querySelector('.editor'),layers=document.querySelector('.layers'),palette=document.querySelector('.palette');
+ const key='gamecli.studio.panelWidths.v1';let widths={left:280,right:180};
+ try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&['left','right'].every(k=>Number.isFinite(saved[k])))widths=saved;}catch{}
+ const dividers={};
+ function apply(){
+  const total=editor.clientWidth,limit=Math.max(0,total-180-12);
+  let left=Math.max(130,Math.min(600,widths.left)),right=Math.max(100,Math.min(480,widths.right));
+  if(left+right>limit){const ratio=limit/(left+right);left*=ratio;right*=ratio;}
+  editor.style.setProperty('--left-width',`${left}px`);editor.style.setProperty('--right-width',`${right}px`);
+  for(const [side,value]of Object.entries({left,right}))dividers[side]?.setAttribute('aria-valuenow',String(Math.round(value)));
+ }
+ function persist(){try{localStorage.setItem(key,JSON.stringify(widths));}catch{}}
+ for(const side of ['left','right']){
+  const divider=document.createElement('div');dividers[side]=divider;divider.className='workspace-splitter';divider.id=`${side}-splitter`;divider.tabIndex=0;
+  divider.setAttribute('role','separator');divider.setAttribute('aria-orientation','vertical');divider.setAttribute('aria-label',side==='left'?'调整节点面板宽度':'调整控件面板宽度');divider.title='左右拖动调整宽度；双击恢复；方向键微调';
+  if(side==='left')layers.after(divider);else palette.before(divider);
+  let drag=null;
+  divider.onpointerdown=e=>{if(e.button!==0)return;e.preventDefault();drag={x:e.clientX,width:(side==='left'?layers:palette).getBoundingClientRect().width};divider.setPointerCapture(e.pointerId);document.body.classList.add('resizing-workspace');};
+  divider.onpointermove=e=>{if(!drag)return;widths[side]=Math.max(side==='left'?130:100,Math.min(editor.clientWidth-300,drag.width+(e.clientX-drag.x)*(side==='left'?1:-1)));apply();};
+  const finish=()=>{if(!drag)return;drag=null;document.body.classList.remove('resizing-workspace');persist();};
+  for(const event of ['pointerup','pointercancel','lostpointercapture'])divider.addEventListener(event,finish);
+  window.addEventListener('blur',finish);
+  divider.ondblclick=()=>{widths[side]=side==='left'?280:180;apply();persist();};
+  divider.onkeydown=e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();e.stopPropagation();widths[side]=Math.max(side==='left'?130:100,widths[side]+(e.key==='ArrowRight'?1:-1)*(side==='left'?1:-1)*(e.shiftKey?40:10));apply();persist();};
+ }
+ new ResizeObserver(apply).observe(editor);apply();
+}
+
 export function setupPanelSplit(){
  const layers=document.querySelector('.layers'),tree=document.getElementById('tree'),inspector=document.getElementById('inspector');
  const divider=document.createElement('div');divider.id='panel-splitter';divider.tabIndex=0;divider.setAttribute('role','separator');divider.setAttribute('aria-label','调整节点列表与属性区高度');divider.setAttribute('aria-orientation','horizontal');divider.setAttribute('aria-controls','tree inspector');divider.title='上下拖动调整高度；双击恢复默认；方向键微调';divider.innerHTML='<span></span>';inspector.before(divider);

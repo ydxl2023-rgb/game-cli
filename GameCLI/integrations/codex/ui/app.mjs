@@ -1,19 +1,20 @@
 import {createRelations} from './relations.mjs';
 import {playAnimations} from './animation-player.mjs';
 let stopAnimations=()=>{},centerMode='edit';
-import {setupPanelSplit} from './panel-split.mjs';
+import {setupPanelSplit,setupWorkspaceSplit} from './panel-split.mjs';
 import {groupedTemplates} from '../shared/template-groups.mjs';
 import {localDelta} from '../shared/inspector.mjs';
 import {createInspector} from './inspector.mjs';
 import {resolveLayout, captureBounds, captureChanges, offsets, setOffset} from '../shared/rect-transform.mjs';
 import { Bridge } from './bridge.mjs';
-import { createPreviewState, defaultAction, runPreviewAction } from '../shared/preview.mjs';
+import { createPreviewState, defaultAction, runPreviewAction, hierarchyVisibility } from '../shared/preview.mjs';
 import {instantiateTemplate} from '../shared/templates.mjs';
 import { starter, validateDesign, phoneDesign, pointInDesign, appendControl, textTarget, resizeNode, resizedRect, layerStyle, nodeName } from '../shared/design.mjs';
 const $ = id => document.getElementById(id);
 const bridge = new Bridge();
 let design = starter(), selected = 'EquipButton', revision = 0, dirty = false, scale = 1, preview = false, ready = false;
 const history = [];
+const collapsedNodes = new Set();
 const library=new Map();
 let librarySource=null,projectVersion=null;
 async function loadTemplates() {
@@ -44,7 +45,8 @@ async function loadTemplates() {
 }
 let previewState = null;
 function applyPreviewState() {
-  for (const el of $('canvas').querySelectorAll('[data-node]')) el.hidden = design.nodes.find(n=>n.id===el.dataset.node)?.active===false || (preview && previewState.hidden.includes(el.dataset.node));
+  const visibility = hierarchyVisibility(design, preview ? previewState.hidden : []);
+  for (const el of $('canvas').querySelectorAll('[data-node]')) el.hidden = !visibility.get(el.dataset.node);
   $('preview-back').hidden = $('preview-reset').hidden = !preview;
   $('preview-back').disabled = !previewState?.history.length;
 }
@@ -83,16 +85,17 @@ function edit(fn) {
   catch (e) { design = JSON.parse(before); notice(e.message, true); render(); }
 }
 function node() { return design.nodes.find(n => n.id === selected); }
+let manualScale = null;
 function fit() {
   const box = $('viewport').getBoundingClientRect();
-  scale = Math.max(.01, Math.min((box.width - 32) / design.width, (box.height - 32) / design.height, 1));
+  scale = (!preview && manualScale !== null) ? manualScale : Math.max(.01, Math.min((box.width - 40) / design.width, (box.height - 40) / design.height, 1));
   $('canvas').style.transform = `scale(${scale})`;
   $('canvas-wrap').style.width = `${design.width * scale}px`; $('canvas-wrap').style.height = `${design.height * scale}px`;
   $('zoom').textContent = `${Math.round(scale * 100)}%`;
   updateSelection();
 }
-function select(id) { selected = id; $('inspector').open = true; render(); }
-function render() {
+function select(id, preserveTree = false) { selected = id; $('inspector').open = true; render(preserveTree); }
+function render(preserveTree = false) {
   stopAnimations();
   resolveLayout(design);
   renderRectInspector();
@@ -104,21 +107,38 @@ function render() {
   const portrait = `${Math.min(design.width, design.height)}x${Math.max(design.width, design.height)}`;
   $('preset').value = ['1080x1920','1080x2400','1170x2532'].includes(portrait) ? portrait : 'custom';
   $('node-count').textContent = design.nodes.length + 1;
-  $('tree').replaceChildren(); $('canvas').replaceChildren();
+  if (!preserveTree) $('tree').replaceChildren();
+  else for (const row of $('tree').children) {
+    row.classList.toggle('selected', row.title === selected);
+    row.setAttribute('aria-selected', row.title === selected);
+  }
+  $('canvas').replaceChildren();
   $('canvas').style.width = `${design.width}px`; $('canvas').style.height = `${design.height}px`;
   $('canvas').classList.toggle('preview', preview);
-  const draw = (parent, target, depth, parentVisible=true) => {
+  const draw = (parent, target, depth, parentVisible=true, treeVisible=true) => {
     for (const n of design.nodes.filter(n => n.parent === parent)) {
       const visible=parentVisible && n.active!==false;
+      const hasChildren=design.nodes.some(child=>child.parent===n.id);
+      const collapsed=collapsedNodes.has(n.id);
       const layer=document.createElement('div');layer.className='tree-node'+(n.id===selected?' selected':'')+(!visible?' inactive':'');
+      layer.hidden=!treeVisible;
+      if(hasChildren)layer.setAttribute('aria-expanded',!collapsed);
       layer.style.paddingLeft=`${6+depth*10}px`;layer.setAttribute('role','treeitem');layer.setAttribute('aria-selected',n.id===selected);layer.setAttribute('aria-level',depth+1);layer.setAttribute('aria-label',icons[n.type]+' '+nodeName(n));layer.title=n.id;
-      const toggle=document.createElement('input');toggle.type='checkbox';toggle.className='node-visibility';toggle.checked=n.active!==false;toggle.dataset.visibility=n.id;
-      toggle.setAttribute('aria-label','显示 '+nodeName(n));toggle.title=parentVisible?'控制节点及其子节点显示':'父节点已隐藏；保留本节点自身的显示状态';
+      const toggle=document.createElement('input');toggle.type='checkbox';toggle.className='node-visibility';toggle.checked=visible;toggle.disabled=!parentVisible;toggle.dataset.visibility=n.id;
+      toggle.setAttribute('aria-label','显示 '+nodeName(n));toggle.title=parentVisible?'控制节点及其子节点显示':'父节点已隐藏；重新显示父节点后恢复本节点原有状态';
       toggle.onclick=e=>e.stopPropagation();toggle.ondblclick=e=>e.stopPropagation();
       toggle.onchange=()=>{const checked=toggle.checked,scroll=$('tree').scrollTop;edit(()=>{n.active=checked;});$('tree').scrollTop=scroll;[...$('tree').querySelectorAll('[data-visibility]')].find(e=>e.dataset.visibility===n.id)?.focus({preventScroll:true});};
       const choose=document.createElement('button');choose.type='button';choose.className='node-select';choose.setAttribute('aria-label','选择 '+nodeName(n));
-      const icon=document.createElement('span');icon.className='node-icon';icon.textContent=icons[n.type];const label=document.createElement('span');label.className='node-label';label.textContent=nodeName(n);choose.append(icon,label);
-      choose.onclick=()=>select(n.id);choose.ondblclick=()=>{select(n.id);$('inspector').open=true;};layer.append(toggle,choose);$('tree').append(layer);
+      const icon=document.createElement('span');icon.className='node-icon';icon.textContent=hasChildren?(collapsed?'▸':'▾'):icons[n.type];const label=document.createElement('span');label.className='node-label';label.textContent=nodeName(n);choose.append(icon,label);
+      choose.title=hasChildren?'双击折叠 / 展开子节点':'选择节点';
+      choose.onclick=()=>select(n.id,true);
+      choose.ondblclick=()=>{
+        if(!hasChildren)return;
+        const scroll=$('tree').scrollTop;
+        if(collapsedNodes.has(n.id))collapsedNodes.delete(n.id);else collapsedNodes.add(n.id);
+        render();$('tree').scrollTop=scroll;
+      };
+      layer.append(toggle,choose);if(!preserveTree)$('tree').append(layer);
       const el = document.createElement(n.type === 'Button' ? 'button' : 'div'); el.className = 'ui-node' + (!preview && n.id === selected ? ' selected' : ''); el.dataset.node = n.id; el.dataset.name = nodeName(n); el.dataset.type = n.type;
       Object.assign(el.style, { left: `${n.x}px`, top: `${n.y}px`, width: `${n.width}px`, height: `${n.height}px`, backgroundColor: n.color, color: n.type === 'Text' ? n.color : '#101923', fontSize: `${n.fontSize}px` });
       if (design.nodes.find(p => p.id === n.parent)?.type === 'Button') Object.assign(el.style, { display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' });
@@ -132,7 +152,7 @@ function render() {
         if (interactive) { el.style.cursor='pointer'; el.dataset.interactive='true'; if(n.type!=='Button') { el.tabIndex=0; el.setAttribute('role','button'); } }
         if (n.template === 'ConfirmDialog') el.style.zIndex='100';
       }
-      el.textContent = n.text; el.setAttribute('aria-label', nodeName(n)); target.append(el); draw(n.id, el, depth + 1, visible);
+      el.textContent = n.text; el.setAttribute('aria-label', nodeName(n)); target.append(el); draw(n.id, el, depth + 1, visible, treeVisible&&!collapsed);
     }
   };
   draw(null, $('canvas'), 0);
@@ -292,7 +312,20 @@ window.addEventListener('keydown', e => {
   edit(() => { const n = node(); n.x = Math.max(-8192, Math.min(8192, n.x + delta[0] * step)); n.y = Math.max(-8192, Math.min(8192, n.y + delta[1] * step)); });
 });
 $('undo').onclick = () => { if (history.length) { design = JSON.parse(history.pop()); mark(); render(); } };
-$('fit').onclick = fit;
+$('fit').onclick = () => {manualScale=null;fit();};
+$('viewport').addEventListener('wheel', e => {
+  if(preview||centerMode!=='edit')return;
+  e.preventDefault();
+  const viewport=$('viewport'),before=$('canvas-wrap').getBoundingClientRect();
+  const x=(e.clientX-before.left)/scale,y=(e.clientY-before.top)/scale;
+  const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?viewport.clientHeight:1);
+  manualScale=Math.max(.05,Math.min(4,scale*Math.exp(-Math.max(-400,Math.min(400,delta))*.002)));
+  fit();
+  const after=$('canvas-wrap').getBoundingClientRect();
+  viewport.scrollLeft+=after.left+x*scale-e.clientX;viewport.scrollTop+=after.top+y*scale-e.clientY;
+  updateSelection();
+},{passive:false});
+$('viewport').addEventListener('scroll',updateSelection);
 function setPreview(value) {
   if(value)setCenterMode('edit');
   preview = value;
@@ -405,6 +438,7 @@ function setCenterMode(mode){
 const relationView=createRelations({getDesign:()=>design,edit,notice,onEdit:id=>{setCenterMode('edit');select(id);},onPreview:id=>{setPreview(true);previewState.hidden=[...new Set([...previewState.hidden.filter(n=>n!==id),...design.nodes.filter(n=>n.parent===null&&n.id!==id).map(n=>n.id)])];applyPreviewState();}});
 $('tab-edit').onclick=()=>setCenterMode('edit');$('tab-relations').onclick=()=>setCenterMode('relations');
 setupPanelSplit();
+setupWorkspaceSplit();
 new ResizeObserver(fit).observe($('viewport'));
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 render();

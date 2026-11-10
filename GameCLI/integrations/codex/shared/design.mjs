@@ -289,7 +289,7 @@ export function validateDesign(value) {
     let parent = n.parent;
     while (parent !== null) {
       if (!map.has(parent) || seen.has(parent)) throw new Error('层级存在循环或缺失父节点。');
-      if (!['Container','Button','Progress'].includes(map.get(parent).type)) throw new Error('只有容器、按钮和进度条可以拥有子节点。');
+      // All UGUI Graphics own RectTransforms and can contain child nodes (including Text).
       seen.add(parent); parent = map.get(parent).parent;
     }
   }

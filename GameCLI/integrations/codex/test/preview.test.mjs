@@ -1,7 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {starter,appendControl,validateDesign} from '../shared/design.mjs';
-import {createPreviewState,defaultAction,runPreviewAction} from '../shared/preview.mjs';
+import {createPreviewState,defaultAction,runPreviewAction,hierarchyVisibility} from '../shared/preview.mjs';
+
+test('parent visibility cascades through descendants without overwriting their own active state',()=>{
+  const d={nodes:[{id:'Text',parent:'Panel'},{id:'Panel',parent:'Loading'},{id:'Loading',parent:null,active:false},{id:'Hidden',parent:'Panel',active:false},{id:'Other',parent:null}]};
+  let visibility=hierarchyVisibility(d);
+  for(const id of ['Loading','Panel','Text','Hidden']) assert.equal(visibility.get(id),false);
+  assert.equal(visibility.get('Other'),true);
+  d.nodes.find(n=>n.id==='Loading').active=true;
+  visibility=hierarchyVisibility(d);
+  for(const id of ['Loading','Panel','Text']) assert.equal(visibility.get(id),true);
+  assert.equal(visibility.get('Hidden'),false);
+  assert.equal(hierarchyVisibility(d,['Loading']).get('Text'),false);
+  assert.equal(d.nodes.find(n=>n.id==='Text').active,undefined);
+});
 
 test('preview opens and dismisses dialogs and returns without changing design',()=>{
   const d=starter(), id=appendControl(d,'ConfirmDialog',null,{x:0,y:0});

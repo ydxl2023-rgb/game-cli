@@ -1,3 +1,17 @@
+export function hierarchyVisibility(design, hidden = []) {
+  const nodes = new Map(design.nodes.map(n => [n.id, n]));
+  const excluded = new Set(hidden), result = new Map();
+  const visible = n => {
+    if (result.has(n.id)) return result.get(n.id);
+    const parent = nodes.get(n.parent);
+    const value = n.active !== false && !excluded.has(n.id) && (!parent || visible(parent));
+    result.set(n.id, value);
+    return value;
+  };
+  for (const n of design.nodes) visible(n);
+  return result;
+}
+
 export function defaultAction(design, node) {
   if (node.action) return node.action;
   let parent = design.nodes.find(n => n.id === node.parent);
