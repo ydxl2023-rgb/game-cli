@@ -1,23 +1,24 @@
-import {validateDesign} from '../shared/design.mjs';
-import {saveProject,projectSnapshot} from './save.mjs';
-import { readFile } from 'node:fs/promises';
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { z } from 'zod';
-import { createStore } from './store.mjs';
-import { createTemplateStore } from './templates.mjs';
-export const resourceUri = 'ui://gamecli-ui-studio/v1.html';
-export function createMcpServer(store = createStore(), templates = createTemplateStore()) {
-  const server = new McpServer({ name: 'gamecli-ui-studio', version: '0.1.0' });
-  server.registerResource('ui-studio', resourceUri, { mimeType: 'text/html;profile=mcp-app' }, async () => ({ contents: [{ uri: resourceUri, mimeType: 'text/html;profile=mcp-app', text: await readFile(new URL('../dist/studio.html', import.meta.url), 'utf8'), _meta: { 'openai/ui': { availableDisplayModes: ['inline','fullscreen'] }, ui: { prefersBorder: true, csp: { connectDomains: [], resourceDomains: [] } } } }] }));
-  const wrap = fn => async args => { try { return { content: [], structuredContent: await fn(args) }; } catch (e) { return { isError: true, content: [{ type: 'text', text: e.message }] }; } };
-  const annotations = { readOnlyHint: true, destructiveHint: false, openWorldHint: false };
-  server.registerTool('gamecli_ui_templates', { description: '按分类读取数据库中的 UI 预制控件和系统模板。', inputSchema: {}, annotations }, wrap(()=>templates.list()));
-  server.registerTool('gamecli_ui_scripts_save', { description: '按模板版本保存系统模板的原始源码包，递增模板版本。scripts=null 显式清空代码包。只存储文本，不执行代码。', inputSchema: {templateId:z.string().min(1),version:z.number().int().positive(),scripts:z.unknown()}, annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false} }, wrap(args=>templates.saveScripts(args)));
-  const close=server.close.bind(server);server.close=async()=>{await templates.close();await close();};
-  server.registerTool('gamecli_ui_open', { description: '打开 GameCLI UI Studio 内嵌设计工作台。编辑网页布局稿，不生成 Unity 资源。', inputSchema: {}, annotations, _meta: { ui: { resourceUri }, 'openai/outputTemplate': resourceUri } }, wrap(() => projectSnapshot(store,templates)));
-  server.registerTool('gamecli_ui_snapshot', { description: '读取当前 UI Studio 草稿。', inputSchema: {}, annotations }, wrap(() => projectSnapshot(store,templates)));
-  server.registerTool('gamecli_ui_save', { description: '按工程保存生产 UI 到 project_ui 表，并保留本机草稿；不更新基础模板。', inputSchema: { design:z.unknown(), revision:z.number().int().nonnegative(), projectVersion:z.number().int().nonnegative().optional() }, annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false} },wrap(args=>saveProject(store,templates,args)));
-  server.registerTool('gamecli_ui_sync', { description:'显式将指定系统同步到基础模板库。', inputSchema:{design:z.unknown(),revision:z.number().int().nonnegative(),targets:z.array(z.object({rootId:z.string(),templateId:z.string(),version:z.number().int().positive()})).min(1).max(64)},annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false}},wrap(async args=>({sync:{ok:true,templates:await templates.publish({design:validateDesign(args.design),revision:args.revision,savedAt:new Date().toISOString()},args.targets)}})));
-  server.registerTool('gamecli_ui_export', { description: '将设计导出为本机 HTML 布局稿和 studio.json，不生成 visual-ui.json 或 prefab。', inputSchema: { design: z.unknown() }, annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false } }, wrap(({ design }) => store.exportDesign(design)));
-  return server;
+import {readFile} from 'node:fs/promises';
+import {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
+import {z} from 'zod';
+import {createStore} from './store.mjs';
+import {createTemplateStore} from './templates.mjs';
+import {createWorkspaces} from './workspaces.mjs';
+export const resourceUri='ui://gamecli-ui-studio/v1.html';
+export function createMcpServer(store=createStore(),templates=createTemplateStore(),workspaces=createWorkspaces()){
+ const server=new McpServer({name:'gamecli-ui-studio',version:'0.2.0'});
+ server.registerResource('ui-studio',resourceUri,{mimeType:'text/html;profile=mcp-app'},async()=>({contents:[{uri:resourceUri,mimeType:'text/html;profile=mcp-app',text:await readFile(new URL('../dist/studio.html',import.meta.url),'utf8'),_meta:{'openai/ui':{availableDisplayModes:['inline','fullscreen']},ui:{prefersBorder:true,csp:{connectDomains:[],resourceDomains:[]}}}}]}));
+ const wrap=fn=>async args=>{try{return {content:[],structuredContent:await fn(args)};}catch(e){return {isError:true,content:[{type:'text',text:e.message}]};}};
+ const read={readOnlyHint:true,destructiveHint:false,openWorldHint:false},write={...read,readOnlyHint:false};
+ const projectId=z.string().min(1),body={projectId,design:z.unknown(),revision:z.number().int().nonnegative(),projectVersion:z.number().int().nonnegative()};
+ server.registerTool('gamecli_ui_open',{description:'打开项目工作台，先选择项目。',inputSchema:{},annotations:read,_meta:{ui:{resourceUri},'openai/outputTemplate':resourceUri}},wrap(()=>workspaces.list()));
+ server.registerTool('gamecli_ui_projects',{description:'列出当前身份可访问的项目。',inputSchema:{},annotations:read},wrap(()=>workspaces.list()));
+ server.registerTool('gamecli_ui_snapshot',{description:'读取指定项目，禁止隐式当前项目。',inputSchema:{projectId},annotations:read},wrap(a=>workspaces.snapshot(a.projectId)));
+ server.registerTool('gamecli_ui_templates',{description:'读取标准模板及当前发布版本，只读。',inputSchema:{},annotations:read},wrap(()=>templates.list()));
+ server.registerTool('gamecli_ui_save',{description:'只保存指定项目，不修改标准模板。',inputSchema:body,annotations:write},wrap(a=>workspaces.save(a.projectId,a)));
+ server.registerTool('gamecli_ui_export',{description:'导出指定项目到独立项目目录。',inputSchema:{projectId,design:z.unknown()},annotations:write},wrap(a=>workspaces.exportDesign(a.projectId,a)));
+ server.registerTool('gamecli_ui_candidate',{description:'提交模板候选，不发布、不覆盖标准库。',inputSchema:{...body,rootId:z.string(),templateId:z.string(),version:z.number().int()},annotations:write},wrap(a=>workspaces.candidate(a.projectId,a)));
+ server.registerTool('gamecli_ui_revisions',{description:'读取指定项目历史版本。',inputSchema:{projectId},annotations:read},wrap(a=>workspaces.revisions(a.projectId)));
+ server.registerTool('gamecli_ui_restore',{description:'将历史版本恢复为指定项目的新版本。',inputSchema:{projectId,version:z.number().int(),revision:z.number().int(),projectVersion:z.number().int()},annotations:write},wrap(a=>workspaces.restore(a.projectId,a)));
+ const close=server.close.bind(server);server.close=async()=>{await templates.close();await workspaces.close();await close();};return server;
 }

@@ -16,6 +16,17 @@ test('parent visibility cascades through descendants without overwriting their o
   assert.equal(d.nodes.find(n=>n.id==='Text').active,undefined);
 });
 
+test('preview activates authored inactive dialogs without changing source flags',()=>{
+ const d={nodes:[{id:'Root',parent:null},{id:'Dialog',parent:'Root',active:false},{id:'Label',parent:'Dialog'},{id:'Variant',parent:'Dialog',active:false}]};
+ const before=JSON.stringify(d);let state=createPreviewState(d);
+ assert.equal(hierarchyVisibility(d,state.hidden,true).get('Label'),false);
+ state=runPreviewAction(d,state,{type:'show',target:'Dialog'});
+ assert.equal(hierarchyVisibility(d,state.hidden,true).get('Label'),true);
+ assert.equal(hierarchyVisibility(d,state.hidden,true).get('Variant'),false);
+ state=runPreviewAction(d,state,{type:'back'});
+ assert.equal(hierarchyVisibility(d,state.hidden,true).get('Label'),false);
+ assert.equal(JSON.stringify(d),before);
+});
 test('preview opens and dismisses dialogs and returns without changing design',()=>{
   const d=starter(), id=appendControl(d,'ConfirmDialog',null,{x:0,y:0});
   const before=JSON.stringify(d);

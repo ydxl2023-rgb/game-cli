@@ -10,7 +10,9 @@ using UnityEngine.UI;
 [InitializeOnLoad]
 public static class GameCliPrefabExporter
 {
-    [Serializable] public class Request { public string prefab; public string output; }
+    [Serializable] public class Request { public string prefab; public string output; public int width; public int height; public List<TextOverride> texts; }
+    /// <summary>Explicit localized preview text keyed by exported hierarchy path.</summary>
+    [Serializable] public class TextOverride { public string path; public string text; }
     [Serializable] public class Export {
         public string schema = "gamecli.unity-prefab.v1";
         public string unityVersion, sourcePath, sourceGuid;
@@ -53,7 +55,25 @@ public static class GameCliPrefabExporter
         var export = new Export { unityVersion = Application.unityVersion, sourcePath = request.prefab, sourceGuid = AssetDatabase.AssetPathToGUID(request.prefab) };
         // LoadPrefabContents resolves nested prefabs and variants into a separate preview scene.
         GameObject root = PrefabUtility.LoadPrefabContents(request.prefab);
-        try { Visit(root.transform, "0", null, root.transform, export); }
+        try {
+            foreach (var text in root.GetComponentsInChildren<Text>(true)) {
+                string path = Hierarchy(text.transform, root.transform);
+                var replacement = request.texts == null ? null : request.texts.Find(item => item.path == path);
+                if (replacement != null) text.text = replacement.text;
+            }
+            var rect = root.transform as RectTransform;
+            if (rect != null && request.width > 0 && request.height > 0) {
+                // Resolve layout in the disposable prefab preview, without saving the asset.
+                rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, request.width);
+                rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, request.height);
+                var groups = root.GetComponentsInChildren<LayoutGroup>(true);
+                for (int pass = 0; pass < 3; pass++) {
+                    for (int index = groups.Length - 1; index >= 0; index--)
+                        LayoutRebuilder.ForceRebuildLayoutImmediate(groups[index].transform as RectTransform);
+                }
+            }
+            Visit(root.transform, "0", null, root.transform, export);
+        }
         finally { PrefabUtility.UnloadPrefabContents(root); }
         foreach (string dependency in AssetDatabase.GetDependencies(request.prefab, true)) export.dependencies.Add(new Dependency { path = dependency, guid = AssetDatabase.AssetPathToGUID(dependency) });
         File.WriteAllText(Path.Combine(output, "unity-prefab.json"), JsonUtility.ToJson(export, true));

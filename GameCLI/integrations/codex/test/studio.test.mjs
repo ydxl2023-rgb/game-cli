@@ -178,24 +178,33 @@ test('draft survives new store instances, rejects stale save, exports separate s
   assert.equal(JSON.parse(await readFile(join(output.directory, 'UIInventory.studio.json'), 'utf8')).name, d.name);
 });
 
-test('HTTP serves UI, preserves draft and rejects foreign origin and invalid inputs', async t => {
+function testWorkspaces(store){return {
+ access:async id=>{if(id!=='Test')throw Error('无权访问');return {id,name:'Test',role:'owner'};},
+ list:async()=>({projects:[{id:'Test',name:'Test',role:'owner'}]}),
+ snapshot:async()=>({...await store.snapshot(),project:{id:'Test',name:'Test',version:0,role:'owner'}}),
+ save:async(id,a)=>{if(id!=='Test'||a.projectId!==id)throw Error('项目不一致');return store.save(a.design,a.revision);},
+ exportDesign:async(id,a)=>store.exportDesign(a.design),close:async()=>{}
+};}
+test('HTTP requires a project and rejects legacy writes, foreign origins and stale saves', async t => {
   const root = await mkdtemp(join(tmpdir(), 'gamecli-http-'));
-  const server = createHttpServer(createStore(root),{list:async()=>({source:'postgresql',categories:[{id:'prefab',name:'预制控件'}],templates:[]}),close:async()=>{}}); await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const store=createStore(root),server = createHttpServer(store,{list:async()=>({source:'postgresql',categories:[{id:'prefab',name:'预制控件'}],templates:[]}),close:async()=>{}},testWorkspaces(store)); await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   t.after(async () => { await new Promise(resolve => server.close(resolve)); await rm(root, { recursive: true, force: true }); });
   const base = `http://127.0.0.1:${server.address().port}`;
   assert.equal((await fetch(base + '/studio')).status, 200);
   assert.equal((await (await fetch(base+'/api/studio/templates')).json()).source,'postgresql');
-  const body = JSON.stringify({ design: starter(), revision: 0 });
+  const body = JSON.stringify({ projectId:'Test',design: starter(), revision: 0 });
   const headers = { 'Content-Type': 'application/json' };
   assert.equal((await fetch(base + '/api/studio/save', { method: 'POST', headers: { ...headers, Origin: 'https://example.com' }, body })).status, 403);
-  assert.equal((await fetch(base + '/api/studio/save', { method: 'POST', headers, body })).status, 200);
-  assert.equal((await (await fetch(base + '/api/studio')).json()).revision, 1);
-  assert.equal((await fetch(base + '/api/studio/save', { method: 'POST', headers, body })).status, 400);
+  assert.equal((await fetch(base + '/api/studio/save', { method: 'POST', headers, body })).status, 403);
+  assert.equal((await fetch(base + '/api/studio/sync', { method: 'POST', headers, body })).status, 403);
+  assert.equal((await fetch(base + '/api/studio/projects/Test/save', { method: 'POST', headers, body })).status, 200);
+  assert.equal((await (await fetch(base + '/api/studio/projects/Test')).json()).revision, 1);
+  assert.equal((await fetch(base + '/api/studio/projects/Test/save', { method: 'POST', headers, body })).status, 400);
 });
 
 test('MCP exposes UI resource and real save/export tools', async t => {
   const root = await mkdtemp(join(tmpdir(), 'gamecli-mcp-'));
-  const server = createMcpServer(createStore(root),{list:async()=>({source:'postgresql',categories:[],templates:[]}),close:async()=>{}});
+  const store=createStore(root),server = createMcpServer(store,{list:async()=>({source:'postgresql',categories:[],templates:[]}),close:async()=>{}},testWorkspaces(store));
   const client = new Client({ name: 'studio-test', version: '1.0.0' });
   const [a,b] = InMemoryTransport.createLinkedPair();
   await Promise.all([server.connect(a), client.connect(b)]);
@@ -204,8 +213,9 @@ test('MCP exposes UI resource and real save/export tools', async t => {
   const templates=await client.callTool({name:'gamecli_ui_templates',arguments:{}});assert.equal(templates.structuredContent.source,'postgresql');
   assert.equal(tools.find(t => t.name === 'gamecli_ui_open')._meta.ui.resourceUri, resourceUri);
   const resource = await client.readResource({ uri: resourceUri }); assert.match(resource.contents[0].text, /UI Studio/);
-  const snapshot = await client.callTool({ name: 'gamecli_ui_open', arguments: {} }); assert.equal(snapshot.structuredContent.revision, 0);
-  const saved = await client.callTool({ name: 'gamecli_ui_save', arguments: { design: starter(), revision: 0 } }); assert.equal(saved.structuredContent.revision, 1);
+  assert.ok(!tools.some(t=>['gamecli_ui_sync','gamecli_ui_scripts_save'].includes(t.name)));
+  const snapshot = await client.callTool({ name: 'gamecli_ui_snapshot', arguments: {projectId:'Test'} }); assert.equal(snapshot.structuredContent.revision, 0);
+  const saved = await client.callTool({ name: 'gamecli_ui_save', arguments: {projectId:'Test', design: starter(), revision: 0,projectVersion:0 } }); assert.equal(saved.structuredContent.revision, 1);
   const invalid = await client.callTool({ name: 'gamecli_ui_save', arguments: { design: {}, revision: 1 } }); assert.equal(invalid.isError, true);
-  const exported = await client.callTool({ name: 'gamecli_ui_export', arguments: { design: starter() } }); assert.ok(exported.structuredContent.html.includes('data-ui-id'));
+  const exported = await client.callTool({ name: 'gamecli_ui_export', arguments: {projectId:'Test', design: starter() } }); assert.ok(exported.structuredContent.html.includes('data-ui-id'));
 });

@@ -9,3 +9,7 @@ html = html.replace('<!-- STUDIO_STYLE -->', () => `<style>${css}</style>`).repl
 await mkdir(new URL('dist/', root), { recursive: true });
 await writeFile(new URL('dist/studio.html', root), html);
 console.log('Built dist/studio.html (self-contained MCP resource)');
+const portal = await build({entryPoints:[fileURLToPath(new URL('ui/workspace-portal.mjs',root))],bundle:true,write:false,format:'esm',target:'es2022',minify:true});
+const portalHtml=(await readFile(new URL('ui/workspace-portal.html',root),'utf8')).replace('<!-- PORTAL_SCRIPT -->',()=>`<script type="module">${portal.outputFiles[0].text.replaceAll('</script','<\\/script')}</script>`);
+await writeFile(new URL('dist/workspace-portal.html',root),portalHtml);
+console.log('Built dist/workspace-portal.html');

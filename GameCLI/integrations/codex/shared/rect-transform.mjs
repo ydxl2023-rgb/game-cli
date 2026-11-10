@@ -51,7 +51,7 @@ export function resolveLayout(design) {
     if(!n.rectTransform)captureBounds(design,n);
     n.rectTransform=normalizeRect(n.rectTransform);
     const b=bounds(n.rectTransform,p);
-    if(!Object.values(b).every(Number.isFinite)||b.width<1||b.height<1||Object.values(b).some(v=>Math.abs(v)>8192))throw new Error('RectTransform 计算尺寸须为 1–8192，坐标须在 ±8192 内。');
+    if(!Object.values(b).every(Number.isFinite)||b.width<0||b.height<0||Object.values(b).some(v=>Math.abs(v)>8192))throw new Error('RectTransform 计算尺寸须为 0–8192，坐标须在 ±8192 内。');
     Object.assign(n,b);visiting.delete(n.id);done.add(n.id);
   }
   design.nodes.forEach(resolve);return design;

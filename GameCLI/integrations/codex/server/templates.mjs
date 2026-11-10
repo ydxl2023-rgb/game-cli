@@ -39,7 +39,7 @@ export async function seedTemplates(pool) {
     await client.query('BEGIN');await client.query(schemaSql);
     for(const c of categories)await client.query('INSERT INTO gamecli_ui.template_categories(id,name,sort) VALUES($1,$2,$3) ON CONFLICT(id) DO NOTHING',[c.id,c.name,c.sort]);
     await migrateTemplateGroups(client);await client.query(projectUiSchema);await client.query(templateScriptsSchema);
-    for(const t of builtInTemplates())await client.query('INSERT INTO gamecli_ui.templates(id,category_id,name,description,sort,payload,group_id) VALUES($1,$2,$3,$4,$5,$6::jsonb,$7) ON CONFLICT(id) DO NOTHING',[t.id,t.category,t.name,t.description,t.sort,JSON.stringify(t.payload),t.group]);
+    for(const t of builtInTemplates())await client.query('INSERT INTO gamecli_ui.templates(id,category_id,name,description,sort,payload,group_id) SELECT $1,$2,$3,$4,$5,$6::jsonb,$7 WHERE NOT EXISTS (SELECT 1 FROM gamecli_ui.templates WHERE id=$1)',[t.id,t.category,t.name,t.description,t.sort,JSON.stringify(t.payload),t.group]);
     await client.query('COMMIT');
   } catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
 }

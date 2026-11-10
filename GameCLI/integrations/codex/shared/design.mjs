@@ -255,6 +255,8 @@ export function validateDesign(value) {
   for (const n of value.nodes) {
     if (!n || n.id === 'Canvas' || !/^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(n.id) || n.id === value.name || ids.has(n.id)) throw new Error('节点 ID 必须合法、唯一且不能与设计同名。');
     ids.add(n.id);
+    if(n.templateSourceVersion!==undefined&&(!Number.isInteger(n.templateSourceVersion)||n.templateSourceVersion<1))throw new Error('模板来源版本无效。');
+    if(n.scripts!==undefined&&n.scripts!==null){if(n.scripts.schemaVersion!==1||!Array.isArray(n.scripts.files)||n.scripts.files.length>128||n.scripts.files.some(f=>typeof f.path!=='string'||typeof f.content!=='string')||JSON.stringify(n.scripts).length>5*1024*1024)throw new Error('项目源码副本格式无效。');}
     for(const [key,axes] of [['localScale',['x','y']],['imageBorder',['x','y','z','w']],['uvRect',['x','y','width','height']]]) if(n[key]!==undefined && (!n[key] || !axes.every(a=>Number.isFinite(n[key][a])&&Math.abs(n[key][a])<=8192)))throw new Error('图片布局参数无效。');
     if(n.imageBorder && Object.values(n.imageBorder).some(v=>v<0))throw new Error('九宫格边界不能为负。');
     if(n.uvRect && (n.uvRect.width<=0||n.uvRect.height<=0))throw new Error('UV 尺寸必须为正。');
@@ -272,7 +274,7 @@ export function validateDesign(value) {
     if (!types.includes(n.type)) throw new Error('存在不支持的控件类型。');
     if (n.parent !== null && typeof n.parent !== 'string') throw new Error('父节点无效。');
     for (const key of ['x','y','width','height','fontSize']) if (!Number.isFinite(n[key]) || Math.abs(n[key]) > 8192) throw new Error('节点尺寸或坐标无效。');
-    if (n.width < 1 || n.height < 1 || n.fontSize < 8 || n.fontSize > 128) throw new Error('尺寸必须为正，字号须为 8–128。');
+    if (n.width < 0 || n.height < 0 || n.fontSize < 8 || n.fontSize > 128) throw new Error('尺寸不能为负，字号须为 8–128。');
     if (!/^#[0-9a-f]{6}$/i.test(n.color) || typeof n.text !== 'string' || n.text.length > 2000) throw new Error('颜色或文本无效。');
     if (n.template !== undefined && (!['ItemSlot','ScrollPanel','ConfirmDialog','InventorySystem'].includes(n.template) || n.type !== 'Container')) throw new Error('预制控件类型无效。');
     if (n.role !== undefined && !['background','icon','mask','count','frame','content'].includes(n.role)) throw new Error('图层语义无效。');
@@ -293,7 +295,7 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {

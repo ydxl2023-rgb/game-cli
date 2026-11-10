@@ -108,31 +108,51 @@ MCP 进程由 Codex 启动，直接使用相同本机草稿，无需启动 HTTP 
 
 代码包格式：`{ "schemaVersion": 1, "files": [{ "path": "Runtime/XLauncher.cs", "content": "原始源码文本", "sha256": "内容的 SHA256" }] }`。文件路径相对于代码包根目录；可以同时包含 `.cs`、`.meta` 等文本文件。保持 UTF-8 文本的 BOM、换行和空白，保存时计算 SHA256，传入已有 SHA256 时校验一致性。每包最多 128 个文件、4 MiB 文本，不支持二进制压缩包。
 
-`gamecli_ui_templates` 和 HTTP 模板列表直接返回 scripts。通过 MCP `gamecli_ui_scripts_save({templateId,version,scripts})` 保存，仅允许 system 类别；版本不一致会拒绝，成功后模板 version 加一。传 scripts=null 可显式清空。更新代码包替换当前内容，不提供不可变历史版本；需要保留最初版本时应另行设计归档策略。布局同步保留 scripts，但不自动证明旧代码与新布局兼容。代码只作为数据存储，不执行，也不自动导入 Unity。
+模板列表提供只读代码包。项目拖入模板时复制布局、动画和 scripts，并固定 templateSourceVersion。关系页代码列表只读项目副本；后续标准模板发布不会改变已有项目。代码只作为数据归档，不执行，也不自动导入 Unity。旧 scripts_save 和直接模板同步入口已关闭。
 
 ### 从工程同步独立源码
 
-GameCLI 通过明确的文件清单关联系统模板与源码，不能从界面名称猜测并上传整个工程。Launch 清单为 `config/launch-scripts.json`，归档 `XLauncher.cs` 及其 `.meta`；`projectRoot` 相对于清单文件目录，文件路径相对于 Unity 工程。保留现有模板标识 `SvStart`，显示名称为 SV Launch。
-
-在本目录运行：
+源码清单必须包含 projectId、templateId，以及可唯一定位系统的 rootName。Launch 清单为 config/launch-scripts.json，保存 XLauncher.cs 和 .meta；projectRoot 相对清单目录，文件路径相对 Unity 工程。
 
 ```sh
 npm run scripts:sync -- config/launch-scripts.json
 npm run scripts:sync -- config/launch-scripts.json --apply
+npm run scripts:sync -- config/launch-scripts.json --apply --candidate
 ```
 
-第一条只预检，第二条更新 `templates.scripts`。同步保留源码 BOM、换行和空白，计算 SHA256、检查版本、备份旧代码包并回读验证；内容相同不增加版本。不会修改 UI payload 或工程 UI，也不会执行源码。完成后点击 Studio 的刷新模板库图标，关系卡片右侧显示归档文件。其他系统使用各自的清单；独立系统代码交付后执行此同步步骤。
+默认只预检；--apply 仅更新指定项目的源码副本，记录项目新版本，相同内容不增加版本；--candidate 额外提交标准模板候选，仍不发布。刷新对应项目页面查看源码，已有未保存草稿先保存或导出。保留源码 BOM、换行、空白并校验 SHA256。
 
-### 工程保存与模板同步行为
+### 项目工作区与标准模板隔离
 
-顶部「保存」先保留本机草稿，再将完整 Canvas、所有系统节点、交互和动画保存到 gamecli_ui.project_ui（project_id 主键、project_name、version、payload JSONB、created_at、updated_at）。保存不写 templates 表；projectVersion 防止覆盖其他窗口更新。数据库失败会保留本机草稿并明确提示。无本机草稿时可从数据库恢复当前工程设计。
+访问 /studio 选择或新建项目；/studio/projects/<projectId> 是绑定项目的工作区。顶部始终显示项目名称、ID 和当前 UI。每个标签页独立绑定项目，不使用服务器全局“当前项目”。保存只更新该项目，切换时提示处理未保存修改。
 
-当前工程默认 GameCLI；部署时可设置 GAMECLI_PROJECT_ID 和 GAMECLI_PROJECT_NAME，工程身份不随 UI 文件名或节点名称改变。
+- projects 和 project_members 保存项目归属与 owner/editor/viewer 权限；project_ui 保存项目当前数据，project_ui_revisions 保存不可修改的历史快照。恢复历史生成新版本。
+- 保存同时校验 URL 项目、请求 projectId 和 projectVersion。过期版本拒绝覆盖；浏览器草稿按项目保存在 sessionStorage。旧版本草稿冲突时保留备份，不能自动覆盖数据库。
+- 标准库 templates 仅能通过候选发布事务更新，template_versions 冻结每次发布的布局及源码。项目页“提交候选”不会更新标准库。
+- /studio/templates 是独立模板管理入口。管理员审阅候选完整前后内容并确认后发布新版本。候选基准版本过期时拒绝发布；旧直接写接口关闭，数据库触发器阻止直接覆盖。
+- 已有项目不会自动升级模板。选中系统后“升级模板副本”展示前后内容，明确确认才替换当前草稿，再保存到项目。升级会替换该系统的项目内定制，外部引用内部节点时拒绝自动升级。
+- 项目导出目录为 .data/projects/<projectId>/exports；标准资源只读共享。新增项目资源应通过所属项目访问，不能引用其他项目私有图片。
 
-「同步」单独更新选中节点所属的顶层系统模板；仅一个系统时允许不选节点。多个系统必须选择目标。保留分类、来源与动画，校验模板版本并备份旧模板。未关联基础模板的生产 UI 可正常保存到工程，但不能覆盖任意模板。嵌套预制随所属系统处理。同步不会自动保存工程，也不会生成 Unity prefab。
+已有库执行 node scripts/migrate-workspaces.mjs。脚本先备份模板和工程到 .data/workspace-migration，再建立项目归属、历史和模板版本；旧 draft.json 单独备份，不覆盖数据库工程。新库先 npm run db:init，再执行迁移。
+
+GAMECLI_ACTOR 指定服务端本机操作身份，默认 local；迁移将该身份设为已有项目所有者和模板管理员。服务仅监听本机，不接受请求伪造 actor。这是本机工作流隔离，尚未提供多人登录认证；公开部署前必须接入可信登录会话并据此解析 actor，不能让多个用户共享 local。
+
+HTTP 项目读写入口为 /api/studio/projects/<projectId> 及其 save、export、candidate、revisions、restore 子路由。MCP snapshot/save/export/candidate/revisions/restore 均必须显式传 projectId；不再自动读取全局草稿。原 gamecli_ui_sync、gamecli_ui_scripts_save 已移除。
 
 ### 编辑与关系分页
 
 关系页将 Canvas 的直接子节点显示为 UI 缩略卡片。卡片标题可拖动；选择触发节点与动作后，从右侧圆点连到目标卡片左侧圆点（支持拖动或依次点击）。当前支持点击事件的跳转、打开、关闭、切换，每个触发节点保留一个动作，重新连线替换该动作。选择连线可删除，也可撤销。
 
 连线直接使用 node.action，不维护第二份路由数据；卡片位置存入根节点 relationPosition。保存写入工程 project_ui；基础模板同步不携带卡片位置，跨系统引用会阻止单独模板发布。卡片的预演按钮可从该 UI 开始验证跳转。此阶段是网页预演关系，尚未生成 Unity 导航运行时代码。
+
+### SV Login 标准模板
+
+`SvLogin` 位于系统模板 / 登录分类，源资产为 SV `Assets/data/UI/NewLogin/@NewLoginView/Prefab/LoginView.prefab`。通过已安装的 Unity 原生只读导出器输出 `.data/imports/sv-login/unity/unity-prefab.json`，运行 `node scripts/import-sv-login.mjs` 预检，管理员使用 `--publish` 首次登记。该入口拒绝覆盖已有模板；后续更新须提交候选审核。
+
+v2 共 136 个节点：原始 132 节点、全屏 Animator 包装和 3 个独立 Graphic 背景层（避免父图透明度错误地影响子节点）。保留隐藏节点、RectTransform、零尺寸布局占位和 36 张原始 PNG。模板 source 保存原始组件、Unity 计算后的布局及引用证据；scripts 归档 16 个 LoginView 相关 C#、meta 和 Animator 文件。节点使用 PascalCase，原始名称保存在 nodeMap，源码文本不改写。
+
+Unity 导出器在隔离的 prefab 预览中按 1920×1080 计算 LayoutGroup/ContentSizeFitter；不会保存源 prefab。将计算结果放到 `.data/imports/sv-login/localized/unity-prefab.json`，原始证据仍保存在 `unity/unity-prefab.json`。导入器读取原工程 `language_cfg.bytes` 解析 18 处中文文本；布局为 Unity 计算快照，网页字体、富文本和本地化后的 preferred size 仍可能与运行态不同。
+
+运行 `python scripts/extract-login-animation.py` 提取原始 5 秒旋转与缩放的 6 条曲线，再运行 `node scripts/import-sv-login.mjs`。`node scripts/publish-sv-login.mjs` 预检，添加 `--publish` 后通过管理员候选发布路径更新版本，并备份旧模板、回读验证及核对项目数据未变化。旧标准版本保留，已有项目副本不会自动升级。
+
+网页接入 Notice/Tips、Legal 内部弹窗开关及原始旋转、缩放播放。预演动作可以激活原始 inactive 节点，不修改编辑态 active；空容器不拦截下方按钮。外部背景、服务器登录、SDK、地区功能开关不模拟；原 prefab 中各地区按钮的 authored 状态保持不变，因此全部启用时右侧列表可能超出画布。原代码绑定原节点名；使用规范化节点生成 Unity prefab 后，需要显式迁移绑定，不能直接执行归档源码。UnityCLI 动画生成器已支持 Transform scale，C# 编译校验通过；本次未执行完整登录业务的 Unity 运行验收。

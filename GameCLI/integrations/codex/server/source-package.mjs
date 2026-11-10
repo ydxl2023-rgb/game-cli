@@ -14,5 +14,5 @@ export async function readSourcePackage(manifestPath){
   if(!Buffer.from(content,'utf8').equals(bytes))throw new Error(`代码文件不是有效 UTF-8：${path}`);
   files.push({path,content});
  }
- return {templateId:manifest.templateId,scripts:validateScripts({schemaVersion:1,files})};
+ return {templateId:manifest.templateId,projectId:manifest.projectId,rootName:manifest.rootName,scripts:validateScripts({schemaVersion:1,files})};
 }

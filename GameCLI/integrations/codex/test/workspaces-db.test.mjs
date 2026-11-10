@@ -1,0 +1,56 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {openDatabase} from '../server/database.mjs';
+import {workspaceSchema} from '../server/workspace-schema.mjs';
+import {projectUiSchema} from '../server/project-ui.mjs';
+import {createWorkspaces} from '../server/workspaces.mjs';
+import {builtInTemplates,instantiateTemplate} from '../shared/templates.mjs';
+import {upgradeTemplate} from '../shared/template-upgrade.mjs';
+
+test('database isolation, immutable publishing, source copies and project history',{skip:process.env.GAMECLI_TEST_DATABASE!=='1'},async()=>{
+ const db=await openDatabase(),schema='studio_test_'+randomUUID().replaceAll('-','');
+ const replace=sql=>sql.replaceAll('gamecli_ui',schema),query=(sql,args)=>db.pool.query(replace(sql),args);
+ const pool={query,async connect(){const c=await db.pool.connect();return {query:(sql,args)=>c.query(replace(sql),args),release:()=>c.release()};}};
+ const connect=async()=>({pool,close:async()=>{}}),owner=createWorkspaces({connect,actor:'owner'}),stranger=createWorkspaces({connect,actor:'stranger'});
+ try{
+  await db.pool.query(`CREATE SCHEMA ${schema}`);
+  await query(projectUiSchema);
+  await query('CREATE TABLE gamecli_ui.templates(id text PRIMARY KEY,name text,category_id text,version integer,payload jsonb,scripts jsonb,updated_at timestamptz);CREATE TABLE gamecli_ui.assets(id text PRIMARY KEY)');
+  const template=builtInTemplates().find(t=>t.category==='system');template.scripts={schemaVersion:1,files:[{path:'View.cs',content:'original'}]};
+  await query('INSERT INTO gamecli_ui.templates VALUES($1,$2,$3,1,$4,$5,now())',[template.id,template.name,template.category,template.payload,template.scripts]);
+  await query(workspaceSchema);await query('INSERT INTO gamecli_ui.template_admins VALUES($1)',['owner']);
+  await query('INSERT INTO gamecli_ui.template_versions VALUES($1,1,$2,$3,$4,$5,now())',[template.id,template.name,template.category,template.payload,template.scripts]);
+  const a=await owner.create({name:'A'}),b=await owner.create({name:'B'});
+  assert.equal((await stranger.list()).projects.length,0);await assert.rejects(stranger.snapshot(a.id),/无权/);await assert.rejects(stranger.candidates(),/管理员/);
+  const sa=await owner.snapshot(a.id),sb=await owner.snapshot(b.id);
+  const root=instantiateTemplate(sa.design,template,null,{x:0,y:0});instantiateTemplate(sb.design,template,null,{x:0,y:0});
+  const save=(id,s)=>owner.save(id,{projectId:id,design:s.design,revision:s.revision,projectVersion:s.project.version});
+  await save(a.id,sa);await save(b.id,sb);
+  await assert.rejects(owner.save(a.id,{projectId:b.id,design:sa.design,revision:1,projectVersion:1}),/不一致/);
+  await assert.rejects(save(a.id,sa),/其他窗口/);
+  const current=await owner.snapshot(a.id),file=current.design.nodes.find(n=>n.id===root).scripts.files[0];file.content='project A';delete file.sha256;await save(a.id,current);
+  assert.equal((await owner.snapshot(b.id)).design.nodes.find(n=>n.parent===null).scripts.files[0].content,'original');
+  const candidate=await owner.candidate(a.id,{projectId:a.id,design:current.design,revision:current.revision,rootId:root,templateId:template.id,version:1});
+  assert.equal((await query('SELECT version FROM gamecli_ui.templates')).rows[0].version,1);
+  await assert.rejects(query('UPDATE gamecli_ui.templates SET version=2'),/不能直接覆盖/);
+  await assert.rejects(owner.publish({candidateId:candidate.id,confirm:false}),/确认/);
+  await query("UPDATE gamecli_ui.template_candidates SET payload=payload || $1::jsonb WHERE id=$2",[JSON.stringify({source:{path:'Original.prefab'},limitations:['layout snapshot']}),candidate.id]);
+  const compact=(await owner.candidates({summary:true})).candidates[0];
+  assert.equal(compact.payload.source,undefined);assert.equal(compact.current_payload,undefined);assert.equal(compact.scripts,undefined);assert.ok(compact.payload.design.nodes.length);
+  const detail=await owner.candidateDetail(candidate.id);assert.equal(detail.payload.source,undefined);assert.equal(detail.scripts.files[0].content,'project A');
+  await assert.rejects(stranger.candidateDetail(candidate.id),/管理员/);
+  assert.equal((await owner.publish({candidateId:candidate.id,confirm:true})).version,2);
+  const provenance=(await query('SELECT payload FROM gamecli_ui.templates')).rows[0].payload;
+  assert.deepEqual(provenance.source,{path:'Original.prefab'});assert.deepEqual(provenance.limitations,['layout snapshot']);
+  await assert.rejects(owner.publish({candidateId:candidate.id,confirm:true}),/已处理/);
+  await assert.rejects(query("UPDATE gamecli_ui.template_versions SET name='overwrite'"),/不可修改/);
+  assert.equal((await owner.snapshot(b.id)).design.nodes.find(n=>n.parent===null).scripts.files[0].content,'original');
+  const updated=(await query('SELECT * FROM gamecli_ui.templates')).rows[0],before=await owner.snapshot(b.id);
+  const upgraded=upgradeTemplate(before.design,before.design.nodes[0].id,{...updated,category:updated.category_id});
+  assert.equal(upgraded.design.nodes.find(n=>n.id===upgraded.rootId).scripts.files[0].content,'project A');
+  const latest=await owner.snapshot(a.id);const restored=await owner.restore(a.id,{projectId:a.id,version:2,revision:latest.revision,projectVersion:latest.project.version});
+  assert.equal(restored.design.nodes.find(n=>n.id===root).scripts.files[0].content,'original');
+  assert.equal((await owner.revisions(a.id)).revisions.length,4);
+ }finally{await owner.close();await stranger.close();await db.pool.query(`DROP SCHEMA ${schema} CASCADE`);await db.close();}
+});

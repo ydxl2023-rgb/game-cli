@@ -29,6 +29,8 @@ export function instantiateTemplate(design, template, parent, point) {
   if(design.nodes.length+nodes.length>300) throw new Error('添加模板后超出 300 个节点上限。');
   const root=nodes.find(n=>n.id===source.root);
   if(template.id)root.templateSourceId=template.id;
+  root.templateSourceVersion=template.version??1;
+  root.scripts=structuredClone(template.scripts??null);
   const canvasRoot=template.category==='system' || root.template==='ConfirmDialog';
   const container=design.nodes.find(n=>n.id===parent);
   if(!canvasRoot && parent!==null && container?.type!=='Container') throw new Error('目标必须为容器。');
@@ -46,7 +48,7 @@ export function instantiateTemplate(design, template, parent, point) {
   if(source.design.animations?.length)result.animations=[...(design.animations??[]),...remapAnimations(source.design.animations,remap,`T${i}`)];
   if(canvasRoot) {
     const sx=result.width/source.design.width, sy=result.height/source.design.height;
-    for(const n of nodes) {n.x*=sx;n.y*=sy;n.width=Math.max(1,n.width*sx);n.height=Math.max(1,n.height*sy);}
+    for(const n of nodes) {n.x*=sx;n.y*=sy;n.width=Math.max(0,n.width*sx);n.height=Math.max(0,n.height*sy);}
     root.x=0;root.y=0;resizeNode(result,root,result.width,result.height);
     for(const n of nodes) if(n.template==='ScrollPanel') layoutScrollPanel(result,n);
   } else {

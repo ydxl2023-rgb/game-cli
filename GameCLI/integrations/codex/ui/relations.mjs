@@ -1,6 +1,6 @@
 import {relations,systemRoot,connectUi,thumbnailVisibility} from '../shared/relations.mjs';
 const labels={navigate:'跳转',show:'打开',hide:'关闭',toggle:'切换'};
-export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect=()=>{}}){
+export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect=()=>{},onDelete=()=>{}}){
   const viewport=document.getElementById('relations-view'),plane=document.getElementById('relations-plane');
   const svg=document.getElementById('relations-wires'),cards=document.getElementById('relations-cards'),info=document.getElementById('relations-info');
   const selections=new Map(),positions=new Map();let pending=null,drag=null,selectedEdge=null,selectedCard=null;
@@ -44,7 +44,7 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
       const d=edge.sourceRoot===edge.targetRoot?`M ${a.x} ${a.y} C ${a.x+85} ${a.y-300}, ${b.x-85} ${b.y-300}, ${b.x} ${b.y}`:path(a,b);
       const line=svgEl('path',{d,class:'relation-wire'+(selectedEdge===edge.sourceId?' selected':''),'marker-end':'url(#relation-arrow)'});
       const hit=svgEl('path',{d,class:'relation-wire-hit',tabindex:0,role:'button','aria-label':'选择连线 '+(design.nodes.find(n=>n.id===edge.sourceId)?.name??edge.sourceId)});
-      const choose=()=>{selectedEdge=edge.sourceId;showInfo();drawWires();};hit.onclick=choose;hit.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};
+      const choose=()=>{selectedCard=null;for(const item of cards.children)item.classList.remove('selected-card');selectedEdge=edge.sourceId;showInfo();drawWires();};hit.onclick=choose;hit.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};
       svg.append(line,hit);
       const label=svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-10,class:'relation-edge-label'});label.textContent=labels[edge.type];svg.append(label);
     }
@@ -65,11 +65,12 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
   function render(){
     if(viewport.hidden)return;
     pending=null;drag=null;positions.clear();cards.replaceChildren();const design=getDesign(),roots=design.nodes.filter(n=>n.parent===null);
+    if(!roots.some(n=>n.id===selectedCard))selectedCard=null;
     for(const [index,root]of roots.entries()){
       const p=root.relationPosition??{x:32+(index%2)*310,y:40+Math.floor(index/2)*285};positions.set(root.id,{...p});
       const card=element('article','relation-card');card.dataset.root=root.id;card.style.left=p.x+'px';card.style.top=p.y+'px';card.setAttribute('aria-label','UI 卡片 '+root.name);
       card.tabIndex=0;card.classList.toggle('selected-card',selectedCard===root.id);
-      const selectCard=()=>{selectedCard=root.id;for(const item of cards.children)item.classList.toggle('selected-card',item.dataset.root===root.id);onSelect(root.id);};
+      const selectCard=()=>{selectedEdge=null;selectedCard=root.id;for(const item of cards.children)item.classList.toggle('selected-card',item.dataset.root===root.id);onSelect(root.id);showInfo();drawWires();};
       card.onclick=selectCard;
       card.onkeydown=e=>{if(e.target===card&&['Enter',' '].includes(e.key)){e.preventDefault();selectCard();}};
       const header=element('div','relation-card-header');header.title='拖动调整卡片位置';header.append(element('strong','',root.name));
@@ -106,6 +107,19 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
     else if(pending){const destination=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-destination]');if(destination)complete(destination.dataset.destination);}
   });
   window.addEventListener('pointercancel',()=>{finishPan();drag=null;pending=null;if(!viewport.hidden)render();});
-  window.addEventListener('keydown',e=>{if(viewport.hidden)return;if(e.key==='Escape'){pending=null;drawWires();}if(e.key==='Delete'&&selectedEdge&&!e.target.closest('input,select,textarea')){e.preventDefault();info.querySelector('button')?.click();}});
-  return {render};
+  window.addEventListener('keydown',e=>{
+    if(viewport.hidden||e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,select,textarea,[contenteditable]:not([contenteditable="false"]),[role="textbox"],dialog'))return;
+    if(e.key==='Escape'){pending=null;drawWires();}
+    if(e.key!=='Delete'||e.repeat||drag||pan)return;
+    if(selectedEdge){e.preventDefault();info.querySelector('button')?.click();}
+    else if(selectedCard){e.preventDefault();pending=null;onDelete(selectedCard);}
+  });
+  function dropPosition(x,y){
+    const r=viewport.getBoundingClientRect();
+    if(viewport.hidden||x<r.left||x>r.right||y<r.top||y>r.bottom)return null;
+    const p=point({clientX:x,clientY:y});
+    return {x:Math.max(24,Math.min(6000,Math.round(p.x-116))),y:Math.max(24,Math.min(6000,Math.round(p.y-100)))};
+  }
+  function selectCard(id){selectedEdge=null;selectedCard=id;onSelect(id);render();}
+  return {render,dropPosition,selectCard};
 }

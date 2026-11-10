@@ -1,4 +1,4 @@
-// V1 playback supports unweighted Euler Z and RawImage UV X curves.
+// Playback supports unweighted Euler Z, Transform scale and RawImage UV X curves.
 // Zero X/Y Euler curves are retained for faithful Unity export.
 export function validateAnimations(value, nodes) {
   if(value===undefined)return undefined;
@@ -16,7 +16,8 @@ export function validateAnimations(value, nodes) {
       let count=0;while(n&&n.id!==a.hostNodeId&&count++<=nodes.length)n=map.get(n.parent);
       if(n?.id!==a.hostNodeId)fail();
       const prop=curve.property, euler=curve.component==='UnityEngine.Transform'&&/^localEulerAnglesRaw\.[xyz]$/.test(prop);
-      if(!euler&&!(curve.component==='UnityEngine.UI.RawImage'&&prop==='m_UVRect.x'))fail();
+      const scale=curve.component==='UnityEngine.Transform'&&/^m_LocalScale\.[xyz]$/.test(prop);
+      if(!euler&&!scale&&!(curve.component==='UnityEngine.UI.RawImage'&&prop==='m_UVRect.x'))fail();
       const binding=curve.targetNodeId+':'+prop;if(bindings.has(binding))fail();bindings.add(binding);
       if(!Array.isArray(curve.keys)||!curve.keys.length||curve.keys.length>4096)fail();
       let last=-Infinity;

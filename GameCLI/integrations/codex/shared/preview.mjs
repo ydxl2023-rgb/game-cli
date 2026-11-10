@@ -1,10 +1,10 @@
-export function hierarchyVisibility(design, hidden = []) {
+export function hierarchyVisibility(design, hidden = [], runtime = false) {
   const nodes = new Map(design.nodes.map(n => [n.id, n]));
   const excluded = new Set(hidden), result = new Map();
   const visible = n => {
     if (result.has(n.id)) return result.get(n.id);
     const parent = nodes.get(n.parent);
-    const value = n.active !== false && !excluded.has(n.id) && (!parent || visible(parent));
+    const value = (runtime || n.active !== false) && !excluded.has(n.id) && (!parent || visible(parent));
     result.set(n.id, value);
     return value;
   };
@@ -22,7 +22,7 @@ export function defaultAction(design, node) {
   return null;
 }
 export function createPreviewState(design) {
-  return {hidden:design.nodes.filter(n=>n.previewHidden ?? n.template === 'ConfirmDialog').map(n=>n.id),history:[]};
+  return {hidden:design.nodes.filter(n=>n.active === false || (n.previewHidden ?? n.template === 'ConfirmDialog')).map(n=>n.id),history:[]};
 }
 export function runPreviewAction(design, state, action) {
   if (!action || action.type === 'none') return state;
