@@ -1,9 +1,9 @@
 import {relations,systemRoot,connectUi,thumbnailVisibility} from '../shared/relations.mjs';
 const labels={navigate:'跳转',show:'打开',hide:'关闭',toggle:'切换'};
-export function createRelations({getDesign,edit,notice,onEdit,onPreview}){
+export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect=()=>{}}){
   const viewport=document.getElementById('relations-view'),plane=document.getElementById('relations-plane');
   const svg=document.getElementById('relations-wires'),cards=document.getElementById('relations-cards'),info=document.getElementById('relations-info');
-  const selections=new Map(),positions=new Map();let pending=null,drag=null,selectedEdge=null;
+  const selections=new Map(),positions=new Map();let pending=null,drag=null,selectedEdge=null,selectedCard=null;
   let zoom=1,pan=null,panX=0,panY=0;
   function applyPan(){plane.style.transform=`translate(${panX/zoom}px, ${panY/zoom}px)`;viewport.style.backgroundPosition=`${panX-viewport.scrollLeft}px ${panY-viewport.scrollTop}px`;}
   const zoomButton=document.createElement('button');zoomButton.id='relations-zoom';zoomButton.type='button';zoomButton.title='关系图缩放 · 点击恢复 100%';zoomButton.setAttribute('aria-label','重置关系图缩放');document.getElementById('relations-tools').append(zoomButton);
@@ -68,6 +68,10 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview}){
     for(const [index,root]of roots.entries()){
       const p=root.relationPosition??{x:32+(index%2)*310,y:40+Math.floor(index/2)*285};positions.set(root.id,{...p});
       const card=element('article','relation-card');card.dataset.root=root.id;card.style.left=p.x+'px';card.style.top=p.y+'px';card.setAttribute('aria-label','UI 卡片 '+root.name);
+      card.tabIndex=0;card.classList.toggle('selected-card',selectedCard===root.id);
+      const selectCard=()=>{selectedCard=root.id;for(const item of cards.children)item.classList.toggle('selected-card',item.dataset.root===root.id);onSelect(root.id);};
+      card.onclick=selectCard;
+      card.onkeydown=e=>{if(e.target===card&&['Enter',' '].includes(e.key)){e.preventDefault();selectCard();}};
       const header=element('div','relation-card-header');header.title='拖动调整卡片位置';header.append(element('strong','',root.name));
       const editButton=element('button','','编辑');editButton.onclick=()=>onEdit(root.id);const play=element('button','','预演');play.onclick=()=>onPreview(root.id);header.append(editButton,play);
       header.onpointerdown=e=>{if(e.button!==0||e.target.closest('button'))return;e.preventDefault();const q=point(e);drag={id:root.id,start:q,original:{...p},card};header.setPointerCapture(e.pointerId);};card.append(header);
@@ -98,7 +102,7 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview}){
   window.addEventListener('pointerup',e=>{
     if(pan&&e.pointerId===pan.id){finishPan();return;}
     if(e.button!==0)return;
-    if(drag){const {id}=drag,p=positions.get(id);drag=null;edit(()=>{getDesign().nodes.find(n=>n.id===id).relationPosition={x:Math.round(p.x),y:Math.round(p.y)};});}
+    if(drag){const {id,original}=drag,p=positions.get(id);drag=null;selectedCard=id;onSelect(id);if(p.x!==original.x||p.y!==original.y)edit(()=>{getDesign().nodes.find(n=>n.id===id).relationPosition={x:Math.round(p.x),y:Math.round(p.y)};});}
     else if(pending){const destination=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-destination]');if(destination)complete(destination.dataset.destination);}
   });
   window.addEventListener('pointercancel',()=>{finishPan();drag=null;pending=null;if(!viewport.hidden)render();});

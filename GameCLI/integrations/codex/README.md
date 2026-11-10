@@ -102,7 +102,28 @@ MCP 进程由 Codex 启动，直接使用相同本机草稿，无需启动 HTTP 
 - `npm run db:init` 包含兼容旧库的分类迁移，不改写现有模板 payload 和版本。分类调整属于元数据修改，不需要重复复制图片资源。
 - HTTP / MCP 模板列表增加 groups 与每个模板的 group 字段；UI 按组显示可折叠分类并保留刷新前的展开状态。
 
-### 工程保存与模板同步
+### 系统模板源码包
+
+`gamecli_ui.templates.scripts` 是独立的 nullable JSONB 字段，不放在 UI payload 内。旧模板为 null，表示尚未保存源码包。已有库执行 `node scripts/migrate-template-scripts.mjs`；`npm run db:init` 也包含此幂等迁移。
+
+代码包格式：`{ "schemaVersion": 1, "files": [{ "path": "Runtime/XLauncher.cs", "content": "原始源码文本", "sha256": "内容的 SHA256" }] }`。文件路径相对于代码包根目录；可以同时包含 `.cs`、`.meta` 等文本文件。保持 UTF-8 文本的 BOM、换行和空白，保存时计算 SHA256，传入已有 SHA256 时校验一致性。每包最多 128 个文件、4 MiB 文本，不支持二进制压缩包。
+
+`gamecli_ui_templates` 和 HTTP 模板列表直接返回 scripts。通过 MCP `gamecli_ui_scripts_save({templateId,version,scripts})` 保存，仅允许 system 类别；版本不一致会拒绝，成功后模板 version 加一。传 scripts=null 可显式清空。更新代码包替换当前内容，不提供不可变历史版本；需要保留最初版本时应另行设计归档策略。布局同步保留 scripts，但不自动证明旧代码与新布局兼容。代码只作为数据存储，不执行，也不自动导入 Unity。
+
+### 从工程同步独立源码
+
+GameCLI 通过明确的文件清单关联系统模板与源码，不能从界面名称猜测并上传整个工程。Launch 清单为 `config/launch-scripts.json`，归档 `XLauncher.cs` 及其 `.meta`；`projectRoot` 相对于清单文件目录，文件路径相对于 Unity 工程。保留现有模板标识 `SvStart`，显示名称为 SV Launch。
+
+在本目录运行：
+
+```sh
+npm run scripts:sync -- config/launch-scripts.json
+npm run scripts:sync -- config/launch-scripts.json --apply
+```
+
+第一条只预检，第二条更新 `templates.scripts`。同步保留源码 BOM、换行和空白，计算 SHA256、检查版本、备份旧代码包并回读验证；内容相同不增加版本。不会修改 UI payload 或工程 UI，也不会执行源码。完成后点击 Studio 的刷新模板库图标，关系卡片右侧显示归档文件。其他系统使用各自的清单；独立系统代码交付后执行此同步步骤。
+
+### 工程保存与模板同步行为
 
 顶部「保存」先保留本机草稿，再将完整 Canvas、所有系统节点、交互和动画保存到 gamecli_ui.project_ui（project_id 主键、project_name、version、payload JSONB、created_at、updated_at）。保存不写 templates 表；projectVersion 防止覆盖其他窗口更新。数据库失败会保留本机草稿并明确提示。无本机草稿时可从数据库恢复当前工程设计。
 

@@ -1,5 +1,8 @@
 import {createRelations} from './relations.mjs';
+import {createCardScripts} from './card-scripts.mjs';
+import {createCodePage} from './code-preview.mjs';
 import {setupTemplateDock} from './template-dock.mjs';
+import {confirmTemplateSync} from './sync-confirm.mjs';
 import {playAnimations} from './animation-player.mjs';
 let stopAnimations=()=>{},centerMode='edit';
 import {setupPanelSplit,setupWorkspaceSplit} from './panel-split.mjs';
@@ -34,13 +37,14 @@ async function loadTemplates() {
       const summary=document.createElement('summary');const title=document.createElement('span');title.textContent=group.name;const count=document.createElement('span');count.className='group-count';count.textContent=group.templates.length;summary.append(title,count);folder.append(summary);panel.append(folder);
       for(const template of group.templates) {
         library.set(template.id,template);
-        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=preview||centerMode==='relations';
+        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=preview||centerMode!=='edit';
         const icon=document.createElement('span');icon.className='control-icon';icon.textContent=category.id==='system'?'▦':'▣';
         const label=document.createElement('span');label.textContent=template.name;const detail=document.createElement('small');detail.textContent=template.description;label.append(detail);button.append(icon,label);folder.append(button);bindControl(button);
       }
     }
     }
     refreshTemplateDock();
+    cardScripts.render();
   } catch(e) {
     area.replaceChildren();const message=document.createElement('p');message.className='palette-note';message.textContent=e.message;area.append(message);
     const retry=document.createElement('button');retry.textContent='重新加载模板';retry.onclick=loadTemplates;area.append(retry);
@@ -302,7 +306,7 @@ $('delete').onclick = deleteSelected;
 window.addEventListener('keydown', e => {
   const target = e.target;
   if (target instanceof Element && (target.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"]),[role="textbox"],[role="separator"]') || target.isContentEditable)) return;
-  if (!ready || preview || centerMode==='relations' || !node() || e.isComposing || e.ctrlKey || e.metaKey || e.altKey || drag || resize || paletteDrag) return;
+  if (!ready || preview || centerMode!=='edit' || !node() || e.isComposing || e.ctrlKey || e.metaKey || e.altKey || drag || resize || paletteDrag) return;
   if (e.key === 'Delete') {
     e.preventDefault();
     if (!e.repeat) deleteSelected();
@@ -411,7 +415,9 @@ $('sync').onclick = () => busy('sync', async () => {
   if(!root){const roots=design.nodes.filter(n=>n.parent===null);if(roots.length!==1)throw new Error('请先选择要同步的系统节点。');root=roots[0];}
   const template=root.templateSourceId?library.get(root.templateSourceId):[...library.values()].find(t=>t.payload.root===root.id);
   if(!template)throw new Error('此系统未关联基础模板，不能同步；请使用保存将它存入工程。');
-  const result=await bridge.call('sync',{design,revision,targets:[{rootId:root.id,templateId:template.id,version:template.version}]});
+  const request={design:structuredClone(design),revision,targets:[{rootId:root.id,templateId:template.id,version:template.version}]};
+  if(!await confirmTemplateSync({name:template.name,version:template.version,rootName:nodeName(root)})){notice('已取消同步，标准模板库未修改。');return;}
+  const result=await bridge.call('sync',request);
   for(const t of result.sync.templates){const item=library.get(t.id);if(item){item.version=t.version;item.payload=t.payload;}}
   notice('基础模板已同步 · '+result.sync.templates.map(t=>`${t.name} v${t.version}`).join('、')+' · 工程请单独保存');
 });
@@ -430,15 +436,20 @@ $('import-file').onchange = async e => {
 bridge.onContext = () => { $('expand').hidden = !bridge.modes.includes('fullscreen'); };
 $('expand').onclick = async () => { try { await bridge.expand(); } catch (e) { notice(e.message, true); } };
 function setCenterMode(mode){
-  if(preview&&mode==='relations')setPreview(false);
+  if(preview&&mode!=='edit')setPreview(false);
   centerMode=mode;const graph=mode==='relations';
-  $('viewport').hidden=graph;$('relations-view').hidden=!graph;$('relations-tools').hidden=!graph;$('relations-info').hidden=!graph;
-  $('tab-edit').setAttribute('aria-selected',!graph);$('tab-relations').setAttribute('aria-selected',graph);
-  $('preset').hidden=$('rotate').hidden=$('fit').hidden=graph;
-  for(const c of document.querySelectorAll('[data-control]'))c.disabled=preview||graph;
-  if(graph)relationView.render();else fit();
+  $('viewport').hidden=mode!=='edit';$('relations-view').hidden=!graph;$('relations-tools').hidden=!graph;$('relations-info').hidden=!graph;$('code-view').hidden=mode!=='code';
+  for(const id of ['edit','relations','code'])$('tab-'+id).setAttribute('aria-selected',mode===id);
+  $('preset').hidden=$('rotate').hidden=$('fit').hidden=mode!=='edit';
+  for(const c of document.querySelectorAll('[data-control]'))c.disabled=preview||mode!=='edit';
+  cardScripts.setVisible(mode!=='edit');
+  document.querySelector('.canvas-footer').hidden=mode==='code';
+  $('template-dock').hidden=$('template-splitter').hidden=mode==='code';
+  if(graph)relationView.render();else if(mode==='edit')fit();
 }
-const relationView=createRelations({getDesign:()=>design,edit,notice,onEdit:id=>{setCenterMode('edit');select(id);},onPreview:id=>{setPreview(true);previewState.hidden=[...new Set([...previewState.hidden.filter(n=>n!==id),...design.nodes.filter(n=>n.parent===null&&n.id!==id).map(n=>n.id)])];applyPreviewState();}});
+const codePage=createCodePage(()=>setCenterMode('code'));
+const cardScripts=createCardScripts({getDesign:()=>design,onOpen:(file,name)=>codePage.open(file,name),getTemplate:root=>root.templateSourceId?library.get(root.templateSourceId):[...library.values()].find(t=>t.payload.root===root.id)});
+const relationView=createRelations({getDesign:()=>design,edit,notice,onSelect:id=>cardScripts.select(id),onEdit:id=>{setCenterMode('edit');select(id);},onPreview:id=>{setPreview(true);previewState.hidden=[...new Set([...previewState.hidden.filter(n=>n!==id),...design.nodes.filter(n=>n.parent===null&&n.id!==id).map(n=>n.id)])];applyPreviewState();}});
 $('tab-edit').onclick=()=>setCenterMode('edit');$('tab-relations').onclick=()=>setCenterMode('relations');
 setupPanelSplit();
 setupWorkspaceSplit();

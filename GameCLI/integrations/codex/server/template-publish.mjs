@@ -34,7 +34,7 @@ export async function publishTemplates(pool,snapshot,targets,backupDir=fileURLTo
       if(images.length&&(await client.query('SELECT id FROM gamecli_ui.assets WHERE id=ANY($1::text[])',[images])).rows.length!==images.length)throw new Error('数据库缺少模板图片资源。');
       await mkdir(backupDir,{recursive:true});await writeFile(join(backupDir,`${randomUUID()}-v${current.version}.json`),JSON.stringify(current,null,2));
       const result=await client.query('UPDATE gamecli_ui.templates SET payload=$1::jsonb,version=version+1,updated_at=now() WHERE id=$2 RETURNING version',[JSON.stringify(payload),current.id]);
-      results.push({id:current.id,name:current.name,version:result.rows[0].version,rootId:t.rootId,payload:validateTemplate(payload,current.category_id)});
+      results.push({id:current.id,name:current.name,version:result.rows[0].version,rootId:t.rootId,payload:validateTemplate(payload,current.category_id),scripts:current.scripts??null});
     }
     await client.query('COMMIT');return results;
   }catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}

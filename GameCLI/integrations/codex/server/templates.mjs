@@ -1,5 +1,6 @@
 import {projectUiSchema,readProjectUi,writeProjectUi} from './project-ui.mjs';
 import {publishTemplates} from './template-publish.mjs';
+import {templateScriptsSchema,saveTemplateScripts} from './template-scripts.mjs';
 import {templateGroups,initialTemplateGroups} from '../shared/template-groups.mjs';
 import {openDatabase,databaseConfig} from './database.mjs';
 import {builtInTemplates,categories,validateTemplate} from '../shared/templates.mjs';
@@ -37,7 +38,7 @@ export async function seedTemplates(pool) {
   try {
     await client.query('BEGIN');await client.query(schemaSql);
     for(const c of categories)await client.query('INSERT INTO gamecli_ui.template_categories(id,name,sort) VALUES($1,$2,$3) ON CONFLICT(id) DO NOTHING',[c.id,c.name,c.sort]);
-    await migrateTemplateGroups(client);await client.query(projectUiSchema);
+    await migrateTemplateGroups(client);await client.query(projectUiSchema);await client.query(templateScriptsSchema);
     for(const t of builtInTemplates())await client.query('INSERT INTO gamecli_ui.templates(id,category_id,name,description,sort,payload,group_id) VALUES($1,$2,$3,$4,$5,$6::jsonb,$7) ON CONFLICT(id) DO NOTHING',[t.id,t.category,t.name,t.description,t.sort,JSON.stringify(t.payload),t.group]);
     await client.query('COMMIT');
   } catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
@@ -51,7 +52,7 @@ export function createTemplateStore({connect=openDatabase}={}) {
       connection??=await connect(config);
       const categoryRows=await connection.pool.query('SELECT id,name,sort FROM gamecli_ui.template_categories ORDER BY sort,id');
       const groups=await connection.pool.query('SELECT category_id AS category,id,name,sort FROM gamecli_ui.template_groups ORDER BY sort,id');
-      const rows=await connection.pool.query('SELECT id,category_id AS category,group_id AS "group",name,description,sort,version,payload,updated_at AS "updatedAt" FROM gamecli_ui.templates ORDER BY sort,id');
+      const rows=await connection.pool.query('SELECT id,category_id AS category,group_id AS "group",name,description,sort,version,payload,scripts,updated_at AS "updatedAt" FROM gamecli_ui.templates ORDER BY sort,id');
       return {source:'postgresql',categories:categoryRows.rows,groups:groups.rows,templates:rows.rows.map(t=>({...t,payload:validateTemplate(t.payload,t.category)}))};
     } catch(e){if(connection){await connection.close().catch(()=>{});connection=null;}throw new Error('模板数据库连接或读取失败，请检查 SSH 隧道与数据库配置。');}
   }
@@ -64,5 +65,6 @@ export function createTemplateStore({connect=openDatabase}={}) {
   async function publish(snapshot,targets){connection??=await connect(await databaseConfig());return publishTemplates(connection.pool,snapshot,targets);}
   async function project(){connection??=await connect(await databaseConfig());return readProjectUi(connection.pool);}
   async function saveProject(snapshot,version){connection??=await connect(await databaseConfig());return writeProjectUi(connection.pool,snapshot,version);}
-  return {list,asset,publish,project,saveProject,async close(){await connection?.close();connection=null;}};
+  async function saveScripts(args){connection??=await connect(await databaseConfig());return saveTemplateScripts(connection.pool,args);}
+  return {list,asset,publish,project,saveProject,saveScripts,async close(){await connection?.close();connection=null;}};
 }
