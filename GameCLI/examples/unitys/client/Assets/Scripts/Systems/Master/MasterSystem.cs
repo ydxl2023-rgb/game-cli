@@ -192,8 +192,6 @@ public class MasterSystem : RuntimeSystem
     private bool Launch()
     {
         UnloadSystem(typeof(LoginSystem), () => {
-            dispatcher.Unload(typeof(SVLoginSystem));
-
             LoadSystem(typeof(HomeSystem));
             LoadSystem(typeof(BackpackSystem));
             LoadSystem(typeof(EmailSystem));

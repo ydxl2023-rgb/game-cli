@@ -3,7 +3,7 @@ using Oathx.Widget;
 /// <summary>
 /// Generated bindings for the SV login page.
 /// </summary>
-public partial class VMSVLogin : VM
+public partial class VMLogin : VM
 {
     /// <summary>
     /// Login button callback.

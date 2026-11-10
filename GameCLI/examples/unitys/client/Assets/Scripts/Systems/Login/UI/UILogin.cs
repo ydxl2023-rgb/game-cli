@@ -4,7 +4,7 @@ using Oathx.Widget;
 /// SV login view with serialized Widget Metadata bindings.
 /// </summary>
 [Config("Assets/Resources/UI/SVLogin/SVLogin.prefab", WidgetLayer.center, cacheWidget: false)]
-public class UISVLogin : UIWidget<VMSVLogin>
+public class UILogin : UIWidget<VMLogin>
 {
     /// <summary>
     /// Refresh the account display from the existing login entity.
