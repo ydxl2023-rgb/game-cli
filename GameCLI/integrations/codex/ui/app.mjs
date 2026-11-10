@@ -1,4 +1,5 @@
 import {createRelations} from './relations.mjs';
+import {setupTemplateDock} from './template-dock.mjs';
 import {playAnimations} from './animation-player.mjs';
 let stopAnimations=()=>{},centerMode='edit';
 import {setupPanelSplit,setupWorkspaceSplit} from './panel-split.mjs';
@@ -19,16 +20,18 @@ const library=new Map();
 let librarySource=null,projectVersion=null;
 async function loadTemplates() {
   const area=$('template-library');
+  const refresh=$('refresh-templates');refresh.disabled=true;refresh.setAttribute('aria-busy','true');
   try {
     const result=await bridge.call('templates');librarySource=result.source;
     const expanded=new Map([...area.querySelectorAll('[data-template-group]')].map(e=>[e.dataset.templateGroup,e.open]));
     area.replaceChildren();library.clear();
     for(const category of result.categories) {
+      const panel=document.createElement('div');panel.dataset.libraryCategory=category.id;panel.id='library-panel-'+category.id;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','library-tab-'+category.id);area.append(panel);
       const heading=document.createElement('div');heading.className='section-title prefab-title';heading.textContent=category.name;
-      const source=document.createElement('span');source.textContent=result.source==='postgresql'?'数据库':'内置';heading.append(source);area.append(heading);
+      const source=document.createElement('span');source.textContent=result.source==='postgresql'?'数据库':'内置';heading.append(source);panel.append(heading);
       for(const group of groupedTemplates(category.id,result.groups??[],result.templates)){
       const folder=document.createElement('details');folder.className='template-group';folder.dataset.templateGroup=category.id+'/'+group.id;folder.open=expanded.get(folder.dataset.templateGroup)??true;
-      const summary=document.createElement('summary');const title=document.createElement('span');title.textContent=group.name;const count=document.createElement('span');count.className='group-count';count.textContent=group.templates.length;summary.append(title,count);folder.append(summary);area.append(folder);
+      const summary=document.createElement('summary');const title=document.createElement('span');title.textContent=group.name;const count=document.createElement('span');count.className='group-count';count.textContent=group.templates.length;summary.append(title,count);folder.append(summary);panel.append(folder);
       for(const template of group.templates) {
         library.set(template.id,template);
         const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=preview||centerMode==='relations';
@@ -37,11 +40,11 @@ async function loadTemplates() {
       }
     }
     }
-    const refresh=document.createElement('button');refresh.textContent='刷新模板库';refresh.onclick=loadTemplates;area.append(refresh);
+    refreshTemplateDock();
   } catch(e) {
     area.replaceChildren();const message=document.createElement('p');message.className='palette-note';message.textContent=e.message;area.append(message);
     const retry=document.createElement('button');retry.textContent='重新加载模板';retry.onclick=loadTemplates;area.append(retry);
-  }
+  } finally {refresh.disabled=false;refresh.removeAttribute('aria-busy');}
 }
 let previewState = null;
 function applyPreviewState() {
@@ -439,6 +442,7 @@ const relationView=createRelations({getDesign:()=>design,edit,notice,onEdit:id=>
 $('tab-edit').onclick=()=>setCenterMode('edit');$('tab-relations').onclick=()=>setCenterMode('relations');
 setupPanelSplit();
 setupWorkspaceSplit();
+const refreshTemplateDock=setupTemplateDock(loadTemplates);
 new ResizeObserver(fit).observe($('viewport'));
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 render();

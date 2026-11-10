@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {connectUi,relations} from '../shared/relations.mjs';
+import {connectUi,relations,thumbnailVisibility} from '../shared/relations.mjs';
 import {validateDesign} from '../shared/design.mjs';
 import {createPreviewState,runPreviewAction} from '../shared/preview.mjs';
 function fixture(){return {schemaVersion:1,name:'ProjectUi',width:1080,height:1920,nodes:[
@@ -8,6 +8,14 @@ function fixture(){return {schemaVersion:1,name:'ProjectUi',width:1080,height:19
  {id:'Open',parent:'Home',type:'Button'},
  {id:'Inventory',parent:null,type:'Container',previewHidden:true}
 ].map(n=>({...n,name:n.id,x:0,y:0,width:128,height:128,color:'#ffffff',text:'',fontSize:20}))};}
+
+test('thumbnail restores a hidden root but preserves inactive internal subtrees',()=>{
+ const d={nodes:[{id:'Loading',parent:null,active:false},{id:'Animator',parent:'Loading'},{id:'Image',parent:'Animator'},{id:'Dialog',parent:'Animator',active:false},{id:'Text',parent:'Dialog'}]};
+ const before=JSON.stringify(d),visibility=thumbnailVisibility(d,'Loading');
+ for(const id of ['Loading','Animator','Image'])assert.equal(visibility.get(id),true);
+ for(const id of ['Dialog','Text'])assert.equal(visibility.get(id),false);
+ assert.equal(JSON.stringify(d),before);
+});
 test('connecting UI writes the preview action and survives saving',()=>{
  const d=fixture();connectUi(d,'Open','Inventory');
  const saved=validateDesign(JSON.parse(JSON.stringify(d)));

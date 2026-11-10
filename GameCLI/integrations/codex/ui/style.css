@@ -29,3 +29,24 @@ body.rehearsing .workspace-splitter{display:none}body.rehearsing .editor{grid-te
 #canvas-wrap{margin:auto}
 #relations-view{background-image:linear-gradient(#56637230 1px,transparent 1px),linear-gradient(90deg,#56637230 1px,transparent 1px);background-size:20px 20px}
 body.rehearsing .canvas-viewport{background-image:none}
+/* Docked template library below the workspace. */
+#template-splitter{height:8px;flex:0 0 8px;background:#242b33;cursor:row-resize;touch-action:none;display:flex;align-items:center;justify-content:center;border-top:1px solid #45505b}
+#template-splitter span{width:40px;height:2px;background:#73818e}
+#template-splitter:hover,#template-splitter:focus-visible{background:#465c36;outline:none}
+#template-dock{flex:0 0 auto;min-height:80px;display:flex;flex-direction:column;overflow:hidden;background:#1b1e23}
+#template-dock>.studio-tabs{flex:0 0 38px;width:100%;border-bottom:1px solid #343b44;align-items:center}
+#template-library{flex:1;min-height:0;overflow:auto;padding:10px}
+#template-library [data-library-category]{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(175px,100%),1fr));gap:10px;align-items:start}
+#template-library .section-title{grid-column:1/-1;margin:0;font-size:10px;color:#8c95a2}
+#template-library .template-group{margin:0;min-width:0}
+#template-library .control{min-width:0;white-space:normal}
+#template-library>button{margin-top:8px;font-size:10px}
+body.rehearsing #template-dock,body.rehearsing #template-splitter{display:none}
+.template-toolbar{display:flex;align-items:center;gap:8px;flex:0 0 38px;padding-right:8px;border-bottom:1px solid #343b44}
+.template-toolbar>.studio-tabs{flex:1;min-width:0;margin:0}
+#refresh-templates{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;padding:5px;border:0;background:transparent;color:#aeb9c6}
+#refresh-templates:hover:not(:disabled){color:var(--accent);background:#c4ef9115}
+#refresh-templates[aria-busy=true] svg{animation:template-refresh-spin 1s linear infinite}
+@keyframes template-refresh-spin{to{transform:rotate(360deg)}}
+#relations-tools{align-items:center;flex-wrap:wrap}#relations-zoom{margin-left:auto;padding:3px 7px;min-width:48px;font-size:10px}#relations-plane{transform-origin:0 0}
+#relations-view.panning,#relations-view.panning *{cursor:grabbing!important;user-select:none!important}#relations-view{touch-action:none}

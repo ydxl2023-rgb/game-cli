@@ -1,3 +1,8 @@
+import {hierarchyVisibility} from './preview.mjs';
+export function thumbnailVisibility(design,rootId){
+  return hierarchyVisibility({...design,nodes:design.nodes.map(n=>n.id===rootId?{...n,active:true}:n)});
+}
+
 export function systemRoot(design,id){
   const map=new Map(design.nodes.map(n=>[n.id,n]));let n=map.get(id),count=0;
   while(n?.parent&&count++<design.nodes.length)n=map.get(n.parent);
