@@ -1,0 +1,78 @@
+import {relations,systemRoot,connectUi} from '../shared/relations.mjs';
+const labels={navigate:'跳转',show:'打开',hide:'关闭',toggle:'切换'};
+export function createRelations({getDesign,edit,notice,onEdit,onPreview}){
+  const viewport=document.getElementById('relations-view'),plane=document.getElementById('relations-plane');
+  const svg=document.getElementById('relations-wires'),cards=document.getElementById('relations-cards'),info=document.getElementById('relations-info');
+  const selections=new Map(),positions=new Map();let pending=null,drag=null,selectedEdge=null;
+  function element(tag,cls,text){const el=document.createElement(tag);el.className=cls;if(text)el.textContent=text;return el;}
+  function svgEl(tag,attrs){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v]of Object.entries(attrs))el.setAttribute(k,String(v));return el;}
+  function point(event){const r=plane.getBoundingClientRect();return {x:event.clientX-r.left,y:event.clientY-r.top};}
+  function port(id,side){const p=positions.get(id);return {x:p.x+(side==='out'?232:0),y:p.y+194};}
+  function path(a,b){const bend=Math.max(60,Math.abs(b.x-a.x)/2);return `M ${a.x} ${a.y} C ${a.x+bend} ${a.y}, ${b.x-bend} ${b.y}, ${b.x} ${b.y}`;}
+  function drawWires(pointer){
+    svg.replaceChildren();const defs=svgEl('defs',{}),marker=svgEl('marker',{id:'relation-arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto'});marker.append(svgEl('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:'#c4ef91'}));defs.append(marker);svg.append(defs);
+    const design=getDesign(),edges=relations(design);
+    for(const edge of edges){
+      if(!positions.has(edge.sourceRoot)||!positions.has(edge.targetRoot))continue;
+      const a=port(edge.sourceRoot,'out'),b=port(edge.targetRoot,'in');
+      const d=edge.sourceRoot===edge.targetRoot?`M ${a.x} ${a.y} C ${a.x+85} ${a.y-300}, ${b.x-85} ${b.y-300}, ${b.x} ${b.y}`:path(a,b);
+      const line=svgEl('path',{d,class:'relation-wire'+(selectedEdge===edge.sourceId?' selected':''),'marker-end':'url(#relation-arrow)'});
+      const hit=svgEl('path',{d,class:'relation-wire-hit',tabindex:0,role:'button','aria-label':'选择连线 '+(design.nodes.find(n=>n.id===edge.sourceId)?.name??edge.sourceId)});
+      const choose=()=>{selectedEdge=edge.sourceId;showInfo();drawWires();};hit.onclick=choose;hit.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};
+      svg.append(line,hit);
+      const label=svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-10,class:'relation-edge-label'});label.textContent=labels[edge.type];svg.append(label);
+    }
+    if(pending&&positions.has(pending.root))svg.append(svgEl('path',{d:path(port(pending.root,'out'),pointer??port(pending.root,'out')),class:'relation-wire pending'}));
+    document.getElementById('relations-count').textContent=`${positions.size} 个 UI · ${edges.length} 条关系`;
+  }
+  function showInfo(){
+    info.replaceChildren();const design=getDesign(),source=design.nodes.find(n=>n.id===selectedEdge);
+    if(!source?.action?.target){selectedEdge=null;info.textContent='选择触发节点，从右侧圆点拖到目标卡片左侧圆点。也可依次点击两个圆点。';return;}
+    const target=design.nodes.find(n=>n.id===source.action.target);
+    info.append(element('span','',`${source.name} · 点击 → ${labels[source.action.type]} ${target?.name??''}`));
+    const remove=element('button','danger','删除连线');remove.onclick=()=>{edit(()=>{delete getDesign().nodes.find(n=>n.id===selectedEdge).action;});selectedEdge=null;showInfo();};info.append(remove);
+  }
+  function complete(rootId){
+    if(!pending)return;const {source,type}=pending;pending=null;
+    edit(()=>connectUi(getDesign(),source,rootId,type));selectedEdge=source;showInfo();drawWires();notice('已配置点击'+labels[type]+'。进入预演可验证；保存会写入工程。');
+  }
+  function render(){
+    if(viewport.hidden)return;
+    pending=null;drag=null;positions.clear();cards.replaceChildren();const design=getDesign(),roots=design.nodes.filter(n=>n.parent===null);
+    for(const [index,root]of roots.entries()){
+      const p=root.relationPosition??{x:32+(index%2)*310,y:40+Math.floor(index/2)*285};positions.set(root.id,{...p});
+      const card=element('article','relation-card');card.dataset.root=root.id;card.style.left=p.x+'px';card.style.top=p.y+'px';card.setAttribute('aria-label','UI 卡片 '+root.name);
+      const header=element('div','relation-card-header');header.title='拖动调整卡片位置';header.append(element('strong','',root.name));
+      const editButton=element('button','','编辑');editButton.onclick=()=>onEdit(root.id);const play=element('button','','预演');play.onclick=()=>onPreview(root.id);header.append(editButton,play);
+      header.onpointerdown=e=>{if(e.button!==0||e.target.closest('button'))return;e.preventDefault();const q=point(e);drag={id:root.id,start:q,original:{...p},card};header.setPointerCapture(e.pointerId);};card.append(header);
+      const thumb=element('div','relation-thumbnail');thumb.inert=true;thumb.setAttribute('aria-hidden','true');
+      const stage=element('div','relation-mini-stage');const factor=Math.min(216/design.width,128/design.height);stage.style.width=design.width+'px';stage.style.height=design.height+'px';stage.style.transform=`scale(${factor})`;stage.style.left=(216-design.width*factor)/2+'px';stage.style.top=(128-design.height*factor)/2+'px';
+      const original=[...document.querySelectorAll('#canvas [data-node]')].find(e=>e.dataset.node===root.id);
+      if(original){const clone=original.cloneNode(true);clone.hidden=false;for(const el of [clone,...clone.querySelectorAll('*')]){el.removeAttribute('id');el.classList.remove('selected');el.removeAttribute('data-node');el.removeAttribute('tabindex');}stage.append(clone);}
+      thumb.append(stage);card.append(thumb);
+      const row=element('div','relation-controls');const source=document.createElement('select');source.setAttribute('aria-label',root.name+' 触发节点');
+      const candidates=design.nodes.filter(n=>systemRoot(design,n.id)?.id===root.id&&(n.id===root.id||n.type==='Button'||n.action));
+      for(const n of candidates){const option=document.createElement('option');option.value=n.id;option.textContent=n.id===root.id?'点击界面':n.name;source.append(option);}
+      source.value=candidates.some(n=>n.id===selections.get(root.id)?.source)?selections.get(root.id).source:(candidates.find(n=>n.type==='Button')?.id??root.id);
+      const action=document.createElement('select');action.setAttribute('aria-label',root.name+' 连线动作');for(const [value,label]of Object.entries(labels)){const option=document.createElement('option');option.value=value;option.textContent=label;action.append(option);}action.value=selections.get(root.id)?.type??'navigate';
+      const remember=()=>{selections.set(root.id,{source:source.value,type:action.value});pending=null;drawWires();};source.onchange=action.onchange=remember;row.append(source,action);card.append(row);
+      const incoming=element('button','relation-port relation-in');incoming.dataset.destination=root.id;incoming.title='连接到 '+root.name;incoming.setAttribute('aria-label','连接到 '+root.name);incoming.onclick=()=>complete(root.id);
+      const outgoing=element('button','relation-port relation-out');outgoing.title='从 '+root.name+' 连出';outgoing.setAttribute('aria-label','从 '+root.name+' 连出');
+      const begin=()=>{pending={root:root.id,source:source.value,type:action.value};selectedEdge=null;showInfo();notice('选择目标卡片左侧圆点，或按 Esc 取消。');drawWires();};outgoing.onpointerdown=e=>{if(e.button===0){e.preventDefault();begin();}};outgoing.onclick=()=>{if(!pending)begin();};
+      card.append(incoming,outgoing);cards.append(card);
+    }
+    plane.style.width=Math.max(640,...[...positions.values()].map(p=>p.x+310))+'px';plane.style.height=Math.max(420,...[...positions.values()].map(p=>p.y+290))+'px';
+    document.getElementById('relations-empty').hidden=roots.length>0;showInfo();drawWires();
+  }
+  viewport.addEventListener('pointermove',e=>{
+    if(drag){const q=point(e),p={x:Math.max(24,Math.min(6000,drag.original.x+q.x-drag.start.x)),y:Math.max(24,Math.min(6000,drag.original.y+q.y-drag.start.y))};positions.set(drag.id,p);drag.card.style.left=p.x+'px';drag.card.style.top=p.y+'px';drawWires();}
+    else if(pending)drawWires(point(e));
+  });
+  window.addEventListener('pointerup',e=>{
+    if(drag){const {id}=drag,p=positions.get(id);drag=null;edit(()=>{getDesign().nodes.find(n=>n.id===id).relationPosition={x:Math.round(p.x),y:Math.round(p.y)};});}
+    else if(pending){const destination=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-destination]');if(destination)complete(destination.dataset.destination);}
+  });
+  window.addEventListener('pointercancel',()=>{drag=null;pending=null;if(!viewport.hidden)render();});
+  window.addEventListener('keydown',e=>{if(viewport.hidden)return;if(e.key==='Escape'){pending=null;drawWires();}if(e.key==='Delete'&&selectedEdge&&!e.target.closest('input,select,textarea')){e.preventDefault();info.querySelector('button')?.click();}});
+  return {render};
+}

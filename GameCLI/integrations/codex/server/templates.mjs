@@ -1,3 +1,5 @@
+import {projectUiSchema,readProjectUi,writeProjectUi} from './project-ui.mjs';
+import {publishTemplates} from './template-publish.mjs';
 import {templateGroups,initialTemplateGroups} from '../shared/template-groups.mjs';
 import {openDatabase,databaseConfig} from './database.mjs';
 import {builtInTemplates,categories,validateTemplate} from '../shared/templates.mjs';
@@ -35,7 +37,7 @@ export async function seedTemplates(pool) {
   try {
     await client.query('BEGIN');await client.query(schemaSql);
     for(const c of categories)await client.query('INSERT INTO gamecli_ui.template_categories(id,name,sort) VALUES($1,$2,$3) ON CONFLICT(id) DO NOTHING',[c.id,c.name,c.sort]);
-    await migrateTemplateGroups(client);
+    await migrateTemplateGroups(client);await client.query(projectUiSchema);
     for(const t of builtInTemplates())await client.query('INSERT INTO gamecli_ui.templates(id,category_id,name,description,sort,payload,group_id) VALUES($1,$2,$3,$4,$5,$6::jsonb,$7) ON CONFLICT(id) DO NOTHING',[t.id,t.category,t.name,t.description,t.sort,JSON.stringify(t.payload),t.group]);
     await client.query('COMMIT');
   } catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
@@ -59,5 +61,8 @@ export function createTemplateStore({connect=openDatabase}={}) {
     const result=await connection.pool.query('SELECT mime,body FROM gamecli_ui.assets WHERE id=$1',[id]);
     return result.rows[0]??null;
   }
-  return {list,asset,async close(){await connection?.close();connection=null;}};
+  async function publish(snapshot,targets){connection??=await connect(await databaseConfig());return publishTemplates(connection.pool,snapshot,targets);}
+  async function project(){connection??=await connect(await databaseConfig());return readProjectUi(connection.pool);}
+  async function saveProject(snapshot,version){connection??=await connect(await databaseConfig());return writeProjectUi(connection.pool,snapshot,version);}
+  return {list,asset,publish,project,saveProject,async close(){await connection?.close();connection=null;}};
 }

@@ -247,6 +247,7 @@ function baseLayerStyle(n) {
   return `${n.role === 'frame' ? `background:transparent;border:${n.borderWidth ?? 6}px solid ${n.color};` : ''}${n.opacity !== undefined ? `opacity:${n.opacity};` : ''}${n.textAlign ? `text-align:${n.textAlign};` : ''}`;
 }
 export function validateDesign(value) {
+  for(const n of value?.nodes??[])if(n.templateSourceId!==undefined&&(typeof n.templateSourceId!=="string"||!n.templateSourceId||n.templateSourceId.length>128))throw new Error("模板来源标识无效。");
   if (!value || value.schemaVersion !== 1 || !/^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(value.name)) throw new Error('设计名称须为以字母开头的英文标识，最多 64 字符。');
   for (const key of ['width', 'height']) if (!Number.isInteger(value[key]) || value[key] < 240 || value[key] > 4096) throw new Error('设计分辨率须为 240–4096 的整数。');
   if (!Array.isArray(value.nodes) || value.nodes.length > 300) throw new Error('最多支持 300 个节点。');
@@ -257,6 +258,7 @@ export function validateDesign(value) {
     for(const [key,axes] of [['localScale',['x','y']],['imageBorder',['x','y','z','w']],['uvRect',['x','y','width','height']]]) if(n[key]!==undefined && (!n[key] || !axes.every(a=>Number.isFinite(n[key][a])&&Math.abs(n[key][a])<=8192)))throw new Error('图片布局参数无效。');
     if(n.imageBorder && Object.values(n.imageBorder).some(v=>v<0))throw new Error('九宫格边界不能为负。');
     if(n.uvRect && (n.uvRect.width<=0||n.uvRect.height<=0))throw new Error('UV 尺寸必须为正。');
+    if(n.relationPosition!==undefined&&(n.parent!==null||!['x','y'].every(k=>Number.isFinite(n.relationPosition?.[k])&&n.relationPosition[k]>=0&&n.relationPosition[k]<=6000)))throw new Error('关系卡片坐标无效。');
     if(n.rotation!==undefined && (!Number.isFinite(n.rotation)||Math.abs(n.rotation)>36000))throw new Error('Rotation Z 无效。');
     if(n.animationHost!==undefined && (n.animationHost!==true||n.type!=='Container'))throw new Error('动画容器标记无效。');
     if(n.interactable!==undefined && typeof n.interactable!=='boolean')throw new Error('Interactable 状态无效。');
@@ -291,7 +293,7 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {

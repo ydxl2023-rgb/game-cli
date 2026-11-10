@@ -1,5 +1,6 @@
+import {createRelations} from './relations.mjs';
 import {playAnimations} from './animation-player.mjs';
-let stopAnimations=()=>{};
+let stopAnimations=()=>{},centerMode='edit';
 import {setupPanelSplit} from './panel-split.mjs';
 import {groupedTemplates} from '../shared/template-groups.mjs';
 import {localDelta} from '../shared/inspector.mjs';
@@ -14,10 +15,11 @@ const bridge = new Bridge();
 let design = starter(), selected = 'EquipButton', revision = 0, dirty = false, scale = 1, preview = false, ready = false;
 const history = [];
 const library=new Map();
+let librarySource=null,projectVersion=null;
 async function loadTemplates() {
   const area=$('template-library');
   try {
-    const result=await bridge.call('templates');
+    const result=await bridge.call('templates');librarySource=result.source;
     const expanded=new Map([...area.querySelectorAll('[data-template-group]')].map(e=>[e.dataset.templateGroup,e.open]));
     area.replaceChildren();library.clear();
     for(const category of result.categories) {
@@ -28,7 +30,7 @@ async function loadTemplates() {
       const summary=document.createElement('summary');const title=document.createElement('span');title.textContent=group.name;const count=document.createElement('span');count.className='group-count';count.textContent=group.templates.length;summary.append(title,count);folder.append(summary);area.append(folder);
       for(const template of group.templates) {
         library.set(template.id,template);
-        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=preview;
+        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=preview||centerMode==='relations';
         const icon=document.createElement('span');icon.className='control-icon';icon.textContent=category.id==='system'?'▦':'▣';
         const label=document.createElement('span');label.textContent=template.name;const detail=document.createElement('small');detail.textContent=template.description;label.append(detail);button.append(icon,label);folder.append(button);bindControl(button);
       }
@@ -162,6 +164,7 @@ function render() {
   applyPreviewState();
   $('undo').disabled = !history.length; fit();
   if(preview)stopAnimations=playAnimations(design,$('canvas'));
+  relationView.render();
 }
 const renderRectInspector=createInspector({node,design:()=>design,edit});
 function updateProgress(id,value) {
@@ -276,7 +279,7 @@ $('delete').onclick = deleteSelected;
 window.addEventListener('keydown', e => {
   const target = e.target;
   if (target instanceof Element && (target.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"]),[role="textbox"],[role="separator"]') || target.isContentEditable)) return;
-  if (!ready || preview || !node() || e.isComposing || e.ctrlKey || e.metaKey || e.altKey || drag || resize || paletteDrag) return;
+  if (!ready || preview || centerMode==='relations' || !node() || e.isComposing || e.ctrlKey || e.metaKey || e.altKey || drag || resize || paletteDrag) return;
   if (e.key === 'Delete') {
     e.preventDefault();
     if (!e.repeat) deleteSelected();
@@ -291,6 +294,7 @@ window.addEventListener('keydown', e => {
 $('undo').onclick = () => { if (history.length) { design = JSON.parse(history.pop()); mark(); render(); } };
 $('fit').onclick = fit;
 function setPreview(value) {
+  if(value)setCenterMode('edit');
   preview = value;
   previewState = value ? createPreviewState(design) : null;
   document.body.classList.toggle('rehearsing', preview);
@@ -360,9 +364,20 @@ $('canvas').addEventListener('click', e => {
 $('canvas').addEventListener('keydown', e => { const el=e.target.closest('[data-interactive]'); if(preview && el && el.tagName!=='BUTTON' && ['Enter',' '].includes(e.key)) {e.preventDefault();el.click();} });
 async function busy(id, fn) { $(id).disabled = true; try { await fn(); } catch (e) { notice(e.message, true); } finally { $(id).disabled = !ready; } }
 $('save').onclick = () => busy('save', async () => {
-  const sent = JSON.stringify(design), snapshot = await bridge.call('save', { design, revision }); revision = snapshot.revision;
-  if (JSON.stringify(design) === sent) { dirty = false; $('dirty').hidden = true; }
-  notice(`草稿已保存 · 版本 ${revision} · ${new Date(snapshot.savedAt).toLocaleTimeString('zh-CN')}${dirty ? ' · 当前仍有新的未保存修改' : ''}`);
+  const sent=JSON.stringify(design),snapshot=await bridge.call('save',{design,revision,projectVersion});revision=snapshot.revision;
+  const result=snapshot.projectSave;
+  if(result?.ok){projectVersion=result.version;if(JSON.stringify(design)===sent){dirty=false;$('dirty').hidden=true;}}
+  notice(result?.ok?`工程 ${result.name} 已保存到数据库 · v${result.version} · 基础模板未修改${dirty?' · 仍有未保存修改':''}`:`本机草稿 v${revision} 已保存 · 工程数据库保存失败：${result?.error??'服务未支持工程保存'}`,!result?.ok);
+});
+$('sync').onclick = () => busy('sync', async () => {
+  if(librarySource!=='postgresql')throw new Error('请先连接数据库模板库。');
+  let root=node();while(root?.parent)root=design.nodes.find(n=>n.id===root.parent);
+  if(!root){const roots=design.nodes.filter(n=>n.parent===null);if(roots.length!==1)throw new Error('请先选择要同步的系统节点。');root=roots[0];}
+  const template=root.templateSourceId?library.get(root.templateSourceId):[...library.values()].find(t=>t.payload.root===root.id);
+  if(!template)throw new Error('此系统未关联基础模板，不能同步；请使用保存将它存入工程。');
+  const result=await bridge.call('sync',{design,revision,targets:[{rootId:root.id,templateId:template.id,version:template.version}]});
+  for(const t of result.sync.templates){const item=library.get(t.id);if(item){item.version=t.version;item.payload=t.payload;}}
+  notice('基础模板已同步 · '+result.sync.templates.map(t=>`${t.name} v${t.version}`).join('、')+' · 工程请单独保存');
 });
 function download(name, text, type) { const url = URL.createObjectURL(new Blob([text], { type })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 2000); }
 $('export').onclick = () => busy('export', async () => {
@@ -378,12 +393,23 @@ $('import-file').onchange = async e => {
 };
 bridge.onContext = () => { $('expand').hidden = !bridge.modes.includes('fullscreen'); };
 $('expand').onclick = async () => { try { await bridge.expand(); } catch (e) { notice(e.message, true); } };
+function setCenterMode(mode){
+  if(preview&&mode==='relations')setPreview(false);
+  centerMode=mode;const graph=mode==='relations';
+  $('viewport').hidden=graph;$('relations-view').hidden=!graph;$('relations-tools').hidden=!graph;$('relations-info').hidden=!graph;
+  $('tab-edit').setAttribute('aria-selected',!graph);$('tab-relations').setAttribute('aria-selected',graph);
+  $('preset').hidden=$('rotate').hidden=$('fit').hidden=graph;
+  for(const c of document.querySelectorAll('[data-control]'))c.disabled=preview||graph;
+  if(graph)relationView.render();else fit();
+}
+const relationView=createRelations({getDesign:()=>design,edit,notice,onEdit:id=>{setCenterMode('edit');select(id);},onPreview:id=>{setPreview(true);previewState.hidden=[...new Set([...previewState.hidden.filter(n=>n!==id),...design.nodes.filter(n=>n.parent===null&&n.id!==id).map(n=>n.id)])];applyPreviewState();}});
+$('tab-edit').onclick=()=>setCenterMode('edit');$('tab-relations').onclick=()=>setCenterMode('relations');
 setupPanelSplit();
 new ResizeObserver(fit).observe($('viewport'));
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 render();
 async function start() {
-  try { const snapshot = await bridge.init(); const original = validateDesign(snapshot.design); design = validateDesign(phoneDesign(original)); revision = snapshot.revision; ready = true; $('save').disabled = $('export').disabled = false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机'; if (JSON.stringify(original) !== JSON.stringify(design)) { history.push(JSON.stringify(original)); mark(); } render(); notice(dirty ? '已适配手机画布并展开按钮文字节点。点击保存应用，可撤销。' : '从右侧拖入控件，双击节点编辑属性。'); }
+  try { const snapshot = await bridge.init(); const original = validateDesign(snapshot.design); design = validateDesign(phoneDesign(original)); revision = snapshot.revision;projectVersion=snapshot.project?.version??null;$('project-label').textContent='工程：'+(snapshot.project?.name??'GameCLI'); ready = true; $('save').disabled = $('sync').disabled = $('export').disabled = false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机'; if (JSON.stringify(original) !== JSON.stringify(design)) { history.push(JSON.stringify(original)); mark(); } render(); notice(dirty ? '已适配手机画布并展开按钮文字节点。点击保存应用，可撤销。' : '从右侧拖入控件，双击节点编辑属性。'); }
   catch (e) { $('connection').textContent = '连接失败'; notice(e.message, true); }
 }
 void start().then(loadTemplates);

@@ -28,6 +28,7 @@ export function instantiateTemplate(design, template, parent, point) {
   const source=validateTemplate(template.payload,template.category), nodes=structuredClone(source.design.nodes);
   if(design.nodes.length+nodes.length>300) throw new Error('添加模板后超出 300 个节点上限。');
   const root=nodes.find(n=>n.id===source.root);
+  if(template.id)root.templateSourceId=template.id;
   const canvasRoot=template.category==='system' || root.template==='ConfirmDialog';
   const container=design.nodes.find(n=>n.id===parent);
   if(!canvasRoot && parent!==null && container?.type!=='Container') throw new Error('目标必须为容器。');
@@ -36,6 +37,7 @@ export function instantiateTemplate(design, template, parent, point) {
   while(nodes.some(n=>ids.has(`T${i}${n.id}`))) i++;
   const remap=new Map(nodes.map(n=>[n.id,`T${i}${n.id}`]));
   for(const n of nodes) {
+    delete n.relationPosition;
     n.id=remap.get(n.id); n.parent=n.parent===null ? (canvasRoot?null:parent) : remap.get(n.parent);
     if(n.action?.target) n.action.target=remap.get(n.action.target);
   }

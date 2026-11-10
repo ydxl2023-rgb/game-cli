@@ -101,3 +101,17 @@ MCP 进程由 Codex 启动，直接使用相同本机草稿，无需启动 HTTP 
 - 当前分组：prefab/item（道具）、prefab/scroll（滚动面板）、prefab/dialog（对话框）、system/loading、system/inventory（背包）。
 - `npm run db:init` 包含兼容旧库的分类迁移，不改写现有模板 payload 和版本。分类调整属于元数据修改，不需要重复复制图片资源。
 - HTTP / MCP 模板列表增加 groups 与每个模板的 group 字段；UI 按组显示可折叠分类并保留刷新前的展开状态。
+
+### 工程保存与模板同步
+
+顶部「保存」先保留本机草稿，再将完整 Canvas、所有系统节点、交互和动画保存到 gamecli_ui.project_ui（project_id 主键、project_name、version、payload JSONB、created_at、updated_at）。保存不写 templates 表；projectVersion 防止覆盖其他窗口更新。数据库失败会保留本机草稿并明确提示。无本机草稿时可从数据库恢复当前工程设计。
+
+当前工程默认 GameCLI；部署时可设置 GAMECLI_PROJECT_ID 和 GAMECLI_PROJECT_NAME，工程身份不随 UI 文件名或节点名称改变。
+
+「同步」单独更新选中节点所属的顶层系统模板；仅一个系统时允许不选节点。多个系统必须选择目标。保留分类、来源与动画，校验模板版本并备份旧模板。未关联基础模板的生产 UI 可正常保存到工程，但不能覆盖任意模板。嵌套预制随所属系统处理。同步不会自动保存工程，也不会生成 Unity prefab。
+
+### 编辑与关系分页
+
+关系页将 Canvas 的直接子节点显示为 UI 缩略卡片。卡片标题可拖动；选择触发节点与动作后，从右侧圆点连到目标卡片左侧圆点（支持拖动或依次点击）。当前支持点击事件的跳转、打开、关闭、切换，每个触发节点保留一个动作，重新连线替换该动作。选择连线可删除，也可撤销。
+
+连线直接使用 node.action，不维护第二份路由数据；卡片位置存入根节点 relationPosition。保存写入工程 project_ui；基础模板同步不携带卡片位置，跨系统引用会阻止单独模板发布。卡片的预演按钮可从该 UI 开始验证跳转。此阶段是网页预演关系，尚未生成 Unity 导航运行时代码。
