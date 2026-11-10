@@ -37,6 +37,10 @@ private bool downloading;
 
 ## UGUI 组件与引用绑定
 
+- UI 资源固定放在 `Assets/Data/Widgets/`，每个页面或模块使用独立子目录，例如 `Assets/Data/Widgets/Loading/Loading.prefab`。配套图片、动画和材质随模块管理，不再生成到 `Assets/Resources/UI`。
+- Widget 的 `[Config]`、CLI 生成目标、模板 scripts 中的资源路径必须一致使用该目录。初始化新工程时建立此目录；迁移现有资源使用 Unity AssetDatabase/UnityCLI 保留 `.meta` GUID，并核对场景、Metadata、序列化引用和资源加载。
+- 路径或代码迁移时同步数据库当前标准模板与源码包，重新计算源码 SHA256；保留历史版本用于回滚，不覆盖模板布局。AssetBundle 发布前重新生成资源索引并构建资源包，不能复用旧路径的构建产物。
+
 - 根据当前 prefab 的实际层级、组件和展示需求实现功能。先检查资源，不凭节点名称假设组件类型，不复制旧界面字段来代替当前设计。
 - 固定 UI 引用全部通过序列化字段绑定，禁止 `transform.Find`、`Require<T>("路径")`、全场景搜索等运行时查找绑定，也不添加自动查找兜底。
 - 组件通过实例方法对外提供操作，内部 UI 引用不暴露给调用方。引用该组件的一方同样使用私有序列化字段；跨系统操作提供明确的方法入口。

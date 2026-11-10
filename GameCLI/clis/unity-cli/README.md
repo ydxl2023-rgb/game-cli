@@ -51,7 +51,7 @@ UGUI 直接消费现有 `gamecli_ui.templates.payload`（root + design.schemaVer
 
 ```powershell
 # 从 Unity 工程根目录执行；预检通过后去掉 --dry-run，已存在输出添加 --overwrite
-.\Library\UnityCLI\unity-cli.exe ugui --template SvLoading --project . --prefab Assets/Resources/UI/Loading/Loading.prefab --dry-run --json
+.\Library\UnityCLI\unity-cli.exe ugui --template SvLoading --project . --prefab Assets/Data/Widgets/Loading/Loading.prefab --dry-run --json
 ```
 
 也支持 `--input <数据库行或payload.json> --assets-dir <图片目录>`。数据库模式复用 integrations/codex 的配置和 Node.js 依赖，可用 --integration 指定目录。安装时将 UnityEditor/Editor/ 下的两个 GameCliUgui*.cs 复制到 Unity Assets/Editor/GameCLI，并刷新编译。

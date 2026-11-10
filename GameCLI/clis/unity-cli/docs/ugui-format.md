@@ -5,8 +5,8 @@ UGUI 的唯一数据契约是现有 PostgreSQL `gamecli_ui.templates.payload`。
 ## 读取入口
 
 ```powershell
-unity-cli ugui --template SvLoading --project <Unity工程> --prefab Assets/Resources/UI/Loading/Loading.prefab --dry-run --json
-unity-cli ugui --template SvLoading --project <Unity工程> --prefab Assets/Resources/UI/Loading/Loading.prefab --overwrite --json
+unity-cli ugui --template SvLoading --project <Unity工程> --prefab Assets/Data/Widgets/Loading/Loading.prefab --dry-run --json
+unity-cli ugui --template SvLoading --project <Unity工程> --prefab Assets/Data/Widgets/Loading/Loading.prefab --overwrite --json
 unity-cli ugui --input template.json --assets-dir ./images --project <Unity工程> --prefab Assets/UI/Example.prefab --dry-run
 ```
 

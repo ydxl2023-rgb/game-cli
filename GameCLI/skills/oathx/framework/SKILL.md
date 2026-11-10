@@ -28,6 +28,7 @@ description: 为新项目或已有 Unity 项目一次性建立 Oathx 基础开�
 2. 按 [包安装](references/packages.md) 准备工程、七个包、manifest 与实际依赖，记录版本和来源。
 3. 按 [CLI 安装](references/cli.md) 安装 Editor 桥接、构建客户端和 UGUI 导入器，打开目标 Editor，验证编译与 Console。
 4. 按 [初始化](references/initialization.md) 安装生成器，建立最小 XApp/插件/UI/Launch 启动链，保存组件引用，处理已有工程集成。
+   UI 资源目录固定为 `Assets/Data/Widgets/<模块>/`，创建目录并统一 prefab、Config、CLI 输出和数据库模板 scripts 的路径；迁移时保留 GUID。
 5. 将目标工程的 AGENTS.md 接入编码规范；原有指令保留。异机交付时携带所需 `skills/oathx` 目录，不写仅本机有效的绝对 skill 链接。
 6. 按 [验收](references/acceptance.md) 完成真实编译、CLI、VM 生成、页面和生命周期检查，交付环境报告与未完成项。
 

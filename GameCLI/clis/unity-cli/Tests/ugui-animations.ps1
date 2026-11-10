@@ -6,14 +6,14 @@ $snapshot = Join-Path $Project ('Library/GameCLI/AnimationTests/' + [guid]::NewG
 & node (Join-Path (Split-Path $PSScriptRoot) 'Plugins/UguiPlugin/read-template.mjs') $integration SvLoading $snapshot
 if ($LASTEXITCODE -ne 0) { throw 'Database snapshot failed.' }
 $source = Join-Path $snapshot 'template.json'
-$prefab = Join-Path $Project 'Assets/Resources/UI/Loading/Loading.prefab'
+$prefab = Join-Path $Project 'Assets/Data/Widgets/Loading/Loading.prefab'
 $before = (Get-FileHash $prefab).Hash
 function RunCase($name, $mutate, $expected) {
     $doc = Get-Content $source -Raw | ConvertFrom-Json -AsHashtable
     & $mutate $doc
     $file = Join-Path $snapshot ($name + '.json')
     $doc | ConvertTo-Json -Depth 80 | Set-Content $file
-    $output = & $cli ugui --input $file --assets-dir $snapshot --project $Project --prefab Assets/Resources/UI/Loading/Loading.prefab --overwrite --dry-run --json
+    $output = & $cli ugui --input $file --assets-dir $snapshot --project $Project --prefab Assets/Data/Widgets/Loading/Loading.prefab --overwrite --dry-run --json
     $code = $LASTEXITCODE; $result = $output | ConvertFrom-Json
     if ($result.ok -ne $expected -or ($expected -and $code -ne 0) -or (!$expected -and $code -eq 0)) { throw "$name failed: $output" }
     if ($expected -and $name -eq 'database-animation' -and $result.animationCount -ne 1) { throw 'Animation ignored.' }

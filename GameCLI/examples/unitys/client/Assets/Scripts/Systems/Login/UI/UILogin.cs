@@ -3,7 +3,7 @@ using Oathx.Widget;
 /// <summary>
 /// SV login view with serialized Widget Metadata bindings.
 /// </summary>
-[Config("Assets/Resources/UI/SVLogin/SVLogin.prefab", WidgetLayer.center, cacheWidget: false)]
+[Config("Assets/Data/Widgets/SVLogin/SVLogin.prefab", WidgetLayer.center, cacheWidget: false)]
 public class UILogin : UIWidget<VMLogin>
 {
     /// <summary>

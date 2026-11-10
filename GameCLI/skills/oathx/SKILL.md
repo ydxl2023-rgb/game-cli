@@ -21,6 +21,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | [avatar](avatar/SKILL.md) | 角色、特效与子弹组件 |
 | [launch](launch/SKILL.md) | Launch UI、预制体与 XLauncher |
 | [system/sv-login](system/sv-login/SKILL.md) | LoginSystem 与 UILogin |
+| [system/loading](system/loading/SKILL.md) | Loading 页面、进度和提示更新 |
 
 ## 组织规则
 

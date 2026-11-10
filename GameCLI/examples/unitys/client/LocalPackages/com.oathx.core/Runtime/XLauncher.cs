@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Oathx.Core
 {
     /// <summary>
-    /// Controls the Loading and Update panels in Resources/UI/Launch/Launch.
+    /// Controls the Loading and Update panels in Assets/Data/Widgets/Launch/Launch.
     /// Available before the game plugin and UISystem are initialized.
     /// </summary>
     [DisallowMultipleComponent]
