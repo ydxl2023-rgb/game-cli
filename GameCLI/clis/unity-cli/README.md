@@ -61,3 +61,19 @@ UGUI 直接消费现有 `gamecli_ui.templates.payload`（root + design.schemaVer
 执行 Tests/ugui-integration.ps1 进行真实 Editor 格式验证；Examples/ConfirmDialog.template.json 是原始数据库样例。
 
 Loading v9 的 design.animations 已支持：生成 Clip/Controller 并绑定 Animator，恢复球旋转和箭头 UV 动画。执行 Tests/ugui-animations.ps1 验证动画格式及采样；旧模板仍兼容。
+
+## AnimatorPlaugin：UI 动画编辑
+
+源码插件实现 IPlugin，注册入口为 `animator`，通过现有 `/animator` Editor 桥接操作资源。`animator --help` 列出完整命令。所有写操作建议先加 `--dry-run` 验证，再去掉该参数执行；`--json` 控制输出，`--input` 指定导入文件，两者可同时使用。
+
+```powershell
+unity-cli animator clip create --clip Assets/Data/Widgets/MyUI/Slide.anim --duration 1 --loop true --dry-run
+unity-cli animator clip set-curve --clip Assets/Data/Widgets/MyUI/Slide.anim --path Panel --component UnityEngine.RectTransform --property m_AnchoredPosition.x --keys 0:0,1:100 --dry-run
+unity-cli animator controller create --controller Assets/Data/Widgets/MyUI/UI.controller --dry-run
+unity-cli animator state add --controller Assets/Data/Widgets/MyUI/UI.controller --state Slide --clip Assets/Data/Widgets/MyUI/Slide.anim --dry-run
+unity-cli animator inspect --clip Assets/Data/Widgets/MyUI/Slide.anim --json
+```
+
+支持 controller create/import-json、parameter add/set/remove、clip create/set-curve/sample/import-json/export-json、state add、transition add、bind、inspect。曲线路径相对于 Animator 根节点；bind/sample 的路径指向场景对象，sample 会改变场景对象姿态。完整曲线交换使用桥接的 animation-clip/1 JSON（export-json 输出位于 data.details）；controller 导入使用 animation-controller/1。能力和校验由安装的 Editor 桥接提供，不支持的组件或属性会返回错误。
+
+通用参数 `--project` 指定 Unity 工程，省略时向上查找；`--loop` 必须显式传 true/false。退出码遵循 0 成功、1 桥接失败、2 参数错误。参数验证测试：`Tests/animator.ps1`。

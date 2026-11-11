@@ -14,6 +14,7 @@ export function createMcpServer(store=createStore(),templates=createTemplateStor
  server.registerTool('gamecli_ui_open',{description:'打开项目工作台，先选择项目。',inputSchema:{},annotations:read,_meta:{ui:{resourceUri},'openai/outputTemplate':resourceUri}},wrap(()=>workspaces.list()));
  server.registerTool('gamecli_ui_projects',{description:'列出当前身份可访问的项目。',inputSchema:{},annotations:read},wrap(()=>workspaces.list()));
  server.registerTool('gamecli_ui_snapshot',{description:'读取指定项目，禁止隐式当前项目。',inputSchema:{projectId},annotations:read},wrap(a=>workspaces.snapshot(a.projectId)));
+ server.registerTool('gamecli_ui_animations',{description:'读取最新已发布的标准动画，只读。',inputSchema:{},annotations:read},wrap(()=>workspaces.animations()));
  server.registerTool('gamecli_ui_templates',{description:'读取标准模板及当前发布版本，只读。',inputSchema:{},annotations:read},wrap(()=>templates.list()));
  server.registerTool('gamecli_ui_save',{description:'只保存指定项目，不修改标准模板。',inputSchema:body,annotations:write},wrap(a=>workspaces.save(a.projectId,a)));
  server.registerTool('gamecli_ui_export',{description:'导出指定项目到独立项目目录。',inputSchema:{projectId,design:z.unknown()},annotations:write},wrap(a=>workspaces.exportDesign(a.projectId,a)));

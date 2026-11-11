@@ -26,7 +26,43 @@ test('connecting UI writes the preview action and survives saving',()=>{
  delete saved.nodes[1].action;assert.equal(relations(saved).length,0);
 });
 test('reconnecting replaces the source action and validates targets and positions',()=>{
- const d=fixture();connectUi(d,'Open','Inventory','show');connectUi(d,'Open','Home','hide');assert.equal(relations(d).length,1);assert.equal(d.nodes[1].action.type,'hide');
+ const d=fixture();connectUi(d,'Open','Inventory','show');connectUi(d,'Open','Home','hide');assert.equal(relations(d).length,0);assert.equal(d.nodes[1].action.type,'hide');
  assert.throws(()=>connectUi(d,'Open','Missing'));assert.throws(()=>connectUi(d,'Home','Open'));
  d.nodes[0].relationPosition.x=Infinity;assert.throws(()=>validateDesign(d),/卡片/);
+});
+
+test('different buttons retain independent actions across save, rename and removal',()=>{
+ const d=fixture();d.nodes.push({...d.nodes[1],id:'Account',name:'Account'});
+ connectUi(d,'Open','Inventory','show');connectUi(d,'Account','Inventory','navigate');
+ const saved=validateDesign(JSON.parse(JSON.stringify(d)));
+ assert.equal(relations(saved).length,2);
+ saved.nodes.find(n=>n.id==='Open').name='公告入口';
+ assert.equal(relations(saved).find(e=>e.sourceId==='Open').type,'show');
+ delete saved.nodes.find(n=>n.id==='Account').action;
+ assert.deepEqual(relations(saved).map(e=>e.sourceId),['Open']);
+});
+
+test('system graph keeps opening while closing and local interactions still preview',()=>{
+ const d=fixture();
+ d.nodes.push(...[
+  {id:'Close',parent:'Inventory',type:'Button',action:{type:'hide',target:'Inventory'}},
+  {id:'Expand',parent:'Inventory',type:'Button',action:{type:'toggle',target:'Content'}},
+  {id:'Check',parent:'Inventory',type:'Button',action:{type:'toggle',target:'Selected'}},
+  {id:'Content',parent:'Inventory',type:'Container'},
+  {id:'Selected',parent:'Inventory',type:'Image'}
+ ].map(n=>({...d.nodes[1],...n,name:n.id})));
+ connectUi(d,'Open','Inventory','show');
+ const saved=validateDesign(JSON.parse(JSON.stringify(d))),before=JSON.stringify(saved);
+ assert.deepEqual(relations(saved).map(e=>[e.sourceId,e.targetId,e.type]),[
+  ['Open','Inventory','show']
+ ]);
+ assert.equal(JSON.stringify(saved),before);
+ let state=createPreviewState(saved);
+ for(const id of ['Expand','Check'])state=runPreviewAction(saved,state,saved.nodes.find(n=>n.id===id).action);
+ assert.ok(state.hidden.includes('Content'));
+ assert.ok(state.hidden.includes('Selected'));
+ state=runPreviewAction(saved,state,saved.nodes.find(n=>n.id==='Open').action);
+ assert.ok(!state.hidden.includes('Inventory'));
+ state=runPreviewAction(saved,state,saved.nodes.find(n=>n.id==='Close').action);
+ assert.ok(state.hidden.includes('Inventory'));
 });

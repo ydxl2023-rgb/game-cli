@@ -36,3 +36,10 @@ description: 提取和维护 SV 登录公告 UI 模板，定位 LoginNoticeView 
 - 生成预制体后须将 Body 的 Text 替换为 NoticeText，恢复字体、字号 35、MiddleLeft 对齐和正文颜色，再绑定 Metadata 和 NoticeLayout.body。不可把重新生成后丢失超链接组件的 prefab 当作完成品。
 - 运行态验证覆盖多链接、跨行字形、富文本、URL 解码、视口裁剪、拖动抑制、不支持的协议及刷新清理旧链接。测试副本保存在 Library/GameCLI/NoticeLinkCheck.cs.txt；验证不实际打开浏览器。
 - FunctionSystem 配置登记 SYS_NOTICE=10009、ClassType=NoticeSystem、InstallOnStartup=0、Active=1，按需加载时激活，不在启动时弹出公告。源表为 examples/unitys/config/propFunctionSystem.xlsx，导出结果须同步到客户端配置。
+
+## 打开动画
+
+- Notice 根节点 Animator 绑定 `Assets/Data/Widgets/Notice/Animations/Notice.controller`，默认状态 Open 使用 NoticeOpen.anim，220ms、XY 缩放 0.94→1、减速结束、不循环。Animator 使用 Unscaled Time。
+- `Notice/Animator/Panel` 是窗口内容容器，包含 WhiteBg、TopBg、ScrollView、WeekNomoreShow；通过 CLI prefab group 创建，保留原有组件引用。遮罩 Bg 留在 Panel 外，不缩放；Empty 仍在根节点，由同一动画单独缩放。
+- 不保留原 Animator 组织节点上的无控制器 Animator，避免嵌套动画组件。cacheWidget=false，每次打开新实例由默认 Open 状态播放，无需系统代码驱动。
+- 动画编辑使用工程内 `Library/UnityCLI/unity-cli.exe animator`。仅支持场景绑定时，prefab 组件与控制器引用通过 UnityCLI components/modify 保存。重新生成 prefab 后须恢复分组、根 Animator 和以上引用。

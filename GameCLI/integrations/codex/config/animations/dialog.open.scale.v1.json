@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "standard-animation/1",
+  "id": "dialog.open.scale",
+  "version": 1,
+  "name": "弹窗轻微缩放打开",
+  "category": "dialog.open",
+  "description": "居中弹出对话框以轻微缩放进入，快速起步、平缓停止，不回弹。",
+  "targets": [
+    {
+      "description": "窗口主体，可映射到多个视觉节点；不包含全屏遮罩。",
+      "id": "dialogContent",
+      "multiple": true
+    }
+  ],
+  "spec": {
+    "guidance": [
+      "缩放轴心应位于窗口中心。",
+      "全屏遮罩不参与缩放，打开时立即阻挡底层点击。",
+      "修改参数时同步更新完整曲线，并以新版本或变体保存。",
+      "当前标准只包含缩放，不包含淡入或关闭动画。"
+    ],
+    "scaleTo": 1,
+    "loop": false,
+    "scaleFrom": 0.94,
+    "easing": "easeOutCubic",
+    "duration": 0.22,
+    "timeMode": "unscaled"
+  },
+  "clip": {
+    "loop": false,
+    "frameRate": 60,
+    "schemaVersion": "animation-clip/1",
+    "curves": [
+      {
+        "component": "UnityEngine.Transform",
+        "property": "m_LocalScale.x",
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 0.94,
+            "inSlope": 0.8181818,
+            "outSlope": 0.8181818,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": 0,
+            "tangentMode": 0
+          },
+          {
+            "time": 0.22,
+            "value": 1.0,
+            "inSlope": 0.0,
+            "outSlope": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": 0,
+            "tangentMode": 0
+          }
+        ],
+        "preWrapMode": 8,
+        "postWrapMode": 8,
+        "target": "dialogContent"
+      },
+      {
+        "component": "UnityEngine.Transform",
+        "property": "m_LocalScale.y",
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 0.94,
+            "inSlope": 0.8181818,
+            "outSlope": 0.8181818,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": 0,
+            "tangentMode": 0
+          },
+          {
+            "time": 0.22,
+            "value": 1.0,
+            "inSlope": 0.0,
+            "outSlope": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": 0,
+            "tangentMode": 0
+          }
+        ],
+        "preWrapMode": 8,
+        "postWrapMode": 8,
+        "target": "dialogContent"
+      },
+      {
+        "component": "UnityEngine.Transform",
+        "property": "m_LocalScale.z",
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inSlope": 0.0,
+            "outSlope": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": 0,
+            "tangentMode": 0
+          },
+          {
+            "time": 0.22,
+            "value": 1.0,
+            "inSlope": 0.0,
+            "outSlope": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": 0,
+            "tangentMode": 0
+          }
+        ],
+        "preWrapMode": 8,
+        "postWrapMode": 8,
+        "target": "dialogContent"
+      }
+    ]
+  },
+  "controller": {
+    "transitions": [],
+    "defaultState": "Open",
+    "states": [
+      {
+        "clip": "open",
+        "speed": 1,
+        "name": "Open"
+      }
+    ]
+  },
+  "provenance": {
+    "notes": "Generalized from the verified entrance clip; concrete hierarchy paths and Unity GUIDs are intentionally excluded.",
+    "tool": "Project-local UnityCLI AnimatorPlaugin",
+    "source": "Validated popup entrance in the GameCLI Unity client"
+  },
+  "preview": null
+}

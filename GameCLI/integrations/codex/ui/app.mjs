@@ -1,3 +1,4 @@
+import {setupAnimationLibrary} from './animation-library.mjs';
 import {createRelations} from './relations.mjs';
 import {openCodeTemplate} from './code-template.mjs';
 import {createCardScripts} from './card-scripts.mjs';
@@ -496,6 +497,7 @@ $('sync').textContent='提交候选';$('sync').title='仅提交模板候选，�
 setupPanelSplit();
 setupWorkspaceSplit();
 const refreshTemplateDock=setupTemplateDock(loadTemplates);
+setupAnimationLibrary(bridge);
 new ResizeObserver(fit).observe($('viewport'));
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 render();

@@ -39,7 +39,7 @@ export class Bridge {
       return result.structuredContent;
     }
     const path=scoped?`/api/studio/projects/${encodeURIComponent(this.projectId)}${action==='snapshot'?'':'/'+action}`:`/api/studio/${action}`;
-    const response = await fetch(path, ['snapshot','templates','projects','revisions'].includes(action) ? { cache: 'no-store' } : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) });
+    const response = await fetch(path, ['snapshot','templates','projects','revisions','animations'].includes(action) ? { cache: 'no-store' } : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) });
     const result = await response.json();
     if (!response.ok) throw new Error(result.error || '服务暂不可用。');
     return result;

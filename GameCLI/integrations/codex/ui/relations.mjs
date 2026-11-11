@@ -1,9 +1,9 @@
 import {relations,systemRoot,connectUi,thumbnailVisibility} from '../shared/relations.mjs';
-const labels={navigate:'跳转',show:'打开',hide:'关闭',toggle:'切换'};
+const labels={navigate:'跳转',show:'打开',toggle:'切换'};
 export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect=()=>{},onDelete=()=>{}}){
   const viewport=document.getElementById('relations-view'),plane=document.getElementById('relations-plane');
   const svg=document.getElementById('relations-wires'),cards=document.getElementById('relations-cards'),info=document.getElementById('relations-info');
-  const selections=new Map(),positions=new Map();let pending=null,drag=null,selectedEdge=null,selectedCard=null;
+  const positions=new Map(),draftPorts=new Set();let pending=null,drag=null,selectedEdge=null,selectedCard=null;
   let zoom=1,pan=null,panX=0,panY=0;
   function applyPan(){plane.style.transform=`translate(${panX/zoom}px, ${panY/zoom}px)`;viewport.style.backgroundPosition=`${panX-viewport.scrollLeft}px ${panY-viewport.scrollTop}px`;}
   const zoomButton=document.createElement('button');zoomButton.id='relations-zoom';zoomButton.type='button';zoomButton.title='关系图缩放 · 点击恢复 100%';zoomButton.setAttribute('aria-label','重置关系图缩放');document.getElementById('relations-tools').append(zoomButton);
@@ -33,41 +33,83 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
   function element(tag,cls,text){const el=document.createElement(tag);el.className=cls;if(text)el.textContent=text;return el;}
   function svgEl(tag,attrs){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v]of Object.entries(attrs))el.setAttribute(k,String(v));return el;}
   function point(event){const r=plane.getBoundingClientRect();return {x:(event.clientX-r.left)/zoom,y:(event.clientY-r.top)/zoom};}
-  function port(id,side){const p=positions.get(id);return {x:p.x+(side==='out'?232:0),y:p.y+194};}
+  function port(id,side,sourceId,type){
+    const card=[...cards.children].find(c=>c.dataset.root===id);
+    const button=card&&[...card.querySelectorAll('.relation-port')].find(b=>side==='out'?b.dataset.source===sourceId:b.dataset.destination===id);
+    if(button){const r=button.getBoundingClientRect(),base=plane.getBoundingClientRect();return {x:(r.left+r.width/2-base.left)/zoom,y:(r.top+r.height/2-base.top)/zoom};}
+    const p=positions.get(id);return {x:p.x+(side==='out'?232:0),y:p.y+194};
+  }
   function path(a,b){const bend=Math.max(60,Math.abs(b.x-a.x)/2);return `M ${a.x} ${a.y} C ${a.x+bend} ${a.y}, ${b.x-bend} ${b.y}, ${b.x} ${b.y}`;}
   function drawWires(pointer){
     svg.replaceChildren();const defs=svgEl('defs',{}),marker=svgEl('marker',{id:'relation-arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto'});marker.append(svgEl('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:'#c4ef91'}));defs.append(marker);svg.append(defs);
     const design=getDesign(),edges=relations(design);
     for(const edge of edges){
       if(!positions.has(edge.sourceRoot)||!positions.has(edge.targetRoot))continue;
-      const a=port(edge.sourceRoot,'out'),b=port(edge.targetRoot,'in');
+      const a=port(edge.sourceRoot,'out',edge.sourceId),b=port(edge.targetRoot,'in',null,edge.type);
       const d=edge.sourceRoot===edge.targetRoot?`M ${a.x} ${a.y} C ${a.x+85} ${a.y-300}, ${b.x-85} ${b.y-300}, ${b.x} ${b.y}`:path(a,b);
       const line=svgEl('path',{d,class:'relation-wire'+(selectedEdge===edge.sourceId?' selected':''),'marker-end':'url(#relation-arrow)'});
       const hit=svgEl('path',{d,class:'relation-wire-hit',tabindex:0,role:'button','aria-label':'选择连线 '+(design.nodes.find(n=>n.id===edge.sourceId)?.name??edge.sourceId)});
       const choose=()=>{selectedCard=null;for(const item of cards.children)item.classList.remove('selected-card');selectedEdge=edge.sourceId;showInfo();drawWires();};hit.onclick=choose;hit.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};
       svg.append(line,hit);
-      const label=svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-10,class:'relation-edge-label'});label.textContent=labels[edge.type];svg.append(label);
+      const label=svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-10,class:'relation-edge-label'});label.textContent=(design.nodes.find(n=>n.id===edge.sourceId)?.name??edge.sourceId)+' · '+labels[edge.type];svg.append(label);
     }
-    if(pending&&positions.has(pending.root))svg.append(svgEl('path',{d:path(port(pending.root,'out'),pointer??port(pending.root,'out')),class:'relation-wire pending'}));
+    if(pending&&positions.has(pending.root))svg.append(svgEl('path',{d:path(port(pending.root,'out',pending.source),pointer??port(pending.root,'out',pending.source)),class:'relation-wire pending'}));
     document.getElementById('relations-count').textContent=`${positions.size} 个 UI · ${edges.length} 条关系`;
   }
   function showInfo(){
     info.replaceChildren();const design=getDesign(),source=design.nodes.find(n=>n.id===selectedEdge);
-    if(!source?.action?.target){selectedEdge=null;info.textContent='选择触发节点，从右侧圆点拖到目标卡片左侧圆点。也可依次点击两个圆点。';return;}
+    if(!relations(design).some(edge=>edge.sourceId===selectedEdge)){selectedEdge=null;info.textContent='仅展示系统级打开、跳转等关系，关闭由窗口自身处理。通过“＋ 添加交互”选择按钮，再连接目标卡片。';return;}
     const target=design.nodes.find(n=>n.id===source.action.target);
-    info.append(element('span','',`${source.name} · 点击 → ${labels[source.action.type]} ${target?.name??''}`));
-    const remove=element('button','danger','删除连线');remove.onclick=()=>{edit(()=>{delete getDesign().nodes.find(n=>n.id===selectedEdge).action;});selectedEdge=null;showInfo();};info.append(remove);
+    info.append(element('span','',`${systemRoot(design,source.id)?.name} / ${source.name} · Click → ${labels[source.action.type]} ${target?.name??''} · 控件 ID：${source.id}`));
+    const action=document.createElement('select');action.setAttribute('aria-label','连线动作');
+    for(const [value,label]of Object.entries(labels)){const option=element('option','',label);option.value=value;action.append(option);}
+    action.value=source.action.type;action.onchange=()=>{const id=source.id,targetId=source.action.target,type=action.value;if(edit(()=>connectUi(getDesign(),id,targetId,type))){selectedEdge=id;showInfo();drawWires();}};info.append(action);
+    const locate=element('button','','定位控件');locate.onclick=()=>onEdit(source.id);info.append(locate);
+    const remove=element('button','danger','删除连线');remove.onclick=()=>{draftPorts.delete(selectedEdge);edit(()=>{delete getDesign().nodes.find(n=>n.id===selectedEdge).action;});selectedEdge=null;showInfo();};info.append(remove);
   }
-  function complete(rootId){
-    if(!pending)return;const {source,type}=pending;pending=null;
-    edit(()=>connectUi(getDesign(),source,rootId,type));selectedEdge=source;showInfo();drawWires();notice('已配置点击'+labels[type]+'。进入预演可验证；保存会写入工程。');
+  function complete(rootId,type='show'){
+    if(!pending)return;const {source}=pending;pending=null;
+    const old=getDesign().nodes.find(n=>n.id===source)?.action;
+    if(old?.target&&(old.target!==rootId||old.type!==type)&&!window.confirm('这个触发端口已有动作，是否替换原连线？')){drawWires();return;}
+    if(!edit(()=>connectUi(getDesign(),source,rootId,type)))return;
+    draftPorts.delete(source);selectedEdge=source;showInfo();drawWires();notice('已配置独立按钮动作：'+labels[type]+'。保存后写入当前项目。');
+  }
+  function triggerName(design,node,root){
+    if(node.id===root.id)return root.systemKind==='code'?'系统触发（仅记录）':'点击界面';
+    const queue=[node.id];
+    for(let i=0;i<queue.length;i++)for(const child of design.nodes.filter(n=>n.parent===queue[i])){
+      if(child.type==='Text'&&child.text?.trim()&&child.text.trim().length<=20)return child.text.trim();
+      queue.push(child.id);
+    }
+    return node.name;
+  }
+  function chooseTrigger(root,candidates){
+    const dialog=element('dialog','relation-picker');dialog.setAttribute('aria-label',root.name+' 添加交互');
+    const heading=element('h3','',root.name+' · 添加交互');
+    const search=element('input','');search.type='search';search.placeholder='搜索按钮名称或控件 ID';search.setAttribute('aria-label','搜索交互');
+    const list=element('div','relation-picker-list');
+    const update=()=>{
+      list.replaceChildren();const query=search.value.trim().toLowerCase();
+      for(const node of candidates){
+        const name=triggerName(getDesign(),node,root);
+        if(![name,node.name,node.id].some(v=>v.toLowerCase().includes(query)))continue;
+        const choice=element('button','relation-picker-choice');choice.append(element('strong','',name),element('small','',node.name+' · '+node.id));
+        const connected=!!node.action?.target;choice.disabled=connected||draftPorts.has(node.id);
+        if(choice.disabled)choice.append(element('small','',connected?'已连接':'已添加'));
+        choice.onclick=()=>{draftPorts.add(node.id);dialog.close();render();notice('已添加“'+name+'”端口，请从右侧圆点连接目标。');};list.append(choice);
+      }
+      if(!list.children.length)list.append(element('p','','没有匹配的交互'));
+    };
+    search.oninput=update;const cancel=element('button','','取消');cancel.onclick=()=>dialog.close();
+    dialog.append(heading,search,list,cancel);dialog.onclose=()=>dialog.remove();document.body.append(dialog);update();dialog.showModal();search.focus();
   }
   function render(){
     if(viewport.hidden)return;
     pending=null;drag=null;positions.clear();cards.replaceChildren();const design=getDesign(),roots=design.nodes.filter(n=>n.parent===null);
+    const connectedSources=new Set(relations(design).map(edge=>edge.sourceId));
     if(!roots.some(n=>n.id===selectedCard))selectedCard=null;
     for(const [index,root]of roots.entries()){
-      const p=root.relationPosition??{x:32+(index%2)*310,y:40+Math.floor(index/2)*285};positions.set(root.id,{...p});
+      const p=root.relationPosition??{x:32+(index%2)*310,y:40+Math.floor(index/2)*330};positions.set(root.id,{...p});
       const card=element('article','relation-card');card.dataset.root=root.id;card.style.left=p.x+'px';card.style.top=p.y+'px';card.setAttribute('aria-label','UI 卡片 '+root.name);
       card.tabIndex=0;card.classList.toggle('selected-card',selectedCard===root.id);
       const selectCard=()=>{selectedEdge=null;selectedCard=root.id;for(const item of cards.children)item.classList.toggle('selected-card',item.dataset.root===root.id);onSelect(root.id);showInfo();drawWires();};
@@ -81,18 +123,28 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
       const original=[...document.querySelectorAll('#canvas [data-node]')].find(e=>e.dataset.node===root.id);
       if(original){const clone=original.cloneNode(true),visibility=thumbnailVisibility(design,root.id);for(const el of [clone,...clone.querySelectorAll('*')]){if(el.dataset.node)el.hidden=!visibility.get(el.dataset.node);el.removeAttribute('id');el.classList.remove('selected');el.removeAttribute('data-node');el.removeAttribute('tabindex');}stage.append(clone);}
       if(root.systemKind==='code'){thumb.append(element('strong','','代码系统'),element('p','',`${root.scripts?.files?.length??0} 个源码文件`),element('small','','选择卡片查看源码 · 连线仅记录关系'));thumb.style.cssText+='display:flex;flex-direction:column;align-items:center;justify-content:center;';}else thumb.append(stage);card.append(thumb);
-      const row=element('div','relation-controls');const source=document.createElement('select');source.setAttribute('aria-label',root.name+' 触发节点');
-      const candidates=design.nodes.filter(n=>systemRoot(design,n.id)?.id===root.id&&(n.id===root.id||n.type==='Button'||n.action));
-      for(const n of candidates){const option=document.createElement('option');option.value=n.id;option.textContent=n.id===root.id?(root.systemKind==='code'?'系统触发（仅记录）':'点击界面'):n.name;source.append(option);}
-      source.value=candidates.some(n=>n.id===selections.get(root.id)?.source)?selections.get(root.id).source:(candidates.find(n=>n.type==='Button')?.id??root.id);
-      const action=document.createElement('select');action.setAttribute('aria-label',root.name+' 连线动作');for(const [value,label]of Object.entries(labels)){const option=document.createElement('option');option.value=value;option.textContent=label;action.append(option);}action.value=selections.get(root.id)?.type??'navigate';
-      const remember=()=>{selections.set(root.id,{source:source.value,type:action.value});pending=null;drawWires();};source.onchange=action.onchange=remember;row.append(source,action);card.append(row);
-      const incoming=element('button','relation-port relation-in');incoming.dataset.destination=root.id;incoming.title='连接到 '+root.name;incoming.setAttribute('aria-label','连接到 '+root.name);incoming.onclick=()=>complete(root.id);
-      const outgoing=element('button','relation-port relation-out');outgoing.title='从 '+root.name+' 连出';outgoing.setAttribute('aria-label','从 '+root.name+' 连出');
-      const begin=()=>{pending={root:root.id,source:source.value,type:action.value};selectedEdge=null;showInfo();notice('选择目标卡片左侧圆点，或按 Esc 取消。');drawWires();};outgoing.onpointerdown=e=>{if(e.button===0){e.preventDefault();begin();}};outgoing.onclick=()=>{if(!pending)begin();};
-      card.append(incoming,outgoing);cards.append(card);
+      const incoming=element('button','relation-port relation-in relation-card-input');incoming.dataset.destination=root.id;
+      incoming.title='连接到 '+root.name+'（默认打开）';incoming.setAttribute('aria-label','连接到 '+root.name);
+      incoming.onclick=e=>{e.stopPropagation();complete(root.id);};card.append(incoming);
+      const outputs=element('div','relation-outputs');
+      const candidates=design.nodes.filter(n=>systemRoot(design,n.id)?.id===root.id&&(n.type==='Button'||n.action||n.id===root.id)&&(!n.action?.target||connectedSources.has(n.id)));
+      for(const n of candidates.filter(n=>connectedSources.has(n.id)||draftPorts.has(n.id))){
+        const row=element('div','relation-port-row');row.dataset.trigger=n.id;
+        const name=triggerName(design,n,root);
+        const label=element('button','relation-trigger-label',name);label.title=name+' · '+n.id+' · 点击定位控件';
+        label.onclick=e=>{e.stopPropagation();onEdit(n.id);};row.append(label);
+        const badge=element('small','relation-port-status',n.action?.target?labels[n.action.type]??'已配置':'未连接');row.append(badge);
+        const outgoing=element('button','relation-port relation-out');outgoing.dataset.source=n.id;
+        outgoing.title=name+' · Click';outgoing.setAttribute('aria-label','从 '+root.name+' / '+name+' · Click 连出');
+        const begin=()=>{pending={root:root.id,source:n.id};selectedEdge=null;showInfo();notice('从“'+name+'”连接到目标卡片的输入圆点，默认打开。Esc 取消。');drawWires();};
+        outgoing.onpointerdown=e=>{if(e.button===0){e.preventDefault();e.stopPropagation();begin();}};
+        outgoing.onclick=e=>{e.stopPropagation();if(!pending)begin();};row.append(outgoing);outputs.append(row);
+      }
+      card.append(outputs);
+      const add=element('button','relation-add','＋ 添加交互');add.setAttribute('aria-label',root.name+' 添加交互');
+      add.onclick=e=>{e.stopPropagation();chooseTrigger(root,candidates);};card.append(add);cards.append(card);
     }
-    plane.style.width=Math.max(640,...[...positions.values()].map(p=>p.x+310))+'px';plane.style.height=Math.max(420,...[...positions.values()].map(p=>p.y+290))+'px';
+    plane.style.width=Math.max(640,...[...positions.values()].map(p=>p.x+310))+'px';plane.style.height=Math.max(420,...[...positions.values()].map((p,i)=>p.y+(cards.children[i]?.offsetHeight??236)+45))+'px';
     document.getElementById('relations-empty').hidden=roots.length>0;showInfo();drawWires();
   }
   viewport.addEventListener('pointermove',e=>{
@@ -104,14 +156,14 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
     if(pan&&e.pointerId===pan.id){finishPan();return;}
     if(e.button!==0)return;
     if(drag){const {id,original}=drag,p=positions.get(id);drag=null;selectedCard=id;onSelect(id);if(p.x!==original.x||p.y!==original.y)edit(()=>{getDesign().nodes.find(n=>n.id===id).relationPosition={x:Math.round(p.x),y:Math.round(p.y)};});}
-    else if(pending){const destination=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-destination]');if(destination)complete(destination.dataset.destination);}
+    else if(pending){const destination=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-destination]');if(destination)complete(destination.dataset.destination,destination.dataset.operation);}
   });
   window.addEventListener('pointercancel',()=>{finishPan();drag=null;pending=null;if(!viewport.hidden)render();});
   window.addEventListener('keydown',e=>{
     if(viewport.hidden||e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,select,textarea,[contenteditable]:not([contenteditable="false"]),[role="textbox"],dialog'))return;
     if(e.key==='Escape'){pending=null;drawWires();}
     if(e.key!=='Delete'||e.repeat||drag||pan)return;
-    if(selectedEdge){e.preventDefault();info.querySelector('button')?.click();}
+    if(selectedEdge){e.preventDefault();info.querySelector('button.danger')?.click();}
     else if(selectedCard){e.preventDefault();pending=null;onDelete(selectedCard);}
   });
   function dropPosition(x,y){

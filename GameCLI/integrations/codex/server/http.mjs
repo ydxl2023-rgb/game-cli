@@ -20,6 +20,7 @@ export function createHttpServer(store = createStore(), templates = createTempla
       if(req.method==='GET'&&url.pathname==='/api/studio/admin/candidate-detail')return send(200,await workspaces.candidateDetail(url.searchParams.get('id')));
       if(req.method==='GET'&&url.pathname==='/api/studio/template-versions')return send(200,await workspaces.templateVersions(url.searchParams.get('id')));
       if (req.method === 'GET' && url.pathname === '/api/studio') return send(403,{error:'请选择项目，再读取 /api/studio/projects/<projectId>。'});
+      if(req.method==='GET'&&url.pathname==='/api/studio/animations')return send(200,await workspaces.animations());
       if (req.method === 'GET' && url.pathname === '/api/studio/templates') return send(200, await templates.list());
       if(req.method==='GET' && /^\/api\/studio\/assets\/[a-f0-9]{64}$/.test(url.pathname)) {
         if(!await workspaces.assetAllowed(url.pathname.split('/').at(-1),url.searchParams.get('projectId')))return send(403,{error:'无权读取该资源。'});
