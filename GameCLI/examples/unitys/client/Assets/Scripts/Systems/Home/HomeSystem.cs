@@ -39,7 +39,11 @@ public class HomeSystem : RuntimeSystem
     /// </summary>
     public override void OnDetive()
     {
-        UISystem.GetSingleton().CloseWidget<UIHome>();
+        System.Type[] widgets = new System.Type[] {
+            typeof(UIHome)
+        };
+
+        UISystem.GetSingleton().CloseWidget(widgets);
     }
 
     /// <summary>

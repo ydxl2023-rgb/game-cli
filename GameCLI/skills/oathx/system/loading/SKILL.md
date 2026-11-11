@@ -22,7 +22,7 @@ description: 维护 Oathx Loading 纯展示页面 UILoading 和 VMLoading，基�
 - 调用方通过 UISystem.OpenWidget<UILoading> 打开，必须提供显式完成回调，在回调中初始化进度和提示。调用方若属于 RuntimeSystem，调用前检查 IsActive。异步打开期间的数据缓存及任务生命周期由调用方负责，UI 不新增独立状态管理层。
 - UpdateProgress(progress, message="Loading...") 接受 0–1 进度；NaN 视为 0，越界值限制到 0–1。输出例如 `Loading...(35%)`。bool 表示已更新绑定的 VM；VM 尚未绑定时返回 false。
 - SetTip(text) 更新提示，传 null 清空；首次打开没有调用 SetTip 时保留预制体已编辑的提示。
-- 调用方完成任务或退出时通过 UISystem.CloseWidget<UILoading> 关闭，沿用框架 Unref 清理绑定。UILoading 不提供独立 OnActive/OnDetive，也不管理请求代次。
+- 调用方完成任务或退出时先声明局部 `System.Type[] widgets` 数组，将 `typeof(UILoading)` 单独写一行，再调用 `UISystem.GetSingleton().CloseWidget(widgets)`，禁止内联数组，沿用框架 Unref 清理绑定。UILoading 不提供独立 OnActive/OnDetive，也不管理请求代次。
 
 业务接入直接使用 UISystem 和 UILoading 的展示方法，不通过 dispatcher.Load/Unload 加载 Loading 模块。当前不新增实际加载任务或配置表启动项。
 

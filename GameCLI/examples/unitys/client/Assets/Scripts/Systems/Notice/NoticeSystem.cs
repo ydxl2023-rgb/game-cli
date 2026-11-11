@@ -79,6 +79,10 @@ public class NoticeSystem : RuntimeSystem
     {
         UnsubscribeAll();
 
-        UISystem.GetSingleton().CloseWidget<UINotice>(immediate: true);
+        System.Type[] widgets = new System.Type[] {
+            typeof(UINotice)
+        };
+
+        UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
     }
 }
