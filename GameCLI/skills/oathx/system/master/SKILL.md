@@ -24,10 +24,15 @@ description: 整理、归档和接入 Oathx Master 纯代码系统，维护玩�
 
 ## 当前生命周期契约
 
-- MasterSystem 不依赖 RPC 或网络协议。保留 LoginSucceed、LoginFailure 本地通知类型，不恢复 SystemLoadEvent、SystemUnloadEvent 或保存事件。
-- GamePlugin 按 FunctionSystemConfig 的 InstallOnStartup/Active 配置创建并激活 Master。OnActive 直接调用 Load，不等待登录事件。
-- Load 检查 IsActive 和 MasterEntity；已有本地存档则 Deserialize，无存档则 Serialize 默认数据，成功后调用 Launch。加载失败返回 false，不覆盖损坏存档。
-- OnDetive 在 UnsubscribeAll 后空一行调用 Unload；Unload 通过 dispatcher 卸载 Home，不自动保存或返回登录页。
+- MasterSystem 不依赖 RPC 或网络协议。保留 LoginSucceed、LoginFailure，系统切换事件统一使用 SystemActive、SystemDetive，不使用旧名称或保存事件。事件包含 type（RuntimeSystem 类型）和可选 complete（系统步骤完成回调，不代表 UI 加载完成）。
+- GamePlugin 按 FunctionSystemConfig 的 InstallOnStartup/Active 配置创建并激活 Master。OnActive 订阅 LoginSucceed、SystemActive、SystemDetive；收到本地登录成功事件后先 Load，成功再 Launch。Load 本身不进入 Home。
+- Load 检查 IsActive 和 MasterEntity；已有本地存档则 Deserialize，无存档则 Serialize 默认数据，成功后返回 true，由登录成功处理方法调用 Launch。加载失败返回 false，不覆盖损坏存档。
+- OnDetive 在 UnsubscribeAll 后空一行调用 Unload；Unload 通过 dispatcher 卸载 Notice、Fight 和 Home，不自动保存或返回登录页。
 - Save 检查激活状态和实体存在后直接写本地存档，返回 bool。
 - 不添加 loaded、launched、activation 或替代状态字段。Launch 的异步完成回调仅检查 IsActive，不宣称具有重复请求拦截或跨激活版本取消能力。
 - MasterEntity 依赖 Config.Excel.CHAPTER_HOME、Oathx.Entity；RuntimeSystem 依赖 Oathx.Core。不要在归档时打包业务 UI 或修改用户确认的结构。
+
+- LoginSystem 的开始游戏按钮通过 XPluginUtility.PostEvent(new LoginSucceed { pid = ... }) 投递本地事件，无网络请求。Master 停用时取消订阅；数据读取失败不进入 Home。
+
+- Master 是业务系统加载、卸载的统一执行入口。Login 打开公告投递 SystemActive，Notice 关闭投递 SystemDetive，Home 加载 Fight 同样投递 SystemActive 并保留完成回调。各业务系统仅处理自身 OnActive/OnDetive，不直接切换其他系统。Master 拒绝无效类型及针对自身的切换请求。
+- SystemActive 的加载延后一帧，避免事件分发遍历 modules 时修改集合。Master 退出 Login 或 Launch 到 Home 时先卸载 Notice；Login.OnDetive 仅清理自身页面。

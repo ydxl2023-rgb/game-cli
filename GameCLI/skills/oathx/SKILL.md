@@ -23,6 +23,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | [system/sv-login](system/sv-login/SKILL.md) | LoginSystem 与 UILogin |
 | [system/loading](system/loading/SKILL.md) | Loading 页面、进度和提示更新 |
 | [system/master](system/master/SKILL.md) | Master 纯代码系统、玩家实体和业务启动流程 |
+| [system/notice](system/notice/SKILL.md) | SV 登录公告 UI 提取与模板资源 |
 
 ## 组织规则
 

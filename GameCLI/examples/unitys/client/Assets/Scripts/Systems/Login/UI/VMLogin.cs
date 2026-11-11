@@ -6,6 +6,12 @@ using Oathx.Widget;
 public partial class VMLogin : VM
 {
     /// <summary>
+    /// Manual announcement button callback.
+    /// </summary>
+    [Binding]
+    private ButtonClick announcementClick;
+
+    /// <summary>
     /// Login button callback.
     /// </summary>
     [Binding]

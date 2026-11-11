@@ -1,8 +1,41 @@
 using Oathx.Core;
 using Oathx.Entity;
+using System.Collections;
 
 /// <summary>
-/// Shared login notification retained for existing local subscribers.
+/// Requests system loading and activation through MasterSystem.
+/// </summary>
+public class SystemActive : IEvent
+{
+    /// <summary>
+    /// Runtime system type to activate.
+    /// </summary>
+    public System.Type type { get; set; }
+
+    /// <summary>
+    /// Optional action after the system activation step completes.
+    /// </summary>
+    public System.Action complete { get; set; }
+}
+
+/// <summary>
+/// Requests system deactivation and unloading through MasterSystem.
+/// </summary>
+public class SystemDetive : IEvent
+{
+    /// <summary>
+    /// Runtime system type to unload.
+    /// </summary>
+    public System.Type type { get; set; }
+
+    /// <summary>
+    /// Optional action after the system unloading step completes.
+    /// </summary>
+    public System.Action complete { get; set; }
+}
+
+/// <summary>
+/// Local login success notification that permits game startup.
 /// </summary>
 public class LoginSucceed : IEvent
 {
@@ -31,12 +64,77 @@ public class LoginFailure : IEvent
 public class MasterSystem : RuntimeSystem
 {
     /// <summary>
-    /// Load local player data and request Home startup.
+    /// Subscribe to local login success without starting Home.
     /// </summary>
-    /// <returns>True when local data is ready and startup has been requested.</returns>
+    /// <returns>True after registering the local login handler.</returns>
     public override bool OnActive()
     {
-        return Load();
+        Subscribe<LoginSucceed>(OnLoginSucceed);
+        Subscribe<SystemActive>(OnSystemActive);
+        Subscribe<SystemDetive>(OnSystemDetive);
+
+        return true;
+    }
+
+    /// <summary>
+    /// Load and activate a requested business system.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    private void OnSystemActive(SystemActive data)
+    {
+        if (IsActive() && IsSystemType(data.type))
+            XCoroutine.Run(ActivateSystem(data));
+    }
+
+    /// <summary>
+    /// Wait until event dispatch has finished before changing the system registry.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    /// <returns>The deferred activation sequence.</returns>
+    private IEnumerator ActivateSystem(SystemActive data)
+    {
+        yield return null;
+
+        if (IsActive())
+            LoadSystem(data.type, data.complete);
+    }
+
+    /// <summary>
+    /// Unload a requested business system and its dependent pages.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    private void OnSystemDetive(SystemDetive data)
+    {
+        if (IsActive() && IsSystemType(data.type))
+        {
+            if (data.type == typeof(LoginSystem))
+                dispatcher.Unload(typeof(NoticeSystem));
+
+            UnloadSystem(data.type, data.complete);
+        }
+    }
+
+    /// <summary>
+    /// Reject invalid targets and requests to replace the lifecycle coordinator.
+    /// </summary>
+    /// <param name="type">Requested system type.</param>
+    /// <returns>True for a concrete business runtime system.</returns>
+    private bool IsSystemType(System.Type type)
+    {
+        return type != null && type != typeof(MasterSystem) && !type.IsAbstract
+            && typeof(RuntimeSystem).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Prepare local player data and start Home after local login succeeds.
+    /// </summary>
+    /// <param name="data">Local login success notification.</param>
+    private void OnLoginSucceed(LoginSucceed data)
+    {
+        if (Load())
+        {
+            Launch();
+        }
     }
 
     /// <summary>
@@ -52,7 +150,7 @@ public class MasterSystem : RuntimeSystem
     /// <summary>
     /// Restore local data or persist initial values before starting business systems.
     /// </summary>
-    /// <returns>True when local data is ready and startup has been requested.</returns>
+    /// <returns>True when local player data is ready.</returns>
     public bool Load()
     {
         if (!IsActive())
@@ -68,7 +166,7 @@ public class MasterSystem : RuntimeSystem
         if (!ready)
             return false;
 
-        return Launch();
+        return true;
     }
 
     /// <summary>
@@ -77,6 +175,8 @@ public class MasterSystem : RuntimeSystem
     /// <returns>True after requesting Home removal from the dispatcher.</returns>
     public bool Unload()
     {
+        dispatcher.Unload(typeof(NoticeSystem));
+        dispatcher.Unload(typeof(FightSystem));
         dispatcher.Unload(typeof(HomeSystem));
 
         return true;
@@ -106,6 +206,8 @@ public class MasterSystem : RuntimeSystem
     {
         if (!IsActive())
             return false;
+
+        dispatcher.Unload(typeof(NoticeSystem));
 
         UnloadSystem(typeof(LoginSystem), () => {
             if (IsActive())
