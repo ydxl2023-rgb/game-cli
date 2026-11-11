@@ -1,205 +1,119 @@
 using Oathx.Core;
 using Oathx.Entity;
-using Oathx.HttpProtocol;
-using Oathx.Rpc;
-using System;
-using Unity.VisualScripting;
-using UnityEngine;
 
 /// <summary>
-/// login succeed event
+/// Shared login notification retained for existing local subscribers.
 /// </summary>
-public class LoginSucceedEvent : IEvent
+public class LoginSucceed : IEvent
 {
     /// <summary>
-    /// player id
+    /// Player identifier supplied by the local caller.
     /// </summary>
-    public int pid
+    public int pid 
     { get; set; }
 }
 
 /// <summary>
-/// login failure type
+/// Local login failure notification.
 /// </summary>
-public enum LoginFailureCode
-{
-    RequestHostFailure,
-    ConnectFailure,
-    DataError,
-    LoginError
-}
-
-/// <summary>
-/// login failure event
-/// </summary>
-public class LoginFailureEvent : IEvent
+public class LoginFailure : IEvent
 {
     /// <summary>
-    /// player id
+    /// Player identifier supplied by the local caller.
     /// </summary>
-    public LoginFailureCode failure
+    public int code
     { get; set; }
 }
 
 /// <summary>
-/// master system
+/// Coordinates local player persistence and business system startup.
 /// </summary>
 public class MasterSystem : RuntimeSystem
 {
     /// <summary>
-    /// active system
+    /// Load local player data and request Home startup.
     /// </summary>
-    /// <returns></returns>
-    /// <exception cref="System.NotImplementedException"></exception>
+    /// <returns>True when local data is ready and startup has been requested.</returns>
     public override bool OnActive()
     {
-        Subscribe<LoginSucceedEvent>(OnLoginSucceedEvent);
-        Subscribe<LoginFailureEvent>(OnLoginFailureEvent);
+        return Load();
+    }
+
+    /// <summary>
+    /// Release local event subscriptions and unload Home.
+    /// </summary>
+    public override void OnDetive()
+    {
+        UnsubscribeAll();
+
+        Unload();
+    }
+
+    /// <summary>
+    /// Restore local data or persist initial values before starting business systems.
+    /// </summary>
+    /// <returns>True when local data is ready and startup has been requested.</returns>
+    public bool Load()
+    {
+        if (!IsActive())
+            return false;
+
+        if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)
+            || !(entity is MasterEntity master))
+            return false;
+
+        bool ready = master.ExistsSerializeFile()
+            ? master.Deserialize()
+            : !string.IsNullOrEmpty(master.Serialize());
+        if (!ready)
+            return false;
+
+        return Launch();
+    }
+
+    /// <summary>
+    /// Unload Home, including during deactivation.
+    /// </summary>
+    /// <returns>True after requesting Home removal from the dispatcher.</returns>
+    public bool Unload()
+    {
+        dispatcher.Unload(typeof(HomeSystem));
 
         return true;
     }
 
     /// <summary>
-    /// deactive system
+    /// Persist the current local player data without contacting a server.
     /// </summary>
-    /// <exception cref="System.NotImplementedException"></exception>
-    public override void OnDetive()
+    /// <returns>True when the local archive has been written.</returns>
+    public bool Save()
     {
-        UnsubscribeAll();
+        if (!IsActive())
+            return false;
+
+        if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)
+            || !(entity is MasterEntity master))
+            return false;
+
+        return !string.IsNullOrEmpty(master.Serialize());
     }
 
     /// <summary>
-    /// proc login succeed event
+    /// Unload login and request Home startup.
     /// </summary>
-    /// <param name="evt"></param>
-    public void OnLoginSucceedEvent(LoginSucceedEvent data)
-    {
-        Rpc.Load<MasterEntity>(data.pid, (code, master) => {
-            if (code == HttpCode.SUCCEED)
-            {
-                if (master)
-                {
-                    var pid = master.GetAttr(MasterPropertyDef.PID);
-                    if (pid != data.pid)
-                        master.SetAttr(MasterPropertyDef.PID, data.pid);
-
-                    // deserialize succeed, force serialize to local storage
-                    string local = master.Serialize();
-                    if (!string.IsNullOrEmpty(local))
-                    {
-                        Launch();
-                    }
-                }
-                else
-                {
-                    // if load failure, then just launch home system, because maybe player just created,
-                    // but local data is newer than server data, so just try load from server, if load failure, then just launch home system
-                    Launch();
-                }
-            }
-        });   
-
-    }
-
-    /// <summary>
-    /// proc login failure event, 
-    /// we just launch home system, because maybe player just created, 
-    /// but local data is newer than server data, 
-    /// so just try load from server, if load failure, then just launch home system
-    /// </summary>
-    /// <param name="data"></param>
-    public void OnLoginFailureEvent(LoginFailureEvent data)
-    {
-        var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
-        if (master)
-        {
-            var pid = master.GetAttr(MasterPropertyDef.PID);
-            if (!master.IsValid())
-                master.Serialize();
-
-            Launch();
-        }
-    }
-
-    /// <summary>
-    /// request load response, then launch home system
-    /// </summary>
-    /// <param name="code"></param>
-    /// <param name="response"></param>
-    public void DoLoad(int code, LoadResponse response)
-    {
-        var exist = XEntityManager.GetSingleton().TryGetEntity(response.name, out var entity);
-        if (exist)
-        {
-            if (entity is XEntitySerialize es)
-            {
-                bool succeed = false;
-                if (code == HttpCode.SUCCEED)
-                {
-                    string archive = response.archive;
-                    if (!string.IsNullOrEmpty(archive))
-                        succeed = es.Deserialize(archive);
-                }
-
-                if (succeed)
-                {
-                    // deserialize succeed, force serialize to local storage
-                    string local = es.Serialize();
-                    if (!string.IsNullOrEmpty(local))
-                    {
-                        if (response.name == typeof(MasterEntity).Name)
-                        {
-                            Launch();
-                        }
-                    }
-                }
-                else
-                {
-                    // force update pid, because entity maybe just created
-                    var pid = entity.GetAttr(MasterPropertyDef.PID);
-                    if (pid != response.pid)
-                        entity.SetAttr(MasterPropertyDef.PID, response.pid);
-
-                    Rpc.Save(response.pid, es, (code, response) => {
-                        if (code == HttpCode.SUCCEED)
-                        {
-                            if (response.name == typeof(MasterEntity).Name)
-                            {
-                                Launch();
-                            }
-                        }
-                    });
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// request save response
-    /// </summary>
-    /// <param name="code"></param>
-    /// <param name="response"></param>
-    [RpcServerCallClient(XRpcType.Http)]
-    public void ReqSave(int code, SaveResponse response)
-    {
-        if (code !=  HttpCode.SUCCEED)
-            Debug.LogError(code);
-    }
-
-    /// <summary>
-    /// launch game home system
-    /// </summary>
+    /// <returns>True when the transition has been requested.</returns>
     private bool Launch()
     {
+        if (!IsActive())
+            return false;
+
         UnloadSystem(typeof(LoginSystem), () => {
-            LoadSystem(typeof(HomeSystem));
-            LoadSystem(typeof(BackpackSystem));
-            LoadSystem(typeof(EmailSystem));
-            LoadSystem(typeof(CharacterSystem));
-            LoadSystem(typeof(SevenDayLoginSystem));
+            if (IsActive())
+            {
+                LoadSystem(typeof(HomeSystem));
+            }
         });
 
         return true;
     }
-
 }
