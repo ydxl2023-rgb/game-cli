@@ -9,7 +9,7 @@ description: 实现或维护 GameCLI 的 SV Login 页面，使用 LoginSystem、
 
 ## 已确认的职责与结构
 
-- `examples/unitys/client/Assets/Scripts/Systems/Login/LoginSystem.cs` 继承 RuntimeSystem，由原 SV 页面系统重命名而来，保留该脚本的 GUID。旧 LoginSystem 的 Host/Login 通信代码已删除，不迁移到服务或其他系统。
+- `examples/unitys/development/client/Assets/Scripts/Systems/Login/LoginSystem.cs` 继承 RuntimeSystem，由原 SV 页面系统重命名而来，保留该脚本的 GUID。旧 LoginSystem 的 Host/Login 通信代码已删除，不迁移到服务或其他系统。
 - `OnActive` 先在回调外检查 `IsActive()`，未激活则返回 false，不调用 `OpenWidget`。`OpenWidget<UILogin>` 必须提供显式完成回调，禁止传 `null`，也不能直接把其即时返回值视为加载完成。回调确认 widget 有效后调用 XApp.ShowLaunchBackground，仅保留 Launch 背景，避免两个 UI 的前景叠加；OnActive 发起请求后返回 true，关闭页面由 OnDetive 负责。
 - LoginEntity 仍为既有数据实体，UILogin 保留 Invalidate(LoginEntity) 展示入口；LoginSystem 按需读写 LoginEntity 的本地区服选择；开始游戏时查询本地 MasterEntity 的 PID 并投递 LoginSucceed，不发送网络请求。
 - UI 使用 `UI/UILogin.cs`，VM 使用 `VM/VMLogin.cs`，以 VMSevenDayLogin 的 `partial + [Binding]` 为蓝本。Binding 字段为私有 camelCase，由 WidgetGenerator 生成的 VM 数据属性供系统赋值；这些生成属性不是对外暴露 Unity UI 引用。
@@ -27,7 +27,7 @@ description: 实现或维护 GameCLI 的 SV Login 页面，使用 LoginSystem、
 - Change、FriendButton、Enter、Notice 为无图片透明按钮；导入器保留点击 Image，但 Graphic alpha 必须为 0，不能生成白色底板或禁用态灰块。修复同步维护 `clis/unity-cli/UnityEditor/Editor/GameCliUguiImporter.cs` 与目标工程安装副本，验证子节点图片及按钮点击区域仍保留。
 - 保留原有动画。若本机导入器不支持模板里的缩放曲线，先检查并同步 `clis/unity-cli/UnityEditor/Editor` 的现有导入器，而不是删除动画数据。
 - 使用现有 ugui CLI 先 dry-run 后生成，再使用 widget-metadata 先 dry-run 后绑定；必须检查九个字段及顺序均匹配。记录输出是完整 prefab 资源和 Metadata，UIWidget 由 UISystem 加载时挂载。
-- 登录入口为 `examples/unitys/config/propFunctionSystem.xlsx` 的 SYS_LOGIN / ClassType，以及导出文件 `Assets/Data/Jsons/Excels/FunctionSystemConfig.bytes` 的 10002 项，当前均为 LoginSystem。通过 UnityCLI excel 更新源表，避免下次导表覆盖入口。
+- 登录入口为 `examples/unitys/development/config/propFunctionSystem.xlsx` 的 SYS_LOGIN / ClassType，以及导出文件 `Assets/Data/Jsons/Excels/FunctionSystemConfig.bytes` 的 10002 项，当前均为 LoginSystem。通过 UnityCLI excel 更新源表，避免下次导表覆盖入口。
 
 ## 标准模板代码包
 

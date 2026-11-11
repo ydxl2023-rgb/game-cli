@@ -22,7 +22,7 @@
 | com.oathx.widget | svn://gitee.com/oathxv/com.oathx.widget/branches/gamecli |
 | com.oathx.widget.extension | svn://gitee.com/oathxv/com.oathx.widget.extension/branches/gamecli |
 
-参考清单：`examples/unitys/client/LocalPackages/install.bat` 和 `svn.txt`。将清单转换为 pwsh 中逐项执行的 SVN 命令，不直接用会依赖当前目录且忽略中途失败的批处理作为自动化验收。
+参考清单：`examples/unitys/development/client/LocalPackages/install.bat` 和 `svn.txt`。将清单转换为 pwsh 中逐项执行的 SVN 命令，不直接用会依赖当前目录且忽略中途失败的批处理作为自动化验收。
 
 ```powershell
 svn checkout svn://gitee.com/oathxv/com.oathx.core/branches/gamecli <project>/LocalPackages/com.oathx.core

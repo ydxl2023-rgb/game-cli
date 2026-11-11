@@ -1,4 +1,4 @@
-param([string]$Project = 'G:/Works/GameCLI/GameCLI/examples/unitys/client')
+param([string]$Project = 'G:/Works/GameCLI/GameCLI/examples/unitys/development/client')
 $ErrorActionPreference = 'Stop'
 $cli = Join-Path $Project 'Library/UnityCLI/unity-cli.exe'
 $integration = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../../integrations/codex'))

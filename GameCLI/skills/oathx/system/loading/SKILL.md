@@ -9,7 +9,7 @@ description: 维护 Oathx Loading 纯展示页面 UILoading 和 VMLoading，基�
 
 ## 当前结构
 
-- 仅保留 `examples/unitys/client/Assets/Scripts/Systems/Loading/UI/UILoading.cs` 与 `VMLoading.cs`。沿用现有模块目录，不创建独立 RuntimeSystem；skill 的分目录组织不代表运行时必须有对应系统类。
+- 仅保留 `examples/unitys/development/client/Assets/Scripts/Systems/Loading/UI/UILoading.cs` 与 `VMLoading.cs`。沿用现有模块目录，不创建独立 RuntimeSystem；skill 的分目录组织不代表运行时必须有对应系统类。
 - 复用 `Assets/Data/Widgets/Loading/Loading.prefab`，不重建美术或替换动画。它与 Launch 的 Loading 子面板是不同界面。
 - `Loading/Animator/RateBg/Rate` 是进度 Text；`TipText` 是提示 Text。预制体没有进度条，不把 RateBg、Ball 或 Arrow 当作填充条。保留原来的旋转及 UV 动画。
 - VMLoading 使用两个私有 `[Binding(typeof(SyncText))]` 字段 rate、tipText。由生成器产生 Rate、TipText 属性，通过 Metadata 绑定，不使用运行时路径查找。

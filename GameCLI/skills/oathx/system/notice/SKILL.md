@@ -35,7 +35,7 @@ description: 提取和维护 SV 登录公告 UI 模板，定位 LoginNoticeView 
 - 保留 UGUI 的 b/i/size/color 富文本；链接内部颜色统一为 linkColor。点击命中依据实际生成的字形区域，支持多链接与跨行链接，尊重父级 RectMask2D。拖动滚动列表不打开链接，只有完成左键点击才调用 Application.OpenURL。
 - 生成预制体后须将 Body 的 Text 替换为 NoticeText，恢复字体、字号 35、MiddleLeft 对齐和正文颜色，再绑定 Metadata 和 NoticeLayout.body。不可把重新生成后丢失超链接组件的 prefab 当作完成品。
 - 运行态验证覆盖多链接、跨行字形、富文本、URL 解码、视口裁剪、拖动抑制、不支持的协议及刷新清理旧链接。测试副本保存在 Library/GameCLI/NoticeLinkCheck.cs.txt；验证不实际打开浏览器。
-- FunctionSystem 配置登记 SYS_NOTICE=10009、ClassType=NoticeSystem、InstallOnStartup=0、Active=1，按需加载时激活，不在启动时弹出公告。源表为 examples/unitys/config/propFunctionSystem.xlsx，导出结果须同步到客户端配置。
+- FunctionSystem 配置登记 SYS_NOTICE=10009、ClassType=NoticeSystem、InstallOnStartup=0、Active=1，按需加载时激活，不在启动时弹出公告。源表为 examples/unitys/development/config/propFunctionSystem.xlsx，导出结果须同步到客户端配置。
 
 ## 打开动画
 

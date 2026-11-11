@@ -12,6 +12,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | 目录 | 适用任务 |
 | --- | --- |
 | [framework](framework/SKILL.md) | 一次性建立开发环境：包安装、CLI、生成器、最小启动与验收 |
+| [practice](practice/SKILL.md) | 从 development 初始化无业务系统的干净工程，用于 GameCLI 实践与测试 |
 | [core](core/SKILL.md) | XApp、插件、系统生命周期与事件 |
 | [widget](widget/SKILL.md) | UIWidget、VM、Binding 与 Metadata |
 | [widget-extension](widget-extension/SKILL.md) | UISystem、页面打开关闭与 Fancy 列表 |
@@ -34,7 +35,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 
 ## 源码与项目定位
 
-本目录向上两级为 GameCLI 根目录。当前参考工程为 `examples/unitys/client`，包在其 `LocalPackages/com.oathx.*`，业务在 `Assets/Scripts`。其他工程使用本规范时，先定位该工程实际包与业务目录，不硬编码本机绝对路径。
+本目录向上两级为 GameCLI 根目录。当前参考工程为 `examples/unitys/development/client`，包在其 `LocalPackages/com.oathx.*`，业务在 `Assets/Scripts`。其他工程使用本规范时，先定位该工程实际包与业务目录，不硬编码本机绝对路径。
 
 使用前检查目标版本源码和调用方；包内模板化 README 不能作为 API 依据。历史代码与最新用户规则冲突时，以最新规则为准，不批量改造无关旧代码。
 

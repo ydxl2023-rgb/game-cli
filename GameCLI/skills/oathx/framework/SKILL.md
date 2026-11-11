@@ -5,13 +5,15 @@ description: 为新项目或已有 Unity 项目一次性建立 Oathx 基础开�
 
 # Oathx 初始开发环境
 
+- Unity 示例目录统一分为 `examples/unitys/development/`（现有开发工程）与 `examples/unitys/practice/`（工程实践）。开发客户端位于 `development/client/`；实践工程需明确目标子目录，不默认复制或修改开发工程。
+
 目标是交付能编译、能通过 CLI 操作、能启动最小页面且遵循工程规范的 Unity 工程，不止安装包。此 skill 是环境搭建入口；业务系统仍各用一个目录。本 skill 不自动创建 agent。
 
 必须读取 [开发规范](../development-rules/SKILL.md)。需要运行时初始化时读取 [Core](../core/SKILL.md)、[Widget](../widget/SKILL.md)、[Widget Extension](../widget-extension/SKILL.md)；涉及启动视图时读取 [Launch](../launch/SKILL.md)。框架索引在 [Oathx](../SKILL.md)。
 
 ## 输入与定位
 
-独立 agent 的任务需明确目标 Unity 工程绝对路径。GameCLI 根目录可由本 skill 目录向上三级定位。参考工程是其 `examples/unitys/client`，不能默认修改参考工程来代替用户目标工程。
+独立 agent 的任务需明确目标 Unity 工程绝对路径。GameCLI 根目录可由本 skill 目录向上三级定位。参考工程是其 `examples/unitys/development/client`，不能默认修改参考工程来代替用户目标工程。
 
 读取任务、目标 AGENTS.md 和已有配置，确定：
 

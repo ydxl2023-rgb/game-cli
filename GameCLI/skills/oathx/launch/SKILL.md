@@ -15,7 +15,7 @@ description: 在 GameCLI 项目中实现或维护 Launch 启动系统，拉取�
 
 - `XLauncher` 是继承 `UIBehaviour` 的普通 UGUI 组件，不使用单例，不抽象 `ILaunch`，不复用 `XBootstartup`，不负责全局查找、自动实例化或资源加载。
 - `XApp` 通过 `[SerializeField] private XLauncher launcher;` 引用场景组件并控制启动流程。其他系统通过 `XApp.HideLaunch()` 等操作入口协作，不公开 launcher 字段或属性。
-- 以 `examples/unitys/client/Assets/Data/Widgets/Launch/Launch.prefab` 的当前内容实现功能。已确认存在 Loading、Update 两个区域；下载条 Fill 为 RawImage，Slider 节点未挂 Slider 组件；不存在版本文本。资源变化后重新检查，不凭这些记录覆盖新设计。
+- 以 `examples/unitys/development/client/Assets/Data/Widgets/Launch/Launch.prefab` 的当前内容实现功能。已确认存在 Loading、Update 两个区域；下载条 Fill 为 RawImage，Slider 节点未挂 Slider 组件；不存在版本文本。资源变化后重新检查，不凭这些记录覆盖新设计。
 - UI 引用包括 loading、update、loadingText、loadingPercent、tip、downloadText、downloadPercent、fill、handle，全部使用私有序列化字段绑定。downloading 是私有运行时状态。
 - `ShowLoading`、`ShowUpdate` 切换展示区域；`UpdateProgress` 返回 bool，更新对应文本、百分比及下载条；`SetTip` 更新提示。默认下载提示使用 `Downloading resources...`。
 - `ShowBackground` 隐藏 Loading、Update，保留 Launch 根节点及独立 Background；通过 XApp.ShowLaunchBackground 暴露操作入口。SV Login 成功打开后调用此入口，避免启动提示、球和 Logo 与登录页重叠。进入不需要背景的游戏页面仍可调用 HideLaunch 隐藏整个 Launch。
@@ -24,7 +24,7 @@ description: 在 GameCLI 项目中实现或维护 Launch 启动系统，拉取�
 ## 定位项目与任务
 
 - 从本 skill 目录向上三级定位 GameCLI 目录；以下路径均相对此目录。Windows 命令使用 `pwsh.exe`。涉及 XApp 时同时读取 [Core 规范](../core/SKILL.md)。
-- 读取目标工程适用的 AGENTS.md，检查工作区改动。优先采用任务指定的 Unity 工程；仓库内示例为 `examples/unitys/client`，使用前确认它确实是任务目标。
+- 读取目标工程适用的 AGENTS.md，检查工作区改动。优先采用任务指定的 Unity 工程；仓库内示例为 `examples/unitys/development/client`，使用前确认它确实是任务目标。
 - 从任务和已有代码确定 Launch 的入口、启动步骤、完成后去向及异常行为。先查工程现有 UI、启动框架和资源加载方式，再决定实现；缺少会影响业务行为的信息时询问，不凭界面外观发明登录、联网更新等需求。
 - 独立 agent 的任务应携带目标工程、项目 UI 标识或来源、Launch 根节点和业务验收条件。可从配置或工程唯一确定的内容直接解析；多个候选无法区分时才询问。
 

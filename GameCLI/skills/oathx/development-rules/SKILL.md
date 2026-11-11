@@ -180,7 +180,7 @@ return true;
 
 ## 固定文案与多语言
 
-- 所有固定的界面显示文本统一维护在 `examples/unitys/config/propCommonText.xlsx`，包括按钮、标题、提示、状态名称和带参数的完整句式；业务代码不再硬编码这些显示文本，也不另建系统专用文案表。
+- 所有固定的界面显示文本统一维护在 `examples/unitys/development/config/propCommonText.xlsx`，包括按钮、标题、提示、状态名称和带参数的完整句式；业务代码不再硬编码这些显示文本，也不另建系统专用文案表。
 - 每条文案使用唯一且稳定的 `ID` 别名和 `NumID`。代码引用导表生成的 `Config.Excel` 别名常量，通过 `CommonText.Get(id, args)` 查询，不手写数字 ID，不直接依赖自动语言表的行号别名。
 - `Context` 维护源文案；导表自动提取到 `propLanguage.xlsx`。不要将生成的语言表作为新增固定文案的源表，也不要手改生成的 C# 或 bytes 文件。
 - 动态值使用 `{0}`、`{1}` 等占位符，整句放在表中，禁止在代码里拼接中文片段。实体只提供状态与数据，由 UI/系统选择文案 ID。

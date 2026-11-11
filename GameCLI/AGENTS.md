@@ -6,6 +6,8 @@ For com.oathx.* framework work, start with [the Oathx skill index](skills/oathx/
 
 For initial Oathx development environment setup, use [the framework setup skill](skills/oathx/framework/SKILL.md). It covers package installation, CLI setup, initialization, coding conventions, and acceptance checks for an independent agent.
 
+For a clean GameCLI practice project based on development, use [the practice setup skill](skills/oathx/practice/SKILL.md). Use development's branch packages and retain only the base entry infrastructure, with no business systems.
+
 For Launch work, also read [the launch skill](skills/oathx/launch/SKILL.md).
 
 For SV Login work, also read [the sv-login skill](skills/oathx/system/sv-login/SKILL.md).

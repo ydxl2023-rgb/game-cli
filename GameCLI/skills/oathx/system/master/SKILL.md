@@ -9,7 +9,7 @@ description: 整理、归档和接入 Oathx Master 纯代码系统，维护玩�
 
 ## 源码和边界
 
-- 当前实现位于 `examples/unitys/client/Assets/Scripts/Systems/Master`：MasterSystem 管理事件和启动流程；MasterEntity 包含 MasterPropertyDef、玩家初始属性及章节读取。
+- 当前实现位于 `examples/unitys/development/client/Assets/Scripts/Systems/Master`：MasterSystem 管理事件和启动流程；MasterEntity 包含 MasterPropertyDef、玩家初始属性及章节读取。
 - 公共基类为 `Assets/Scripts/Systems/RuntimeSystem.cs`，封装 dispatcher 加载、卸载及下一帧完成回调。归档时携带源码和 .meta；目标工程已有基类时先比较，不创建重复类型或覆盖不同版本。
 - Master 是纯代码系统，不创建 UIMaster、VMMaster、Canvas、Widget Config、空白 prefab 或占位 UI 节点。
 - 保留用户确认的 OnActive / OnDetive / Load / Unload / Save / Launch 结构。Launch 卸载 LoginSystem 后仅加载 HomeSystem，不恢复此前的其他业务系统列表。
