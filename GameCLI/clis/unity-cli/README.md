@@ -77,3 +77,21 @@ unity-cli animator inspect --clip Assets/Data/Widgets/MyUI/Slide.anim --json
 支持 controller create/import-json、parameter add/set/remove、clip create/set-curve/sample/import-json/export-json、state add、transition add、bind、inspect。曲线路径相对于 Animator 根节点；bind/sample 的路径指向场景对象，sample 会改变场景对象姿态。完整曲线交换使用桥接的 animation-clip/1 JSON（export-json 输出位于 data.details）；controller 导入使用 animation-controller/1。能力和校验由安装的 Editor 桥接提供，不支持的组件或属性会返回错误。
 
 通用参数 `--project` 指定 Unity 工程，省略时向上查找；`--loop` 必须显式传 true/false。退出码遵循 0 成功、1 桥接失败、2 参数错误。参数验证测试：`Tests/animator.ps1`。
+
+## ExcelPlugin：Excel 配置表操作
+
+源码插件 `ExcelPlugin : IPlugin` 注册 `excel` 命令，仅支持 `.xlsx`。创建/删除整个工作簿由 CLI 本地执行，不需要 Editor；表格内容操作复用 Unity `/excel` 桥接，需要工程已打开。创建仅生成一个工作表和表头，不覆盖已有文件。
+
+```powershell
+unity-cli excel create --file Config/Items.xlsx --headers-json '["Id","Name","Price"]' --sheet Items --dry-run
+unity-cli excel schema --file Config/Items.xlsx --header-row 1
+unity-cli excel insert --file Config/Items.xlsx --header-row 1 --values-json '{"Id":1,"Name":"Sword","Price":100}' --dry-run
+unity-cli excel set --file Config/Items.xlsx --header-row 1 --row 2 --field Price --value 120 --dry-run
+unity-cli excel query --file Config/Items.xlsx --header-row 1 --where 'Price>=100' --json
+unity-cli excel delete --file Config/Items.xlsx --header-row 1 --row 2 --dry-run
+unity-cli excel delete-file --file Config/Items.xlsx --dry-run
+```
+
+去掉 `--dry-run` 执行写入。`delete` 删除行，`delete-file` 删除整个工作簿；文件删除不会移入回收站。`list` 查找配置表，`schema` 读取字段，`row`/`cell` 查询单行/单元格，`validate` 检查表格。可用 `--key-field Id --key 1` 按主键定位，`--col A` 按列定位；详细参数见 `excel --help`。新建表使用 `--header-row 1`，既有游戏配置表按实际表头行设置。内容编辑的公式、样式等保护范围以现有 Editor 桥接为准，不提供公式计算或任意工作表结构编辑。
+
+建议显式传 `--project`，确保本地文件操作与 Editor 使用相同工程根目录。验证脚本：`Tests/excel-integration.ps1 -Project <Unity根目录>`，使用 Library 下唯一临时文件并自动清理。

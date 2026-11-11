@@ -10,5 +10,6 @@ internal static class PluginRegistry
         new UnityPlugin(),
         new UguiPlugin(),
         new AnimatorPlaugin(),
+        new ExcelPlugin(),
     };
 }
