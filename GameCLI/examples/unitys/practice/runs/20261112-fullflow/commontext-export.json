@@ -1,0 +1,350 @@
+{
+  "action": "query",
+  "filePath": "G:/Works/GameCLI/GameCLI/examples/unitys/practice/config/propCommonText.xlsx",
+  "sheet": "CommonText",
+  "headerRow": 2,
+  "totalMatched": 13,
+  "returnedCount": 13,
+  "dryRun": false,
+  "modified": false,
+  "respondedAtUtc": "2026-11-12T10:30:51.8623009Z",
+  "tables": [],
+  "fields": [
+    {
+      "name": "ID",
+      "column": "A",
+      "index": 0
+    },
+    {
+      "name": "NumID",
+      "column": "B",
+      "index": 1
+    },
+    {
+      "name": "Context",
+      "column": "C",
+      "index": 2
+    }
+  ],
+  "rows": [
+    {
+      "excelRow": 4,
+      "dataIndex": 0,
+      "cells": [
+        {
+          "address": "A4",
+          "column": "A",
+          "field": "ID",
+          "value": "ERR_DODGE"
+        },
+        {
+          "address": "B4",
+          "column": "B",
+          "field": "NumID",
+          "value": "101"
+        },
+        {
+          "address": "C4",
+          "column": "C",
+          "field": "Context",
+          "value": "闪避"
+        }
+      ]
+    },
+    {
+      "excelRow": 5,
+      "dataIndex": 1,
+      "cells": [
+        {
+          "address": "A5",
+          "column": "A",
+          "field": "ID",
+          "value": "ERR_BLOCK"
+        },
+        {
+          "address": "B5",
+          "column": "B",
+          "field": "NumID",
+          "value": "102"
+        },
+        {
+          "address": "C5",
+          "column": "C",
+          "field": "Context",
+          "value": "格挡"
+        }
+      ]
+    },
+    {
+      "excelRow": 6,
+      "dataIndex": 2,
+      "cells": [
+        {
+          "address": "A6",
+          "column": "A",
+          "field": "ID",
+          "value": "ERR_NOHIT"
+        },
+        {
+          "address": "B6",
+          "column": "B",
+          "field": "NumID",
+          "value": "103"
+        },
+        {
+          "address": "C6",
+          "column": "C",
+          "field": "Context",
+          "value": "未命中"
+        }
+      ]
+    },
+    {
+      "excelRow": 7,
+      "dataIndex": 3,
+      "cells": [
+        {
+          "address": "A7",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_RECENT_SERVER"
+        },
+        {
+          "address": "B7",
+          "column": "B",
+          "field": "NumID",
+          "value": "1001"
+        },
+        {
+          "address": "C7",
+          "column": "C",
+          "field": "Context",
+          "value": "最近登录"
+        }
+      ]
+    },
+    {
+      "excelRow": 8,
+      "dataIndex": 4,
+      "cells": [
+        {
+          "address": "A8",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_RECOMMENDED_SERVER"
+        },
+        {
+          "address": "B8",
+          "column": "B",
+          "field": "NumID",
+          "value": "1002"
+        },
+        {
+          "address": "C8",
+          "column": "C",
+          "field": "Context",
+          "value": "推荐服务器"
+        }
+      ]
+    },
+    {
+      "excelRow": 9,
+      "dataIndex": 5,
+      "cells": [
+        {
+          "address": "A9",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_SERVER_RANGE"
+        },
+        {
+          "address": "B9",
+          "column": "B",
+          "field": "NumID",
+          "value": "1003"
+        },
+        {
+          "address": "C9",
+          "column": "C",
+          "field": "Context",
+          "value": "{0}-{1}区"
+        }
+      ]
+    },
+    {
+      "excelRow": 10,
+      "dataIndex": 6,
+      "cells": [
+        {
+          "address": "A10",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_LOCAL_SERVER_NAME"
+        },
+        {
+          "address": "B10",
+          "column": "B",
+          "field": "NumID",
+          "value": "1004"
+        },
+        {
+          "address": "C10",
+          "column": "C",
+          "field": "Context",
+          "value": "{0}区 · 本地测试"
+        }
+      ]
+    },
+    {
+      "excelRow": 11,
+      "dataIndex": 7,
+      "cells": [
+        {
+          "address": "A11",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_SERVER_NORMAL"
+        },
+        {
+          "address": "B11",
+          "column": "B",
+          "field": "NumID",
+          "value": "1005"
+        },
+        {
+          "address": "C11",
+          "column": "C",
+          "field": "Context",
+          "value": "流畅"
+        }
+      ]
+    },
+    {
+      "excelRow": 12,
+      "dataIndex": 8,
+      "cells": [
+        {
+          "address": "A12",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_SERVER_BUSY"
+        },
+        {
+          "address": "B12",
+          "column": "B",
+          "field": "NumID",
+          "value": "1006"
+        },
+        {
+          "address": "C12",
+          "column": "C",
+          "field": "Context",
+          "value": "火爆"
+        }
+      ]
+    },
+    {
+      "excelRow": 13,
+      "dataIndex": 9,
+      "cells": [
+        {
+          "address": "A13",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_SERVER_MAINTENANCE"
+        },
+        {
+          "address": "B13",
+          "column": "B",
+          "field": "NumID",
+          "value": "1007"
+        },
+        {
+          "address": "C13",
+          "column": "C",
+          "field": "Context",
+          "value": "维护"
+        }
+      ]
+    },
+    {
+      "excelRow": 14,
+      "dataIndex": 10,
+      "cells": [
+        {
+          "address": "A14",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_SERVER_DEFAULT"
+        },
+        {
+          "address": "B14",
+          "column": "B",
+          "field": "NumID",
+          "value": "1101"
+        },
+        {
+          "address": "C14",
+          "column": "C",
+          "field": "Context",
+          "value": "本地试跑区"
+        }
+      ]
+    },
+    {
+      "excelRow": 15,
+      "dataIndex": 11,
+      "cells": [
+        {
+          "address": "A15",
+          "column": "A",
+          "field": "ID",
+          "value": "LOGIN_INTEGRATION_PENDING"
+        },
+        {
+          "address": "B15",
+          "column": "B",
+          "field": "NumID",
+          "value": "1102"
+        },
+        {
+          "address": "C15",
+          "column": "C",
+          "field": "Context",
+          "value": "该入口尚未接入业务接口"
+        }
+      ]
+    },
+    {
+      "excelRow": 16,
+      "dataIndex": 12,
+      "cells": [
+        {
+          "address": "A16",
+          "column": "A",
+          "field": "ID",
+          "value": "NOTICE_EMPTY"
+        },
+        {
+          "address": "B16",
+          "column": "B",
+          "field": "NumID",
+          "value": "1103"
+        },
+        {
+          "address": "C16",
+          "column": "C",
+          "field": "Context",
+          "value": "暂无公告"
+        }
+      ]
+    }
+  ],
+  "cell": {
+    "address": "",
+    "column": "",
+    "field": "",
+    "value": ""
+  },
+  "issues": []
+}

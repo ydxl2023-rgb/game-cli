@@ -1,38 +1,35 @@
 ---
 name: master
-description: 整理、归档和接入 Oathx Master 纯代码系统，维护玩家实体、登录事件及业务系统启动流程；不生成 UI、VM 或预制体。
+description: 独立 agent 参考 MasterSystem 纯代码模板，为产品开发系统协调、事件路由和玩家数据生命周期，不生成 UI，不硬编码示例业务去向。
 ---
 
-# Master
+# Master 产品开发
 
-必须遵守 [开发规范](../../development-rules/SKILL.md)、[Core](../../core/SKILL.md)、[Entity](../../entity/SKILL.md)。以下工程路径相对 GameCLI 根目录。
+开发交付后由另一名 agent 按 [独立系统验收](../../system-acceptance/SKILL.md) 验收代码、事件和生命周期；本模块没有 UI，预制检查记录为不适用。
 
-## 源码和边界
+必须读取 [系统开发流程](../../system-development/SKILL.md)、[开发规范](../../development-rules/SKILL.md)、[Core](../../core/SKILL.md)、[Entity](../../entity/SKILL.md)。
 
-- 当前实现位于 `examples/unitys/development/client/Assets/Scripts/Systems/Master`：MasterSystem 管理事件和启动流程；MasterEntity 包含 MasterPropertyDef、玩家初始属性及章节读取。
-- 公共基类为 `Assets/Scripts/Systems/RuntimeSystem.cs`，封装 dispatcher 加载、卸载及下一帧完成回调。归档时携带源码和 .meta；目标工程已有基类时先比较，不创建重复类型或覆盖不同版本。
-- Master 是纯代码系统，不创建 UIMaster、VMMaster、Canvas、Widget Config、空白 prefab 或占位 UI 节点。
-- 保留用户确认的 OnActive / OnDetive / Load / Unload / Save / Launch 结构。Launch 卸载 LoginSystem 后仅加载 HomeSystem，不恢复此前的其他业务系统列表。
+## 默认设计
 
-## 数据库和模板页面
+未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../system-development/SKILL.md#默认保留模板设计)。
 
-源码清单为 `integrations/codex/config/master-scripts.json`，包含三个 C# 文件及 .meta。标准模板 ID 为 `MasterSystem`，分类 system，分组 master。payload.kind 为 code，root 为 null，design.nodes 为空；源码放 scripts，保留 UTF-8 原文和 SHA256。
+## 范式与边界
 
-首次注册运行 `node scripts/register-master-template.mjs` 预检，用户授权上传后加 `--apply`。已有模板只验证相同内容，不直接覆盖；更新需沿用管理员候选发布流程并递增版本。
+- 模板 ID：MasterSystem，纯代码，payload.kind=code、无 UI 节点。不得生成 UIMaster、VMMaster 或占位预制体。
+- Master 协调系统激活/停用与产品级事件；具体页面逻辑属于各业务系统。数据实体负责自身数据，不把所有业务集中到 Master。
+- SystemActive、SystemDetive 和 LoginSucceed 是示例契约，优先复用产品已确认公共契约；多个 agent 不能各自定义同名事件或 RuntimeSystem。
+- 本地存档、默认玩家属性、CHAPTER_HOME、登录后进入 Home、退出时卸载 Fight/Notice 都是参考业务，不是产品必选流程。不得为满足这些引用生成范围外系统。
 
-系统模板页展示“纯代码”入口，允许查看和下载源码包，可拖入关系区作为逻辑系统卡片，不生成 UI 画布内容。验证数据库回读源码哈希、空节点和模板页展示；仅归档源码时不修改业务行为，不宣称完成登录联调。
+## agent 开始时确定
 
-## 当前生命周期契约
+产品系统清单、启动/登录后的去向、事件载荷、调度完成语义、玩家数据来源与保存时机。确认 Master 与公共事件/基础类的所有权；产品没有明确去向时提出待接契约，不照搬 Home。
 
-- MasterSystem 不依赖 RPC 或网络协议。保留 LoginSucceed、LoginFailure，系统切换事件统一使用 SystemActive、SystemDetive，不使用旧名称或保存事件。事件包含 type（RuntimeSystem 类型）和可选 complete（系统步骤完成回调，不代表 UI 加载完成）。
-- GamePlugin 按 FunctionSystemConfig 的 InstallOnStartup/Active 配置创建并激活 Master。OnActive 订阅 LoginSucceed、SystemActive、SystemDetive；收到本地登录成功事件后先 Load，成功再 Launch。Load 本身不进入 Home。
-- Load 检查 IsActive 和 MasterEntity；已有本地存档则 Deserialize，无存档则 Serialize 默认数据，成功后返回 true，由登录成功处理方法调用 Launch。加载失败返回 false，不覆盖损坏存档。
-- OnDetive 在 UnsubscribeAll 后空一行调用 Unload；Unload 通过 dispatcher 卸载 Notice、Fight 和 Home，不自动保存或返回登录页。
-- Save 检查激活状态和实体存在后直接写本地存档，返回 bool。
-- 不添加 loaded、launched、activation 或替代状态字段。Launch 的异步完成回调仅检查 IsActive，不宣称具有重复请求拦截或跨激活版本取消能力。
-- MasterEntity 依赖 Config.Excel.CHAPTER_HOME、Oathx.Entity；RuntimeSystem 依赖 Oathx.Core。不要在归档时打包业务 UI 或修改用户确认的结构。
+## 实现路径
 
-- LoginSystem 的开始游戏按钮通过 XPluginUtility.PostEvent(new LoginSucceed { pid = ... }) 投递本地事件，无网络请求。Master 停用时取消订阅；数据读取失败不进入 Home。
+1. 读取模板源码，对照目标 RuntimeSystem、dispatcher 和实体管理 API，明确产品所需生命周期。
+2. 设计事件订阅与协调流程，避免分发过程中不安全地修改模块集合；回调语义区分系统激活步骤与 UI 异步就绪。
+3. 在 Master/ 下实现系统与必要实体，按产品要求接入加载/保存，失败时不覆盖有效数据或伪造就绪。
+4. 将跨系统引用限制在确认的契约内；必要注册与共享配置由指定集成负责人合并，不复制示例配置 ID。
+5. 保持 OnActive/OnDetive 优先及公共方法在私有方法前的规范；不为迁就旧示例机械增加状态字段或方法。状态管理应有明确需求依据。
 
-- Master 是业务系统加载、卸载的统一执行入口。Login 打开公告投递 SystemActive，Notice 关闭投递 SystemDetive，Home 加载 Fight 同样投递 SystemActive 并保留完成回调。各业务系统仅处理自身 OnActive/OnDetive，不直接切换其他系统。Master 拒绝无效类型及针对自身的切换请求。
-- SystemActive 的加载延后一帧，避免事件分发遍历 modules 时修改集合。Master 退出 Login 或 Launch 到 Home 时先卸载 Notice；Login.OnDetive 仅清理自身页面。
+开发结果列出公共事件、系统切换输入/结果、玩家数据责任及所需注册项。维护 GameCLI 现有 Master 时再阅读 [参考实现](references/gamecli-example.md)，其中用户确认的具体方法结构只约束该示例维护任务。

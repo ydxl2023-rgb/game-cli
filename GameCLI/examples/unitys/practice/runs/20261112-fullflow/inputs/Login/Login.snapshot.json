@@ -1,0 +1,4719 @@
+{
+  "schemaVersion": "ui-template/1",
+  "source": {
+    "template": "Login",
+    "note": "Derived from frozen database layout, not a Unity acceptance baseline."
+  },
+  "visualTextures": [
+    {
+      "path": "Assets/Data/Widgets/Login/Images/32e06c5aff62f6de38457fdc068c027cc1db30f2f07eec181e90cfee09820f1b.png",
+      "deliverySha256": "32e06c5aff62f6de38457fdc068c027cc1db30f2f07eec181e90cfee09820f1b",
+      "deliveryWidth": 872,
+      "deliveryHeight": 66,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77.png",
+      "deliverySha256": "1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77",
+      "deliveryWidth": 44,
+      "deliveryHeight": 44,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/cc124122a0fba82a6584c4c13a04aa31a3f77d3943ee3eb16f94cfd22d751e40.png",
+      "deliverySha256": "cc124122a0fba82a6584c4c13a04aa31a3f77d3943ee3eb16f94cfd22d751e40",
+      "deliveryWidth": 112,
+      "deliveryHeight": 4,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/795ee609fefa80d5e5ed9afd8ae6fb51c3d3a75826ea66bdd7a4d154208501a3.png",
+      "deliverySha256": "795ee609fefa80d5e5ed9afd8ae6fb51c3d3a75826ea66bdd7a4d154208501a3",
+      "deliveryWidth": 12,
+      "deliveryHeight": 12,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "w": 6,
+          "x": 5,
+          "y": 5,
+          "z": 5
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f.png",
+      "deliverySha256": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f",
+      "deliveryWidth": 156,
+      "deliveryHeight": 156,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/9981398578663413d91e268c3b101425fc2019ed8d3a8d877f7526dcbcfcc6f3.png",
+      "deliverySha256": "9981398578663413d91e268c3b101425fc2019ed8d3a8d877f7526dcbcfcc6f3",
+      "deliveryWidth": 160,
+      "deliveryHeight": 160,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769.png",
+      "deliverySha256": "921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769",
+      "deliveryWidth": 36,
+      "deliveryHeight": 36,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/80462bceb61a944c839c428b718244afdd2f75e058fb143419bb7b9fbee0a0a3.png",
+      "deliverySha256": "80462bceb61a944c839c428b718244afdd2f75e058fb143419bb7b9fbee0a0a3",
+      "deliveryWidth": 160,
+      "deliveryHeight": 160,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/02f14634a6e190f7d46da015889cbf7c30f951c592b6d974bd22fd8c5893460c.png",
+      "deliverySha256": "02f14634a6e190f7d46da015889cbf7c30f951c592b6d974bd22fd8c5893460c",
+      "deliveryWidth": 420,
+      "deliveryHeight": 84,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/490b0f8d39d09cf83c9c03fbb3cafa30bb8e0143f92a6ba4110e43fab838408d.png",
+      "deliverySha256": "490b0f8d39d09cf83c9c03fbb3cafa30bb8e0143f92a6ba4110e43fab838408d",
+      "deliveryWidth": 68,
+      "deliveryHeight": 64,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "w": 1,
+          "x": 31,
+          "y": 1,
+          "z": 31
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2.png",
+      "deliverySha256": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2",
+      "deliveryWidth": 92,
+      "deliveryHeight": 92,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/7e24cbc2f72bc2b6a571572ebb571e8831e28276ac4cb2d5192d8f0fe730adec.png",
+      "deliverySha256": "7e24cbc2f72bc2b6a571572ebb571e8831e28276ac4cb2d5192d8f0fe730adec",
+      "deliveryWidth": 78,
+      "deliveryHeight": 78,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf.png",
+      "deliverySha256": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf",
+      "deliveryWidth": 36,
+      "deliveryHeight": 36,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/c6c83c346fa753ee0661fdc03ee674f567bdfe98e5013dabd8b5797f5a610285.png",
+      "deliverySha256": "c6c83c346fa753ee0661fdc03ee674f567bdfe98e5013dabd8b5797f5a610285",
+      "deliveryWidth": 78,
+      "deliveryHeight": 78,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/76d3715066d471a7d7ee81b80c0183119ab02bfebd6130d353fcfb4c88fbe01b.png",
+      "deliverySha256": "76d3715066d471a7d7ee81b80c0183119ab02bfebd6130d353fcfb4c88fbe01b",
+      "deliveryWidth": 78,
+      "deliveryHeight": 78,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/93a32b4d8bef49d046bda9bdd1f1eeef602a74b878c790518112bf01942b71d4.png",
+      "deliverySha256": "93a32b4d8bef49d046bda9bdd1f1eeef602a74b878c790518112bf01942b71d4",
+      "deliveryWidth": 78,
+      "deliveryHeight": 78,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/cc3a7f60a77851cb6634f7347628357880cd9e97ceb74679f6b72911d24e2cb0.png",
+      "deliverySha256": "cc3a7f60a77851cb6634f7347628357880cd9e97ceb74679f6b72911d24e2cb0",
+      "deliveryWidth": 40,
+      "deliveryHeight": 52,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/96c71f344e19de112c9eb296740660c230cc71d30c5e96e29c39a17822853140.png",
+      "deliverySha256": "96c71f344e19de112c9eb296740660c230cc71d30c5e96e29c39a17822853140",
+      "deliveryWidth": 178,
+      "deliveryHeight": 227,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/1a4ca0bb3c9e89f1b4abb2cb096cd987ce697f8b86e01c764c8f92fba410ef45.png",
+      "deliverySha256": "1a4ca0bb3c9e89f1b4abb2cb096cd987ce697f8b86e01c764c8f92fba410ef45",
+      "deliveryWidth": 62,
+      "deliveryHeight": 61,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "w": 0,
+          "x": 28,
+          "y": 0,
+          "z": 29
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/13bce639ef89b339fe6b8566f2c67fe5add84863c88f7199d996d776b3ad25ce.png",
+      "deliverySha256": "13bce639ef89b339fe6b8566f2c67fe5add84863c88f7199d996d776b3ad25ce",
+      "deliveryWidth": 138,
+      "deliveryHeight": 57,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    },
+    {
+      "path": "Assets/Data/Widgets/Login/Images/90849657d8dd0ffcc2cad7562b5e8a518b220894c6d254b48515936186a60514.png",
+      "deliverySha256": "90849657d8dd0ffcc2cad7562b5e8a518b220894c6d254b48515936186a60514",
+      "deliveryWidth": 365,
+      "deliveryHeight": 176,
+      "settings": {
+        "spriteMode": 1,
+        "spritePixelsToUnits": 100,
+        "spriteBorder": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "wrapMode": 1
+      }
+    }
+  ],
+  "resources": {},
+  "prefab": {
+    "name": "Login",
+    "rootNodeId": "T1Login0",
+    "nodes": [
+      {
+        "id": "T1Login0",
+        "name": "Login",
+        "parentId": null,
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0
+          ],
+          "anchorMax": [
+            1,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            0,
+            0
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0Animator",
+        "name": "Animator",
+        "parentId": "T1Login0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0
+          ],
+          "anchorMax": [
+            1,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            0,
+            0
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0",
+        "name": "Content",
+        "parentId": "T1Login0Animator",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            2440,
+            1080
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_0",
+        "name": "Server",
+        "parentId": "T1Login0_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            3.4000000953674316,
+            -108
+          ],
+          "sizeDelta": [
+            872,
+            66
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/32e06c5aff62f6de38457fdc068c027cc1db30f2f07eec181e90cfee09820f1b.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_0_0",
+        "name": "Status",
+        "parentId": "T1Login0_0_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -376,
+            -3
+          ],
+          "sizeDelta": [
+            34,
+            34
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_0_0_0",
+        "name": "Status",
+        "parentId": "T1Login0_0_0_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            1,
+            0.5
+          ],
+          "anchorMax": [
+            1,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            70.7999267578125,
+            3.5999999046325684
+          ],
+          "sizeDelta": [
+            119.59063720703125,
+            51.69427490234375
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 0.3254901960784314,
+              "m_Color.g": 0.7647058823529411,
+              "m_Color.b": 0.43137254901960786,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "流畅",
+              "m_FontData.m_FontSize": 34,
+              "m_FontData.m_Alignment": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_0_1",
+        "name": "Change",
+        "parentId": "T1Login0_0_0",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0.2291259765625,
+            2.150909423828125
+          ],
+          "sizeDelta": [
+            872,
+            107.42109680175781
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": true
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_0_0_1",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_0_1_0",
+        "name": "ImgLine",
+        "parentId": "T1Login0_0_0_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            347.100830078125,
+            -24.150909423828125
+          ],
+          "sizeDelta": [
+            147,
+            3
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/cc124122a0fba82a6584c4c13a04aa31a3f77d3943ee3eb16f94cfd22d751e40.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_0_1_1",
+        "name": "Change",
+        "parentId": "T1Login0_0_0_1",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            347.100830078125,
+            2.188060760498047
+          ],
+          "sizeDelta": [
+            160,
+            55.67828369140625
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 0.7254901960784313,
+              "m_Color.g": 0.7254901960784313,
+              "m_Color.b": 0.7254901960784313,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "点击换区",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_0_2",
+        "name": "Name",
+        "parentId": "T1Login0_0_0",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -8,
+            0.000014543999895977322
+          ],
+          "sizeDelta": [
+            400,
+            66
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 0.9294117647058824,
+              "m_Color.g": 0.9294117647058824,
+              "m_Color.b": 0.9294117647058824,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "",
+              "m_FontData.m_FontSize": 35,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1",
+        "name": "Friends",
+        "parentId": "T1Login0_0",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -1
+          ],
+          "sizeDelta": [
+            580,
+            98
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/795ee609fefa80d5e5ed9afd8ae6fb51c3d3a75826ea66bdd7a4d154208501a3.png"
+              },
+              "m_Type": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1_0",
+        "name": "FriendsText",
+        "parentId": "T1Login0_0_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -195.49000549316406,
+            0.00002431900065857917
+          ],
+          "sizeDelta": [
+            189.02569580078125,
+            72.11773681640625
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "同玩好友：",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1_1",
+        "name": "FriendList",
+        "parentId": "T1Login0_0_1",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            94.5,
+            0
+          ],
+          "sizeDelta": [
+            390.9532470703125,
+            100
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_1_1_0",
+        "name": "Item",
+        "parentId": "T1Login0_0_1_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            40,
+            -50
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_1_1_0_0",
+        "name": "HeadIcon",
+        "parentId": "T1Login0_0_1_1_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1_1_1",
+        "name": "Cell1",
+        "parentId": "T1Login0_0_1_1",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            135,
+            -50
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_1_1_1_0",
+        "name": "HeadIcon",
+        "parentId": "T1Login0_0_1_1_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1_1_2",
+        "name": "Cell2",
+        "parentId": "T1Login0_0_1_1",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            230,
+            -50
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_1_1_2_0",
+        "name": "HeadIcon",
+        "parentId": "T1Login0_0_1_1_2",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1_1_3",
+        "name": "Cell3",
+        "parentId": "T1Login0_0_1_1",
+        "siblingIndex": 3,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            325,
+            -50
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_1_1_3_0",
+        "name": "HeadIcon",
+        "parentId": "T1Login0_0_1_1_3",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            80,
+            80
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_1_2",
+        "name": "FriendButton",
+        "parentId": "T1Login0_0_1",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -0.0011835000477731228,
+            0
+          ],
+          "sizeDelta": [
+            580.00244140625,
+            100
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": true
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_0_1_2",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2",
+        "name": "Enter",
+        "parentId": "T1Login0_0",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -278
+          ],
+          "sizeDelta": [
+            420,
+            84
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": true
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_0_2",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2_0",
+        "name": "Effect",
+        "parentId": "T1Login0_0_2",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            6
+          ],
+          "sizeDelta": [
+            100,
+            100
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_0_2_0_0",
+        "name": "GameLoginViewFx1",
+        "parentId": "T1Login0_0_2_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            160,
+            160
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/9981398578663413d91e268c3b101425fc2019ed8d3a8d877f7526dcbcfcc6f3.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2_0_0_0",
+        "name": "GameLoginViewFx1D",
+        "parentId": "T1Login0_0_2_0_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            70.5
+          ],
+          "sizeDelta": [
+            36,
+            36
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2_0_0_1",
+        "name": "GameLoginViewFx1D1",
+        "parentId": "T1Login0_0_2_0_0",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -69.5999984741211
+          ],
+          "sizeDelta": [
+            18,
+            18
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2_0_1",
+        "name": "GameLoginViewFx2",
+        "parentId": "T1Login0_0_2_0",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            160,
+            160
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/80462bceb61a944c839c428b718244afdd2f75e058fb143419bb7b9fbee0a0a3.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2_1",
+        "name": "ImgStartGame",
+        "parentId": "T1Login0_0_2",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -9.359999656677246,
+            0
+          ],
+          "sizeDelta": [
+            420,
+            84
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/02f14634a6e190f7d46da015889cbf7c30f951c592b6d974bd22fd8c5893460c.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_2_2",
+        "name": "ClickArea",
+        "parentId": "T1Login0_0_2",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -0.7038000226020813,
+            7.4720001220703125
+          ],
+          "sizeDelta": [
+            497.2876892089844,
+            186.34019470214844
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_0_3",
+        "name": "Version",
+        "parentId": "T1Login0_0",
+        "siblingIndex": 3,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -506
+          ],
+          "sizeDelta": [
+            2600,
+            70
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/490b0f8d39d09cf83c9c03fbb3cafa30bb8e0143f92a6ba4110e43fab838408d.png"
+              },
+              "m_Type": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1",
+        "name": "ButtonGroup",
+        "parentId": "T1Login0Animator",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            1,
+            0
+          ],
+          "anchorMax": [
+            1,
+            1
+          ],
+          "pivot": [
+            1,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            341,
+            0
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_1_0",
+        "name": "Version",
+        "parentId": "T1Login0_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            1,
+            0
+          ],
+          "anchorMax": [
+            1,
+            0
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -363,
+            23
+          ],
+          "sizeDelta": [
+            600,
+            66
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "版本 V1.2",
+              "m_FontData.m_FontSize": 26,
+              "m_FontData.m_Alignment": 5
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1",
+        "name": "LayoutGroup",
+        "parentId": "T1Login0_1",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            60,
+            10
+          ],
+          "sizeDelta": [
+            166,
+            755.0263671875
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_1_1_0",
+        "name": "Announcement",
+        "parentId": "T1Login0_1_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            83,
+            -46
+          ],
+          "sizeDelta": [
+            92,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_1_1_0",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_0_0",
+        "name": "Icon",
+        "parentId": "T1Login0_1_1_0",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            78,
+            78
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/7e24cbc2f72bc2b6a571572ebb571e8831e28276ac4cb2d5192d8f0fe730adec.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_0_1",
+        "name": "Announce",
+        "parentId": "T1Login0_1_1_0",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -38.80000305175781
+          ],
+          "sizeDelta": [
+            137,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "公告",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_0_2",
+        "name": "Red",
+        "parentId": "T1Login0_1_1_0",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": false,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            31,
+            37
+          ],
+          "sizeDelta": [
+            40,
+            40
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_0_3",
+        "name": "ClickArea",
+        "parentId": "T1Login0_1_1_0",
+        "siblingIndex": 3,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -1.1312999725341797,
+            -4.828400135040283
+          ],
+          "sizeDelta": [
+            125,
+            141
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_1",
+        "name": "UserCenter",
+        "parentId": "T1Login0_1_1",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            83,
+            -193
+          ],
+          "sizeDelta": [
+            92,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_1_1_1",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_1_0",
+        "name": "Icon",
+        "parentId": "T1Login0_1_1_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            78,
+            78
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/c6c83c346fa753ee0661fdc03ee674f567bdfe98e5013dabd8b5797f5a610285.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_1_1",
+        "name": "User",
+        "parentId": "T1Login0_1_1_1",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -41.5
+          ],
+          "sizeDelta": [
+            137,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "用户中心",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_1_2",
+        "name": "ClickArea",
+        "parentId": "T1Login0_1_1_1",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -5.730000019073486
+          ],
+          "sizeDelta": [
+            125,
+            141
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_2",
+        "name": "Cancellation",
+        "parentId": "T1Login0_1_1",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            83,
+            -340
+          ],
+          "sizeDelta": [
+            92,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_1_1_2",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_2_0",
+        "name": "Icon",
+        "parentId": "T1Login0_1_1_2",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            78,
+            78
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/76d3715066d471a7d7ee81b80c0183119ab02bfebd6130d353fcfb4c88fbe01b.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_2_1",
+        "name": "LogOut",
+        "parentId": "T1Login0_1_1_2",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -41.5
+          ],
+          "sizeDelta": [
+            137,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "注销",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_2_2",
+        "name": "ClickArea",
+        "parentId": "T1Login0_1_1_2",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -4.409999847412109
+          ],
+          "sizeDelta": [
+            125,
+            141
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_3",
+        "name": "Clear",
+        "parentId": "T1Login0_1_1",
+        "siblingIndex": 3,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            83,
+            -487
+          ],
+          "sizeDelta": [
+            92,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_1_1_3",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_3_0",
+        "name": "Icon",
+        "parentId": "T1Login0_1_1_3",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            78,
+            78
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/93a32b4d8bef49d046bda9bdd1f1eeef602a74b878c790518112bf01942b71d4.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_3_1",
+        "name": "ClearLogOut",
+        "parentId": "T1Login0_1_1_3",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -41.5
+          ],
+          "sizeDelta": [
+            137,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "修复",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_3_2",
+        "name": "ClickArea",
+        "parentId": "T1Login0_1_1_3",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -4.409999847412109
+          ],
+          "sizeDelta": [
+            125,
+            141
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_4",
+        "name": "Legal",
+        "parentId": "T1Login0_1_1",
+        "siblingIndex": 4,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            83,
+            -634
+          ],
+          "sizeDelta": [
+            92,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_1_1_4",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_4_0",
+        "name": "Icon",
+        "parentId": "T1Login0_1_1_4",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            40,
+            52
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/cc3a7f60a77851cb6634f7347628357880cd9e97ceb74679f6b72911d24e2cb0.png"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_4_1",
+        "name": "LogOut",
+        "parentId": "T1Login0_1_1_4",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -41.5
+          ],
+          "sizeDelta": [
+            171.1199951171875,
+            92
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "権利表記标题",
+              "m_FontData.m_FontSize": 27,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_1_1_4_2",
+        "name": "ClickArea",
+        "parentId": "T1Login0_1_1_4",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            -4.909999847412109
+          ],
+          "sizeDelta": [
+            125,
+            141
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_2",
+        "name": "NoticeCN",
+        "parentId": "T1Login0Animator",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0
+          ],
+          "anchorMax": [
+            1,
+            0
+          ],
+          "pivot": [
+            0.5,
+            0
+          ],
+          "anchoredPosition": [
+            0,
+            -41
+          ],
+          "sizeDelta": [
+            0,
+            192
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_2_0",
+        "name": "ChinaTips",
+        "parentId": "T1Login0_2",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            75
+          ],
+          "sizeDelta": [
+            2269.5,
+            541.2999877929688
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 0.7254901960784313,
+              "m_Color.g": 0.7254901960784313,
+              "m_Color.b": 0.7254901960784313,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "本公司积极履行《网络游戏行业防沉迷自律公约》\r  本网络游戏适合年满12周岁以上的用户使用；为了您的健康，请合理控制游戏时间。\r\n批准文号：国新出审[2023]308号    ISBN 978-7-498-09488-7    京新出文[2022]178号\r\n著作权人：深圳边锋科技有限公司   出版单位：北京侠客行网络技术有限公司    运营单位：成都兴盛创帆科技有限公司",
+              "m_FontData.m_FontSize": 28,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_2_1",
+        "name": "Notice",
+        "parentId": "T1Login0_2",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0
+          ],
+          "anchorMax": [
+            0,
+            0
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            100,
+            419
+          ],
+          "sizeDelta": [
+            120,
+            180
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 0,
+              "m_Enabled": true,
+              "m_RaycastTarget": true
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_2_1",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_4",
+        "name": "AgeIconParent",
+        "parentId": "T1Login0Animator",
+        "siblingIndex": 3,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0.5
+          ],
+          "anchorMax": [
+            0,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            153,
+            -236
+          ],
+          "sizeDelta": [
+            150,
+            150
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_4_0",
+        "name": "AgeIconBtn",
+        "parentId": "T1Login0_4",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            178,
+            227
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          0.8999999761581421,
+          0.8999999761581421,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/96c71f344e19de112c9eb296740660c230cc71d30c5e96e29c39a17822853140.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_4_0",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_5",
+        "name": "Account",
+        "parentId": "T1Login0Animator",
+        "siblingIndex": 4,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            1,
+            1
+          ],
+          "anchorMax": [
+            1,
+            1
+          ],
+          "pivot": [
+            1,
+            0.5
+          ],
+          "anchoredPosition": [
+            -78,
+            -33
+          ],
+          "sizeDelta": [
+            263,
+            59.46759033203125
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_5_0",
+        "name": "Image",
+        "parentId": "T1Login0_5",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0
+          ],
+          "anchorMax": [
+            1,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -2.089996337890625,
+            -3.029998779296875
+          ],
+          "sizeDelta": [
+            4.1719970703125,
+            6.06201171875
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/1a4ca0bb3c9e89f1b4abb2cb096cd987ce697f8b86e01c764c8f92fba410ef45.png"
+              },
+              "m_Type": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_5_1",
+        "name": "Exit",
+        "parentId": "T1Login0_5",
+        "siblingIndex": 1,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            69,
+            -29.733795166015625
+          ],
+          "sizeDelta": [
+            138,
+            57
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 0.9294117647058824,
+              "m_Color.g": 0.9294117647058824,
+              "m_Color.b": 0.9294117647058824,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": true,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/13bce639ef89b339fe6b8566f2c67fe5add84863c88f7199d996d776b3ad25ce.png"
+              }
+            }
+          },
+          {
+            "id": "button",
+            "type": "UnityEngine.UI.Button",
+            "properties": {
+              "m_Enabled": true,
+              "m_Interactable": true,
+              "m_TargetGraphic": {
+                "nodeId": "T1Login0_5_1",
+                "componentType": "UnityEngine.UI.Image"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_5_1_0",
+        "name": "Exit",
+        "parentId": "T1Login0_5_1",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            0
+          ],
+          "anchorMax": [
+            1,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            0,
+            0
+          ],
+          "sizeDelta": [
+            0,
+            0
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 0.9294117647058824,
+              "m_Color.g": 0.9294117647058824,
+              "m_Color.b": 0.9294117647058824,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "退出",
+              "m_FontData.m_FontSize": 30,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_5_2",
+        "name": "Username",
+        "parentId": "T1Login0_5",
+        "siblingIndex": 2,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            198,
+            -29.733795166015625
+          ],
+          "sizeDelta": [
+            100,
+            50
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Text",
+            "properties": {
+              "m_Color.r": 0.9294117647058824,
+              "m_Color.g": 0.9294117647058824,
+              "m_Color.b": 0.9294117647058824,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Text": "玩家账户",
+              "m_FontData.m_FontSize": 25,
+              "m_FontData.m_Alignment": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T1Login0_8",
+        "name": "Title",
+        "parentId": "T1Login0Animator",
+        "siblingIndex": 5,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0,
+            1
+          ],
+          "anchorMax": [
+            0,
+            1
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            237.25,
+            -127
+          ],
+          "sizeDelta": [
+            474.5,
+            253.9949951171875
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": []
+      },
+      {
+        "id": "T1Login0_8_0",
+        "name": "Logo",
+        "parentId": "T1Login0_8",
+        "siblingIndex": 0,
+        "kind": "Node",
+        "active": true,
+        "rect": {
+          "anchorMin": [
+            0.5,
+            0.5
+          ],
+          "anchorMax": [
+            0.5,
+            0.5
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "anchoredPosition": [
+            -19.899999618530273,
+            0.00000762939998821821
+          ],
+          "sizeDelta": [
+            365,
+            176
+          ]
+        },
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localScale": [
+          1,
+          1,
+          1
+        ],
+        "localRotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "components": [
+          {
+            "id": "renderer",
+            "type": "UnityEngine.CanvasRenderer",
+            "properties": {}
+          },
+          {
+            "id": "graphic",
+            "type": "UnityEngine.UI.Image",
+            "properties": {
+              "m_Color.r": 1,
+              "m_Color.g": 1,
+              "m_Color.b": 1,
+              "m_Color.a": 1,
+              "m_Enabled": true,
+              "m_RaycastTarget": false,
+              "m_Sprite": {
+                "assetPath": "Assets/Data/Widgets/Login/Images/90849657d8dd0ffcc2cad7562b5e8a518b220894c6d254b48515936186a60514.png"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

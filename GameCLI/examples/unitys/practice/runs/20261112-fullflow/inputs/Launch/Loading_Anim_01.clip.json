@@ -1,0 +1,123 @@
+{
+  "frameRate": 30,
+  "loop": true,
+  "schemaVersion": "animation-clip/1",
+  "curves": [
+    {
+      "path": "Loading/Ball",
+      "property": "localEulerAnglesRaw.x",
+      "postWrapMode": 2,
+      "preWrapMode": 2,
+      "keys": [
+        {
+          "outSlope": 0,
+          "time": 0,
+          "weightedMode": 0,
+          "tangentMode": 0,
+          "inWeight": 0.33333334,
+          "value": 0,
+          "inSlope": 0,
+          "outWeight": 0.33333334
+        },
+        {
+          "outSlope": 0,
+          "time": 2,
+          "weightedMode": 0,
+          "tangentMode": 0,
+          "inWeight": 0.33333334,
+          "value": 0,
+          "inSlope": 0,
+          "outWeight": 0.33333334
+        }
+      ],
+      "component": "UnityEngine.Transform"
+    },
+    {
+      "path": "Loading/Ball",
+      "property": "localEulerAnglesRaw.y",
+      "postWrapMode": 2,
+      "preWrapMode": 2,
+      "keys": [
+        {
+          "outSlope": 0,
+          "time": 0,
+          "weightedMode": 0,
+          "tangentMode": 0,
+          "inWeight": 0.33333334,
+          "value": 0,
+          "inSlope": 0,
+          "outWeight": 0.33333334
+        },
+        {
+          "outSlope": 0,
+          "time": 2,
+          "weightedMode": 0,
+          "tangentMode": 0,
+          "inWeight": 0.33333334,
+          "value": 0,
+          "inSlope": 0,
+          "outWeight": 0.33333334
+        }
+      ],
+      "component": "UnityEngine.Transform"
+    },
+    {
+      "path": "Loading/Ball",
+      "property": "localEulerAnglesRaw.z",
+      "postWrapMode": 2,
+      "preWrapMode": 2,
+      "keys": [
+        {
+          "outSlope": -180,
+          "time": 0,
+          "weightedMode": 0,
+          "tangentMode": 0,
+          "inWeight": 0.33333334,
+          "value": 0,
+          "inSlope": 0,
+          "outWeight": 0.33333334
+        },
+        {
+          "outSlope": -360,
+          "time": 2,
+          "weightedMode": 0,
+          "tangentMode": 0,
+          "inWeight": 0.33333334,
+          "value": -360,
+          "inSlope": -180,
+          "outWeight": 0.33333334
+        }
+      ],
+      "component": "UnityEngine.Transform"
+    },
+    {
+      "path": "Loading/RateBg/Arrow",
+      "property": "m_UVRect.x",
+      "postWrapMode": 2,
+      "preWrapMode": 2,
+      "keys": [
+        {
+          "outSlope": -0.055,
+          "time": 0,
+          "weightedMode": 0,
+          "tangentMode": 69,
+          "inWeight": 0.33333334,
+          "value": 0,
+          "inSlope": 0,
+          "outWeight": 0.33333334
+        },
+        {
+          "outSlope": 0,
+          "time": 2,
+          "weightedMode": 0,
+          "tangentMode": 69,
+          "inWeight": 0.33333334,
+          "value": -0.11,
+          "inSlope": -0.055,
+          "outWeight": 0.33333334
+        }
+      ],
+      "component": "UnityEngine.UI.RawImage"
+    }
+  ]
+}

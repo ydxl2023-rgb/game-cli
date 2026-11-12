@@ -1,7 +1,8 @@
 using Oathx.Core;
+using Oathx.Entity;
 using Oathx.Widget;
 
-/// <summary>Provides the clean practice application entry.</summary>
+/// <summary>Integrates the five-module local practice trial.</summary>
 public class PracticePlugin : XPlugin
 {
     /// <summary>Initialize UI infrastructure.</summary>
@@ -9,6 +10,10 @@ public class PracticePlugin : XPlugin
     public override bool Install()
     {
         UISystem.GetSingleton().Startup(new ResourceConfigure { loader = new PracticeUILoader(), cacher = new UIDefaultCacher() });
+
+        XEntityManager.GetSingleton().CreateEntity<MasterEntity>();
+        XEntityManager.GetSingleton().CreateEntity<LoginEntity>();
+        XEntityManager.GetSingleton().CreateEntity<NoticeEntity>();
 
         return true;
     }
@@ -18,12 +23,14 @@ public class PracticePlugin : XPlugin
     {
     }
 
-    /// <summary>Finish local startup without installing business systems.</summary>
+    /// <summary>Start the coordinator and request the local login module.</summary>
     /// <returns>True when the practice entry is ready.</returns>
     public override bool Startup()
     {
-        XApp.GetSingleton().HideLaunch();
-        UnityEngine.Debug.Log("Practice entry ready: no business systems installed.");
+        Load<MasterSystem>();
+
+        XPluginUtility.PostEvent(new SystemActive { type = typeof(LoginSystem) });
+        UnityEngine.Debug.Log("Practice trial ready: local template flow, no network authentication.");
 
         return true;
     }
@@ -31,7 +38,10 @@ public class PracticePlugin : XPlugin
     /// <summary>Release UI infrastructure.</summary>
     public override void Shutdown()
     {
+        UnloadAll();
+
         UISystem.GetSingleton().Shutdown();
+        XEntityManager.GetSingleton().Shutdown();
     }
 }
 

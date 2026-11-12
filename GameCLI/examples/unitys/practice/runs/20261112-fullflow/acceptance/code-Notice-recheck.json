@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Notice",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 6,
+    "lines": 523,
+    "blankLines": 77,
+    "commentLines": 152,
+    "members": 48,
+    "documentedMembers": 48,
+    "blankLineRate": 0.14722753346080306,
+    "commentLineRate": 0.29063097514340347,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Notice/NoticeEntity.cs",
+      "sha256": "67c8a93324fc54836d590e35486fcfb0a8385ee50b86bdae0b4d799d6f0c4e16"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Notice/NoticeLayout.cs",
+      "sha256": "9d886f97d56bbf84e092c8cfc050be32c6e79ee0e63fd9109056ad9e7dbaefca"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Notice/NoticeSystem.cs",
+      "sha256": "ccc45c4aa290cb9c4bf558e90b83e8ad29fbd2f6cd4fca7bddad76209bcaf814"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Notice/NoticeText.cs",
+      "sha256": "16206f7f32e2916b58b81198a7c144a17e21452e193a99e1f5e47d48b20a26e6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Notice/UI/UINotice.cs",
+      "sha256": "c88276fc6fb0e3be4026b946b664b26ffa0cede536430b8bf390e28960680442"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Notice/VM/VMNotice.cs",
+      "sha256": "6e5f6944cff014016a871af2ef59d4b39e2da6427352b6ae605bad27a1abbb0a"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\97751273-184f-4f7c-836a-77288d5e2706"
+}

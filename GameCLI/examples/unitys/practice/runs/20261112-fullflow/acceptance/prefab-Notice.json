@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "gamecli-prefab-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "prefabId": "T1Notice0",
+  "projectVersion": 3,
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "assetPath": "Assets/Data/Widgets/Notice/Notice.prefab",
+  "baselineSha256": "dc0863b9caacbfc0bb2634dead99c9e1a53c2cd06410ef515ece549cad1db0a9",
+  "unitySourceRevision": "b5a83530f7236647d4b542061abe9cec",
+  "policy": "studio-prefab/2",
+  "tolerance": 0.0001,
+  "status": "incomplete",
+  "passed": false,
+  "differences": [
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/1:ExpandContent/0:Content/0:Item/0:MainText",
+      "property": "component.UnityEngine.UI.Text",
+      "expected": 1,
+      "actual": 0
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/4:Empty",
+      "property": "node",
+      "expected": "absent",
+      "actual": "unexpected"
+    }
+  ],
+  "unverified": [
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.Metadata"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "NoticeLayout"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RectMask2D",
+        "property": "m_Softness",
+        "valueType": "Vector2Int"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/1/0/0/0",
+        "code": "unsupported-component",
+        "type": "NoticeText"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/1/0/0/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/1/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/1/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/2/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/2/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/2/0/0/0/2/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/3/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "animation-evidence-unavailable",
+      "message": "当前 Unity 导出器不提供完整 Animator 曲线证据，禁止判定动画一致。"
+    },
+    {
+      "node": "0:Notice",
+      "code": "script-binding-contract-unavailable",
+      "message": "已检查可读取的 VM/Metadata 静态一致性；源码包不包含产品预期目标映射，不能证明绑定到了设计指定的节点。"
+    },
+    {
+      "node": "0:Notice/0:Animator",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/0:WhiteBg",
+      "code": "resource-hash-unavailable",
+      "expected": "27a0a23fec0b66a99085db3bdd35ff47af691bad45eb67563af56c085e83b6d8"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/0:WhiteBg",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/1:TopBg",
+      "code": "resource-hash-unavailable",
+      "expected": "721681f6f06c3f8b5dfb6aec3da3b5029ab46395e0fed30e5802cbfcb8b743a0"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/1:TopBg/0:TitleDecorate",
+      "code": "resource-hash-unavailable",
+      "expected": "3bfce9f79e6f06993370d423a2709d566bc90555b821e5863154d7fbd05bbfc9"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/1:TopBg/1:Title",
+      "code": "resource-hash-unavailable",
+      "expected": "22fc495b718758fb7808a618b23df55e2a3d076a4d9eeed7ba83d84a87ce3889"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/1:TopBg/2:Close",
+      "code": "resource-hash-unavailable",
+      "expected": "f5994c753dca009e49ef62207e7bc2439d16f98f461b5b5f3a36815ce91c582d"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/1:TopBg/2:Close",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "hide",
+        "target": "T1Notice0"
+      }
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.ScrollRect"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.RectMask2D"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/0:NoticeBottom",
+      "code": "resource-hash-unavailable",
+      "expected": "e5d39e2b44f85b07edca26b11a529e5a5dc0badccb902501b8e4b22b89c4fe1c"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/0:NoticeBottom",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/1:ExpandContent/0:Content/0:Item/1:Image",
+      "code": "resource-hash-unavailable",
+      "expected": "57afd09af6d538a9aeb0e1d15a5a3242c452cf71e85d5f0f4408c127d3ffb3d7"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/1:ExpandContent/0:Content/0:Item/1:Image",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/1:ExpandContent/1:Ball/0:Ball1",
+      "code": "resource-hash-unavailable",
+      "expected": "08a33bb57032ab0d30b34827ba9d86f26018a3f0b443cfb17f6317b910395fef"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/1:ExpandContent/2:Line",
+      "code": "resource-hash-unavailable",
+      "expected": "3e49b0454057580b58a1374a8c173a9522a3c832d870105e7b5fcbe45dbdf35e"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/1:ExpandContent/2:Line",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/0:TitleGreen",
+      "code": "resource-hash-unavailable",
+      "expected": "6ed7960bf7fe84cf09e2b84a782fb4291b9ec04b3b9a4edeb09ea62e7282514a"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/0:TitleGreen",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "toggle",
+        "target": "T1Notice0_3_0_0_0_1"
+      }
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/0:TitleGreen",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/1:TitleIcon",
+      "code": "resource-hash-unavailable",
+      "expected": "32191737b6e9f96c6172852a523a8a008aa70b45c1796deee61501d9524259cd"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/2:NoticeTitleName",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/3:TitleArrow",
+      "code": "resource-hash-unavailable",
+      "expected": "1396e6345f7947d9712559189d172bd8e655e5e4964d8749e17b96955403663a"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/3:TitleArrow",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "toggle",
+        "target": "T1Notice0_3_0_0_0_1"
+      }
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/2:ScrollView/0:Viewport/0:TextCells/0:Item/2:NoticeTitleList/4:RedPoint",
+      "code": "resource-hash-unavailable",
+      "expected": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/3:WeekNomoreShow/0:ImgFrame",
+      "code": "resource-hash-unavailable",
+      "expected": "352c416247f0de7c5d756e854587d3955f710f497aa0c7234c57147e0e8113a0"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/3:WeekNomoreShow/0:ImgFrame",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "toggle",
+        "target": "T1Notice0_4_0_0"
+      }
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/3:WeekNomoreShow/0:ImgFrame/0:Selected",
+      "code": "resource-hash-unavailable",
+      "expected": "d8f425a159f199b38c7cbdacbfdac7ba6c46ba05be13759859cb3c82488edf77"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/3:WeekNomoreShow/1:WeekNomoreText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Notice/0:Animator/0:Panel/3:WeekNomoreShow/2:WeekNomoreBtn",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "toggle",
+        "target": "T1Notice0_4_0_0"
+      }
+    }
+  ],
+  "bindings": {
+    "policy": "oathx-widget-bindings/1",
+    "status": "passed",
+    "passed": true,
+    "widgets": 1,
+    "fields": 12,
+    "differences": [],
+    "unverified": [],
+    "limitations": [
+      "Static compiled-contract integrity only; intended product target mapping and runtime updates/callbacks are not verified.",
+      "Generated field order follows compiled declaration order; inherited VM contracts are incomplete."
+    ]
+  },
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\6ff29234-6100-4640-90b6-7b024e8f42a9"
+}

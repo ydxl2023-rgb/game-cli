@@ -145,17 +145,22 @@ namespace Oathx.Core
         {
             progress = float.IsNaN(progress) ? 0f : Mathf.Clamp01(progress);
             int percent = Mathf.RoundToInt(progress * 100f);
+
             if (!downloading)
             {
                 // Current templates combine the message and percentage in DownloadTips.
                 // Retain the separate label when an older prefab still supplies one.
                 loadingText.text = loadingPercent ? text : $"{text} ({percent}%)";
-                if (loadingPercent) loadingPercent.text = $"({percent}%)";
+                if (loadingPercent)
+                    loadingPercent.text = $"({percent}%)";
+
                 return true;
             }
 
             downloadText.text = downloadPercent ? text : $"{text} {percent}%";
-            if (downloadPercent) downloadPercent.text = $"{percent}%";
+            if (downloadPercent)
+                downloadPercent.text = $"{percent}%";
+
             // Preserve the authored vertical offsets while stretching horizontally.
             fill.anchorMin = new Vector2(0f, fill.anchorMin.y);
             fill.anchorMax = new Vector2(progress, fill.anchorMax.y);

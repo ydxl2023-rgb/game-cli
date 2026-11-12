@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Loading",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 2,
+    "lines": 63,
+    "blankLines": 11,
+    "commentLines": 23,
+    "members": 6,
+    "documentedMembers": 6,
+    "blankLineRate": 0.1746031746031746,
+    "commentLineRate": 0.36507936507936506,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Loading/UI/UILoading.cs",
+      "sha256": "cdb3aef00bb6856cd863fa7bf281924c7a215382c09fc5afad81e6e3632f29a5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Loading/VM/VMLoading.cs",
+      "sha256": "49a99d1d2a6cf7e185350446797f7e0b0301bdd9f6bdc9a5ad3880281ca28c0b"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\37332d65-e75a-4232-9c2f-00a1309bdc4a"
+}

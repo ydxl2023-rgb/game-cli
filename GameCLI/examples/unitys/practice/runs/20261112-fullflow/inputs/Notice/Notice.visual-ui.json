@@ -1,0 +1,667 @@
+{
+  "schemaVersion": "1.0",
+  "uiName": "Notice",
+  "referenceResolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "nodes": [
+    {
+      "id": "Notice0",
+      "name": "Notice",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "style": {
+        "color": "#ffffff00",
+        "opacity": 1,
+        "sprite": "",
+        "imageType": "simple"
+      },
+      "text": null,
+      "children": [
+        {
+          "id": "Notice0Animator",
+          "name": "Animator",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 1080
+          },
+          "style": {
+            "color": "#ffffff00",
+            "opacity": 1,
+            "sprite": "",
+            "imageType": "simple"
+          },
+          "text": null,
+          "children": [
+            {
+              "id": "Notice0OpenPanel",
+              "name": "Panel",
+              "element": "Container",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1080
+              },
+              "style": {
+                "color": "#ffffff00",
+                "opacity": 1,
+                "sprite": "",
+                "imageType": "simple"
+              },
+              "text": null,
+              "children": [
+                {
+                  "id": "Notice0_1",
+                  "name": "WhiteBg",
+                  "element": "Image",
+                  "rect": {
+                    "x": 119,
+                    "y": 109.48991680145264,
+                    "width": 1682,
+                    "height": 887.420166015625
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "27a0a23fec0b66a99085db3bdd35ff47af691bad45eb67563af56c085e83b6d8",
+                    "imageType": "sliced"
+                  },
+                  "text": null,
+                  "children": []
+                },
+                {
+                  "id": "Notice0_2",
+                  "name": "TopBg",
+                  "element": "Container",
+                  "rect": {
+                    "x": 137.67561030387878,
+                    "y": 123.38632202148438,
+                    "width": 1639.248779296875,
+                    "height": 71.02734375
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "721681f6f06c3f8b5dfb6aec3da3b5029ab46395e0fed30e5802cbfcb8b743a0",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": [
+                    {
+                      "id": "Notice0_2_0",
+                      "name": "TitleDecorate",
+                      "element": "Image",
+                      "rect": {
+                        "x": 96.50001215934753,
+                        "y": 90.89999389648438,
+                        "width": 220,
+                        "height": 112
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 1,
+                        "sprite": "3bfce9f79e6f06993370d423a2709d566bc90555b821e5863154d7fbd05bbfc9",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": []
+                    },
+                    {
+                      "id": "Notice0_2_1",
+                      "name": "Title",
+                      "element": "Image",
+                      "rect": {
+                        "x": 150.00002308376133,
+                        "y": 123.89999389648438,
+                        "width": 255,
+                        "height": 46
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 1,
+                        "sprite": "22fc495b718758fb7808a618b23df55e2a3d076a4d9eeed7ba83d84a87ce3889",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": []
+                    },
+                    {
+                      "id": "Notice0_2_2",
+                      "name": "Close",
+                      "element": "Button",
+                      "rect": {
+                        "x": 1690.2999999523163,
+                        "y": 90.9000244140625,
+                        "width": 100,
+                        "height": 100
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 1,
+                        "sprite": "f5994c753dca009e49ef62207e7bc2439d16f98f461b5b5f3a36815ce91c582d",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "Notice0_3",
+                  "name": "ScrollView",
+                  "element": "Container",
+                  "rect": {
+                    "x": 161.1461181640625,
+                    "y": 219.26113891601562,
+                    "width": 1599.707763671875,
+                    "height": 705.4777221679688
+                  },
+                  "style": {
+                    "color": "#ffffff00",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": [
+                    {
+                      "id": "Notice0_3_0",
+                      "name": "Viewport",
+                      "element": "Container",
+                      "rect": {
+                        "x": 161.1461181640625,
+                        "y": 219.26113891601562,
+                        "width": 1599.707763671875,
+                        "height": 705.4777221679688
+                      },
+                      "style": {
+                        "color": "#ffffff00",
+                        "opacity": 1,
+                        "sprite": "",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": [
+                        {
+                          "id": "Notice0_3_0_0",
+                          "name": "TextCells",
+                          "element": "Container",
+                          "rect": {
+                            "x": 161.1461181640625,
+                            "y": 219.26113891601562,
+                            "width": 1599.707763671875,
+                            "height": 607
+                          },
+                          "style": {
+                            "color": "#ffffff00",
+                            "opacity": 1,
+                            "sprite": "",
+                            "imageType": "simple"
+                          },
+                          "text": null,
+                          "children": [
+                            {
+                              "id": "Notice0_3_0_0_0",
+                              "name": "Item",
+                              "element": "Container",
+                              "rect": {
+                                "x": 211,
+                                "y": 219.26113891601562,
+                                "width": 1500,
+                                "height": 607
+                              },
+                              "style": {
+                                "color": "#ffffff00",
+                                "opacity": 1,
+                                "sprite": "",
+                                "imageType": "simple"
+                              },
+                              "text": null,
+                              "children": [
+                                {
+                                  "id": "Notice0_3_0_0_0_0",
+                                  "name": "NoticeBottom",
+                                  "element": "Image",
+                                  "rect": {
+                                    "x": 211,
+                                    "y": 219.26113891601562,
+                                    "width": 1500,
+                                    "height": 607
+                                  },
+                                  "style": {
+                                    "color": "#ffffff",
+                                    "opacity": 1,
+                                    "sprite": "e5d39e2b44f85b07edca26b11a529e5a5dc0badccb902501b8e4b22b89c4fe1c",
+                                    "imageType": "sliced"
+                                  },
+                                  "text": null,
+                                  "children": []
+                                },
+                                {
+                                  "id": "Notice0_3_0_0_0_1",
+                                  "name": "ExpandContent",
+                                  "element": "Container",
+                                  "rect": {
+                                    "x": 211,
+                                    "y": 322.16114044189453,
+                                    "width": 1500,
+                                    "height": 100
+                                  },
+                                  "style": {
+                                    "color": "#ffffff00",
+                                    "opacity": 1,
+                                    "sprite": "",
+                                    "imageType": "simple"
+                                  },
+                                  "text": null,
+                                  "children": [
+                                    {
+                                      "id": "Notice0_3_0_0_0_1_0",
+                                      "name": "Content",
+                                      "element": "Container",
+                                      "rect": {
+                                        "x": 232.8499755859375,
+                                        "y": 308.66516876220703,
+                                        "width": 1464.5499267578125,
+                                        "height": 256
+                                      },
+                                      "style": {
+                                        "color": "#ffffff00",
+                                        "opacity": 1,
+                                        "sprite": "",
+                                        "imageType": "simple"
+                                      },
+                                      "text": null,
+                                      "children": [
+                                        {
+                                          "id": "Notice0_3_0_0_0_1_0_0",
+                                          "name": "Item",
+                                          "element": "Container",
+                                          "rect": {
+                                            "x": 232.8499755859375,
+                                            "y": 308.66516876220703,
+                                            "width": 1708.78662109375,
+                                            "height": 256
+                                          },
+                                          "style": {
+                                            "color": "#ffffff00",
+                                            "opacity": 1,
+                                            "sprite": "",
+                                            "imageType": "simple"
+                                          },
+                                          "text": null,
+                                          "children": [
+                                            {
+                                              "id": "Notice0_3_0_0_0_1_0_0_0",
+                                              "name": "MainText",
+                                              "element": "Text",
+                                              "rect": {
+                                                "x": 232.8499755859375,
+                                                "y": 308.66516876220703,
+                                                "width": 1452.78662109375,
+                                                "height": 46
+                                              },
+                                              "style": {
+                                                "color": "#323232",
+                                                "opacity": 1,
+                                                "sprite": "",
+                                                "imageType": "simple"
+                                              },
+                                              "text": {
+                                                "content": "",
+                                                "fontSize": 35,
+                                                "color": "#323232",
+                                                "alignment": "Left"
+                                              },
+                                              "children": []
+                                            },
+                                            {
+                                              "id": "Notice0_3_0_0_0_1_0_0_1",
+                                              "name": "Image",
+                                              "element": "Button",
+                                              "rect": {
+                                                "x": 1685.6365966796875,
+                                                "y": 308.66516876220703,
+                                                "width": 256,
+                                                "height": 256
+                                              },
+                                              "style": {
+                                                "color": "#ffffff",
+                                                "opacity": 1,
+                                                "sprite": "57afd09af6d538a9aeb0e1d15a5a3242c452cf71e85d5f0f4408c127d3ffb3d7",
+                                                "imageType": "simple"
+                                              },
+                                              "text": null,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "Notice0_3_0_0_0_1_1",
+                                      "name": "Ball",
+                                      "element": "Container",
+                                      "rect": {
+                                        "x": 209,
+                                        "y": 221.21648406982422,
+                                        "width": 224,
+                                        "height": 111.54931640625
+                                      },
+                                      "style": {
+                                        "color": "#ffffff00",
+                                        "opacity": 1,
+                                        "sprite": "",
+                                        "imageType": "simple"
+                                      },
+                                      "text": null,
+                                      "children": [
+                                        {
+                                          "id": "Notice0_3_0_0_0_1_1_0",
+                                          "name": "Ball1",
+                                          "element": "Image",
+                                          "rect": {
+                                            "x": 209,
+                                            "y": 106.76616668701172,
+                                            "width": 224,
+                                            "height": 226
+                                          },
+                                          "style": {
+                                            "color": "#ffffff",
+                                            "opacity": 1,
+                                            "sprite": "08a33bb57032ab0d30b34827ba9d86f26018a3f0b443cfb17f6317b910395fef",
+                                            "imageType": "simple"
+                                          },
+                                          "text": null,
+                                          "children": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "Notice0_3_0_0_0_1_2",
+                                      "name": "Line",
+                                      "element": "Image",
+                                      "rect": {
+                                        "x": 251,
+                                        "y": 169.86609649658203,
+                                        "width": 1420,
+                                        "height": 4
+                                      },
+                                      "style": {
+                                        "color": "#ffffff",
+                                        "opacity": 1,
+                                        "sprite": "3e49b0454057580b58a1374a8c173a9522a3c832d870105e7b5fcbe45dbdf35e",
+                                        "imageType": "sliced"
+                                      },
+                                      "text": null,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "Notice0_3_0_0_0_2",
+                                  "name": "NoticeTitleList",
+                                  "element": "Container",
+                                  "rect": {
+                                    "x": -489,
+                                    "y": 219.26113891601562,
+                                    "width": 2900,
+                                    "height": 100
+                                  },
+                                  "style": {
+                                    "color": "#ffffff00",
+                                    "opacity": 1,
+                                    "sprite": "",
+                                    "imageType": "simple"
+                                  },
+                                  "text": null,
+                                  "children": [
+                                    {
+                                      "id": "Notice0_3_0_0_0_2_0",
+                                      "name": "TitleGreen",
+                                      "element": "Button",
+                                      "rect": {
+                                        "x": 175.0999755859375,
+                                        "y": 243.03607177734375,
+                                        "width": 1520,
+                                        "height": 56.25
+                                      },
+                                      "style": {
+                                        "color": "#ffffff",
+                                        "opacity": 1,
+                                        "sprite": "6ed7960bf7fe84cf09e2b84a782fb4291b9ec04b3b9a4edeb09ea62e7282514a",
+                                        "imageType": "sliced"
+                                      },
+                                      "text": null,
+                                      "children": []
+                                    },
+                                    {
+                                      "id": "Notice0_3_0_0_0_2_1",
+                                      "name": "TitleIcon",
+                                      "element": "Image",
+                                      "rect": {
+                                        "x": 215,
+                                        "y": 244.16107177734375,
+                                        "width": 44,
+                                        "height": 44
+                                      },
+                                      "style": {
+                                        "color": "#ffffff",
+                                        "opacity": 1,
+                                        "sprite": "32191737b6e9f96c6172852a523a8a008aa70b45c1796deee61501d9524259cd",
+                                        "imageType": "simple"
+                                      },
+                                      "text": null,
+                                      "children": []
+                                    },
+                                    {
+                                      "id": "Notice0_3_0_0_0_2_2",
+                                      "name": "NoticeTitleName",
+                                      "element": "Text",
+                                      "rect": {
+                                        "x": 263.0858154296875,
+                                        "y": 239.3739137649536,
+                                        "width": 904.828369140625,
+                                        "height": 48.37445068359375
+                                      },
+                                      "style": {
+                                        "color": "#ffffff",
+                                        "opacity": 1,
+                                        "sprite": "",
+                                        "imageType": "simple"
+                                      },
+                                      "text": {
+                                        "content": "防沉迷公告",
+                                        "fontSize": 32,
+                                        "color": "#ffffff",
+                                        "alignment": "Left"
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "id": "Notice0_3_0_0_0_2_3",
+                                      "name": "TitleArrow",
+                                      "element": "Button",
+                                      "rect": {
+                                        "x": 1634,
+                                        "y": 250.36117553710938,
+                                        "width": 39,
+                                        "height": 32
+                                      },
+                                      "style": {
+                                        "color": "#ffffff",
+                                        "opacity": 1,
+                                        "sprite": "1396e6345f7947d9712559189d172bd8e655e5e4964d8749e17b96955403663a",
+                                        "imageType": "simple"
+                                      },
+                                      "text": null,
+                                      "children": []
+                                    },
+                                    {
+                                      "id": "Notice0_3_0_0_0_2_4",
+                                      "name": "RedPoint",
+                                      "element": "Image",
+                                      "rect": {
+                                        "x": 1713,
+                                        "y": 218.16107177734375,
+                                        "width": 36,
+                                        "height": 36
+                                      },
+                                      "style": {
+                                        "color": "#ffffff",
+                                        "opacity": 1,
+                                        "sprite": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf",
+                                        "imageType": "simple"
+                                      },
+                                      "text": null,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "Notice0_4",
+                  "name": "WeekNomoreShow",
+                  "element": "Container",
+                  "rect": {
+                    "x": 827.1599998474121,
+                    "y": 911.2699928283691,
+                    "width": 255,
+                    "height": 83.26000213623047
+                  },
+                  "style": {
+                    "color": "#ffffff00",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": [
+                    {
+                      "id": "Notice0_4_0",
+                      "name": "ImgFrame",
+                      "element": "Button",
+                      "rect": {
+                        "x": 827.1599998474121,
+                        "y": 930.8999938964844,
+                        "width": 44,
+                        "height": 44
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 1,
+                        "sprite": "352c416247f0de7c5d756e854587d3955f710f497aa0c7234c57147e0e8113a0",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": [
+                        {
+                          "id": "Notice0_4_0_0",
+                          "name": "Selected",
+                          "element": "Image",
+                          "rect": {
+                            "x": 831.6599998474121,
+                            "y": 932.9000358581543,
+                            "width": 40,
+                            "height": 40
+                          },
+                          "style": {
+                            "color": "#ffffff",
+                            "opacity": 1,
+                            "sprite": "d8f425a159f199b38c7cbdacbfdac7ba6c46ba05be13759859cb3c82488edf77",
+                            "imageType": "simple"
+                          },
+                          "text": null,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "Notice0_4_1",
+                      "name": "WeekNomoreText",
+                      "element": "Text",
+                      "rect": {
+                        "x": 886.1599998474121,
+                        "y": 912.5899925231934,
+                        "width": 196,
+                        "height": 80.62000274658203
+                      },
+                      "style": {
+                        "color": "#000000",
+                        "opacity": 1,
+                        "sprite": "",
+                        "imageType": "simple"
+                      },
+                      "text": {
+                        "content": "一周内不再显示",
+                        "fontSize": 28,
+                        "color": "#000000",
+                        "alignment": "Left"
+                      },
+                      "children": []
+                    },
+                    {
+                      "id": "Notice0_4_2",
+                      "name": "WeekNomoreBtn",
+                      "element": "Button",
+                      "rect": {
+                        "x": 823.1399998664856,
+                        "y": 927.7899928092957,
+                        "width": 264.039999961853,
+                        "height": 60.10000228881836
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 0,
+                        "sprite": "",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Notice0_0",
+              "name": "Bg",
+              "element": "Image",
+              "rect": {
+                "x": -260,
+                "y": 0,
+                "width": 2440,
+                "height": 1080
+              },
+              "style": {
+                "color": "#000000",
+                "opacity": 0.7058823704719543,
+                "sprite": "",
+                "imageType": "simple"
+              },
+              "text": null,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,11 @@ Before writing, modifying, or reviewing Unity C# code in this directory, read an
 
 For com.oathx.* framework work, start with [the Oathx skill index](skills/oathx/SKILL.md) and read the relevant module skill. Keep all skills for this framework under skills/oathx, with one system per directory. New system skills must link to the shared development-rules skill and require agents to follow it.
 
+For product development based on the Launch, Login, Loading, Master or Notice standard templates, read [the independent system development workflow](skills/oathx/system-development/SKILL.md) and the specific module skill. Templates are reference patterns, not mandatory product behavior. Their historical GameCLI examples are optional references; do not copy business dependencies or install unrelated systems by default.
+
 For initial Oathx development environment setup, use [the framework setup skill](skills/oathx/framework/SKILL.md). It covers package installation, CLI setup, initialization, coding conventions, and acceptance checks for an independent agent.
+
+For independent acceptance of an Oathx system delivery, read [the system acceptance skill](skills/oathx/system-acceptance/SKILL.md) and the target system skill. Use a reviewer distinct from the implementing agent; preserve raw CLI evidence and return defects to development rather than editing the delivery during acceptance.
 
 For a clean GameCLI practice project based on development, use [the practice setup skill](skills/oathx/practice/SKILL.md). Use development's branch packages and retain only the base entry infrastructure, with no business systems.
 

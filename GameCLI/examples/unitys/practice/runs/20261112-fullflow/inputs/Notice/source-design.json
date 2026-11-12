@@ -1,0 +1,1594 @@
+{
+  "schemaVersion": 1,
+  "rootId": "Canvas",
+  "name": "SvNotice",
+  "width": 1920,
+  "height": 1080,
+  "animations": [
+    {
+      "id": "Notice0StandardOpen",
+      "clip": {
+        "name": "NoticeOpen",
+        "curves": [
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 0.94,
+                "inWeight": 0,
+                "inTangent": 0.8181818,
+                "outWeight": 0,
+                "outTangent": 0.8181818,
+                "weightedMode": 0
+              },
+              {
+                "time": 0.22,
+                "value": 1,
+                "inWeight": 0,
+                "inTangent": 0,
+                "outWeight": 0,
+                "outTangent": 0,
+                "weightedMode": 0
+              }
+            ],
+            "property": "m_LocalScale.x",
+            "component": "UnityEngine.Transform",
+            "preWrapMode": 8,
+            "postWrapMode": 8,
+            "targetNodeId": "Notice0OpenPanel"
+          },
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 0.94,
+                "inWeight": 0,
+                "inTangent": 0.8181818,
+                "outWeight": 0,
+                "outTangent": 0.8181818,
+                "weightedMode": 0
+              },
+              {
+                "time": 0.22,
+                "value": 1,
+                "inWeight": 0,
+                "inTangent": 0,
+                "outWeight": 0,
+                "outTangent": 0,
+                "weightedMode": 0
+              }
+            ],
+            "property": "m_LocalScale.y",
+            "component": "UnityEngine.Transform",
+            "preWrapMode": 8,
+            "postWrapMode": 8,
+            "targetNodeId": "Notice0OpenPanel"
+          },
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 1,
+                "inWeight": 0,
+                "inTangent": 0,
+                "outWeight": 0,
+                "outTangent": 0,
+                "weightedMode": 0
+              },
+              {
+                "time": 0.22,
+                "value": 1,
+                "inWeight": 0,
+                "inTangent": 0,
+                "outWeight": 0,
+                "outTangent": 0,
+                "weightedMode": 0
+              }
+            ],
+            "property": "m_LocalScale.z",
+            "component": "UnityEngine.Transform",
+            "preWrapMode": 8,
+            "postWrapMode": 8,
+            "targetNodeId": "Notice0OpenPanel"
+          }
+        ],
+        "loopTime": false,
+        "stopTime": 0.22,
+        "frameRate": 60,
+        "startTime": 0
+      },
+      "state": {
+        "name": "Open",
+        "speed": 1,
+        "default": true,
+        "cycleOffset": 0
+      },
+      "source": {
+        "version": 1,
+        "standardAnimationId": "dialog.open.scale"
+      },
+      "hostNodeId": "Notice0Animator"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "Notice0",
+      "parent": null,
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "templateSourceId": "SvNotice",
+      "name": "Notice"
+    },
+    {
+      "id": "Notice0Animator",
+      "parent": "Notice0",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "animationHost": true,
+      "name": "Animator"
+    },
+    {
+      "id": "Notice0OpenPanel",
+      "parent": "Notice0Animator",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "name": "Panel"
+    },
+    {
+      "id": "Notice0_0",
+      "parent": "Notice0Animator",
+      "type": "Image",
+      "x": -260,
+      "y": 0,
+      "width": 2440,
+      "height": 1080,
+      "color": "#000000",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 0.7058823704719543,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 2440,
+          "y": 1080
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Bg"
+    },
+    {
+      "id": "Notice0_1",
+      "parent": "Notice0OpenPanel",
+      "type": "Image",
+      "x": 119,
+      "y": 109.48991680145264,
+      "width": 1682,
+      "height": 887.420166015625,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "27a0a23fec0b66a99085db3bdd35ff47af691bad45eb67563af56c085e83b6d8",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": -13.199999809265137
+        },
+        "sizeDelta": {
+          "x": 1682,
+          "y": 887.420166015625
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "imageBorder": {
+        "w": 49,
+        "x": 49,
+        "y": 49,
+        "z": 49
+      },
+      "rotation": 0,
+      "active": true,
+      "imageType": "sliced",
+      "name": "WhiteBg"
+    },
+    {
+      "id": "Notice0_2",
+      "parent": "Notice0OpenPanel",
+      "type": "Container",
+      "x": 137.67561030387878,
+      "y": 123.38632202148438,
+      "width": 1639.248779296875,
+      "height": 71.02734375,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "721681f6f06c3f8b5dfb6aec3da3b5029ab46395e0fed30e5802cbfcb8b743a0",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -2.700000047683716,
+          "y": 381.1000061035156
+        },
+        "sizeDelta": {
+          "x": 1639.248779296875,
+          "y": 71.02734375
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "TopBg"
+    },
+    {
+      "id": "Notice0_2_0",
+      "parent": "Notice0_2",
+      "type": "Image",
+      "x": -41.17559814453125,
+      "y": -32.486328125,
+      "width": 220,
+      "height": 112,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "3bfce9f79e6f06993370d423a2709d566bc90555b821e5863154d7fbd05bbfc9",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -750.7999877929688,
+          "y": 12
+        },
+        "sizeDelta": {
+          "x": 220,
+          "y": 112
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "TitleDecorate"
+    },
+    {
+      "id": "Notice0_2_1",
+      "parent": "Notice0_2",
+      "type": "Image",
+      "x": 12.32441277988255,
+      "y": 0.513671875,
+      "width": 255,
+      "height": 46,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "22fc495b718758fb7808a618b23df55e2a3d076a4d9eeed7ba83d84a87ce3889",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": -4.284083843231201e-8,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -807.2999877929688,
+          "y": 12
+        },
+        "sizeDelta": {
+          "x": 255,
+          "y": 46
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Title"
+    },
+    {
+      "id": "Notice0_2_2",
+      "parent": "Notice0_2",
+      "type": "Button",
+      "x": 1552.6243896484375,
+      "y": -32.486297607421875,
+      "width": 100,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "action": {
+        "type": "hide",
+        "target": "Notice0"
+      },
+      "image": "f5994c753dca009e49ef62207e7bc2439d16f98f461b5b5f3a36815ce91c582d",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 783,
+          "y": 17.999969482421875
+        },
+        "sizeDelta": {
+          "x": 100,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "interactable": true,
+      "name": "Close"
+    },
+    {
+      "id": "Notice0_3",
+      "parent": "Notice0OpenPanel",
+      "type": "Container",
+      "x": 161.1461181640625,
+      "y": 219.26113891601562,
+      "width": 1599.707763671875,
+      "height": 705.4777221679688,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 1,
+          "y": -32
+        },
+        "sizeDelta": {
+          "x": 1599.707763671875,
+          "y": 705.4777221679688
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "ScrollView"
+    },
+    {
+      "id": "Notice0_3_0",
+      "parent": "Notice0_3",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1599.707763671875,
+      "height": 705.4777221679688,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Viewport"
+    },
+    {
+      "id": "Notice0_3_0_0",
+      "parent": "Notice0_3_0",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1599.707763671875,
+      "height": 607,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 607
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "TextCells"
+    },
+    {
+      "id": "Notice0_3_0_0_0",
+      "parent": "Notice0_3_0_0",
+      "type": "Container",
+      "x": 49.8538818359375,
+      "y": 0,
+      "width": 1500,
+      "height": 607,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 799.8538818359375,
+          "y": -303.5
+        },
+        "sizeDelta": {
+          "x": 1500,
+          "y": 607
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Item"
+    },
+    {
+      "id": "Notice0_3_0_0_0_0",
+      "parent": "Notice0_3_0_0_0",
+      "type": "Image",
+      "x": 0,
+      "y": 0,
+      "width": 1500,
+      "height": 607,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "e5d39e2b44f85b07edca26b11a529e5a5dc0badccb902501b8e4b22b89c4fe1c",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "imageBorder": {
+        "w": 32,
+        "x": 32,
+        "y": 32,
+        "z": 32
+      },
+      "rotation": 0,
+      "active": true,
+      "imageType": "sliced",
+      "name": "NoticeBottom"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1",
+      "parent": "Notice0_3_0_0_0",
+      "type": "Container",
+      "x": 0,
+      "y": 102.9000015258789,
+      "width": 1500,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": -102.9000015258789
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "ExpandContent"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_0",
+      "parent": "Notice0_3_0_0_0_1",
+      "type": "Container",
+      "x": 21.8499755859375,
+      "y": -13.4959716796875,
+      "width": 1464.5499267578125,
+      "height": 256,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 21.8499755859375,
+          "y": 13.4959716796875
+        },
+        "sizeDelta": {
+          "x": 1464.5499267578125,
+          "y": 256
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Content"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_0_0",
+      "parent": "Notice0_3_0_0_0_1_0",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1708.78662109375,
+      "height": 256,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 854.393310546875,
+          "y": -128
+        },
+        "sizeDelta": {
+          "x": 1708.78662109375,
+          "y": 256
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Item"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_0_0_0",
+      "parent": "Notice0_3_0_0_0_1_0_0",
+      "type": "Text",
+      "x": 0,
+      "y": 0,
+      "width": 1452.78662109375,
+      "height": 46,
+      "color": "#323232",
+      "text": "",
+      "fontSize": 35,
+      "opacity": 1,
+      "textAlign": "left",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 1452.78662109375,
+          "y": 46
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "verticalAlign": "start",
+      "rotation": 0,
+      "active": true,
+      "name": "MainText"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_0_0_1",
+      "parent": "Notice0_3_0_0_0_1_0_0",
+      "type": "Button",
+      "x": 1452.78662109375,
+      "y": 0,
+      "width": 256,
+      "height": 256,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "action": {
+        "type": "none"
+      },
+      "image": "57afd09af6d538a9aeb0e1d15a5a3242c452cf71e85d5f0f4408c127d3ffb3d7",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 1452.78662109375,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 256,
+          "y": 256
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "interactable": true,
+      "name": "Image"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_1",
+      "parent": "Notice0_3_0_0_0_1",
+      "type": "Container",
+      "x": -2,
+      "y": -100.94465637207031,
+      "width": 224,
+      "height": 111.54931640625,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -640,
+          "y": 95.16999816894531
+        },
+        "sizeDelta": {
+          "x": 224,
+          "y": 111.54931640625
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Ball"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_1_0",
+      "parent": "Notice0_3_0_0_0_1_1",
+      "type": "Image",
+      "x": 0,
+      "y": -114.4503173828125,
+      "width": 224,
+      "height": 226,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "08a33bb57032ab0d30b34827ba9d86f26018a3f0b443cfb17f6317b910395fef",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 57.2249755859375
+        },
+        "sizeDelta": {
+          "x": 224,
+          "y": 226
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Ball1"
+    },
+    {
+      "id": "Notice0_3_0_0_0_1_2",
+      "parent": "Notice0_3_0_0_0_1",
+      "type": "Image",
+      "x": 40,
+      "y": -152.2950439453125,
+      "width": 1420,
+      "height": 4,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "3e49b0454057580b58a1374a8c173a9522a3c832d870105e7b5fcbe45dbdf35e",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 200.2950439453125
+        },
+        "sizeDelta": {
+          "x": 1420,
+          "y": 4
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "imageBorder": {
+        "w": 0,
+        "x": 3,
+        "y": 0,
+        "z": 4
+      },
+      "rotation": 0,
+      "active": true,
+      "imageType": "sliced",
+      "name": "Line"
+    },
+    {
+      "id": "Notice0_3_0_0_0_2",
+      "parent": "Notice0_3_0_0_0",
+      "type": "Container",
+      "x": -700,
+      "y": 0,
+      "width": 2900,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 1
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 1400,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "NoticeTitleList"
+    },
+    {
+      "id": "Notice0_3_0_0_0_2_0",
+      "parent": "Notice0_3_0_0_0_2",
+      "type": "Button",
+      "x": 664.0999755859375,
+      "y": 23.774932861328125,
+      "width": 1520,
+      "height": 56.25,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "action": {
+        "type": "toggle",
+        "target": "Notice0_3_0_0_0_1"
+      },
+      "image": "6ed7960bf7fe84cf09e2b84a782fb4291b9ec04b3b9a4edeb09ea62e7282514a",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -25.9000244140625,
+          "y": -1.899932861328125
+        },
+        "sizeDelta": {
+          "x": 1520,
+          "y": 56.25
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "imageBorder": {
+        "w": 0,
+        "x": 41,
+        "y": 0,
+        "z": 724
+      },
+      "rotation": 0,
+      "active": true,
+      "imageType": "sliced",
+      "interactable": true,
+      "name": "TitleGreen"
+    },
+    {
+      "id": "Notice0_3_0_0_0_2_1",
+      "parent": "Notice0_3_0_0_0_2",
+      "type": "Image",
+      "x": 704,
+      "y": 24.899932861328125,
+      "width": 44,
+      "height": 44,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "32191737b6e9f96c6172852a523a8a008aa70b45c1796deee61501d9524259cd",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -724,
+          "y": 3.100067138671875
+        },
+        "sizeDelta": {
+          "x": 44,
+          "y": 44
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "TitleIcon"
+    },
+    {
+      "id": "Notice0_3_0_0_0_2_2",
+      "parent": "Notice0_3_0_0_0_2",
+      "type": "Text",
+      "x": 752.0858154296875,
+      "y": 20.11277484893799,
+      "width": 904.828369140625,
+      "height": 48.37445068359375,
+      "color": "#ffffff",
+      "text": "防沉迷公告",
+      "fontSize": 32,
+      "opacity": 1,
+      "textAlign": "left",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -245.5,
+          "y": 5.699999809265137
+        },
+        "sizeDelta": {
+          "x": 904.828369140625,
+          "y": 48.37445068359375
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "verticalAlign": "center",
+      "rotation": 0,
+      "active": true,
+      "name": "NoticeTitleName"
+    },
+    {
+      "id": "Notice0_3_0_0_0_2_3",
+      "parent": "Notice0_3_0_0_0_2",
+      "type": "Button",
+      "x": 2123,
+      "y": 31.10003662109375,
+      "width": 39,
+      "height": 32,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "action": {
+        "type": "toggle",
+        "target": "Notice0_3_0_0_0_1"
+      },
+      "image": "1396e6345f7947d9712559189d172bd8e655e5e4964d8749e17b96955403663a",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 692.5,
+          "y": 2.89996337890625
+        },
+        "sizeDelta": {
+          "x": 39,
+          "y": 32
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "interactable": true,
+      "name": "TitleArrow"
+    },
+    {
+      "id": "Notice0_3_0_0_0_2_4",
+      "parent": "Notice0_3_0_0_0_2",
+      "type": "Image",
+      "x": 2202,
+      "y": -1.100067138671875,
+      "width": 36,
+      "height": 36,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 770,
+          "y": 33.100067138671875
+        },
+        "sizeDelta": {
+          "x": 36,
+          "y": 36
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "RedPoint"
+    },
+    {
+      "id": "Notice0_4",
+      "parent": "Notice0OpenPanel",
+      "type": "Container",
+      "x": 827.1599998474121,
+      "y": 911.2699928283691,
+      "width": 255,
+      "height": 83.26000213623047,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -5.340000152587891,
+          "y": -412.8999938964844
+        },
+        "sizeDelta": {
+          "x": 255,
+          "y": 83.26000213623047
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "WeekNomoreShow"
+    },
+    {
+      "id": "Notice0_4_0",
+      "parent": "Notice0_4",
+      "type": "Button",
+      "x": 0,
+      "y": 19.630001068115234,
+      "width": 44,
+      "height": 44,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "action": {
+        "type": "toggle",
+        "target": "Notice0_4_0_0"
+      },
+      "image": "352c416247f0de7c5d756e854587d3955f710f497aa0c7234c57147e0e8113a0",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 22,
+          "y": -41.630001068115234
+        },
+        "sizeDelta": {
+          "x": 44,
+          "y": 44
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "interactable": true,
+      "name": "ImgFrame"
+    },
+    {
+      "id": "Notice0_4_0_0",
+      "parent": "Notice0_4_0",
+      "type": "Image",
+      "x": 4.5,
+      "y": 2.000041961669922,
+      "width": 40,
+      "height": 40,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "d8f425a159f199b38c7cbdacbfdac7ba6c46ba05be13759859cb3c82488edf77",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 24.5,
+          "y": -22.000041961669922
+        },
+        "sizeDelta": {
+          "x": 40,
+          "y": 40
+        }
+      },
+      "localScale": {
+        "x": 1.2999999523162842,
+        "y": 1.2999999523162842
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Selected"
+    },
+    {
+      "id": "Notice0_4_1",
+      "parent": "Notice0_4",
+      "type": "Text",
+      "x": 59,
+      "y": 1.3199996948242188,
+      "width": 196,
+      "height": 80.62000274658203,
+      "color": "#000000",
+      "text": "一周内不再显示",
+      "fontSize": 28,
+      "opacity": 1,
+      "textAlign": "left",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 157,
+          "y": -41.630001068115234
+        },
+        "sizeDelta": {
+          "x": 196,
+          "y": 80.62000274658203
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "verticalAlign": "center",
+      "rotation": 0,
+      "active": true,
+      "name": "WeekNomoreText"
+    },
+    {
+      "id": "Notice0_4_2",
+      "parent": "Notice0_4",
+      "type": "Button",
+      "x": -4.019999980926514,
+      "y": 16.519999980926514,
+      "width": 264.039999961853,
+      "height": 60.10000228881836,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 0,
+      "action": {
+        "type": "toggle",
+        "target": "Notice0_4_0_0"
+      },
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0.5,
+          "y": -4.940000057220459
+        },
+        "sizeDelta": {
+          "x": 9.039999961853027,
+          "y": -23.15999984741211
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "interactable": true,
+      "name": "WeekNomoreBtn"
+    }
+  ]
+}

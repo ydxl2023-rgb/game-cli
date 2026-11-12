@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "gamecli-prefab-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "prefabId": "T1T1T1N0",
+  "projectVersion": 3,
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "assetPath": "Assets/Data/Widgets/Loading/Loading.prefab",
+  "baselineSha256": "217fb3b8317bd7eb580076e49b4ed76e0cdd977d5116f35de2b4951f3caf7727",
+  "unitySourceRevision": "7a7bcbb265f3eb56602e051c6dda7915",
+  "policy": "studio-prefab/2",
+  "tolerance": 0.0001,
+  "status": "incomplete",
+  "passed": false,
+  "differences": [],
+  "unverified": [
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.Metadata"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_Texture",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_UVRect",
+        "valueType": "Rect"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_Texture",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_UVRect",
+        "valueType": "Rect"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "animation-evidence-unavailable",
+      "message": "当前 Unity 导出器不提供完整 Animator 曲线证据，禁止判定动画一致。"
+    },
+    {
+      "node": "0:Loading",
+      "code": "script-binding-contract-unavailable",
+      "message": "已检查可读取的 VM/Metadata 静态一致性；源码包不包含产品预期目标映射，不能证明绑定到了设计指定的节点。"
+    },
+    {
+      "node": "0:Loading/0:Animator",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg",
+      "code": "resource-hash-unavailable",
+      "expected": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg/0:Arrow",
+      "code": "resource-hash-unavailable",
+      "expected": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg/0:Arrow",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg/1:TipText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg/2:Ball",
+      "code": "resource-hash-unavailable",
+      "expected": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg/3:Haikyu",
+      "code": "resource-hash-unavailable",
+      "expected": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6"
+    },
+    {
+      "node": "0:Loading/0:Animator/2:RateBg/4:Rate",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Loading/0:Animator/1:Root/0:Bg/0:LoadingBg",
+      "code": "resource-hash-unavailable",
+      "expected": "86b4bf996df813392c7faa6263fe5b54af31eaaa6064d772ee1a3d5ad1ac22b9"
+    },
+    {
+      "node": "0:Loading/0:Animator/1:Root/0:Bg/0:LoadingBg",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    }
+  ],
+  "bindings": {
+    "policy": "oathx-widget-bindings/1",
+    "status": "passed",
+    "passed": true,
+    "widgets": 1,
+    "fields": 2,
+    "differences": [],
+    "unverified": [],
+    "limitations": [
+      "Static compiled-contract integrity only; intended product target mapping and runtime updates/callbacks are not verified.",
+      "Generated field order follows compiled declaration order; inherited VM contracts are incomplete."
+    ]
+  },
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\1351959d-a73b-41ed-a1fb-9dff8907e891"
+}

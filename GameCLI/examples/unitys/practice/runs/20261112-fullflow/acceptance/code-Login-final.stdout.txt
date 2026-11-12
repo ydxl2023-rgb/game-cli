@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Login",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 4,
+    "lines": 235,
+    "blankLines": 45,
+    "commentLines": 55,
+    "members": 29,
+    "documentedMembers": 29,
+    "blankLineRate": 0.19148936170212766,
+    "commentLineRate": 0.23404255319148937,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "sha256": "ba9787f8a14bbeed3125a55da05efd5c773a6c042564205151af5f752fe977a5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "sha256": "d0a8bb1e538008a941dab5d612f32e1d5d2870b048f90b2227fdf488b9451ec6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "sha256": "004d16541833d31f9d1981fda6ffb8b88a534cba50d89c970c0cfc96315f857e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "sha256": "000152bd2730a7776261d609a57849b87082a801cdc7090df6a7f5819ca44603"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\07ce6b27-fc22-4b8c-990a-69611888f40e"
+}

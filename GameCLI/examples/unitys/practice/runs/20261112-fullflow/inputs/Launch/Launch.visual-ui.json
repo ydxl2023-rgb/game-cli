@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "1.0",
+  "uiName": "Launch",
+  "referenceResolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "nodes": [
+    {
+      "id": "T2Start0",
+      "name": "Launch",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "style": {
+        "color": "#ffffff00",
+        "opacity": 1,
+        "sprite": "",
+        "imageType": "simple"
+      },
+      "text": null,
+      "children": [
+        {
+          "id": "T2Start0Animator",
+          "name": "Animator",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 1080
+          },
+          "style": {
+            "color": "#ffffff00",
+            "opacity": 1,
+            "sprite": "",
+            "imageType": "simple"
+          },
+          "text": null,
+          "children": [
+            {
+              "id": "T2Start0_0",
+              "name": "Background",
+              "element": "Container",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1080
+              },
+              "style": {
+                "color": "#ffffff00",
+                "opacity": 1,
+                "sprite": "",
+                "imageType": "simple"
+              },
+              "text": null,
+              "children": [
+                {
+                  "id": "T2Start0_0_0",
+                  "name": "Image",
+                  "element": "Image",
+                  "rect": {
+                    "x": -260,
+                    "y": 0,
+                    "width": 2440,
+                    "height": 1080
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "17e6cedbf10c9dc2ae4da981d6494d921bf8446acbc16a79d0eccf6a1ac59088",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": []
+                },
+                {
+                  "id": "T2Start0_0_2",
+                  "name": "Video",
+                  "element": "Container",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1920,
+                    "height": 1080
+                  },
+                  "style": {
+                    "color": "#ffffff00",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "T2Start0_2",
+              "name": "Loading",
+              "element": "Container",
+              "rect": {
+                "x": 910,
+                "y": 490,
+                "width": 100,
+                "height": 100
+              },
+              "style": {
+                "color": "#ffffff00",
+                "opacity": 1,
+                "sprite": "",
+                "imageType": "simple"
+              },
+              "text": null,
+              "children": [
+                {
+                  "id": "T2Start0_2_0",
+                  "name": "RateBg",
+                  "element": "Container",
+                  "rect": {
+                    "x": -260,
+                    "y": 984,
+                    "width": 2440,
+                    "height": 100
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255",
+                    "imageType": "sliced"
+                  },
+                  "text": null,
+                  "children": [
+                    {
+                      "id": "T2Start0_2_0_0",
+                      "name": "Arrow",
+                      "element": "Image",
+                      "rect": {
+                        "x": 704,
+                        "y": 963,
+                        "width": 512,
+                        "height": 152
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 0.0117647061124444,
+                        "sprite": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "T2Start0_2_1",
+                  "name": "Tip",
+                  "element": "Text",
+                  "rect": {
+                    "x": 442.440673828125,
+                    "y": 993.000057220459,
+                    "width": 1477.559326171875,
+                    "height": 87.00000762939453
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": {
+                    "content": "",
+                    "fontSize": 32,
+                    "color": "#ffffff",
+                    "alignment": "Right"
+                  },
+                  "children": []
+                },
+                {
+                  "id": "T2Start0_2_2",
+                  "name": "Ball",
+                  "element": "Image",
+                  "rect": {
+                    "x": 3.70001220703125,
+                    "y": 1002,
+                    "width": 64,
+                    "height": 64
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": []
+                },
+                {
+                  "id": "T2Start0_2_3",
+                  "name": "Haikyu",
+                  "element": "Image",
+                  "rect": {
+                    "x": -50.5999755859375,
+                    "y": 990,
+                    "width": 540,
+                    "height": 88
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": []
+                },
+                {
+                  "id": "T2Start0_2_4",
+                  "name": "DownloadTips",
+                  "element": "Text",
+                  "rect": {
+                    "x": 76,
+                    "y": 993.0000152587891,
+                    "width": 520.1533813476562,
+                    "height": 86.99996948242188
+                  },
+                  "style": {
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": {
+                    "content": "Loading... (0%)",
+                    "fontSize": 32,
+                    "color": "#ffffff",
+                    "alignment": "Left"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "T2Start0_3",
+              "name": "Update",
+              "element": "Container",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1080
+              },
+              "style": {
+                "color": "#ffffff00",
+                "opacity": 1,
+                "sprite": "",
+                "imageType": "simple"
+              },
+              "text": null,
+              "children": [
+                {
+                  "id": "T2Start0_3_1",
+                  "name": "Slider",
+                  "element": "Container",
+                  "rect": {
+                    "x": 136.999755859375,
+                    "y": 973,
+                    "width": 1693.0302734375,
+                    "height": 40
+                  },
+                  "style": {
+                    "color": "#ffffff00",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": [
+                    {
+                      "id": "T2Start0_3_1_0",
+                      "name": "Background",
+                      "element": "Image",
+                      "rect": {
+                        "x": 136.999755859375,
+                        "y": 983,
+                        "width": 1693.0302734375,
+                        "height": 20
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 1,
+                        "sprite": "d980196fafd7370ce229667b5fe30fd9e3d997b5612f6ba14c4455fcb12d7460",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": []
+                    },
+                    {
+                      "id": "T2Start0_3_1_1",
+                      "name": "FillArea",
+                      "element": "Container",
+                      "rect": {
+                        "x": 144.999755859375,
+                        "y": 972.4999995231628,
+                        "width": 1670.0302734375,
+                        "height": 30.500000953674316
+                      },
+                      "style": {
+                        "color": "#ffffff00",
+                        "opacity": 1,
+                        "sprite": "",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": [
+                        {
+                          "id": "T2Start0_3_1_1_0",
+                          "name": "Fill",
+                          "element": "Image",
+                          "rect": {
+                            "x": 140.0001220703125,
+                            "y": 984.2157230377197,
+                            "width": 6.939208984375,
+                            "height": 16.44855499267578
+                          },
+                          "style": {
+                            "color": "#ffffff",
+                            "opacity": 1,
+                            "sprite": "e5c96a396ece22bd4794cc272b9b0f4843928827166048d1b9e83ea02afbe68e",
+                            "imageType": "simple"
+                          },
+                          "text": null,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "T2Start0_3_1_2",
+                      "name": "HandleSlideArea",
+                      "element": "Container",
+                      "rect": {
+                        "x": 136.999755859375,
+                        "y": 973,
+                        "width": 1693.0302734375,
+                        "height": 40
+                      },
+                      "style": {
+                        "color": "#ffffff00",
+                        "opacity": 1,
+                        "sprite": "",
+                        "imageType": "simple"
+                      },
+                      "text": null,
+                      "children": [
+                        {
+                          "id": "T2Start0_3_1_2_0",
+                          "name": "Handle",
+                          "element": "Container",
+                          "rect": {
+                            "x": -233.000244140625,
+                            "y": 668.799976348877,
+                            "width": 740,
+                            "height": 627.4000244140625
+                          },
+                          "style": {
+                            "color": "#ffffff00",
+                            "opacity": 1,
+                            "sprite": "",
+                            "imageType": "simple"
+                          },
+                          "text": null,
+                          "children": [
+                            {
+                              "id": "T2Start0_3_1_2_0_0",
+                              "name": "LoadingWuYa",
+                              "element": "Container",
+                              "rect": {
+                                "x": 86.999755859375,
+                                "y": 932.4999885559082,
+                                "width": 100,
+                                "height": 100
+                              },
+                              "style": {
+                                "color": "#ffffff00",
+                                "opacity": 1,
+                                "sprite": "",
+                                "imageType": "simple"
+                              },
+                              "text": null,
+                              "children": [
+                                {
+                                  "id": "T2Start0_3_1_2_0_0_0",
+                                  "name": "Image",
+                                  "element": "Image",
+                                  "rect": {
+                                    "x": -233.000244140625,
+                                    "y": 648.8253011703491,
+                                    "width": 740,
+                                    "height": 644.609375
+                                  },
+                                  "style": {
+                                    "color": "#ffffff",
+                                    "opacity": 1,
+                                    "sprite": "",
+                                    "imageType": "simple"
+                                  },
+                                  "text": null,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "T2Start0_3_3",
+                  "name": "TipsGather",
+                  "element": "Container",
+                  "rect": {
+                    "x": 82,
+                    "y": 993,
+                    "width": 398,
+                    "height": 100
+                  },
+                  "style": {
+                    "color": "#ffffff00",
+                    "opacity": 1,
+                    "sprite": "",
+                    "imageType": "simple"
+                  },
+                  "text": null,
+                  "children": [
+                    {
+                      "id": "T2Start0_3_3_0",
+                      "name": "DownloadTips",
+                      "element": "Text",
+                      "rect": {
+                        "x": 82,
+                        "y": 993,
+                        "width": 398,
+                        "height": 80
+                      },
+                      "style": {
+                        "color": "#ffffff",
+                        "opacity": 1,
+                        "sprite": "",
+                        "imageType": "simple"
+                      },
+                      "text": {
+                        "content": "资源下载中...({0}M/{1}M) 0%",
+                        "fontSize": 30,
+                        "color": "#ffffff",
+                        "alignment": "Center"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

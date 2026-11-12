@@ -1,0 +1,1178 @@
+{
+  "schemaVersion": 1,
+  "rootId": "Canvas",
+  "name": "SvLaunch",
+  "width": 1920,
+  "height": 1080,
+  "animations": [
+    {
+      "id": "T2Start0_2Loop",
+      "clip": {
+        "name": "Loading_Anim_01",
+        "curves": [
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 0,
+                "inWeight": 0.33333334,
+                "inTangent": 0,
+                "outWeight": 0.33333334,
+                "outTangent": 0,
+                "weightedMode": 0,
+                "sourceTangentMode": 0
+              },
+              {
+                "time": 2,
+                "value": 0,
+                "inWeight": 0.33333334,
+                "inTangent": 0,
+                "outWeight": 0.33333334,
+                "outTangent": 0,
+                "weightedMode": 0,
+                "sourceTangentMode": 0
+              }
+            ],
+            "property": "localEulerAnglesRaw.x",
+            "component": "UnityEngine.Transform",
+            "sourcePath": "Ball",
+            "preWrapMode": 2,
+            "postWrapMode": 2,
+            "targetNodeId": "T2Start0_2_2",
+            "sourceRotationOrder": 4
+          },
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 0,
+                "inWeight": 0.33333334,
+                "inTangent": 0,
+                "outWeight": 0.33333334,
+                "outTangent": 0,
+                "weightedMode": 0,
+                "sourceTangentMode": 0
+              },
+              {
+                "time": 2,
+                "value": 0,
+                "inWeight": 0.33333334,
+                "inTangent": 0,
+                "outWeight": 0.33333334,
+                "outTangent": 0,
+                "weightedMode": 0,
+                "sourceTangentMode": 0
+              }
+            ],
+            "property": "localEulerAnglesRaw.y",
+            "component": "UnityEngine.Transform",
+            "sourcePath": "Ball",
+            "preWrapMode": 2,
+            "postWrapMode": 2,
+            "targetNodeId": "T2Start0_2_2",
+            "sourceRotationOrder": 4
+          },
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 0,
+                "inWeight": 0.33333334,
+                "inTangent": 0,
+                "outWeight": 0.33333334,
+                "outTangent": -180,
+                "weightedMode": 0,
+                "sourceTangentMode": 0
+              },
+              {
+                "time": 2,
+                "value": -360,
+                "inWeight": 0.33333334,
+                "inTangent": -180,
+                "outWeight": 0.33333334,
+                "outTangent": -360,
+                "weightedMode": 0,
+                "sourceTangentMode": 0
+              }
+            ],
+            "property": "localEulerAnglesRaw.z",
+            "component": "UnityEngine.Transform",
+            "sourcePath": "Ball",
+            "preWrapMode": 2,
+            "postWrapMode": 2,
+            "targetNodeId": "T2Start0_2_2",
+            "sourceRotationOrder": 4
+          },
+          {
+            "keys": [
+              {
+                "time": 0,
+                "value": 0,
+                "inWeight": 0.33333334,
+                "inTangent": 0,
+                "outWeight": 0.33333334,
+                "outTangent": -0.055,
+                "weightedMode": 0,
+                "sourceTangentMode": 69
+              },
+              {
+                "time": 2,
+                "value": -0.11,
+                "inWeight": 0.33333334,
+                "inTangent": -0.055,
+                "outWeight": 0.33333334,
+                "outTangent": 0,
+                "weightedMode": 0,
+                "sourceTangentMode": 69
+              }
+            ],
+            "property": "m_UVRect.x",
+            "component": "UnityEngine.UI.RawImage",
+            "sourcePath": "RateBg/eff_jiantou_01",
+            "preWrapMode": 2,
+            "postWrapMode": 2,
+            "targetNodeId": "T2Start0_2_0_0",
+            "sourceRotationOrder": 4
+          }
+        ],
+        "loopTime": true,
+        "stopTime": 2,
+        "wrapMode": 0,
+        "frameRate": 30,
+        "startTime": 0
+      },
+      "state": {
+        "name": "Loading_Anim_01",
+        "speed": 1,
+        "default": true,
+        "cycleOffset": 0,
+        "writeDefaultValues": true
+      },
+      "source": {
+        "clip": "Assets/data/@00Launch/Loading/loading/Loading_Anim_01.anim",
+        "clipGuid": "fb4346d412d82d04fa02b46c1ecabc03",
+        "originalHost": "0/2"
+      },
+      "hostNodeId": "T2Start0Animator"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "T2Start0",
+      "parent": null,
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "templateSourceId": "SvStart",
+      "name": "Launch"
+    },
+    {
+      "id": "T2Start0Animator",
+      "parent": "T2Start0",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "animationHost": true,
+      "name": "Animator"
+    },
+    {
+      "id": "T2Start0_0",
+      "parent": "T2Start0Animator",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Background"
+    },
+    {
+      "id": "T2Start0_0_0",
+      "parent": "T2Start0_0",
+      "type": "Image",
+      "x": -260,
+      "y": 0,
+      "width": 2440,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "17e6cedbf10c9dc2ae4da981d6494d921bf8446acbc16a79d0eccf6a1ac59088",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 2440,
+          "y": 1080
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "uvRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Image"
+    },
+    {
+      "id": "T2Start0_0_2",
+      "parent": "T2Start0_0",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Video"
+    },
+    {
+      "id": "T2Start0_2",
+      "parent": "T2Start0Animator",
+      "type": "Container",
+      "x": 910,
+      "y": 490,
+      "width": 100,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 100,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Loading"
+    },
+    {
+      "id": "T2Start0_2_0",
+      "parent": "T2Start0_2",
+      "type": "Container",
+      "x": -1170,
+      "y": 494,
+      "width": 2440,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": -444
+        },
+        "sizeDelta": {
+          "x": 2440,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "imageBorder": {
+        "w": 0,
+        "x": 2,
+        "y": 0,
+        "z": 2
+      },
+      "rotation": 0,
+      "active": true,
+      "imageType": "sliced",
+      "name": "RateBg"
+    },
+    {
+      "id": "T2Start0_2_0_0",
+      "parent": "T2Start0_2_0",
+      "type": "Image",
+      "x": 964,
+      "y": -21,
+      "width": 512,
+      "height": 152,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 0.0117647061124444,
+      "image": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": -5
+        },
+        "sizeDelta": {
+          "x": 512,
+          "y": 152
+        }
+      },
+      "localScale": {
+        "x": 4.762499809265137,
+        "y": 0.8999999761581421
+      },
+      "uvRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Arrow"
+    },
+    {
+      "id": "T2Start0_2_1",
+      "parent": "T2Start0_2",
+      "type": "Text",
+      "x": -467.559326171875,
+      "y": 503.000057220459,
+      "width": 1477.559326171875,
+      "height": 87.00000762939453,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 32,
+      "opacity": 1,
+      "textAlign": "right",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 0
+        },
+        "pivot": {
+          "x": 1,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 910,
+          "y": -446.50006103515625
+        },
+        "sizeDelta": {
+          "x": 1377.559326171875,
+          "y": 87.00000762939453
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "verticalAlign": "center",
+      "rotation": 0,
+      "active": true,
+      "name": "Tip"
+    },
+    {
+      "id": "T2Start0_2_2",
+      "parent": "T2Start0_2",
+      "type": "Image",
+      "x": -906.2999877929688,
+      "y": 512,
+      "width": 64,
+      "height": 64,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -874.2999877929688,
+          "y": -444
+        },
+        "sizeDelta": {
+          "x": 64,
+          "y": 64
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Ball"
+    },
+    {
+      "id": "T2Start0_2_3",
+      "parent": "T2Start0_2",
+      "type": "Image",
+      "x": -960.5999755859375,
+      "y": 500,
+      "width": 540,
+      "height": 88,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -690.5999755859375,
+          "y": -444
+        },
+        "sizeDelta": {
+          "x": 540,
+          "y": 88
+        }
+      },
+      "localScale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Haikyu"
+    },
+    {
+      "id": "T2Start0_2_4",
+      "parent": "T2Start0_2",
+      "type": "Text",
+      "x": -834,
+      "y": 503.00001525878906,
+      "width": 520.1533813476562,
+      "height": 86.99996948242188,
+      "color": "#ffffff",
+      "text": "Loading... (0%)",
+      "fontSize": 32,
+      "opacity": 1,
+      "textAlign": "left",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -834,
+          "y": -446.5
+        },
+        "sizeDelta": {
+          "x": 520.1533813476562,
+          "y": 86.99996948242188
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "verticalAlign": "center",
+      "rotation": 0,
+      "active": true,
+      "name": "DownloadTips"
+    },
+    {
+      "id": "T2Start0_3",
+      "parent": "T2Start0Animator",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": false,
+      "name": "Update"
+    },
+    {
+      "id": "T2Start0_3_1",
+      "parent": "T2Start0_3",
+      "type": "Container",
+      "x": 136.999755859375,
+      "y": 973,
+      "width": 1693.0302734375,
+      "height": 40,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0
+        },
+        "anchoredPosition": {
+          "x": 23.514892578125,
+          "y": 67
+        },
+        "sizeDelta": {
+          "x": 1693.0302734375,
+          "y": 40
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Slider"
+    },
+    {
+      "id": "T2Start0_3_1_0",
+      "parent": "T2Start0_3_1",
+      "type": "Image",
+      "x": 0,
+      "y": 10,
+      "width": 1693.0302734375,
+      "height": 20,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "d980196fafd7370ce229667b5fe30fd9e3d997b5612f6ba14c4455fcb12d7460",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0.25
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 0.75
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "uvRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Background"
+    },
+    {
+      "id": "T2Start0_3_1_1",
+      "parent": "T2Start0_3_1",
+      "type": "Container",
+      "x": 8,
+      "y": -0.5000004768371582,
+      "width": 1670.0302734375,
+      "height": 30.500000953674316,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0.25
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 0.75
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -3.5,
+          "y": 5.25
+        },
+        "sizeDelta": {
+          "x": -23,
+          "y": 10.500000953674316
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "FillArea"
+    },
+    {
+      "id": "T2Start0_3_1_1_0",
+      "parent": "T2Start0_3_1_1",
+      "type": "Image",
+      "x": -4.9996337890625,
+      "y": 11.715723514556885,
+      "width": 6.939208984375,
+      "height": 16.44855499267578,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "image": "e5c96a396ece22bd4794cc272b9b0f4843928827166048d1b9e83ea02afbe68e",
+      "imageFit": "100% 100%",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -1.530029296875,
+          "y": -4.690000534057617
+        },
+        "sizeDelta": {
+          "x": 6.939208984375,
+          "y": -14.051445960998535
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "uvRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Fill"
+    },
+    {
+      "id": "T2Start0_3_1_2",
+      "parent": "T2Start0_3_1",
+      "type": "Container",
+      "x": 0,
+      "y": 0,
+      "width": 1693.0302734375,
+      "height": 40,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "HandleSlideArea"
+    },
+    {
+      "id": "T2Start0_3_1_2_0",
+      "parent": "T2Start0_3_1_2",
+      "type": "Container",
+      "x": -370,
+      "y": -304.20002365112305,
+      "width": 740,
+      "height": 627.4000244140625,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 10.500011444091797
+        },
+        "sizeDelta": {
+          "x": 740,
+          "y": 587.4000244140625
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "Handle"
+    },
+    {
+      "id": "T2Start0_3_1_2_0_0",
+      "parent": "T2Start0_3_1_2_0",
+      "type": "Container",
+      "x": 320,
+      "y": 263.70001220703125,
+      "width": 100,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 100,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "LoadingWuYa"
+    },
+    {
+      "id": "T2Start0_3_1_2_0_0_0",
+      "parent": "T2Start0_3_1_2_0_0",
+      "type": "Image",
+      "x": -320,
+      "y": -283.6746873855591,
+      "width": 740,
+      "height": 644.609375,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "opacity": 1,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 11.369999885559082
+        },
+        "sizeDelta": {
+          "x": 740,
+          "y": 644.609375
+        }
+      },
+      "localScale": {
+        "x": 0.20000000298023224,
+        "y": 0.20000000298023224
+      },
+      "rotation": 0,
+      "active": false,
+      "name": "Image"
+    },
+    {
+      "id": "T2Start0_3_3",
+      "parent": "T2Start0_3",
+      "type": "Container",
+      "x": 82,
+      "y": 993,
+      "width": 398,
+      "height": 100,
+      "color": "#ffffff",
+      "text": "",
+      "fontSize": 20,
+      "surface": "transparent",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": -878,
+          "y": -503
+        },
+        "sizeDelta": {
+          "x": 398,
+          "y": 100
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotation": 0,
+      "active": true,
+      "name": "TipsGather"
+    },
+    {
+      "id": "T2Start0_3_3_0",
+      "parent": "T2Start0_3_3",
+      "type": "Text",
+      "x": 0,
+      "y": 0,
+      "width": 398,
+      "height": 80,
+      "color": "#ffffff",
+      "text": "资源下载中...({0}M/{1}M) 0%",
+      "fontSize": 30,
+      "opacity": 1,
+      "textAlign": "center",
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 1
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": -40
+        },
+        "sizeDelta": {
+          "x": 398,
+          "y": 80
+        }
+      },
+      "localScale": {
+        "x": 1,
+        "y": 1
+      },
+      "verticalAlign": "center",
+      "rotation": 0,
+      "active": true,
+      "name": "DownloadTips"
+    }
+  ]
+}
