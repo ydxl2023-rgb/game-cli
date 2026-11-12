@@ -1,0 +1,24 @@
+.workspace-navigation{display:flex;align-items:stretch;gap:28px;min-height:42px;flex:0 0 auto;margin:0 14px;border-bottom:1px solid #293440;background:#10151c;overflow-x:auto;scrollbar-width:thin}
+.workspace-navigation a{position:relative;display:flex;align-items:center;flex-shrink:0;padding:10px 2px 12px;margin:0;color:#aebccc;font-size:13px;font-weight:500;text-decoration:none;border:0;border-radius:0;background:transparent;white-space:nowrap}
+.workspace-navigation a:hover{color:#a2ead2;background:transparent}.workspace-navigation a[aria-current=page]{color:#7de0bd;background:transparent;border:0}
+.workspace-navigation a[aria-current=page]:after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#7de0bd}
+.workspace-navigation a:focus-visible{outline:2px solid #7de0bd;outline-offset:-3px}
+/* Shared shell geometry must not depend on page content or local styles. */
+body>.topbar,body>.portal-header{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;flex:0 0 46px;height:46px;min-height:46px;margin:0;padding:0 14px;gap:8px;flex-wrap:nowrap;overflow:hidden;background:#10151c;border:0;border-bottom:1px solid #293440;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+body>.topbar .brand,body>.portal-header .brand{display:flex;align-items:center;gap:8px;flex-shrink:0;font-size:13px;font-weight:650;line-height:20px;white-space:nowrap;color:#e5e8ee}
+body>.topbar .brand-icon,body>.portal-header .brand-icon{box-sizing:border-box;display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;background:#c4ef91;color:#172211;border-radius:7px;font-size:19px;line-height:26px}
+body>.project-banner,body>.portal-context{box-sizing:border-box;display:flex;align-items:center;gap:12px;flex:0 0 38px;height:38px;min-height:38px;margin:0;padding:0 14px;flex-wrap:nowrap;white-space:nowrap;overflow-x:auto;scrollbar-width:none;background:#10151c;border:0;font:11px/16px Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#e5e8ee}
+body>.project-banner strong,body>.portal-context h1{flex-shrink:0;margin:0;padding:0;color:#dce9f5;font:650 11px/16px Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+body>.portal-context p{margin:0;font:inherit;color:#99aabe}
+body>.project-banner button,body>.portal-context button{box-sizing:border-box;flex-shrink:0;height:26px;margin:0;padding:4px 7px;border:1px solid #30343c;border-radius:5px;background:#24282f;color:#e5e8ee;font:10px/16px Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+body>.workspace-navigation{box-sizing:border-box;flex:0 0 42px;height:42px;min-height:42px;margin:0 14px;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+body>.workspace-navigation a{box-sizing:border-box;font:500 13px/18px Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+@media(max-width:650px){body>.topbar,body>.portal-header,body>.project-banner,body>.portal-context{padding-left:10px;padding-right:10px}body>.workspace-navigation{margin:0 10px;gap:24px}}
+
+/* Keep action buttons visible inside narrow embedded workspaces. */
+body>.topbar .top-actions{min-width:0;flex:1;justify-content:flex-end;overflow-x:auto;scrollbar-width:thin}
+body>.topbar .top-actions>button{flex-shrink:0;white-space:nowrap}
+body>.topbar #project-label{flex:0 1 320px;min-width:0}
+body>.topbar #connection{flex-shrink:0}
+@media(max-width:900px){body>.topbar #project-label{display:none}}
+@media(max-width:650px){body>.topbar .brand,body>.portal-header .brand{font-size:0;gap:0}body>.topbar .brand .dirty{display:none}body>.topbar .top-actions{justify-content:flex-start}body>.topbar .top-actions button{font-size:10px;padding:5px 6px}}

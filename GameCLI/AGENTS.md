@@ -15,3 +15,7 @@ For SV Login work, also read [the sv-login skill](skills/oathx/system/sv-login/S
 For Loading page work, also read [the loading skill](skills/oathx/system/loading/SKILL.md).
 
 Use the latest installed PowerShell 7 (`pwsh.exe`) for Windows shell commands. Do not use `powershell.exe` unless the user explicitly requests compatibility testing.
+
+## UI Studio project / Unity identity
+
+For development, code synchronization, or prefab generation initiated from a UI Studio project, first call `gamecli_ui_unity_binding` with that explicit `projectId` and `requireVerified: true` (or validate the project's `/api/studio/projects/{id}/unity-binding` response has `status: verified`). Use only the returned local Unity path. Check `ProjectSettings/GameCLIProject.json` matches both IDs before writing. An unbound, unavailable, or mismatched binding blocks Unity writes; do not infer a target from the project name or the reference engineering directory. Preserve the identity file when moving the Unity project. A standalone task explicitly targeting another Unity project is not implicitly a UI Studio project task.

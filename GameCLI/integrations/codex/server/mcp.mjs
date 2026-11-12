@@ -13,12 +13,16 @@ export function createMcpServer(store=createStore(),templates=createTemplateStor
  const projectId=z.string().min(1),body={projectId,design:z.unknown(),revision:z.number().int().nonnegative(),projectVersion:z.number().int().nonnegative()};
  server.registerTool('gamecli_ui_open',{description:'打开项目工作台，先选择项目。',inputSchema:{},annotations:read,_meta:{ui:{resourceUri},'openai/outputTemplate':resourceUri}},wrap(()=>workspaces.list()));
  server.registerTool('gamecli_ui_projects',{description:'列出当前身份可访问的项目。',inputSchema:{},annotations:read},wrap(()=>workspaces.list()));
+ server.registerTool('gamecli_ui_unity_binding',{description:'读取项目的 Unity 工程绑定；requireVerified=true 时严格核对工程身份，开发或同步前必须调用。',inputSchema:{projectId,requireVerified:z.boolean().optional()},annotations:read},wrap(a=>workspaces.unityBindings[a.requireVerified?'requireBinding':'read'](a.projectId)));
+ server.registerTool('gamecli_ui_bind_unity',{description:'为项目绑定 Unity 工程；仅所有者，不能覆盖其他项目的工程身份。',inputSchema:{projectId,path:z.string(),confirm:z.boolean().optional()},annotations:write},wrap(a=>workspaces.unityBindings.bind(a.projectId,a)));
  server.registerTool('gamecli_ui_snapshot',{description:'读取指定项目，禁止隐式当前项目。',inputSchema:{projectId},annotations:read},wrap(a=>workspaces.snapshot(a.projectId)));
  server.registerTool('gamecli_ui_animations',{description:'读取最新已发布的标准动画，只读。',inputSchema:{},annotations:read},wrap(()=>workspaces.animations()));
+ server.registerTool('gamecli_ui_compose',{description:'按指定项目版本添加/删除系统、连接按钮和自动排列。不会发布标准模板。',inputSchema:{projectId,projectVersion:z.number().int(),operations:z.array(z.unknown())},annotations:write},wrap(a=>workspaces.composition.apply(a.projectId,a)));
+ server.registerTool('gamecli_ui_design_chat',{description:'读取当前项目的系统设计对话。',inputSchema:{projectId},annotations:read},wrap(a=>workspaces.designChat.list(a.projectId)));
+ server.registerTool('gamecli_ui_design_message',{description:'发送系统设计需求、停止生成或应用消息中的方案。',inputSchema:{projectId,command:z.enum(['send','stop','apply']),projectVersion:z.number().int().optional(),text:z.string().optional(),turnId:z.string().optional(),attachments:z.array(z.object({name:z.string(),content:z.string()})).optional()},annotations:write},wrap(a=>workspaces.designChat[a.command](a.projectId,a)));
  server.registerTool('gamecli_ui_templates',{description:'读取标准模板及当前发布版本，只读。',inputSchema:{},annotations:read},wrap(()=>templates.list()));
  server.registerTool('gamecli_ui_save',{description:'只保存指定项目，不修改标准模板。',inputSchema:body,annotations:write},wrap(a=>workspaces.save(a.projectId,a)));
  server.registerTool('gamecli_ui_export',{description:'导出指定项目到独立项目目录。',inputSchema:{projectId,design:z.unknown()},annotations:write},wrap(a=>workspaces.exportDesign(a.projectId,a)));
- server.registerTool('gamecli_ui_candidate',{description:'提交模板候选，不发布、不覆盖标准库。',inputSchema:{...body,rootId:z.string(),templateId:z.string(),version:z.number().int()},annotations:write},wrap(a=>workspaces.candidate(a.projectId,a)));
  server.registerTool('gamecli_ui_revisions',{description:'读取指定项目历史版本。',inputSchema:{projectId},annotations:read},wrap(a=>workspaces.revisions(a.projectId)));
  server.registerTool('gamecli_ui_restore',{description:'将历史版本恢复为指定项目的新版本。',inputSchema:{projectId,version:z.number().int(),revision:z.number().int(),projectVersion:z.number().int()},annotations:write},wrap(a=>workspaces.restore(a.projectId,a)));
  const close=server.close.bind(server);server.close=async()=>{await templates.close();await workspaces.close();await close();};return server;

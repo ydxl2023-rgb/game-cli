@@ -191,9 +191,16 @@ test('HTTP requires a project and rejects legacy writes, foreign origins and sta
   t.after(async () => { await new Promise(resolve => server.close(resolve)); await rm(root, { recursive: true, force: true }); });
   const base = `http://127.0.0.1:${server.address().port}`;
   assert.equal((await fetch(base + '/studio')).status, 200);
+  assert.match(await (await fetch(base+'/studio/projects')).text(), /id="canvas"/);
+  assert.match(await (await fetch(base+'/studio/projects/library')).text(), /id="content"/);
+  assert.match(await (await fetch(base+'/studio/templates')).text(), /id="canvas"/);
+  assert.match(await (await fetch(base+'/studio/templates/library')).text(), /id="content"/);
   assert.equal((await (await fetch(base+'/api/studio/templates')).json()).source,'postgresql');
   const body = JSON.stringify({ projectId:'Test',design: starter(), revision: 0 });
   const headers = { 'Content-Type': 'application/json' };
+  assert.equal((await fetch(base+'/api/studio/projects/Test/candidate',{method:'POST',headers,body:JSON.stringify({projectId:'Test'})})).status,403);
+  assert.equal((await fetch(base+'/api/studio/projects/Test/composition')).status,404);
+  for(const command of ['submit','approve'])assert.equal((await fetch(base+'/api/studio/projects/Test/composition',{method:'POST',headers,body:JSON.stringify({projectId:'Test',command})})).status,400);
   assert.equal((await fetch(base + '/api/studio/save', { method: 'POST', headers: { ...headers, Origin: 'https://example.com' }, body })).status, 403);
   assert.equal((await fetch(base + '/api/studio/save', { method: 'POST', headers, body })).status, 403);
   assert.equal((await fetch(base + '/api/studio/sync', { method: 'POST', headers, body })).status, 403);
@@ -213,7 +220,8 @@ test('MCP exposes UI resource and real save/export tools', async t => {
   const templates=await client.callTool({name:'gamecli_ui_templates',arguments:{}});assert.equal(templates.structuredContent.source,'postgresql');
   assert.equal(tools.find(t => t.name === 'gamecli_ui_open')._meta.ui.resourceUri, resourceUri);
   const resource = await client.readResource({ uri: resourceUri }); assert.match(resource.contents[0].text, /UI Studio/);
-  assert.ok(!tools.some(t=>['gamecli_ui_sync','gamecli_ui_scripts_save'].includes(t.name)));
+  assert.ok(!tools.some(t=>['gamecli_ui_sync','gamecli_ui_scripts_save','gamecli_ui_submit_work','gamecli_ui_work','gamecli_ui_candidate'].includes(t.name)));
+  assert.ok(tools.some(t=>t.name==='gamecli_ui_design_message'));
   const snapshot = await client.callTool({ name: 'gamecli_ui_snapshot', arguments: {projectId:'Test'} }); assert.equal(snapshot.structuredContent.revision, 0);
   const saved = await client.callTool({ name: 'gamecli_ui_save', arguments: {projectId:'Test', design: starter(), revision: 0,projectVersion:0 } }); assert.equal(saved.structuredContent.revision, 1);
   const invalid = await client.callTool({ name: 'gamecli_ui_save', arguments: { design: {}, revision: 1 } }); assert.equal(invalid.isError, true);

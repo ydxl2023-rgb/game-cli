@@ -1,3 +1,6 @@
+import {setupCompositionBar} from './composition-bar.mjs';
+import {workspaceNavigation} from './workspace-navigation.mjs';
+import {createDesignChat} from './design-chat.mjs';
 import {setupAnimationLibrary} from './animation-library.mjs';
 import {createRelations} from './relations.mjs';
 import {openCodeTemplate} from './code-template.mjs';
@@ -6,7 +9,7 @@ import {createCodePage} from './code-preview.mjs';
 import {setupTemplateDock} from './template-dock.mjs';
 import {upgradeTemplate} from '../shared/template-upgrade.mjs';
 import {playAnimations} from './animation-player.mjs';
-let stopAnimations=()=>{},centerMode='edit';
+let stopAnimations=()=>{},centerMode='edit',previewPaused=false;
 import {setupPanelSplit,setupWorkspaceSplit} from './panel-split.mjs';
 import {groupedTemplates} from '../shared/template-groups.mjs';
 import {localDelta} from '../shared/inspector.mjs';
@@ -24,8 +27,8 @@ const collapsedNodes = new Set();
 const library=new Map();
 let librarySource=null,projectVersion=null;
 let projectRole='viewer';
-const draftKey=()=>`gamecli.project.${bridge.projectId}.draft`;
-function persistDraft(){if(!bridge.projectId)return;try{sessionStorage.setItem(draftKey(),JSON.stringify({design,projectVersion}));}catch{notice('浏览器草稿空间不足，请及时保存工程。',true);}}
+const draftKey=()=>bridge.templateMode?`gamecli.template.${bridge.draftId||bridge.templateId}.draft`:`gamecli.project.${bridge.projectId}.draft`;
+function persistDraft(){if(!bridge.projectId&&!bridge.draftId)return;try{sessionStorage.setItem(draftKey(),JSON.stringify({design,projectVersion}));}catch{notice('浏览器草稿空间不足，请及时保存工程。',true);}}
 async function loadTemplates() {
   const area=$('template-library');
   const refresh=$('refresh-templates');refresh.disabled=true;refresh.setAttribute('aria-busy','true');
@@ -42,7 +45,7 @@ async function loadTemplates() {
       const summary=document.createElement('summary');const title=document.createElement('span');title.textContent=group.name;const count=document.createElement('span');count.className='group-count';count.textContent=group.templates.length;summary.append(title,count);folder.append(summary);panel.append(folder);
       for(const template of group.templates) {
         library.set(template.id,template);
-        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=!controlAllowed(template.id);
+        const button=document.createElement('button');button.className='control';button.style.width='100%';button.style.marginBottom='9px';if(bridge.templateMode&&!bridge.draftId){button.dataset.templateOpen=template.id;button.setAttribute('aria-label','打开'+template.name);}else{button.dataset.control=template.id;button.setAttribute('aria-label','拖入'+template.name);button.disabled=!controlAllowed(template.id);}
         const icon=document.createElement('span');icon.className='control-icon';icon.textContent=category.id==='system'?'▦':'▣';
         const label=document.createElement('span');label.textContent=template.name;const detail=document.createElement('small');detail.textContent=template.description;label.append(detail);button.append(icon,label);folder.append(button);
         if(template.payload.kind==='code'){
@@ -52,7 +55,7 @@ async function loadTemplates() {
           for(const [x,y]of [[9,2],[2,16],[16,16]]){const box=document.createElementNS(svg.namespaceURI,'rect');box.setAttribute('x',String(x));box.setAttribute('y',String(y));box.setAttribute('width','6');box.setAttribute('height','6');box.setAttribute('rx','1.5');svg.append(box);}icon.append(svg);
           detail.textContent='逻辑系统 · '+template.description.replace(/^纯代码\s*·\s*/,'');
           button.title='逻辑系统：拖入关系区创建卡片；编辑页单击查看源码';
-        }bindControl(button);
+        }if(bridge.templateMode&&!bridge.draftId){button.title='打开已发布模板';button.onclick=()=>{location.href='/studio/templates/'+encodeURIComponent(template.id);};}else bindControl(button);
       }
     }
     }
@@ -67,10 +70,11 @@ let previewState = null;
 function applyPreviewState() {
   const visibility = hierarchyVisibility(design, preview ? previewState.hidden : [], preview);
   for (const el of $('canvas').querySelectorAll('[data-node]')) el.hidden = !visibility.get(el.dataset.node);
-  $('preview-back').hidden = $('preview-reset').hidden = !preview;
-  $('preview-back').disabled = !previewState?.history.length;
+  $('preview-back').hidden = !preview;
+  $('preview-back').disabled = previewPaused||!previewState?.history.length;
 }
 function performAction(action) {
+  if(previewPaused)return;
   previewState = runPreviewAction(design,previewState,action);
   applyPreviewState();
 }
@@ -100,7 +104,8 @@ function notice(text, error = false) { $('notice').textContent = text; $('notice
 function mark() { dirty = true; $('dirty').hidden = false; $('undo').disabled = !history.length; persistDraft(); }
 function checkpoint() { history.push(JSON.stringify(design)); if (history.length > 60) history.shift(); }
 function edit(fn) {
-  if(ready&&projectRole==='viewer'){notice('当前项目为只读权限。',true);return;}
+  if(preview){notice('请先退出预演再修改布局。',true);return;}
+  if(ready&&projectRole==='viewer'){notice(bridge.templateMode?'已发布模板只读，请在模板页打开独立草稿。':'当前项目为只读权限。',true);return;}
   const before = JSON.stringify(design);
   try { fn(); captureChanges(design,JSON.parse(before)); design = validateDesign(design); if(JSON.stringify(design)===before){render();return;} history.push(before); if (history.length > 60) history.shift(); mark(); render(); return true; }
   catch (e) { design = JSON.parse(before); notice(e.message, true); render(); return false; }
@@ -109,13 +114,13 @@ function node() { return design.nodes.find(n => n.id === selected); }
 let manualScale = null;
 function fit() {
   const box = $('viewport').getBoundingClientRect();
-  scale = (!preview && manualScale !== null) ? manualScale : Math.max(.01, Math.min((box.width - 40) / design.width, (box.height - 40) / design.height, 1));
+  scale = (manualScale !== null) ? manualScale : Math.max(.01, Math.min((box.width - 40) / design.width, (box.height - 40) / design.height, 1));
   $('canvas').style.transform = `scale(${scale})`;
   $('canvas-wrap').style.width = `${design.width * scale}px`; $('canvas-wrap').style.height = `${design.height * scale}px`;
   $('zoom').textContent = `${Math.round(scale * 100)}%`;
   updateSelection();
 }
-function select(id, preserveTree = false) { selected = id; $('current-ui').textContent='当前节点：'+(node()?.name??'Canvas'); $('inspector').open = true; render(preserveTree); }
+function select(id, preserveTree = false) { if(preview)return; selected = id; $('current-ui').textContent='当前节点：'+(node()?.name??'Canvas'); $('inspector').open = true; render(preserveTree); }
 function render(preserveTree = false) {
   stopAnimations();
   resolveLayout(design);
@@ -144,7 +149,7 @@ function render(preserveTree = false) {
       layer.hidden=!treeVisible;
       if(hasChildren)layer.setAttribute('aria-expanded',!collapsed);
       layer.style.paddingLeft=`${6+depth*10}px`;layer.setAttribute('role','treeitem');layer.setAttribute('aria-selected',n.id===selected);layer.setAttribute('aria-level',depth+1);layer.setAttribute('aria-label',icons[n.type]+' '+nodeName(n));layer.title=n.id;
-      const toggle=document.createElement('input');toggle.type='checkbox';toggle.className='node-visibility';toggle.checked=visible;toggle.disabled=!parentVisible;toggle.dataset.visibility=n.id;
+      const toggle=document.createElement('input');toggle.type='checkbox';toggle.className='node-visibility';toggle.checked=visible;toggle.disabled=preview||!parentVisible||projectRole==='viewer';toggle.dataset.visibility=n.id;
       toggle.setAttribute('aria-label','显示 '+nodeName(n));toggle.title=parentVisible?'控制节点及其子节点显示':'父节点已隐藏；重新显示父节点后恢复本节点原有状态';
       toggle.onclick=e=>e.stopPropagation();toggle.ondblclick=e=>e.stopPropagation();
       toggle.onchange=()=>{const checked=toggle.checked,scroll=$('tree').scrollTop;edit(()=>{n.active=checked;});$('tree').scrollTop=scroll;[...$('tree').querySelectorAll('[data-visibility]')].find(e=>e.dataset.visibility===n.id)?.focus({preventScroll:true});};
@@ -203,7 +208,11 @@ function render(preserveTree = false) {
   $('field-action-target').value = action?.target ?? n?.id ?? '';
   $('field-preview-hidden').checked = n?.previewHidden ?? n?.template === 'ConfirmDialog';
   applyPreviewState();
-  $('undo').disabled = !history.length; fit();
+  if(ready&&projectRole==='viewer'){for(const field of $('inspector').querySelectorAll('input,select,textarea,button'))field.disabled=true;}
+  for(const c of document.querySelectorAll('[data-control]'))c.disabled=!controlAllowed(c.dataset.control);
+  $('import').disabled=preview||projectRole==='viewer';$('preset').disabled=$('rotate').disabled=preview||projectRole==='viewer';
+  $('inspector').inert=preview;
+  $('undo').disabled = preview||!history.length; fit();
   if(preview)stopAnimations=playAnimations(design,$('canvas'));
   relationView.render();
 }
@@ -266,7 +275,7 @@ function insert(type, parent, point) {
 }
 let paletteDrag;
 let suppressClick = false;
-function controlAllowed(type){return ready&&projectRole!=='viewer'&&!preview&&(centerMode==='edit'||(centerMode==='relations'&&library.get(type)?.category==='system'));}
+function controlAllowed(type){return ready&&projectRole!=='viewer'&&!preview&&(!bridge.templateMode||library.get(type)?.category!=='system')&&(centerMode==='edit'||(centerMode==='relations'&&library.get(type)?.category==='system'));}
 function clearDrop() { $('drag-ghost').hidden = true; $('canvas-wrap').classList.remove('drop-target'); $('relations-view').classList.remove('drop-target'); }
 function dropControl(type, x, y) {
   if(!controlAllowed(type))return;
@@ -359,21 +368,29 @@ $('viewport').addEventListener('wheel', e => {
   updateSelection();
 },{passive:false});
 $('viewport').addEventListener('scroll',updateSelection);
+function updatePreviewButton(){
+ const controls=[['preview','播放预演（从头重播）','<path d="M7 3v18l14-9z"/>'],['preview-pause',previewPaused?'继续预演':'暂停预演','<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>'],['preview-stop','停止预演，返回编辑','<path d="M5 5h14v14H5z"/>']];
+ for(const [id,label,path]of controls){const button=$(id);button.title=label;button.setAttribute('aria-label',label);button.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+path+'</svg>';}
+ $('preview-pause').disabled=$('preview-stop').disabled=!preview;
+ $('preview-pause').setAttribute('aria-pressed',previewPaused);
+ $('preview').classList.toggle('playing',preview&&!previewPaused);
+}
+updatePreviewButton();
 function setPreview(value) {
   if(value)setCenterMode('edit');
-  preview = value;
-  previewState = value ? createPreviewState(design) : null;
+  preview = value;previewPaused=false;
+  previewState = value ? createPreviewState(design) : null;if(value&&bridge.templateMode){const roots=new Set(design.nodes.filter(n=>n.parent===null).map(n=>n.id));previewState.hidden=previewState.hidden.filter(id=>!roots.has(id));}
   document.body.classList.toggle('rehearsing', preview);
-  $('preview').setAttribute('aria-pressed', preview);
-  $('preview').textContent = preview ? '退出预演' : '预演';
-  $('import').disabled = preview;
+  updatePreviewButton();
+  $('import').disabled = preview||projectRole==='viewer';
   for (const c of document.querySelectorAll('[data-control]')) c.disabled = !controlAllowed(c.dataset.control);
   render();
-  notice(preview ? '预演模式 · 点击执行已配置的界面动作；可返回或重置。Esc 退出，预演不会修改布局。' : '编辑模式 · 选择控件，在“点击动作”中配置显示、关闭或跳转目标。');
+  notice(preview ? '预演模式 · 点击执行已配置的界面动作；播放从头重播，暂停保留进度。Esc 停止，预演不会修改布局。' : '编辑模式 · 选择控件，在“点击动作”中配置显示、关闭或跳转目标。');
 }
-$('preview').onclick = () => setPreview(!preview);
+$('preview').onclick = () => setPreview(true);
+$('preview-stop').onclick = () => setPreview(false);
+$('preview-pause').onclick = () => {if(!preview)return;previewPaused=!previewPaused;if(previewPaused)stopAnimations.pause?.();else stopAnimations.resume?.();updatePreviewButton();applyPreviewState();notice(previewPaused?'预演已暂停 · 再次点击暂停可继续，播放则从头重播。':'预演继续播放。');};
 $('preview-back').onclick = () => performAction({type:'back'});
-$('preview-reset').onclick = () => { previewState=createPreviewState(design); render(); notice('预演已重置。'); };
 window.addEventListener('keydown', e => { if (preview && e.key === 'Escape') { e.preventDefault(); setPreview(false); } });
 let drag, resize;
 selectionBox.addEventListener('pointerdown', e => {
@@ -432,19 +449,16 @@ $('canvas').addEventListener('keydown', e => { const el=e.target.closest('[data-
 async function busy(id, fn) { $(id).disabled = true; try { await fn(); } catch (e) { notice(e.message, true); } finally { $(id).disabled = !ready||(['save','sync'].includes(id)&&projectRole==='viewer'); } }
 $('save').onclick = () => busy('save', async () => {
   const sent=JSON.stringify(design),snapshot=await bridge.call('save',{design,revision,projectVersion});revision=snapshot.revision;
-  const result=snapshot.projectSave;
+  const result=snapshot.draftSave??snapshot.projectSave;
   if(result?.ok){projectVersion=result.version;if(JSON.stringify(design)===sent){dirty=false;$('dirty').hidden=true;sessionStorage.removeItem(draftKey());}}
+  if(bridge.templateMode){$('project-label').textContent=$('project-label').textContent.replace(/草稿 r\d+/,'草稿 r'+revision);notice(`模板草稿已保存 · r${revision} · 已发布版本未修改${dirty?" · 仍有未保存修改":""}`);return;}
   notice(result?.ok?`工程 ${result.name} 已保存到数据库 · v${result.version} · 基础模板未修改${dirty?' · 仍有未保存修改':''}`:`本机草稿 v${revision} 已保存 · 工程数据库保存失败：${result?.error??'服务未支持工程保存'}`,!result?.ok);
 });
 $('sync').onclick = () => busy('sync', async () => {
-  if(librarySource!=='postgresql')throw new Error('请先连接数据库模板库。');
-  let root=node();while(root?.parent)root=design.nodes.find(n=>n.id===root.parent);
-  if(!root){const roots=design.nodes.filter(n=>n.parent===null);if(roots.length!==1)throw new Error('请先选择要同步的系统节点。');root=roots[0];}
-  const template=root.templateSourceId?library.get(root.templateSourceId):[...library.values()].find(t=>t.payload.root===root.id);
-  if(!template)throw new Error('此系统未关联基础模板，不能同步；请使用保存将它存入工程。');
-  if(!window.confirm(`将当前项目的「${root.name}」提交为「${template.name}」候选？此操作不会发布或覆盖标准模板。`))return;
-  const result=await bridge.call('candidate',{design,revision,projectVersion,rootId:root.id,templateId:template.id,version:template.version});
-  notice('已提交候选 '+result.id+' · 标准模板未修改，请在模板管理入口审核。');
+  if(!bridge.draftId)throw Error('请在模板页编辑独立草稿。');
+  if(dirty)throw Error('请先保存模板草稿，再提交候选。');
+  const result=await bridge.call('candidate',{revision});
+  notice('已提交模板候选 '+result.id+'，请前往模板页的候选审核。已发布版本未修改。');
 });
 function download(name, text, type) { const url = URL.createObjectURL(new Blob([text], { type })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 2000); }
 $('export').onclick = () => busy('export', async () => {
@@ -464,7 +478,7 @@ $('expand').onclick = async () => { try { await bridge.expand(); } catch (e) { n
 function setCenterMode(mode){
   if(preview&&mode!=='edit')setPreview(false);
   centerMode=mode;const graph=mode==='relations';
-  $('viewport').hidden=mode!=='edit';$('relations-view').hidden=!graph;$('relations-tools').hidden=!graph;$('relations-info').hidden=!graph;$('code-view').hidden=mode!=='code';
+  $('viewport').hidden=mode!=='edit';$('relations-view').hidden=!graph;$('relations-tools').hidden=!graph;$('code-view').hidden=mode!=='code';
   for(const id of ['edit','relations','code'])$('tab-'+id).setAttribute('aria-selected',mode===id);
   $('preset').hidden=$('rotate').hidden=$('fit').hidden=mode!=='edit';
   for(const c of document.querySelectorAll('[data-control]'))c.disabled=!controlAllowed(c.dataset.control);
@@ -474,15 +488,58 @@ function setCenterMode(mode){
   if(graph)relationView.render();else if(mode==='edit')fit();
 }
 const codePage=createCodePage(()=>setCenterMode('code'));
-const cardScripts=createCardScripts({getDesign:()=>design,onOpen:(file,name)=>codePage.open(file,name),getTemplate:root=>({name:'项目副本'+(root.templateSourceVersion?' · 来源 v'+root.templateSourceVersion:''),scripts:root.scripts??null})});
-const relationView=createRelations({getDesign:()=>design,edit,notice,onDelete:id=>{if(projectRole==='viewer'){notice('当前项目为只读权限。',true);return;}selected=id;deleteSelected();cardScripts.select(null);$('current-ui').textContent='当前节点：'+(node()?.name??'Canvas');notice('已删除 UI 及其子节点和相关连线，可撤销；保存后写入当前项目。');},onSelect:id=>{selected=id;$('current-ui').textContent='当前节点：'+(node()?.name??'Canvas');cardScripts.select(id);},onEdit:id=>{setCenterMode('edit');select(id);},onPreview:id=>{setPreview(true);previewState.hidden=[...new Set([...previewState.hidden.filter(n=>n!==id),...design.nodes.filter(n=>n.parent===null&&n.id!==id).map(n=>n.id)])];applyPreviewState();}});
+const cardScripts=createCardScripts({getDesign:()=>design,onOpen:(file,name)=>codePage.open(file,name),getTemplate:root=>({name:(bridge.templateMode?'模板':'项目副本')+(root.templateSourceVersion?' · 来源 v'+root.templateSourceVersion:''),scripts:root.scripts??null})});
+const relationView=createRelations({getDesign:()=>design,edit,notice,onDelete:id=>{if(projectRole==='viewer'){notice(bridge.templateMode?'已发布模板只读，请在模板页打开独立草稿。':'当前项目为只读权限。',true);return;}selected=id;deleteSelected();cardScripts.select(null);$('current-ui').textContent='当前节点：'+(node()?.name??'Canvas');notice('已删除 UI 及其子节点和相关连线，可撤销；保存后写入当前项目。');},onSelect:id=>{selected=id;$('current-ui').textContent='当前节点：'+(node()?.name??'Canvas');cardScripts.select(id);},onEdit:id=>{setCenterMode('edit');select(id);},onPreview:id=>{setPreview(true);previewState.hidden=[...new Set([...previewState.hidden.filter(n=>n!==id),...design.nodes.filter(n=>n.parent===null&&n.id!==id).map(n=>n.id)])];applyPreviewState();}});
 $('tab-edit').onclick=()=>setCenterMode('edit');$('tab-relations').onclick=()=>setCenterMode('relations');
 const projectBar=document.createElement('div');projectBar.className='project-banner';
-const workspaceMode=document.createElement('strong');workspaceMode.textContent='项目工作区';
+const workspaceMode=document.createElement('strong');workspaceMode.textContent=bridge.templateMode?'模板工作区':'项目工作区';
 const currentUi=document.createElement('span');currentUi.id='current-ui';currentUi.textContent='当前节点：Canvas';
-const switchProject=document.createElement('button');switchProject.textContent='切换项目';switchProject.onclick=async()=>{
- if(dirty){const choice=prompt('当前项目有未保存修改。输入“保存”后切换，或输入“放弃”；取消则留在当前项目。');if(choice==='保存'){await $('save').onclick();if(dirty)return;}else if(choice==='放弃'){dirty=false;sessionStorage.removeItem(draftKey());}else return;}
- if(bridge.embedded){bridge.projectId='';location.reload();}else location.href='/studio';
+const unityStatus=document.createElement('span');unityStatus.id='unity-binding-status';
+function showUnityBinding(binding){unityStatus.textContent=binding?.status==='verified'?'Unity：'+binding.path+' · 已校验':binding?.status==='unbound'||!binding?'Unity：未绑定':'Unity：绑定异常';unityStatus.title=binding?.message??binding?.path??'在切换项目 → 创建 / 管理项目中绑定 Unity 工程';}
+async function openUnityBinding(project){
+ const dialog=document.createElement('dialog');dialog.className='sync-confirm unity-binding-dialog';dialog.setAttribute('aria-label','绑定 Unity 工程');
+ const title=document.createElement('h2');title.textContent='绑定 Unity 工程 · '+project.name;
+ const form=document.createElement('form'),label=document.createElement('label');label.textContent='Unity 工程绝对目录（包含 Assets、Packages、ProjectSettings）';
+ const input=document.createElement('input');input.required=true;input.placeholder='例如 G:\\Project\\client';label.append(input);
+ const message=document.createElement('p');message.setAttribute('role','status');message.textContent='正在读取绑定…';
+ const save=document.createElement('button');save.type='submit';save.textContent='建立绑定';save.disabled=true;
+ const cancel=document.createElement('button');cancel.type='button';cancel.textContent='关闭';let busy=false,current;
+ cancel.onclick=()=>{if(!busy)dialog.close();};form.append(label,message,save,cancel);dialog.append(title,form);dialog.onclose=()=>dialog.remove();dialog.oncancel=e=>{if(busy)e.preventDefault();};dialog.onkeydown=e=>e.stopPropagation();document.body.append(dialog);dialog.showModal();
+ try{current=await bridge.call('unity_binding',{projectId:project.id});input.value=current.path??'';message.textContent=current.status==='verified'?'已绑定 · '+current.unityProjectId:current.message??'未绑定。将写入工程关联文件，请将该文件纳入版本管理。';save.disabled=project.role!=='owner';save.textContent=current.status==='unbound'?'建立绑定':'更新本机目录';}catch(e){message.textContent=e.message;}
+ form.onsubmit=async e=>{e.preventDefault();if(busy)return;const path=input.value.trim();if(!path)return;const changed=current?.path&&path!==current.path;if(changed&&!confirm('确认将项目 '+project.name+' 的本机 Unity 目录更新为 '+path+'？新目录必须保留原工程关联文件。'))return;
+ busy=true;save.disabled=true;try{current=await bridge.call('bind_unity',{projectId:project.id,path,confirm:!!changed});input.value=current.path;message.textContent='绑定成功 · '+current.unityProjectId;if(project.id===bridge.projectId)showUnityBinding(current);}catch(error){message.textContent=error.message;}finally{busy=false;save.disabled=false;}};
+}
+const switchProject=document.createElement('button');switchProject.id='switch-project';switchProject.textContent=bridge.templateMode?'返回模板页':'切换项目';
+async function leaveWorkspace(){
+ if(!dirty)return true;
+ const choice=prompt('当前工作区有未保存修改。输入“保存”后切换，或输入“放弃”；取消则留在当前工作区。');
+ if(choice==='保存'){await $('save').onclick();return !dirty;}
+ if(choice==='放弃'){dirty=false;sessionStorage.removeItem(draftKey());return true;}return false;
+}
+switchProject.onclick=async()=>{
+ if(bridge.templateMode){if(await leaveWorkspace())location.href='/studio/templates';return;}
+ switchProject.disabled=true;
+ try{
+  const result=await bridge.call('projects'),dialog=document.createElement('dialog');dialog.className='sync-confirm project-picker';dialog.setAttribute('aria-label','切换项目');
+  const title=document.createElement('h2');title.textContent='切换项目';dialog.append(title);
+  const form=document.createElement('form');form.className='project-create-form';form.hidden=true;
+  const label=document.createElement('label');label.textContent='项目名称';const input=document.createElement('input');input.required=true;input.maxLength=80;input.placeholder='输入新项目名称';label.append(input);
+  const create=document.createElement('button');create.type='submit';create.textContent='创建项目';form.append(label,create);dialog.append(form);
+  const status=document.createElement('p');status.setAttribute('role','status');status.className='project-manager-status';dialog.append(status);
+  const list=document.createElement('div');dialog.append(list);let managing=false,busy=false;
+  async function openProject(project){if(!await leaveWorkspace())return;dialog.close();if(bridge.embedded){if(preview)setPreview(false);bridge.projectId=project.id;history.length=0;selected=null;await start();}else location.href='/studio/projects/'+encodeURIComponent(project.id);}
+  function renderProjects(){list.replaceChildren();for(const project of result.projects){
+   const row=document.createElement('div'),button=document.createElement('button');button.type='button';button.className='project-picker-item';button.textContent=project.name+(project.id===bridge.projectId?' · 当前项目':'');button.title=project.id+' · '+project.role;button.disabled=project.id===bridge.projectId;
+   button.onclick=()=>openProject(project).catch(e=>{status.textContent=e.message;});row.append(button);
+   if(managing){const detail=document.createElement('small');detail.textContent='ID：'+project.id+' · 权限：'+project.role+' · 版本：v'+(project.version??1);row.append(detail);const bind=document.createElement('button');bind.type='button';bind.textContent='Unity 工程绑定';bind.onclick=()=>openUnityBinding(project);row.append(bind);}list.append(row);
+  }if(!result.projects.length){const empty=document.createElement('p');empty.textContent='暂无项目，请先创建项目。';list.append(empty);}}
+  form.onsubmit=async e=>{e.preventDefault();if(busy)return;const name=input.value.trim();if(!name){input.setCustomValidity('请输入项目名称');input.reportValidity();return;}busy=true;create.disabled=true;status.textContent='正在创建项目…';try{
+   const response=await fetch('/api/studio/projects',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name})});const project=await response.json();if(!response.ok)throw Error(project.error||'创建失败');
+   result.projects.push({...project,role:'owner',version:1});input.value='';renderProjects();status.textContent='已创建 '+project.name+'，点击项目即可进入编排区。';
+  }catch(error){status.textContent=error.message;}finally{busy=false;create.disabled=false;}};input.oninput=()=>input.setCustomValidity('');
+  const manage=document.createElement('button');manage.type='button';manage.textContent='创建 / 管理项目';manage.onclick=()=>{managing=!managing;title.textContent=managing?'创建 / 管理项目':'切换项目';dialog.setAttribute('aria-label',title.textContent);form.hidden=!managing;manage.textContent=managing?'返回项目选择':'创建 / 管理项目';renderProjects();if(managing)input.focus();};
+  const cancel=document.createElement('button');cancel.type='button';cancel.textContent='关闭';cancel.onclick=()=>{if(!busy)dialog.close();};dialog.append(manage,cancel);dialog.oncancel=e=>{if(busy)e.preventDefault();};dialog.onclose=()=>dialog.remove();dialog.onkeydown=e=>e.stopPropagation();renderProjects();document.body.append(dialog);dialog.showModal();
+ }catch(e){notice(e.message,true);}finally{switchProject.disabled=false;}
 };
 const historyButton=document.createElement('button');historyButton.textContent='项目历史';historyButton.onclick=async()=>{try{const result=await bridge.call('revisions');const dialog=document.createElement('dialog');dialog.className='sync-confirm';const title=document.createElement('h2');title.textContent='恢复项目历史（生成新版本）';const select=document.createElement('select');for(const r of result.revisions)select.add(new Option(`v${r.version} · ${new Date(r.created_at).toLocaleString()}`,String(r.version)));const cancel=document.createElement('button');cancel.textContent='取消';cancel.onclick=()=>dialog.close();const restore=document.createElement('button');restore.textContent='确认恢复';restore.disabled=projectRole==='viewer';restore.onclick=async()=>{if(!confirm('恢复将替换当前项目布局和代码，未保存的修改会被放弃。继续？'))return;restore.disabled=true;try{const value=await bridge.call('restore',{version:Number(select.value),revision,projectVersion});design=value.design;revision=value.revision;projectVersion=value.projectSave.version;dirty=false;history.length=0;sessionStorage.removeItem(draftKey());$('dirty').hidden=true;selected=null;render();notice('已恢复项目历史为新版本 v'+projectVersion);dialog.close();}catch(e){notice(e.message,true);restore.disabled=false;}};dialog.append(title,select,cancel,restore);dialog.onclose=()=>dialog.remove();dialog.onkeydown=e=>e.stopPropagation();document.body.append(dialog);dialog.showModal();}catch(e){notice(e.message,true);}};
 const upgradeButton=document.createElement('button');upgradeButton.textContent='升级模板副本';upgradeButton.onclick=async()=>{try{
@@ -492,20 +549,28 @@ const upgradeButton=document.createElement('button');upgradeButton.textContent='
  }catch(e){notice(e.message,true);}};
 const templateManagement=document.createElement('button');templateManagement.id='template-management';templateManagement.textContent='标准模板管理';templateManagement.title='在新页面审核候选、发布模板和查看版本历史';
 templateManagement.onclick=()=>window.open(bridge.embedded?'http://127.0.0.1:18091/studio/templates':'/studio/templates','_blank','noopener,noreferrer');
-projectBar.append(workspaceMode,currentUi,switchProject,historyButton,upgradeButton,templateManagement);document.querySelector('.topbar').after(projectBar);
-$('sync').textContent='提交候选';$('sync').title='仅提交模板候选，不发布标准模板';
+projectBar.append(workspaceMode,currentUi);if(!bridge.templateMode)projectBar.append(unityStatus);if(bridge.templateMode)projectBar.append(switchProject);else $('import').before(switchProject);if(bridge.templateMode){templateManagement.textContent='候选审核';templateManagement.onclick=()=>window.open('/studio/templates/review','_blank','noopener,noreferrer');projectBar.append(templateManagement);}else projectBar.append(historyButton,upgradeButton);document.querySelector('.topbar').after(projectBar);
+if(bridge.templateMode){
+ const catalog=document.createElement('a');catalog.textContent='模板目录';catalog.href='/studio/templates/library';projectBar.append(catalog);
+ switchProject.hidden=bridge.templateLanding;
+ if(bridge.templateId){const draft=document.createElement('button');draft.id='edit-template-draft';draft.textContent='编辑独立草稿';draft.hidden=true;projectBar.append(draft);bridge.call('projects').then(info=>{draft.hidden=!info.templateAdmin;}).catch(e=>notice(e.message,true));draft.onclick=async()=>{draft.disabled=true;try{const r=await fetch('/api/studio/template-drafts',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({templateId:bridge.templateId})});const value=await r.json();if(!r.ok)throw Error(value.error);location.href='/studio/template-drafts/'+encodeURIComponent(value.id);}catch(e){notice(e.message,true);draft.disabled=false;}};}
+}
+projectBar.after(workspaceNavigation({template:bridge.templateMode,embedded:bridge.embedded}));
+$('sync').hidden=!bridge.templateMode;$('export').hidden=bridge.templateMode;$('tab-relations').hidden=bridge.templateMode;$('save').textContent=bridge.templateMode?'保存模板草稿':'保存项目';$('sync').textContent='提交候选';$('sync').title='仅提交模板候选，不发布标准模板';
 setupPanelSplit();
 setupWorkspaceSplit();
-const refreshTemplateDock=setupTemplateDock(loadTemplates);
+const chatOptions={bridge,getState:()=>({design,version:projectVersion,dirty,ready,role:projectRole}),notice,onSnapshot:s=>{design=validateDesign(s.design);revision=s.revision;projectVersion=s.project?.version??s.revision;history.length=0;selected=null;render();notice('已载入项目 v'+projectVersion);}};
+const refreshTemplateDock=setupTemplateDock(loadTemplates,bridge.templateMode?null:createDesignChat(chatOptions),bridge.templateMode&&!bridge.draftId);
 setupAnimationLibrary(bridge);
+if(!bridge.templateMode)setupCompositionBar(chatOptions);
 new ResizeObserver(fit).observe($('viewport'));
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 render();
 async function start() {
-  try { const snapshot = await bridge.init(); const original = validateDesign(snapshot.design); design = validateDesign(phoneDesign(original)); revision = snapshot.revision;projectVersion=snapshot.project.version;projectRole=snapshot.project.role;$('project-label').textContent=`项目：${snapshot.project.name} [${snapshot.project.id}]`;$('project-label').title=`项目 ID：${snapshot.project.id} · 权限：${projectRole}`; ready = true; $('save').disabled = $('sync').disabled = upgradeButton.disabled = projectRole==='viewer';$('export').disabled=false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机';
+  try { const snapshot = await bridge.init(); const workspace=snapshot.workspace??snapshot.project; const original = validateDesign(snapshot.design); design = bridge.templateMode?validateDesign(original):validateDesign(phoneDesign(original)); revision = snapshot.revision;projectVersion=workspace.version;projectRole=workspace.role;if(!bridge.templateMode)showUnityBinding(workspace.unityBinding);$('project-label').textContent=bridge.templateLanding?'模板库 · 请在下方选择模板':bridge.templateMode?`模板：${workspace.name} · ${bridge.draftId?'草稿 r'+revision+' / 基于 v'+workspace.baseVersion:'已发布 v'+revision+'（只读）'}`:`项目：${workspace.name} [${workspace.id}]`;$('project-label').title=`${bridge.templateMode?'模板':'项目'} ID：${workspace.id} · 权限：${projectRole}`; ready = true; $('save').disabled = $('sync').disabled = upgradeButton.disabled = projectRole==='viewer';$('export').disabled=false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机';
    let cached;try{cached=JSON.parse(sessionStorage.getItem(draftKey()));}catch{}
    if(cached){if(cached.projectVersion===projectVersion&&confirm('发现本标签页此项目的未保存草稿，是否恢复？')){design=validateDesign(cached.design);dirty=true;$('dirty').hidden=false;}else if(cached.projectVersion!==projectVersion){sessionStorage.setItem(draftKey()+'.conflict.'+cached.projectVersion,JSON.stringify(cached));const recovery=document.createElement('button');recovery.textContent='下载冲突草稿 v'+cached.projectVersion;recovery.onclick=()=>download('conflict-v'+cached.projectVersion+'.studio.json',JSON.stringify(cached.design,null,2),'application/json');projectBar.append(recovery);notice('数据库项目已有更新。旧草稿已单独保留，可下载核对，未覆盖项目。',true);}else sessionStorage.removeItem(draftKey());}
-   if (JSON.stringify(original) !== JSON.stringify(design)) { history.push(JSON.stringify(original)); mark(); } render(); if(!cached||cached.projectVersion===projectVersion)notice(`正在编辑项目 ${snapshot.project.name} · v${projectVersion} · 保存仅影响此项目。`);
+   if (projectRole!=='viewer'&&JSON.stringify(original) !== JSON.stringify(design)) { history.push(JSON.stringify(original)); mark(); } render(); if(!cached||cached.projectVersion===projectVersion)notice(bridge.templateLanding?'在下方选择预制控件或系统模板，打开后可查看节点和属性。':bridge.templateMode?`模板 ${workspace.name} · ${bridge.draftId?'保存仅影响模板草稿，发布需单独审核。':'已发布版本只读。'}`:`正在编辑项目 ${workspace.name} · v${projectVersion} · 保存仅影响此项目。`);if(bridge.templateMode)cardScripts.select(design.nodes.find(n=>n.parent===null)?.id);setCenterMode(bridge.templateMode?'edit':'relations');
   }
   catch (e) { $('connection').textContent = '连接失败'; notice(e.message, true); }
 }

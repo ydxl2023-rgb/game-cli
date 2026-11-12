@@ -31,7 +31,19 @@ test('database isolation, immutable publishing, source copies and project histor
   await assert.rejects(save(a.id,sa),/其他窗口/);
   const current=await owner.snapshot(a.id),file=current.design.nodes.find(n=>n.id===root).scripts.files[0];file.content='project A';delete file.sha256;await save(a.id,current);
   assert.equal((await owner.snapshot(b.id)).design.nodes.find(n=>n.parent===null).scripts.files[0].content,'original');
-  const candidate=await owner.candidate(a.id,{projectId:a.id,design:current.design,revision:current.revision,rootId:root,templateId:template.id,version:1});
+  assert.equal(owner.candidate,undefined,'projects cannot submit template candidates');
+  await assert.rejects(stranger.templateEditor.open({templateId:template.id}),/管理员/);
+  const published=await owner.templateEditor.published(template.id);assert.equal(published.workspace.role,'viewer');
+  const draft=await owner.templateEditor.open({templateId:template.id});
+  assert.equal((await owner.templateEditor.open({templateId:template.id})).id,draft.id);
+  const ds=await owner.templateEditor.read(draft.id);assert.equal(ds.workspace.kind,'template-draft');
+  const draftRoot=ds.design.nodes.find(n=>n.parent===null);draftRoot.scripts.files[0].content='project A';delete draftRoot.scripts.files[0].sha256;
+  await assert.rejects(owner.templateEditor.save(draft.id,{draftId:draft.id,projectId:a.id,design:ds.design,revision:ds.revision}),/项目数据/);
+  const savedDraft=await owner.templateEditor.save(draft.id,{draftId:draft.id,design:ds.design,revision:ds.revision});
+  await assert.rejects(owner.templateEditor.save(draft.id,{draftId:draft.id,design:ds.design,revision:ds.revision}),/已更新/);
+  const candidate=await owner.templateEditor.submit(draft.id,{draftId:draft.id,revision:savedDraft.revision});
+  assert.equal((await owner.templateEditor.submit(draft.id,{draftId:draft.id,revision:savedDraft.revision})).id,candidate.id);
+  assert.equal((await owner.snapshot(a.id)).revision,current.revision+1,'template editing does not save project');
   assert.equal((await query('SELECT version FROM gamecli_ui.templates')).rows[0].version,1);
   await assert.rejects(query('UPDATE gamecli_ui.templates SET version=2'),/不能直接覆盖/);
   await assert.rejects(owner.publish({candidateId:candidate.id,confirm:false}),/确认/);
@@ -41,6 +53,8 @@ test('database isolation, immutable publishing, source copies and project histor
   const detail=await owner.candidateDetail(candidate.id);assert.equal(detail.payload.source,undefined);assert.equal(detail.scripts.files[0].content,'project A');
   await assert.rejects(stranger.candidateDetail(candidate.id),/管理员/);
   assert.equal((await owner.publish({candidateId:candidate.id,confirm:true})).version,2);
+  await assert.rejects(owner.templateEditor.submit(draft.id,{draftId:draft.id,revision:savedDraft.revision}),/新版本/);
+  assert.notEqual((await owner.templateEditor.open({templateId:template.id})).id,draft.id);
   const provenance=(await query('SELECT payload FROM gamecli_ui.templates')).rows[0].payload;
   assert.deepEqual(provenance.source,{path:'Original.prefab'});assert.deepEqual(provenance.limitations,['layout snapshot']);
   await assert.rejects(owner.publish({candidateId:candidate.id,confirm:true}),/已处理/);
@@ -52,5 +66,28 @@ test('database isolation, immutable publishing, source copies and project histor
   const latest=await owner.snapshot(a.id);const restored=await owner.restore(a.id,{projectId:a.id,version:2,revision:latest.revision,projectVersion:latest.project.version});
   assert.equal(restored.design.nodes.find(n=>n.id===root).scripts.files[0].content,'original');
   assert.equal((await owner.revisions(a.id)).revisions.length,4);
+ const planBase=await owner.snapshot(a.id);
+  const arranged=await owner.composition.apply(a.id,{projectId:a.id,projectVersion:planBase.revision,operations:[{type:'arrange'}]});
+  await assert.rejects(owner.composition.apply(a.id,{projectId:a.id,projectVersion:planBase.revision,operations:[]}),/版本/);
+  assert.equal(owner.composition.submit,undefined);
+  let finish;const chatOwner=createWorkspaces({connect,actor:'owner',designAgent:()=>new Promise(resolve=>{finish=resolve;})});
+  try{
+   await assert.rejects(stranger.designChat.list(a.id),/无权/);
+   const turn=await chatOwner.designChat.send(a.id,{projectVersion:arranged.revision,text:'Arrange systems'});
+   await assert.rejects(chatOwner.designChat.send(a.id,{projectVersion:arranged.revision,text:'Duplicate'}),/正在生成/);
+   assert.equal((await chatOwner.designChat.list(b.id)).turns.length,0);
+   finish({reply:'排列系统',operations:[{type:'arrange'}]});
+   let result;for(let i=0;i<50;i++){result=(await chatOwner.designChat.list(a.id)).turns[0];if(result.status==='complete')break;await new Promise(r=>setTimeout(r,10));}
+   assert.equal(result.status,'complete');
+   assert.equal((await owner.snapshot(a.id)).revision,arranged.revision,'discussion does not save project');
+   await assert.rejects(chatOwner.designChat.apply(b.id,{turnId:turn.id,projectVersion:arranged.revision}),/没有可应用/);
+   await assert.rejects(chatOwner.designChat.apply(a.id,{turnId:turn.id,projectVersion:0}),/过期/);
+   const applied=await chatOwner.designChat.apply(a.id,{turnId:turn.id,projectVersion:arranged.revision});
+   assert.equal(applied.revision,arranged.revision+1);
+   await assert.rejects(chatOwner.designChat.apply(a.id,{turnId:turn.id,projectVersion:applied.revision}),/没有可应用/);
+   const cancelled=await chatOwner.designChat.send(a.id,{projectVersion:applied.revision,text:'Stop me'});
+   await chatOwner.designChat.stop(a.id,{turnId:cancelled.id});finish({reply:'late response',operations:[]});
+   assert.equal((await chatOwner.designChat.list(a.id)).turns.find(t=>t.id===cancelled.id).status,'stopped');
+  }finally{await chatOwner.close();}
  }finally{await owner.close();await stranger.close();await db.pool.query(`DROP SCHEMA ${schema} CASCADE`);await db.close();}
 });

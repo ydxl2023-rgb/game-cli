@@ -2,9 +2,10 @@ import {animationTime,sampleCurve} from '../shared/animations.mjs';
 export function playAnimations(design,canvas) {
   const nodes=new Map(design.nodes.map(n=>[n.id,n]));
   const elements=new Map([...canvas.querySelectorAll('[data-node]')].map(e=>[e.dataset.node,e]));
-  const originals=new Map(),start=performance.now();let frame;
+  const originals=new Map();let start=performance.now(),frame,pausedAt=null,stopped=false;
   for(const a of design.animations??[])for(const c of a.clip.curves){const e=elements.get(c.targetNodeId);if(e&&!originals.has(e))originals.set(e,{transform:e.style.transform,backgroundPosition:e.style.backgroundPosition});}
   function tick(now){
+    if(stopped||pausedAt!==null)return;
     const transforms=new Map();
     for(const a of design.animations??[]){const time=animationTime(a,(now-start)/1000);
       for(const c of a.clip.curves){const el=elements.get(c.targetNodeId),n=nodes.get(c.targetNodeId);if(!el||!n)continue;
@@ -20,5 +21,8 @@ export function playAnimations(design,canvas) {
     frame=requestAnimationFrame(tick);
   }
   if(originals.size)tick(start);
-  return ()=>{cancelAnimationFrame(frame);for(const [el,style] of originals)Object.assign(el.style,style);};
+  const stop=()=>{stopped=true;cancelAnimationFrame(frame);for(const [el,style] of originals)Object.assign(el.style,style);};
+  stop.pause=()=>{if(stopped||pausedAt!==null)return;pausedAt=performance.now();cancelAnimationFrame(frame);};
+  stop.resume=()=>{if(stopped||pausedAt===null)return;const now=performance.now();start+=now-pausedAt;pausedAt=null;if(originals.size)tick(now);};
+  return stop;
 }
