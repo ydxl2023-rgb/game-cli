@@ -43,3 +43,4 @@ description: 提取和维护 SV 登录公告 UI 模板，定位 LoginNoticeView 
 - `Notice/Animator/Panel` 是窗口内容容器，包含 WhiteBg、TopBg、ScrollView、WeekNomoreShow；通过 CLI prefab group 创建，保留原有组件引用。遮罩 Bg 留在 Panel 外，不缩放；Empty 仍在根节点，由同一动画单独缩放。
 - 不保留原 Animator 组织节点上的无控制器 Animator，避免嵌套动画组件。cacheWidget=false，每次打开新实例由默认 Open 状态播放，无需系统代码驱动。
 - 动画编辑使用工程内 `Library/UnityCLI/unity-cli.exe animator`。仅支持场景绑定时，prefab 组件与控制器引用通过 UnityCLI components/modify 保存。重新生成 prefab 后须恢复分组、根 Animator 和以上引用。
+- 数据库 SvNotice v3 已绑定标准 `dialog.open.scale` v1：新增 Panel 容纳 WhiteBg、TopBg、ScrollView、WeekNomoreShow，Bg 保持不缩放。预演使用 design.animations 的完整缩放曲线，不能仅同步 Unity .anim 而遗漏预演数据。同步脚本为 integrations/codex/scripts/sync-notice-animation.mjs，默认预检，--apply 经草稿/候选发布并回读校验；存在已有动画或不同草稿时停止覆盖。旧项目实例需要显式升级模板，不自动修改项目。
