@@ -5,7 +5,7 @@
 
 # Master
 
-必须遵守 [开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)。以下工程路径相对 GameCLI 根目录。
+必须遵守 [开发规范](../../../../development-rules/SKILL.md)、[Core](../../../../core/SKILL.md)、[Entity](../../../../entity/SKILL.md)。以下工程路径相对 GameCLI 根目录。
 
 ## 源码和边界
 

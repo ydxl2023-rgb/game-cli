@@ -1,17 +1,17 @@
 ---
-name: launch
+name: oathx-launch-development
 description: 独立 agent 参考 SvStart 标准模板，为具体产品开发 Launch 启动组件、进度与背景控制，接入 XApp；不照搬示例下载业务。
 ---
 
 # Launch 产品开发
 
-开发交付后由另一名 agent 按 [独立系统验收](../system-acceptance/SKILL.md) 和本模块需求验收；保留 Launch 作为组件的边界，不为验收增加 System。
+开发交付后由另一名 agent 按 [Launch 独立验收](../acceptance/SKILL.md) 和本模块需求验收；保留 Launch 作为组件的边界，不为验收增加 System。
 
-必须读取 [系统开发流程](../system-development/SKILL.md)、[开发规范](../development-rules/SKILL.md)、[Core](../core/SKILL.md)。使用 UnityCLI 处理预制体、动画和序列化引用。
+必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)。使用 UnityCLI 处理预制体、动画和序列化引用。
 
 ## 默认设计
 
-未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../system-development/SKILL.md#默认保留模板设计)。
+未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。
 
 ## 范式与边界
 

@@ -1,17 +1,17 @@
 ---
-name: notice
+name: oathx-notice-development
 description: 独立 agent 参考 SvNotice 标准模板开发产品公告系统、UI/VM、内容展示和标准弹窗动画，按产品接口接入数据，不依赖原 SV 工程。
 ---
 
 # Notice 产品开发
 
-开发交付后由另一名 agent 按 [独立系统验收](../../system-acceptance/SKILL.md) 和产品需求验收，覆盖内容展示、超链接、关闭/重开及指定的标准弹窗动画。
+开发交付后由另一名 agent 按 [Notice 独立验收](../acceptance/SKILL.md) 和产品需求验收，覆盖内容展示、超链接、关闭/重开及指定的标准弹窗动画。
 
-必须读取 [系统开发流程](../../system-development/SKILL.md)、[开发规范](../../development-rules/SKILL.md)、[Core](../../core/SKILL.md)、[Widget](../../widget/SKILL.md)、[Widget Extension](../../widget-extension/SKILL.md)。数据实体需要时读取 [Entity](../../entity/SKILL.md)。
+必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)。数据实体需要时读取 [Entity](../../../entity/SKILL.md)。
 
 ## 默认设计
 
-未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../system-development/SKILL.md#默认保留模板设计)。
+未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。
 
 ## 范式与边界
 

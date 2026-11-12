@@ -8,15 +8,15 @@ For product development based on the Launch, Login, Loading, Master or Notice st
 
 For initial Oathx development environment setup, use [the framework setup skill](skills/oathx/framework/SKILL.md). It covers package installation, CLI setup, initialization, coding conventions, and acceptance checks for an independent agent.
 
-For independent acceptance of an Oathx system delivery, read [the system acceptance skill](skills/oathx/system-acceptance/SKILL.md) and the target system skill. Use a reviewer distinct from the implementing agent; preserve raw CLI evidence and return defects to development rather than editing the delivery during acceptance.
+For independent acceptance of an Oathx system delivery, select the target system’s acceptance/SKILL.md from [the Oathx skill index](skills/oathx/SKILL.md). Each system owns sibling development/SKILL.md and acceptance/SKILL.md under skills/oathx/system/<system-name>; acceptance must use that system’s specific requirements. Use a reviewer distinct from the implementing agent; preserve raw CLI evidence and return defects to development rather than editing the delivery during acceptance.
 
 For a clean GameCLI practice project based on development, use [the practice setup skill](skills/oathx/practice/SKILL.md). Use development's branch packages and retain only the base entry infrastructure, with no business systems.
 
-For Launch work, also read [the launch skill](skills/oathx/launch/SKILL.md).
+For Launch work, also read [the launch skill](skills/oathx/system/launch/development/SKILL.md).
 
-For SV Login work, also read [the sv-login skill](skills/oathx/system/sv-login/SKILL.md).
+For SV Login work, also read [the sv-login skill](skills/oathx/system/sv-login/development/SKILL.md).
 
-For Loading page work, also read [the loading skill](skills/oathx/system/loading/SKILL.md).
+For Loading page work, also read [the loading skill](skills/oathx/system/loading/development/SKILL.md).
 
 Use the latest installed PowerShell 7 (`pwsh.exe`) for Windows shell commands. Do not use `powershell.exe` unless the user explicitly requests compatibility testing.
 

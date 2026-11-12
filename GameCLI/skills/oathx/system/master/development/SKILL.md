@@ -1,17 +1,17 @@
 ---
-name: master
+name: oathx-master-development
 description: 独立 agent 参考 MasterSystem 纯代码模板，为产品开发系统协调、事件路由和玩家数据生命周期，不生成 UI，不硬编码示例业务去向。
 ---
 
 # Master 产品开发
 
-开发交付后由另一名 agent 按 [独立系统验收](../../system-acceptance/SKILL.md) 验收代码、事件和生命周期；本模块没有 UI，预制检查记录为不适用。
+开发交付后由另一名 agent 按 [Master 独立验收](../acceptance/SKILL.md) 验收代码、事件和生命周期；本模块没有 UI，预制检查记录为不适用。
 
-必须读取 [系统开发流程](../../system-development/SKILL.md)、[开发规范](../../development-rules/SKILL.md)、[Core](../../core/SKILL.md)、[Entity](../../entity/SKILL.md)。
+必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)。
 
 ## 默认设计
 
-未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../system-development/SKILL.md#默认保留模板设计)。
+未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。
 
 ## 范式与边界
 

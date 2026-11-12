@@ -5,7 +5,7 @@
 
 # 登录公告
 
-遵守 [开发规范](../../../development-rules/SKILL.md)。涉及预制体生成时使用 unity-cli skill。以下路径相对 GameCLI 根目录。
+遵守 [开发规范](../../../../development-rules/SKILL.md)。涉及预制体生成时使用 unity-cli skill。以下路径相对 GameCLI 根目录。
 
 - 登录页 Announcement 调用 NoticeUtils.RequestLoginNotice，数据返回后 OpenNoticeWindow 打开 LoginNoticeView；其预制体是 SV `Assets/data/UI/Announcement/@AnnouncementView/Prefab/SystemAnnouncementView.prefab`。不要混用游戏内 GameAnnouncementView。
 - 数据库模板 ID 为 `SvNotice`，位于 system / notice（公告）。导入脚本是 `integrations/codex/scripts/import-sv-notice.mjs`；默认预检，`--publish` 只允许首次管理员登记，已有模板通过候选发布更新。

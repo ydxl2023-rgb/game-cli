@@ -11,7 +11,7 @@ description: GameCLI Unity C# 开发强制规范。编写、修改或审查本�
 
 - 先阅读目标模块和相邻实现，遵循现有目录、命名、组件生命周期与调用方式。不要用个人偏好替换工程风格。
 - 以用户最新确认的规则为准：本次已确认采用私有字段，不再采用公开自动属性、公开 getter 或显式字段加公开属性的形式来暴露 UI 引用。
-- 所有使用 com.oathx.* 框架的 skill 集中在 `skills/oathx`；每个业务系统使用独立的 `skills/oathx/system/<系统名>/SKILL.md`，共享规范集中维护于本文件，系统特有要求留在对应 skill。框架模块也各自独立成目录，不混入业务系统实现。
+- 所有使用 com.oathx.* 框架的 skill 集中在 `skills/oathx`；每个系统或展示模块使用独立的 `skills/oathx/system/<系统名>/`，其下分别维护 `development/SKILL.md` 与 `acceptance/SKILL.md`，共享规范集中维护于本文件，系统特有要求留在对应 skill。框架模块也各自独立成目录，不混入业务系统实现。
 - Windows 命令必须使用已安装的最新版 PowerShell 7，即 `pwsh.exe`；不使用 `powershell.exe`，除非用户明确要求兼容测试。
 
 ## 系统代码目录

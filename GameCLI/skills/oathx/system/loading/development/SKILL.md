@@ -1,17 +1,17 @@
 ---
-name: loading
+name: oathx-loading-development
 description: 独立 agent 参考 SvLoading 模板开发产品的 Loading 展示模块，只实现 UILoading/VMLoading 与调用接口，不创建 LoadingSystem 或承担加载任务。
 ---
 
 # Loading 产品开发
 
-开发交付后由另一名 agent 按 [独立系统验收](../../system-acceptance/SKILL.md) 验收本模块的展示接口与页面；不为验收添加 LoadingSystem 或具体加载任务。
+开发交付后由另一名 agent 按 [Loading 独立验收](../acceptance/SKILL.md) 验收本模块的展示接口与页面；不为验收添加 LoadingSystem 或具体加载任务。
 
-必须读取 [系统开发流程](../../system-development/SKILL.md)、[开发规范](../../development-rules/SKILL.md)、[Widget](../../widget/SKILL.md)、[Widget Extension](../../widget-extension/SKILL.md)。
+必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)。
 
 ## 默认设计
 
-未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../system-development/SKILL.md#默认保留模板设计)。
+未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。
 
 ## 范式与边界
 

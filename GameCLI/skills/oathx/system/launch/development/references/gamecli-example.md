@@ -5,11 +5,11 @@
 
 # Launch 系统
 
-负责从项目 UI 到可运行 Launch 系统的完整交付。此目录是 Launch 系统的独立 skill；后续系统使用 `skills/oathx/system/<系统名>/SKILL.md`，不要把其他系统业务加入此 skill。独立 agent 可以直接读取本文件执行任务，不依赖父 agent 的聊天记忆；本文件不负责自动创建或调度 agent。
+负责从项目 UI 到可运行 Launch 系统的完整交付。此目录是 Launch 系统的独立 skill；后续系统使用 `skills/oathx/system/<系统名>/development/SKILL.md` 与同目录的 `acceptance/SKILL.md`，不要把其他系统业务加入此 skill。独立 agent 可以直接读取本文件执行任务，不依赖父 agent 的聊天记忆；本文件不负责自动创建或调度 agent。
 
 ## 必须遵守的开发规范
 
-开始工作前必须读取并遵守 [GameCLI 开发规范](../../development-rules/SKILL.md)，完成后按其清单检查。不得恢复本次迭代已被用户否定的单例、公开 UI 属性、`m_` 命名、自动属性序列化或路径搜索绑定。
+开始工作前必须读取并遵守 [GameCLI 开发规范](../../../../development-rules/SKILL.md)，完成后按其清单检查。不得恢复本次迭代已被用户否定的单例、公开 UI 属性、`m_` 命名、自动属性序列化或路径搜索绑定。
 
 ## Launch 已确认的架构
 
@@ -23,7 +23,7 @@
 
 ## 定位项目与任务
 
-- 从本 skill 目录向上三级定位 GameCLI 目录；以下路径均相对此目录。Windows 命令使用 `pwsh.exe`。涉及 XApp 时同时读取 [Core 规范](../../core/SKILL.md)。
+- 从本 skill 目录向上三级定位 GameCLI 目录；以下路径均相对此目录。Windows 命令使用 `pwsh.exe`。涉及 XApp 时同时读取 [Core 规范](../../../../core/SKILL.md)。
 - 读取目标工程适用的 AGENTS.md，检查工作区改动。优先采用任务指定的 Unity 工程；仓库内示例为 `examples/unitys/development/client`，使用前确认它确实是任务目标。
 - 从任务和已有代码确定 Launch 的入口、启动步骤、完成后去向及异常行为。先查工程现有 UI、启动框架和资源加载方式，再决定实现；缺少会影响业务行为的信息时询问，不凭界面外观发明登录、联网更新等需求。
 - 独立 agent 的任务应携带目标工程、项目 UI 标识或来源、Launch 根节点和业务验收条件。可从配置或工程唯一确定的内容直接解析；多个候选无法区分时才询问。

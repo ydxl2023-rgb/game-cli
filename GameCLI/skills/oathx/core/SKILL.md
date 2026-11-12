@@ -18,6 +18,6 @@ description: 使用或维护 com.oathx.core 的 XApp、插件、XEventModule 生
 - 按当前系统的订阅时机配对清理；OnDetive 处理该系统页面及资源。`UnsubscribeAll` 与页面关闭之间空一行。
 - 业务系统类名应与现有配置加载入口匹配；修改类型名时检查配置源表与导出数据，不能只改 C#。
 - XApp 管理启动，业务系统管理自身行为，不为新页面复制应用启动或网络管理代码。
-- XLauncher 是普通 UGUI 组件，XApp 使用私有序列化引用。具体要求见 [Launch](../launch/SKILL.md)，不能因 Core 存在单例基类而把 XLauncher 改为单例。
+- XLauncher 是普通 UGUI 组件，XApp 使用私有序列化引用。具体要求见 [Launch](../system/launch/development/SKILL.md)，不能因 Core 存在单例基类而把 XLauncher 改为单例。
 
 修改后编译并检查 Console；生命周期变更应验证激活、停用及重复进入时的资源和订阅行为。

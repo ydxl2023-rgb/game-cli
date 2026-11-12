@@ -5,7 +5,7 @@
 
 # SV Login
 
-开始前必须读取并遵守 [开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Widget](../../../widget/SKILL.md) 和 [Widget Extension](../../../widget-extension/SKILL.md)。所有路径相对 GameCLI 目录（本 skill 目录向上四级）。先检查实际文件和模板最新版本，不能把本文件的历史状态视为最新数据。
+开始前必须读取并遵守 [开发规范](../../../../development-rules/SKILL.md)、[Core](../../../../core/SKILL.md)、[Widget](../../../../widget/SKILL.md) 和 [Widget Extension](../../../../widget-extension/SKILL.md)。所有路径相对 GameCLI 目录（本 skill 目录向上四级）。先检查实际文件和模板最新版本，不能把本文件的历史状态视为最新数据。
 
 ## 已确认的职责与结构
 

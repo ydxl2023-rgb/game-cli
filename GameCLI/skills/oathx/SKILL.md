@@ -12,7 +12,6 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | 目录 | 适用任务 |
 | --- | --- |
 | [system-development](system-development/SKILL.md) | 独立 agent 将标准模板适配为具体产品系统的共享开发流程 |
-| [system-acceptance](system-acceptance/SKILL.md) | 独立验收 agent 对系统交付执行代码、预制绑定、运行需求检查并出具证据报告 |
 | [framework](framework/SKILL.md) | 一次性建立开发环境：包安装、CLI、生成器、最小启动与验收 |
 | [practice](practice/SKILL.md) | 从 development 初始化无业务系统的干净工程，用于 GameCLI 实践与测试 |
 | [core](core/SKILL.md) | XApp、插件、系统生命周期与事件 |
@@ -22,17 +21,17 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | [rpc](rpc/SKILL.md) | 网络会话、协议与业务通信接入 |
 | [bundle](bundle/SKILL.md) | 资源加载、AssetBundle 与热更新 |
 | [avatar](avatar/SKILL.md) | 角色、特效与子弹组件 |
-| [launch](launch/SKILL.md) | Launch UI、预制体与 XLauncher |
-| [system/sv-login](system/sv-login/SKILL.md) | LoginSystem 与 UILogin |
-| [system/loading](system/loading/SKILL.md) | Loading 页面、进度和提示更新 |
-| [system/master](system/master/SKILL.md) | Master 纯代码系统、玩家实体和业务启动流程 |
-| [system/notice](system/notice/SKILL.md) | 产品公告逻辑、内容展示与标准弹窗动画 |
+| system/launch | Launch：[开发](system/launch/development/SKILL.md) / [验收](system/launch/acceptance/SKILL.md) |
+| system/sv-login | Login：[开发](system/sv-login/development/SKILL.md) / [验收](system/sv-login/acceptance/SKILL.md) |
+| system/loading | Loading：[开发](system/loading/development/SKILL.md) / [验收](system/loading/acceptance/SKILL.md) |
+| system/master | Master：[开发](system/master/development/SKILL.md) / [验收](system/master/acceptance/SKILL.md) |
+| system/notice | Notice：[开发](system/notice/development/SKILL.md) / [验收](system/notice/acceptance/SKILL.md) |
 
 ## 组织规则
 
 - 数据库中的 Launch、Login、Loading、Master、Notice 是产品开发范式，不要求原样安装或组成固定业务。负责其中一个模块的独立 agent 先读 system-development，再读对应 SKILL；产品特有需求优先于示例业务，共享编码规范仍必须遵守。
-- 各系统的 references/gamecli-example.md 保存旧 GameCLI 实现与历史同步资料，按需读取，不作为产品默认需求或当前数据库版本依据。开发与验收由不同 agent 负责，统一采用 system-acceptance；各系统继续复用自己的 SKILL，不复制整套验收规范。
-- 所有使用该框架的 skill 放在 `skills/oathx`，一个系统一个目录，每个目录独立维护 `SKILL.md`；新增系统采用 `skills/oathx/system/<system-name>/SKILL.md`。
+- 各系统 development/references/gamecli-example.md 保存旧 GameCLI 实现与历史同步资料，按需读取，不作为产品默认需求或当前数据库版本依据。开发与验收由不同 agent 负责，分别使用该系统的 development/SKILL.md 与 acceptance/SKILL.md；验收范围、用例与判定由各系统独立维护，不再使用统一系统验收入口。
+- 所有使用该框架的 skill 放在 `skills/oathx`，一个系统一个目录；新增系统采用 `skills/oathx/system/<system-name>/development/SKILL.md` 与 `acceptance/SKILL.md` 成对组织。Launch、Loading 也采用该目录结构，但不因此新增 RuntimeSystem。
 - 共享编码规范只维护一份；框架模块记录通用契约，业务目录记录该系统的数据、页面、配置和验收要求。不要将某个业务的限制扩展为整个框架限制。
 - 新系统 skill 必须引用开发规范及实际使用的模块 skill，并补充到此索引。不要为尚未实现的系统创建空目录。
 - 独立 agent 可直接读取目标系统 skill；skill 不自动创建 agent，也不自动授权提交、推送或数据库发布。

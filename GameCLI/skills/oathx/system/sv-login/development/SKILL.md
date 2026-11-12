@@ -1,17 +1,17 @@
 ---
-name: sv-login
+name: oathx-sv-login-development
 description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSystem、LoginEntity、UI 与 VM，并按产品契约接入登录、选区和系统入口。
 ---
 
 # Login 产品开发
 
-开发交付后由另一名 agent 按 [独立系统验收](../../system-acceptance/SKILL.md) 和本系统产品需求验收，覆盖本轮实际交付的主页面、子页面及入口。
+开发交付后由另一名 agent 按 [Login 独立验收](../acceptance/SKILL.md) 和本系统产品需求验收，覆盖本轮实际交付的主页面、子页面及入口。
 
-必须读取 [系统开发流程](../../system-development/SKILL.md)、[开发规范](../../development-rules/SKILL.md)、[Core](../../core/SKILL.md)、[Entity](../../entity/SKILL.md)、[Widget](../../widget/SKILL.md)、[Widget Extension](../../widget-extension/SKILL.md)。
+必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)。
 
 ## 默认设计
 
-未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../system-development/SKILL.md#默认保留模板设计)。
+未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。
 
 ## 范式与边界
 

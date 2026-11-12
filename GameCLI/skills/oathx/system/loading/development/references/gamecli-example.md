@@ -5,7 +5,7 @@
 
 # Loading
 
-必须遵守 [开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Widget](../../../widget/SKILL.md) 和 [Widget Extension](../../../widget-extension/SKILL.md)。本 skill 目录向上四级是 GameCLI 根目录，以下路径相对此根目录。
+必须遵守 [开发规范](../../../../development-rules/SKILL.md)、[Core](../../../../core/SKILL.md)、[Widget](../../../../widget/SKILL.md) 和 [Widget Extension](../../../../widget-extension/SKILL.md)。本 skill 目录向上四级是 GameCLI 根目录，以下路径相对此根目录。
 
 ## 当前结构
 

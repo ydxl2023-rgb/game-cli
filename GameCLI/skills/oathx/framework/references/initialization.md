@@ -40,4 +40,4 @@ XApp 从 Resources 按类型名读取 XAppConfigure，并根据 conf.plugins 查
 
 先显示 Launch；最小页面异步打开成功后调用 XApp.ShowLaunchBackground，只保留背景。需要离开背景的正式页面使用 HideLaunch。OpenWidget 必须传完成回调，系统调用前检查 IsActive，OnDetive 清理订阅并关闭页面。
 
-SV Login 属于可选业务系统，若任务明确接入则读取 [对应 skill](../../system/sv-login/SKILL.md)。当前 LoginSystem/UILogin/VMLogin 已重命名，“开始游戏”是等待接入的占位入口，不应作为新环境联网成功的证明。
+SV Login 属于可选业务系统，若任务明确接入则读取 [对应 skill](../../system/sv-login/development/SKILL.md)。当前 LoginSystem/UILogin/VMLogin 已重命名，“开始游戏”是等待接入的占位入口，不应作为新环境联网成功的证明。

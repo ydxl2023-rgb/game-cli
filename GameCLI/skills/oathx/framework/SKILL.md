@@ -9,7 +9,7 @@ description: 为新项目或已有 Unity 项目一次性建立 Oathx 基础开�
 
 目标是交付能编译、能通过 CLI 操作、能启动最小页面且遵循工程规范的 Unity 工程，不止安装包。此 skill 是环境搭建入口；业务系统仍各用一个目录。本 skill 不自动创建 agent。
 
-必须读取 [开发规范](../development-rules/SKILL.md)。需要运行时初始化时读取 [Core](../core/SKILL.md)、[Widget](../widget/SKILL.md)、[Widget Extension](../widget-extension/SKILL.md)；涉及启动视图时读取 [Launch](../launch/SKILL.md)。框架索引在 [Oathx](../SKILL.md)。
+必须读取 [开发规范](../development-rules/SKILL.md)。需要运行时初始化时读取 [Core](../core/SKILL.md)、[Widget](../widget/SKILL.md)、[Widget Extension](../widget-extension/SKILL.md)；涉及启动视图时读取 [Launch](../system/launch/development/SKILL.md)。框架索引在 [Oathx](../SKILL.md)。
 
 ## 输入与定位
 
