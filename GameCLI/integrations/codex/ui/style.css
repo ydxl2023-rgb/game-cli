@@ -148,3 +148,12 @@ body.resizing-workspace,body.resizing-workspace *{cursor:col-resize!important;us
 .canvas-footer>.composition-bar{display:block;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}
 .canvas-footer>div:last-child{flex-shrink:0}
 .canvas-footer button{height:21px;padding:1px 6px;font-size:10px}
+
+/* Switching dock tabs must preserve the user-sized workspace. */
+#template-dock,.design-chat,.design-messages,.design-composer{min-width:0;max-width:100%}
+.design-chat{overflow:auto}
+.design-chat-heading{min-width:0;flex-wrap:wrap}
+.design-chat-heading>span{min-width:0;overflow-wrap:anywhere}
+.design-chat-actions{min-width:0;flex-wrap:wrap}
+.design-chat-actions>span{min-width:0;overflow-wrap:anywhere}
+.design-attachments button,.design-message button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
