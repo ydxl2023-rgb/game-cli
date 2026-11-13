@@ -1,32 +1,45 @@
 import {createRelationGroups} from './relation-groups.mjs';
 import {relations,systemRoot,connectUi,thumbnailVisibility,relationSource,disconnectUi,startupPortId} from '../shared/relations.mjs';
 const labels={navigate:'跳转',show:'打开',toggle:'切换'};
-export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect=()=>{},onDelete=()=>{}}){
+export function createRelations({getDesign,getProjectId=()=>null,edit,notice,onEdit,onPreview,onSelect=()=>{},onDelete=()=>{}}){
   const viewport=document.getElementById('relations-view'),plane=document.getElementById('relations-plane');
   const svg=document.getElementById('relations-wires'),cards=document.getElementById('relations-cards');
   const positions=new Map(),draftPorts=new Set();let pending=null,drag=null,selectedEdge=null,selectedCard=null;
-  let zoom=1,pan=null,panX=0,panY=0;
+  let zoom=1,pan=null,panX=0,panY=0,currentProject=null;
+  function saveView(){
+    if(!currentProject||currentProject!==getProjectId()||viewport.hidden)return;
+    // Store the effective screen offset so restoration is independent of scroll bounds.
+    try{localStorage.setItem('gamecli.relations.view.'+currentProject,JSON.stringify({zoom,x:panX-viewport.scrollLeft,y:panY-viewport.scrollTop}));}catch{}
+  }
+  function restoreView(){
+    const id=getProjectId();if(id===currentProject)return;
+    currentProject=id;zoom=1;panX=panY=0;pan=null;
+    try{const v=JSON.parse(localStorage.getItem('gamecli.relations.view.'+id));
+      if(v&&Number.isFinite(v.zoom)&&Number.isFinite(v.x)&&Number.isFinite(v.y)){zoom=Math.max(.15,Math.min(3,v.zoom));panX=v.x;panY=v.y;}
+    }catch{}
+    viewport.scrollLeft=viewport.scrollTop=0;applyZoom();
+  }
   function applyPan(){plane.style.transform=`translate(${panX/zoom}px, ${panY/zoom}px)`;viewport.style.backgroundPosition=`${panX-viewport.scrollLeft}px ${panY-viewport.scrollTop}px`;}
   const zoomButton=document.createElement('button');zoomButton.id='relations-zoom';zoomButton.type='button';zoomButton.title='关系图缩放 · 点击恢复 100%';zoomButton.setAttribute('aria-label','重置关系图缩放');document.getElementById('relations-tools').append(zoomButton);
   function applyZoom(){plane.style.zoom=String(zoom);viewport.style.backgroundSize=`${20*zoom}px ${20*zoom}px`;zoomButton.textContent=Math.round(zoom*100)+'%';applyPan();}
-  zoomButton.onclick=()=>{zoom=1;panX=panY=0;viewport.scrollLeft=0;viewport.scrollTop=0;applyZoom();};
+  zoomButton.onclick=()=>{zoom=1;panX=panY=0;viewport.scrollLeft=0;viewport.scrollTop=0;applyZoom();saveView();};
   viewport.addEventListener('wheel',e=>{
     e.preventDefault();if(drag||pan||groups.selecting)return;
     const p=point(e),delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?viewport.clientHeight:1);
     zoom=Math.max(.25,Math.min(3,zoom*Math.exp(-Math.max(-400,Math.min(400,delta))*.002)));
     applyZoom();const r=plane.getBoundingClientRect();
     viewport.scrollLeft+=r.left+p.x*zoom-e.clientX;viewport.scrollTop+=r.top+p.y*zoom-e.clientY;
-    if(pending)drawWires(point(e));
+    if(pending)drawWires(point(e));saveView();
   },{passive:false});
   applyZoom();
-  viewport.addEventListener('scroll',applyPan);
+  viewport.addEventListener('scroll',()=>{applyPan();saveView();});
   viewport.addEventListener('pointerdown',e=>{
     if(e.button!==1||drag||groups.selecting)return;
     e.preventDefault();e.stopPropagation();
     pan={id:e.pointerId,x:e.clientX,y:e.clientY,startX:panX,startY:panY};
     viewport.setPointerCapture(e.pointerId);viewport.classList.add('panning');
   },true);
-  function finishPan(){if(!pan)return;const id=pan.id;pan=null;viewport.classList.remove('panning');if(viewport.hasPointerCapture(id))viewport.releasePointerCapture(id);}
+  function finishPan(){if(!pan)return;saveView();const id=pan.id;pan=null;viewport.classList.remove('panning');if(viewport.hasPointerCapture(id))viewport.releasePointerCapture(id);}
   viewport.addEventListener('auxclick',e=>{if(e.button===1)e.preventDefault();});
   viewport.addEventListener('lostpointercapture',finishPan);
   window.addEventListener('blur',finishPan);
@@ -102,6 +115,7 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
   }
   function render(){
     if(viewport.hidden)return;
+    restoreView();
     pending=null;drag=null;positions.clear();cards.replaceChildren();const design=getDesign(),roots=design.nodes.filter(n=>n.parent===null);
     const connectedSources=new Set(relations(design).map(edge=>edge.sourceId));
     if(!roots.some(n=>n.id===selectedCard))selectedCard=null;
@@ -173,7 +187,7 @@ export function createRelations({getDesign,edit,notice,onEdit,onPreview,onSelect
     const visible=[...cards.children].filter(c=>!c.hidden);if(!visible.length)return;
     const left=Math.min(...visible.map(c=>parseFloat(c.style.left))),top=Math.min(...visible.map(c=>parseFloat(c.style.top)));
     const right=Math.max(...visible.map(c=>parseFloat(c.style.left)+c.offsetWidth*Number(c.dataset.scale??1))),bottom=Math.max(...visible.map(c=>parseFloat(c.style.top)+c.offsetHeight*Number(c.dataset.scale??1)));
-    zoom=Math.max(.15,Math.min(1,(viewport.clientWidth-40)/(right-left),(viewport.clientHeight-40)/(bottom-top)));panX=20-left*zoom;panY=20-top*zoom;viewport.scrollLeft=viewport.scrollTop=0;applyZoom();drawWires();
+    zoom=Math.max(.15,Math.min(1,(viewport.clientWidth-40)/(right-left),(viewport.clientHeight-40)/(bottom-top)));panX=20-left*zoom;panY=20-top*zoom;viewport.scrollLeft=viewport.scrollTop=0;applyZoom();drawWires();saveView();
   };document.getElementById('relations-tools').append(fitButton);
   function dropPosition(x,y){
     const r=viewport.getBoundingClientRect();
