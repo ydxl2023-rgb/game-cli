@@ -1,3 +1,5 @@
+import {createDraftStorage,indexedDraftBackend} from './draft-storage.mjs';
+import {pruneGroups} from '../shared/relation-groups.mjs';
 import {setupCompositionBar} from './composition-bar.mjs';
 import {workspaceNavigation} from './workspace-navigation.mjs';
 import {createDesignChat} from './design-chat.mjs';
@@ -28,7 +30,11 @@ const library=new Map();
 let librarySource=null,projectVersion=null;
 let projectRole='viewer';
 const draftKey=()=>bridge.templateMode?`gamecli.template.${bridge.draftId||bridge.templateId}.draft`:`gamecli.project.${bridge.projectId}.draft`;
-function persistDraft(){if(!bridge.projectId&&!bridge.draftId)return;try{sessionStorage.setItem(draftKey(),JSON.stringify({design,projectVersion}));}catch{notice('浏览器草稿空间不足，请及时保存工程。',true);}}
+const drafts=createDraftStorage({getItem:key=>sessionStorage.getItem(key),setItem:(key,value)=>sessionStorage.setItem(key,value),removeItem:key=>sessionStorage.removeItem(key),key:i=>sessionStorage.key(i),get length(){return sessionStorage.length;}},indexedDraftBackend(window.indexedDB));
+function persistDraft(){if(!bridge.projectId&&!bridge.draftId)return;void drafts.write(draftKey(),{design,projectVersion}).catch(()=>notice('本地草稿暂时无法备份，当前修改仍在页面中，请保存项目或导出备份。',true));}
+function clearDraft(){void drafts.remove(draftKey()).catch(()=>notice('项目操作已完成，但本地旧草稿清理失败；重新打开时请核对版本。',true));}
+function offerRecovery(cached){const recovery=document.createElement('button');recovery.textContent='下载冲突草稿 v'+cached.projectVersion;recovery.onclick=()=>download('conflict-v'+cached.projectVersion+'.studio.json',JSON.stringify(cached.design,null,2),'application/json');projectBar.append(recovery);}
+
 async function loadTemplates() {
   const area=$('template-library');
   const refresh=$('refresh-templates');refresh.disabled=true;refresh.setAttribute('aria-busy','true');
@@ -335,7 +341,7 @@ function deleteSelected() {
   if (!node()) return;
   const remove = new Set([selected]); let count;
   do { count = remove.size; for (const n of design.nodes) if (remove.has(n.parent)) remove.add(n.id); } while (count !== remove.size);
-  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); if(design.animations)design.animations=design.animations.filter(a=>!remove.has(a.hostNodeId)).map(a=>({...a,clip:{...a.clip,curves:a.clip.curves.filter(c=>!remove.has(c.targetNodeId))}})).filter(a=>a.clip.curves.length); for(const n of design.nodes){if(remove.has(n.action?.target))delete n.action;if(remove.has(n.startupComplete?.target))n.startupComplete={type:'none'};} selected = design.nodes[0]?.id; });
+  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); pruneGroups(design); if(design.animations)design.animations=design.animations.filter(a=>!remove.has(a.hostNodeId)).map(a=>({...a,clip:{...a.clip,curves:a.clip.curves.filter(c=>!remove.has(c.targetNodeId))}})).filter(a=>a.clip.curves.length); for(const n of design.nodes){if(remove.has(n.action?.target))delete n.action;if(remove.has(n.startupComplete?.target))n.startupComplete={type:'none'};} selected = design.nodes[0]?.id; });
 }
 $('delete').onclick = deleteSelected;
 window.addEventListener('keydown', e => {
@@ -450,7 +456,7 @@ async function busy(id, fn) { $(id).disabled = true; try { await fn(); } catch (
 $('save').onclick = () => busy('save', async () => {
   const sent=JSON.stringify(design),snapshot=await bridge.call('save',{design,revision,projectVersion});revision=snapshot.revision;
   const result=snapshot.draftSave??snapshot.projectSave;
-  if(result?.ok){projectVersion=result.version;if(JSON.stringify(design)===sent){dirty=false;$('dirty').hidden=true;sessionStorage.removeItem(draftKey());}}
+  if(result?.ok){projectVersion=result.version;if(JSON.stringify(design)===sent){dirty=false;$('dirty').hidden=true;clearDraft();}}
   if(bridge.templateMode){$('project-label').textContent=$('project-label').textContent.replace(/草稿 r\d+/,'草稿 r'+revision);notice(`模板草稿已保存 · r${revision} · 已发布版本未修改${dirty?" · 仍有未保存修改":""}`);return;}
   notice(result?.ok?`工程 ${result.name} 已保存到数据库 · v${result.version} · 基础模板未修改${dirty?' · 仍有未保存修改':''}`:`本机草稿 v${revision} 已保存 · 工程数据库保存失败：${result?.error??'服务未支持工程保存'}`,!result?.ok);
 });
@@ -514,7 +520,7 @@ async function leaveWorkspace(){
  if(!dirty)return true;
  const choice=prompt('当前工作区有未保存修改。输入“保存”后切换，或输入“放弃”；取消则留在当前工作区。');
  if(choice==='保存'){await $('save').onclick();return !dirty;}
- if(choice==='放弃'){dirty=false;sessionStorage.removeItem(draftKey());return true;}return false;
+ if(choice==='放弃'){dirty=false;clearDraft();return true;}return false;
 }
 switchProject.onclick=async()=>{
  if(bridge.templateMode){if(await leaveWorkspace())location.href='/studio/templates';return;}
@@ -541,7 +547,7 @@ switchProject.onclick=async()=>{
   const cancel=document.createElement('button');cancel.type='button';cancel.textContent='关闭';cancel.onclick=()=>{if(!busy)dialog.close();};dialog.append(manage,cancel);dialog.oncancel=e=>{if(busy)e.preventDefault();};dialog.onclose=()=>dialog.remove();dialog.onkeydown=e=>e.stopPropagation();renderProjects();document.body.append(dialog);dialog.showModal();
  }catch(e){notice(e.message,true);}finally{switchProject.disabled=false;}
 };
-const historyButton=document.createElement('button');historyButton.textContent='项目历史';historyButton.onclick=async()=>{try{const result=await bridge.call('revisions');const dialog=document.createElement('dialog');dialog.className='sync-confirm';const title=document.createElement('h2');title.textContent='恢复项目历史（生成新版本）';const select=document.createElement('select');for(const r of result.revisions)select.add(new Option(`v${r.version} · ${new Date(r.created_at).toLocaleString()}`,String(r.version)));const cancel=document.createElement('button');cancel.textContent='取消';cancel.onclick=()=>dialog.close();const restore=document.createElement('button');restore.textContent='确认恢复';restore.disabled=projectRole==='viewer';restore.onclick=async()=>{if(!confirm('恢复将替换当前项目布局和代码，未保存的修改会被放弃。继续？'))return;restore.disabled=true;try{const value=await bridge.call('restore',{version:Number(select.value),revision,projectVersion});design=value.design;revision=value.revision;projectVersion=value.projectSave.version;dirty=false;history.length=0;sessionStorage.removeItem(draftKey());$('dirty').hidden=true;selected=null;render();notice('已恢复项目历史为新版本 v'+projectVersion);dialog.close();}catch(e){notice(e.message,true);restore.disabled=false;}};dialog.append(title,select,cancel,restore);dialog.onclose=()=>dialog.remove();dialog.onkeydown=e=>e.stopPropagation();document.body.append(dialog);dialog.showModal();}catch(e){notice(e.message,true);}};
+const historyButton=document.createElement('button');historyButton.textContent='项目历史';historyButton.onclick=async()=>{try{const result=await bridge.call('revisions');const dialog=document.createElement('dialog');dialog.className='sync-confirm';const title=document.createElement('h2');title.textContent='恢复项目历史（生成新版本）';const select=document.createElement('select');for(const r of result.revisions)select.add(new Option(`v${r.version} · ${new Date(r.created_at).toLocaleString()}`,String(r.version)));const cancel=document.createElement('button');cancel.textContent='取消';cancel.onclick=()=>dialog.close();const restore=document.createElement('button');restore.textContent='确认恢复';restore.disabled=projectRole==='viewer';restore.onclick=async()=>{if(!confirm('恢复将替换当前项目布局和代码，未保存的修改会被放弃。继续？'))return;restore.disabled=true;try{const value=await bridge.call('restore',{version:Number(select.value),revision,projectVersion});design=value.design;revision=value.revision;projectVersion=value.projectSave.version;dirty=false;history.length=0;clearDraft();$('dirty').hidden=true;selected=null;render();notice('已恢复项目历史为新版本 v'+projectVersion);dialog.close();}catch(e){notice(e.message,true);restore.disabled=false;}};dialog.append(title,select,cancel,restore);dialog.onclose=()=>dialog.remove();dialog.onkeydown=e=>e.stopPropagation();document.body.append(dialog);dialog.showModal();}catch(e){notice(e.message,true);}};
 const upgradeButton=document.createElement('button');upgradeButton.textContent='升级模板副本';upgradeButton.onclick=async()=>{try{
  let root=node();while(root?.parent)root=design.nodes.find(n=>n.id===root.parent);if(!root)throw Error('请选择要升级的系统节点。');
  const template=library.get(root.templateSourceId);if(!template)throw Error('未关联标准模板。');if(template.version===root.templateSourceVersion)throw Error('当前副本来源已是最新版本；项目修改不会自动覆盖。');
@@ -568,8 +574,16 @@ window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); 
 render();
 async function start() {
   try { const snapshot = await bridge.init(); const workspace=snapshot.workspace??snapshot.project; const original = validateDesign(snapshot.design); design = bridge.templateMode?validateDesign(original):validateDesign(phoneDesign(original)); revision = snapshot.revision;projectVersion=workspace.version;projectRole=workspace.role;if(!bridge.templateMode)showUnityBinding(workspace.unityBinding);$('project-label').textContent=bridge.templateLanding?'模板库 · 请在下方选择模板':bridge.templateMode?`模板：${workspace.name} · ${bridge.draftId?'草稿 r'+revision+' / 基于 v'+workspace.baseVersion:'已发布 v'+revision+'（只读）'}`:`项目：${workspace.name} [${workspace.id}]`;$('project-label').title=`${bridge.templateMode?'模板':'项目'} ID：${workspace.id} · 权限：${projectRole}`; ready = true; $('save').disabled = $('sync').disabled = upgradeButton.disabled = projectRole==='viewer';$('export').disabled=false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机';
-   let cached;try{cached=JSON.parse(sessionStorage.getItem(draftKey()));}catch{}
-   if(cached){if(cached.projectVersion===projectVersion&&confirm('发现本标签页此项目的未保存草稿，是否恢复？')){design=validateDesign(cached.design);dirty=true;$('dirty').hidden=false;}else if(cached.projectVersion!==projectVersion){sessionStorage.setItem(draftKey()+'.conflict.'+cached.projectVersion,JSON.stringify(cached));const recovery=document.createElement('button');recovery.textContent='下载冲突草稿 v'+cached.projectVersion;recovery.onclick=()=>download('conflict-v'+cached.projectVersion+'.studio.json',JSON.stringify(cached.design,null,2),'application/json');projectBar.append(recovery);notice('数据库项目已有更新。旧草稿已单独保留，可下载核对，未覆盖项目。',true);}else sessionStorage.removeItem(draftKey());}
+   let cached;try{cached=await drafts.read(draftKey());}catch{}
+   for(const key of drafts.conflictKeys(draftKey())){try{const conflict=await drafts.read(key);if(conflict?.design)offerRecovery(conflict);}catch{}}
+   if(cached){
+    if(cached.projectVersion===projectVersion&&confirm('发现本标签页此项目的未保存草稿，是否恢复？')){design=validateDesign(cached.design);dirty=true;$('dirty').hidden=false;}
+    else if(cached.projectVersion!==projectVersion){
+     offerRecovery(cached);
+     try{await drafts.archive(draftKey(),cached.projectVersion);notice('数据库项目已有更新。旧草稿已单独保留，可下载核对，未覆盖项目。',true);}
+     catch{notice('数据库项目已有更新。旧草稿尚未归档，请先下载冲突草稿备份；项目仍可正常使用。',true);}
+    }else clearDraft();
+   }
    if (projectRole!=='viewer'&&JSON.stringify(original) !== JSON.stringify(design)) { history.push(JSON.stringify(original)); mark(); } render(); if(!cached||cached.projectVersion===projectVersion)notice(bridge.templateLanding?'在下方选择预制控件或系统模板，打开后可查看节点和属性。':bridge.templateMode?`模板 ${workspace.name} · ${bridge.draftId?'保存仅影响模板草稿，发布需单独审核。':'已发布版本只读。'}`:`正在编辑项目 ${workspace.name} · v${projectVersion} · 保存仅影响此项目。`);if(bridge.templateMode)cardScripts.select(design.nodes.find(n=>n.parent===null)?.id);setCenterMode(bridge.templateMode?'edit':'relations');
   }
   catch (e) { $('connection').textContent = '连接失败'; notice(e.message, true); }

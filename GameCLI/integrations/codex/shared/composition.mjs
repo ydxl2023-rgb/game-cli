@@ -1,3 +1,4 @@
+import {pruneGroups} from './relation-groups.mjs';
 import {validateDesign} from './design.mjs';
 import {instantiateTemplate} from './templates.mjs';
 import {connectUi,relations} from './relations.mjs';
@@ -19,7 +20,7 @@ export function compose(source,operations,templates){
   }else if(op.type==='remove'){
    const id=resolve(op.id);if(!design.nodes.some(n=>n.id===id&&n.parent===null))throw Error('请选择系统根节点。');
    const ids=new Set([id]);let size;do{size=ids.size;for(const n of design.nodes)if(ids.has(n.parent))ids.add(n.id);}while(size!==ids.size);
-   design.nodes=design.nodes.filter(n=>!ids.has(n.id));for(const n of design.nodes){if(ids.has(n.action?.target))delete n.action;if(ids.has(n.startupComplete?.target))n.startupComplete={type:'none'};}
+   design.nodes=design.nodes.filter(n=>!ids.has(n.id));pruneGroups(design);for(const n of design.nodes){if(ids.has(n.action?.target))delete n.action;if(ids.has(n.startupComplete?.target))n.startupComplete={type:'none'};}
    if(design.animations)design.animations=design.animations.filter(a=>!ids.has(a.hostNodeId)).map(a=>({...a,clip:{...a.clip,curves:a.clip.curves.filter(c=>!ids.has(c.targetNodeId))}})).filter(a=>a.clip.curves.length);
   }else if(op.type==='arrange'){design.nodes.filter(n=>n.parent===null).forEach((n,i)=>n.relationPosition={x:32+i%3*310,y:40+Math.floor(i/3)*285});}
   else throw Error('未知编排操作。');

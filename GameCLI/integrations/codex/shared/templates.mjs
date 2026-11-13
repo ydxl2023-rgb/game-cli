@@ -51,7 +51,7 @@ export function instantiateTemplate(design, template, parent, point, {allowCode=
   while(nodes.some(n=>ids.has(`T${i}${n.id}`))) i++;
   const remap=new Map(nodes.map(n=>[n.id,`T${i}${n.id}`]));
   for(const n of nodes) {
-    delete n.relationPosition;
+    delete n.relationPosition;delete n.relationScale;
     n.id=remap.get(n.id); n.parent=n.parent===null ? (canvasRoot?null:parent) : remap.get(n.parent);
     if(n.action?.target) n.action.target=remap.get(n.action.target);
     if(n.startupComplete?.target)n.startupComplete.target=remap.get(n.startupComplete.target);

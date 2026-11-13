@@ -157,3 +157,34 @@ body.resizing-workspace,body.resizing-workspace *{cursor:col-resize!important;us
 .design-chat-actions{min-width:0;flex-wrap:wrap}
 .design-chat-actions>span{min-width:0;overflow-wrap:anywhere}
 .design-attachments button,.design-message button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+
+/* Project-only groups keep members and their actual system endpoints visible. */
+.relation-card{z-index:1}
+.relation-group{position:absolute;border:1px solid #6d8262;border-radius:12px;background:#9bbd7010;z-index:0;box-sizing:border-box}
+.relation-group-header{display:flex;align-items:center;gap:7px;min-height:40px;padding:6px 10px;cursor:grab;touch-action:none;user-select:none;box-sizing:border-box}
+.relation-group-header strong{margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
+.relation-group-header small{color:var(--muted);white-space:nowrap}
+.relation-group-header button{padding:4px 6px;font-size:10px}
+.relation-group .relation-port-row{min-height:30px}
+.relation-group-choice{display:flex;align-items:center;gap:8px;padding:10px}
+.relation-picker .relation-group-choice input,.relation-group-select{width:14px;height:14px;flex:0 0 14px;accent-color:var(--accent)}
+#relations-tools{flex-wrap:wrap;gap:6px}
+
+.relation-group{pointer-events:none}.relation-group-header{pointer-events:auto}
+
+.relation-marquee{position:absolute;z-index:10;border:1px solid #bcea83;background:#bcea8326;pointer-events:none;box-sizing:border-box}
+.relation-card.group-selected{border-color:#bcea83;box-shadow:0 0 0 2px #bcea83,0 0 18px #bcea8333}
+
+.relation-group-resize{position:absolute;padding:0;border:0;background:transparent;pointer-events:auto;touch-action:none;z-index:2;min-width:0;min-height:0;border-radius:0}
+.relation-group-resize.n,.relation-group-resize.s{left:10px;right:10px;height:10px;cursor:ns-resize}
+.relation-group-resize.n{top:-5px}.relation-group-resize.s{bottom:-5px}
+.relation-group-resize.e,.relation-group-resize.w{top:10px;bottom:10px;width:10px;cursor:ew-resize}
+.relation-group-resize.e{right:-5px}.relation-group-resize.w{left:-5px}
+.relation-group-resize.nw,.relation-group-resize.ne,.relation-group-resize.sw,.relation-group-resize.se{width:12px;height:12px;background:#bcea83;border:1px solid #263029;border-radius:3px}
+.relation-group-resize.nw{left:-6px;top:-6px;cursor:nwse-resize}.relation-group-resize.ne{right:-6px;top:-6px;cursor:nesw-resize}
+.relation-group-resize.sw{left:-6px;bottom:-6px;cursor:nesw-resize}.relation-group-resize.se{right:-6px;bottom:-6px;cursor:nwse-resize}
+
+.relation-group.selected-group{border-color:#bcea83;box-shadow:0 0 0 1px #bcea83}
+.relation-group:not(.selected-group) .relation-group-resize{cursor:default}
+.relation-group-resize.nw,.relation-group-resize.ne,.relation-group-resize.sw,.relation-group-resize.se{background:transparent;border-color:transparent}
+.relation-group.selected-group .relation-group-resize:hover,.relation-group.selected-group .relation-group-resize:focus-visible{background:#bcea83;border-color:#263029}

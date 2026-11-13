@@ -16,8 +16,9 @@ export function templateFromDraft(snapshot,target,current) {
   do{size=ids.size;for(const n of source.nodes)if(ids.has(n.parent))ids.add(n.id);}while(ids.size!==size);
   for(const n of source.nodes)if(ids.has(n.id)&&n.startupComplete?.target&&!ids.has(n.startupComplete.target))throw new Error('启动完成包含项目系统目标，发布标准模板前请清除目标并保留事件端口。');
   const design={...structuredClone(source),name:current.payload.design.name,nodes:structuredClone(source.nodes.filter(n=>ids.has(n.id)))};
+  delete design.relationGroups;
   if(design.animations)design.animations=design.animations.filter(a=>ids.has(a.hostNodeId));
-  for(const n of design.nodes)delete n.relationPosition;
+  for(const n of design.nodes){delete n.relationPosition;delete n.relationScale;}
   for(const n of design.nodes)if(n.action?.target&&!ids.has(n.action.target))throw new Error('模板包含跨系统跳转引用，无法独立保存：'+n.name);
   design.nodes.find(n=>n.id===root.id).templateSourceId=current.id;
   return {...current.payload,...validateTemplate({root:root.id,design},current.category_id),editedFrom:{draftRevision:snapshot.revision,savedAt:snapshot.savedAt}};

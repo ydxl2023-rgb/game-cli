@@ -1,3 +1,4 @@
+import {validateGroups} from './relation-groups.mjs';
 import {validateAnimations} from './animations.mjs';
 import {resolveLayout, captureBounds} from './rect-transform.mjs';
 export const types = ['Container', 'Image', 'Text', 'Button', 'Progress'];
@@ -261,6 +262,7 @@ export function validateDesign(value) {
     for(const [key,axes] of [['localScale',['x','y']],['imageBorder',['x','y','z','w']],['uvRect',['x','y','width','height']]]) if(n[key]!==undefined && (!n[key] || !axes.every(a=>Number.isFinite(n[key][a])&&Math.abs(n[key][a])<=8192)))throw new Error('图片布局参数无效。');
     if(n.imageBorder && Object.values(n.imageBorder).some(v=>v<0))throw new Error('九宫格边界不能为负。');
     if(n.uvRect && (n.uvRect.width<=0||n.uvRect.height<=0))throw new Error('UV 尺寸必须为正。');
+    if(n.relationScale!==undefined&&(n.parent!==null||!Number.isFinite(n.relationScale)||n.relationScale<=0||n.relationScale>1))throw new Error('关系卡片缩放无效。');
     if(n.relationPosition!==undefined&&(n.parent!==null||!['x','y'].every(k=>Number.isFinite(n.relationPosition?.[k])&&n.relationPosition[k]>=0&&n.relationPosition[k]<=6000)))throw new Error('关系卡片坐标无效。');
     if(n.rotation!==undefined && (!Number.isFinite(n.rotation)||Math.abs(n.rotation)>36000))throw new Error('Rotation Z 无效。');
     if(n.animationHost!==undefined && (n.animationHost!==true||n.type!=='Container'))throw new Error('动画容器标记无效。');
@@ -298,7 +300,7 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ ...(value.relationGroups!==undefined?{relationGroups:validateGroups(value.relationGroups,value.nodes)}:{}), schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition','relationScale'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {
