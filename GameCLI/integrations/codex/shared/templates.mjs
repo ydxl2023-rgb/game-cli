@@ -54,6 +54,7 @@ export function instantiateTemplate(design, template, parent, point, {allowCode=
     delete n.relationPosition;
     n.id=remap.get(n.id); n.parent=n.parent===null ? (canvasRoot?null:parent) : remap.get(n.parent);
     if(n.action?.target) n.action.target=remap.get(n.action.target);
+    if(n.startupComplete?.target)n.startupComplete.target=remap.get(n.startupComplete.target);
   }
   const dimensions=template.category==='system' ? {width:source.design.width,height:source.design.height} : {width:design.width,height:design.height};
   const result={...design,...dimensions,nodes:[...design.nodes,...nodes]};

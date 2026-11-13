@@ -49,7 +49,7 @@
 - GamePlugin 的 RegisterSyncActions 必须包含 SyncFancyGridScrollView 和 SyncFancyGridClick。行根 pivot 为 (0.5,0.5)，根 Button 提供 Fancy 点击入口，子 Button 组件移除且其 Image 不拦截射线。原始行模板通过 VM 的 SyncVisible 隐藏。右侧两列，顶部留出角标空间。
 - VM 字段顺序必须与 Metadata 列表顺序一致。Login 的 Change 按钮下还有同名 Change 文本，自动匹配会歧义；保留原结构，通过 CLI 显式绑定 `SVLogin/Animator/Content/Server/Change#Button`，不能绑定子文本。
 - 提取脚本 `integrations/codex/scripts/import-sv-server-select.mjs` 消费 SV 现有只读导出器的 `.data/imports/sv-server-select/unity/unity-prefab.json`。Unity CLI ugui 先 dry-run 再生成，随后对 VMServerSelect 生成 Metadata，并在 Unity 项目目录运行 `integrations/codex/scripts/bind-sv-server-select.ps1 -Cli <UnityCLI.exe>` 恢复 Fancy、行 Widget 和 Metadata 绑定。Login 第九项 changeClick 的显式绑定保留，重新生成 Login 时必须恢复。每个 Widget 仅保留一份 Metadata，字段顺序须与对应 VM 一致。
-- 本次完成本地 Unity 页面，尚未将 ServerSelect 发布到数据库标准模板；不要将本地完成描述为已入库。
+- 历史选区实现阶段只完成本地 Unity 页面；此状态已由下方 2026-11-12 同步记录更新，后续仍需读取数据库实际发布版本。
 
 ## Login 代码目录
 
@@ -72,4 +72,12 @@
 - 当前新增 ID 1001–1007，别名为 LOGIN_RECENT_SERVER、LOGIN_RECOMMENDED_SERVER、LOGIN_SERVER_RANGE、LOGIN_LOCAL_SERVER_NAME、LOGIN_SERVER_NORMAL、LOGIN_SERVER_BUSY、LOGIN_SERVER_MAINTENANCE。
 - `LoginSystem` 和 `UILogin` 通过共享 `Assets/Scripts/Systems/CommonText.cs` 的 `CommonText.Get(Config.Excel.LOGIN_..., args)` 获取显示文本；不在 Entity 中处理显示文案。
 - 源码包需包含 CommonText 辅助代码；接入工程同时安装 CommonText 源表条目并执行导表，不能只复制脚本而遗漏配置依赖。
+
+## 2026-11-12 源码及生产资料同步
+
+- `SvLogin v8` 已通过模板草稿、候选和正式发布流程入库；GameCLIApp 的 Login 源码包同步至 revision 12，模板来源版本标记随后修正为 v8（项目 revision 13）；保留项目公告连线。主页面 67 个节点与既有动画保持不变，没有自动升级 practice。
+- scripts 收录 development 清单的 12 个 C# 源文件及其 meta，另带 `GameCLI/Templates/Login/README.md`、`dependencies.json`、`materials.json`，共 27 个文件。源码字节及 SHA256 与 development 一致。
+- materials 为 `gamecli-source-materials/1`，111 个条目以原始字节的 base64 和 SHA256 保存。包括 SVLogin/ServerSelect 的原始预制、内联 Fancy cell 与 Metadata、图片、动画及 importer meta、propCommonText.xlsx，以及 reference scope 的原始 Protocols.cs/meta。数据库当前单根设计不展示独立选区页面；选区通过配套资料交付，不作为主界面可见子节点。
+- development 的 `LoginEntity.Refresh(LoginResponse)` 仍存在；依赖说明明确记录，没有为同步擅自删除。仅本地进入事件，无真实网络认证；产品开发应显式适配协议类型及 Master/Notice/RuntimeSystem 共享契约，不盲目安装完整历史协议文件。
+- 同步入口：在 `integrations/codex` 下运行 `node scripts/sync-login-template.mjs` 预检，明确要求发布时使用 `--apply`。脚本核实来源工程绑定、保留既有编辑草稿、按版本提交候选和发布、同步更新 GameCLIApp 的源码包及模板来源版本，并读回核对；标准模板和 GameCLIApp 两处一致后才报告同步完成。记录保存在 `.data/template-history/login-sync-<时间戳>/`。本次归档一致性校验不代表新产品运行验收通过。
 

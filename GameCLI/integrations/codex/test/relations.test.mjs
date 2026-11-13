@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {connectUi,relations,thumbnailVisibility} from '../shared/relations.mjs';
+import {connectUi,relations,thumbnailVisibility,startupPortId,disconnectUi} from '../shared/relations.mjs';
+import {compose} from '../shared/composition.mjs';
+import {instantiateTemplate} from '../shared/templates.mjs';
+import {templateFromDraft} from '../server/template-publish.mjs';
 import {validateDesign} from '../shared/design.mjs';
 import {createPreviewState,runPreviewAction} from '../shared/preview.mjs';
 function fixture(){return {schemaVersion:1,name:'ProjectUi',width:1080,height:1920,nodes:[
@@ -8,6 +11,42 @@ function fixture(){return {schemaVersion:1,name:'ProjectUi',width:1080,height:19
  {id:'Open',parent:'Home',type:'Button'},
  {id:'Inventory',parent:null,type:'Container',previewHidden:true}
 ].map(n=>({...n,name:n.id,x:0,y:0,width:128,height:128,color:'#ffffff',text:'',fontSize:20}))};}
+
+test('startup completion is independent from clicks and survives save, reconnect and deletion',()=>{
+ const d=fixture(),root=d.nodes[0];root.startupComplete={type:'none'};
+ connectUi(d,'Home','Inventory','show');
+ connectUi(d,startupPortId('Home'),'Inventory','show');
+ let saved=validateDesign(JSON.parse(JSON.stringify(d)));
+ assert.equal(relations(saved).length,2);
+ assert.deepEqual(saved.nodes[0].startupComplete,{type:'show',target:'Inventory'});
+ assert.throws(()=>connectUi(saved,startupPortId('Home'),'Home','show'));
+ assert.throws(()=>connectUi(saved,startupPortId('Home'),'Inventory','navigate'));
+ assert.throws(()=>connectUi(saved,startupPortId('Inventory'),'Home','show'));
+ disconnectUi(saved,startupPortId('Home'));
+ assert.deepEqual(saved.nodes[0].startupComplete,{type:'none'});
+ assert.equal(saved.nodes[0].action.target,'Inventory');
+ connectUi(saved,startupPortId('Home'),'Inventory','show');
+ saved=compose(saved,[{type:'remove',id:'Inventory'}],[]).design;
+ assert.deepEqual(saved.nodes[0].startupComplete,{type:'none'});
+ assert.equal(relations(saved).length,0);
+});
+test('startup events reject missing or local targets and template publication never leaks project routes',()=>{
+ const d=fixture();d.nodes[0].startupComplete={type:'show',target:'Open'};
+ assert.throws(()=>validateDesign(d),/启动完成/);
+ d.nodes[0].startupComplete.target='Missing';assert.throws(()=>validateDesign(d),/启动完成/);
+ d.nodes[0].startupComplete.target='Inventory';
+ assert.throws(()=>templateFromDraft({design:d},{rootId:'Home'},{id:'SvStart',category_id:'system',payload:{root:'Home',design:d}}),/启动完成/);
+ delete d.nodes[0].startupComplete;d.nodes[1].startupComplete={type:'none'};
+ assert.throws(()=>validateDesign(d),/启动完成/);
+});
+test('new Launch template instances expose an unconnected completion port without a Login dependency',()=>{
+ const d=fixture();d.nodes=d.nodes.slice(0,1);d.nodes[0].startupComplete={type:'none'};
+ const product={schemaVersion:1,name:'Product',width:1080,height:1920,nodes:[]};
+ const id=instantiateTemplate(product,{id:'SvStart',category:'system',version:7,payload:{root:'Home',design:d}},null,{x:0,y:0});
+ assert.deepEqual(product.nodes.find(n=>n.id===id).startupComplete,{type:'none'});
+ assert.equal(relations(product).length,0);
+ assert.equal(product.nodes.find(n=>n.id===id).action,undefined);
+});
 
 test('thumbnail restores a hidden root but preserves inactive internal subtrees',()=>{
  const d={nodes:[{id:'Loading',parent:null,active:false},{id:'Animator',parent:'Loading'},{id:'Image',parent:'Animator'},{id:'Dialog',parent:'Animator',active:false},{id:'Text',parent:'Dialog'}]};

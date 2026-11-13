@@ -27,6 +27,7 @@ description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSys
 ## 实现路径
 
 1. 读取模板布局、源码和动画，核对目标框架生成器及 UI 加载入口。
+   若源码包包含 `GameCLI/Templates/Login/README.md`、`dependencies.json` 和 `materials.json`，先读取集成依赖和资料索引。选区是独立预制，不能因为主画布没有其节点就判定模板未交付；同时不能把资料归档当作已完成目标工程安装。资料条目按 scope 区分 Unity 资源、配置源表及参考依赖，解码后逐项校验 SHA256，禁止直接覆盖产品已有资源或整张文案表。
 2. 按需求组织 Login/VM、Login/UI，System、Entity 及实体专用类型放 Login 根目录。复用已存在公共基类与事件。
 3. 将身份、区服选择等数据放入实体；状态使用枚举，显示文案从 propCommonText 查表；保存操作封装在实体方法中。
 4. 按产品 UI 建立 Metadata/Fancy 列表绑定，字段顺序以本次 VM 为准；不沿用历史九项绑定数量作为新产品契约。保留按钮视觉，未接业务不等于统一禁用。

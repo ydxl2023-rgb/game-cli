@@ -335,7 +335,7 @@ function deleteSelected() {
   if (!node()) return;
   const remove = new Set([selected]); let count;
   do { count = remove.size; for (const n of design.nodes) if (remove.has(n.parent)) remove.add(n.id); } while (count !== remove.size);
-  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); if(design.animations)design.animations=design.animations.filter(a=>!remove.has(a.hostNodeId)).map(a=>({...a,clip:{...a.clip,curves:a.clip.curves.filter(c=>!remove.has(c.targetNodeId))}})).filter(a=>a.clip.curves.length); for(const n of design.nodes) if(remove.has(n.action?.target)) delete n.action; selected = design.nodes[0]?.id; });
+  edit(() => { design.nodes = design.nodes.filter(n => !remove.has(n.id)); if(design.animations)design.animations=design.animations.filter(a=>!remove.has(a.hostNodeId)).map(a=>({...a,clip:{...a.clip,curves:a.clip.curves.filter(c=>!remove.has(c.targetNodeId))}})).filter(a=>a.clip.curves.length); for(const n of design.nodes){if(remove.has(n.action?.target))delete n.action;if(remove.has(n.startupComplete?.target))n.startupComplete={type:'none'};} selected = design.nodes[0]?.id; });
 }
 $('delete').onclick = deleteSelected;
 window.addEventListener('keydown', e => {

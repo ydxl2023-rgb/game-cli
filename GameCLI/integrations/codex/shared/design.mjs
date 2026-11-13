@@ -283,11 +283,13 @@ export function validateDesign(value) {
     if (n.borderWidth !== undefined && (!Number.isFinite(n.borderWidth) || n.borderWidth < 0 || n.borderWidth > 64)) throw new Error('边框宽度须为 0–64。');
     if (n.previewHidden !== undefined && typeof n.previewHidden !== 'boolean') throw new Error('预演初始状态无效。');
     if (n.action !== undefined && (!n.action || !['none','show','hide','toggle','navigate','back'].includes(n.action.type) || (!['none','back'].includes(n.action.type) && typeof n.action.target !== 'string'))) throw new Error('点击动作无效。');
+    if (n.startupComplete !== undefined && (n.parent!==null || !n.startupComplete || !['none','show'].includes(n.startupComplete.type) || (n.startupComplete.type==='show' && typeof n.startupComplete.target!=='string'))) throw new Error('启动完成事件无效。');
     if (n.textAlign !== undefined && !['left','center','right'].includes(n.textAlign)) throw new Error('文本对齐无效。');
   }
   const map = new Map(value.nodes.map(n => [n.id, n]));
   for (const n of value.nodes) {
     if (n.action && !['none','back'].includes(n.action.type) && !map.has(n.action.target)) throw new Error('点击动作的目标节点不存在。');
+    if(n.startupComplete?.type==='show' && (!map.has(n.startupComplete.target)||map.get(n.startupComplete.target).parent!==null||n.startupComplete.target===n.id))throw new Error('启动完成必须激活其他系统根节点。');
     const seen = new Set([n.id]);
     let parent = n.parent;
     while (parent !== null) {
@@ -296,7 +298,7 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {

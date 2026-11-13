@@ -14,6 +14,7 @@ export function templateFromDraft(snapshot,target,current) {
   }
   const ids=new Set([root.id]);let size;
   do{size=ids.size;for(const n of source.nodes)if(ids.has(n.parent))ids.add(n.id);}while(ids.size!==size);
+  for(const n of source.nodes)if(ids.has(n.id)&&n.startupComplete?.target&&!ids.has(n.startupComplete.target))throw new Error('启动完成包含项目系统目标，发布标准模板前请清除目标并保留事件端口。');
   const design={...structuredClone(source),name:current.payload.design.name,nodes:structuredClone(source.nodes.filter(n=>ids.has(n.id)))};
   if(design.animations)design.animations=design.animations.filter(a=>ids.has(a.hostNodeId));
   for(const n of design.nodes)delete n.relationPosition;
