@@ -226,7 +226,7 @@ public static class GameCliUguiImporter
                 {
                     var text = go.AddComponent<Text>(); text.text = (string)n["text"] ?? ""; text.fontSize = Mathf.RoundToInt(Number(n,"fontSize",20));
                     text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-                    string alignment = ((string)n["verticalAlign"] == "top" ? "Upper" : (string)n["verticalAlign"] == "bottom" ? "Lower" : "Middle") + ((string)n["textAlign"] == "right" ? "Right" : (string)n["textAlign"] == "center" ? "Center" : "Left");
+                    string alignment = (((string)n["verticalAlign"] == "start" || (string)n["verticalAlign"] == "top") ? "Upper" : ((string)n["verticalAlign"] == "end" || (string)n["verticalAlign"] == "bottom") ? "Lower" : "Middle") + ((string)n["textAlign"] == "right" ? "Right" : (string)n["textAlign"] == "center" ? "Center" : "Left");
                     text.alignment = (TextAnchor)Enum.Parse(typeof(TextAnchor), alignment); graphic = text;
                 }
                 else if (n["image"] != null)

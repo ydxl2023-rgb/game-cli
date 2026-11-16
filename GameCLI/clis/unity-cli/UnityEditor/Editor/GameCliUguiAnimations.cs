@@ -45,7 +45,10 @@ public static class GameCliUguiAnimations
                     bool euler = component == "UnityEngine.Transform" && new[] {"localEulerAnglesRaw.x","localEulerAnglesRaw.y","localEulerAnglesRaw.z"}.Contains(property);
                     bool scale = component == "UnityEngine.Transform" && new[] {"m_LocalScale.x","m_LocalScale.y","m_LocalScale.z"}.Contains(property);
                     bool uv = component == "UnityEngine.UI.RawImage" && property == "m_UVRect.x" && target.GetComponent<RawImage>() != null;
-                    if (!euler && !scale && !uv) throw new Exception("Unsupported animation binding: " + component + "." + property);
+                    bool position = component == "UnityEngine.RectTransform" && new[] { "m_AnchoredPosition.x", "m_AnchoredPosition.y" }.Contains(property);
+                    bool alpha = component == "UnityEngine.CanvasGroup" && property == "m_Alpha";
+                    if (alpha && !target.GetComponent<CanvasGroup>()) target.AddComponent<CanvasGroup>();
+                    if (!euler && !scale && !uv && !position && !alpha) throw new Exception("Unsupported animation binding: " + component + "." + property);
                     var path = AnimationUtility.CalculateTransformPath(target.transform, host.transform);
                     if (path.Split('/').Where(p => p.Length > 0).Any(p => p.Contains(':'))) throw new Exception("Invalid animation target name.");
                     if (!bindings.Add(path + ":" + property)) throw new Exception("Duplicate animation binding.");
@@ -64,7 +67,7 @@ public static class GameCliUguiAnimations
                     }
                     if (keys[0].time != start || previous != stop) throw new Exception("Curve must span the full clip interval.");
                     var result = new AnimationCurve(keys.ToArray()) { preWrapMode = Wrap(curve["preWrapMode"]), postWrapMode = Wrap(curve["postWrapMode"]) };
-                    AnimationUtility.SetEditorCurve(clip, EditorCurveBinding.FloatCurve(path,(euler || scale) ? typeof(Transform) : typeof(RawImage),property),result);
+                    AnimationUtility.SetEditorCurve(clip, EditorCurveBinding.FloatCurve(path,(euler || scale) ? typeof(Transform) : position ? typeof(RectTransform) : alpha ? typeof(CanvasGroup) : typeof(RawImage),property),result);
                 }
                 var settings = AnimationUtility.GetAnimationClipSettings(clip);
                 settings.startTime = start; settings.stopTime = stop; settings.loopTime = (bool)data["loopTime"];
@@ -131,7 +134,7 @@ public static class GameCliUguiAnimations
                     bool rotation = property.StartsWith("localEulerAnglesRaw.");
                     bool scale = property.StartsWith("m_LocalScale.");
                     var vector = scale ? target.localScale : target.localEulerAngles;
-                    float actual = (rotation || scale) ? (property.EndsWith(".x") ? vector.x : property.EndsWith(".y") ? vector.y : vector.z) : target.GetComponent<RawImage>().uvRect.x;
+                    float actual = (rotation || scale) ? (property.EndsWith(".x") ? vector.x : property.EndsWith(".y") ? vector.y : vector.z) : property.StartsWith("m_AnchoredPosition.") ? (property.EndsWith(".x") ? ((RectTransform)target).anchoredPosition.x : ((RectTransform)target).anchoredPosition.y) : property == "m_Alpha" ? target.GetComponent<CanvasGroup>().alpha : target.GetComponent<RawImage>().uvRect.x;
                     float error = rotation ? Mathf.Abs(Mathf.DeltaAngle(expected,actual)) : Mathf.Abs(expected-actual);
                     if (error > .01f) throw new Exception("Animation sample mismatch: " + path + "/" + property + " at " + time + " expected " + expected + " actual " + actual);
                 }

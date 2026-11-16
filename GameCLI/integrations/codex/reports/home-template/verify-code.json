@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Home",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 5,
+    "lines": 488,
+    "blankLines": 110,
+    "commentLines": 104,
+    "members": 98,
+    "documentedMembers": 98,
+    "blankLineRate": 0.22540983606557377,
+    "commentLineRate": 0.21311475409836064,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "01749956079bc287f7f0beda66b12260b2a291158f9d1df5fac37357dcb3a093"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEvents.cs",
+      "sha256": "ebd0e9e3e23652f00a83987b84795636c32fdf8af743fbb9ef1645dc114f9290"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "8be6eced74d3bc329defc02ac9ad7d075ddbf24e01c57d94f961821869dfde84"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "a7636d67df3b188363310f3bafbf573917dcb754b74e988018b3fa94a41a1a49"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "db686e8ceb9c130832a9b439b52fee052cbee690f0bb3990faf5c25b5c31b6dd"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\d70c9f1a-65ca-4c44-a4f7-804406f01cbf"
+}

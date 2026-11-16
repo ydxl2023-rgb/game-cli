@@ -56,6 +56,17 @@ namespace Config
         public const int LOGIN_SERVER_NORMAL = 1005;
         public const int LOGIN_SERVER_BUSY = 1006;
         public const int LOGIN_SERVER_MAINTENANCE = 1007;
+        public const int HOME_TEXT_0_6_3_0_0_1 = 2001;
+        public const int HOME_TEXT_0_6_3_1_0 = 2002;
+        public const int HOME_TEXT_0_6_3_2_0 = 2003;
+        public const int HOME_TEXT_0_6_4_1_0 = 2004;
+        public const int HOME_TEXT_0_6_4_2_0 = 2005;
+        public const int HOME_TEXT_0_6_4_3_0 = 2006;
+        public const int HOME_TEXT_0_6_4_4_4 = 2007;
+        public const int HOME_TEXT_0_6_5_3_4 = 2008;
+        public const int HOME_TEXT_0_6_5_4_4 = 2009;
+        public const int HOME_TEXT_0_6_5_5_0 = 2010;
+        public const int HOME_TEXT_0_6_5_6_0 = 2011;
         /// <summary>
         /// config CommonTextConfig table
         /// </summary>

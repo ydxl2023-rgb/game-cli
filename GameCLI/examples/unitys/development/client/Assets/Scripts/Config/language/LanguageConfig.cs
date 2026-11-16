@@ -212,6 +212,61 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext1220 = 767299213;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-2001-Context-13-2-0
+        /// 商店
+        /// </summary>
+        public const int LGCommonTextContext1320 = 377939525;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2002-Context-14-2-0
+        /// 活动
+        /// </summary>
+        public const int LGCommonTextContext1420 = 2071662691;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2003-Context-15-2-0
+        /// 排行榜
+        /// </summary>
+        public const int LGCommonTextContext1520 = 1112206753;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2004-Context-16-2-0
+        /// 背包
+        /// </summary>
+        public const int LGCommonTextContext1620 = 608767699;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2005-Context-17-2-0
+        /// 图鉴
+        /// </summary>
+        public const int LGCommonTextContext1720 = 1293577557;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2006-Context-18-2-0
+        /// 荣誉之路
+        /// </summary>
+        public const int LGCommonTextContext1820 = 1149448203;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2007-Context-19-2-0
+        /// 故事
+        /// </summary>
+        public const int LGCommonTextContext1920 = 1190383177;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2008-Context-20-2-0
+        /// 球员
+        /// </summary>
+        public const int LGCommonTextContext2020 = 126344478;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2009-Context-21-2-0
+        /// 球队
+        /// </summary>
+        public const int LGCommonTextContext2120 = 1193117464;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2010-Context-22-2-0
+        /// 社团
+        /// </summary>
+        public const int LGCommonTextContext2220 = 2053174991;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-2011-Context-23-2-0
+        /// 自由时间
+        /// </summary>
+        public const int LGCommonTextContext2320 = 124037985;
+        /// <summary>
         /// LG-FunctionSystemConfig-FunctionSystem-10001-Name-3-2-0
         /// 核心系统
         /// </summary>

@@ -1,0 +1,718 @@
+[
+  {
+    "id": "HomeEntrance",
+    "hostNodeId": "Home0Animator",
+    "source": {
+      "path": "SV/Home/RootView_Anim_01.anim",
+      "adaptation": "Retained basic-lobby position and CanvasGroup entrance curves; decorative shader and 3D loops excluded."
+    },
+    "state": {
+      "name": "Open",
+      "default": true,
+      "speed": 1,
+      "cycleOffset": 0
+    },
+    "clip": {
+      "name": "HomeOpen",
+      "startTime": 0,
+      "stopTime": 1.2666667,
+      "frameRate": 30,
+      "loopTime": false,
+      "curves": [
+        {
+          "targetNodeId": "Home0_6_0",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.y",
+          "keys": [
+            {
+              "time": 0,
+              "value": 143,
+              "inTangent": 0,
+              "outTangent": -806.488,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.33333334,
+              "value": 0,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": 0,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_0",
+          "component": "UnityEngine.CanvasGroup",
+          "property": "m_Alpha",
+          "keys": [
+            {
+              "time": 0,
+              "value": 0,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.33333334,
+              "value": 1,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": 1,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_1",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.y",
+          "keys": [
+            {
+              "time": 0,
+              "value": 143.42,
+              "inTangent": 0,
+              "outTangent": -817.266,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.33333334,
+              "value": 0,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": 0,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_3_3",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.y",
+          "keys": [
+            {
+              "time": 0,
+              "value": -109.8999984741211,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.13333334,
+              "value": -109.8999984741211,
+              "inTangent": 0,
+              "outTangent": 501.095,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.6666667,
+              "value": 77.4000015258789,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": 77.4000015258789,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_4",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.y",
+          "keys": [
+            {
+              "time": 0,
+              "value": -187.4,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.13333334,
+              "value": -187.4,
+              "inTangent": 0,
+              "outTangent": 572.065,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.6666667,
+              "value": -6,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -6,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_4",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 173.9999938964844,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.46666667,
+              "value": 173.9999938964844,
+              "inTangent": 0,
+              "outTangent": -3165.8,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.9,
+              "value": -386.7920061035156,
+              "inTangent": 0,
+              "outTangent": 83.937,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.0333333,
+              "value": -375.6000061035156,
+              "inTangent": 83.937,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -375.6000061035156,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_3",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 175.0000061035156,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.36666667,
+              "value": 175.0000061035156,
+              "inTangent": 0,
+              "outTangent": -3720.654,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.8,
+              "value": -510.6839938964844,
+              "inTangent": 0,
+              "outTangent": 84.627,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.93333334,
+              "value": -499.3999938964844,
+              "inTangent": 84.627,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -499.3999938964844,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_6",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 185.9999969482422,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.73333335,
+              "value": 185.9999969482422,
+              "inTangent": 0,
+              "outTangent": -1253.11,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.1333333,
+              "value": -125.04500305175782,
+              "inTangent": 0,
+              "outTangent": 46.837,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -118.80000305175781,
+              "inTangent": 46.837,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_0",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 351.00001220703126,
+              "inTangent": 0,
+              "outTangent": -2563.769,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.33333334,
+              "value": -336.26103779296875,
+              "inTangent": 0,
+              "outTangent": 310.95798,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.46666667,
+              "value": -294.79998779296875,
+              "inTangent": 310.95798,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -294.79998779296875,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_2",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 185.9999969482422,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.43333334,
+              "value": 185.9999969482422,
+              "inTangent": 0,
+              "outTangent": -1631.025,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.8,
+              "value": -213.9440030517578,
+              "inTangent": 0,
+              "outTangent": 72.32999,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.93333334,
+              "value": -204.3000030517578,
+              "inTangent": 72.32999,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -204.3000030517578,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_1",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 210,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.16666667,
+              "value": 210,
+              "inTangent": 0,
+              "outTangent": -2724.317,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.6,
+              "value": -463.634,
+              "inTangent": 0,
+              "outTangent": 233.503,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.73333335,
+              "value": -432.5,
+              "inTangent": 233.503,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -432.5,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_5_5",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": 190.99999389648437,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.56666666,
+              "value": 190.99999389648437,
+              "inTangent": 0,
+              "outTangent": -1993.97,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1,
+              "value": -260.41100610351566,
+              "inTangent": 0,
+              "outTangent": 84.829,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.1333333,
+              "value": -249.10000610351562,
+              "inTangent": 84.829,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -249.10000610351562,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_3_1",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": -2092,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.26666668,
+              "value": -2092,
+              "inTangent": 0,
+              "outTangent": 1307.3933,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.8,
+              "value": -1667,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -1667,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_3_0",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": -2230.300048828125,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.4,
+              "value": -2230.300048828125,
+              "inTangent": 0,
+              "outTangent": 1357.3173,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.93333334,
+              "value": -1805.300048828125,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -1805.300048828125,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        },
+        {
+          "targetNodeId": "Home0_6_3_2",
+          "component": "UnityEngine.RectTransform",
+          "property": "m_AnchoredPosition.x",
+          "keys": [
+            {
+              "time": 0,
+              "value": -1963.5,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.13333334,
+              "value": -1963.5,
+              "inTangent": 0,
+              "outTangent": 1227.0027,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 0.6666667,
+              "value": -1538.5,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            },
+            {
+              "time": 1.2666667,
+              "value": -1538.5,
+              "inTangent": 0,
+              "outTangent": 0,
+              "inWeight": 0.3333333333333333,
+              "outWeight": 0.3333333333333333,
+              "weightedMode": 0
+            }
+          ],
+          "preWrapMode": 8,
+          "postWrapMode": 8
+        }
+      ]
+    }
+  }
+]

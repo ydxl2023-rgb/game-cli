@@ -17,7 +17,9 @@ export function validateAnimations(value, nodes) {
       if(n?.id!==a.hostNodeId)fail();
       const prop=curve.property, euler=curve.component==='UnityEngine.Transform'&&/^localEulerAnglesRaw\.[xyz]$/.test(prop);
       const scale=curve.component==='UnityEngine.Transform'&&/^m_LocalScale\.[xyz]$/.test(prop);
-      if(!euler&&!scale&&!(curve.component==='UnityEngine.UI.RawImage'&&prop==='m_UVRect.x'))fail();
+      const position=curve.component==='UnityEngine.RectTransform'&&/^m_AnchoredPosition\.[xy]$/.test(prop);
+      const alpha=curve.component==='UnityEngine.CanvasGroup'&&prop==='m_Alpha';
+      if(!euler&&!scale&&!position&&!alpha&&!(curve.component==='UnityEngine.UI.RawImage'&&prop==='m_UVRect.x'))fail();
       const binding=curve.targetNodeId+':'+prop;if(bindings.has(binding))fail();bindings.add(binding);
       if(!Array.isArray(curve.keys)||!curve.keys.length||curve.keys.length>4096)fail();
       let last=-Infinity;

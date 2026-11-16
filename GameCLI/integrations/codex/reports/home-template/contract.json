@@ -1,0 +1,499 @@
+{
+  "schemaVersion": 1,
+  "template": "SvHome",
+  "status": "draft",
+  "scope": "Basic lobby; character and seasonal animation are extension points.",
+  "source": {
+    "prefab": "Assets/data/UI/Home/@HomeView/Prefab/Home.prefab",
+    "guid": "ed642fe0d6ebc6c4a907033bceb0ebc9",
+    "exportSha256": "49944c3612f2a21e98ceb6a4a27e4e988e5666bc7c633920e33c82c1c558c79f",
+    "prefabSha256": "8ee24c95db0e68474e95f919c299b1abccd475744a0cc4cb0b87ce3e0bdf2564"
+  },
+  "sourceNodes": 709,
+  "nodes": 92,
+  "images": 39,
+  "exclusions": [
+    [
+      "0/0",
+      "SV authoring library"
+    ],
+    [
+      "0/2",
+      "Wallpaper extension"
+    ],
+    [
+      "0/3",
+      "Wallpaper extension"
+    ],
+    [
+      "0/4",
+      "Wallpaper extension"
+    ],
+    [
+      "0/5",
+      "Character presentation extension"
+    ],
+    [
+      "0/7",
+      "SV tutorial integration"
+    ],
+    [
+      "0/8",
+      "Platform sharing integration"
+    ],
+    [
+      "0/6/0/8",
+      "Platform SDK promotion"
+    ],
+    [
+      "0/6/0/12",
+      "Platform SDK integration"
+    ],
+    [
+      "0/6/2",
+      "Live activity catalog extension"
+    ],
+    [
+      "0/6/3/4",
+      "Live advertising extension"
+    ],
+    [
+      "0/6/3/5",
+      "Live advertising extension"
+    ],
+    [
+      "0/6/0/3",
+      "Character-only viewing extension"
+    ],
+    [
+      "0/1/1/1",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/1/1/5",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/1/1/7",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/1/1/8",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/1/1/9",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/1/1/10",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/1/1/11",
+      "Season particle/Spine extension"
+    ],
+    [
+      "0/6/5/5/4",
+      "SV particle effect extension"
+    ]
+  ],
+  "bindings": [
+    {
+      "node": "Home0_6_0_0",
+      "sourcePath": "0/6/0/0",
+      "sourceName": "PlayerHead",
+      "name": "ProfileClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_0_0_4",
+      "sourcePath": "0/6/0/0/4",
+      "name": "PlayerName",
+      "kind": "string"
+    },
+    {
+      "node": "Home0_6_0_0_5",
+      "sourcePath": "0/6/0/0/5",
+      "sourceName": "PlayerHeadNode",
+      "name": "AvatarClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_0_0_6_0_0",
+      "sourcePath": "0/6/0/0/6/0/0",
+      "name": "PlayerLevel",
+      "kind": "string"
+    },
+    {
+      "node": "Home0_6_0_4",
+      "sourcePath": "0/6/0/4",
+      "sourceName": "_MailButton",
+      "name": "MailClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_0_5",
+      "sourcePath": "0/6/0/5",
+      "sourceName": "_SetButton",
+      "name": "SettingsClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_0_6",
+      "sourcePath": "0/6/0/6",
+      "sourceName": "AnnouncementButton",
+      "name": "NoticeClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_0_7",
+      "sourcePath": "0/6/0/7",
+      "sourceName": "FriendButton",
+      "name": "FriendsClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_0_11",
+      "sourcePath": "0/6/0/11",
+      "sourceName": "FavorityButton",
+      "name": "AffinityClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_1_0_0_0",
+      "sourcePath": "0/6/1/0/0/0",
+      "sourceName": "icon_1",
+      "name": "CurrencyOneClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_1_0_0_2",
+      "sourcePath": "0/6/1/0/0/2",
+      "name": "CurrencyOneAmount",
+      "kind": "string"
+    },
+    {
+      "node": "Home0_6_1_0_0_3",
+      "sourcePath": "0/6/1/0/0/3",
+      "sourceName": "add_1",
+      "name": "AddCurrencyOneClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_1_0_1_0",
+      "sourcePath": "0/6/1/0/1/0",
+      "sourceName": "icon_2",
+      "name": "CurrencyTwoClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_1_0_1_2",
+      "sourcePath": "0/6/1/0/1/2",
+      "name": "CurrencyTwoAmount",
+      "kind": "string"
+    },
+    {
+      "node": "Home0_6_1_0_1_3",
+      "sourcePath": "0/6/1/0/1/3",
+      "sourceName": "add_2",
+      "name": "AddCurrencyTwoClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_1_0_2_0",
+      "sourcePath": "0/6/1/0/2/0",
+      "sourceName": "icon_3",
+      "name": "CurrencyThreeClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_1_0_2_2",
+      "sourcePath": "0/6/1/0/2/2",
+      "name": "CurrencyThreeAmount",
+      "kind": "string"
+    },
+    {
+      "node": "Home0_6_1_0_2_3",
+      "sourcePath": "0/6/1/0/2/3",
+      "sourceName": "add_3",
+      "name": "AddCurrencyThreeClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_3_0_0",
+      "sourcePath": "0/6/3/0/0",
+      "sourceName": "ShangChengButton",
+      "name": "ShopClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_3_0_0_1",
+      "sourcePath": "0/6/3/0/0/1",
+      "name": "Label063001",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_3_0_0_1"
+    },
+    {
+      "node": "Home0_6_3_1",
+      "sourcePath": "0/6/3/1",
+      "sourceName": "FuliButton",
+      "name": "BenefitsClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_3_1_0",
+      "sourcePath": "0/6/3/1/0",
+      "name": "Label06310",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_3_1_0"
+    },
+    {
+      "node": "Home0_6_3_2",
+      "sourcePath": "0/6/3/2",
+      "sourceName": "PaiHangButton",
+      "name": "RankingsClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_3_2_0",
+      "sourcePath": "0/6/3/2/0",
+      "name": "Label06320",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_3_2_0"
+    },
+    {
+      "node": "Home0_6_3_3_0",
+      "sourcePath": "0/6/3/3/0",
+      "sourceName": "ChatFrame",
+      "name": "ChatClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_3_3_0_1",
+      "sourcePath": "0/6/3/3/0/1",
+      "sourceName": "ChatIcon",
+      "name": "ChatChannelClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_3_3_1",
+      "sourcePath": "0/6/3/3/1",
+      "name": "ChatMessage",
+      "kind": "string"
+    },
+    {
+      "node": "Home0_6_4_1",
+      "sourcePath": "0/6/4/1",
+      "sourceName": "BeiBaoButton",
+      "name": "BackpackClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_4_1_0",
+      "sourcePath": "0/6/4/1/0",
+      "name": "Label06410",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_4_1_0"
+    },
+    {
+      "node": "Home0_6_4_2",
+      "sourcePath": "0/6/4/2",
+      "sourceName": "TuJianButton",
+      "name": "CollectionClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_4_2_0",
+      "sourcePath": "0/6/4/2/0",
+      "name": "Label06420",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_4_2_0"
+    },
+    {
+      "node": "Home0_6_4_3",
+      "sourcePath": "0/6/4/3",
+      "sourceName": "HonorButton",
+      "name": "HonorClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_4_3_0",
+      "sourcePath": "0/6/4/3/0",
+      "name": "Label06430",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_4_3_0"
+    },
+    {
+      "node": "Home0_6_4_4",
+      "sourcePath": "0/6/4/4",
+      "sourceName": "JuqingButton",
+      "name": "StoryClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_4_4_4",
+      "sourcePath": "0/6/4/4/4",
+      "name": "Label06444",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_4_4_4"
+    },
+    {
+      "node": "Home0_6_5_0",
+      "sourcePath": "0/6/5/0",
+      "sourceName": "SaishiButton",
+      "name": "MatchesClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_1",
+      "sourcePath": "0/6/5/1",
+      "sourceName": "HesujidiButton",
+      "name": "TrainingClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_2",
+      "sourcePath": "0/6/5/2",
+      "sourceName": "ZhaomuButton",
+      "name": "RecruitClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_3",
+      "sourcePath": "0/6/5/3",
+      "sourceName": "DuiyuanButton",
+      "name": "PlayersClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_3_4",
+      "sourcePath": "0/6/5/3/4",
+      "name": "Label06534",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_5_3_4"
+    },
+    {
+      "node": "Home0_6_5_4",
+      "sourcePath": "0/6/5/4",
+      "sourceName": "DuiwuButton",
+      "name": "TeamClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_4_4",
+      "sourcePath": "0/6/5/4/4",
+      "name": "Label06544",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_5_4_4"
+    },
+    {
+      "node": "Home0_6_5_5",
+      "sourcePath": "0/6/5/5",
+      "sourceName": "SheTuanButton",
+      "name": "ClubClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_5_0",
+      "sourcePath": "0/6/5/5/0",
+      "name": "Label06550",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_5_5_0"
+    },
+    {
+      "node": "Home0_6_5_6",
+      "sourcePath": "0/6/5/6",
+      "sourceName": "HuodongButton",
+      "name": "ActivitiesClick",
+      "kind": "ButtonClick"
+    },
+    {
+      "node": "Home0_6_5_6_0",
+      "sourcePath": "0/6/5/6/0",
+      "name": "Label06560",
+      "kind": "string",
+      "alias": "HOME_TEXT_0_6_5_6_0"
+    }
+  ],
+  "texts": [
+    {
+      "node": "Home0_6_3_0_0_1",
+      "alias": "HOME_TEXT_0_6_3_0_0_1",
+      "text": "商店",
+      "sourceLanguageId": 700945
+    },
+    {
+      "node": "Home0_6_3_1_0",
+      "alias": "HOME_TEXT_0_6_3_1_0",
+      "text": "活动",
+      "sourceLanguageId": 888013
+    },
+    {
+      "node": "Home0_6_3_2_0",
+      "alias": "HOME_TEXT_0_6_3_2_0",
+      "text": "排行榜",
+      "sourceLanguageId": 25604578
+    },
+    {
+      "node": "Home0_6_4_1_0",
+      "alias": "HOME_TEXT_0_6_4_1_0",
+      "text": "背包",
+      "sourceLanguageId": 1043385
+    },
+    {
+      "node": "Home0_6_4_2_0",
+      "alias": "HOME_TEXT_0_6_4_2_0",
+      "text": "图鉴",
+      "sourceLanguageId": 727862
+    },
+    {
+      "node": "Home0_6_4_3_0",
+      "alias": "HOME_TEXT_0_6_4_3_0",
+      "text": "荣誉之路",
+      "sourceLanguageId": 1036759818
+    },
+    {
+      "node": "Home0_6_4_4_4",
+      "alias": "HOME_TEXT_0_6_4_4_4",
+      "text": "故事",
+      "sourceLanguageId": 539564813
+    },
+    {
+      "node": "Home0_6_5_3_4",
+      "alias": "HOME_TEXT_0_6_5_3_4",
+      "text": "球员",
+      "sourceLanguageId": 942261
+    },
+    {
+      "node": "Home0_6_5_4_4",
+      "alias": "HOME_TEXT_0_6_5_4_4",
+      "text": "球队",
+      "sourceLanguageId": 771283964
+    },
+    {
+      "node": "Home0_6_5_5_0",
+      "alias": "HOME_TEXT_0_6_5_5_0",
+      "text": "社团",
+      "sourceLanguageId": 984420
+    },
+    {
+      "node": "Home0_6_5_6_0",
+      "alias": "HOME_TEXT_0_6_5_6_0",
+      "text": "自由时间",
+      "sourceLanguageId": 1020467589
+    }
+  ],
+  "extensions": [
+    "character-presentation",
+    "season-presentation",
+    "activity-catalog",
+    "advertising",
+    "external-system-navigation"
+  ],
+  "limitations": [
+    "Static summer artwork retained. Spine, particles and character are excluded by the approved first-version scope.",
+    "Original baked image labels remain image assets. Text-component labels require propCommonText integration.",
+    "SV shader, text outline, tween, live operations and remote services are not executed."
+  ]
+}

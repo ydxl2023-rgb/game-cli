@@ -25,7 +25,10 @@ public abstract class RuntimeSystem : XEventModule
     /// <returns></returns>
     private IEnumerator DoLoadAsync(System.Type type, System.Action complete)
     {
-        dispatcher.Load(type);
+        var module = dispatcher.Load(type);
+        if (module != null && !module.IsActive())
+            module.Active();
+
         yield return new WaitForEndOfFrame();
 
         complete?.Invoke();

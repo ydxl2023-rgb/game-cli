@@ -25,6 +25,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | system/sv-login | Login：[开发](system/sv-login/development/SKILL.md) / [验收](system/sv-login/acceptance/SKILL.md) |
 | system/loading | Loading：[开发](system/loading/development/SKILL.md) / [验收](system/loading/acceptance/SKILL.md) |
 | system/master | Master：[开发](system/master/development/SKILL.md) / [验收](system/master/acceptance/SKILL.md) |
+| system/home | Home：[开发](system/home/development/SKILL.md) / [验收](system/home/acceptance/SKILL.md) |
 | system/notice | Notice：[开发](system/notice/development/SKILL.md) / [验收](system/notice/acceptance/SKILL.md) |
 
 ## 组织规则
