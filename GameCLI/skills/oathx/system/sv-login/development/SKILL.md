@@ -35,3 +35,7 @@ description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSys
 6. 按产品约定发出登录结果/入口事件，配置共享负责人完成系统注册及必要配置。没有登录服务契约时不伪造成功，不擅自开发 Master/Home/Notice。
 
 开发结果列出事件载荷、实体数据、页面入口及待接业务接口。具体 SV 换区资源、存储示例、源码归档历史见 [参考实现](references/gamecli-example.md)，仅在需要复用时读取。
+
+## 配置包检查
+
+读取模板独立 `configurations` 字段，按 [配置包规范](../../../system-development/references/configurations.md) 检查本系统的源表、结构化条目、代码别名、导表及运行时加载依赖。未声明配置包不等于没有依赖；缺失资料应明确记录。共享表只合并本系统所需条目，保留产品原有数据与翻译。

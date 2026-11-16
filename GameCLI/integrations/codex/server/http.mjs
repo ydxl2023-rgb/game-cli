@@ -20,6 +20,8 @@ export function createHttpServer(store = createStore(), templates = createTempla
       if(req.method==='GET'&&draft&&!draft[2])return send(200,await workspaces.templateEditor.read(draft[1]));
       const page=url.pathname.match(/^\/studio\/projects\/([A-Za-z0-9_-]+)$/);
       if(req.method==='GET'&&page){await workspaces.access(page[1]);return send(200,await readFile(new URL('../dist/studio.html',import.meta.url)),'text/html; charset=utf-8');}
+      const configFile=url.pathname.match(/^\/api\/studio\/templates\/([^/]+)\/configurations\/([a-f0-9]{64})$/);
+      if(req.method==='GET'&&configFile){const result=await workspaces.configurationFile(decodeURIComponent(configFile[1]),configFile[2],url.searchParams.get('version'));return send(200,result,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');}
       const unityBinding=url.pathname.match(/^\/api\/studio\/projects\/([A-Za-z0-9_-]+)\/unity-binding$/);
       if(req.method==='GET'&&unityBinding)return send(200,await workspaces.unityBindings.read(unityBinding[1]));
       const composition=url.pathname.match(/^\/api\/studio\/projects\/([A-Za-z0-9_-]+)\/composition$/);

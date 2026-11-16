@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {validateTemplate} from '../shared/templates.mjs';
+import {validateConfigurations} from '../shared/configurations.mjs';
 
 export function templateFromDraft(snapshot,target,current) {
   const source=snapshot.design,root=source.nodes.find(n=>n.id===target.rootId);
@@ -11,7 +12,7 @@ export function templateFromDraft(snapshot,target,current) {
   if(root.templateSourceId!==current.id&&current.payload.root!==root.id)throw new Error('节点未关联到此数据库模板。');
   if(current.payload.kind==='code'){
     if(root.systemKind!=='code')throw new Error('纯代码候选必须来自代码系统卡片。');
-    return {...current.payload,...validateTemplate(current.payload,current.category_id)};
+    return {...current.payload,...validateTemplate(current.payload,current.category_id),configurations:validateConfigurations(root.configurations??current.payload.configurations)};
   }
   const ids=new Set([root.id]);let size;
   do{size=ids.size;for(const n of source.nodes)if(ids.has(n.parent))ids.add(n.id);}while(ids.size!==size);
@@ -22,7 +23,7 @@ export function templateFromDraft(snapshot,target,current) {
   for(const n of design.nodes){delete n.relationPosition;delete n.relationScale;}
   for(const n of design.nodes)if(n.action?.target&&!ids.has(n.action.target))throw new Error('模板包含跨系统跳转引用，无法独立保存：'+n.name);
   design.nodes.find(n=>n.id===root.id).templateSourceId=current.id;
-  return {...current.payload,...validateTemplate({root:root.id,design},current.category_id),editedFrom:{draftRevision:snapshot.revision,savedAt:snapshot.savedAt}};
+  return {...current.payload,...validateTemplate({root:root.id,design,configurations:root.configurations??current.payload.configurations},current.category_id),editedFrom:{draftRevision:snapshot.revision,savedAt:snapshot.savedAt}};
 }
 
 export async function publishTemplates(pool,snapshot,targets,backupDir=fileURLToPath(new URL('../.data/template-history/',import.meta.url))) {

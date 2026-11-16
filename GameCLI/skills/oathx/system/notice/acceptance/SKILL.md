@@ -51,3 +51,7 @@ description: 独立验收产品 Notice 交付，检查公告内容、超链接�
 每项采用 passed / failed / incomplete / not-applicable。不满足明确需求是 failed；必要证据或契约不足是 incomplete；只有确实不适用的检查才能 not-applicable。存在缺陷则总体 failed，无缺陷但必需项有缺口则 incomplete；所有适用必需项充分证明才 passed。补证说明证明范围，保留 CLI 原始状态。修复交回本模块 development agent，复验修复及其依赖，不合并不同交付版本的通过项。
 
 本模块通过不等于跨系统产品全流程通过。验收不授权 Git 提交推送、标准模板发布或上线。
+
+## 配置包检查
+
+读取模板独立 `configurations` 字段，按 [配置包规范](../../../system-development/references/configurations.md) 检查本系统的源表、结构化条目、代码别名、导表及运行时加载依赖。未声明配置包不等于没有依赖；缺失资料应明确记录。验收须独立核对目标工程实际生成和加载结果。

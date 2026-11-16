@@ -32,6 +32,8 @@ try{
  const binding=await workspaces.unityBindings.requireBinding(manifest.projectId);
  assert.equal(await realpath(binding.path),project,'Manifest must use the verified source project.');
  const source=await readSourcePackage(manifestPath);
+ const published=await workspaces.templateEditor.published(source.templateId);
+ const configPackage=published.design.nodes.find(n=>n.parent===null).configurations;
  const materials=[];
  for(const folder of ['Assets/Data/Widgets/SVLogin','Assets/Data/Widgets/ServerSelect']){
   for(const absolute of [join(project,folder+'.meta'),...await walk(join(project,folder))]){
@@ -42,7 +44,8 @@ try{
   }
  }
  const workbook=await readFile(resolve(project,'../config/propCommonText.xlsx'));
- materials.push({scope:'configuration',path:'propCommonText.xlsx',encoding:'base64',sha256:hash(workbook),content:workbook.toString('base64')});
+ if(configPackage){assert.equal(configPackage.tables.find(t=>t.name==='propCommonText')?.source.sha256,hash(workbook),'Workbook changed: publish updated configurations with structured entries before syncing code.');}
+ else materials.push({scope:'configuration',path:'propCommonText.xlsx',encoding:'base64',sha256:hash(workbook),content:workbook.toString('base64')});
  for(const path of ['Assets/Scripts/Protocols/Protocols.cs','Assets/Scripts/Protocols/Protocols.cs.meta']){
   const bytes=await readFile(join(project,path));
   materials.push({scope:'reference',path,encoding:'base64',sha256:hash(bytes),content:bytes.toString('base64')});
@@ -63,10 +66,9 @@ try{
  };
  // Do not publish machine-local package locations as installation instructions.
  for(const [name,value]of Object.entries(requirements.packageDependencies))if(value.startsWith('file:'))requirements.packageDependencies[name]='Target-compatible local package required';
- const instructions=`# Login standard source and production materials\n\nThe C# files are exact development sources, not the reduced practice trial implementation.\n\nRead dependencies.json before integration. This module owns Login and the ServerSelect subpage; it does not introduce a ServerSelectSystem. The standard editor has one design root, so the ServerSelect prefab, inline Fancy cells and their serialized Metadata are delivered as companion materials, not appended as visible children of the Login screen. The existing published main-screen design and animation are preserved.\n\nmaterials.json uses schema gamecli-source-materials/1. Each entry has a unity, configuration or reference scope, relative path, base64 content and SHA256 of the original decoded bytes. It includes both original prefab trees, images, animation/controller files, importer metadata and the source workbook. Verify every decoded SHA256 before use; preserve original GUIDs. Never overwrite a target product's edited resources or replace its entire CommonText table. Merge the required aliases, preserve translations, then run the product's normal table exporter. Do not copy generated config classes from development.\n\nFor product adaptation use UnityCLI for prefab generation, component/Metadata binding and animation editing. These native files are the exact source reference/archive, not permission to hand-edit YAML. Inspect both root Metadata and the two inline cell bindings; VM field order is part of the delivery. Register SyncFancyGridScrollView and SyncFancyGridClick before opening the selector.\n\nReuse the target's shared RuntimeSystem, Master/events and Notice contracts, or explicitly adapt them to the product requirements. LoginEntity still declares Refresh(LoginResponse); the original Protocols.cs is archived as reference, not automatically installed. Preserve or adapt this dependency explicitly, and do not restore network calls merely to satisfy its type name. Do not automatically install another full system to resolve a type name. The local catalog is test data, not a real service. This synchronization proves source/material fidelity; it is not a fresh runtime acceptance of a new product.\n`;
+ const instructions=`# Login standard source and production materials\n\nThe C# files are exact development sources, not the reduced practice trial implementation.\n\nRead dependencies.json before integration. This module owns Login and the ServerSelect subpage; it does not introduce a ServerSelectSystem. The standard editor has one design root, so the ServerSelect prefab, inline Fancy cells and their serialized Metadata are delivered as companion materials, not appended as visible children of the Login screen. The existing published main-screen design and animation are preserved.\n\nmaterials.json uses schema gamecli-source-materials/1. Each entry has a unity, configuration or reference scope, relative path, base64 content and SHA256 of the original decoded bytes. It includes both original prefab trees, images, animation/controller files, importer metadata and legacy source workbooks only when no independent configurations package exists. Read root.configurations for current workbook references and structured entries. Verify every decoded SHA256 before use; preserve original GUIDs. Never overwrite a target product's edited resources or replace its entire CommonText table. Merge the required aliases, preserve translations, then run the product's normal table exporter. Do not copy generated config classes from development.\n\nFor product adaptation use UnityCLI for prefab generation, component/Metadata binding and animation editing. These native files are the exact source reference/archive, not permission to hand-edit YAML. Inspect both root Metadata and the two inline cell bindings; VM field order is part of the delivery. Register SyncFancyGridScrollView and SyncFancyGridClick before opening the selector.\n\nReuse the target's shared RuntimeSystem, Master/events and Notice contracts, or explicitly adapt them to the product requirements. LoginEntity still declares Refresh(LoginResponse); the original Protocols.cs is archived as reference, not automatically installed. Preserve or adapt this dependency explicitly, and do not restore network calls merely to satisfy its type name. Do not automatically install another full system to resolve a type name. The local catalog is test data, not a real service. This synchronization proves source/material fidelity; it is not a fresh runtime acceptance of a new product.\n`;
  const extras=[['materials.json',JSON.stringify({schema:'gamecli-source-materials/1',files:materials})],['dependencies.json',JSON.stringify(requirements,null,2)],['README.md',instructions]].map(([name,content])=>({path:archivePrefix+name,content}));
  const scripts=validateScripts({schemaVersion:1,files:[...source.scripts.files,...extras]});
- const published=await workspaces.templateEditor.published(source.templateId);
  const design=structuredClone(published.design),root=design.nodes.find(n=>n.parent===null);
  const projectSnapshot=await workspaces.snapshot(source.projectId);
  const projectRoots=projectSnapshot.design.nodes.filter(n=>n.parent===null&&n.templateSourceId===source.templateId&&n.name===source.rootName);
@@ -93,6 +95,7 @@ try{
   assert.deepEqual(strip(readback.design),strip(published.design),'Main design must be unchanged.');
   // Bring only the source project's Login package up to date; preserve its layout and all other cards.
   projectRoots[0].scripts=scripts;
+  projectRoots[0].configurations=configPackage??null;
   projectRoots[0].templateSourceVersion=result.version;
   const projectSave=await workspaces.save(source.projectId,{projectId:source.projectId,revision:projectSnapshot.revision,projectVersion:projectSnapshot.project.version,design:projectSnapshot.design});
   const verifiedProject=await workspaces.snapshot(source.projectId);

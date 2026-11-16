@@ -1,3 +1,4 @@
+import {validateConfigurations} from './configurations.mjs';
 import {remapAnimations} from './animations.mjs';
 import {initialTemplateGroups} from './template-groups.mjs';
 import {ensureAnimationHost} from './animation-host.mjs';
@@ -21,12 +22,12 @@ export function builtInTemplates() {
 export function validateTemplate(payload, category) {
   if(payload?.kind==='code') {
     if(category!=='system'||payload.root!==null||payload.design?.nodes?.length!==0||payload.design?.animations?.length)throw new Error('纯代码系统不能包含 UI 节点或动画。');
-    return {kind:'code',root:null,design:validateDesign(payload.design)};
+    return {configurations:validateConfigurations(payload.configurations),kind:'code',root:null,design:validateDesign(payload.design)};
   }
   const design=validateDesign(payload?.design), root=design.nodes.find(n=>n.id===payload.root);
   if (!root || root.parent!==null || design.nodes.filter(n=>n.parent===null).length!==1) throw new Error('模板必须有且仅有一个根节点。');
   if(category==='system')ensureAnimationHost(design,root.id);
-  return {root:root.id,design:validateDesign(design)};
+  return {configurations:validateConfigurations(payload.configurations),root:root.id,design:validateDesign(design)};
 }
 export function instantiateTemplate(design, template, parent, point, {allowCode=false}={}) {
   if(template.payload?.kind==='code'){
@@ -34,7 +35,7 @@ export function instantiateTemplate(design, template, parent, point, {allowCode=
     validateTemplate(template.payload,template.category);
     let index=1;while(design.nodes.some(n=>n.id==='CodeSystem'+index)||design.name==='CodeSystem'+index)index++;
     const id='CodeSystem'+index;
-    const root={id,name:template.id,parent:null,type:'Container',systemKind:'code',x:0,y:0,width:0,height:0,color:'#ffffff',surface:'transparent',text:'',fontSize:20,active:false,templateSourceId:template.id,templateSourceVersion:template.version??1,scripts:structuredClone(template.scripts??null)};
+    const root={id,name:template.id,parent:null,type:'Container',systemKind:'code',x:0,y:0,width:0,height:0,color:'#ffffff',surface:'transparent',text:'',fontSize:20,active:false,templateSourceId:template.id,templateSourceVersion:template.version??1,configurations:validateConfigurations(template.configurations??template.payload.configurations),scripts:structuredClone(template.scripts??null)};
     const validated=validateDesign({...design,nodes:[...design.nodes,root]});design.nodes=validated.nodes;return id;
   }
   const source=validateTemplate(template.payload,template.category), nodes=structuredClone(source.design.nodes);
@@ -42,6 +43,7 @@ export function instantiateTemplate(design, template, parent, point, {allowCode=
   const root=nodes.find(n=>n.id===source.root);
   if(template.id)root.templateSourceId=template.id;
   root.templateSourceVersion=template.version??1;
+  root.configurations=validateConfigurations(template.configurations??template.payload.configurations);
   root.scripts=structuredClone(template.scripts??null);
   const canvasRoot=template.category==='system' || root.template==='ConfirmDialog';
   const container=design.nodes.find(n=>n.id===parent);

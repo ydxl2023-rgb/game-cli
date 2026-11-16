@@ -1,3 +1,5 @@
+import {validateConfigurations} from '../shared/configurations.mjs';
+import {checkConfigurationAssets} from './configurations.mjs';
 import {randomUUID} from 'node:crypto';
 import {validateDesign} from '../shared/design.mjs';
 import {instantiateTemplate} from '../shared/templates.mjs';
@@ -14,7 +16,7 @@ export function createTemplateEditor({connection,admin,actor}){
  function snapshot(row,draft){
   let design=structuredClone(row.payload.design);
   if(row.payload.kind==='code'){design={schemaVersion:1,name:row.name,width:1920,height:1080,nodes:[]};instantiateTemplate(design,{id:row.template_id??row.id,category:row.category_id,name:row.name,version:row.base_version??row.version,payload:row.payload,scripts:row.scripts},null,{x:0,y:0},{allowCode:true});}
-  const root=design.nodes.find(n=>n.parent===null);if(root){root.templateSourceId=row.template_id??row.id;root.templateSourceVersion=row.base_version??row.version;root.scripts=row.scripts??null;}
+  const root=design.nodes.find(n=>n.parent===null);if(root){root.templateSourceId=row.template_id??row.id;root.templateSourceVersion=row.base_version??row.version;root.scripts=row.scripts??null;root.configurations=validateConfigurations(row.payload.configurations);}
   return {design:validateDesign(design),revision:draft?row.revision:row.version,workspace:{id:row.id,name:row.name,role:draft?'editor':'viewer',version:draft?row.revision:row.version,kind:draft?'template-draft':'template',templateId:row.template_id??row.id,baseVersion:row.base_version??row.version},storage:draft?'模板草稿数据库':'已发布模板（只读）'};
  }
  async function published(id){const r=(await(await connection()).pool.query('SELECT * FROM gamecli_ui.templates WHERE id=$1',[id])).rows[0];if(!r)throw Error('模板不存在。');return snapshot(r,false);}
@@ -29,7 +31,9 @@ export function createTemplateEditor({connection,admin,actor}){
   if(args.draftId!==id||args.projectId)throw Error('仅接受当前模板草稿，不能保存项目数据。');const r=await row(id);
   const design=validateDesign(args.design),roots=design.nodes.filter(n=>n.parent===null);if(roots.length!==1)throw Error('模板草稿必须且只能包含一个根节点。');
   const payload=templateFromDraft({design,revision:args.revision,savedAt:new Date().toISOString()},{rootId:roots[0].id},{id:r.template_id,category_id:r.category_id,payload:r.payload});
-  const scripts=validateScripts(roots[0].scripts??null);for(const n of payload.design.nodes){delete n.scripts;delete n.templateSourceVersion;}
+  payload.configurations=validateConfigurations(roots[0].configurations);
+  await checkConfigurationAssets(await pool(),payload.configurations);
+  const scripts=validateScripts(roots[0].scripts??null);for(const n of payload.design.nodes){delete n.scripts;delete n.configurations;delete n.templateSourceVersion;}
   const p=await pool(),images=[...new Set(payload.design.nodes.map(n=>n.image).filter(Boolean))];if(images.length&&(await p.query('SELECT id FROM gamecli_ui.assets WHERE id=ANY($1::text[])',[images])).rows.length!==images.length)throw Error('草稿缺少图片资源。');
   const saved=await p.query('UPDATE gamecli_ui.template_drafts SET payload=$1,scripts=$2,revision=revision+1,updated_at=now() WHERE id=$3 AND actor=$4 AND revision=$5 RETURNING revision',[JSON.stringify(payload),JSON.stringify(scripts),id,actor,args.revision]);if(!saved.rows.length)throw Error('模板草稿已更新，请重新加载核对。');
   return {revision:saved.rows[0].revision,draftSave:{ok:true,id,name:r.name,version:saved.rows[0].revision}};

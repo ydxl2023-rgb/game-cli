@@ -32,3 +32,7 @@ description: 独立 agent 参考 SvStart 标准模板，为具体产品开发 La
 4. 将组件引用接入目标 XApp/启动场景，说明资源绑定在 prefab 还是场景实例；不主动修改其他业务系统。
 
 开发结果说明包含调用入口、进度语义、完成行为及必要 XApp 集成项。只有维护当前 GameCLI 示例时读取 [参考实现](references/gamecli-example.md)，其中下载阶段、节点路径与背景切换时机不是产品默认需求。
+
+## 配置包检查
+
+读取模板独立 `configurations` 字段，按 [配置包规范](../../../system-development/references/configurations.md) 检查本系统的源表、结构化条目、代码别名、导表及运行时加载依赖。未声明配置包不等于没有依赖；缺失资料应明确记录。共享表只合并本系统所需条目，保留产品原有数据与翻译。

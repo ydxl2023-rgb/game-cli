@@ -1,3 +1,4 @@
+import {configurationSchema} from './configurations.mjs';
 export const workspaceSchema=`
 CREATE TABLE IF NOT EXISTS gamecli_ui.projects(id text PRIMARY KEY,name text NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
 CREATE TABLE IF NOT EXISTS gamecli_ui.project_members(project_id text REFERENCES gamecli_ui.projects(id),actor text,role text NOT NULL CHECK(role IN ('owner','editor','viewer')),PRIMARY KEY(project_id,actor));
@@ -25,4 +26,5 @@ CREATE OR REPLACE FUNCTION gamecli_ui.archive_template() RETURNS trigger LANGUAG
  INSERT INTO gamecli_ui.template_versions(template_id,version,name,category_id,payload,scripts) VALUES(NEW.id,NEW.version,NEW.name,NEW.category_id,NEW.payload,NEW.scripts); RETURN NEW; END $$;
 DROP TRIGGER IF EXISTS archive_template ON gamecli_ui.templates;
 CREATE TRIGGER archive_template AFTER INSERT OR UPDATE ON gamecli_ui.templates FOR EACH ROW EXECUTE FUNCTION gamecli_ui.archive_template();
+${configurationSchema}
 `;
