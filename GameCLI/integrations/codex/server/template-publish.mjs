@@ -1,3 +1,4 @@
+import {assertRenderOrder} from '../shared/render-order.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
@@ -36,6 +37,7 @@ export async function publishTemplates(pool,snapshot,targets,backupDir=fileURLTo
       if(!current)throw new Error('数据库模板不存在：'+t.templateId);
       if(current.version!==t.version)throw new Error(`模板 ${current.name} 已更新为 v${current.version}，请核对后刷新模板库再保存。`);
       const payload=templateFromDraft(snapshot,t,current);
+      assertRenderOrder(payload.design);
       const images=[...new Set(payload.design.nodes.map(n=>n.image).filter(Boolean))];
       if(images.length&&(await client.query('SELECT id FROM gamecli_ui.assets WHERE id=ANY($1::text[])',[images])).rows.length!==images.length)throw new Error('数据库缺少模板图片资源。');
       await mkdir(backupDir,{recursive:true});await writeFile(join(backupDir,`${randomUUID()}-v${current.version}.json`),JSON.stringify(current,null,2));

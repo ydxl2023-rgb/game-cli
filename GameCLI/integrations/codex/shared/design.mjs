@@ -280,7 +280,7 @@ export function validateDesign(value) {
     if (n.width < 0 || n.height < 0 || n.fontSize < 8 || n.fontSize > 128) throw new Error('尺寸不能为负，字号须为 8–128。');
     if (!/^#[0-9a-f]{6}$/i.test(n.color) || typeof n.text !== 'string' || n.text.length > 2000) throw new Error('颜色或文本无效。');
     if (n.template !== undefined && (!['ItemSlot','ScrollPanel','ConfirmDialog','InventorySystem'].includes(n.template) || n.type !== 'Container')) throw new Error('预制控件类型无效。');
-    if (n.role !== undefined && !['background','icon','mask','count','frame','content'].includes(n.role)) throw new Error('图层语义无效。');
+    if (n.role !== undefined && !['background','icon','mask','count','frame','content','backdrop'].includes(n.role)) throw new Error('图层语义无效。');
     if (n.opacity !== undefined && (!Number.isFinite(n.opacity) || n.opacity < 0 || n.opacity > 1)) throw new Error('不透明度须为 0–1。');
     if (n.borderWidth !== undefined && (!Number.isFinite(n.borderWidth) || n.borderWidth < 0 || n.borderWidth > 64)) throw new Error('边框宽度须为 0–64。');
     if (n.previewHidden !== undefined && typeof n.previewHidden !== 'boolean') throw new Error('预演初始状态无效。');
@@ -300,7 +300,7 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ ...(value.relationGroups!==undefined?{relationGroups:validateGroups(value.relationGroups,value.nodes)}:{}), schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition','relationScale'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ ...(value.relationGroups!==undefined?{relationGroups:validateGroups(value.relationGroups,value.nodes)}:{}), schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','mustRenderBehind','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','relationPosition','relationScale'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {

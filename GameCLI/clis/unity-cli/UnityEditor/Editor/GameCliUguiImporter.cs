@@ -12,9 +12,9 @@ using Newtonsoft.Json.Linq;
 [InitializeOnLoad]
 public static class GameCliUguiImporter
 {
-    [Serializable] public class Request { public string designPath, assetsDirectory, prefabPath, expiresUtc; public bool dryRun, overwrite; }
+    [Serializable] public class Request { public string designPath, assetsDirectory, prefabPath, expiresUtc; public bool dryRun, overwrite, repairLayerOrder; }
     public class Design { public float width, height; }
-    [Serializable] public class Result { public bool ok, dryRun; public string message, prefabPath; public int nodeCount, animationCount; public string templateId; public int templateVersion; public string[] warnings; }
+    [Serializable] public class Result { public bool ok, dryRun; public string message, prefabPath, operation; public int nodeCount, animationCount; public string templateId; public int templateVersion; public string[] warnings; }
     static double next;
     static GameCliUguiImporter() { EditorApplication.update += Poll; }
     static void Poll()
@@ -47,6 +47,100 @@ public static class GameCliUguiImporter
     {
         if (string.IsNullOrEmpty(path) || !path.StartsWith("Assets/") || path.Contains('\\') || path.Split('/').Any(p => p == ".." || p == "." || p == "")) throw new Exception("Invalid Assets path: " + path);
     }
+    /// <summary>Reject explicit backdrop contracts that violate sibling drawing order.</summary>
+    private static void ValidateLayerOrder(JObject[] nodes)
+    {
+        foreach (var node in nodes)
+        {
+            var names = node["mustRenderBehind"] as JArray;
+            if ((string)node["role"] != "backdrop" && !((string)node["role"] == "background" && node["mustRenderBehind"] != null))
+            {
+                if (node["mustRenderBehind"] != null) throw new Exception("Render contract requires backdrop role.");
+                continue;
+            }
+            if (names == null || names.Count == 0 || names.Any(n => n.Type != JTokenType.String || string.IsNullOrWhiteSpace((string)n)) || names.Select(n => (string)n).Distinct().Count() != names.Count)
+                throw new Exception("Backdrop requires unique mustRenderBehind sibling names.");
+            foreach (var name in names)
+            {
+                var targets = nodes.Where(n => (string)n["parent"] == (string)node["parent"] && (string)n["name"] == (string)name).ToArray();
+                if (targets.Length != 1 || targets[0] == node) throw new Exception("Render target is not a unique sibling: " + name);
+                if (Array.IndexOf(nodes, node) >= Array.IndexOf(nodes, targets[0])) throw new Exception("backdrop-over-content: " + node["name"] + " must precede " + name);
+            }
+        }
+    }
+
+    /// <summary>Repair only contracted sibling order while retaining all serialized components.</summary>
+    /// <param name="request">Validated CLI request.</param>
+    /// <param name="nodes">Correct desired design.</param>
+    /// <param name="byId">Design hierarchy lookup.</param>
+    /// <returns>Dry-run or saved repair evidence.</returns>
+    private static Result RepairLayerOrder(Request request, JObject[] nodes, Dictionary<string, JObject> byId)
+    {
+        if (EditorApplication.isPlaying) throw new Exception("Stop Play before repairing prefab order.");
+        if (!File.Exists(request.prefabPath)) throw new Exception("Repair requires an existing prefab.");
+        var backdrops = nodes.Where(n => (string)n["role"] == "backdrop" || ((string)n["role"] == "background" && n["mustRenderBehind"] != null)).ToArray();
+        if (backdrops.Length == 0) throw new Exception("No explicit backdrop contracts to repair.");
+        var root = PrefabUtility.LoadPrefabContents(request.prefabPath);
+        try
+        {
+            // Independent Canvas sorting needs explicit visual review, not a sibling-only repair.
+            if (root.GetComponentsInChildren<Canvas>(true).Any(c => c.overrideSorting)) throw new Exception("Independent Canvas sorting requires manual review.");
+            var resolved = new Dictionary<string, Transform>();
+            foreach (var node in nodes)
+            {
+                var parts = new List<string>();
+                var current = node;
+                while (!string.IsNullOrEmpty((string)current["parent"]))
+                {
+                    parts.Insert(0, (string)current["name"]);
+                    current = byId[(string)current["parent"]];
+                }
+                if (root.name != (string)current["name"]) throw new Exception("Prefab root does not match design.");
+                var transform = root.transform;
+                foreach (var part in parts)
+                {
+                    var matches = transform.Cast<Transform>().Where(t => t.name == part).ToArray();
+                    if (matches.Length != 1) throw new Exception("Missing or ambiguous prefab node: " + string.Join("/", parts));
+                    transform = matches[0];
+                }
+                resolved.Add((string)node["id"], transform);
+            }
+            var changes = new List<string>();
+            foreach (var node in backdrops.Reverse())
+            {
+                var backdrop = resolved[(string)node["id"]];
+                foreach (var name in (JArray)node["mustRenderBehind"])
+                {
+                    var target = nodes.Single(n => (string)n["parent"] == (string)node["parent"] && (string)n["name"] == (string)name);
+                    var content = resolved[(string)target["id"]];
+                    if (backdrop.GetSiblingIndex() < content.GetSiblingIndex()) continue;
+                    changes.Add(backdrop.name + " before " + content.name);
+                    backdrop.SetSiblingIndex(content.GetSiblingIndex());
+                }
+            }
+            foreach (var node in backdrops)
+            {
+                var backdrop = resolved[(string)node["id"]];
+                foreach (var name in (JArray)node["mustRenderBehind"])
+                {
+                    var target = nodes.Single(n => (string)n["parent"] == (string)node["parent"] && (string)n["name"] == (string)name);
+                    if (backdrop.GetSiblingIndex() >= resolved[(string)target["id"]].GetSiblingIndex())
+                        throw new Exception("Repaired order still violates backdrop contract; asset not saved.");
+                }
+            }
+            if (!request.dryRun && changes.Count > 0)
+            {
+                bool saved;
+                var asset = PrefabUtility.SaveAsPrefabAsset(root, request.prefabPath, out saved);
+                if (!saved || !asset) throw new Exception("Unity failed to save repaired prefab.");
+                AssetDatabase.SaveAssets();
+            }
+
+            return new Result { ok = true, operation = "repair-layer-order", dryRun = request.dryRun, prefabPath = request.prefabPath, nodeCount = nodes.Length, warnings = changes.ToArray(), message = request.dryRun ? "Layer order repair validated; asset unchanged." : "Layer order repaired; components and references preserved." };
+        }
+        finally { PrefabUtility.UnloadPrefabContents(root); }
+    }
+
     static Result Run(Request request)
     {
         string path = request.prefabPath; AssetPath(path);
@@ -79,6 +173,8 @@ public static class GameCliUguiImporter
             if (n["imageFit"] != null && !new[] {"cover","contain","100% 100%"}.Contains((string)n["imageFit"])) throw new Exception("Unsupported imageFit.");
             if (n["action"]?["target"] != null && !byId.ContainsKey((string)n["action"]["target"])) throw new Exception("Missing action target.");
         }
+        ValidateLayerOrder(nodes);
+        if (request.repairLayerOrder) return RepairLayerOrder(request, nodes, byId);
         var textures = new Dictionary<string, Texture2D>();
         var temporary = new List<UnityEngine.Object>();
         var objects = new Dictionary<string, GameObject>();

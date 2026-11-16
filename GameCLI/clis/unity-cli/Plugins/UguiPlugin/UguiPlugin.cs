@@ -8,14 +8,14 @@ public sealed class UguiPlugin : IPlugin
 {
     public string Name => "UguiPlugin";
     public IReadOnlyCollection<string> Commands => new[] { "ugui" };
-    public string Help => "ugui (--template <database ID> | --input <record-or-payload.json>) --project <Unity root> --prefab <Assets/...prefab> [--assets-dir <folder>] [--integration <codex folder>] [--dry-run] [--overwrite] [--json]";
+    public string Help => "ugui (--template <database ID> | --input <record-or-payload.json>) --project <Unity root> --prefab <Assets/...prefab> [--assets-dir <folder>] [--integration <codex folder>] [--dry-run] [--overwrite] [--repair-layer-order] [--json]";
 
     public async Task<int> ExecuteAsync(string command, string[] args)
     {
         if (args.Contains("--help")) { Console.WriteLine(Help); return 0; }
         string? studio = null, project = null, prefab = null, template = null, assetsDir = null, integration = null;
         
-        bool dryRun = false, overwrite = false;
+        bool dryRun = false, overwrite = false, repairLayerOrder = false;
         for (int i = 0; i < args.Length; i++)
         {
             string Value() => ++i < args.Length ? args[i] : throw new ArgumentException("Missing option value.");
@@ -28,6 +28,7 @@ public sealed class UguiPlugin : IPlugin
                 case "--project": project = Path.GetFullPath(Value()); break;
                 case "--prefab": prefab = Value().Replace('\\', '/'); break;
                 case "--dry-run": dryRun = true; break;
+                case "--repair-layer-order": repairLayerOrder = true; break;
                 case "--overwrite": overwrite = true; break;
                 case "--json": break;
                 default: throw new ArgumentException("Unknown ugui option: " + args[i]);
@@ -64,7 +65,7 @@ public sealed class UguiPlugin : IPlugin
         if (!payload.TryGetProperty("root", out _) || !payload.TryGetProperty("design", out var design) || design.GetProperty("schemaVersion").GetInt32() != 1)
             throw new ArgumentException("Expected database template record or payload { root, design: { schemaVersion: 1, nodes } }.");
         assetsDir ??= Path.Combine(Path.GetDirectoryName(studio!)!, "assets");
-        foreach (var id in design.GetProperty("nodes").EnumerateArray().Where(n => n.TryGetProperty("image", out _)).Select(n => n.GetProperty("image").GetString()!).Distinct())
+        foreach (var id in design.GetProperty("nodes").EnumerateArray().Where(n => !repairLayerOrder && n.TryGetProperty("image", out _)).Select(n => n.GetProperty("image").GetString()!).Distinct())
         {
             if (!Regex.IsMatch(id, "^[a-f0-9]{64}$")) throw new ArgumentException("Invalid image ID.");
             var bytes = await File.ReadAllBytesAsync(Path.Combine(assetsDir, id + ".png"));
@@ -80,7 +81,7 @@ public sealed class UguiPlugin : IPlugin
         {
             var requestDir = Path.Combine(dir, preview ? "preview" : "build");
             Directory.CreateDirectory(requestDir);
-            var request = new { designPath, assetsDirectory = dir, prefabPath = prefab, dryRun = preview, overwrite, expiresUtc = DateTime.UtcNow.AddSeconds(90).ToString("O") };
+            var request = new { designPath, assetsDirectory = dir, prefabPath = prefab, dryRun = preview, overwrite, repairLayerOrder, expiresUtc = DateTime.UtcNow.AddSeconds(90).ToString("O") };
             var pending = Path.Combine(requestDir, "request.tmp");
             await File.WriteAllTextAsync(pending, JsonSerializer.Serialize(request));
             File.Move(pending, Path.Combine(requestDir, "request.json"));
@@ -95,6 +96,9 @@ public sealed class UguiPlugin : IPlugin
             throw new TimeoutException("UGUI Editor importer did not respond. Refresh Unity. A claimed build may still finish; inspect the prefab before retrying.");
         }
         using var previewResult = await Send(true);
+        if (repairLayerOrder && previewResult.RootElement.GetProperty("ok").GetBoolean()
+            && (!previewResult.RootElement.TryGetProperty("operation", out var operation) || operation.GetString() != "repair-layer-order"))
+            throw new InvalidOperationException("Installed Editor importer does not support safe layer repair; update it before continuing.");
         var result = previewResult;
         JsonDocument? buildResult = null;
         if (!dryRun && previewResult.RootElement.GetProperty("ok").GetBoolean()) result = buildResult = await Send(false);

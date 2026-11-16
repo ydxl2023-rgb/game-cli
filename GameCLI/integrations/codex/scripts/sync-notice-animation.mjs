@@ -30,7 +30,10 @@ try {
   const node=design.nodes.find(n=>n.parent===host.id&&n.name===name);
   assert(node,`Missing ${name}`);node.parent=panel.id;
  }
- design.nodes.splice(design.nodes.indexOf(host)+1,0,panel);
+ const backdrop=design.nodes.find(n=>n.parent===host.id&&n.name==='Bg');
+ assert(backdrop,'Missing backdrop');
+ backdrop.role='backdrop';backdrop.mustRenderBehind=['Panel'];
+ design.nodes.splice(design.nodes.indexOf(backdrop)+1,0,panel);
  const targets=[panel,...design.nodes.filter(n=>n.parent===host.id&&n.name==='Empty')];
  const curves=targets.flatMap(n=>standard.definition.clip.curves.map(c=>({
   targetNodeId:n.id,component:c.component,property:c.property,

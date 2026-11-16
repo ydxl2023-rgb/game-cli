@@ -1,8 +1,9 @@
+import {inspectRenderOrder} from './render-order.mjs';
 import {nodeName} from './design.mjs';
 import {resolveLayout} from './rect-transform.mjs';
 import {verifyWidgetBindings} from './widget-binding-verification.mjs';
 
-export const verificationPolicy='studio-prefab/2';
+export const verificationPolicy='studio-prefab/3';
 export const numericTolerance=0.0001;
 
 // IDs identify nodes within each document; comparison uses hierarchy and sibling order.
@@ -19,6 +20,9 @@ export function selectPrefab(design,id){
 export function comparePrefab(design,document,diagnostics=[]){
  if(document.schemaVersion!=='ui-template/1'||!Array.isArray(document.prefab?.nodes))throw Error('不支持的 Unity 导出格式。');
  const differences=[],unverified=[];
+ const renderOrder=inspectRenderOrder(design);
+ differences.push(...renderOrder.errors.map(e=>({...e,property:'renderOrder',source:'design-contract'})));
+ unverified.push(...renderOrder.warnings);
  const bindings=verifyWidgetBindings(document);
  differences.push(...bindings.differences.map(item=>({...item,property:'widgetBinding',source:'widget-bindings'})));
  unverified.push(...bindings.unverified.map(item=>({...item,source:'widget-bindings'})));
@@ -93,5 +97,9 @@ export function comparePrefab(design,document,diagnostics=[]){
   if(n.animationHost||n.type==='Progress'||n.role==='frame'||n.template==='ScrollPanel'||n.imageBorder||n.uvRect||n.imageTone||n.previewHidden)unverified.push({node:path,code:'unsupported-design-feature',message:'该节点包含当前比较适配器尚未覆盖的设计属性。'});
  }
  for(const path of actual.keys())if(!expected.has(path))diff(path,'node','absent','unexpected');
- return {policy:verificationPolicy,tolerance:numericTolerance,status:unverified.length?'incomplete':differences.length?'failed':'passed',passed:!unverified.length&&!differences.length,differences,unverified,bindings};
+ return {policy:verificationPolicy,tolerance:numericTolerance,status:differences.length?'failed':unverified.length?'incomplete':'passed',passed:!unverified.length&&!differences.length,differences,unverified,bindings,renderOrder,renderEvidence:document.prefab.nodes.map(n=>({
+   id:n.id,name:n.name,parentId:n.parentId,siblingIndex:n.siblingIndex,active:n.active,
+   graphics:(n.components??[]).filter(c=>c.properties?.m_Color).map(c=>({type:c.type,color:c.properties.m_Color,raycastTarget:c.properties.m_RaycastTarget,enabled:c.properties.m_Enabled})),
+   canvases:(n.components??[]).filter(c=>c.type==='UnityEngine.Canvas').map(c=>c.properties)
+  }))};
 }
