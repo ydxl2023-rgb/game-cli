@@ -362,6 +362,36 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext4420 = 763157560;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-3025-Context-48-2-0
+        /// 直购特典1
+        /// </summary>
+        public const int LGCommonTextContext4820 = 1476697072;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3033-Context-56-2-0
+        /// 剩余:{0}次
+        /// </summary>
+        public const int LGCommonTextContext5620 = 2118164682;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3034-Context-57-2-0
+        /// {0}天{1}时{2}分
+        /// </summary>
+        public const int LGCommonTextContext5720 = 1258060798;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3035-Context-58-2-0
+        /// 乌鸦VS猫
+        /// </summary>
+        public const int LGCommonTextContext5820 = 1575737738;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3039-Context-62-2-0
+        /// 预览
+        /// </summary>
+        public const int LGCommonTextContext6220 = 1773047179;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3062-Context-85-2-0
+        /// 广告获取
+        /// </summary>
+        public const int LGCommonTextContext8520 = 2016919144;
+        /// <summary>
         /// LG-FunctionSystemConfig-FunctionSystem-10001-Name-3-2-0
         /// 核心系统
         /// </summary>

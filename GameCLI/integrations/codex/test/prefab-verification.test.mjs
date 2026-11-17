@@ -12,6 +12,22 @@ function fixtures(){
 test('exact design contract passes independent of document IDs',()=>{const {design,document}=fixtures();assert.equal(comparePrefab(design,document).passed,true);});
 test('layout drift fails with expected and actual evidence',()=>{const {design,document}=fixtures();document.prefab.nodes[0].rect.sizeDelta[0]+=1;const r=comparePrefab(design,document);assert.equal(r.status,'failed');assert.equal(r.differences[0].property,'rect.sizeDelta[0]');});
 test('float noise within fixed tolerance is accepted',()=>{const {design,document}=fixtures();document.prefab.nodes[0].rect.sizeDelta[0]+=0.00001;assert.equal(comparePrefab(design,document).passed,true);});
+
+test('equivalent quaternion signs preserve rotations beyond 180 degrees',()=>{
+ const {design,document}=fixtures();design.nodes[0].rotation=358;
+ const angle=-2*Math.PI/360;document.prefab.nodes[0].localRotation=[0,0,Math.sin(angle),Math.cos(angle)];
+ assert.equal(comparePrefab(design,document).passed,true);
+ document.prefab.nodes[0].localRotation=[0,0,0,1];
+ assert.equal(comparePrefab(design,document).status,'failed');
+});
+
+test('transparent image surfaces match the native importer',()=>{
+ const {design,document}=fixtures();design.nodes[0].type='Image';
+ document.prefab.nodes[0].components=[{type:'UnityEngine.UI.Image',properties:{m_Color:[1,1,1,0],m_Enabled:true,m_RaycastTarget:false}}];
+ assert.equal(comparePrefab(design,document).passed,true);
+ document.prefab.nodes[0].components[0].properties.m_Color[3]=1;
+ assert.equal(comparePrefab(design,document).status,'failed');
+});
 test('extra objects are not ignored',()=>{const {design,document}=fixtures();document.prefab.nodes.push({...structuredClone(document.prefab.nodes[0]),id:'extra',parentId:'root',name:'Extra'});assert.equal(comparePrefab(design,document).status,'failed');});
 test('unreadable scripts and animation never pass',()=>{const {design,document}=fixtures();design.animations=[{id:'open'}];const r=comparePrefab(design,document,[{code:'unsupported-component',type:'MissingScript'}]);assert.equal(r.status,'incomplete');assert.equal(r.passed,false);assert.equal(r.unverified.length,2);});
 test('undeclared components block success',()=>{const {design,document}=fixtures();document.prefab.nodes[0].components.push({type:'UnityEngine.CanvasGroup',properties:{}});assert.equal(comparePrefab(design,document).passed,false);});

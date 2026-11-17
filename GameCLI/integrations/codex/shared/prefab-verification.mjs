@@ -61,7 +61,9 @@ export function comparePrefab(design,document,diagnostics=[]){
   equal(path,'localScale',[n.localScale?.x??1,n.localScale?.y??1,1],a.localScale);
   const angle=(n.rotation??0)*Math.PI/360;
   let rotation=a.localRotation;if(rotation?.[3]<0)rotation=rotation.map(v=>-v);
-  equal(path,'localRotation',[0,0,Math.sin(angle),Math.cos(angle)],rotation);
+  let expectedRotation=[0,0,Math.sin(angle),Math.cos(angle)];
+  if(expectedRotation[3]<0)expectedRotation=expectedRotation.map(v=>-v);
+  equal(path,'localRotation',expectedRotation,rotation);
   const components=a.components??[];
   const hasImage=!!n.image||n.type!=='Container'||n.surface!=='transparent';
   const graphic=n.type==='Text'?'UnityEngine.UI.Text':n.uvRect?'UnityEngine.UI.RawImage':hasImage?'UnityEngine.UI.Image':null;
@@ -73,7 +75,7 @@ export function comparePrefab(design,document,diagnostics=[]){
   if(props){
    const hex=n.color.replace('#','');const rgba=[0,2,4].map(i=>parseInt(hex.slice(i,i+2),16)/255);
    rgba.push((hex.length===8?parseInt(hex.slice(6,8),16)/255:1)*(n.opacity??1));
-   if(n.type==='Button'&&!n.image&&n.surface==='transparent')rgba[3]=0;
+   if(n.type!=='Text'&&!n.image&&n.surface==='transparent')rgba[3]=0;
    equal(path,'color',rgba,props.m_Color);
    equal(path,'graphic.enabled',true,props.m_Enabled);
    equal(path,'raycastTarget',n.type==='Button',props.m_RaycastTarget);

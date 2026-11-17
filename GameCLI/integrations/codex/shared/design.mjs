@@ -235,7 +235,8 @@ export function appendInventorySystem(design) {
   return id;
 }
 export function layerStyle(n) {
-  return graphicStyle(n)+baseLayerStyle(n)+(n.type==='Text' && n.verticalAlign ? `display:flex;flex-direction:column;justify-content:${n.verticalAlign};`:'');
+  const typography=n.type==='Text' ? `${n.fontAsset?`font-family:GameCLI${n.fontAsset};`:''}${n.textOutline?`-webkit-text-stroke:${n.textOutline.width}px ${n.textOutline.color};paint-order:stroke fill;`:''}` : '';
+  return graphicStyle(n)+baseLayerStyle(n)+typography+(n.type==='Text' && n.verticalAlign ? `display:flex;flex-direction:column;justify-content:${n.verticalAlign};`:'');
 }
 function graphicStyle(n) {
   const r=n.rectTransform,p=r?.pivot??{x:0,y:1},scale=n.localScale??{x:1,y:1};
@@ -269,12 +270,14 @@ export function validateDesign(value) {
     if(n.configurations!=null){if(n.parent!==null)throw Error('配置包只能绑定系统根节点。');validateConfigurations(n.configurations);}
     if(n.relationPosition!==undefined&&(n.parent!==null||!['x','y'].every(k=>Number.isFinite(n.relationPosition?.[k])&&n.relationPosition[k]>=0&&n.relationPosition[k]<=6000)))throw new Error('关系卡片坐标无效。');
     if(n.rotation!==undefined && (!Number.isFinite(n.rotation)||Math.abs(n.rotation)>36000))throw new Error('Rotation Z 无效。');
-    if(n.animationHost!==undefined && (n.animationHost!==true||n.type!=='Container'))throw new Error('动画容器标记无效。');
+    if(n.animationHost!==undefined && (n.animationHost!==true||n.systemKind==='code'))throw new Error('动画节点标记无效。');
     if(n.interactable!==undefined && typeof n.interactable!=='boolean')throw new Error('Interactable 状态无效。');
     if(n.active!==undefined && typeof n.active!=='boolean')throw new Error('Active 状态无效。');
     if(n.imageType!==undefined && !['simple','sliced'].includes(n.imageType))throw new Error('Image Type 无效。');
     if(n.verticalAlign!==undefined && !['start','center','end'].includes(n.verticalAlign))throw new Error('垂直对齐无效。');
     if(n.image!==undefined && !/^[a-f0-9]{64}$/.test(n.image))throw new Error('图片资源 ID 无效。');
+    if(n.fontAsset!==undefined && (n.type!=='Text'||!/^[a-f0-9]{64}$/.test(n.fontAsset)))throw new Error('字体资源 ID 无效。');
+    if(n.textOutline!==undefined && (n.type!=='Text'||!Number.isFinite(n.textOutline?.width)||n.textOutline.width<0||n.textOutline.width>6||!/^#[a-f0-9]{8}$/i.test(n.textOutline.color)))throw new Error('文本描边无效。');
     if(n.imageFit!==undefined && !['cover','contain','100% 100%'].includes(n.imageFit))throw new Error('图片填充方式无效。');
     if(n.progress!==undefined && (!Number.isFinite(n.progress)||n.progress<0||n.progress>1))throw new Error('进度须为 0–1。');
     if (n.name !== undefined && (typeof n.name !== 'string' || !/^[a-zA-Z][a-zA-Z0-9]{0,63}$/.test(n.name))) throw new Error('节点名称须使用大驼峰英文命名，例如 Background 或 ItemList。');
@@ -304,7 +307,7 @@ export function validateDesign(value) {
       seen.add(parent); parent = map.get(parent).parent;
     }
   }
-  return resolveLayout({ ...(value.relationGroups!==undefined?{relationGroups:validateGroups(value.relationGroups,value.nodes)}:{}), schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','template','role','mustRenderBehind','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','configurations','relationPosition','relationScale'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
+  return resolveLayout({ ...(value.relationGroups!==undefined?{relationGroups:validateGroups(value.relationGroups,value.nodes)}:{}), schemaVersion: 1, rootId: 'Canvas', name: value.name, width: value.width, height: value.height, ...(value.animations!==undefined?{animations:validateAnimations(value.animations,value.nodes)}:{}), nodes: value.nodes.map(n => ({...Object.fromEntries(['systemKind','id','parent','type','x','y','width','height','color','text','fontSize','fontAsset','textOutline','template','role','mustRenderBehind','opacity','borderWidth','textAlign','action','startupComplete','previewHidden','surface','image','imageFit','imageTone','progress','rectTransform','localScale','imageBorder','uvRect','verticalAlign','rotation','active','imageType','interactable','animationHost','templateSourceId','templateSourceVersion','scripts','configurations','relationPosition','relationScale'].filter(k=>n[k] !== undefined).map(k => [k,n[k]])),name:nodeName(n)})) });
 }
 export function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function designHtml(input) {

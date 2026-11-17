@@ -14,6 +14,14 @@ import {validateTemplate} from '../shared/templates.mjs';
 import {validateScripts} from './template-scripts.mjs';
 export const workspaceActor=()=>process.env.GAMECLI_ACTOR||'local';
 export function validProjectId(id){if(typeof id!=='string'||!/^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(id))throw new Error('请指定有效项目 ID。');return id;}
+// Published production manifests may include native fonts and alternate-state sprites.
+export function referencesMaterialAsset(scripts,hash){
+ if(!/^[a-f0-9]{64}$/.test(hash))return false;
+ return (scripts?.files??[]).some(file=>{
+  if(!file.path?.endsWith('/materials.json'))return false;
+  try{return JSON.parse(file.content).files?.some(asset=>asset.assetId===hash&&asset.sha256===hash)===true;}catch{return false;}
+ });
+}
 export function createWorkspaces({connect=openDatabase,actor=workspaceActor(),directory=fileURLToPath(new URL('../.data/projects/',import.meta.url)),designAgent}={}){
  let db;const connection=async()=>db??=await connect();
  async function access(id,write=false,client){validProjectId(id);const pool=client??(await connection()).pool;
@@ -31,7 +39,7 @@ export function createWorkspaces({connect=openDatabase,actor=workspaceActor(),di
  async function snapshot(id){const project=await access(id),row=(await (await connection()).pool.query('SELECT version,payload FROM gamecli_ui.project_ui WHERE project_id=$1',[id])).rows[0];if(!row)throw new Error('项目 UI 尚未初始化。');return {design:validateDesign(row.payload.design),revision:row.version,project:{...project,version:row.version,unityBinding:await unityBindings.read(id)},storage:'项目数据库',integration:await integrationStatus(id,row.version)};}
  function checkIdentity(id,args){if(args.projectId!==id)throw new Error('请求项目与当前工作区不一致，已拒绝写入。');}
  async function save(id,args){checkIdentity(id,args);const project=await access(id,true);if(!Number.isInteger(args.projectVersion)||args.revision!==args.projectVersion)throw new Error('项目版本无效，请重新加载。');const design=validateDesign(args.design);for(const n of design.nodes)if(n.scripts)n.scripts=validateScripts(n.scripts);
-  for(const hash of new Set(design.nodes.map(n=>n.image).filter(Boolean)))if(!await assetAllowed(hash,id))throw new Error('项目引用了无权访问的图片资源。');
+  for(const hash of new Set(design.nodes.flatMap(n=>[n.image,n.fontAsset]).filter(Boolean)))if(!await assetAllowed(hash,id))throw new Error('项目引用了无权访问的图片资源。');
   const payload={design,savedAt:new Date().toISOString(),actor};const result=await (await connection()).pool.query('UPDATE gamecli_ui.project_ui SET payload=$1::jsonb,version=version+1,updated_at=now() WHERE project_id=$2 AND version=$3 RETURNING version',[JSON.stringify(payload),id,args.projectVersion]);if(!result.rows.length)throw new Error('项目已被其他窗口更新。当前草稿保留，请重新加载核对，禁止覆盖。');
   const version=result.rows[0].version;return {design,revision:version,projectSave:{ok:true,id,name:project.name,version}};
  }
@@ -40,11 +48,24 @@ export function createWorkspaces({connect=openDatabase,actor=workspaceActor(),di
  async function animations(){return {animations:(await (await connection()).pool.query("SELECT DISTINCT ON (id) id,version,name,category,definition FROM gamecli_ui.standard_animations WHERE status='published' ORDER BY id,version DESC")).rows};}
  async function candidates({summary=false}={}){await admin();const columns=summary?"c.id,c.template_id,c.base_version,c.project_id,c.actor,c.status,c.created_at,jsonb_build_object('root',c.payload->'root','design',c.payload->'design') AS payload,t.name AS template_name,t.version AS current_version":"c.*,t.name AS template_name,t.version AS current_version,t.payload AS current_payload,t.scripts AS current_scripts";return {candidates:(await (await connection()).pool.query(`SELECT ${columns} FROM gamecli_ui.template_candidates c JOIN gamecli_ui.templates t ON t.id=c.template_id ORDER BY c.created_at DESC LIMIT 100`)).rows};}
  async function candidateDetail(id){await admin();if(typeof id!=='string'||!/^[a-f0-9-]{36}$/i.test(id))throw Error('候选 ID 无效。');const row=(await (await connection()).pool.query(`SELECT c.payload - 'source' AS payload,c.scripts,t.payload - 'source' AS current_payload,t.scripts AS current_scripts FROM gamecli_ui.template_candidates c JOIN gamecli_ui.templates t ON t.id=c.template_id WHERE c.id=$1`,[id])).rows[0];if(!row)throw Error('候选不存在。');return row;}
- async function publish({candidateId,confirm}){if(confirm!==true)throw new Error('发布需要明确确认。');const c=await (await connection()).pool.connect();try{await c.query('BEGIN');await admin(c);const candidate=(await c.query('SELECT * FROM gamecli_ui.template_candidates WHERE id=$1 FOR UPDATE',[candidateId])).rows[0];if(!candidate||candidate.status!=='pending')throw new Error('候选不存在或已处理。');const current=(await c.query('SELECT * FROM gamecli_ui.templates WHERE id=$1 FOR UPDATE',[candidate.template_id])).rows[0];if(current.version!==candidate.base_version)throw new Error('模板已有新版本，请重新审核并提交候选。');const payload={...candidate.payload,...validateTemplate(candidate.payload,current.category_id)},scripts=validateScripts(candidate.scripts);await checkConfigurationAssets(c,payload.configurations);assertRenderOrder(payload.design);const images=[...new Set(payload.design.nodes.map(n=>n.image).filter(Boolean))];if(images.length&&(await c.query('SELECT id FROM gamecli_ui.assets WHERE id=ANY($1::text[])',[images])).rows.length!==images.length)throw new Error('候选缺少图片资源。');await c.query("SELECT set_config('gamecli.publish','approved',true)");await c.query('UPDATE gamecli_ui.templates SET payload=$1::jsonb,scripts=$2::jsonb,version=version+1,updated_at=now() WHERE id=$3',[JSON.stringify(payload),JSON.stringify(scripts),current.id]);await c.query("UPDATE gamecli_ui.template_candidates SET status='published' WHERE id=$1",[candidateId]);await c.query('COMMIT');return {name:current.name,version:current.version+1};}catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}}
+ async function publish({candidateId,confirm}){if(confirm!==true)throw new Error('发布需要明确确认。');const c=await (await connection()).pool.connect();try{await c.query('BEGIN');await admin(c);const candidate=(await c.query('SELECT * FROM gamecli_ui.template_candidates WHERE id=$1 FOR UPDATE',[candidateId])).rows[0];if(!candidate||candidate.status!=='pending')throw new Error('候选不存在或已处理。');const current=(await c.query('SELECT * FROM gamecli_ui.templates WHERE id=$1 FOR UPDATE',[candidate.template_id])).rows[0];if(current.version!==candidate.base_version)throw new Error('模板已有新版本，请重新审核并提交候选。');const payload={...candidate.payload,...validateTemplate(candidate.payload,current.category_id)},scripts=validateScripts(candidate.scripts);await checkConfigurationAssets(c,payload.configurations);assertRenderOrder(payload.design);const images=[...new Set(payload.design.nodes.flatMap(n=>[n.image,n.fontAsset]).filter(Boolean))];if(images.length&&(await c.query('SELECT id FROM gamecli_ui.assets WHERE id=ANY($1::text[])',[images])).rows.length!==images.length)throw new Error('候选缺少图片资源。');await c.query("SELECT set_config('gamecli.publish','approved',true)");await c.query('UPDATE gamecli_ui.templates SET payload=$1::jsonb,scripts=$2::jsonb,version=version+1,updated_at=now() WHERE id=$3',[JSON.stringify(payload),JSON.stringify(scripts),current.id]);await c.query("UPDATE gamecli_ui.template_candidates SET status='published' WHERE id=$1",[candidateId]);await c.query('COMMIT');return {name:current.name,version:current.version+1};}catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}}
  async function reject({candidateId}){await admin();const r=await (await connection()).pool.query("UPDATE gamecli_ui.template_candidates SET status='rejected' WHERE id=$1 AND status='pending' RETURNING id",[candidateId]);if(!r.rows.length)throw new Error('候选不存在或已处理。');return {ok:true};}
  async function templateVersions(id){return {versions:(await (await connection()).pool.query('SELECT template_id,version,name,created_at FROM gamecli_ui.template_versions WHERE template_id=$1 ORDER BY version DESC',[id])).rows};}
  async function exportDesign(id,args){checkIdentity(id,args);await access(id);const unityBinding=await unityBindings.requireBinding(id);return {...await createStore(join(directory,id)).exportDesign(args.design),unityBinding};}
- async function assetAllowed(hash,id){const pool=(await connection()).pool;if((await pool.query("SELECT 1 FROM gamecli_ui.template_versions WHERE payload->'design'->'nodes' @> $1::jsonb LIMIT 1",[JSON.stringify([{image:hash}])])).rows.length)return true;if(id){await access(id);return !!(await pool.query("SELECT 1 FROM gamecli_ui.project_ui WHERE project_id=$1 AND payload->'design'->'nodes' @> $2::jsonb",[id,JSON.stringify([{image:hash}])])).rows.length;}return false;}
+ async function assetAllowed(hash,id){
+  if(!/^[a-f0-9]{64}$/.test(hash))return false;
+  const pool=(await connection()).pool;
+  if((await pool.query("SELECT 1 FROM gamecli_ui.template_versions WHERE payload->'design'->'nodes' @> $1::jsonb OR payload->'design'->'nodes' @> $2::jsonb LIMIT 1",[JSON.stringify([{image:hash}]),JSON.stringify([{fontAsset:hash}])])).rows.length)return true;
+  const versions=(await pool.query("SELECT scripts FROM gamecli_ui.template_versions WHERE scripts::text LIKE $1",['%'+hash+'%'])).rows;
+  if(versions.some(row=>referencesMaterialAsset(row.scripts,hash)))return true;
+  if(id){
+   await access(id);
+   const row=(await pool.query("SELECT payload FROM gamecli_ui.project_ui WHERE project_id=$1",[id])).rows[0];
+   return (row?.payload?.design?.nodes??[]).some(node=>node.image===hash||node.fontAsset===hash||referencesMaterialAsset(node.scripts,hash));
+  }
+  return false;
+ }
+
  const unityBindings=createUnityBindings({connection,access});
  const composition=createComposition({connection,access,snapshot,save});
  const templateEditor=createTemplateEditor({connection,admin,actor});

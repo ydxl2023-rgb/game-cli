@@ -42,6 +42,132 @@ public enum HomeEntry
     /// <summary>The AddCurrencyThree entry.</summary>
     AddCurrencyThree,
 
+    /// <summary>The TaskButton entry.</summary>
+    TaskButton,
+
+    /// <summary>The SevendaysLogin entry.</summary>
+    SevendaysLogin,
+
+    /// <summary>The SevendaysTask entry.</summary>
+    SevendaysTask,
+
+    /// <summary>The FourteendaysTask entry.</summary>
+    FourteendaysTask,
+
+    /// <summary>The DirectPurchaseButton entry.</summary>
+    DirectPurchaseButton,
+
+    /// <summary>The DirectPurchaseButton1 entry.</summary>
+    DirectPurchaseButton1,
+
+    /// <summary>The CNBattlePassButton entry.</summary>
+    CNBattlePassButton,
+
+    /// <summary>The TimeLimitGiftButton entry.</summary>
+    TimeLimitGiftButton,
+
+    /// <summary>The UpInProButton entry.</summary>
+    UpInProButton,
+
+    /// <summary>The ComeBackButton entry.</summary>
+    ComeBackButton,
+
+    /// <summary>The BtnPowerfulBait entry.</summary>
+    BtnPowerfulBait,
+
+    /// <summary>The BtnKingSetter entry.</summary>
+    BtnKingSetter,
+
+    /// <summary>The ZhanshuButton entry.</summary>
+    ZhanshuButton,
+
+    /// <summary>The FateBattleButton entry.</summary>
+    FateBattleButton,
+
+    /// <summary>The FateBattleDlcBtn entry.</summary>
+    FateBattleDlcBtn,
+
+    /// <summary>The AppearBtn entry.</summary>
+    AppearBtn,
+
+    /// <summary>The BtnPlayerTheme entry.</summary>
+    BtnPlayerTheme,
+
+    /// <summary>The BtnTurnCard entry.</summary>
+    BtnTurnCard,
+
+    /// <summary>The AliPayPackageBtn entry.</summary>
+    AliPayPackageBtn,
+
+    /// <summary>The QuestionBtn entry.</summary>
+    QuestionBtn,
+
+    /// <summary>The BtnPreOrder entry.</summary>
+    BtnPreOrder,
+
+    /// <summary>The BtnMatchGuess entry.</summary>
+    BtnMatchGuess,
+
+    /// <summary>The BtnTopBattle entry.</summary>
+    BtnTopBattle,
+
+    /// <summary>The BtnServeGame entry.</summary>
+    BtnServeGame,
+
+    /// <summary>The BtnNewYear entry.</summary>
+    BtnNewYear,
+
+    /// <summary>The BtnChainGift entry.</summary>
+    BtnChainGift,
+
+    /// <summary>The BtnSPTopic entry.</summary>
+    BtnSPTopic,
+
+    /// <summary>The BtnAnniversary entry.</summary>
+    BtnAnniversary,
+
+    /// <summary>The BtnFreeMatch entry.</summary>
+    BtnFreeMatch,
+
+    /// <summary>The BtnRunningGame entry.</summary>
+    BtnRunningGame,
+
+    /// <summary>The Btn15AnniversaryActive entry.</summary>
+    Btn15AnniversaryActive,
+
+    /// <summary>The BtnLuckyDraw entry.</summary>
+    BtnLuckyDraw,
+
+    /// <summary>The BtnWuYeCanteen entry.</summary>
+    BtnWuYeCanteen,
+
+    /// <summary>The BtnAceDuel entry.</summary>
+    BtnAceDuel,
+
+    /// <summary>The BtnCampTraining entry.</summary>
+    BtnCampTraining,
+
+    /// <summary>The BtnSpecialOfferPackage entry.</summary>
+    BtnSpecialOfferPackage,
+
+    /// <summary>The BtnBarbecue entry.</summary>
+    BtnBarbecue,
+
+    /// <summary>The BtnCombinationGift entry.</summary>
+    BtnCombinationGift,
+
+    /// <summary>The BtnSelectSelfGift entry.</summary>
+    BtnSelectSelfGift,
+
+    /// <summary>The BtnSelectSelfGacha entry.</summary>
+    BtnSelectSelfGacha,
+
+    /// <summary>The BtnSkillResonance entry.</summary>
+    BtnSkillResonance,
+
+    /// <summary>The BtnNationalTournament entry.</summary>
+    BtnNationalTournament,
+
     /// <summary>The Shop entry.</summary>
     Shop,
 

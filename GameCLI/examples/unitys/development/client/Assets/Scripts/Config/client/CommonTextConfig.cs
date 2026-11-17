@@ -88,6 +88,15 @@ namespace Config
         public const int SHOP_HELP = 3019;
         public const int SHOP_BALANCE = 3020;
         public const int SHOP_FIRST_PAY = 3021;
+        public const int HOME_TEXT_0_6_2_0_5_2 = 3025;
+        public const int HOME_TEXT_0_6_2_0_6_2 = 3027;
+        public const int HOME_TEXT_0_6_2_0_12_0_0_0 = 3033;
+        public const int HOME_TEXT_0_6_2_0_12_0_1_0 = 3034;
+        public const int HOME_TEXT_0_6_2_0_13_0_0_0 = 3035;
+        public const int HOME_TEXT_0_6_2_0_13_0_0_5_0 = 3038;
+        public const int HOME_TEXT_0_6_2_0_13_0_1_0 = 3039;
+        public const int HOME_TEXT_0_6_2_0_14_0_2_0 = 3040;
+        public const int HOME_TEXT_0_6_3_0_2_1 = 3062;
         /// <summary>
         /// config CommonTextConfig table
         /// </summary>

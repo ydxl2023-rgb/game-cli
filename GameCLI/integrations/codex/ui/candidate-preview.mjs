@@ -1,10 +1,12 @@
 import {validateDesign,layerStyle,nodeName} from '../shared/design.mjs';
 import {createPreviewState,runPreviewAction,hierarchyVisibility,defaultAction} from '../shared/preview.mjs';
 import {playAnimations} from './animation-player.mjs';
+import {loadDesignFonts} from './fonts.mjs';
 
 // A detached, read-only runtime: never writes the candidate or its project.
 export function mountCandidatePreview(host,payload){
  const design=validateDesign(payload.design),root=design.nodes.find(n=>n.id===payload.root);
+ loadDesignFonts(design);
  let state;const elements=new Map();
  const toolbar=document.createElement('div');toolbar.className='preview-toolbar';
  const label=document.createElement('span');label.textContent=`${design.width} × ${design.height} · 可点击预演`;

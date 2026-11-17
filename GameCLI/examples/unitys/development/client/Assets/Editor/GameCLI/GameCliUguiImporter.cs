@@ -59,7 +59,7 @@ public static class GameCliUguiImporter
         var design = new Design { width = Number(designJson, "width"), height = Number(designJson, "height") };
         if (design.width < 240 || design.height < 240 || design.width > 4096 || design.height > 4096) throw new Exception("Invalid design resolution.");
         var nodes = ((JArray)designJson["nodes"]).Cast<JObject>().ToArray();
-        if (nodes.Length == 0 || nodes.Length > 300) throw new Exception("Expected 1..300 nodes.");
+        if (nodes.Length == 0 || nodes.Length > 2000) throw new Exception("Expected 1..2000 nodes.");
         var byId = nodes.ToDictionary(n => (string)n["id"]);
         var roots = nodes.Where(n => string.IsNullOrEmpty((string)n["parent"])).ToArray();
         if (roots.Length != 1 || (string)roots[0]["id"] != (string)payload["root"]) throw new Exception("payload.root must identify the only root node.");

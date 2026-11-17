@@ -84,7 +84,7 @@ foreach (var file in input.Files)
                 int rank = orderedMember switch {
                     FieldDeclarationSyntax or PropertyDeclarationSyntax or EventFieldDeclarationSyntax => 0,
                     ConstructorDeclarationSyntax => 1,
-                    MethodDeclarationSyntax m when m.Modifiers.Any(SyntaxKind.OverrideKeyword) && new[]{"OnActive","OnDetive","Install","Uninstall","Startup","Shutdown","Update"}.Contains(m.Identifier.ValueText) => 2,
+                    MethodDeclarationSyntax m when m.Modifiers.Any(SyntaxKind.OverrideKeyword) && new[]{"OnActive","OnDetive","Install","Uninstall","Startup","Shutdown","Update","Awake","Start","OnEnable","OnDisable","OnDestroy","OnValidate","OnCanvasHierarchyChanged","OnTransformParentChanged","OnRectTransformDimensionsChange","Reset"}.Contains(m.Identifier.ValueText) => 2,
                     MethodDeclarationSyntax m when m.Modifiers.Any(SyntaxKind.PublicKeyword) => 3,
                     MethodDeclarationSyntax m when m.Modifiers.Any(SyntaxKind.ProtectedKeyword) || m.Modifiers.Any(SyntaxKind.InternalKeyword) => 4,
                     MethodDeclarationSyntax => 5,

@@ -1,4 +1,5 @@
 import {createDraftStorage,indexedDraftBackend} from './draft-storage.mjs';
+import {loadDesignFonts} from './fonts.mjs';
 import {pruneGroups} from '../shared/relation-groups.mjs';
 import {setupCompositionBar} from './composition-bar.mjs';
 import {workspaceNavigation} from './workspace-navigation.mjs';
@@ -129,6 +130,7 @@ function fit() {
 function select(id, preserveTree = false) { if(preview)return; selected = id; $('current-ui').textContent='当前节点：'+(node()?.name??'Canvas'); $('inspector').open = true; render(preserveTree); }
 function render(preserveTree = false) {
   stopAnimations();
+  loadDesignFonts(design);
   resolveLayout(design);
   renderRectInspector();
   $('design-title').textContent = 'Canvas';
