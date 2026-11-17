@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Shop",
+  "status": "failed",
+  "passed": false,
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/Shop/ShopDemoCatalog.cs",
+      "line": 8,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    }
+  ],
+  "statistics": {
+    "files": 19,
+    "lines": 1108,
+    "blankLines": 216,
+    "commentLines": 172,
+    "members": 138,
+    "documentedMembers": 138,
+    "blankLineRate": 0.19494584837545126,
+    "commentLineRate": 0.1552346570397112,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopDemoCatalog.cs",
+      "sha256": "162f25c3534cd5ca51bf15dcdfd16bc64854cc51e45c88d5523c67d5d65ad484"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopEntity.cs",
+      "sha256": "b77dc854b2a18cabc9e0969dee2492a4dab43aa464e6b6ad4f78b83d26fa6bbf"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopSystem.cs",
+      "sha256": "f7df26ce99a341a5a99a4f7c11dc4ec57ac9929c334b44c1ebbea4f1b14d6ee4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShop.cs",
+      "sha256": "a17b24186f6b2fe5d3b2d7cb47cf1b565ebcae19a012115169980e7bf6f26c11"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopGift.cs",
+      "sha256": "adf1f4ceb16815cd4512fafe3dadaa6452d27518ae4e26277817bed355f65bc9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopGiftItem.cs",
+      "sha256": "1fee85c8e36e1d76669451e13fc73db4a8bd3a3010547d36bbca295b8f582431"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopGroup.cs",
+      "sha256": "bd608f2e62a94063ebbf4324713e4784bbb343ccc8ff81daba412d21bdb1f31e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopPurchase.cs",
+      "sha256": "d4d50f650aa8100c1f11e528f2b5fa8da012907fb6eda425471554ee569061c8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopRecharge.cs",
+      "sha256": "9f037ea213aeb4861600d542e856accf30c84e05d7025947f0aaec60d7964de4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopRechargeItem.cs",
+      "sha256": "8482b31c1a78bc68834914df78ccb240d949b32b9f0b68ca98889eda646562f1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopTab.cs",
+      "sha256": "2892d33d24759b85c57c844218b67468698b555d99a58fd1b73e1a55c0515e0a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShop.cs",
+      "sha256": "e14c4fb81c7a624004c1954a3f9999d1a5d491d8b7cefd40bf2ef4a84930d0cf"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopGift.cs",
+      "sha256": "a586a6940e93846161d94443fc40d2456da38882799e5a97a51c2db1f07aa9de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopGiftItem.cs",
+      "sha256": "73692e2542f70c1ab7f2f135f5d9a644020a56b6452482fa765d63bfabff7024"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopGroup.cs",
+      "sha256": "92c7f83f422d012b6767354dbb27d434f0b73b3f4938d903028a0e5415dc272b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopPurchase.cs",
+      "sha256": "e0c00ede5c754465e391016b44a3ba968324d0268fe68d502c1ed163db22feee"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopRecharge.cs",
+      "sha256": "80641209e7eb09c3c2cd651af168085d4120dbacc97c91cd17751b63c8bd13c3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopRechargeItem.cs",
+      "sha256": "a1650c829c7875e321b372d48fe3461ba1a7965da0d4e71d956dbc08804ef0d6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopTab.cs",
+      "sha256": "9d98a6f8257fb8496185cf37e68f8d5699a1538bd2538ca167ba41e484c79a38"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\30391925-42d7-479e-973e-16c69e204579"
+}

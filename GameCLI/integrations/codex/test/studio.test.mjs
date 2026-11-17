@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { starter, validateDesign, designHtml, pointInDesign, appendControl, phoneDesign, textTarget, resizeNode, resizedRect } from '../shared/design.mjs';
+import { maxDesignNodes, starter, validateDesign, designHtml, pointInDesign, appendControl, phoneDesign, textTarget, resizeNode, resizedRect } from '../shared/design.mjs';
 import { createStore } from '../server/store.mjs';
 import { createHttpServer } from '../server/http.mjs';
 import { createMcpServer, resourceUri } from '../server/mcp.mjs';
@@ -50,7 +50,7 @@ test('inventory system is an isolated prefab group with wired actions and unique
   assert.ok(group.filter(n=>n.template==='ItemSlot').every(n=>n.width===128 && n.height===128));
   const second=appendControl(d,'InventorySystem',null,{x:0,y:0});
   assert.notEqual(second,id); assert.notEqual(d.nodes.find(n=>n.id===second+'Use').action.target,dialog.id);
-  while(d.nodes.length+93<=300) appendControl(d,'InventorySystem',null,{x:0,y:0});
+  while(d.nodes.length+93<=maxDesignNodes) appendControl(d,'InventorySystem',null,{x:0,y:0});
   const before=JSON.stringify(d); assert.throws(()=>appendControl(d,'InventorySystem',null,{x:0,y:0})); assert.equal(JSON.stringify(d),before);
   const dir=await mkdtemp(join(tmpdir(),'gamecli-system-'));t.after(()=>rm(dir,{recursive:true,force:true}));
   const store=createStore(dir);await store.save(d,0);

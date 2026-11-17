@@ -1,0 +1,36 @@
+{
+  "status": "partial",
+  "independentReviewer": "shop_source_review",
+  "passed": [
+    "Unity compilation with no Console errors",
+    "verify code: 19 files, 138 documented members, zero issues",
+    "8 isolated transaction invariants",
+    "real raycast recharge purchase: balance 100000 to 35200, 6480 tokens, count 1",
+    "real cancel without debit",
+    "close leaves no Shop widgets; reopen succeeds",
+    "rapid category switch leaves only current child page",
+    "controlled delayed load: cancel, generic close/reopen, type close/reopen",
+    "main/purchase/gift visual inspection at current Game view size",
+    "currency icon interaction bound to actual artwork and raycast succeeds",
+    "Four candidate prefabs: zero known structural/binding differences after GUID/Metadata corrections"
+  ],
+  "unverified": [
+    "Full curve-by-curve visual comparison and every recycled cell state",
+    "Other aspect ratios and target-device performance",
+    "verify prefab remains incomplete: exporter lacks full Animator/RawImage/font/resource contracts; no claim of full automated equivalence"
+  ],
+  "scope": [
+    "No real payment, network, first-recharge bonuses or inactive item-conversion effects",
+    "Reward detail buttons are not integrated; reward data is display-only",
+    "Browser main card is a dynamic shell; functional demo uses Unity"
+  ],
+  "evidence": [
+    "review-*.json",
+    "review-main.png",
+    "review-purchase.png",
+    "review-gift.png",
+    "delayed-load.json",
+    "code-final.json",
+    "currency2-final.json"
+  ]
+}

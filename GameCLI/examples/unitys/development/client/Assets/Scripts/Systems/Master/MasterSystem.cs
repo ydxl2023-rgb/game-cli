@@ -72,6 +72,7 @@ public class MasterSystem : RuntimeSystem
         Subscribe<LoginSucceed>(OnLoginSucceed);
         Subscribe<SystemActive>(OnSystemActive);
         Subscribe<SystemDetive>(OnSystemDetive);
+        Subscribe<HomeEntryRequested>(OnHomeEntryRequested);
 
         return true;
     }
@@ -84,6 +85,14 @@ public class MasterSystem : RuntimeSystem
     {
         if (IsActive() && IsSystemType(data.type))
             XCoroutine.Run(ActivateSystem(data));
+    }
+
+    /// <summary>Route the reference Home mall entry through the system coordinator.</summary>
+    /// <param name="data">Home navigation request.</param>
+    private void OnHomeEntryRequested(HomeEntryRequested data)
+    {
+        if (IsActive() && data.entry == HomeEntry.Shop)
+            OnSystemActive(new SystemActive { type = typeof(ShopSystem) });
     }
 
     /// <summary>
@@ -175,6 +184,7 @@ public class MasterSystem : RuntimeSystem
     /// <returns>True after requesting Home removal from the dispatcher.</returns>
     public bool Unload()
     {
+        dispatcher.Unload(typeof(ShopSystem));
         dispatcher.Unload(typeof(NoticeSystem));
         dispatcher.Unload(typeof(FightSystem));
         dispatcher.Unload(typeof(HomeSystem));

@@ -267,6 +267,101 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext2320 = 124037985;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-3001-Context-24-2-0
+        /// 充值
+        /// </summary>
+        public const int LGCommonTextContext2420 = 1162366916;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3002-Context-25-2-0
+        /// 礼包
+        /// </summary>
+        public const int LGCommonTextContext2520 = 1020902332;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3003-Context-26-2-0
+        /// 本地模拟商城 · 不产生真实扣款
+        /// </summary>
+        public const int LGCommonTextContext2620 = 2034574324;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3005-Context-28-2-0
+        /// {0}钻石
+        /// </summary>
+        public const int LGCommonTextContext2820 = 776390596;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3006-Context-29-2-0
+        /// 每日补给礼包
+        /// </summary>
+        public const int LGCommonTextContext2920 = 1987598716;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3007-Context-30-2-0
+        /// 成长补给礼包
+        /// </summary>
+        public const int LGCommonTextContext3020 = 1924541015;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3008-Context-31-2-0
+        /// 豪华补给礼包
+        /// </summary>
+        public const int LGCommonTextContext3120 = 1001512947;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3009-Context-32-2-0
+        /// 剩余可购：{0}
+        /// </summary>
+        public const int LGCommonTextContext3220 = 1553083199;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3010-Context-33-2-0
+        /// 已售罄
+        /// </summary>
+        public const int LGCommonTextContext3320 = 716274734;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3011-Context-34-2-0
+        /// 模拟购买
+        /// </summary>
+        public const int LGCommonTextContext3420 = 507342890;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3012-Context-35-2-0
+        /// 模拟购买后获得以下道具
+        /// </summary>
+        public const int LGCommonTextContext3520 = 663432854;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3013-Context-36-2-0
+        /// 钻石
+        /// </summary>
+        public const int LGCommonTextContext3620 = 1132707122;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3015-Context-38-2-0
+        /// 本地模拟购买成功，已发放{0}钻石
+        /// </summary>
+        public const int LGCommonTextContext3820 = 1985261034;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3016-Context-39-2-0
+        /// 模拟余额不足
+        /// </summary>
+        public const int LGCommonTextContext3920 = 1526122558;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3017-Context-40-2-0
+        /// 请选择可购买的商品
+        /// </summary>
+        public const int LGCommonTextContext4020 = 68645767;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3018-Context-41-2-0
+        /// 本地奖励数量已达上限
+        /// </summary>
+        public const int LGCommonTextContext4120 = 1190604971;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3019-Context-42-2-0
+        /// 模板使用本地示例商品与模拟余额；付款、活动及客服接口尚未接入。
+        /// </summary>
+        public const int LGCommonTextContext4220 = 2006236223;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3020-Context-43-2-0
+        /// 模拟余额：{0}
+        /// </summary>
+        public const int LGCommonTextContext4320 = 1837377152;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3021-Context-44-2-0
+        /// 首充赠送
+        /// </summary>
+        public const int LGCommonTextContext4420 = 763157560;
+        /// <summary>
         /// LG-FunctionSystemConfig-FunctionSystem-10001-Name-3-2-0
         /// 核心系统
         /// </summary>

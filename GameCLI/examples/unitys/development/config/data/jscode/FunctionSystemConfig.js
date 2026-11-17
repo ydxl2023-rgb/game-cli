@@ -11,6 +11,7 @@ SYS_BACKPACK=10006
 SYS_SEVENDAYLOGIN=10007
 SYS_FIGHT=10008
 SYS_NOTICE=10009
+SYS_SHOP=10010
 
 
 propFunctionSystemConfig = {
@@ -22,6 +23,7 @@ propFunctionSystemConfig = {
 	[10006]:{ID:10006,NumID:10006,Name:"1857346161",ClassType:"BackpackSystem",InstallOnStartup:1,Condtions:[],Active:0,SceneId:0},
 	[10007]:{ID:10007,NumID:10007,Name:"1216255419",ClassType:"SevenDayLoginSystem",InstallOnStartup:1,Condtions:[],Active:0,SceneId:0},
 	[10008]:{ID:10008,NumID:10008,Name:"1777863556",ClassType:"FightSystem",InstallOnStartup:1,Condtions:[],Active:0,SceneId:0},
-	[10009]:{ID:10009,NumID:10009,Name:"518964932",ClassType:"NoticeSystem",InstallOnStartup:0,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0,Version:""}
+	[10009]:{ID:10009,NumID:10009,Name:"518964932",ClassType:"NoticeSystem",InstallOnStartup:0,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0,Version:""},
+	[10010]:{ID:10010,NumID:10010,Name:"Shop",ClassType:"ShopSystem",InstallOnStartup:0,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0}
 
 }

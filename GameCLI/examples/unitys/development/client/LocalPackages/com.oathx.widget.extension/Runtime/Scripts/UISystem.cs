@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Oathx.Widget;
@@ -56,8 +56,8 @@ namespace Oathx.Widget
         /// <summary>
         /// Under loading widget
         /// </summary>
-        protected readonly Dictionary<string, bool>
-            loadingMap = new Dictionary<string, bool>();
+        protected readonly Dictionary<string, object>
+            loadingMap = new Dictionary<string, object>();
 
         /// <summary>
         /// current opened widgets
@@ -428,11 +428,18 @@ namespace Oathx.Widget
             {
                 if (!loadingMap.ContainsKey(widgetName))
                 {
-                    loadingMap[widgetName] = true;
+                    var request = new object();
+                    loadingMap[widgetName] = request;
 
                     UIResourceManager.GetSingleton().LoadAsync<GameObject>(path, (prefab) =>
                     {
+                        // A closed or replaced request must never create a stale page.
+                        if (!loadingMap.TryGetValue(widgetName, out var current) || !ReferenceEquals(current, request))
+                            return;
+
                         loadingMap.Remove(widgetName);
+                        if (!prefab || !parent)
+                            return;
 
                         T widget = CreateWidget<T>(widgetName, path, prefab as GameObject, setting, parent);
 #if UNITY_EDITOR
@@ -463,11 +470,18 @@ namespace Oathx.Widget
             {
                 if (!loadingMap.ContainsKey(widgetName))
                 {
-                    loadingMap[widgetName] = true;
+                    var request = new object();
+                    loadingMap[widgetName] = request;
 
                     UIResourceManager.GetSingleton().LoadAsync<GameObject>(path, (prefab) =>
                     {
+                        // A closed or replaced request must never create a stale page.
+                        if (!loadingMap.TryGetValue(widgetName, out var current) || !ReferenceEquals(current, request))
+                            return;
+
                         loadingMap.Remove(widgetName);
+                        if (!prefab || !parent)
+                            return;
 
                         IWidget widget = CreateWidget(widgetType, path, prefab as GameObject, setting, parent);
 #if UNITY_EDITOR
@@ -774,6 +788,8 @@ namespace Oathx.Widget
         public void CloseWidget(System.Type type, System.Action complete = null, bool immediate = false)
         {
             var widgetName = type.Name;
+            loadingMap.Remove(widgetName);
+
             if (widgets.ContainsKey(widgetName))
             {
                 var widget = widgets[widgetName];
@@ -808,6 +824,8 @@ namespace Oathx.Widget
         public void UnloadWidget<T>(System.Action complete = null, bool immediate = false) where T : IWidget
         {
             var widgetName = typeof(T).Name;
+            loadingMap.Remove(widgetName);
+
             if (widgets.ContainsKey(widgetName))
             {
                 var widget = widgets[widgetName];

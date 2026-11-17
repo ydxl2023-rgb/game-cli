@@ -172,7 +172,7 @@ public static class GameCliUguiImporter
                 }
                 else if (type != "Container" || ((string)n["surface"] != "transparent" && (string)n["template"] != "ConfirmDialog" && (string)n["template"] != "InventorySystem")) graphic = go.AddComponent<Image>();
                 // Keep the hit graphic without drawing a background over child artwork.
-                if (type == "Button" && n["image"] == null && (string)n["surface"] == "transparent")
+                if ((type == "Button" || type == "Image") && n["image"] == null && (string)n["surface"] == "transparent")
                     color.a = 0f;
 
                 if(graphic!=null){graphic.color=color;graphic.raycastTarget=type=="Button";}

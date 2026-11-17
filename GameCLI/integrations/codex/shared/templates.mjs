@@ -3,7 +3,7 @@ import {remapAnimations} from './animations.mjs';
 import {initialTemplateGroups} from './template-groups.mjs';
 import {ensureAnimationHost} from './animation-host.mjs';
 import {captureBounds} from './rect-transform.mjs';
-import {appendControl,validateDesign,resizeNode,layoutScrollPanel} from './design.mjs';
+import {maxDesignNodes,appendControl,validateDesign,resizeNode,layoutScrollPanel} from './design.mjs';
 
 export const categories=[{id:'prefab',name:'预制控件',sort:10},{id:'system',name:'系统模板',sort:20}];
 export function builtInTemplates() {
@@ -39,7 +39,7 @@ export function instantiateTemplate(design, template, parent, point, {allowCode=
     const validated=validateDesign({...design,nodes:[...design.nodes,root]});design.nodes=validated.nodes;return id;
   }
   const source=validateTemplate(template.payload,template.category), nodes=structuredClone(source.design.nodes);
-  if(design.nodes.length+nodes.length>300) throw new Error('添加模板后超出 300 个节点上限。');
+  if(design.nodes.length+nodes.length>maxDesignNodes) throw new Error(`添加模板后超出 ${maxDesignNodes} 个节点上限。`);
   const root=nodes.find(n=>n.id===source.root);
   if(template.id)root.templateSourceId=template.id;
   root.templateSourceVersion=template.version??1;

@@ -1,0 +1,42 @@
+// Preserve published history and unrelated project edits while synchronizing a reviewed Shop candidate.
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createWorkspaces} from '../server/workspaces.mjs';
+import {validateDesign} from '../shared/design.mjs';
+import {instantiateTemplate} from '../shared/templates.mjs';
+import {remapAnimations} from '../shared/animations.mjs';
+const w=createWorkspaces(),projectId='p-2d314388-18c4-42f5-80eb-f6729dd23f0e';
+try{
+ const payload=JSON.parse(await readFile('.data/imports/sv-shop/publication.json','utf8'));
+ const scripts=JSON.parse(await readFile('.data/imports/sv-shop/scripts.json','utf8'));
+ const published=await w.templateEditor.published('SvShop');
+ const opened=await w.templateEditor.open({templateId:'SvShop'}),draft=await w.templateEditor.read(opened.id);
+ assert.deepEqual(draft.design,published.design,'Do not overwrite an edited template draft');
+ const design=payload.design,sourceRoot=design.nodes.find(n=>n.parent===null);
+ sourceRoot.templateSourceId='SvShop';sourceRoot.scripts=scripts;sourceRoot.configurations=payload.configurations;
+ const project=await w.snapshot(projectId),root=project.design.nodes.find(n=>n.parent===null&&n.templateSourceId==='SvShop');
+ assert(root&&root.templateSourceVersion===published.revision,'Project Shop version differs from the baseline');
+ assert(root.id.endsWith(sourceRoot.id),'Unexpected instance mapping');
+ const prefix=root.id.slice(0,-sourceRoot.id.length),ids=new Set([root.id]);
+ let count;do{count=ids.size;for(const n of project.design.nodes)if(ids.has(n.parent))ids.add(n.id);}while(count!==ids.size);
+ const expected={schemaVersion:1,name:project.design.name,width:project.design.width,height:project.design.height,nodes:[]};
+ const baselineRoot=published.design.nodes.find(n=>n.parent===null);
+ const baselineId=instantiateTemplate(expected,{id:'SvShop',category:'system',version:published.revision,payload:{root:baselineRoot.id,design:published.design,configurations:baselineRoot.configurations},scripts:baselineRoot.scripts},null,{x:960,y:540});
+ assert.equal(baselineId,root.id,'Cannot prove instance identity');
+ const normalize=nodes=>nodes.map(n=>{const copy=structuredClone(n);if(copy.id===root.id){delete copy.relationPosition;delete copy.relationScale;}return copy;}).sort((a,b)=>a.id.localeCompare(b.id));
+ assert.deepEqual(normalize(project.design.nodes.filter(n=>ids.has(n.id))),normalize(expected.nodes),'Shop has user edits; do not replace its subtree');
+ const animations=a=>structuredClone(a??[]).sort((x,y)=>x.id.localeCompare(y.id));
+ assert.deepEqual(animations((project.design.animations??[]).filter(a=>ids.has(a.hostNodeId))),animations(expected.animations),'Shop animation was edited');
+ const saved=await w.templateEditor.save(opened.id,{draftId:opened.id,revision:draft.revision,design});
+ const candidate=await w.templateEditor.submit(opened.id,{draftId:opened.id,revision:saved.revision});
+ const map=new Map(design.nodes.map(n=>[n.id,prefix+n.id]));
+ const replacement=structuredClone(design.nodes).map(n=>{const value={...n,id:map.get(n.id),parent:n.parent===null?null:map.get(n.parent)};if(value.action?.target)value.action.target=map.get(value.action.target);if(value.startupComplete?.target)value.startupComplete.target=map.get(value.startupComplete.target);return value;});
+ const newRoot=replacement.find(n=>n.parent===null);newRoot.relationPosition=root.relationPosition;newRoot.relationScale=root.relationScale;newRoot.templateSourceVersion=published.revision+1;
+ project.design.nodes=[...project.design.nodes.filter(n=>!ids.has(n.id)),...replacement];
+ project.design.animations=[...(project.design.animations??[]).filter(a=>!ids.has(a.hostNodeId)),...remapAnimations(design.animations??[],map,prefix)];
+ project.design=validateDesign(project.design);
+ const result=await w.publish({candidateId:candidate.id,confirm:true});
+ assert.equal(result.version,newRoot.templateSourceVersion,'Unexpected published version');
+ const updated=await w.save(projectId,{projectId,revision:project.revision,projectVersion:project.project.version,design:project.design});
+ console.log(JSON.stringify({template:'SvShop',version:result.version,projectRevision:updated.revision,candidate:candidate.id}));
+}finally{await w.close();}

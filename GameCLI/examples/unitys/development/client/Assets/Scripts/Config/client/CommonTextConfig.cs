@@ -67,6 +67,27 @@ namespace Config
         public const int HOME_TEXT_0_6_5_4_4 = 2009;
         public const int HOME_TEXT_0_6_5_5_0 = 2010;
         public const int HOME_TEXT_0_6_5_6_0 = 2011;
+        public const int SHOP_RECHARGE = 3001;
+        public const int SHOP_GIFTS = 3002;
+        public const int SHOP_DEMO_NOTICE = 3003;
+        public const int SHOP_PRICE = 3004;
+        public const int SHOP_TOKEN_AMOUNT = 3005;
+        public const int SHOP_GIFT_SMALL = 3006;
+        public const int SHOP_GIFT_MEDIUM = 3007;
+        public const int SHOP_GIFT_LARGE = 3008;
+        public const int SHOP_LIMIT = 3009;
+        public const int SHOP_SOLD_OUT = 3010;
+        public const int SHOP_CONFIRM = 3011;
+        public const int SHOP_REWARDS = 3012;
+        public const int SHOP_TOKEN_NAME = 3013;
+        public const int SHOP_COUNT = 3014;
+        public const int SHOP_SUCCESS = 3015;
+        public const int SHOP_INSUFFICIENT = 3016;
+        public const int SHOP_NO_SELECTION = 3017;
+        public const int SHOP_CAPACITY = 3018;
+        public const int SHOP_HELP = 3019;
+        public const int SHOP_BALANCE = 3020;
+        public const int SHOP_FIRST_PAY = 3021;
         /// <summary>
         /// config CommonTextConfig table
         /// </summary>

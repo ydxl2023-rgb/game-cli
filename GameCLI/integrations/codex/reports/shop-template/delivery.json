@@ -1,0 +1,32 @@
+{
+  "template": "SvShop",
+  "version": 3,
+  "projectRevision": 30,
+  "pages": [
+    "Shop",
+    "ShopRecharge",
+    "ShopGift",
+    "ShopPurchase"
+  ],
+  "sourceFiles": 19,
+  "widgets": 8,
+  "metadataFields": 64,
+  "configurationRows": 21,
+  "localization": "propCommonText with generated propLanguage dependency",
+  "navigation": "Home Shop entry -> MasterSystem -> ShopSystem; GameCLIApp relationship matches",
+  "checks": [
+    "Compilation without errors",
+    "Code conventions passed",
+    "Independent runtime review",
+    "Recharge/gift real pointer purchases",
+    "Cancel/close/reopen/category switching",
+    "Controlled delayed-load cancellation",
+    "Four prefab candidates have zero known differences",
+    "DB and GameCLIApp source bundle and workbook hashes match"
+  ],
+  "limitations": [
+    "Automated prefab verification remains incomplete for exporter-unsupported Animator/RawImage/font/resource contracts",
+    "Browser card is the dynamic shell; use Unity for populated product lists and transactions",
+    "Real payments, first-pay promotion calculations and extended operational mall categories are not implemented"
+  ]
+}

@@ -109,6 +109,7 @@ namespace Config
         public const int SYS_SEVENDAYLOGIN = 10007;
         public const int SYS_FIGHT = 10008;
         public const int SYS_NOTICE = 10009;
+        public const int SYS_SHOP = 10010;
         /// <summary>
         /// config FunctionSystemConfig table
         /// </summary>

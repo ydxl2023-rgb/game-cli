@@ -2,6 +2,8 @@ import {validateConfigurations} from './configurations.mjs';
 import {validateGroups} from './relation-groups.mjs';
 import {validateAnimations} from './animations.mjs';
 import {resolveLayout, captureBounds} from './rect-transform.mjs';
+// Bound aggregate project size while allowing multiple complete system templates.
+export const maxDesignNodes = 2000;
 export const types = ['Container', 'Image', 'Text', 'Button', 'Progress'];
 export function nodeName(n) {
   if (n.name) return n.name[0].toUpperCase()+n.name.slice(1);
@@ -163,7 +165,7 @@ export function appendItemSlot(d, parent, point) {
 export function appendScrollPanel(d, parent, point) {
   const container = d.nodes.find(n => n.id === parent);
   if (parent !== null && container?.type !== 'Container') throw new Error('目标必须为容器。');
-  if (d.nodes.length + 74 > 300) throw new Error('添加滚动面板需要 74 个节点，超出 300 个节点上限。');
+  if (d.nodes.length + 74 > maxDesignNodes) throw new Error(`添加滚动面板需要 74 个节点，超出 ${maxDesignNodes} 个节点上限。`);
   const ids = new Set([d.name, ...d.nodes.map(n => n.id)]);
   let i = 1; while (ids.has(`ScrollPanel${i}`) || ids.has(`ScrollPanel${i}Content`)) i++;
   const id = `ScrollPanel${i}`, width = 464, height = 320;
@@ -186,7 +188,7 @@ export function layoutConfirmDialog(d, root) {
   for (const suffix of ['Cancel','Confirm']) { const button=get(suffix),label=get(suffix+'Label'); if(button&&label)Object.assign(label,{x:0,y:0,width:button.width,height:button.height}); }
 }
 export function appendConfirmDialog(d) {
-  if (d.nodes.length+9>300) throw new Error('添加确认对话框超出 300 个节点上限。');
+  if (d.nodes.length+9>maxDesignNodes) throw new Error(`添加确认对话框超出 ${maxDesignNodes} 个节点上限。`);
   const suffixes=['','Mask','Panel','Title','Message','Cancel','CancelLabel','Confirm','ConfirmLabel'];
   const ids=new Set([d.name,...d.nodes.map(n=>n.id)]);
   let i=1; while(suffixes.some(s=>ids.has(`ConfirmDialog${i}${s}`))) i++;
@@ -252,7 +254,7 @@ export function validateDesign(value) {
   for(const n of value?.nodes??[])if(n.templateSourceId!==undefined&&(typeof n.templateSourceId!=="string"||!n.templateSourceId||n.templateSourceId.length>128))throw new Error("模板来源标识无效。");
   if (!value || value.schemaVersion !== 1 || !/^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(value.name)) throw new Error('设计名称须为以字母开头的英文标识，最多 64 字符。');
   for (const key of ['width', 'height']) if (!Number.isInteger(value[key]) || value[key] < 240 || value[key] > 4096) throw new Error('设计分辨率须为 240–4096 的整数。');
-  if (!Array.isArray(value.nodes) || value.nodes.length > 300) throw new Error('最多支持 300 个节点。');
+  if (!Array.isArray(value.nodes) || value.nodes.length > maxDesignNodes) throw new Error(`最多支持 ${maxDesignNodes} 个节点。`);
   const ids = new Set();
   for (const n of value.nodes) {
     if (!n || n.id === 'Canvas' || !/^[A-Za-z][A-Za-z0-9_]{0,63}$/.test(n.id) || n.id === value.name || ids.has(n.id)) throw new Error('节点 ID 必须合法、唯一且不能与设计同名。');
