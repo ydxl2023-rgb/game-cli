@@ -39,3 +39,7 @@ description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSys
 ## 配置包检查
 
 读取模板独立 `configurations` 字段，按 [配置包规范](../../../system-development/references/configurations.md) 检查本系统的源表、结构化条目、代码别名、导表及运行时加载依赖。未声明配置包不等于没有依赖；缺失资料应明确记录。共享表只合并本系统所需条目，保留产品原有数据与翻译。
+
+## 实体职责约定
+
+LoginEntity 持有区服目录与选择，SetServers 验证并复制输入，GetServers / GetSelectedServer 返回独立快照；RestoreSelection、SelectServer、CanEnter、RecordLoginServer 封装业务判断和持久化。LoginSystem 保留分类标题与当前页面索引等展示状态，不持有权威区服目录；登录前调用实体 CanEnter，不以 VM.CanEnter 作为业务依据。

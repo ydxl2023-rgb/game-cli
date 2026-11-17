@@ -150,7 +150,7 @@ public static class HomePresentationProbe
         if (!UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget))
             return false;
 
-        entity.indicators[indicator] = visible;
+        entity.SetIndicator(indicator, visible);
 
         return widget.RefreshPresentation(entity);
     }

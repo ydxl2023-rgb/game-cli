@@ -36,7 +36,8 @@ for ($index=0; $index -lt $contract.states.Count; $index++) {
 Set-Field $root UIHome dropImage "@$($paths['Home0_6_5_0_4'])#Image"
 Set-Field $root UIHome doubleDrop 'Assets/Data/Widgets/Home/HomeAssets/UI_System_DoubleDrop_02.png'
 Set-Field $root UIHome tripleDrop 'Assets/Data/Widgets/Home/HomeAssets/hlhd_3bei.png'
-foreach ($binding in $report.bindings | Where-Object dynamic -eq $true) {
+$placeholders = @($report.unimplementedTextPlaceholders) + @($report.bindings | Where-Object dynamic -eq $true)
+foreach ($binding in ($placeholders | Where-Object { $null -ne $_ } | Sort-Object node -Unique)) {
     Set-Field $paths[$binding.node] Text m_Text ' '
 }
 foreach ($grid in $contract.layouts) {

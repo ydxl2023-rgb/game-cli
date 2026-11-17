@@ -182,7 +182,7 @@ public class ShopSystem : RuntimeSystem
         if (!entity)
             return false;
 
-        var products = entity.products.FindAll(item => item.category == entity.category);
+        var products = entity.GetProducts();
         if (index < 0 || index >= products.Count || !entity.SelectProduct(products[index].id))
             return false;
 
@@ -281,7 +281,7 @@ public class ShopSystem : RuntimeSystem
         if (!entity)
             return false;
 
-        if (entity.products.Count > 0)
+        if (entity.productCount > 0)
             return true;
 
         return entity.InitializeDemo(ShopDemoCatalog.Create(), 100000);
@@ -297,7 +297,7 @@ public class ShopSystem : RuntimeSystem
             if (vm)
             {
                 var items = new VList<VMShopRechargeItem>();
-                foreach (var product in entity.products.FindAll(item => item.category == entity.category))
+                foreach (var product in entity.GetProducts())
                     items.Add(new VMShopRechargeItem {
                         Title = ProductTitle(product),
                         Price = CommonText.Get(Excel.SHOP_PRICE, Money(product.price)),
@@ -317,7 +317,7 @@ public class ShopSystem : RuntimeSystem
             if (vm)
             {
                 var items = new VList<VMShopGiftItem>();
-                foreach (var product in entity.products.FindAll(item => item.category == entity.category))
+                foreach (var product in entity.GetProducts())
                     items.Add(new VMShopGiftItem {
                         Title = ProductTitle(product),
                         Price = CommonText.Get(Excel.SHOP_PRICE, Money(product.price)),

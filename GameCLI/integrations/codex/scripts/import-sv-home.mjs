@@ -49,6 +49,7 @@ const aliases = {
   icon_1:'CurrencyOne', icon_2:'CurrencyTwo', icon_3:'CurrencyThree',
   add_1:'AddCurrencyOne', add_2:'AddCurrencyTwo', add_3:'AddCurrencyThree',
 };
+const unimplementedTextPlaceholders = [];
 const values = {'0/6/0/0/4':'PlayerName','0/6/0/0/6/0/0':'PlayerLevel',
   '0/6/1/0/0/2':'CurrencyOneAmount','0/6/1/0/1/2':'CurrencyTwoAmount',
   '0/6/1/0/2/2':'CurrencyThreeAmount','0/6/3/3/1':'ChatMessage'};
@@ -83,12 +84,13 @@ for (const n of included) {
   if(values[n.path]) bindings.push({node:node.id,sourcePath:n.path,name:values[n.path],kind:'string'});
   if(dynamicText){
     node.name='Label'+n.path.replaceAll('/','');
-    bindings.push({node:node.id,sourcePath:n.path,name:node.name,kind:'string',dynamic:true,sourceText});
+    // Unimplemented activity placeholders stay empty in the prefab, without VM fields.
+    unimplementedTextPlaceholders.push({node:node.id,sourcePath:n.path,sourceText});
   }
   if(text && !values[n.path]){
     const alias='HOME_TEXT_'+n.path.replaceAll('/','_');
     texts.push({node:node.id,alias,text,sourceLanguageId:lid?Number(lid[1]):null});
-    bindings.push({node:node.id,sourcePath:n.path,name:'Label'+n.path.replaceAll('/',''),kind:'string',alias});
+    // Static text belongs to the prefab; retain its alias only as localization source material.
     node.name='Label'+n.path.replaceAll('/','');
   }
   let ref=graphic?.references.find(r=>['m_Sprite','m_Texture'].includes(r.property)&&r.path);
@@ -132,7 +134,10 @@ catch(error){if(error.code!=='ENOENT')throw error;}
 for(const n of payload.design.nodes){n.width=Math.max(1,n.width);n.height=Math.max(1,n.height);}
 await mkdir(join(folder,'assets'),{recursive:true});
 for(const [key,a] of assets) await writeFile(join(folder,'assets',key+'.png'),a.body);
-const report={schemaVersion:1,template:'SvHome',status:'draft',scope:'Basic lobby with stateful badges and activity presentation; character and seasonal animation are extension points.',source:{prefab:source.sourcePath,guid:source.sourceGuid,exportSha256:hash(bytes),prefabSha256:hash(await readFile(join(project,source.sourcePath)))},sourceNodes:source.nodes.length,nodes:design.nodes.length,images:assets.size,exclusions,bindings,texts,extensions:['character-presentation','season-presentation','external-system-navigation','remote-service-integration'],limitations:['Static summer artwork retained; character and seasonal effects are deferred.','Original baked image labels remain image assets. Text-component labels require propCommonText integration.','Native typography, layout, state and effects require binding from presentation.json before publication.','Runtime activity artwork must be supplied from verified source configuration; default prefab images do not prove the historical screenshot state.']};
+const activityTemplates=JSON.parse(await readFile('config/home-functions.json','utf8'));
+const pageBindings=bindings.filter(b=>!b.sourcePath.startsWith('0/6/2/0/'));
+pageBindings.unshift({node:id('0/6/2/0'),sourcePath:'0/6/2/0',name:'AcitiveList',kind:'VList<VMActivityEntry>'});
+const report={schemaVersion:1,template:'SvHome',status:'draft',scope:'Basic lobby with stateful badges and activity presentation; character and seasonal animation are extension points.',source:{prefab:source.sourcePath,guid:source.sourceGuid,exportSha256:hash(bytes),prefabSha256:hash(await readFile(join(project,source.sourcePath)))},sourceNodes:source.nodes.length,nodes:design.nodes.length,images:assets.size,exclusions,bindings:pageBindings,activityTemplates,texts,unimplementedTextPlaceholders,extensions:['character-presentation','season-presentation','external-system-navigation','remote-service-integration'],limitations:['Static summer artwork retained; character and seasonal effects are deferred.','Original baked image labels remain image assets. Static Text values are serialized in the prefab; propCommonText is retained as localization source material, not a Home VM dependency.','Native typography, layout, state and effects require binding from presentation.json before publication.','Runtime activity artwork must be supplied from verified source configuration; default prefab images do not prove the historical screenshot state.']};
 await writeFile(join(folder,'template.json'),JSON.stringify(payload,null,2));
 await writeFile(join(folder,'report.json'),JSON.stringify(report,null,2));
 await writeFile(join(folder,'assets/asset-names.json'),JSON.stringify(Object.fromEntries([...assets].map(([k,v])=>[k,v.path])),null,2));

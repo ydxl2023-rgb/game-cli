@@ -583,6 +583,10 @@ GameObject:
   - component: {fileID: 4245767162024691289}
   - component: {fileID: 8740974192450576800}
   - component: {fileID: 442660566624225571}
+  - component: {fileID: 4698072245037427510}
+  - component: {fileID: 533589865854642084}
+  - component: {fileID: 1813012834452366628}
+  - component: {fileID: 8423708829272956439}
   m_Layer: 5
   m_Name: TaskButton
   m_TagString: Untagged
@@ -697,6 +701,84 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4698072245037427510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174219032078007716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 174219032078007716}
+    components:
+    - {fileID: 442660566624225571}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 174219032078007716}
+    components:
+    - {fileID: 1335620367897503910}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &533589865854642084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174219032078007716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12000
+  indicators:
+  - indicator: 2020446927
+    target: {fileID: 3831618328883753966}
+  - indicator: 522313836
+    target: {fileID: 1345093919389813073}
+--- !u!114 &1813012834452366628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174219032078007716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &8423708829272956439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174219032078007716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11007
+    target: {fileID: 3251154417739767061}
+    countText: {fileID: 0}
 --- !u!1 &187857796438930689
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +941,10 @@ GameObject:
   - component: {fileID: 6150920307500597301}
   - component: {fileID: 31060733472403160}
   - component: {fileID: 2869934881153137846}
+  - component: {fileID: 2572450307891185701}
+  - component: {fileID: 6946067386895574745}
+  - component: {fileID: 1968225715981688192}
+  - component: {fileID: 932333141093174181}
   m_Layer: 5
   m_Name: BtnWuYeCanteen
   m_TagString: Untagged
@@ -971,6 +1057,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2572450307891185701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188683421141070683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 188683421141070683}
+    components:
+    - {fileID: 2869934881153137846}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 188683421141070683}
+    components:
+    - {fileID: 6517572997833203082}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6946067386895574745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188683421141070683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12031
+  indicators:
+  - indicator: 160241079
+    target: {fileID: 7704581523228143280}
+--- !u!114 &1968225715981688192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188683421141070683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &932333141093174181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188683421141070683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11034
+    target: {fileID: 887022842755805738}
+    countText: {fileID: 0}
 --- !u!1 &212539896842087067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1220,10 @@ GameObject:
   - component: {fileID: 3632882397079723312}
   - component: {fileID: 3930603398339846225}
   - component: {fileID: 5209382752174242663}
+  - component: {fileID: 7548269720771656051}
+  - component: {fileID: 7536503990838849156}
+  - component: {fileID: 1655121959529280247}
+  - component: {fileID: 1239234346280296691}
   m_Layer: 5
   m_Name: ComeBackButton
   m_TagString: Untagged
@@ -1170,6 +1336,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7548269720771656051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231322137684241475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 231322137684241475}
+    components:
+    - {fileID: 5209382752174242663}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 231322137684241475}
+    components:
+    - {fileID: 8125130354133627190}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &7536503990838849156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231322137684241475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12009
+  indicators:
+  - indicator: 1223798100
+    target: {fileID: 3370622359018236647}
+--- !u!114 &1655121959529280247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231322137684241475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1239234346280296691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231322137684241475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11016
+    target: {fileID: 2575407305576838619}
+    countText: {fileID: 0}
 --- !u!1 &242702801178451084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1746,10 @@ GameObject:
   - component: {fileID: 255803713755281990}
   - component: {fileID: 8579040009581725549}
   - component: {fileID: 4139464301523423355}
+  - component: {fileID: 7787955604829402701}
+  - component: {fileID: 2612610808986342485}
+  - component: {fileID: 5113386743938678973}
+  - component: {fileID: 7924006074532582936}
   m_Layer: 5
   m_Name: TimeLimitGiftButton
   m_TagString: Untagged
@@ -1617,6 +1863,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7787955604829402701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300707618882891864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 300707618882891864}
+    components:
+    - {fileID: 4139464301523423355}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 300707618882891864}
+    components:
+    - {fileID: 8974327591097450747}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &2612610808986342485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300707618882891864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12007
+  indicators:
+  - indicator: 1673184687
+    target: {fileID: 6612441823292381529}
+--- !u!114 &5113386743938678973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300707618882891864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &7924006074532582936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300707618882891864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11014
+    target: {fileID: 3873821519171992863}
+    countText: {fileID: 0}
 --- !u!1 &304680016352621293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,6 +2532,10 @@ GameObject:
   - component: {fileID: 3282666920809876275}
   - component: {fileID: 4195773597472326754}
   - component: {fileID: 944772030605678180}
+  - component: {fileID: 1219450051868604671}
+  - component: {fileID: 8424226044749382093}
+  - component: {fileID: 3827026532456065160}
+  - component: {fileID: 8386861545410054365}
   m_Layer: 5
   m_Name: DirectPurchaseButton1
   m_TagString: Untagged
@@ -2323,6 +2649,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1219450051868604671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560152974260087661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 560152974260087661}
+    components:
+    - {fileID: 944772030605678180}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 560152974260087661}
+    components:
+    - {fileID: 7649450584138742802}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &8424226044749382093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560152974260087661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12005
+  indicators:
+  - indicator: 45613098
+    target: {fileID: 4710134885503051995}
+--- !u!114 &3827026532456065160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560152974260087661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &8386861545410054365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560152974260087661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11012
+    target: {fileID: 1487389341250563163}
+    countText: {fileID: 0}
 --- !u!1 &563625571633083902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +3057,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176896196102470754}
+  - component: {fileID: 4723621123237560653}
+  - component: {fileID: 5536772574951384483}
+  - component: {fileID: 3927572677824896838}
+  - component: {fileID: 3778213228055211721}
   m_Layer: 5
   m_Name: AliPayPackage
   m_TagString: Untagged
@@ -2682,6 +3088,79 @@ RectTransform:
   m_AnchoredPosition: {x: 706, y: -330}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4723621123237560653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666221828057798727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 5487354873893094604}
+    components:
+    - {fileID: 5417273498990967084}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 666221828057798727}
+    components:
+    - {fileID: 176896196102470754}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &5536772574951384483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666221828057798727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12017
+  indicators:
+  - indicator: 124084413
+    target: {fileID: 2525940169124647471}
+--- !u!114 &3927572677824896838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666221828057798727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3778213228055211721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666221828057798727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings: []
 --- !u!1 &693081219884599831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,6 +3428,10 @@ GameObject:
   - component: {fileID: 1402380647425208996}
   - component: {fileID: 527763812206934120}
   - component: {fileID: 3944980863724358416}
+  - component: {fileID: 5204491704640241268}
+  - component: {fileID: 6457865413852600338}
+  - component: {fileID: 4938184866120318404}
+  - component: {fileID: 911587210803765442}
   m_Layer: 5
   m_Name: BtnPreOrder
   m_TagString: Untagged
@@ -3061,6 +3544,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5204491704640241268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825025775599154346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 825025775599154346}
+    components:
+    - {fileID: 3944980863724358416}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 825025775599154346}
+    components:
+    - {fileID: 8536300782028456644}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6457865413852600338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825025775599154346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12019
+  indicators:
+  - indicator: 713899548
+    target: {fileID: 2607692116778908668}
+--- !u!114 &4938184866120318404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825025775599154346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &911587210803765442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825025775599154346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11022
+    target: {fileID: 6220388848770879377}
+    countText: {fileID: 0}
 --- !u!1 &864338723083685226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,6 +4203,10 @@ GameObject:
   - component: {fileID: 7142708966768200968}
   - component: {fileID: 8163270665943210424}
   - component: {fileID: 7247973075929184139}
+  - component: {fileID: 4304105244378841767}
+  - component: {fileID: 9171433817420541793}
+  - component: {fileID: 7004363125667246034}
+  - component: {fileID: 3112989675426002757}
   m_Layer: 5
   m_Name: DirectPurchaseButton
   m_TagString: Untagged
@@ -3756,6 +4319,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4304105244378841767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061598506585411394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 1061598506585411394}
+    components:
+    - {fileID: 7247973075929184139}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 1061598506585411394}
+    components:
+    - {fileID: 6093922848500811207}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &9171433817420541793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061598506585411394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12004
+  indicators:
+  - indicator: 411054284
+    target: {fileID: 7541035642166067339}
+--- !u!114 &7004363125667246034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061598506585411394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3112989675426002757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061598506585411394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11011
+    target: {fileID: 5419924854690399415}
+    countText: {fileID: 0}
 --- !u!1 &1074257335939239984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4400,6 +5039,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9086044107559587826}
+  - component: {fileID: 4087093422744442975}
+  - component: {fileID: 5595862483404711085}
+  - component: {fileID: 5997501814283460413}
+  - component: {fileID: 1082930101626132925}
   m_Layer: 5
   m_Name: PowerfulBait
   m_TagString: Untagged
@@ -4427,6 +5070,80 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4087093422744442975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185900751891959498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 5707067633913719177}
+    components:
+    - {fileID: 5262456613701119043}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 1185900751891959498}
+    components:
+    - {fileID: 9086044107559587826}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &5595862483404711085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185900751891959498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12010
+  indicators: []
+--- !u!114 &5997501814283460413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185900751891959498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1082930101626132925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185900751891959498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11017
+    target: {fileID: 5253692553698353993}
+    countText: {fileID: 0}
 --- !u!1 &1202219950642209101
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,6 +5156,10 @@ GameObject:
   - component: {fileID: 7545842943041866942}
   - component: {fileID: 5047315231596468303}
   - component: {fileID: 3596672019620203354}
+  - component: {fileID: 4544921951455737907}
+  - component: {fileID: 2400470795337655186}
+  - component: {fileID: 3636501208133193789}
+  - component: {fileID: 6773671600495487564}
   m_Layer: 5
   m_Name: BtnTopBattle
   m_TagString: Untagged
@@ -4551,6 +5272,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4544921951455737907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202219950642209101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 1202219950642209101}
+    components:
+    - {fileID: 3596672019620203354}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 1202219950642209101}
+    components:
+    - {fileID: 1131522555935192830}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &2400470795337655186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202219950642209101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12021
+  indicators:
+  - indicator: 1551483325
+    target: {fileID: 1903688045243165230}
+--- !u!114 &3636501208133193789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202219950642209101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6773671600495487564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202219950642209101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11024
+    target: {fileID: 3207311985479314153}
+    countText: {fileID: 0}
 --- !u!1 &1219687319914015983
 GameObject:
   m_ObjectHideFlags: 0
@@ -5636,6 +6433,10 @@ GameObject:
   - component: {fileID: 3389715979691456569}
   - component: {fileID: 7664253294390059645}
   - component: {fileID: 5965370287890416251}
+  - component: {fileID: 3921848962731304457}
+  - component: {fileID: 9205889360850794814}
+  - component: {fileID: 8967217161912356525}
+  - component: {fileID: 631908760647916597}
   m_Layer: 5
   m_Name: CNBattlePassButton
   m_TagString: Untagged
@@ -5749,6 +6550,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3921848962731304457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499034069140966330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 1499034069140966330}
+    components:
+    - {fileID: 5965370287890416251}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 1499034069140966330}
+    components:
+    - {fileID: 6164498967198601229}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &9205889360850794814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499034069140966330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12006
+  indicators:
+  - indicator: 1037881971
+    target: {fileID: 8499952686181014109}
+--- !u!114 &8967217161912356525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499034069140966330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &631908760647916597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499034069140966330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11013
+    target: {fileID: 5629311696032868829}
+    countText: {fileID: 0}
 --- !u!1 &1514129563517260576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5761,6 +6638,10 @@ GameObject:
   - component: {fileID: 2812704297907480698}
   - component: {fileID: 981894264990839474}
   - component: {fileID: 6157135481222043253}
+  - component: {fileID: 717262649995127965}
+  - component: {fileID: 6721255105121209153}
+  - component: {fileID: 286001654857734575}
+  - component: {fileID: 1779106089205858555}
   m_Layer: 5
   m_Name: BtnAnniversary
   m_TagString: Untagged
@@ -5873,6 +6754,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &717262649995127965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514129563517260576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 1514129563517260576}
+    components:
+    - {fileID: 6157135481222043253}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 1514129563517260576}
+    components:
+    - {fileID: 8934041374515417000}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6721255105121209153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514129563517260576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12026
+  indicators:
+  - indicator: 1641502494
+    target: {fileID: 1729199081655534415}
+--- !u!114 &286001654857734575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514129563517260576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1779106089205858555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514129563517260576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11029
+    target: {fileID: 6959692277194719630}
+    countText: {fileID: 0}
 --- !u!1 &1543571222112686463
 GameObject:
   m_ObjectHideFlags: 0
@@ -7764,6 +8721,10 @@ GameObject:
   - component: {fileID: 8679844242323167251}
   - component: {fileID: 5622249483388182765}
   - component: {fileID: 3449265297282380203}
+  - component: {fileID: 3136712635504074871}
+  - component: {fileID: 7770058855503550185}
+  - component: {fileID: 8965786361684373800}
+  - component: {fileID: 247530380126160389}
   m_Layer: 5
   m_Name: FourteendaysTask
   m_TagString: Untagged
@@ -7875,6 +8836,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3136712635504074871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030398981297747755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 2030398981297747755}
+    components:
+    - {fileID: 3449265297282380203}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2030398981297747755}
+    components:
+    - {fileID: 3149312674459271481}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &7770058855503550185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030398981297747755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12003
+  indicators:
+  - indicator: 495359385
+    target: {fileID: 6107659626396104658}
+--- !u!114 &8965786361684373800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030398981297747755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &247530380126160389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030398981297747755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11010
+    target: {fileID: 2075830778005559427}
+    countText: {fileID: 0}
 --- !u!1 &2075830778005559427
 GameObject:
   m_ObjectHideFlags: 0
@@ -9449,6 +10486,10 @@ GameObject:
   - component: {fileID: 2182276769048698179}
   - component: {fileID: 7459160950335924815}
   - component: {fileID: 8731053341873320610}
+  - component: {fileID: 3335900572584676574}
+  - component: {fileID: 8863707425907522303}
+  - component: {fileID: 8549737865846500576}
+  - component: {fileID: 4299668474603917613}
   m_Layer: 5
   m_Name: SevendaysTask
   m_TagString: Untagged
@@ -9559,6 +10600,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3335900572584676574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461074025890947218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 2461074025890947218}
+    components:
+    - {fileID: 8731053341873320610}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2461074025890947218}
+    components:
+    - {fileID: 933931584851672359}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &8863707425907522303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461074025890947218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12002
+  indicators:
+  - indicator: 1567562792
+    target: {fileID: 6191425121534921049}
+--- !u!114 &8549737865846500576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461074025890947218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &4299668474603917613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461074025890947218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11009
+    target: {fileID: 6713779633573035325}
+    countText: {fileID: 0}
 --- !u!1 &2472351590577512622
 GameObject:
   m_ObjectHideFlags: 0
@@ -9568,6 +10685,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4570538059983592509}
+  - component: {fileID: 2583749099610138737}
+  - component: {fileID: 8255333541647669523}
+  - component: {fileID: 5023278385552348689}
+  - component: {fileID: 1357056965919476030}
   m_Layer: 5
   m_Name: KingSetter
   m_TagString: Untagged
@@ -9595,6 +10716,80 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2583749099610138737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472351590577512622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 4518802866228448846}
+    components:
+    - {fileID: 1047731843801180922}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2472351590577512622}
+    components:
+    - {fileID: 4570538059983592509}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &8255333541647669523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472351590577512622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12011
+  indicators: []
+--- !u!114 &5023278385552348689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472351590577512622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1357056965919476030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472351590577512622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11018
+    target: {fileID: 4519819289664837713}
+    countText: {fileID: 0}
 --- !u!1 &2483322304958868981
 GameObject:
   m_ObjectHideFlags: 0
@@ -9776,6 +10971,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2510200969606815832}
+  - component: {fileID: 965169454700645467}
+  - component: {fileID: 3236941902151167074}
+  - component: {fileID: 2725123725629989068}
+  - component: {fileID: 8765605810522979162}
   m_Layer: 5
   m_Name: QuestionNode
   m_TagString: Untagged
@@ -9803,6 +11002,79 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &965169454700645467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519501127413212164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 7974580014031435408}
+    components:
+    - {fileID: 2957153784200327034}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2519501127413212164}
+    components:
+    - {fileID: 2510200969606815832}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &3236941902151167074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519501127413212164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12018
+  indicators:
+  - indicator: 153413932
+    target: {fileID: 8544152193907951518}
+--- !u!114 &2725123725629989068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519501127413212164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &8765605810522979162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519501127413212164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings: []
 --- !u!1 &2525940169124647471
 GameObject:
   m_ObjectHideFlags: 0
@@ -10691,6 +11963,10 @@ GameObject:
   - component: {fileID: 7903064344752432692}
   - component: {fileID: 401498350990343854}
   - component: {fileID: 8907106856273500351}
+  - component: {fileID: 2942343173332453673}
+  - component: {fileID: 3777818735536062707}
+  - component: {fileID: 3638855053759322584}
+  - component: {fileID: 3134542884659630401}
   m_Layer: 5
   m_Name: UpInProButton
   m_TagString: Untagged
@@ -10804,6 +12080,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2942343173332453673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663469606057647139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 2663469606057647139}
+    components:
+    - {fileID: 8907106856273500351}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2663469606057647139}
+    components:
+    - {fileID: 7132481394756852369}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &3777818735536062707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663469606057647139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12008
+  indicators:
+  - indicator: 422014507
+    target: {fileID: 1169845120298079364}
+--- !u!114 &3638855053759322584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663469606057647139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3134542884659630401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663469606057647139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11015
+    target: {fileID: 2083209032879819183}
+    countText: {fileID: 0}
 --- !u!1 &2685399254800365280
 GameObject:
   m_ObjectHideFlags: 0
@@ -11050,6 +12402,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059110353550608839}
+  - component: {fileID: 7756720949540663045}
+  - component: {fileID: 6572875316638140615}
+  - component: {fileID: 7572918313588040568}
+  - component: {fileID: 7921982754683179335}
   m_Layer: 5
   m_Name: YeJiuNode
   m_TagString: Untagged
@@ -11077,6 +12433,80 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7756720949540663045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734943551239468024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 6836105993155773143}
+    components:
+    - {fileID: 2621712099060912540}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2734943551239468024}
+    components:
+    - {fileID: 2059110353550608839}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6572875316638140615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734943551239468024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12014
+  indicators: []
+--- !u!114 &7572918313588040568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734943551239468024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &7921982754683179335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734943551239468024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11019
+    target: {fileID: 4636385498491507577}
+    countText: {fileID: 0}
 --- !u!1 &2747972614026007366
 GameObject:
   m_ObjectHideFlags: 0
@@ -11732,6 +13162,10 @@ GameObject:
   - component: {fileID: 557934755217522598}
   - component: {fileID: 7011386161445666514}
   - component: {fileID: 1599806914363539974}
+  - component: {fileID: 9016165866282740050}
+  - component: {fileID: 1133799788659649780}
+  - component: {fileID: 7339124655149565747}
+  - component: {fileID: 694874919696421407}
   m_Layer: 5
   m_Name: BtnSPTopic
   m_TagString: Untagged
@@ -11844,6 +13278,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9016165866282740050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906735714966909300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 2906735714966909300}
+    components:
+    - {fileID: 1599806914363539974}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 2906735714966909300}
+    components:
+    - {fileID: 1817930296705878569}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &1133799788659649780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906735714966909300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12025
+  indicators:
+  - indicator: 310973989
+    target: {fileID: 8429612457634573056}
+--- !u!114 &7339124655149565747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906735714966909300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &694874919696421407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906735714966909300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11028
+    target: {fileID: 1366451341841573793}
+    countText: {fileID: 0}
 --- !u!1 &2924682116169820333
 GameObject:
   m_ObjectHideFlags: 0
@@ -12710,6 +14220,10 @@ GameObject:
   - component: {fileID: 2513235918088136271}
   - component: {fileID: 5946996083101038820}
   - component: {fileID: 8201682013189078333}
+  - component: {fileID: 2809967261370018085}
+  - component: {fileID: 7818063255793728055}
+  - component: {fileID: 7252032492322051497}
+  - component: {fileID: 1424449094034477094}
   m_Layer: 5
   m_Name: BtnChainGift
   m_TagString: Untagged
@@ -12822,6 +14336,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2809967261370018085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191045982699134270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 3191045982699134270}
+    components:
+    - {fileID: 8201682013189078333}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 3191045982699134270}
+    components:
+    - {fileID: 6683094705073941282}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &7818063255793728055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191045982699134270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12024
+  indicators:
+  - indicator: 1971095828
+    target: {fileID: 8181476400708607318}
+--- !u!114 &7252032492322051497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191045982699134270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1424449094034477094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191045982699134270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11027
+    target: {fileID: 6620066343368320816}
+    countText: {fileID: 0}
 --- !u!1 &3201499325509067779
 GameObject:
   m_ObjectHideFlags: 0
@@ -13730,6 +15320,10 @@ GameObject:
   - component: {fileID: 2744691321031435631}
   - component: {fileID: 83938011151417908}
   - component: {fileID: 4002903550774109777}
+  - component: {fileID: 652164357189766130}
+  - component: {fileID: 6309712369684314610}
+  - component: {fileID: 159779422635733616}
+  - component: {fileID: 1588423858207453778}
   m_Layer: 5
   m_Name: BtnRunningGame
   m_TagString: Untagged
@@ -13842,6 +15436,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &652164357189766130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438354196755017556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 3438354196755017556}
+    components:
+    - {fileID: 4002903550774109777}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 3438354196755017556}
+    components:
+    - {fileID: 8643467221996355740}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6309712369684314610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438354196755017556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12028
+  indicators:
+  - indicator: 593650221
+    target: {fileID: 1975734430713452819}
+--- !u!114 &159779422635733616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438354196755017556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1588423858207453778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438354196755017556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11031
+    target: {fileID: 4675117972904328056}
+    countText: {fileID: 0}
 --- !u!1 &3446906589645301842
 GameObject:
   m_ObjectHideFlags: 0
@@ -13989,6 +15659,10 @@ GameObject:
   - component: {fileID: 4373762608526652783}
   - component: {fileID: 4066693353848992300}
   - component: {fileID: 3983695507154583806}
+  - component: {fileID: 142430141580766974}
+  - component: {fileID: 8825895893453349850}
+  - component: {fileID: 763295523792370951}
+  - component: {fileID: 4934864064780663554}
   m_Layer: 5
   m_Name: BtnNewYear
   m_TagString: Untagged
@@ -14101,6 +15775,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &142430141580766974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483036014940419487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 3483036014940419487}
+    components:
+    - {fileID: 3983695507154583806}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 3483036014940419487}
+    components:
+    - {fileID: 809755607253085394}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &8825895893453349850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483036014940419487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12023
+  indicators:
+  - indicator: 1087283545
+    target: {fileID: 8059718390550547251}
+--- !u!114 &763295523792370951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483036014940419487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &4934864064780663554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483036014940419487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11026
+    target: {fileID: 1086835441784291440}
+    countText: {fileID: 0}
 --- !u!1 &3546887978803750682
 GameObject:
   m_ObjectHideFlags: 0
@@ -14268,6 +16018,10 @@ GameObject:
   - component: {fileID: 6698657210051211644}
   - component: {fileID: 1138321951069727401}
   - component: {fileID: 7123082331417683282}
+  - component: {fileID: 5787472248140466171}
+  - component: {fileID: 7674091379948215147}
+  - component: {fileID: 1931109158777048091}
+  - component: {fileID: 3983137790048743614}
   m_Layer: 5
   m_Name: BtnLuckyDraw
   m_TagString: Untagged
@@ -14380,6 +16134,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5787472248140466171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579753207571624645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 3579753207571624645}
+    components:
+    - {fileID: 7123082331417683282}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 3579753207571624645}
+    components:
+    - {fileID: 8211586836287467142}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &7674091379948215147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579753207571624645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12030
+  indicators:
+  - indicator: 911114711
+    target: {fileID: 5571115832110568561}
+--- !u!114 &1931109158777048091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579753207571624645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3983137790048743614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579753207571624645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11033
+    target: {fileID: 2182672266438320315}
+    countText: {fileID: 0}
 --- !u!1 &3585458090979575287
 GameObject:
   m_ObjectHideFlags: 0
@@ -14695,6 +16525,10 @@ GameObject:
   - component: {fileID: 7195105889732236737}
   - component: {fileID: 3063104393867679878}
   - component: {fileID: 2897637800362738528}
+  - component: {fileID: 8052828196567979650}
+  - component: {fileID: 8290822013591036206}
+  - component: {fileID: 6733935473112203887}
+  - component: {fileID: 6205685090987818074}
   m_Layer: 5
   m_Name: BtnNationalTournament
   m_TagString: Untagged
@@ -14807,6 +16641,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8052828196567979650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732449381836517290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 3732449381836517290}
+    components:
+    - {fileID: 2897637800362738528}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 3732449381836517290}
+    components:
+    - {fileID: 3381745855451124016}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &8290822013591036206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732449381836517290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12040
+  indicators:
+  - indicator: 1143529667
+    target: {fileID: 3006847035166811665}
+--- !u!114 &6733935473112203887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732449381836517290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6205685090987818074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732449381836517290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11043
+    target: {fileID: 7940890912329707276}
+    countText: {fileID: 0}
 --- !u!1 &3780050332012810541
 GameObject:
   m_ObjectHideFlags: 0
@@ -15274,6 +17184,10 @@ GameObject:
   - component: {fileID: 6331913551642941327}
   - component: {fileID: 6014898212785188171}
   - component: {fileID: 5299771249639338958}
+  - component: {fileID: 2590322334976194701}
+  - component: {fileID: 1733742148597096593}
+  - component: {fileID: 8740168330622079535}
+  - component: {fileID: 6850390832616381329}
   m_Layer: 5
   m_Name: BtnSelectSelfGift
   m_TagString: Untagged
@@ -15386,6 +17300,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2590322334976194701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024202216743732841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 4024202216743732841}
+    components:
+    - {fileID: 5299771249639338958}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 4024202216743732841}
+    components:
+    - {fileID: 4740901125929179029}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &1733742148597096593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024202216743732841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12037
+  indicators:
+  - indicator: 771140503
+    target: {fileID: 4272902488080789429}
+--- !u!114 &8740168330622079535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024202216743732841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6850390832616381329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024202216743732841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11040
+    target: {fileID: 2606930791476283220}
+    countText: {fileID: 0}
 --- !u!1 &4028987481891503610
 GameObject:
   m_ObjectHideFlags: 0
@@ -15569,6 +17559,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130047576332614192}
+  - component: {fileID: 3468036667993168897}
+  - component: {fileID: 6768452247908133532}
+  - component: {fileID: 3271234357351197133}
+  - component: {fileID: 3434821452071952741}
   m_Layer: 5
   m_Name: FateBattleNode
   m_TagString: Untagged
@@ -15596,6 +17590,81 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3468036667993168897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100438155017956432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 5621463251464171287}
+    - {fileID: 7032427981340652903}
+    components:
+    - {fileID: 1344533711108849639}
+    - {fileID: 5136336004381216279}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 4100438155017956432}
+    components:
+    - {fileID: 3130047576332614192}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6768452247908133532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100438155017956432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12013
+  indicators:
+  - indicator: 326593717
+    target: {fileID: 9081807086995203022}
+--- !u!114 &3271234357351197133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100438155017956432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3434821452071952741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100438155017956432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings: []
 --- !u!1 &4101922188469068500
 GameObject:
   m_ObjectHideFlags: 0
@@ -16332,6 +18401,10 @@ GameObject:
   - component: {fileID: 65994650816173332}
   - component: {fileID: 8656548468668884472}
   - component: {fileID: 1504911401896850063}
+  - component: {fileID: 6696666440336150315}
+  - component: {fileID: 5655924163482994221}
+  - component: {fileID: 42523850605640463}
+  - component: {fileID: 4303186565954910496}
   m_Layer: 5
   m_Name: BtnTurnCard
   m_TagString: Untagged
@@ -16444,6 +18517,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6696666440336150315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398145187222298101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 4398145187222298101}
+    components:
+    - {fileID: 1504911401896850063}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 4398145187222298101}
+    components:
+    - {fileID: 5208074804667156005}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &5655924163482994221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398145187222298101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12016
+  indicators:
+  - indicator: 567831773
+    target: {fileID: 8050363762078180938}
+--- !u!114 &42523850605640463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398145187222298101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &4303186565954910496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398145187222298101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11021
+    target: {fileID: 2118914481958886430}
+    countText: {fileID: 0}
 --- !u!1 &4400406839589802100
 GameObject:
   m_ObjectHideFlags: 0
@@ -18308,6 +20457,10 @@ GameObject:
   - component: {fileID: 7109565436078485364}
   - component: {fileID: 5910651409587534574}
   - component: {fileID: 3150922161319585998}
+  - component: {fileID: 4399772863798231638}
+  - component: {fileID: 2663549186258509350}
+  - component: {fileID: 3083425038249108604}
+  - component: {fileID: 8981445757286214977}
   m_Layer: 5
   m_Name: BtnBarbecue
   m_TagString: Untagged
@@ -18420,6 +20573,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4399772863798231638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840284016452982028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 4840284016452982028}
+    components:
+    - {fileID: 3150922161319585998}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 4840284016452982028}
+    components:
+    - {fileID: 5652313808857808335}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &2663549186258509350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840284016452982028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12035
+  indicators:
+  - indicator: 1193964017
+    target: {fileID: 8585721697048908780}
+--- !u!114 &3083425038249108604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840284016452982028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &8981445757286214977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840284016452982028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11038
+    target: {fileID: 2176742415168069504}
+    countText: {fileID: 0}
 --- !u!1 &4848456318464268880
 GameObject:
   m_ObjectHideFlags: 0
@@ -19052,6 +21281,10 @@ GameObject:
   - component: {fileID: 5656519029392856178}
   - component: {fileID: 5426467427821756087}
   - component: {fileID: 5563564562877648110}
+  - component: {fileID: 7123904013306023103}
+  - component: {fileID: 7861327242280458370}
+  - component: {fileID: 446483842104152338}
+  - component: {fileID: 6358282436694198308}
   m_Layer: 5
   m_Name: BtnServeGame
   m_TagString: Untagged
@@ -19164,6 +21397,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7123904013306023103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145169855314705519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 5145169855314705519}
+    components:
+    - {fileID: 5563564562877648110}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 5145169855314705519}
+    components:
+    - {fileID: 123812283685048907}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &7861327242280458370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145169855314705519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12022
+  indicators:
+  - indicator: 233079366
+    target: {fileID: 3780050332012810541}
+--- !u!114 &446483842104152338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145169855314705519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6358282436694198308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145169855314705519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11025
+    target: {fileID: 212539896842087067}
+    countText: {fileID: 0}
 --- !u!1 &5145443913707576154
 GameObject:
   m_ObjectHideFlags: 0
@@ -19735,6 +22044,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5928489415495795214}
+  - component: {fileID: 1826874090511501583}
+  - component: {fileID: 5848236210443427226}
+  - component: {fileID: 8665036501297574535}
+  - component: {fileID: 6717617294189768738}
   m_Layer: 5
   m_Name: PlayerTheme
   m_TagString: Untagged
@@ -19762,6 +22075,80 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1826874090511501583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417524232470006167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 1956531052613268618}
+    components:
+    - {fileID: 7594745876154743460}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 5417524232470006167}
+    components:
+    - {fileID: 5928489415495795214}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &5848236210443427226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417524232470006167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12015
+  indicators: []
+--- !u!114 &8665036501297574535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417524232470006167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6717617294189768738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417524232470006167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11020
+    target: {fileID: 4317507539656228065}
+    countText: {fileID: 0}
 --- !u!1 &5419924854690399415
 GameObject:
   m_ObjectHideFlags: 0
@@ -19846,6 +22233,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3998347856110644006}
+  - component: {fileID: 8102192108785235085}
+  - component: {fileID: 9124698786023432387}
+  - component: {fileID: 8263025624080245605}
+  - component: {fileID: 2276293243095967077}
   m_Layer: 5
   m_Name: ZhanShuNode
   m_TagString: Untagged
@@ -19875,6 +22266,79 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: -459}
   m_SizeDelta: {x: 206, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8102192108785235085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427513936399387171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 4276206672446404181}
+    components:
+    - {fileID: 7383386598910475425}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 5427513936399387171}
+    components:
+    - {fileID: 3998347856110644006}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &9124698786023432387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427513936399387171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12012
+  indicators:
+  - indicator: 1762738302
+    target: {fileID: 5827983305949314092}
+--- !u!114 &8263025624080245605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427513936399387171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &2276293243095967077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427513936399387171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings: []
 --- !u!1 &5438377478047329237
 GameObject:
   m_ObjectHideFlags: 0
@@ -19887,6 +22351,10 @@ GameObject:
   - component: {fileID: 6669738369435423666}
   - component: {fileID: 5532981711169014724}
   - component: {fileID: 253782869649239469}
+  - component: {fileID: 2358457652982498064}
+  - component: {fileID: 6744739569909970134}
+  - component: {fileID: 5550232426524631265}
+  - component: {fileID: 1331999940841797180}
   m_Layer: 5
   m_Name: BtnAceDuel
   m_TagString: Untagged
@@ -19999,6 +22467,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2358457652982498064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438377478047329237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 5438377478047329237}
+    components:
+    - {fileID: 253782869649239469}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 5438377478047329237}
+    components:
+    - {fileID: 60875343091194586}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &6744739569909970134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438377478047329237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12032
+  indicators:
+  - indicator: 921504423
+    target: {fileID: 911659492704439910}
+--- !u!114 &5550232426524631265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438377478047329237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1331999940841797180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438377478047329237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11035
+    target: {fileID: 7492121361281407498}
+    countText: {fileID: 0}
 --- !u!1 &5444142683800829090
 GameObject:
   m_ObjectHideFlags: 0
@@ -22436,6 +24980,10 @@ GameObject:
   - component: {fileID: 4501567666178093881}
   - component: {fileID: 4841907739053732424}
   - component: {fileID: 2142647198482791155}
+  - component: {fileID: 214625096914800289}
+  - component: {fileID: 452516649884784793}
+  - component: {fileID: 2292444801899853050}
+  - component: {fileID: 6432456550393341013}
   m_Layer: 5
   m_Name: BtnSkillResonance
   m_TagString: Untagged
@@ -22548,6 +25096,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &214625096914800289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932717650056579621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 5932717650056579621}
+    components:
+    - {fileID: 2142647198482791155}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 5932717650056579621}
+    components:
+    - {fileID: 7827434965903898374}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &452516649884784793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932717650056579621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12039
+  indicators:
+  - indicator: 1626702223
+    target: {fileID: 4796366091491745839}
+--- !u!114 &2292444801899853050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932717650056579621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6432456550393341013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932717650056579621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11042
+    target: {fileID: 4420140849418725923}
+    countText: {fileID: 0}
 --- !u!1 &5936555106653436776
 GameObject:
   m_ObjectHideFlags: 0
@@ -23127,6 +25751,10 @@ GameObject:
   - component: {fileID: 45247292910818375}
   - component: {fileID: 7869281981094284036}
   - component: {fileID: 5090987982963731303}
+  - component: {fileID: 1624714076474379455}
+  - component: {fileID: 7250330722862654769}
+  - component: {fileID: 9044458549629585751}
+  - component: {fileID: 9210153751641241869}
   m_Layer: 5
   m_Name: SevendaysLogin
   m_TagString: Untagged
@@ -23237,6 +25865,80 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1624714076474379455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128599135075471216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 6128599135075471216}
+    components:
+    - {fileID: 5090987982963731303}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 6128599135075471216}
+    components:
+    - {fileID: 8730258110944520567}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &7250330722862654769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128599135075471216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12001
+  indicators: []
+--- !u!114 &9044458549629585751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128599135075471216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &9210153751641241869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128599135075471216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11008
+    target: {fileID: 4714117071050169450}
+    countText: {fileID: 0}
 --- !u!1 &6156858186937169309
 GameObject:
   m_ObjectHideFlags: 0
@@ -23730,6 +26432,10 @@ GameObject:
   - component: {fileID: 8395887413360673366}
   - component: {fileID: 8899314858469912805}
   - component: {fileID: 5106309342675808309}
+  - component: {fileID: 7859409095665968637}
+  - component: {fileID: 592068871887335476}
+  - component: {fileID: 6299709578895562993}
+  - component: {fileID: 299569779095916627}
   m_Layer: 5
   m_Name: BtnCampTraining
   m_TagString: Untagged
@@ -23842,6 +26548,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7859409095665968637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284216151189458365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 6284216151189458365}
+    components:
+    - {fileID: 5106309342675808309}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 6284216151189458365}
+    components:
+    - {fileID: 3942417029696289895}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &592068871887335476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284216151189458365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12033
+  indicators:
+  - indicator: 599303332
+    target: {fileID: 754620717656886968}
+--- !u!114 &6299709578895562993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284216151189458365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &299569779095916627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284216151189458365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11036
+    target: {fileID: 188622081156210697}
+    countText: {fileID: 0}
 --- !u!1 &6285357436317198152
 GameObject:
   m_ObjectHideFlags: 0
@@ -23854,6 +26636,10 @@ GameObject:
   - component: {fileID: 7794974981900585752}
   - component: {fileID: 4688662473146230192}
   - component: {fileID: 8736285022169589188}
+  - component: {fileID: 4925405249756143498}
+  - component: {fileID: 994661771342460590}
+  - component: {fileID: 1456451512229098699}
+  - component: {fileID: 3537028942618864635}
   m_Layer: 5
   m_Name: BtnSelectSelfGacha
   m_TagString: Untagged
@@ -23966,6 +26752,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4925405249756143498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285357436317198152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 6285357436317198152}
+    components:
+    - {fileID: 8736285022169589188}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 6285357436317198152}
+    components:
+    - {fileID: 7691254850810193425}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &994661771342460590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285357436317198152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12038
+  indicators:
+  - indicator: 454022659
+    target: {fileID: 3146898784521794612}
+--- !u!114 &1456451512229098699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285357436317198152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3537028942618864635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285357436317198152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11041
+    target: {fileID: 2577476404486517740}
+    countText: {fileID: 0}
 --- !u!1 &6307655135826540226
 GameObject:
   m_ObjectHideFlags: 0
@@ -24329,6 +27191,10 @@ GameObject:
   - component: {fileID: 4335898693578131406}
   - component: {fileID: 7351466545548513715}
   - component: {fileID: 4954211715708643951}
+  - component: {fileID: 2152778754393587617}
+  - component: {fileID: 4436623822378850600}
+  - component: {fileID: 3665524854217431034}
+  - component: {fileID: 3372929814605793612}
   m_Layer: 5
   m_Name: BtnSpecialOfferPackage
   m_TagString: Untagged
@@ -24441,6 +27307,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2152778754393587617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493760591814553206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 6493760591814553206}
+    components:
+    - {fileID: 4954211715708643951}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 6493760591814553206}
+    components:
+    - {fileID: 4800860520512833082}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &4436623822378850600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493760591814553206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12034
+  indicators:
+  - indicator: 866306026
+    target: {fileID: 2663193035740422918}
+--- !u!114 &3665524854217431034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493760591814553206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &3372929814605793612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493760591814553206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11037
+    target: {fileID: 7814507217505820145}
+    countText: {fileID: 0}
 --- !u!1 &6498622882852080862
 GameObject:
   m_ObjectHideFlags: 0
@@ -26678,6 +29620,10 @@ GameObject:
   - component: {fileID: 8279422928861486154}
   - component: {fileID: 8290485451074844295}
   - component: {fileID: 513886678004681876}
+  - component: {fileID: 2555868355957452892}
+  - component: {fileID: 4809814864968803957}
+  - component: {fileID: 9216823672046640500}
+  - component: {fileID: 5349639779258527820}
   m_Layer: 5
   m_Name: BtnMatchGuess
   m_TagString: Untagged
@@ -26789,6 +29735,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2555868355957452892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888046852455291501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 6888046852455291501}
+    components:
+    - {fileID: 513886678004681876}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 6888046852455291501}
+    components:
+    - {fileID: 5843366413196352517}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &4809814864968803957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888046852455291501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12020
+  indicators:
+  - indicator: 1935608623
+    target: {fileID: 2238716912603164736}
+--- !u!114 &9216823672046640500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888046852455291501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &5349639779258527820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888046852455291501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11023
+    target: {fileID: 4702833609131325709}
+    countText: {fileID: 0}
 --- !u!1 &6959692277194719630
 GameObject:
   m_ObjectHideFlags: 0
@@ -27638,6 +30660,10 @@ GameObject:
   - component: {fileID: 1375486695623743499}
   - component: {fileID: 4862761965365491110}
   - component: {fileID: 8285799450263396711}
+  - component: {fileID: 6446119537379874071}
+  - component: {fileID: 1543786163845100252}
+  - component: {fileID: 1419041406178221395}
+  - component: {fileID: 5967661268922374698}
   m_Layer: 5
   m_Name: BtnCombinationGift
   m_TagString: Untagged
@@ -27750,6 +30776,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6446119537379874071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380321963741401759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 7380321963741401759}
+    components:
+    - {fileID: 8285799450263396711}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 7380321963741401759}
+    components:
+    - {fileID: 4173397295697523986}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &1543786163845100252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380321963741401759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12036
+  indicators:
+  - indicator: 15326038
+    target: {fileID: 1447274426971029335}
+--- !u!114 &1419041406178221395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380321963741401759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &5967661268922374698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380321963741401759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11039
+    target: {fileID: 5936555106653436776}
+    countText: {fileID: 0}
 --- !u!1 &7384466369958299541
 GameObject:
   m_ObjectHideFlags: 0
@@ -30247,6 +33349,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: VMHome
   metadatas:
+  - hash: 1243163915
+    type: SyncGroup
+    name: acitiveList
+    targets:
+    - {fileID: 6801598954751136121}
+    components:
+    - {fileID: 4708062904809691969}
   - hash: 1764207913
     type: SyncClick
     name: profileClick
@@ -30375,599 +33484,11 @@ MonoBehaviour:
     - {fileID: 6248362202408923613}
   - hash: 1764207913
     type: SyncClick
-    name: taskButtonClick
-    targets:
-    - {fileID: 174219032078007716}
-    components:
-    - {fileID: 442660566624225571}
-  - hash: 550704314
-    type: SyncText
-    name: label062003
-    targets:
-    - {fileID: 304680016352621293}
-    components:
-    - {fileID: 2031162230656941574}
-  - hash: 1764207913
-    type: SyncClick
-    name: sevendaysLoginClick
-    targets:
-    - {fileID: 6128599135075471216}
-    components:
-    - {fileID: 5090987982963731303}
-  - hash: 1764207913
-    type: SyncClick
-    name: sevendaysTaskClick
-    targets:
-    - {fileID: 2461074025890947218}
-    components:
-    - {fileID: 8731053341873320610}
-  - hash: 1764207913
-    type: SyncClick
-    name: fourteendaysTaskClick
-    targets:
-    - {fileID: 2030398981297747755}
-    components:
-    - {fileID: 3449265297282380203}
-  - hash: 550704314
-    type: SyncText
-    name: label062032
-    targets:
-    - {fileID: 2598659013264191288}
-    components:
-    - {fileID: 4530518733460159172}
-  - hash: 1764207913
-    type: SyncClick
-    name: directPurchaseButtonClick
-    targets:
-    - {fileID: 1061598506585411394}
-    components:
-    - {fileID: 7247973075929184139}
-  - hash: 550704314
-    type: SyncText
-    name: label0620420
-    targets:
-    - {fileID: 4101922188469068500}
-    components:
-    - {fileID: 4262090973781318337}
-  - hash: 1764207913
-    type: SyncClick
-    name: directPurchaseButton1Click
-    targets:
-    - {fileID: 560152974260087661}
-    components:
-    - {fileID: 944772030605678180}
-  - hash: 550704314
-    type: SyncText
-    name: label062052
-    targets:
-    - {fileID: 2416357750029343153}
-    components:
-    - {fileID: 5299051236596355166}
-  - hash: 550704314
-    type: SyncText
-    name: label0620530
-    targets:
-    - {fileID: 8013993250601878304}
-    components:
-    - {fileID: 692963339852921777}
-  - hash: 1764207913
-    type: SyncClick
-    name: cNBattlePassButtonClick
-    targets:
-    - {fileID: 1499034069140966330}
-    components:
-    - {fileID: 5965370287890416251}
-  - hash: 550704314
-    type: SyncText
-    name: label062062
-    targets:
-    - {fileID: 5046786191815395199}
-    components:
-    - {fileID: 3296706327847796246}
-  - hash: 550704314
-    type: SyncText
-    name: label0620630
-    targets:
-    - {fileID: 3546887978803750682}
-    components:
-    - {fileID: 4901343882720527092}
-  - hash: 1764207913
-    type: SyncClick
-    name: timeLimitGiftButtonClick
-    targets:
-    - {fileID: 300707618882891864}
-    components:
-    - {fileID: 4139464301523423355}
-  - hash: 550704314
-    type: SyncText
-    name: label0620720
-    targets:
-    - {fileID: 4681997597477478767}
-    components:
-    - {fileID: 3457451562229451125}
-  - hash: 1764207913
-    type: SyncClick
-    name: upInProButtonClick
-    targets:
-    - {fileID: 2663469606057647139}
-    components:
-    - {fileID: 8907106856273500351}
-  - hash: 1764207913
-    type: SyncClick
-    name: comeBackButtonClick
-    targets:
-    - {fileID: 231322137684241475}
-    components:
-    - {fileID: 5209382752174242663}
-  - hash: 550704314
-    type: SyncText
-    name: label0620900
-    targets:
-    - {fileID: 5482800287222773606}
-    components:
-    - {fileID: 5197884883240794612}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnPowerfulBaitClick
-    targets:
-    - {fileID: 5707067633913719177}
-    components:
-    - {fileID: 5262456613701119043}
-  - hash: 550704314
-    type: SyncText
-    name: label06201003
-    targets:
-    - {fileID: 2870884053121310598}
-    components:
-    - {fileID: 9215240242343242055}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnKingSetterClick
-    targets:
-    - {fileID: 4518802866228448846}
-    components:
-    - {fileID: 1047731843801180922}
-  - hash: 550704314
-    type: SyncText
-    name: label06201102
-    targets:
-    - {fileID: 5379475190911480694}
-    components:
-    - {fileID: 6493795851562361840}
-  - hash: 1764207913
-    type: SyncClick
-    name: zhanshuButtonClick
-    targets:
-    - {fileID: 4276206672446404181}
-    components:
-    - {fileID: 7383386598910475425}
-  - hash: 550704314
-    type: SyncText
-    name: label062012000
-    targets:
-    - {fileID: 7796978233507926962}
-    components:
-    - {fileID: 4413240889875116016}
-  - hash: 550704314
-    type: SyncText
-    name: label062012010
-    targets:
-    - {fileID: 2659447794350057538}
-    components:
-    - {fileID: 4404173749596652352}
-  - hash: 550704314
-    type: SyncText
-    name: label062013000
-    targets:
-    - {fileID: 5949451112581944175}
-    components:
-    - {fileID: 7972401278787239200}
-  - hash: 550704314
-    type: SyncText
-    name: label0620130010
-    targets:
-    - {fileID: 1543571222112686463}
-    components:
-    - {fileID: 6562476645348835795}
-  - hash: 550704314
-    type: SyncText
-    name: label062013002
-    targets:
-    - {fileID: 7263863511570343487}
-    components:
-    - {fileID: 782006009317020572}
-  - hash: 550704314
-    type: SyncText
-    name: label0620130050
-    targets:
-    - {fileID: 2181366750914000841}
-    components:
-    - {fileID: 3739337130301207342}
-  - hash: 1764207913
-    type: SyncClick
-    name: fateBattleButtonClick
-    targets:
-    - {fileID: 5621463251464171287}
-    components:
-    - {fileID: 1344533711108849639}
-  - hash: 550704314
-    type: SyncText
-    name: label062013010
-    targets:
-    - {fileID: 6753069886446176487}
-    components:
-    - {fileID: 870580204461787046}
-  - hash: 1764207913
-    type: SyncClick
-    name: fateBattleDlcBtnClick
-    targets:
-    - {fileID: 7032427981340652903}
-    components:
-    - {fileID: 5136336004381216279}
-  - hash: 1764207913
-    type: SyncClick
-    name: appearBtnClick
-    targets:
-    - {fileID: 6836105993155773143}
-    components:
-    - {fileID: 2621712099060912540}
-  - hash: 550704314
-    type: SyncText
-    name: label062014020
-    targets:
-    - {fileID: 5358875209423030116}
-    components:
-    - {fileID: 6314443833621434062}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnPlayerThemeClick
-    targets:
-    - {fileID: 1956531052613268618}
-    components:
-    - {fileID: 7594745876154743460}
-  - hash: 550704314
-    type: SyncText
-    name: label06201502
-    targets:
-    - {fileID: 5649233481738747219}
-    components:
-    - {fileID: 2815882443588216043}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnTurnCardClick
-    targets:
-    - {fileID: 4398145187222298101}
-    components:
-    - {fileID: 1504911401896850063}
-  - hash: 550704314
-    type: SyncText
-    name: label06201600
-    targets:
-    - {fileID: 2725352594462339954}
-    components:
-    - {fileID: 1321144190486401425}
-  - hash: 1764207913
-    type: SyncClick
-    name: aliPayPackageBtnClick
-    targets:
-    - {fileID: 5487354873893094604}
-    components:
-    - {fileID: 5417273498990967084}
-  - hash: 1764207913
-    type: SyncClick
-    name: questionBtnClick
-    targets:
-    - {fileID: 7974580014031435408}
-    components:
-    - {fileID: 2957153784200327034}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnPreOrderClick
-    targets:
-    - {fileID: 825025775599154346}
-    components:
-    - {fileID: 3944980863724358416}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnMatchGuessClick
-    targets:
-    - {fileID: 6888046852455291501}
-    components:
-    - {fileID: 513886678004681876}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnTopBattleClick
-    targets:
-    - {fileID: 1202219950642209101}
-    components:
-    - {fileID: 3596672019620203354}
-  - hash: 550704314
-    type: SyncText
-    name: label06202100
-    targets:
-    - {fileID: 138653724135490298}
-    components:
-    - {fileID: 458129714387539412}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnServeGameClick
-    targets:
-    - {fileID: 5145169855314705519}
-    components:
-    - {fileID: 5563564562877648110}
-  - hash: 550704314
-    type: SyncText
-    name: label06202200
-    targets:
-    - {fileID: 8223306931964527417}
-    components:
-    - {fileID: 1191207348782599927}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnNewYearClick
-    targets:
-    - {fileID: 3483036014940419487}
-    components:
-    - {fileID: 3983695507154583806}
-  - hash: 550704314
-    type: SyncText
-    name: label06202300
-    targets:
-    - {fileID: 8405255344954622163}
-    components:
-    - {fileID: 3341727495600966716}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnChainGiftClick
-    targets:
-    - {fileID: 3191045982699134270}
-    components:
-    - {fileID: 8201682013189078333}
-  - hash: 550704314
-    type: SyncText
-    name: label06202400
-    targets:
-    - {fileID: 373535210389692251}
-    components:
-    - {fileID: 844227874047960348}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnSPTopicClick
-    targets:
-    - {fileID: 2906735714966909300}
-    components:
-    - {fileID: 1599806914363539974}
-  - hash: 550704314
-    type: SyncText
-    name: label06202500
-    targets:
-    - {fileID: 7707766882202261326}
-    components:
-    - {fileID: 6899508498832126032}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnAnniversaryClick
-    targets:
-    - {fileID: 1514129563517260576}
-    components:
-    - {fileID: 6157135481222043253}
-  - hash: 550704314
-    type: SyncText
-    name: label06202600
-    targets:
-    - {fileID: 6498622882852080862}
-    components:
-    - {fileID: 3916453044308518001}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnFreeMatchClick
-    targets:
-    - {fileID: 8907657033286688371}
-    components:
-    - {fileID: 2449211049704523279}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnRunningGameClick
-    targets:
-    - {fileID: 3438354196755017556}
-    components:
-    - {fileID: 4002903550774109777}
-  - hash: 550704314
-    type: SyncText
-    name: label06202800
-    targets:
-    - {fileID: 6307655135826540226}
-    components:
-    - {fileID: 1818893182862272623}
-  - hash: 1764207913
-    type: SyncClick
-    name: btn15AnniversaryActiveClick
-    targets:
-    - {fileID: 9203019552845712587}
-    components:
-    - {fileID: 3656002755128342258}
-  - hash: 550704314
-    type: SyncText
-    name: label06202900
-    targets:
-    - {fileID: 5855149996213972353}
-    components:
-    - {fileID: 7974449159192847221}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnLuckyDrawClick
-    targets:
-    - {fileID: 3579753207571624645}
-    components:
-    - {fileID: 7123082331417683282}
-  - hash: 550704314
-    type: SyncText
-    name: label06203000
-    targets:
-    - {fileID: 5145443913707576154}
-    components:
-    - {fileID: 6767712382666273224}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnWuYeCanteenClick
-    targets:
-    - {fileID: 188683421141070683}
-    components:
-    - {fileID: 2869934881153137846}
-  - hash: 550704314
-    type: SyncText
-    name: label06203100
-    targets:
-    - {fileID: 3360922413559510608}
-    components:
-    - {fileID: 6982243596979033430}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnAceDuelClick
-    targets:
-    - {fileID: 5438377478047329237}
-    components:
-    - {fileID: 253782869649239469}
-  - hash: 550704314
-    type: SyncText
-    name: label06203200
-    targets:
-    - {fileID: 467163150084458952}
-    components:
-    - {fileID: 5706024793788008512}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnCampTrainingClick
-    targets:
-    - {fileID: 6284216151189458365}
-    components:
-    - {fileID: 5106309342675808309}
-  - hash: 550704314
-    type: SyncText
-    name: label06203300
-    targets:
-    - {fileID: 6606672104464740742}
-    components:
-    - {fileID: 4204004046668634277}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnSpecialOfferPackageClick
-    targets:
-    - {fileID: 6493760591814553206}
-    components:
-    - {fileID: 4954211715708643951}
-  - hash: 550704314
-    type: SyncText
-    name: label06203400
-    targets:
-    - {fileID: 5702024888936107000}
-    components:
-    - {fileID: 2524828081106352778}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnBarbecueClick
-    targets:
-    - {fileID: 4840284016452982028}
-    components:
-    - {fileID: 3150922161319585998}
-  - hash: 550704314
-    type: SyncText
-    name: label06203500
-    targets:
-    - {fileID: 1818914888026152353}
-    components:
-    - {fileID: 9189095553232189596}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnCombinationGiftClick
-    targets:
-    - {fileID: 7380321963741401759}
-    components:
-    - {fileID: 8285799450263396711}
-  - hash: 550704314
-    type: SyncText
-    name: label06203600
-    targets:
-    - {fileID: 8205860679856133541}
-    components:
-    - {fileID: 2145205136279564512}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnSelectSelfGiftClick
-    targets:
-    - {fileID: 4024202216743732841}
-    components:
-    - {fileID: 5299771249639338958}
-  - hash: 550704314
-    type: SyncText
-    name: label06203700
-    targets:
-    - {fileID: 2967535531234217107}
-    components:
-    - {fileID: 2152175651319625529}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnSelectSelfGachaClick
-    targets:
-    - {fileID: 6285357436317198152}
-    components:
-    - {fileID: 8736285022169589188}
-  - hash: 550704314
-    type: SyncText
-    name: label06203800
-    targets:
-    - {fileID: 6211730243414726587}
-    components:
-    - {fileID: 4337360349075569746}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnSkillResonanceClick
-    targets:
-    - {fileID: 5932717650056579621}
-    components:
-    - {fileID: 2142647198482791155}
-  - hash: 550704314
-    type: SyncText
-    name: label06203900
-    targets:
-    - {fileID: 6269481627525118504}
-    components:
-    - {fileID: 5919792924778969309}
-  - hash: 1764207913
-    type: SyncClick
-    name: btnNationalTournamentClick
-    targets:
-    - {fileID: 3732449381836517290}
-    components:
-    - {fileID: 2897637800362738528}
-  - hash: 550704314
-    type: SyncText
-    name: label06204000
-    targets:
-    - {fileID: 4505934829117337754}
-    components:
-    - {fileID: 563679038498277718}
-  - hash: 1764207913
-    type: SyncClick
     name: shopClick
     targets:
     - {fileID: 5251955843947437866}
     components:
     - {fileID: 3796103928163052291}
-  - hash: 550704314
-    type: SyncText
-    name: label063001
-    targets:
-    - {fileID: 4759154414445073290}
-    components:
-    - {fileID: 844621478691392137}
-  - hash: 550704314
-    type: SyncText
-    name: label063021
-    targets:
-    - {fileID: 120371586564295626}
-    components:
-    - {fileID: 7066278090962133633}
   - hash: 1764207913
     type: SyncClick
     name: benefitsClick
@@ -30975,13 +33496,6 @@ MonoBehaviour:
     - {fileID: 5570855138889114628}
     components:
     - {fileID: 417904509870187831}
-  - hash: 550704314
-    type: SyncText
-    name: label06310
-    targets:
-    - {fileID: 9135264794125300229}
-    components:
-    - {fileID: 7280966282289082426}
   - hash: 1764207913
     type: SyncClick
     name: rankingsClick
@@ -30989,13 +33503,6 @@ MonoBehaviour:
     - {fileID: 4746394217197886803}
     components:
     - {fileID: 5801960451020514715}
-  - hash: 550704314
-    type: SyncText
-    name: label06320
-    targets:
-    - {fileID: 1798553058320902742}
-    components:
-    - {fileID: 6162645039578250273}
   - hash: 1764207913
     type: SyncClick
     name: chatClick
@@ -31024,13 +33531,6 @@ MonoBehaviour:
     - {fileID: 6590366486910846799}
     components:
     - {fileID: 1576247778117857952}
-  - hash: 550704314
-    type: SyncText
-    name: label06410
-    targets:
-    - {fileID: 2579065341538004902}
-    components:
-    - {fileID: 7921627894377800135}
   - hash: 1764207913
     type: SyncClick
     name: collectionClick
@@ -31038,13 +33538,6 @@ MonoBehaviour:
     - {fileID: 7731985635375182537}
     components:
     - {fileID: 2847428867144186348}
-  - hash: 550704314
-    type: SyncText
-    name: label06420
-    targets:
-    - {fileID: 2391246888172901794}
-    components:
-    - {fileID: 8119175080512548405}
   - hash: 1764207913
     type: SyncClick
     name: honorClick
@@ -31052,13 +33545,6 @@ MonoBehaviour:
     - {fileID: 1890181581385088427}
     components:
     - {fileID: 3999212494840882520}
-  - hash: 550704314
-    type: SyncText
-    name: label06430
-    targets:
-    - {fileID: 7508750646340520243}
-    components:
-    - {fileID: 5020534237728823549}
   - hash: 1764207913
     type: SyncClick
     name: storyClick
@@ -31066,13 +33552,6 @@ MonoBehaviour:
     - {fileID: 5469382583632836176}
     components:
     - {fileID: 5283145875398265244}
-  - hash: 550704314
-    type: SyncText
-    name: label06444
-    targets:
-    - {fileID: 4590216610755447438}
-    components:
-    - {fileID: 7376133990502909853}
   - hash: 1764207913
     type: SyncClick
     name: matchesClick
@@ -31101,13 +33580,6 @@ MonoBehaviour:
     - {fileID: 1871443866471901464}
     components:
     - {fileID: 6890858266956891887}
-  - hash: 550704314
-    type: SyncText
-    name: label06534
-    targets:
-    - {fileID: 5364307901866259322}
-    components:
-    - {fileID: 1528290781914932521}
   - hash: 1764207913
     type: SyncClick
     name: teamClick
@@ -31115,13 +33587,6 @@ MonoBehaviour:
     - {fileID: 2114613904848001111}
     components:
     - {fileID: 6104784924024325351}
-  - hash: 550704314
-    type: SyncText
-    name: label06544
-    targets:
-    - {fileID: 1074257335939239984}
-    components:
-    - {fileID: 2335738821871536884}
   - hash: 1764207913
     type: SyncClick
     name: clubClick
@@ -31129,13 +33594,6 @@ MonoBehaviour:
     - {fileID: 3318827377311521616}
     components:
     - {fileID: 4705008681027149597}
-  - hash: 550704314
-    type: SyncText
-    name: label06550
-    targets:
-    - {fileID: 6086733026957025328}
-    components:
-    - {fileID: 5243805412630364370}
   - hash: 1764207913
     type: SyncClick
     name: activitiesClick
@@ -31143,13 +33601,6 @@ MonoBehaviour:
     - {fileID: 8750026744993791786}
     components:
     - {fileID: 7186614715062296034}
-  - hash: 550704314
-    type: SyncText
-    name: label06560
-    targets:
-    - {fileID: 1126013474571708136}
-    components:
-    - {fileID: 7031186794634451665}
   classGuid: 42cd651ae1ae8af4c98a2a4e343e59ab
 --- !u!114 &8004146843464142915
 MonoBehaviour:
@@ -31163,167 +33614,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4120af79f1d1994f8caa06da56a08f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activities:
+  - {fileID: 533589865854642084}
+  - {fileID: 7250330722862654769}
+  - {fileID: 8863707425907522303}
+  - {fileID: 7770058855503550185}
+  - {fileID: 9171433817420541793}
+  - {fileID: 8424226044749382093}
+  - {fileID: 9205889360850794814}
+  - {fileID: 2612610808986342485}
+  - {fileID: 3777818735536062707}
+  - {fileID: 7536503990838849156}
+  - {fileID: 5595862483404711085}
+  - {fileID: 8255333541647669523}
+  - {fileID: 9124698786023432387}
+  - {fileID: 6768452247908133532}
+  - {fileID: 6572875316638140615}
+  - {fileID: 5848236210443427226}
+  - {fileID: 5655924163482994221}
+  - {fileID: 5536772574951384483}
+  - {fileID: 3236941902151167074}
+  - {fileID: 6457865413852600338}
+  - {fileID: 4809814864968803957}
+  - {fileID: 2400470795337655186}
+  - {fileID: 7861327242280458370}
+  - {fileID: 8825895893453349850}
+  - {fileID: 7818063255793728055}
+  - {fileID: 1133799788659649780}
+  - {fileID: 6721255105121209153}
+  - {fileID: 4260848128776309610}
+  - {fileID: 6309712369684314610}
+  - {fileID: 2389803423032359888}
+  - {fileID: 7674091379948215147}
+  - {fileID: 6946067386895574745}
+  - {fileID: 6744739569909970134}
+  - {fileID: 592068871887335476}
+  - {fileID: 4436623822378850600}
+  - {fileID: 2663549186258509350}
+  - {fileID: 1543786163845100252}
+  - {fileID: 1733742148597096593}
+  - {fileID: 994661771342460590}
+  - {fileID: 452516649884784793}
+  - {fileID: 8290822013591036206}
   indicators:
   - indicator: 1860273340
     target: {fileID: 3248638092296057053}
   - indicator: 176465348
     target: {fileID: 36442166407248630}
-  - indicator: 1957348258
-    target: {fileID: 174219032078007716}
-  - indicator: 2020446927
-    target: {fileID: 3831618328883753966}
-  - indicator: 522313836
-    target: {fileID: 1345093919389813073}
-  - indicator: 1063216840
-    target: {fileID: 6128599135075471216}
-  - indicator: 971503852
-    target: {fileID: 2461074025890947218}
-  - indicator: 1567562792
-    target: {fileID: 6191425121534921049}
-  - indicator: 235633573
-    target: {fileID: 2030398981297747755}
-  - indicator: 495359385
-    target: {fileID: 6107659626396104658}
-  - indicator: 1973166360
-    target: {fileID: 1061598506585411394}
-  - indicator: 411054284
-    target: {fileID: 7541035642166067339}
-  - indicator: 1839379618
-    target: {fileID: 560152974260087661}
-  - indicator: 45613098
-    target: {fileID: 4710134885503051995}
-  - indicator: 712737229
-    target: {fileID: 1499034069140966330}
-  - indicator: 1037881971
-    target: {fileID: 8499952686181014109}
-  - indicator: 1291593008
-    target: {fileID: 300707618882891864}
-  - indicator: 1673184687
-    target: {fileID: 6612441823292381529}
-  - indicator: 1204630184
-    target: {fileID: 2663469606057647139}
-  - indicator: 422014507
-    target: {fileID: 1169845120298079364}
-  - indicator: 1355960788
-    target: {fileID: 231322137684241475}
-  - indicator: 1223798100
-    target: {fileID: 3370622359018236647}
-  - indicator: 1949776396
-    target: {fileID: 1185900751891959498}
-  - indicator: 1780626494
-    target: {fileID: 2472351590577512622}
-  - indicator: 381772465
-    target: {fileID: 5427513936399387171}
-  - indicator: 1762738302
-    target: {fileID: 5827983305949314092}
-  - indicator: 1810936888
-    target: {fileID: 4100438155017956432}
-  - indicator: 326593717
-    target: {fileID: 9081807086995203022}
-  - indicator: 123949700
-    target: {fileID: 2734943551239468024}
-  - indicator: 1602871456
-    target: {fileID: 5417524232470006167}
-  - indicator: 240680371
-    target: {fileID: 4398145187222298101}
-  - indicator: 567831773
-    target: {fileID: 8050363762078180938}
-  - indicator: 1411722651
-    target: {fileID: 666221828057798727}
-  - indicator: 124084413
-    target: {fileID: 2525940169124647471}
-  - indicator: 1144685045
-    target: {fileID: 2519501127413212164}
-  - indicator: 153413932
-    target: {fileID: 8544152193907951518}
-  - indicator: 1076014581
-    target: {fileID: 825025775599154346}
-  - indicator: 713899548
-    target: {fileID: 2607692116778908668}
-  - indicator: 1942530504
-    target: {fileID: 6888046852455291501}
-  - indicator: 1935608623
-    target: {fileID: 2238716912603164736}
-  - indicator: 773741012
-    target: {fileID: 1202219950642209101}
-  - indicator: 1551483325
-    target: {fileID: 1903688045243165230}
-  - indicator: 1185793795
-    target: {fileID: 5145169855314705519}
-  - indicator: 233079366
-    target: {fileID: 3780050332012810541}
-  - indicator: 185462211
-    target: {fileID: 3483036014940419487}
-  - indicator: 1087283545
-    target: {fileID: 8059718390550547251}
-  - indicator: 1061319292
-    target: {fileID: 3191045982699134270}
-  - indicator: 1971095828
-    target: {fileID: 8181476400708607318}
-  - indicator: 676408620
-    target: {fileID: 2906735714966909300}
-  - indicator: 310973989
-    target: {fileID: 8429612457634573056}
-  - indicator: 930081879
-    target: {fileID: 1514129563517260576}
-  - indicator: 1641502494
-    target: {fileID: 1729199081655534415}
-  - indicator: 262234992
-    target: {fileID: 8907657033286688371}
-  - indicator: 1951098233
-    target: {fileID: 8459456654457737052}
-  - indicator: 634463733
-    target: {fileID: 3438354196755017556}
-  - indicator: 593650221
-    target: {fileID: 1975734430713452819}
-  - indicator: 523752062
-    target: {fileID: 9203019552845712587}
-  - indicator: 976271029
-    target: {fileID: 2747972614026007366}
-  - indicator: 29275244
-    target: {fileID: 3579753207571624645}
-  - indicator: 911114711
-    target: {fileID: 5571115832110568561}
-  - indicator: 1923238890
-    target: {fileID: 188683421141070683}
-  - indicator: 160241079
-    target: {fileID: 7704581523228143280}
-  - indicator: 1397766797
-    target: {fileID: 5438377478047329237}
-  - indicator: 921504423
-    target: {fileID: 911659492704439910}
-  - indicator: 556518230
-    target: {fileID: 6284216151189458365}
-  - indicator: 599303332
-    target: {fileID: 754620717656886968}
-  - indicator: 2063302110
-    target: {fileID: 6493760591814553206}
-  - indicator: 866306026
-    target: {fileID: 2663193035740422918}
-  - indicator: 2040027825
-    target: {fileID: 4840284016452982028}
-  - indicator: 1193964017
-    target: {fileID: 8585721697048908780}
-  - indicator: 1216062238
-    target: {fileID: 7380321963741401759}
-  - indicator: 15326038
-    target: {fileID: 1447274426971029335}
-  - indicator: 444194025
-    target: {fileID: 4024202216743732841}
-  - indicator: 771140503
-    target: {fileID: 4272902488080789429}
-  - indicator: 414049910
-    target: {fileID: 6285357436317198152}
-  - indicator: 454022659
-    target: {fileID: 3146898784521794612}
-  - indicator: 1225401357
-    target: {fileID: 5932717650056579621}
-  - indicator: 1626702223
-    target: {fileID: 4796366091491745839}
-  - indicator: 778676641
-    target: {fileID: 3732449381836517290}
-  - indicator: 1143529667
-    target: {fileID: 3006847035166811665}
   - indicator: 1001429026
     target: {fileID: 6681809121844583816}
   - indicator: 855911354
@@ -31383,117 +33720,6 @@ MonoBehaviour:
     countText: {fileID: 0}
   - id: 11006
     target: {fileID: 5111859715281943343}
-    countText: {fileID: 0}
-  - id: 11007
-    target: {fileID: 3251154417739767061}
-    countText: {fileID: 0}
-  - id: 11008
-    target: {fileID: 4714117071050169450}
-    countText: {fileID: 0}
-  - id: 11009
-    target: {fileID: 6713779633573035325}
-    countText: {fileID: 0}
-  - id: 11010
-    target: {fileID: 2075830778005559427}
-    countText: {fileID: 0}
-  - id: 11011
-    target: {fileID: 5419924854690399415}
-    countText: {fileID: 0}
-  - id: 11012
-    target: {fileID: 1487389341250563163}
-    countText: {fileID: 0}
-  - id: 11013
-    target: {fileID: 5629311696032868829}
-    countText: {fileID: 0}
-  - id: 11014
-    target: {fileID: 3873821519171992863}
-    countText: {fileID: 0}
-  - id: 11015
-    target: {fileID: 2083209032879819183}
-    countText: {fileID: 0}
-  - id: 11016
-    target: {fileID: 2575407305576838619}
-    countText: {fileID: 0}
-  - id: 11017
-    target: {fileID: 5253692553698353993}
-    countText: {fileID: 0}
-  - id: 11018
-    target: {fileID: 4519819289664837713}
-    countText: {fileID: 0}
-  - id: 11019
-    target: {fileID: 4636385498491507577}
-    countText: {fileID: 0}
-  - id: 11020
-    target: {fileID: 4317507539656228065}
-    countText: {fileID: 0}
-  - id: 11021
-    target: {fileID: 2118914481958886430}
-    countText: {fileID: 0}
-  - id: 11022
-    target: {fileID: 6220388848770879377}
-    countText: {fileID: 0}
-  - id: 11023
-    target: {fileID: 4702833609131325709}
-    countText: {fileID: 0}
-  - id: 11024
-    target: {fileID: 3207311985479314153}
-    countText: {fileID: 0}
-  - id: 11025
-    target: {fileID: 212539896842087067}
-    countText: {fileID: 0}
-  - id: 11026
-    target: {fileID: 1086835441784291440}
-    countText: {fileID: 0}
-  - id: 11027
-    target: {fileID: 6620066343368320816}
-    countText: {fileID: 0}
-  - id: 11028
-    target: {fileID: 1366451341841573793}
-    countText: {fileID: 0}
-  - id: 11029
-    target: {fileID: 6959692277194719630}
-    countText: {fileID: 0}
-  - id: 11030
-    target: {fileID: 5701682124741976872}
-    countText: {fileID: 0}
-  - id: 11031
-    target: {fileID: 4675117972904328056}
-    countText: {fileID: 0}
-  - id: 11032
-    target: {fileID: 6851486758492198741}
-    countText: {fileID: 0}
-  - id: 11033
-    target: {fileID: 2182672266438320315}
-    countText: {fileID: 0}
-  - id: 11034
-    target: {fileID: 887022842755805738}
-    countText: {fileID: 0}
-  - id: 11035
-    target: {fileID: 7492121361281407498}
-    countText: {fileID: 0}
-  - id: 11036
-    target: {fileID: 188622081156210697}
-    countText: {fileID: 0}
-  - id: 11037
-    target: {fileID: 7814507217505820145}
-    countText: {fileID: 0}
-  - id: 11038
-    target: {fileID: 2176742415168069504}
-    countText: {fileID: 0}
-  - id: 11039
-    target: {fileID: 5936555106653436776}
-    countText: {fileID: 0}
-  - id: 11040
-    target: {fileID: 2606930791476283220}
-    countText: {fileID: 0}
-  - id: 11041
-    target: {fileID: 2577476404486517740}
-    countText: {fileID: 0}
-  - id: 11042
-    target: {fileID: 4420140849418725923}
-    countText: {fileID: 0}
-  - id: 11043
-    target: {fileID: 7940890912329707276}
     countText: {fileID: 0}
   - id: 11044
     target: {fileID: 2856442967052784629}
@@ -33396,6 +35622,10 @@ GameObject:
   - component: {fileID: 2274973550743073379}
   - component: {fileID: 2936085372804864225}
   - component: {fileID: 2449211049704523279}
+  - component: {fileID: 8005326279439174952}
+  - component: {fileID: 4260848128776309610}
+  - component: {fileID: 789113558906758450}
+  - component: {fileID: 1814929429970001710}
   m_Layer: 5
   m_Name: BtnFreeMatch
   m_TagString: Untagged
@@ -33507,6 +35737,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8005326279439174952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907657033286688371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 8907657033286688371}
+    components:
+    - {fileID: 2449211049704523279}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 8907657033286688371}
+    components:
+    - {fileID: 8874864236767106324}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &4260848128776309610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907657033286688371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12027
+  indicators:
+  - indicator: 1951098233
+    target: {fileID: 8459456654457737052}
+--- !u!114 &789113558906758450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907657033286688371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &1814929429970001710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907657033286688371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11030
+    target: {fileID: 5701682124741976872}
+    countText: {fileID: 0}
 --- !u!1 &8921643227069090967
 GameObject:
   m_ObjectHideFlags: 0
@@ -34658,6 +36964,10 @@ GameObject:
   - component: {fileID: 1789354208824567401}
   - component: {fileID: 4413790083142426405}
   - component: {fileID: 3656002755128342258}
+  - component: {fileID: 4853256034806051291}
+  - component: {fileID: 2389803423032359888}
+  - component: {fileID: 3667191577717670781}
+  - component: {fileID: 6200625103727753022}
   m_Layer: 5
   m_Name: Btn15AnniversaryActive
   m_TagString: Untagged
@@ -34770,3 +37080,79 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4853256034806051291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203019552845712587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMActivityEntry
+  metadatas:
+  - hash: 0
+    type: SyncClick
+    name: openClick
+    targets:
+    - {fileID: 9203019552845712587}
+    components:
+    - {fileID: 3656002755128342258}
+  - hash: 0
+    type: SyncVisible
+    name: visible
+    targets:
+    - {fileID: 9203019552845712587}
+    components:
+    - {fileID: 1054726723254137214}
+  classGuid: 02f31d2914d23184c81083d21b86e7e0
+--- !u!114 &2389803423032359888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203019552845712587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532939fade3b48245b85093d0100de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12029
+  indicators:
+  - indicator: 976271029
+    target: {fileID: 2747972614026007366}
+--- !u!114 &3667191577717670781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203019552845712587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  metadatas: []
+  classGuid: 
+--- !u!114 &6200625103727753022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203019552845712587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d359e660c083524fac26079c312865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - id: 11032
+    target: {fileID: 6851486758492198741}
+    countText: {fileID: 0}

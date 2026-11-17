@@ -21,7 +21,7 @@ public class HomeVisibility
         if (!entity || !target)
             return false;
 
-        target.SetActive(entity.indicators.TryGetValue(indicator, out bool visible) && visible);
+        target.SetActive(entity.IsIndicatorVisible(indicator));
 
         return true;
     }

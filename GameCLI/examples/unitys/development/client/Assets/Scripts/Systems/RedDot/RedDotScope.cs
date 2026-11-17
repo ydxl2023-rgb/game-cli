@@ -89,7 +89,7 @@ public class RedDotBinding
 
         int count = 0;
         if (entity)
-            entity.counts.TryGetValue(id, out count);
+            count = entity.GetCount(id);
 
         if (countText)
             countText.text = count.ToString(CultureInfo.InvariantCulture);

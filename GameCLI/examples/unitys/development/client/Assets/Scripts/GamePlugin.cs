@@ -437,6 +437,9 @@ public class GamePlugin : XPlugin, IUIEventSender
     /// <returns></returns>
     public override XEventModule Load(System.Type type)
     {
+        if (!FunctionManagerAccess.CanActivate(type))
+            return null;
+
         if (!modules.TryGetValue(type.Name, out var module))
         {
             if (TryGetFunctionSystem(type, out var functionSystem))
@@ -515,7 +518,7 @@ public class GamePlugin : XPlugin, IUIEventSender
     /// <param name="functionSystem"></param>
     /// <returns></returns>
     /// <exception cref="System.NullReferenceException"></exception>
-    private bool TryGetFunctionSystem(System.Type type, out FunctionSystem functionSystem)
+    private bool TryGetFunctionSystem(System.Type type, out Config.FunctionSystem functionSystem)
     {
         foreach (var it in Excel.functionSystemConfig)
         {

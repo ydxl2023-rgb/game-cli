@@ -19,3 +19,7 @@ description: 使用 com.oathx.widget 编写 UIWidget 与 VM，维护 Binding、M
 - 业务 Entity 是数据来源，VM 是展示状态；按系统已授权范围刷新，不在视图层新增网络管理。
 
 页面加载与关闭同时遵循 [Widget Extension](../widget-extension/SKILL.md)。验证生成代码编译、字段绑定、展示更新与监听释放；资源修改遵循现有 UnityCLI 工具链。
+
+## 列表能力优先复用
+
+新增列表前必须检查当前包的 SyncGroup、SyncScrollRect、FancyView 与 FancyGridScrollView 的实际绑定、模板和生命周期实现。固定异构条目组可用 SyncGroup 配合显隐；统一模板动态/虚拟列表优先用现有列表组件。只有具体、已验证的能力缺口才允许扩展，不按系统复制列表创建、销毁和绑定机制。SyncGroup 按直接子节点顺序绑定，不支持任意长度增删；必须保证顺序与数量，避免重复 Ref。

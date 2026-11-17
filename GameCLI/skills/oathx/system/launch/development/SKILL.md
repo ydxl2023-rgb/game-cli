@@ -36,3 +36,7 @@ description: 独立 agent 参考 SvStart 标准模板，为具体产品开发 La
 ## 配置包检查
 
 读取模板独立 `configurations` 字段，按 [配置包规范](../../../system-development/references/configurations.md) 检查本系统的源表、结构化条目、代码别名、导表及运行时加载依赖。未声明配置包不等于没有依赖；缺失资料应明确记录。共享表只合并本系统所需条目，保留产品原有数据与翻译。
+
+## 实体职责约定
+
+Launch 是启动展示组件，不为统一实体规范新增 LaunchEntity；启动流程与业务数据分别由既有入口和业务实体承担。

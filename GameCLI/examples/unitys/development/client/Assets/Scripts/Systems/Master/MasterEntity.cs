@@ -34,6 +34,18 @@ public class MasterEntity : XEntitySerialize
     }
 
     /// <summary>
+    /// try get chapter and level
+    /// </summary>
+    /// <param name="levelId"></param>
+    /// <returns></returns>
+    public int TryGetChapter(out int levelId)
+    {
+        levelId = GetAttr(MasterPropertyDef.LEVEL);
+
+        return GetAttr(MasterPropertyDef.CHAPTER);
+    }
+
+    /// <summary>
     /// init master attrs
     /// </summary>
     private void InitAttrs()
@@ -49,16 +61,5 @@ public class MasterEntity : XEntitySerialize
         };
 
         ApplyAttrs(sampleAttrs);
-    }
-
-    /// <summary>
-    /// try get chapter and level
-    /// </summary>
-    /// <param name="levelId"></param>
-    /// <returns></returns>
-    public int TryGetChapter(out int levelId)
-    {
-        levelId = GetAttr(MasterPropertyDef.LEVEL);
-        return GetAttr(MasterPropertyDef.CHAPTER);
     }
 }

@@ -138,8 +138,8 @@ public static class RedDotProbe
         var targets = widget ? widget.GetComponentsInChildren<Transform>(true).Where(item => item.name == "MailTips").ToArray() : new Transform[0];
 
         return JsonConvert.SerializeObject(new {
-            signals = entity.signals,
-            counts = entity.counts,
+            signals = entity.GetSignals(),
+            counts = entity.GetCounts(),
             scopes = RedDotScope.Snapshot().Length,
             mailTargets = targets.Select(item => new { item.name, active = item.gameObject.activeSelf })
         });
@@ -154,9 +154,7 @@ public static class RedDotProbe
         if (!entity || count < 0)
             return false;
 
-        entity.signals[Excel.RED_DOT_HOME_MAILTIPS] = count;
-
-        return true;
+        return entity.UpdateSignal(Excel.RED_DOT_HOME_MAILTIPS, count);
     }
 
     /// <summary>Stop the service through the system coordinator.</summary>

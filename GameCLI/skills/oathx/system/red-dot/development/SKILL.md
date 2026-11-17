@@ -31,3 +31,7 @@ UISystem 不依赖 Core 或游戏事件；基础 Widget 包提供 IUIEventSender
 WidgetOpened、WidgetClosing 数据类统一声明在 UISystem.cs 中，不实现 IEvent。GamePlugin.cs 声明 WidgetOpenedEvent / WidgetClosingEvent : IEvent，转发包装后的数据；业务系统订阅 WidgetOpenedEvent / WidgetClosingEvent。禁止因此给 Widget 包增加 Core 引用，也不另建 WidgetEvents.cs。
 
 生命周期派发支持多个 IUIEventSender：Startup 复制配置列表，运行时通过 RegisterEventSender / UnregisterEventSender 管理，按实例去重。事件按注册顺序发送给快照，回调内增删从下一次通知生效；单个适配器异常记录到 Console，不中断其他适配器和 UI 流程。Shutdown 释放整个列表。
+
+## 实体职责约定
+
+RedDotEntity 私有持有配置、signals、evaluated、counts，负责 Initialize 校验、UpdateSignal、Refresh 条件与父级汇总、GetCount 查询。RedDotSystem 只管理订阅、帧末调度、Scope 和事件通知；删除独立 RedDotConditions。页面关闭及服务停用不清空业务信号。查询快照不能修改内部状态。

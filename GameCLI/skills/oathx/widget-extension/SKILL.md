@@ -37,3 +37,7 @@ WidgetOpened、WidgetClosing 数据类统一声明在 UISystem.cs 中，不实�
 生命周期派发支持多个 IUIEventSender：Startup 复制配置列表，运行时通过 RegisterEventSender / UnregisterEventSender 管理，按实例去重。事件按注册顺序发送给快照，回调内增删从下一次通知生效；单个适配器异常记录到 Console，不中断其他适配器和 UI 流程。Shutdown 释放整个列表。
 
 当前 Core 事件按 Type.Name 路由；应用事件必须使用不同的具体类型名，禁止以同一泛型事件的不同类型参数区分打开与关闭，否则会发生路由冲突和 InvalidCastException。
+
+## 列表能力优先复用
+
+新增列表前必须检查当前包的 SyncGroup、SyncScrollRect、FancyView 与 FancyGridScrollView 的实际绑定、模板和生命周期实现。固定异构条目组可用 SyncGroup 配合显隐；统一模板动态/虚拟列表优先用现有列表组件。只有具体、已验证的能力缺口才允许扩展，不按系统复制列表创建、销毁和绑定机制。SyncGroup 按直接子节点顺序绑定，不支持任意长度增删；必须保证顺序与数量，避免重复 Ref。

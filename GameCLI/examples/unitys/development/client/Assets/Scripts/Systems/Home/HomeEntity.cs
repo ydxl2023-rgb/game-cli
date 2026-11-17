@@ -37,141 +37,12 @@ public partial class HomeEntity : XEntity
     public string seasonKey
     { get; set; }
 
-    /// <summary>Current label062003 value supplied by the product.</summary>
-    public string label062003
-    { get; set; }
-
-    /// <summary>Current label062032 value supplied by the product.</summary>
-    public string label062032
-    { get; set; }
-
-    /// <summary>Current label0620420 value supplied by the product.</summary>
-    public string label0620420
-    { get; set; }
-
-    /// <summary>Current label0620530 value supplied by the product.</summary>
-    public string label0620530
-    { get; set; }
-
-    /// <summary>Current label0620630 value supplied by the product.</summary>
-    public string label0620630
-    { get; set; }
-
-    /// <summary>Current label0620720 value supplied by the product.</summary>
-    public string label0620720
-    { get; set; }
-
-    /// <summary>Current label0620900 value supplied by the product.</summary>
-    public string label0620900
-    { get; set; }
-
-    /// <summary>Current label06201003 value supplied by the product.</summary>
-    public string label06201003
-    { get; set; }
-
-    /// <summary>Current label06201102 value supplied by the product.</summary>
-    public string label06201102
-    { get; set; }
-
-    /// <summary>Current label0620130010 value supplied by the product.</summary>
-    public string label0620130010
-    { get; set; }
-
-    /// <summary>Current label062013002 value supplied by the product.</summary>
-    public string label062013002
-    { get; set; }
-
-    /// <summary>Current label06201502 value supplied by the product.</summary>
-    public string label06201502
-    { get; set; }
-
-    /// <summary>Current label06201600 value supplied by the product.</summary>
-    public string label06201600
-    { get; set; }
-
-    /// <summary>Current label06202100 value supplied by the product.</summary>
-    public string label06202100
-    { get; set; }
-
-    /// <summary>Current label06202200 value supplied by the product.</summary>
-    public string label06202200
-    { get; set; }
-
-    /// <summary>Current label06202300 value supplied by the product.</summary>
-    public string label06202300
-    { get; set; }
-
-    /// <summary>Current label06202400 value supplied by the product.</summary>
-    public string label06202400
-    { get; set; }
-
-    /// <summary>Current label06202500 value supplied by the product.</summary>
-    public string label06202500
-    { get; set; }
-
-    /// <summary>Current label06202600 value supplied by the product.</summary>
-    public string label06202600
-    { get; set; }
-
-    /// <summary>Current label06202800 value supplied by the product.</summary>
-    public string label06202800
-    { get; set; }
-
-    /// <summary>Current label06202900 value supplied by the product.</summary>
-    public string label06202900
-    { get; set; }
-
-    /// <summary>Current label06203000 value supplied by the product.</summary>
-    public string label06203000
-    { get; set; }
-
-    /// <summary>Current label06203100 value supplied by the product.</summary>
-    public string label06203100
-    { get; set; }
-
-    /// <summary>Current label06203200 value supplied by the product.</summary>
-    public string label06203200
-    { get; set; }
-
-    /// <summary>Current label06203300 value supplied by the product.</summary>
-    public string label06203300
-    { get; set; }
-
-    /// <summary>Current label06203400 value supplied by the product.</summary>
-    public string label06203400
-    { get; set; }
-
-    /// <summary>Current label06203500 value supplied by the product.</summary>
-    public string label06203500
-    { get; set; }
-
-    /// <summary>Current label06203600 value supplied by the product.</summary>
-    public string label06203600
-    { get; set; }
-
-    /// <summary>Current label06203700 value supplied by the product.</summary>
-    public string label06203700
-    { get; set; }
-
-    /// <summary>Current label06203800 value supplied by the product.</summary>
-    public string label06203800
-    { get; set; }
-
-    /// <summary>Current label06203900 value supplied by the product.</summary>
-    public string label06203900
-    { get; set; }
-
-    /// <summary>Current label06204000 value supplied by the product.</summary>
-    public string label06204000
-    { get; set; }
-
     /// <summary>Local reference drop state; the product may replace it.</summary>
     public HomeDropState dropState
     { get; set; } = HomeDropState.Triple;
 
     /// <summary>Independent indicator states; missing keys are hidden.</summary>
-    public Dictionary<HomeIndicator, bool> indicators
-    { get; private set; } = new Dictionary<HomeIndicator, bool> {
+    private readonly Dictionary<HomeIndicator, bool> indicators = new Dictionary<HomeIndicator, bool> {
         { HomeIndicator.FavorityNewTag, false },
         { HomeIndicator.ItemToolTips, true },
         { HomeIndicator.TaskButton, true },
@@ -266,6 +137,29 @@ public partial class HomeEntity : XEntity
         { HomeIndicator.SheTuanNewTag, true },
         { HomeIndicator.HuodongNewTag, false },
     };
+
+    /// <summary>Read an indicator state without exposing the owned dictionary.</summary>
+    /// <param name="indicator">Stable presentation identifier.</param>
+    /// <returns>True when the indicator is enabled.</returns>
+    public bool IsIndicatorVisible(HomeIndicator indicator)
+    {
+        return indicators.TryGetValue(indicator, out bool visible) && visible;
+    }
+
+    /// <summary>Update one known presentation state.</summary>
+    /// <param name="indicator">Stable presentation identifier.</param>
+    /// <param name="visible">Requested visibility.</param>
+    /// <returns>True when the identifier is supported.</returns>
+    public bool SetIndicator(HomeIndicator indicator, bool visible)
+    {
+        if (!System.Enum.IsDefined(typeof(HomeIndicator), indicator))
+            return false;
+
+        indicators[indicator] = visible;
+
+        return true;
+    }
+
 }
 
 /// <summary>Mutually exclusive reward multiplier presentations.</summary>

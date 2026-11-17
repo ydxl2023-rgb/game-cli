@@ -6,8 +6,13 @@ using System.Collections.Generic;
 public partial class ShopEntity : XEntity
 {
     /// <summary>Catalog supplied by the product or the explicit demo initializer.</summary>
-    public List<ShopProduct> products
-    { get; private set; } = new List<ShopProduct>();
+    private List<ShopProduct> products = new List<ShopProduct>();
+
+    /// <summary>Number of products in the owned catalog.</summary>
+    public int productCount
+    {
+        get { return products.Count; }
+    }
 
     /// <summary>Selected catalog category.</summary>
     public ShopCategory category
@@ -32,6 +37,30 @@ public partial class ShopEntity : XEntity
     /// <summary>Most recent local purchase result.</summary>
     public ShopPurchaseResult result
     { get; private set; }
+
+    /// <summary>Read detached products for the selected category.</summary>
+    /// <returns>A catalog snapshot that cannot mutate purchase state.</returns>
+    public List<ShopProduct> GetProducts()
+    {
+        var result = new List<ShopProduct>();
+        foreach (var entry in products)
+        {
+            if (entry.category == category)
+            {
+                result.Add(new ShopProduct {
+                    id = entry.id,
+                    category = entry.category,
+                    nameId = entry.nameId,
+                    price = entry.price,
+                    reward = entry.reward,
+                    remaining = entry.remaining,
+                    icon = entry.icon
+                });
+            }
+        }
+
+        return result;
+    }
 
     /// <summary>Install a validated local catalog without making a service request.</summary>
     /// <param name="catalog">Product definitions owned by this demonstration.</param>

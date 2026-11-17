@@ -6,6 +6,10 @@ using UnityEngine.UI;
 [Config("Assets/Data/Widgets/Home/Home.prefab", WidgetLayer.center, cacheWidget: false)]
 public class UIHome : UIWidget<VMHome>
 {
+    /// <summary>Activity list bound through VMHome.</summary>
+    [SerializeField]
+    private UIActivityEntry[] activities;
+
     /// <summary>Explicit serialized state targets; no runtime hierarchy search.</summary>
     [SerializeField]
     private HomeVisibility[] indicators;
@@ -22,6 +26,17 @@ public class UIHome : UIWidget<VMHome>
     [SerializeField]
     private Sprite tripleDrop;
 
+    /// <summary>Read identifiers in the same order as the authored SyncGroup children.</summary>
+    /// <returns>A detached ordered identifier list.</returns>
+    public int[] GetActivityIds()
+    {
+        var ids = new int[activities.Length];
+        for (int index = 0; index < activities.Length; index++)
+            ids[index] = activities[index].GetSystemId();
+
+        return ids;
+    }
+
     /// <summary>Refresh all independent indicators from entity data.</summary>
     /// <param name="entity">The current product or local example state.</param>
     /// <returns>True when all required references were updated.</returns>
@@ -33,6 +48,9 @@ public class UIHome : UIWidget<VMHome>
         bool complete = true;
         foreach (var indicator in indicators)
             complete &= indicator != null && indicator.Apply(entity);
+
+        foreach (var activity in activities)
+            complete &= activity && activity.RefreshPresentation();
 
         dropImage.sprite = entity.dropState == HomeDropState.Triple ? tripleDrop : doubleDrop;
         dropImage.SetNativeSize();

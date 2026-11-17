@@ -26,6 +26,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | system/loading | Loading：[开发](system/loading/development/SKILL.md) / [验收](system/loading/acceptance/SKILL.md) |
 | system/master | Master：[开发](system/master/development/SKILL.md) / [验收](system/master/acceptance/SKILL.md) |
 | system/home | Home：[开发](system/home/development/SKILL.md) / [验收](system/home/acceptance/SKILL.md) |
+| system/function | Function：[开发](system/function/development/SKILL.md) / [验收](system/function/acceptance/SKILL.md) |
 | system/red-dot | RedDot：[开发](system/red-dot/development/SKILL.md) / [验收](system/red-dot/acceptance/SKILL.md) |
 | system/shop | Shop：[开发](system/shop/development/SKILL.md) / [验收](system/shop/acceptance/SKILL.md) |
 | system/notice | Notice：[开发](system/notice/development/SKILL.md) / [验收](system/notice/acceptance/SKILL.md) |

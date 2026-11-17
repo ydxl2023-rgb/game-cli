@@ -1,4 +1,5 @@
 using Config;
+using System.Collections.Generic;
 using Oathx.Core;
 using Oathx.Entity;
 using Oathx.Widget;
@@ -13,6 +14,11 @@ public class HomeSystem : RuntimeSystem
     {
         if (!IsActive())
             return false;
+
+        UnsubscribeAll();
+
+        Subscribe<FunctionOpenChanged>(OnFunctionChanged);
+        Subscribe<FunctionInputsUpdated>(OnInputsUpdated);
 
         UISystem.GetSingleton().OpenWidget<UIHome>((widget) => {
             if (widget)
@@ -52,64 +58,39 @@ public class HomeSystem : RuntimeSystem
         if (!entity)
             return false;
 
+        var functions = XEntityManager.GetSingleton().QueryEntity<FunctionManagerEntity>();
+        if (!functions)
+            return false;
+
+        entity.playerLevel = functions.level;
+
         vm.PlayerName = entity.playerName ?? string.Empty;
         vm.PlayerLevel = entity.playerLevel.ToString(CultureInfo.InvariantCulture);
         vm.CurrencyOneAmount = entity.currencyOneAmount.ToString(CultureInfo.InvariantCulture);
         vm.CurrencyTwoAmount = entity.currencyTwoAmount.ToString(CultureInfo.InvariantCulture);
         vm.CurrencyThreeAmount = entity.currencyThreeAmount.ToString(CultureInfo.InvariantCulture);
-        vm.Label062003 = entity.label062003 ?? string.Empty;
-        vm.Label062032 = entity.label062032 ?? string.Empty;
-        vm.Label0620420 = entity.label0620420 ?? string.Empty;
-        vm.Label062052 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_5_2);
-        vm.Label0620530 = entity.label0620530 ?? string.Empty;
-        vm.Label062062 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_6_2);
-        vm.Label0620630 = entity.label0620630 ?? string.Empty;
-        vm.Label0620720 = entity.label0620720 ?? string.Empty;
-        vm.Label0620900 = entity.label0620900 ?? string.Empty;
-        vm.Label06201003 = entity.label06201003 ?? string.Empty;
-        vm.Label06201102 = entity.label06201102 ?? string.Empty;
-        vm.Label062012000 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_12_0_0_0);
-        vm.Label062012010 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_12_0_1_0);
-        vm.Label062013000 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_13_0_0_0);
-        vm.Label0620130010 = entity.label0620130010 ?? string.Empty;
-        vm.Label062013002 = entity.label062013002 ?? string.Empty;
-        vm.Label0620130050 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_13_0_0_5_0);
-        vm.Label062013010 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_13_0_1_0);
-        vm.Label062014020 = CommonText.Get(Excel.HOME_TEXT_0_6_2_0_14_0_2_0);
-        vm.Label06201502 = entity.label06201502 ?? string.Empty;
-        vm.Label06201600 = entity.label06201600 ?? string.Empty;
-        vm.Label06202100 = entity.label06202100 ?? string.Empty;
-        vm.Label06202200 = entity.label06202200 ?? string.Empty;
-        vm.Label06202300 = entity.label06202300 ?? string.Empty;
-        vm.Label06202400 = entity.label06202400 ?? string.Empty;
-        vm.Label06202500 = entity.label06202500 ?? string.Empty;
-        vm.Label06202600 = entity.label06202600 ?? string.Empty;
-        vm.Label06202800 = entity.label06202800 ?? string.Empty;
-        vm.Label06202900 = entity.label06202900 ?? string.Empty;
-        vm.Label06203000 = entity.label06203000 ?? string.Empty;
-        vm.Label06203100 = entity.label06203100 ?? string.Empty;
-        vm.Label06203200 = entity.label06203200 ?? string.Empty;
-        vm.Label06203300 = entity.label06203300 ?? string.Empty;
-        vm.Label06203400 = entity.label06203400 ?? string.Empty;
-        vm.Label06203500 = entity.label06203500 ?? string.Empty;
-        vm.Label06203600 = entity.label06203600 ?? string.Empty;
-        vm.Label06203700 = entity.label06203700 ?? string.Empty;
-        vm.Label06203800 = entity.label06203800 ?? string.Empty;
-        vm.Label06203900 = entity.label06203900 ?? string.Empty;
-        vm.Label06204000 = entity.label06204000 ?? string.Empty;
-        vm.Label063001 = CommonText.Get(Excel.HOME_TEXT_0_6_3_0_0_1);
-        vm.Label063021 = CommonText.Get(Excel.HOME_TEXT_0_6_3_0_2_1);
-        vm.Label06310 = CommonText.Get(Excel.HOME_TEXT_0_6_3_1_0);
-        vm.Label06320 = CommonText.Get(Excel.HOME_TEXT_0_6_3_2_0);
         vm.ChatMessage = entity.chatMessage ?? string.Empty;
-        vm.Label06410 = CommonText.Get(Excel.HOME_TEXT_0_6_4_1_0);
-        vm.Label06420 = CommonText.Get(Excel.HOME_TEXT_0_6_4_2_0);
-        vm.Label06430 = CommonText.Get(Excel.HOME_TEXT_0_6_4_3_0);
-        vm.Label06444 = CommonText.Get(Excel.HOME_TEXT_0_6_4_4_4);
-        vm.Label06534 = CommonText.Get(Excel.HOME_TEXT_0_6_5_3_4);
-        vm.Label06544 = CommonText.Get(Excel.HOME_TEXT_0_6_5_4_4);
-        vm.Label06550 = CommonText.Get(Excel.HOME_TEXT_0_6_5_5_0);
-        vm.Label06560 = CommonText.Get(Excel.HOME_TEXT_0_6_5_6_0);
+
+        if (vm.AcitiveList == null || vm.AcitiveList.Count == 0)
+        {
+            var entries = new List<VMActivityEntry>();
+            foreach (int id in widget.GetActivityIds())
+            {
+                int systemId = id;
+                entries.Add(new VMActivityEntry {
+                    systemId = systemId,
+                    OpenClick = (sender) => OpenActivity(systemId),
+                    Visible = functions.IsOpen(systemId)
+                });
+            }
+
+            vm.AcitiveList = entries;
+        }
+        else
+        {
+            foreach (VMActivityEntry entry in vm.AcitiveList)
+                entry.Visible = functions.IsOpen(entry.systemId);
+        }
 
         if (!widget.RefreshPresentation(entity))
             return false;
@@ -137,6 +118,40 @@ public class HomeSystem : RuntimeSystem
         return true;
     }
 
+    /// <summary>Request an available activity through the system coordinator.</summary>
+    /// <param name="id">FunctionSystem identifier.</param>
+    /// <returns>True when an available, implemented target was requested.</returns>
+    public bool OpenActivity(int id)
+    {
+        var entity = XEntityManager.GetSingleton().QueryEntity<FunctionManagerEntity>();
+        if (!entity)
+            return false;
+
+        if (!IsActive() || !entity.IsOpen(id)
+            || !Excel.functionSystemConfig.TryGetValue(id, out var row))
+            return false;
+
+        var type = FunctionManagerAccess.ResolveType(row);
+        if (type == null)
+            return false;
+
+        return XPluginUtility.PostEvent(new SystemActive { type = type });
+    }
+
+    /// <summary>Refresh entries after a configured availability transition.</summary>
+    /// <param name="data">Changed function.</param>
+    private void OnFunctionChanged(FunctionOpenChanged data)
+    {
+        Refresh();
+    }
+
+    /// <summary>Refresh only after the availability service has applied the input message.</summary>
+    /// <param name="data">Completed input update notification.</param>
+    private void OnInputsUpdated(FunctionInputsUpdated data)
+    {
+        Refresh();
+    }
+
     /// <summary>Bind the loaded page to local navigation.</summary>
     /// <param name="widget">The newly opened lobby widget.</param>
     /// <returns>True when every declared button callback was assigned.</returns>
@@ -159,48 +174,6 @@ public class HomeSystem : RuntimeSystem
         vm.AddCurrencyTwoClick = (sender) => OpenEntry(HomeEntry.AddCurrencyTwo);
         vm.CurrencyThreeClick = (sender) => OpenEntry(HomeEntry.CurrencyThree);
         vm.AddCurrencyThreeClick = (sender) => OpenEntry(HomeEntry.AddCurrencyThree);
-        vm.TaskButtonClick = (sender) => OpenEntry(HomeEntry.TaskButton);
-        vm.SevendaysLoginClick = (sender) => OpenEntry(HomeEntry.SevendaysLogin);
-        vm.SevendaysTaskClick = (sender) => OpenEntry(HomeEntry.SevendaysTask);
-        vm.FourteendaysTaskClick = (sender) => OpenEntry(HomeEntry.FourteendaysTask);
-        vm.DirectPurchaseButtonClick = (sender) => OpenEntry(HomeEntry.DirectPurchaseButton);
-        vm.DirectPurchaseButton1Click = (sender) => OpenEntry(HomeEntry.DirectPurchaseButton1);
-        vm.CNBattlePassButtonClick = (sender) => OpenEntry(HomeEntry.CNBattlePassButton);
-        vm.TimeLimitGiftButtonClick = (sender) => OpenEntry(HomeEntry.TimeLimitGiftButton);
-        vm.UpInProButtonClick = (sender) => OpenEntry(HomeEntry.UpInProButton);
-        vm.ComeBackButtonClick = (sender) => OpenEntry(HomeEntry.ComeBackButton);
-        vm.BtnPowerfulBaitClick = (sender) => OpenEntry(HomeEntry.BtnPowerfulBait);
-        vm.BtnKingSetterClick = (sender) => OpenEntry(HomeEntry.BtnKingSetter);
-        vm.ZhanshuButtonClick = (sender) => OpenEntry(HomeEntry.ZhanshuButton);
-        vm.FateBattleButtonClick = (sender) => OpenEntry(HomeEntry.FateBattleButton);
-        vm.FateBattleDlcBtnClick = (sender) => OpenEntry(HomeEntry.FateBattleDlcBtn);
-        vm.AppearBtnClick = (sender) => OpenEntry(HomeEntry.AppearBtn);
-        vm.BtnPlayerThemeClick = (sender) => OpenEntry(HomeEntry.BtnPlayerTheme);
-        vm.BtnTurnCardClick = (sender) => OpenEntry(HomeEntry.BtnTurnCard);
-        vm.AliPayPackageBtnClick = (sender) => OpenEntry(HomeEntry.AliPayPackageBtn);
-        vm.QuestionBtnClick = (sender) => OpenEntry(HomeEntry.QuestionBtn);
-        vm.BtnPreOrderClick = (sender) => OpenEntry(HomeEntry.BtnPreOrder);
-        vm.BtnMatchGuessClick = (sender) => OpenEntry(HomeEntry.BtnMatchGuess);
-        vm.BtnTopBattleClick = (sender) => OpenEntry(HomeEntry.BtnTopBattle);
-        vm.BtnServeGameClick = (sender) => OpenEntry(HomeEntry.BtnServeGame);
-        vm.BtnNewYearClick = (sender) => OpenEntry(HomeEntry.BtnNewYear);
-        vm.BtnChainGiftClick = (sender) => OpenEntry(HomeEntry.BtnChainGift);
-        vm.BtnSPTopicClick = (sender) => OpenEntry(HomeEntry.BtnSPTopic);
-        vm.BtnAnniversaryClick = (sender) => OpenEntry(HomeEntry.BtnAnniversary);
-        vm.BtnFreeMatchClick = (sender) => OpenEntry(HomeEntry.BtnFreeMatch);
-        vm.BtnRunningGameClick = (sender) => OpenEntry(HomeEntry.BtnRunningGame);
-        vm.Btn15AnniversaryActiveClick = (sender) => OpenEntry(HomeEntry.Btn15AnniversaryActive);
-        vm.BtnLuckyDrawClick = (sender) => OpenEntry(HomeEntry.BtnLuckyDraw);
-        vm.BtnWuYeCanteenClick = (sender) => OpenEntry(HomeEntry.BtnWuYeCanteen);
-        vm.BtnAceDuelClick = (sender) => OpenEntry(HomeEntry.BtnAceDuel);
-        vm.BtnCampTrainingClick = (sender) => OpenEntry(HomeEntry.BtnCampTraining);
-        vm.BtnSpecialOfferPackageClick = (sender) => OpenEntry(HomeEntry.BtnSpecialOfferPackage);
-        vm.BtnBarbecueClick = (sender) => OpenEntry(HomeEntry.BtnBarbecue);
-        vm.BtnCombinationGiftClick = (sender) => OpenEntry(HomeEntry.BtnCombinationGift);
-        vm.BtnSelectSelfGiftClick = (sender) => OpenEntry(HomeEntry.BtnSelectSelfGift);
-        vm.BtnSelectSelfGachaClick = (sender) => OpenEntry(HomeEntry.BtnSelectSelfGacha);
-        vm.BtnSkillResonanceClick = (sender) => OpenEntry(HomeEntry.BtnSkillResonance);
-        vm.BtnNationalTournamentClick = (sender) => OpenEntry(HomeEntry.BtnNationalTournament);
         vm.ShopClick = (sender) => OpenEntry(HomeEntry.Shop);
         vm.BenefitsClick = (sender) => OpenEntry(HomeEntry.Benefits);
         vm.RankingsClick = (sender) => OpenEntry(HomeEntry.Rankings);

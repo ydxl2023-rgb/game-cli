@@ -73,77 +73,9 @@ public class MasterSystem : RuntimeSystem
         Subscribe<SystemActive>(OnSystemActive);
         Subscribe<SystemDetive>(OnSystemDetive);
         Subscribe<HomeEntryRequested>(OnHomeEntryRequested);
+        Subscribe<FunctionOpenChanged>(OnFunctionChanged);
 
         return true;
-    }
-
-    /// <summary>
-    /// Load and activate a requested business system.
-    /// </summary>
-    /// <param name="data">Target system and optional completion action.</param>
-    private void OnSystemActive(SystemActive data)
-    {
-        if (IsActive() && IsSystemType(data.type))
-            XCoroutine.Run(ActivateSystem(data));
-    }
-
-    /// <summary>Route the reference Home mall entry through the system coordinator.</summary>
-    /// <param name="data">Home navigation request.</param>
-    private void OnHomeEntryRequested(HomeEntryRequested data)
-    {
-        if (IsActive() && data.entry == HomeEntry.Shop)
-            OnSystemActive(new SystemActive { type = typeof(ShopSystem) });
-    }
-
-    /// <summary>
-    /// Wait until event dispatch has finished before changing the system registry.
-    /// </summary>
-    /// <param name="data">Target system and optional completion action.</param>
-    /// <returns>The deferred activation sequence.</returns>
-    private IEnumerator ActivateSystem(SystemActive data)
-    {
-        yield return null;
-
-        if (IsActive())
-            LoadSystem(data.type, data.complete);
-    }
-
-    /// <summary>
-    /// Unload a requested business system and its dependent pages.
-    /// </summary>
-    /// <param name="data">Target system and optional completion action.</param>
-    private void OnSystemDetive(SystemDetive data)
-    {
-        if (IsActive() && IsSystemType(data.type))
-        {
-            if (data.type == typeof(LoginSystem))
-                dispatcher.Unload(typeof(NoticeSystem));
-
-            UnloadSystem(data.type, data.complete);
-        }
-    }
-
-    /// <summary>
-    /// Reject invalid targets and requests to replace the lifecycle coordinator.
-    /// </summary>
-    /// <param name="type">Requested system type.</param>
-    /// <returns>True for a concrete business runtime system.</returns>
-    private bool IsSystemType(System.Type type)
-    {
-        return type != null && type != typeof(MasterSystem) && !type.IsAbstract
-            && typeof(RuntimeSystem).IsAssignableFrom(type);
-    }
-
-    /// <summary>
-    /// Prepare local player data and start Home after local login succeeds.
-    /// </summary>
-    /// <param name="data">Local login success notification.</param>
-    private void OnLoginSucceed(LoginSucceed data)
-    {
-        if (Load())
-        {
-            Launch();
-        }
     }
 
     /// <summary>
@@ -206,6 +138,98 @@ public class MasterSystem : RuntimeSystem
             return false;
 
         return !string.IsNullOrEmpty(master.Serialize());
+    }
+
+    /// <summary>
+    /// Load and activate a requested business system.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    private void OnSystemActive(SystemActive data)
+    {
+        if (IsActive() && IsSystemType(data.type) && FunctionManagerAccess.CanActivate(data.type))
+            XCoroutine.Run(ActivateSystem(data));
+    }
+
+    /// <summary>Route the reference Home mall entry through the system coordinator.</summary>
+    /// <param name="data">Home navigation request.</param>
+    private void OnHomeEntryRequested(HomeEntryRequested data)
+    {
+        if (IsActive() && data.entry == HomeEntry.Shop)
+            OnSystemActive(new SystemActive { type = typeof(ShopSystem) });
+    }
+
+    /// <summary>
+    /// Wait until event dispatch has finished before changing the system registry.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    /// <returns>The deferred activation sequence.</returns>
+    private IEnumerator ActivateSystem(SystemActive data)
+    {
+        yield return null;
+
+        if (IsActive() && FunctionManagerAccess.CanActivate(data.type))
+            LoadSystem(data.type, data.complete);
+    }
+
+    /// <summary>
+    /// Unload a requested business system and its dependent pages.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    private void OnSystemDetive(SystemDetive data)
+    {
+        if (IsActive() && IsSystemType(data.type))
+        {
+            if (data.type == typeof(LoginSystem))
+                dispatcher.Unload(typeof(NoticeSystem));
+
+            UnloadSystem(data.type, data.complete);
+        }
+    }
+
+    /// <summary>Close a business system when its configured gate becomes unavailable.</summary>
+    /// <param name="data">Calculated availability transition.</param>
+    private void OnFunctionChanged(FunctionOpenChanged data)
+    {
+        if (!data.opened && Config.Excel.functionSystemConfig.TryGetValue(data.id, out var row))
+        {
+            var type = FunctionManagerAccess.ResolveType(row);
+            if (IsSystemType(type) && type != typeof(FunctionManagerSystem) && type != typeof(RedDotSystem))
+                XCoroutine.Run(CloseUnavailable(type));
+        }
+    }
+
+    /// <summary>Defer registry changes and reject stale close messages.</summary>
+    /// <param name="type">Business system to close.</param>
+    /// <returns>The deferred close sequence.</returns>
+    private IEnumerator CloseUnavailable(System.Type type)
+    {
+        yield return null;
+
+        if (IsActive() && !FunctionManagerAccess.CanActivate(type))
+            UnloadSystem(type, null);
+    }
+
+    /// <summary>
+    /// Reject invalid targets and requests to replace the lifecycle coordinator.
+    /// </summary>
+    /// <param name="type">Requested system type.</param>
+    /// <returns>True for a concrete business runtime system.</returns>
+    private bool IsSystemType(System.Type type)
+    {
+        return type != null && type != typeof(MasterSystem) && !type.IsAbstract
+            && typeof(RuntimeSystem).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Prepare local player data and start Home after local login succeeds.
+    /// </summary>
+    /// <param name="data">Local login success notification.</param>
+    private void OnLoginSucceed(LoginSucceed data)
+    {
+        if (Load())
+        {
+            Launch();
+        }
     }
 
     /// <summary>

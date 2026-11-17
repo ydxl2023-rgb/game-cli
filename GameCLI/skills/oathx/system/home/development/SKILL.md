@@ -27,7 +27,8 @@ description: 独立 agent 参考 SvHome 基础大厅模板开发 Home 的玩家�
 - HomeEntryRequested 只表示入口被请求，不能解释为目标系统已打开。产品协调者将其映射为 SystemActive/SystemDetive，由 Master 统一管理系统。Notice 入口是否使用登录公告或游戏公告必须按产品契约确定。
 - HomePresentationRequested 携带角色和季节资源键，供产品渲染器接入；空键保持无角色及静态背景。不得将事件存在描述为 Spine 已安装或季节已切换。
 - 保持所有已有基础入口可交互；未接业务的入口发明确事件，不统一禁用或变灰。嵌套头像/玩家、聊天频道/聊天按钮必须分别验证命中。
-- 固定 Text 文案合并进 propCommonText，使用生成别名与 CommonText.Get。图片内文字是美术本地化依赖，不得声称已支持任意语言。动态昵称、数值和聊天来自 Entity。
+- 固定 Text 文案直接保存在预制，不生成 Entity 属性、VM Binding 或 HomeSystem 赋值。VM 文本仅保留昵称、等级、三组货币和聊天；未接入的活动倒计时/FID 占位保持空文本，不生成 Label 加路径数字的属性。
+- 已有 propCommonText 条目保留作为本地化源资料，Home 当前固定文本不在运行时查表；需要多语言时由文本组件按 ID 接入，不通过 Entity 中转。图片内文字仍是美术本地化依赖，当前不能宣称支持运行时语言切换。
 
 ## 资料与交付
 
@@ -40,3 +41,18 @@ description: 独立 agent 参考 SvHome 基础大厅模板开发 Home 的玩家�
 ## 红点所有权
 
 真正红点由独立 [RedDotSystem](../../red-dot/development/SKILL.md) 配置和计算，Home 不再在 HomeEntity.indicators 或 UIHome.indicators 中控制红点。宿主根节点通过 RedDotScope 序列化配置 ID 和目标。NEW、广告、掉落及活动入口显隐继续属于 Home。
+
+## 配置驱动活动列表
+
+- AcitiveList 保留原节点名。复用 SyncGroup 将直接子节点 UIActivityEntry 按顺序绑定 VList；UIHome 序列化条目引用，条目保存配置 ID。SyncVisible 控制显隐，原布局自动重排，不创建模板克隆。
+- VMHome.acitiveList 使用 VList<VMActivityEntry> 与 SyncGroup，数量与顺序必须等于预制直接子节点。页面只绑定一次，后续仅更新 Visible，避免重复 Ref/点击监听。原图、NEW 动画保留；新增不同外观入口需先添加预制条目，不自动生成任意新类型。
+- FunctionManagerSystem 负责等级、UTC 时间窗、本地开关，参见 [Function 开发](../../function/development/SKILL.md)。Home 监听 FunctionOpenChanged 和输入已写入后的 FunctionInputsUpdated，不直接监听原始等级输入进行刷新。
+- Condtions 采用 `{Switch:1,Level:10}`，条件 AND；本地开关只覆盖默认 Switch，不能绕过等级或时间。空条件默认开放，空时间端点不受限。未知条件、时间格式错误或重复 ClassType 拒绝开放。
+- 点击时重新检查条件，经 SystemActive 请求 Master；目标业务关闭由 Master 协调。ClassType 为空只保留展示，不伪造服务、跳转或接入旧 RPC。旧 SevenDayLoginSystem 不作为参考活动目标，活动使用独立配置 ID。
+- Item 的 RedDotScope 随真实实例注册/释放；根 Home 的红点引用与显隐引用排除活动子树。UIActivityEntry 的内部 HomeVisibility 只控制非红点装饰，不拥有系统开放状态。
+- 同一存活 Item 不重复赋 OpenClick（当前 SyncClick 每次赋值会追加监听）；列表容器替换和页面关闭必须解除结构监听。时间检查用 unscaled 时钟，最长约一秒反映边界，点击及激活会即时复核。
+- 制作链维护真实 C# 源码，build-home-source 只导出 verified 工程代码，build-home-presentation 只整理展示资料；最终执行 bind-home-functions 更新子 Widget 和根 Metadata。不要从节点路径自动生成业务属性。
+
+## 实体职责约定
+
+HomeEntity 封装指标字典，使用 IsIndicatorVisible / SetIndicator；HomeVisibility 不直接读取可写字典。纯展示数据保留属性，FunctionManagerEntity 管理开放规则，Home 不重复保存或计算开放状态。

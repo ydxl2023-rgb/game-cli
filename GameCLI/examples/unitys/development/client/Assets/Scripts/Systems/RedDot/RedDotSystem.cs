@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Config;
 using Oathx.Core;
 using Oathx.Entity;
 using Oathx.Widget;
@@ -10,9 +8,6 @@ using UnityEngine;
 /// <summary>Evaluates configured notification conditions and owns widget presentation lifetimes.</summary>
 public class RedDotSystem : RuntimeSystem
 {
-    /// <summary>Validated immutable configuration indexed by stable identifier.</summary>
-    private readonly Dictionary<int, RedDot> configurations = new Dictionary<int, RedDot>();
-
     /// <summary>Presentation scopes currently owned by open widgets.</summary>
     private readonly HashSet<RedDotScope> scopes = new HashSet<RedDotScope>();
 
@@ -35,7 +30,11 @@ public class RedDotSystem : RuntimeSystem
         if (subscribed)
             return true;
 
-        ValidateConfigurations();
+        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();
+        if (!entity)
+            return false;
+
+        entity.Initialize();
 
         Subscribe<WidgetOpenedEvent>(OnWidgetOpened);
         Subscribe<WidgetClosingEvent>(OnWidgetClosing);
@@ -76,7 +75,6 @@ public class RedDotSystem : RuntimeSystem
         }
 
         scopes.Clear();
-        configurations.Clear();
     }
 
     /// <summary>Schedule one condition or all configured conditions for reevaluation.</summary>
@@ -84,12 +82,16 @@ public class RedDotSystem : RuntimeSystem
     /// <returns>True when the request is valid and scheduled.</returns>
     public bool RequestRefresh(int id = 0)
     {
-        if (!IsActive() || (id != 0 && !configurations.ContainsKey(id)))
+        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();
+        if (!entity)
+            return false;
+
+        if (!IsActive() || (id != 0 && !entity.Contains(id)))
             return false;
 
         if (id == 0)
         {
-            foreach (var key in configurations.Keys)
+            foreach (var key in entity.GetIds())
                 pending.Add(key);
         }
         else
@@ -103,40 +105,6 @@ public class RedDotSystem : RuntimeSystem
         return true;
     }
 
-    /// <summary>Validate IDs, supported conditions, flags and an acyclic parent tree.</summary>
-    private void ValidateConfigurations()
-    {
-        configurations.Clear();
-        foreach (var item in Excel.redDotConfig)
-        {
-            var row = item.Value;
-            if (row == null || row.ID <= 0 || row.ID != row.NumID || configurations.ContainsKey(row.ID))
-                throw new InvalidOperationException("Invalid or duplicate red dot identifier.");
-
-            if (!Enum.IsDefined(typeof(ERedDotCondition), row.RedDotCondition)
-                || (row.RedDotCondition != ERedDotCondition.None && row.RedDotCondition != ERedDotCondition.SignalCount)
-                || (row.RedDotDisplay != ERedDotDisplay.Dot && row.RedDotDisplay != ERedDotDisplay.Count)
-                || row.Enabled < 0 || row.Enabled > 1 || row.RefreshOnOpen < 0 || row.RefreshOnOpen > 1
-                || row.RefreshOnClose < 0 || row.RefreshOnClose > 1)
-                throw new InvalidOperationException($"Invalid red dot configuration: {row.ID}.");
-
-            configurations.Add(row.ID, row);
-        }
-
-        foreach (var row in configurations.Values)
-        {
-            var ancestors = new HashSet<int> { row.ID };
-            int parent = row.ParentID;
-            while (parent != 0)
-            {
-                if (!configurations.TryGetValue(parent, out var ancestor) || !ancestors.Add(parent))
-                    throw new InvalidOperationException($"Missing or cyclic red dot parent: {row.ID}.");
-
-                parent = ancestor.ParentID;
-            }
-        }
-    }
-
     /// <summary>Attach only the explicit scope on the widget root after activation.</summary>
     /// <param name="data">The application widget-opened event.</param>
     private void OnWidgetOpened(WidgetOpenedEvent data)
@@ -148,10 +116,11 @@ public class RedDotSystem : RuntimeSystem
             if (scope)
                 scopes.Add(scope);
 
-            foreach (var row in configurations.Values)
+            var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();
+            if (entity)
             {
-                if (row.RefreshOnOpen != 0)
-                    RequestRefresh(row.ID);
+                foreach (int id in entity.GetLifecycleIds(true))
+                    RequestRefresh(id);
             }
         }
     }
@@ -167,10 +136,11 @@ public class RedDotSystem : RuntimeSystem
             if (scope)
                 scopes.Remove(scope);
 
-            foreach (var row in configurations.Values)
+            var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();
+            if (entity)
             {
-                if (row.RefreshOnClose != 0)
-                    RequestRefresh(row.ID);
+                foreach (int id in entity.GetLifecycleIds(false))
+                    RequestRefresh(id);
             }
         }
     }
@@ -200,17 +170,12 @@ public class RedDotSystem : RuntimeSystem
     /// <param name="data">Business-owned condition identifier and count.</param>
     private void OnSignalChanged(RedDotSignalChanged data)
     {
-        if (IsActive() && data.count >= 0 && configurations.TryGetValue(data.id, out var row)
-            && row.RedDotCondition == ERedDotCondition.SignalCount)
-        {
-            var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();
-            if (entity)
-            {
-                entity.signals[data.id] = data.count;
+        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();
+        if (!entity)
+            return;
 
-                RequestRefresh(data.id);
-            }
-        }
+        if (IsActive() && entity.UpdateSignal(data.id, data.count))
+            RequestRefresh(data.id);
     }
 
     /// <summary>Schedule explicit business-driven condition checks.</summary>
@@ -239,25 +204,8 @@ public class RedDotSystem : RuntimeSystem
         if (!entity)
             return false;
 
-        foreach (int id in pending)
-        {
-            var configuration = configurations[id];
-            entity.evaluated[id] = configuration.Enabled != 0 ? RedDotConditions.Evaluate(configuration, entity) : 0;
-        }
-
+        var changes = entity.Refresh(pending);
         pending.Clear();
-        var counts = new Dictionary<int, int>();
-        foreach (int id in configurations.Keys)
-            Aggregate(id, entity, counts);
-
-        var changes = new List<RedDotChanged>();
-        foreach (var pair in counts)
-        {
-            if (!entity.counts.TryGetValue(pair.Key, out int old) || old != pair.Value)
-                changes.Add(new RedDotChanged { id = pair.Key, count = pair.Value });
-
-            entity.counts[pair.Key] = pair.Value;
-        }
 
         scopes.RemoveWhere(scope => !scope);
         foreach (var scope in scopes)
@@ -267,35 +215,9 @@ public class RedDotSystem : RuntimeSystem
         }
 
         foreach (var change in changes)
-            XPluginUtility.FireEvent(change);
+            XPluginUtility.FireEvent(new RedDotChanged { id = change.Key, count = change.Value });
 
         return true;
     }
 
-    /// <summary>Aggregate each configured subtree once, saturating large counts.</summary>
-    /// <param name="id">The subtree root.</param>
-    /// <param name="entity">Cached condition results.</param>
-    /// <param name="counts">Memoized aggregate results for this refresh.</param>
-    /// <returns>The count visible at the subtree root.</returns>
-    private int Aggregate(int id, RedDotEntity entity, Dictionary<int, int> counts)
-    {
-        if (counts.TryGetValue(id, out int known))
-            return known;
-
-        long total = 0;
-        if (configurations[id].Enabled != 0)
-        {
-            entity.evaluated.TryGetValue(id, out int own);
-            total = own;
-            foreach (var row in configurations.Values)
-            {
-                if (row.ParentID == id)
-                    total = Math.Min(int.MaxValue, total + Aggregate(row.ID, entity, counts));
-            }
-        }
-
-        counts[id] = (int)total;
-
-        return (int)total;
-    }
 }
