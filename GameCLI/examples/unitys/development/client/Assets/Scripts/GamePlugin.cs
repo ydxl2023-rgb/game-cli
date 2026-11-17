@@ -14,6 +14,22 @@ using Oathx.Core.Sdk;
 using Oathx.Core.Actitvity;
 using Oathx.Widget;
 
+/// <summary>Adapts widget activation to the application event framework.</summary>
+public class WidgetOpenedEvent : IEvent
+{
+    /// <summary>The activation data supplied by the UI layer.</summary>
+    public WidgetOpened data
+    { get; set; }
+}
+
+/// <summary>Adapts the start of widget closing to the application event framework.</summary>
+public class WidgetClosingEvent : IEvent
+{
+    /// <summary>The closing data supplied by the UI layer.</summary>
+    public WidgetClosing data
+    { get; set; }
+}
+
 /// <summary>
 /// UI resource loader
 /// </summary>
@@ -47,7 +63,7 @@ public class UIResourceLoader : UILoader
 /// <summary>
 /// Game Plugin Main Entry
 /// </summary>
-public class GamePlugin : XPlugin
+public class GamePlugin : XPlugin, IUIEventSender
 {
     /// <summary>
     /// Install the plugin
@@ -83,6 +99,20 @@ public class GamePlugin : XPlugin
         });
 
         return true;
+    }
+
+    /// <summary>Forward widget activation through this plugin's event dispatcher.</summary>
+    /// <param name="widget">The activated widget.</param>
+    public void OnWidgetOpened(IWidget widget)
+    {
+        DispatchEvent(new WidgetOpenedEvent { data = new WidgetOpened { widget = widget } });
+    }
+
+    /// <summary>Forward the start of widget closing through the game event pipeline.</summary>
+    /// <param name="widget">The widget beginning its close sequence.</param>
+    public void OnWidgetClosing(IWidget widget)
+    {
+        DispatchEvent(new WidgetClosingEvent { data = new WidgetClosing { widget = widget } });
     }
 
     /// <summary>
@@ -235,7 +265,9 @@ public class GamePlugin : XPlugin
     private void InstallUISystem()
     {
         UISystem.GetSingleton().Startup(new ResourceConfigure() {
-            loader = new UIResourceLoader(), cacher = new UIDefaultCacher()
+            loader = new UIResourceLoader(),
+            cacher = new UIDefaultCacher(),
+            eventSenders = new List<IUIEventSender> { this }
         });
 
         UISystem.GetSingleton().RegisterSyncActions(new System.Type[] {

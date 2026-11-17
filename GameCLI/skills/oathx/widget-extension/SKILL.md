@@ -25,3 +25,15 @@ description: 使用 com.oathx.widget.extension 的 UISystem 和 Fancy 列表扩�
 - 系统类不使用成员变量缓存页面 VM；需要时通过 UISystem 查询已打开的 Widget，再以方法内局部变量使用其 vm。打开回调已提供 Widget 时可直接使用，不必重复查询。
 - `TryGetWidget<T>(out T widget)` 查询打开栈，支持 cacheWidget=false；未打开或已关闭时返回 false。先检查查询结果与 vm 是否有效，不通过场景搜索兜底。
 - 现有 `GetWidget<T>()` 仅查缓存字典，不能用于保证获取非缓存页面。不得为省查询添加另一份 VM 缓存或强制开启页面缓存。
+
+## 应用生命周期通知
+
+- 通过 ResourceConfigure.eventSenders 在 Startup 注入基础 Widget 包的 IUIEventSender；接口只使用 IWidget，不引用 Core、GamePlugin 或业务事件。未传入时保持 UI 打开/关闭功能兼容。
+- 应用实现负责转发事件；GamePlugin 示例通过 DispatchEvent 发送 WidgetOpened 和 WidgetClosing。系统使用 Subscribe/UnsubscribeAll，不订阅 UISystem 静态事件。
+- OnWidgetOpened 在 widget.Active 之后、调用方完成回调之前；OnWidgetClosing 在关闭动画/立即清理开始之前，不代表关闭完成。Shutdown 清理界面期间仍可发送通知，结束后释放发送器引用。
+
+WidgetOpened、WidgetClosing 数据类统一声明在 UISystem.cs 中，不实现 IEvent。GamePlugin.cs 声明 WidgetOpenedEvent / WidgetClosingEvent : IEvent，转发包装后的数据；业务系统订阅 WidgetOpenedEvent / WidgetClosingEvent。禁止因此给 Widget 包增加 Core 引用，也不另建 WidgetEvents.cs。
+
+生命周期派发支持多个 IUIEventSender：Startup 复制配置列表，运行时通过 RegisterEventSender / UnregisterEventSender 管理，按实例去重。事件按注册顺序发送给快照，回调内增删从下一次通知生效；单个适配器异常记录到 Console，不中断其他适配器和 UI 流程。Shutdown 释放整个列表。
+
+当前 Core 事件按 Type.Name 路由；应用事件必须使用不同的具体类型名，禁止以同一泛型事件的不同类型参数区分打开与关闭，否则会发生路由冲突和 InvalidCastException。

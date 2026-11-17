@@ -36,3 +36,7 @@ description: 独立 agent 参考 SvHome 基础大厅模板开发 Home 的玩家�
 当前提取工具为 integrations/codex/scripts/import-sv-home.mjs；完整 SV 原生导出仅为制作证据，基础版排除路径和原因记录于 report.json。透明 Graphic 不得通过父节点 opacity 隐藏后代；原 UGUI Graphic alpha 不影响子控件。
 
 交付包含版本、工程身份、适配差异、源码/资源哈希、入口映射、配置和运行证据。更新标准须走候选与版本流程；未完成的验收如实标注，不把开发自测当独立验收。
+
+## 红点所有权
+
+真正红点由独立 [RedDotSystem](../../red-dot/development/SKILL.md) 配置和计算，Home 不再在 HomeEntity.indicators 或 UIHome.indicators 中控制红点。宿主根节点通过 RedDotScope 序列化配置 ID 和目标。NEW、广告、掉落及活动入口显隐继续属于 Home。

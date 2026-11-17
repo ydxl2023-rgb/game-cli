@@ -4,7 +4,10 @@ import {createHash} from 'node:crypto';
 const folder=process.env.HOME_OUTPUT??'.data/imports/sv-home/fidelity-candidate';
 const base=folder+'/source/Assets/Scripts/Systems/Home/';
 const contract=JSON.parse(await readFile(folder+'/presentation.json','utf8'));
-const states=contract.states.filter(s=>s.sourcePath!=='0/6/5/0/4');
+const redDots=JSON.parse(await readFile('config/home-red-dots.json','utf8'));
+const redDotNodes=new Set(redDots.map(s=>s.node));
+contract.redDots=redDots;
+const states=contract.states.filter(s=>s.sourcePath!=='0/6/5/0/4'&&!redDotNodes.has(s.node));
 const names=new Set();
 for(const state of states){
   let name=state.name.replace(/[^a-zA-Z0-9]/g,'');

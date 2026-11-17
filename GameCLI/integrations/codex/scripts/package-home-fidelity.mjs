@@ -24,6 +24,7 @@ try{
  const workbook=await readFile(folder+'/config/propCommonText.xlsx');
  const table=configurations.tables.find(t=>t.name==='propCommonText');table.entries=entries;
  table.source={...table.source,assetId:hash(workbook),sha256:hash(workbook)};
+ if(!configurations.dependencies.includes('RedDotSystem'))configurations.dependencies.push('RedDotSystem');
  payload.configurations=validateConfigurations(configurations);
  const files=[],materials=[],assets=new Map();
  async function walk(path){const result=[];for(const item of await readdir(path,{withFileTypes:true})){const p=join(path,item.name);if(item.isDirectory())result.push(...await walk(p));else result.push(p);}return result;}
@@ -42,7 +43,7 @@ try{
  files.push({path:'GameCLI/Templates/Home/materials.json',content:JSON.stringify({schemaVersion:1,files:materials,download:'GET /api/studio/assets/<assetId>; verify SHA256 and restore adjacent native .meta GUIDs.'})});
  for(const name of ['report.json','presentation.json','fonts.json'])files.push({path:'GameCLI/Templates/Home/'+name,content:await readFile(folder+'/'+name,'utf8')});
  files.push({path:'GameCLI/Templates/Home/example.json',content:await readFile('config/home-presentation.json','utf8')});
- files.push({path:'GameCLI/Templates/Home/README.md',content:'Home reference presentation. Local example data restores nine source activity entries, independent NEW/ad indicators and a Triple reward state. Replace HomeEntity values for the product and call HomeSystem.Refresh. Retain source fonts, HomeTextOutline, the serialized outline shader reference and its UGUI clipping compatibility fix, activity GridLayoutGroup and the serialized UIHome indicators. NEW and drop animations loop separately; entrance includes Left. Merge only configurations entries. No live ad SDK or activity service is implemented. Character and seasonal presentation remain extension points. The source screenshot is an example, not an active operations schedule. Production materials include native font originals and browser WOFF2 derivatives.\n'});
+ files.push({path:'GameCLI/Templates/Home/README.md',content:'Home reference presentation. Local example data restores nine source activity entries, independent NEW/ad indicators; notification dots are owned by the RedDotSystem template and propRedDot and a Triple reward state. Replace HomeEntity values for the product and call HomeSystem.Refresh. Retain source fonts, HomeTextOutline, the serialized outline shader reference and its UGUI clipping compatibility fix, activity GridLayoutGroup and the serialized UIHome indicators. NEW and drop animations loop separately; entrance includes Left. Merge only configurations entries. No live ad SDK or activity service is implemented. Character and seasonal presentation remain extension points. The source screenshot is an example, not an active operations schedule. Production materials include native font originals and browser WOFF2 derivatives.\n'});
  const scripts=validateScripts({schemaVersion:1,files});
  await writeFile(folder+'/scripts.json',JSON.stringify(scripts,null,2));await writeFile(folder+'/publication.json',JSON.stringify(payload,null,2));
  if(process.argv.includes('--upload-assets')){
