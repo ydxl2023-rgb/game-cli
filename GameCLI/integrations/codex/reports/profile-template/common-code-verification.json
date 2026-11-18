@@ -1,0 +1,560 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Common",
+  "status": "incomplete",
+  "passed": false,
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/HomeTextOutline.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 2,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 3,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 4,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 5,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 6,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 7,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 1,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "line": 9,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIHeroSlot.cs",
+      "line": 2,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIHeroSlot.cs",
+      "line": 1,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIHeroSlot.cs",
+      "line": 4,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 2,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 3,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 4,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 5,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 6,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 1,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "line": 10,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/UIPackSlot.cs",
+      "line": 7,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 2,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 3,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 4,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 5,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 6,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 7,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 1,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 9,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 11,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 14,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 17,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 20,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 23,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 26,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 29,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "line": 32,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 2,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 3,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 4,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 5,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 6,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 7,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 1,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 9,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 11,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 14,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "line": 17,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 2,
+      "rule": "CS_PARSE",
+      "severity": "error",
+      "message": "using 子句必须位于命名空间中定义的所有其他元素之前(外部别名声明除外)"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 1,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 4,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 6,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 9,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 12,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 15,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 18,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 21,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 24,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 27,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 30,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "line": 30,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMPackSlot.cs",
+      "line": 6,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMPackSlot.cs",
+      "line": 8,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMPackSlot.cs",
+      "line": 11,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/VM/VMPackSlot.cs",
+      "line": 14,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    }
+  ],
+  "statistics": {
+    "files": 18,
+    "lines": 746,
+    "blankLines": 157,
+    "commentLines": 94,
+    "members": 101,
+    "documentedMembers": 70,
+    "blankLineRate": 0.21045576407506703,
+    "commentLineRate": 0.1260053619302949,
+    "documentedMemberRate": 0.693069306930693
+  },
+  "excluded": [],
+  "reviewRequired": [
+    {
+      "file": "Assets/Scripts/Systems/Common/UI/HomeTextOutline.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    }
+  ],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/ActivityBadge.cs",
+      "sha256": "49af4afdee7db9f5f476ac1c7fd5d3859bb86d90f9d4fa9bd22049a395bd1cc7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/HomeTextOutline.cs",
+      "sha256": "f76d76ca4366c61a3efe8ef586f82b081ab78949e07663ca629964800c7af07d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIActivityBadge.cs",
+      "sha256": "a90b8af788dc0c5ba64c2a9c6d9f777bdb9d0b0e0583be8f595003b385e54f12"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIActivityEntry.cs",
+      "sha256": "97799d8c786cc0668d93e55155488abda4c2bbc79ebe52b92187580242c93caf"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UICurrencyBar.cs",
+      "sha256": "9e37b736496e0a10d7b101680934feef5010ade8c1f068506a508ea6e0f1585d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UICurrencyEntry.cs",
+      "sha256": "f000a5d54b720b75be7bed2585136019427ef5c1092365aec43179643bcabc32"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIGridItemSlot.cs",
+      "sha256": "c8618e6081d171d78a759dbbe7eefd1558b980a9051286ee6e7ba3d0c1777b47"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIHeroSlot.cs",
+      "sha256": "9599f4a5312204d77b7a0d25149387108814e2c2db9867175568eb1d1f99d9e8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIItemSlot.cs",
+      "sha256": "9b346a296a3d4cdad80097606466946e0f8bf9821170c6e0f3972efc7260d349"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIPackSlot.cs",
+      "sha256": "5d25acfbb927599e060ee090f7203ba031a3db4db8ea45d86897fbf2d91a74a3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMActivityBadge.cs",
+      "sha256": "ba94f190ead095ce2682cc4159cb1d7c6ac0587dcd3fd66a32c5417decf85626"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMActivityEntry.cs",
+      "sha256": "abf0cb290af4af993b6f0a38019e5b894f3b7557338cfd745d63d3aea90d6d43"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMCurrencyBar.cs",
+      "sha256": "e0e99bdf6153250fe4c47058b17fbcbf7f2125788e5fcf40a6c9f70eb75db87d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMCurrencyEntry.cs",
+      "sha256": "2496a30bddb50d1ded094e5075677044f8d0315bd76b521d055ca74c82bbb905"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMGridItemSlot.cs",
+      "sha256": "e6b34d7af9da9f187aa3fcdc215830e7ee637c3133e2db850bf6ab113350f7ae"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMHeroSlot.cs",
+      "sha256": "d8760f962f518e89d79010146b97ba272cebea32ba028bda35477d3968b690ae"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMItemSlot.cs",
+      "sha256": "c54e9380ee8813c9cbc5fd6bfd4ac6fcc3caba8eaf3f908c963fe3cdf631afc4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/VM/VMPackSlot.cs",
+      "sha256": "497b772a303d76f74b8c9cfdd1a610837f6f86211bd9f65e2663bff756a277ad"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\52c1d201-cca7-47a5-93b4-dba212d2419d"
+}

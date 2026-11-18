@@ -29,6 +29,7 @@ foreach ($style in $contract.textStyles) {
     if (!$style.font.path) { throw "Source font missing: $path" }
     $fontName = [System.IO.Path]::GetFileName($style.font.path)
     $font = "Assets/Data/Widgets/Home/HomeAssets/$fontName"
+    if (Test-Path "$Project/Assets/Data/Widgets/Common/Resources/$fontName") { $font = "Assets/Data/Widgets/Common/Resources/$fontName" }
     if (!(Test-Path "$Project/$font")) { throw "Import source font before binding: $font" }
     Set-Field $path Text 'm_FontData.m_Font' $font
     foreach ($property in @('m_FontSize','m_FontStyle','m_BestFit','m_MinSize','m_MaxSize','m_Alignment','m_AlignByGeometry','m_RichText','m_HorizontalOverflow','m_VerticalOverflow','m_LineSpacing')) {
@@ -39,7 +40,7 @@ foreach ($style in $contract.textStyles) {
             Invoke-Unity @('components','add','--asset',$asset,'--path',$path,'--component','HomeTextOutline') | Out-Null
         }
         $outline = ($style.outline.json | ConvertFrom-Json).MonoBehaviour
-        Set-Field $path HomeTextOutline outlineShader 'Assets/Data/Widgets/Home/HomeAssets/OutlineEx.shader'
+        Set-Field $path HomeTextOutline outlineShader 'Assets/Data/Widgets/Common/Resources/OutlineEx.shader'
         Set-Field $path HomeTextOutline outlineWidth $outline.OutlineWidth
         $color = $outline.OutlineColor
         Set-Field $path HomeTextOutline outlineColor "$($color.r),$($color.g),$($color.b),$($color.a)"

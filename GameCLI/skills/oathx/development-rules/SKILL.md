@@ -33,6 +33,7 @@ description: GameCLI Unity C# 开发强制规范。编写、修改或审查本�
 
 - `VM/` 存放该系统所有 ViewModel，包括页面 VM 和列表项 VM；不再与 UIWidget 混放。
 - `UI/` 只存放 UIWidget 实现，包括页面和列表项 Widget。
+- 通用 UI 展示组件（如 Currency）沿用公共目录：UIWidget 放在 `Systems/Common/UI/`，VM 放在 `Systems/Common/UI/VM/`，不为其单独建立系统代码目录。
 - 其余代码均放在系统根目录，包括系统逻辑、实体、数据类型及辅助代码，不另建 Components、Data 等子目录，除非用户明确要求例外。
 - 本规则用于后续新建和整理系统；一次任务只迁移明确要求的系统，不自动批量搬动其他历史模块。
 - 迁移通过 Unity AssetDatabase/UnityCLI 保留 `.meta` GUID；同步维护 SKILL 路径、源码包清单及工具引用，不手改自动生成代码，不改变 VM 字段顺序或 Metadata 绑定。

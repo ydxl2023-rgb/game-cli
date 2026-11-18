@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Currency",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 4,
+    "lines": 135,
+    "blankLines": 27,
+    "commentLines": 27,
+    "members": 21,
+    "documentedMembers": 21,
+    "blankLineRate": 0.2,
+    "commentLineRate": 0.2,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Currency/UI/UICurrencyBar.cs",
+      "sha256": "9e37b736496e0a10d7b101680934feef5010ade8c1f068506a508ea6e0f1585d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Currency/UI/UICurrencyEntry.cs",
+      "sha256": "f000a5d54b720b75be7bed2585136019427ef5c1092365aec43179643bcabc32"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Currency/VM/VMCurrencyBar.cs",
+      "sha256": "e0e99bdf6153250fe4c47058b17fbcbf7f2125788e5fcf40a6c9f70eb75db87d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Currency/VM/VMCurrencyEntry.cs",
+      "sha256": "2496a30bddb50d1ded094e5075677044f8d0315bd76b521d055ca74c82bbb905"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\82b2853b-e0b7-400a-bc90-599bd3fdcadc"
+}

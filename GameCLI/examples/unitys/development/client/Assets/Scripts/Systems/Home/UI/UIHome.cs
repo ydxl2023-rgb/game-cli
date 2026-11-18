@@ -10,10 +10,6 @@ public class UIHome : UIWidget<VMHome>
     [SerializeField]
     private UIActivityEntry[] activities;
 
-    /// <summary>Explicit serialized state targets; no runtime hierarchy search.</summary>
-    [SerializeField]
-    private HomeVisibility[] indicators;
-
     /// <summary>The single image shared by both drop promotions.</summary>
     [SerializeField]
     private Image dropImage;
@@ -26,6 +22,19 @@ public class UIHome : UIWidget<VMHome>
     [SerializeField]
     private Sprite tripleDrop;
 
+    /// <summary>Release the nested currency bar before the page binding ends.</summary>
+    /// <param name="refVM">The page presentation being released.</param>
+    public override void Unref(VM refVM)
+    {
+        if (vm)
+        {
+            vm.Profile = null;
+            vm.CurrencyBar = null;
+            vm.ProfileShortcuts = null;
+            base.Unref(refVM);
+        }
+    }
+
     /// <summary>Read identifiers in the same order as the authored SyncGroup children.</summary>
     /// <returns>A detached ordered identifier list.</returns>
     public int[] GetActivityIds()
@@ -37,25 +46,22 @@ public class UIHome : UIWidget<VMHome>
         return ids;
     }
 
-    /// <summary>Refresh all independent indicators from entity data.</summary>
-    /// <param name="entity">The current product or local example state.</param>
-    /// <returns>True when all required references were updated.</returns>
-    public bool RefreshPresentation(HomeEntity entity)
+    /// <summary>Read authored promotion artwork and its native display size.</summary>
+    /// <param name="triple">Whether to select the triple-drop artwork.</param>
+    /// <param name="sprite">The selected authored sprite.</param>
+    /// <param name="size">Native size in the target canvas units.</param>
+    /// <returns>True when the authored presentation is available.</returns>
+    public bool GetDropPresentation(bool triple, out Sprite sprite, out Vector2 size)
     {
-        if (!entity || indicators == null || !dropImage || !doubleDrop || !tripleDrop)
+        sprite = triple ? tripleDrop : doubleDrop;
+        size = Vector2.zero;
+
+        if (!dropImage || !sprite)
             return false;
 
-        bool complete = true;
-        foreach (var indicator in indicators)
-            complete &= indicator != null && indicator.Apply(entity);
+        float referencePixels = dropImage.canvas ? dropImage.canvas.referencePixelsPerUnit : 100f;
+        size = sprite.rect.size * referencePixels / sprite.pixelsPerUnit;
 
-        foreach (var activity in activities)
-            complete &= activity && activity.RefreshPresentation();
-
-        dropImage.sprite = entity.dropState == HomeDropState.Triple ? tripleDrop : doubleDrop;
-        dropImage.SetNativeSize();
-        dropImage.gameObject.SetActive(entity.dropState == HomeDropState.Double || entity.dropState == HomeDropState.Triple);
-
-        return complete;
+        return true;
     }
 }

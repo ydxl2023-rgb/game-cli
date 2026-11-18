@@ -47,3 +47,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 使用前检查目标版本源码和调用方；包内模板化 README 不能作为 API 依据。历史代码与最新用户规则冲突时，以最新规则为准，不批量改造无关旧代码。
 
 这些包在多个工程复用，修改业务应优先落在业务目录。确需修改包时检查兼容性和该包自己的版本控制状态，不把外层 Git 状态当作包已提交。`com.unity.ai.navigation` 不属于 Oathx 框架。
+
+Currency 可复用展示组件：[开发](system/currency/development/SKILL.md) / [验收](system/currency/acceptance/SKILL.md)。
+
+Profile 公共组件：[开发](system/profile/development/SKILL.md) / [验收](system/profile/acceptance/SKILL.md)。

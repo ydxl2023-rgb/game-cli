@@ -17,6 +17,9 @@ for(const state of states){
   state.value=createHash('sha256').update(state.sourcePath).digest().readUInt32BE(0)&0x7fffffff;
 }
 // C# remains maintained source. Extracted nodes are presentation evidence, not business API definitions.
-contract.states=states;
+const badges=JSON.parse(await readFile('config/home-entry-badges.json','utf8'));
+contract.entryBadges=badges;
+// Source visibility is evidence only; runtime decoration state is keyed by entry IDs.
+contract.states=states.filter(state=>state.name==='TaskEffectTips');
 await writeFile(folder+'/presentation.json',JSON.stringify(contract,null,2));
-console.log(JSON.stringify({states:states.length,redDots:redDots.length}));
+console.log(JSON.stringify({entries:badges.entries.length,mounts:badges.mounts.length,redDots:redDots.length}));

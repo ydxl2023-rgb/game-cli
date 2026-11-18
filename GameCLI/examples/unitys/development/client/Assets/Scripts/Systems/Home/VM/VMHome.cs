@@ -1,4 +1,5 @@
 using Oathx.Widget;
+using UnityEngine;
 
 /// <summary>Presentation bindings for the basic lobby.</summary>
 public partial class VMHome : VM
@@ -7,144 +8,95 @@ public partial class VMHome : VM
     [Binding(typeof(SyncGroup))]
     VList<VMActivityEntry> acitiveList;
 
-    /// <summary>Request the Profile entry.</summary>
-    [Binding]
-    ButtonClick profileClick;
+    /// <summary>Complete reusable player profile presentation.</summary>
+    [Binding(typeof(SyncMetadata))]
+    VMProfile profile;
 
-    /// <summary>Display PlayerName.</summary>
-    [Binding(typeof(SyncText))]
-    string playerName;
+    /// <summary>Reusable group of five profile shortcuts.</summary>
+    [Binding(typeof(SyncMetadata))]
+    VMProfileShortcuts profileShortcuts;
 
-    /// <summary>Request the Avatar entry.</summary>
-    [Binding]
-    ButtonClick avatarClick;
-
-    /// <summary>Display PlayerLevel.</summary>
-    [Binding(typeof(SyncText))]
-    string playerLevel;
-
-    /// <summary>Request the Mail entry.</summary>
-    [Binding]
-    ButtonClick mailClick;
-
-    /// <summary>Request the Settings entry.</summary>
-    [Binding]
-    ButtonClick settingsClick;
-
-    /// <summary>Request the Notice entry.</summary>
-    [Binding]
-    ButtonClick noticeClick;
-
-    /// <summary>Request the Friends entry.</summary>
-    [Binding]
-    ButtonClick friendsClick;
-
-    /// <summary>Request the Affinity entry.</summary>
-    [Binding]
-    ButtonClick affinityClick;
-
-    /// <summary>Request the CurrencyOne entry.</summary>
-    [Binding]
-    ButtonClick currencyOneClick;
-
-    /// <summary>Display CurrencyOneAmount.</summary>
-    [Binding(typeof(SyncText))]
-    string currencyOneAmount;
-
-    /// <summary>Request the AddCurrencyOne entry.</summary>
-    [Binding]
-    ButtonClick addCurrencyOneClick;
-
-    /// <summary>Request the CurrencyTwo entry.</summary>
-    [Binding]
-    ButtonClick currencyTwoClick;
-
-    /// <summary>Display CurrencyTwoAmount.</summary>
-    [Binding(typeof(SyncText))]
-    string currencyTwoAmount;
-
-    /// <summary>Request the AddCurrencyTwo entry.</summary>
-    [Binding]
-    ButtonClick addCurrencyTwoClick;
-
-    /// <summary>Request the CurrencyThree entry.</summary>
-    [Binding]
-    ButtonClick currencyThreeClick;
-
-    /// <summary>Display CurrencyThreeAmount.</summary>
-    [Binding(typeof(SyncText))]
-    string currencyThreeAmount;
-
-    /// <summary>Request the AddCurrencyThree entry.</summary>
-    [Binding]
-    ButtonClick addCurrencyThreeClick;
+    /// <summary>Reusable currency presentation owned by this page.</summary>
+    [Binding(typeof(SyncMetadata))]
+    VMCurrencyBar currencyBar;
 
     /// <summary>Request the Shop entry.</summary>
-    [Binding]
-    ButtonClick shopClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry shopEntry;
 
     /// <summary>Request the Benefits entry.</summary>
-    [Binding]
-    ButtonClick benefitsClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry benefitsEntry;
 
     /// <summary>Request the Rankings entry.</summary>
-    [Binding]
-    ButtonClick rankingsClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry rankingsEntry;
 
     /// <summary>Request the Chat entry.</summary>
-    [Binding]
-    ButtonClick chatClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry chatEntry;
 
     /// <summary>Request the ChatChannel entry.</summary>
-    [Binding]
-    ButtonClick chatChannelClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry chatChannelEntry;
 
     /// <summary>Display ChatMessage.</summary>
     [Binding(typeof(SyncText))]
     string chatMessage;
 
     /// <summary>Request the Backpack entry.</summary>
-    [Binding]
-    ButtonClick backpackClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry backpackEntry;
 
     /// <summary>Request the Collection entry.</summary>
-    [Binding]
-    ButtonClick collectionClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry collectionEntry;
 
     /// <summary>Request the Honor entry.</summary>
-    [Binding]
-    ButtonClick honorClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry honorEntry;
 
     /// <summary>Request the Story entry.</summary>
-    [Binding]
-    ButtonClick storyClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry storyEntry;
 
     /// <summary>Request the Matches entry.</summary>
-    [Binding]
-    ButtonClick matchesClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry matchesEntry;
 
     /// <summary>Request the Training entry.</summary>
-    [Binding]
-    ButtonClick trainingClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry trainingEntry;
 
     /// <summary>Request the Recruit entry.</summary>
-    [Binding]
-    ButtonClick recruitClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry recruitEntry;
 
     /// <summary>Request the Players entry.</summary>
-    [Binding]
-    ButtonClick playersClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry playersEntry;
 
     /// <summary>Request the Team entry.</summary>
-    [Binding]
-    ButtonClick teamClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry teamEntry;
 
     /// <summary>Request the Club entry.</summary>
-    [Binding]
-    ButtonClick clubClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry clubEntry;
 
     /// <summary>Request the Activities entry.</summary>
-    [Binding]
-    ButtonClick activitiesClick;
+    [Binding(typeof(SyncMetadata))]
+    VMActivityEntry activitiesEntry;
 
+    /// <summary>Authored artwork for the current drop promotion.</summary>
+    [Binding(typeof(SyncSprite))]
+    Sprite dropSprite;
+
+    /// <summary>Native promotion dimensions in canvas units.</summary>
+    [Binding(typeof(SyncSizeDelta))]
+    Vector2 dropSize;
+
+    /// <summary>Whether a drop promotion is active.</summary>
+    [Binding(typeof(SyncVisible))]
+    bool dropVisible;
 }

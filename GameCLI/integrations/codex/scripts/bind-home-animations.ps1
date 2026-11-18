@@ -22,8 +22,9 @@ $specs = @(
     @{name='HomeDrop';animation=($design.animations | Where-Object id -eq HomeDropLoop)}
 )
 foreach ($spec in $specs) {
-    $clip="Assets/Data/Widgets/Home/$($spec.name).anim"
-    $controller="Assets/Data/Widgets/Home/$($spec.name).controller"
+    $directory = if ($spec.name -eq "HomeNewTag") { "Common" } else { "Home" }
+    $clip="Assets/Data/Widgets/$directory/$($spec.name).anim"
+    $controller="Assets/Data/Widgets/$directory/$($spec.name).controller"
     if (!$spec.input) {
         $curves = @($spec.animation.clip.curves | ForEach-Object {
             @{path='';component=$_.component;property=$_.property;preWrapMode=8;postWrapMode=8;keys=@($_.keys | ForEach-Object {
@@ -49,7 +50,8 @@ foreach ($animation in $design.animations) {
         Invoke-Unity @('components','add','--asset',$asset,'--path',$path,'--component','Animator') | Out-Null
     }
     $name = if ($animation.id -eq 'HomeEntrance') {'HomeEntrance'} elseif ($animation.id -eq 'HomeDropLoop') {'HomeDrop'} else {'HomeNewTag'}
-    Invoke-Unity @('modify','--asset',$asset,'--path',$path,'--component','Animator','--property','m_Controller','--value',"Assets/Data/Widgets/Home/$name.controller") | Out-Null
+    $directory = if ($name -eq 'HomeNewTag') { 'Common' } else { 'Home' }
+    Invoke-Unity @('modify','--asset',$asset,'--path',$path,'--component','Animator','--property','m_Controller','--value',"Assets/Data/Widgets/$directory/$name.controller") | Out-Null
 }
 $left=$paths['Home0_6_2']
 if (!(($inspection.nodes | Where-Object path -eq $left).components.type -contains 'UnityEngine.CanvasGroup')) {

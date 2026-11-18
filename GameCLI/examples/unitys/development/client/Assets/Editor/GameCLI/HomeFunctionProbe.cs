@@ -19,11 +19,12 @@ public static class HomeFunctionProbe
         var entity = XEntityManager.GetSingleton().QueryEntity<FunctionManagerEntity>();
         UISystem.GetSingleton().TryGetWidget<UIHome>(out var home);
         UISystem.GetSingleton().TryGetWidget<UIShop>(out var shop);
-        var widgets = home ? home.GetComponentsInChildren<UIActivityEntry>(true) : new UIActivityEntry[0];
+        var ids = home ? home.GetActivityIds() : new int[0];
+        var widgets = home ? home.GetComponentsInChildren<UIActivityEntry>(true).Where(item => ids.Contains(item.GetSystemId())).ToArray() : new UIActivityEntry[0];
 
         return JsonConvert.SerializeObject(new {
             level = entity.level,
-            displayLevel = home ? home.vm.PlayerLevel : null,
+            displayLevel = home ? home.vm.Profile.PlayerLevel : null,
             items = widgets.Where(item => item.gameObject.activeInHierarchy && item.vm)
                 .Select(item => new { id = item.vm.systemId, instance = item.GetInstanceID(), name = item.name }).ToArray(),
             activeTemplates = widgets.Count(item => item.gameObject.activeInHierarchy && !item.vm),
@@ -164,13 +165,6 @@ public static class HomeFunctionProbe
             if (parent.GetChild(index) != item.transform || !item.vm
                 || item.vm.systemId != item.GetSystemId())
                 throw new InvalidOperationException("SyncGroup order mismatch.");
-
-            var indicators = (HomeVisibility[])typeof(UIActivityEntry).GetField("indicators", flags).GetValue(item);
-            foreach (var indicator in indicators)
-            {
-                if ((GameObject)typeof(HomeVisibility).GetField("target", flags).GetValue(indicator) == item.gameObject)
-                    throw new InvalidOperationException("Item presentation overrides availability.");
-            }
         }
 
         return items.Length;
@@ -196,3 +190,4 @@ public static class HomeFunctionProbe
     }
 }
 #endif
+

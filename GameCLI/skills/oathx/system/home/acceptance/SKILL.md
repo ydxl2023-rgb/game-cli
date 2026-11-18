@@ -33,3 +33,8 @@ description: 由未参与实现的 agent 独立验收 Home 基础大厅的展示
 ## 实体边界验收
 
 按开发规范的统一实体职责，检查本系统业务数据与规则归属、输入与输出集合隔离、非法操作不改变状态，以及 System/UI 无直接改写内部数据。纯展示模块不强制新增实体；区分实体数据与展示/调度状态。
+
+检查不再引用 HomeIndicator / HomeVisibility。全部 64 个大厅功能入口使用共同 VM 契约，41 个活动继续使用 SyncGroup；固定导航 SyncMetadata 目标和点击组件对应原路径。核对默认 NEW/广告、掉落及布局。货币栏另含 3 个 CurrencyEntry，按 Currency 验收 SKILL 检查独立资产、宿主回调与解绑。
+
+分别测试 None、New、Advertisement、New | Advertisement；重复刷新实例数不能增加；置 None 后经过一帧必须不存在标记实例；功能隐藏时释放、恢复时重新显示；关闭重开页面无残留监听。所有标记 Graphic.raycastTarget=false，真实点击仍命中原按钮。独立标记预制必须随数据库 scripts/生产资料交付，不能只有工程本地文件。
+

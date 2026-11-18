@@ -27,12 +27,6 @@ $root = $paths['Home0']
 if (!(($inspection.nodes | Where-Object path -eq $root).components.type -contains 'UIHome')) {
     Invoke-Unity @('components','add','--asset',$asset,'--path',$root,'--component','UIHome') | Out-Null
 }
-Set-Field $root UIHome 'indicators.Array.size' $contract.states.Count
-for ($index=0; $index -lt $contract.states.Count; $index++) {
-    $state = $contract.states[$index]
-    Set-Field $root UIHome "indicators.Array.data[$index].indicator" ([array]::IndexOf($enumKeys, $state.key))
-    if (!$KeysOnly) { Set-Field $root UIHome "indicators.Array.data[$index].target" "@$($paths[$state.node])" }
-}
 Set-Field $root UIHome dropImage "@$($paths['Home0_6_5_0_4'])#Image"
 Set-Field $root UIHome doubleDrop 'Assets/Data/Widgets/Home/HomeAssets/UI_System_DoubleDrop_02.png'
 Set-Field $root UIHome tripleDrop 'Assets/Data/Widgets/Home/HomeAssets/hlhd_3bei.png'
@@ -56,4 +50,4 @@ foreach ($grid in $contract.layouts) {
         Set-Field $path GridLayoutGroup "m_Padding.$side" $grid.data.m_Padding.$side
     }
 }
-Write-Output "Bound $($contract.states.Count) independent Home indicators and source activity grid."
+Write-Output "Bound Home drop presentation and source activity grid; entry badge bindings are maintained separately."

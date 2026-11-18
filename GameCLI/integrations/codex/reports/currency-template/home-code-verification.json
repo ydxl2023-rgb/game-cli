@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Home",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeTextOutline.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    }
+  ],
+  "statistics": {
+    "files": 11,
+    "lines": 1221,
+    "blankLines": 255,
+    "commentLines": 234,
+    "members": 191,
+    "documentedMembers": 191,
+    "blankLineRate": 0.20884520884520885,
+    "commentLineRate": 0.19164619164619165,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeTextOutline.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    }
+  ],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Home/ActivityBadge.cs",
+      "sha256": "49af4afdee7db9f5f476ac1c7fd5d3859bb86d90f9d4fa9bd22049a395bd1cc7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "da549cfe087b57b95522565c058e188ed25f4d01bbe97e8fb83ac86f57c05bce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEvents.cs",
+      "sha256": "60a5ea652eb95afe6869e7603d14f95a46d3e9e00785644c38459551422a782a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "b41e272b328bdccdf0002df3d16ade4d81d3f0284ed5bf7c58d35a49971023cc"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeTextOutline.cs",
+      "sha256": "f76d76ca4366c61a3efe8ef586f82b081ab78949e07663ca629964800c7af07d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIActivityBadge.cs",
+      "sha256": "a90b8af788dc0c5ba64c2a9c6d9f777bdb9d0b0e0583be8f595003b385e54f12"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIActivityEntry.cs",
+      "sha256": "a67ab8382676954b1a9975fa74fe56fa79d43030917bed6e74d4d4f0372e5cda"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "55c64355beb11a0aecfac5d5d0353173a09e23376d5a5d1c10836e435e11b393"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMActivityBadge.cs",
+      "sha256": "ba94f190ead095ce2682cc4159cb1d7c6ac0587dcd3fd66a32c5417decf85626"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMActivityEntry.cs",
+      "sha256": "abf0cb290af4af993b6f0a38019e5b894f3b7557338cfd745d63d3aea90d6d43"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "8819fbf1514deed14b47449fe423ca873a4b9ec0ca625cf5729dbb5a533d6df2"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\5b8283dd-a098-4c7c-bb08-39f39d08be99"
+}

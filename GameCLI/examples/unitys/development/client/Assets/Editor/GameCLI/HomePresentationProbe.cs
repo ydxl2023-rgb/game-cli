@@ -131,28 +131,65 @@ public static class HomePresentationProbe
 
         entity.dropState = parsed;
 
-        return widget.RefreshPresentation(entity);
+        return XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<HomeSystem>().Refresh();
     }
 
-    /// <summary>Toggle one independent visibility key for runtime verification.</summary>
-    /// <param name="name">The exact indicator enum name.</param>
-    /// <param name="visible">Whether to show the target.</param>
-    /// <returns>True when the serialized view was refreshed.</returns>
-    public static bool SetIndicator(string name, bool visible)
+    /// <summary>Update decoration flags through the product entity and refresh the page.</summary>
+    /// <param name="entryId">Navigation or function identifier.</param>
+    /// <param name="value">Combinable decoration flag value.</param>
+    /// <returns>True when the entity accepted the update and the page refreshed.</returns>
+    public static bool SetBadges(int entryId, int value)
     {
-        if (!Enum.TryParse(name, out HomeIndicator indicator) || !Enum.IsDefined(typeof(HomeIndicator), indicator))
-            return false;
-
         var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
         if (!entity)
             return false;
 
-        if (!UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget))
+        if (!entity.SetBadges(entryId, (ActivityBadge)value))
             return false;
 
-        entity.SetIndicator(indicator, visible);
+        var system = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<HomeSystem>();
 
-        return widget.RefreshPresentation(entity);
+        return system.Refresh();
+    }
+
+    /// <summary>Verify drop bindings, native size and state transitions.</summary>
+    /// <returns>The verified states and native image sizes.</returns>
+    public static string CheckDropBindings()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget))
+            throw new InvalidOperationException("Home is not open.");
+
+        var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
+        var original = entity.dropState;
+        var metadata = widget.GetComponent<Metadata>();
+        var image = (Image)metadata.metadatas[21].components[0];
+        var evidence = new List<string>();
+
+        try
+        {
+            foreach (var state in new[] { HomeDropState.None, HomeDropState.Double, HomeDropState.Triple, HomeDropState.None, HomeDropState.Triple })
+            {
+                if (!SetDrop(state.ToString()))
+                    throw new InvalidOperationException("Home refresh failed.");
+
+                var expected = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(
+                    state == HomeDropState.Triple
+                        ? "Assets/Data/Widgets/Home/HomeAssets/hlhd_3bei.png"
+                        : "Assets/Data/Widgets/Home/HomeAssets/UI_System_DoubleDrop_02.png");
+                var size = expected.rect.size * image.canvas.referencePixelsPerUnit / expected.pixelsPerUnit;
+                if (image.sprite != expected || image.gameObject.activeSelf != (state != HomeDropState.None)
+                    || Vector2.Distance(image.rectTransform.sizeDelta, size) > 0.01f)
+                    throw new InvalidOperationException("Drop binding output differs from authored artwork.");
+
+                evidence.Add(state + ":" + size);
+            }
+
+            return string.Join("; ", evidence);
+        }
+        finally
+        {
+            SetDrop(original.ToString());
+        }
     }
 
     /// <summary>Close the test page through its real coordinator.</summary>

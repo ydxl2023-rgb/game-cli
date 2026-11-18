@@ -52,8 +52,8 @@ public static class EntityContractProbe
         Check(!login.SelectServer(int.MinValue), ref passed);
 
         var home = new HomeEntity();
-        Check(home.SetIndicator(HomeIndicator.AdsNode, false) && !home.IsIndicatorVisible(HomeIndicator.AdsNode), ref passed);
-        Check(!home.SetIndicator((HomeIndicator)int.MinValue, true), ref passed);
+        Check(home.SetBadges((int)HomeEntry.Shop, ActivityBadge.New | ActivityBadge.Advertisement) && home.GetBadges((int)HomeEntry.Shop) == (ActivityBadge.New | ActivityBadge.Advertisement), ref passed);
+        Check(!home.SetBadges(-1, ActivityBadge.New), ref passed);
 
         return passed;
     }
