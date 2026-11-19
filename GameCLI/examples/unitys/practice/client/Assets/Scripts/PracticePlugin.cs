@@ -11,6 +11,11 @@ public class PracticePlugin : XPlugin
     {
         UISystem.GetSingleton().Startup(new ResourceConfigure { loader = new PracticeUILoader(), cacher = new UIDefaultCacher() });
 
+        UISystem.GetSingleton().RegisterSyncActions(new System.Type[] {
+            typeof(SyncFancyGridScrollView),
+            typeof(SyncFancyGridClick)
+        });
+
         XEntityManager.GetSingleton().CreateEntity<MasterEntity>();
         XEntityManager.GetSingleton().CreateEntity<LoginEntity>();
         XEntityManager.GetSingleton().CreateEntity<NoticeEntity>();
