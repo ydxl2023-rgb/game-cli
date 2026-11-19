@@ -1,0 +1,79 @@
+#if UNITY_EDITOR
+using System;
+using Oathx.Widget;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>Checks the reusable reward independently of a mail page.</summary>
+public static class RewardEntryProbe
+{
+    /// <summary>Check the actual list cell after its icon has loaded.</summary>
+    /// <returns>True when Mail renders the shared reward cell.</returns>
+    public static bool CheckMail()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIMail>(out var mail))
+            throw new InvalidOperationException("Mail is not open.");
+
+        var cells = mail.GetComponentsInChildren<UIRewardEntry>(false);
+        if (cells.Length != 1)
+            throw new InvalidOperationException("Expected one visible shared reward.");
+
+        var cell = cells[0];
+        var metadata = cell.GetComponent<Metadata>();
+        var icon = metadata.metadatas[0].components[0] as Image;
+        var count = metadata.metadatas[1].components[0] as Text;
+        if (!cell.vm || !cell.vm.Icon || !icon.sprite || !icon.gameObject.activeInHierarchy || count.text != "100")
+            throw new InvalidOperationException("Shared cell did not render its loaded icon and count.");
+
+        UnityEditor.Selection.activeGameObject = cell.gameObject;
+        UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+
+        return true;
+    }
+
+    /// <summary>Bind, update, hide and release a standalone reward instance.</summary>
+    /// <returns>True when the actual controls follow the VM.</returns>
+    public static bool Check()
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Reward/RewardEntry.prefab");
+        var instance = UnityEngine.Object.Instantiate(prefab);
+        var widget = instance.GetComponent<UIRewardEntry>();
+        var metadata = instance.GetComponent<Metadata>();
+        var texture = new Texture2D(2, 2);
+        var sprite = Sprite.Create(texture, new Rect(0f, 0f, 2f, 2f), Vector2.zero);
+        var vm = new VMRewardEntry { Icon = sprite, Count = "12", Claimed = true, IconVisible = true };
+
+        try
+        {
+            if (!widget.Ref(vm))
+                throw new InvalidOperationException("Standalone Ref failed.");
+
+            var icon = metadata.metadatas[0].components[0] as Image;
+            var count = metadata.metadatas[1].components[0] as Text;
+            var claimed = metadata.metadatas[2].targets[0];
+            if (!icon || icon.sprite != sprite || !icon.gameObject.activeSelf || count.text != "12" || !claimed.activeSelf)
+                throw new InvalidOperationException("Standalone initial presentation failed.");
+
+            vm.Count = "34";
+            vm.Claimed = false;
+            vm.IconVisible = false;
+            if (count.text != "34" || claimed.activeSelf || icon.gameObject.activeSelf)
+                throw new InvalidOperationException("Standalone refresh failed.");
+
+            vm.IconVisible = true;
+            if (!icon.gameObject.activeSelf || icon.sprite != sprite)
+                throw new InvalidOperationException("Standalone restore failed.");
+
+            return true;
+        }
+        finally
+        {
+            widget.Unref(vm);
+            UnityEngine.Object.Destroy(instance);
+            UnityEngine.Object.Destroy(sprite);
+            UnityEngine.Object.Destroy(texture);
+        }
+    }
+}
+#endif

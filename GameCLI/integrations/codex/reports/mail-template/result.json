@@ -1,0 +1,21 @@
+{
+  "status": "incomplete",
+  "scope": "Local SV Mail reference",
+  "passed": [
+    "Entity snapshot isolation, claim idempotency, expiry, deletion guards, receipt replay and invalid date rejection",
+    "Three example messages: single claim/delete, batch claim/delete, final empty inbox with two receipts",
+    "Empty inbox remains empty after close/reopen",
+    "EventSystem center raycast and pointer click on claim and close buttons",
+    "Unity compilation and Console error check",
+    "Independent source review; requested fixes applied"
+  ],
+  "unverified": [
+    "Exhaustive long-list recycling and rapid close/reopen timing",
+    "Frame-by-frame native animation sampling",
+    "Full browser/native prefab comparison; browser cannot execute all native state-machine states"
+  ],
+  "limits": [
+    "No networking, inventory grants, persistence or timer-driven expiry",
+    "Underlying framework Fancy cell binding cache behavior has not been changed"
+  ]
+}

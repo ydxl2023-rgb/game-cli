@@ -1,0 +1,1051 @@
+{
+  "schemaVersion": 1,
+  "directories": {
+    "Assets/Data/Widgets/Currency": "Assets/Data/Widgets/Micros/Currency",
+    "Assets/Data/Widgets/Profile": "Assets/Data/Widgets/Micros/Profile",
+    "Assets/Data/Widgets/ItemSlot": "Assets/Data/Widgets/Micros/ItemSlot",
+    "Assets/Data/Widgets/Reward": "Assets/Data/Widgets/Micros/Reward",
+    "Assets/Data/Widgets/ShopGiftItem": "Assets/Data/Widgets/Micros/ShopGiftItem",
+    "Assets/Data/Widgets/ShopRechargeItem": "Assets/Data/Widgets/Micros/ShopRechargeItem",
+    "Assets/Data/Widgets/Common/Badges": "Assets/Data/Widgets/Micros/Badges/Common",
+    "Assets/Data/Widgets/Home/Badges": "Assets/Data/Widgets/Micros/Badges/Home"
+  },
+  "files": [
+    {
+      "from": "Assets/Data/Widgets/Currency.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency.meta",
+      "sha256": "d82a25943426c6ef10f09fd5e66c8186465f06d700bec9f1ab953c1ec9082a38",
+      "guid": "c78764c39b66fdd4088a6df1605fd382"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/CurrencyBar.prefab",
+      "to": "Assets/Data/Widgets/Micros/Currency/CurrencyBar.prefab",
+      "sha256": "b410feccaaa4a29feeb84efb8fd8fe7f5a9a0376e506eebbe5c1a176e07b4cbf"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/CurrencyBar.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/CurrencyBar.prefab.meta",
+      "sha256": "4a42c4d00eab2f8d7c4b85e54145d41ab9a4d266eff91fcd2e62060f79e16cd2",
+      "guid": "1e5abf61844e19f4faef97f27aff2c6a"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/CurrencyEntry.prefab",
+      "to": "Assets/Data/Widgets/Micros/Currency/CurrencyEntry.prefab",
+      "sha256": "2740a7db1e45120e5e73f771120e16bbd1351cbc4f292ee10cef42dba8736203"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/CurrencyEntry.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/CurrencyEntry.prefab.meta",
+      "sha256": "52a1b80d7d070678ba57c0c91eaedf46f88f80a0366ef163d265e7e0c6569c51",
+      "guid": "3e665b1c5547bfc45a62abc26c2432a4"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources.meta",
+      "sha256": "106510fdba5b04672f762594d79fc33e95fff74ccc21bfaa1ae113411aa194d2",
+      "guid": "d040ab6e0df308c4dac1700dfceb1342"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_jinbi.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_jinbi.png",
+      "sha256": "67a1a013046c975c1993348dca45cecba38b27df3c8c01b2d6cc2898d3498deb"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_jinbi.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_jinbi.png.meta",
+      "sha256": "fdd8ad805fbe933a054f685757c4aafa682d2c69d38afadbeb9ba1c8a00d3b09",
+      "guid": "9b653b6b4ce410144a6d2c3213e371a2"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_tili.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_tili.png",
+      "sha256": "0c61a15f3711ba5b7e3d0a5048df81d68524d4f22ed83ac0111b6df65a32e848"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_tili.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_tili.png.meta",
+      "sha256": "df1e44dbc628bdf8fdd3e64acb3011b08c93319bb86d833909361cae4263e85a",
+      "guid": "b713afff6e9a9d84ea5f79fd87e0f258"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_wupin_jinbi.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_wupin_jinbi.png",
+      "sha256": "5e13e91007e82ce200caba9d708a1b61d8276a708b3d5aac5f2242fc2b1d6c4e"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_wupin_jinbi.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_wupin_jinbi.png.meta",
+      "sha256": "3fcbfa60fe0e765b0c7ea47c14e6f52d646da31af2fbc5f9de6d46f75d9c5929",
+      "guid": "2ee8a661c5d40fc448b540f44e6cfeea"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_wupin_zuanshi.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_wupin_zuanshi.png",
+      "sha256": "06e56fa2fe745ba1873cadd35639e529326a4d00c6b1e1addd0746ac905b3557"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/icon_wupin_zuanshi.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/icon_wupin_zuanshi.png.meta",
+      "sha256": "97b384faf02be01713958bf90d706b2864137e31a59e45fe688f9c45bdb63149",
+      "guid": "bd8ac72ba3390bf4e92738a860e2b121"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/msyhbd.ttc",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/msyhbd.ttc",
+      "sha256": "06e1a30f687ab7d39f533447b21e84d51e0cecdaa6bfa060c87136b168811bdc"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/msyhbd.ttc.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/msyhbd.ttc.meta",
+      "sha256": "030df5913a5cd701c5b5c8047cb9946ca4c6916b3e9c5ba22e5d594864916f23",
+      "guid": "b430b56fd86f51c478960614f6670894"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ty_tishi_6.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ty_tishi_6.png",
+      "sha256": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ty_tishi_6.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ty_tishi_6.png.meta",
+      "sha256": "0eaefe9d816076320949e303a9fa6cc55adf9310068eb0e665d1576370e1a47e",
+      "guid": "d724be40279c3b247bb619778c4016dd"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ty_tishi_7.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ty_tishi_7.png",
+      "sha256": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ty_tishi_7.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ty_tishi_7.png.meta",
+      "sha256": "2a72a1084c2dceaafbcc9c81a0766a1ccccda43021a9888f3195627f93d5de6e",
+      "guid": "222dd76a57118d9408cd3faa0c035482"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ty_tishi_8.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ty_tishi_8.png",
+      "sha256": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ty_tishi_8.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ty_tishi_8.png.meta",
+      "sha256": "315799eeb2cb8f2368b26182a83b5b68af02c1b39db168173e0a54a248b78cad",
+      "guid": "c2a9e0ea6f8604948a907114f67edcf7"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21.png",
+      "sha256": "c31ced8c7380e1f735bfea1a1046601c7afb0e92ae736b3478cf3985f7d40a32"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21.png.meta",
+      "sha256": "2131b29eec3f46f74d1f5aa55e2d9e421e0781c9de21d4622624fea9d86226ba",
+      "guid": "6060eab15258d414d96e90c7201f2edb"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_1.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_1.png",
+      "sha256": "c3720f2366eb5f4a22da7e96bfceebdc2d2c2f59edd39dc9c7e7a30f7ed74b24"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_1.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_1.png.meta",
+      "sha256": "678a1ce55dda1271407bceae355aa03b6fc732ff27bffa893e289b6f341265a1",
+      "guid": "538a1e152a6e18941ac5ad72c94dd9d6"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_1_2.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_1_2.png",
+      "sha256": "c3720f2366eb5f4a22da7e96bfceebdc2d2c2f59edd39dc9c7e7a30f7ed74b24"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_1_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_1_2.png.meta",
+      "sha256": "35b4e4db582f013f72366a6198df02fa8874d2eafef9a79281a8ca72f01bbe34",
+      "guid": "5e30757514ff6b24494072b141add87d"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_1_3.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_1_3.png",
+      "sha256": "c3720f2366eb5f4a22da7e96bfceebdc2d2c2f59edd39dc9c7e7a30f7ed74b24"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_1_3.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_1_3.png.meta",
+      "sha256": "6e00ea55d892137670c84ac1d0f9e1ac73d3f946d6586aedb6a8a948f21e49cd",
+      "guid": "31e772c362b7e4a43a69e4f6e029c271"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_2.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_2.png",
+      "sha256": "c31ced8c7380e1f735bfea1a1046601c7afb0e92ae736b3478cf3985f7d40a32"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_2.png.meta",
+      "sha256": "d6626fb16656aa32c723e7cd663585c412c6846f1685dff2e893b277a2c7b199",
+      "guid": "29022905a8d2fde49bc14be6d75947f3"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_3.png",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_3.png",
+      "sha256": "c31ced8c7380e1f735bfea1a1046601c7afb0e92ae736b3478cf3985f7d40a32"
+    },
+    {
+      "from": "Assets/Data/Widgets/Currency/Resources/ui_system_shopnew_21_3.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Currency/Resources/ui_system_shopnew_21_3.png.meta",
+      "sha256": "a521a265ca13192a802fe0196db680e6fadedbe90c09e10b39200108fbf8edf9",
+      "guid": "03407cdc0b5b21f448c4eca81d0534d2"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile.meta",
+      "sha256": "460e1fb2c03a562ee28e69d9bc9cea4129a865b6b2d611966764fa4eff07fc2d",
+      "guid": "e704a8e977c12e14693e11fdf513f3d6"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts.meta",
+      "sha256": "e2929cbe06dd7ef0ec5d7936d736cbe27c51c885e8737cb7ec63c824f3239c6f",
+      "guid": "50878ad2d76eb114b8a321b5866c40f5"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Profile.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Profile.prefab",
+      "sha256": "93959f100d0b396f3e9c0bcfbee459b78e8df1f0c503e4efe1d9f8d111117d8b"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Profile.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Profile.prefab.meta",
+      "sha256": "9994434fac3a5a3f7758eba98feb2131efa11ebf28c707f4e0b78ed2e7ccbc57",
+      "guid": "ded2a47c739c4ba4eaeffcc9b495cffc"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/ProfileShortcuts.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/ProfileShortcuts.prefab",
+      "sha256": "0a723b11b68c4106b5d80e6ddacc18709d89a624044023bc5cdf7c84c4e063e0"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/ProfileShortcuts.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/ProfileShortcuts.prefab.meta",
+      "sha256": "c73ea6b13f3d0b093d8e6d460e5834a298622af5cff54ae1da146fab8e2ae67d",
+      "guid": "19c44eef6c259234d95bfcce19ee16f6"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/AffinityButton.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/AffinityButton.prefab",
+      "sha256": "53a4269c03ca7a86e73367c1e2871203b468a79ec8ac1b490c2ef31baff3f8da"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/AffinityButton.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/AffinityButton.prefab.meta",
+      "sha256": "764ccc41851bbaef20941ca40dca0a066dabaa02f85ff3e68f0be90101b5e686",
+      "guid": "e32ce4d72f90a5543b7f8aa23ed14f4e"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/AvatarFrame.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/AvatarFrame.prefab",
+      "sha256": "1fb3da4aa888a61900357d9f347c3abd6b0e84a643dd512ebc43ca94f50ea4c3"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/AvatarFrame.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/AvatarFrame.prefab.meta",
+      "sha256": "69bcbec3265d0251666236f5512004060fc1943452f6e6872e38dee79ada10ad",
+      "guid": "9c4d1525ca1aa9647b4257d36f6be6a2"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/FriendsButton.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/FriendsButton.prefab",
+      "sha256": "43258665d30e67ad3095cc41c6495fdfce157e44738e4a7cfd8339aa1ed42755"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/FriendsButton.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/FriendsButton.prefab.meta",
+      "sha256": "75cbb73424f1ae48178533e0cd650849c05b51b51349f1a4325d3ef8d0686332",
+      "guid": "affb107ed2bff4d46bf1874a040927a1"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/MailButton.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/MailButton.prefab",
+      "sha256": "772ba79a68e9a6e0662cf805ee93541697be77cfe2967ad8f7872f8313dfc778"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/MailButton.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/MailButton.prefab.meta",
+      "sha256": "9ee11bf8c8124b961f618ac9f234f4f7fb0d91b4961c42e9e8f2fa9085c68885",
+      "guid": "ec8d57578e2625c49988bdd6fde82b79"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/NoticeButton.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/NoticeButton.prefab",
+      "sha256": "b06014d3fc2614c2965ddc1b76901726a6958185a08e0e6d1e43af7d63213b57"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/NoticeButton.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/NoticeButton.prefab.meta",
+      "sha256": "8cb7c95386b13311f521dda8d8cf1b9b6da89a8c6f272bf7c02987f551b6ab97",
+      "guid": "db22c2a420f0ae543bb1e4dc957f3aa9"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/ProfileBody.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/ProfileBody.prefab",
+      "sha256": "aab9a992f7736c1a3e0cfcffc0d4b5f55987f4a81a45a1e65d7514bda50e1986"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/ProfileBody.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/ProfileBody.prefab.meta",
+      "sha256": "1db011c9312be5c2e45e61cb2683b9c4a7f8a7e7759d30be658a967410bc472c",
+      "guid": "bb089815f3b1fcd44b91d8f4c206be28"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/SettingsButton.prefab",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/SettingsButton.prefab",
+      "sha256": "4c45a6b35b9de4db909e5772bbe69f089c271179e0145b4155718c1ed94c73ee"
+    },
+    {
+      "from": "Assets/Data/Widgets/Profile/Parts/SettingsButton.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Profile/Parts/SettingsButton.prefab.meta",
+      "sha256": "5358c769fdd77ac8161231b2829677dccf2e57bb983b48aa9f5965876488fb7d",
+      "guid": "fb160345b5621274da21d6e1b65b2825"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot.meta",
+      "sha256": "7cd611cf07b5a2e1f40ef1c0f2036b692471341f9087f50265e43b8d38c6723a",
+      "guid": "d2e3f60cb02db2946960568576bb095e"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/ItemSlot.prefab",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/ItemSlot.prefab",
+      "sha256": "4a5d75f407d831200f2793f7fa7c30a137b020b8381a7cb024cb29f573870e83"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/ItemSlot.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/ItemSlot.prefab.meta",
+      "sha256": "c7eca0bf9e4050ff779a0b9dce7d0d135fd2e54c96b42b7d2bc968e294031d3b",
+      "guid": "5f5b9268d58249544b03f6b2489c81c4"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts.meta",
+      "sha256": "424ecf4fa5fbe06a24fb92669df6e9552a4c04d075f3d60665078f5ddddd9b9c",
+      "guid": "e7e4510820f14c840910c65a216a9ffb"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources.meta",
+      "sha256": "b88845fd9b6715bc41400a0939e0c9494bb37134e7e703bf6ca787964239d5a2",
+      "guid": "07f1a67ab4c0b8d4a9f06ff9613221ad"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts/Arrow.prefab",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts/Arrow.prefab",
+      "sha256": "702d3159ac768e642a2d2e70c5f52a81546c746d3a556819d7fd6a7fed59e406"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts/Arrow.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts/Arrow.prefab.meta",
+      "sha256": "655f5c31c0cadc452bcb504814b2ffd02ef9dc491fd398acf73baa1f5c2cb255",
+      "guid": "bd38c5bc4b1a2824fac093f6fe04cddb"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts/Lock.prefab",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts/Lock.prefab",
+      "sha256": "f81fd31ad5e24aae4e7b14b351b9fb71dbdabae8eb3df6c444edbb0dfedfe57d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts/Lock.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts/Lock.prefab.meta",
+      "sha256": "a5385bebf88f1cffad3fd25425c4392776deea781dda78fb5f42eb600455dceb",
+      "guid": "a67a4275b7fec80438ea12b3b34be7b7"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts/Mask.prefab",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts/Mask.prefab",
+      "sha256": "c9f82da7513790d55edc593b452d5b90fe0b0dfbdfb627c1032884c38bd000dd"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Parts/Mask.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Parts/Mask.prefab.meta",
+      "sha256": "72f703dcc6b5304811fd3c741cb23a80858e93859fdcfa3a7d698bfdf9d84408",
+      "guid": "456ff383b5d0ca84297122231a1a79e0"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/Animation_77505DF5E9604B07.anim",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/Animation_77505DF5E9604B07.anim",
+      "sha256": "aba95c8b0b11a0bd108e0a1e26cfc365b576795965c0c81f1b021e8f5d9dd7cc"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/Animation_77505DF5E9604B07.anim.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/Animation_77505DF5E9604B07.anim.meta",
+      "sha256": "93c140bdee44bb0a88ac0782dc2ded9425b0e1b9053eaea05550e88b2ef52ad5",
+      "guid": "403b7bd2b3fb25d4a9aee738c8d57219"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/Animation_77505DF5E9604B07.controller",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/Animation_77505DF5E9604B07.controller",
+      "sha256": "4792cd1a70c9a777ef6bb3f5ea5f4d8f889d9df327b62f0f42e5123e6c8add6b"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/Animation_77505DF5E9604B07.controller.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/Animation_77505DF5E9604B07.controller.meta",
+      "sha256": "3a5bc1ec43be617fe8600e18fdee7cc9ef2b03e4625ca15761760ebdd6e89ecf",
+      "guid": "bcdcef51da56edc4291461d535568dec"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/b-bzgn_juese_mb.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/b-bzgn_juese_mb.png",
+      "sha256": "57ac8a9d83368aa0f33dafa91b2f2f2c3c6b1cdfb89832ed0dba0308cbd0a52c"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/b-bzgn_juese_mb.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/b-bzgn_juese_mb.png.meta",
+      "sha256": "6000be5a9560b5f9fce1128111b7779b990895d2511ca592f356bf3aea9532c4",
+      "guid": "77e523eee41a4ed429a3e97e1c3a0666"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/bb_db_pinzhi_bxz.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/bb_db_pinzhi_bxz.png",
+      "sha256": "9271c2d10b17979bda3c879c0e688d3bd569b1034528b29d11ae131a9a54180d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/bb_db_pinzhi_bxz.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/bb_db_pinzhi_bxz.png.meta",
+      "sha256": "8adba6b9638ef095023085758909eb311c52041412bcd1fcb3ac708ead2cf15b",
+      "guid": "3e845357789d0614ca6dcad6841e72a0"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/eff_texture_uicommon_001.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/eff_texture_uicommon_001.png",
+      "sha256": "6173daf60a416d6b8bbe987a6c5b89c42ab46c6b345dea3a2aa85ee74788c12b"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/eff_texture_uicommon_001.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/eff_texture_uicommon_001.png.meta",
+      "sha256": "0a2657e8d787ef1582b1b36c98be24dc518bdf51580bf9ffe3bb0c393d1c0eb0",
+      "guid": "7c1bcf858ad81544d88bc1775140d77b"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/eff_texture_uicommon_002.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/eff_texture_uicommon_002.png",
+      "sha256": "4daeed765926b48cd215fb943ff2d5c7b5e976f7a3ce74ebae6ddf6d4295fe8d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/eff_texture_uicommon_002.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/eff_texture_uicommon_002.png.meta",
+      "sha256": "a56a6852f9b03f5c2bce29070aeedbb28475a57e7be3e76cdc20eae31259776f",
+      "guid": "5c50f6325edec0b439e9fc4d2773381a"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/eff_texture_uicommon_008.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/eff_texture_uicommon_008.png",
+      "sha256": "647477cf95cf4fcaf070661e7ed6c7814f190ec2d073caab2aa38acc0c559bf8"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/eff_texture_uicommon_008.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/eff_texture_uicommon_008.png.meta",
+      "sha256": "db3be8634e427cf121e73e7d5040944429d69ce75f2b2467eda9659e5a1c94de",
+      "guid": "19792acf3f46aad4a8ba429d87c14de8"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ggzy_mjxs_db.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ggzy_mjxs_db.png",
+      "sha256": "9a8421fe980e8b78877ec0b1b099f9dd8d50052857791712c3f747a7f4a0c32f"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ggzy_mjxs_db.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ggzy_mjxs_db.png.meta",
+      "sha256": "7bb37fd872d6b68ebf7d9a168458986485e29b3005b67d51978ebb0c83f9c85e",
+      "guid": "0eb5bf2ac7d387c4aa15320a7cd7e41d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/head_1101.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/head_1101.png",
+      "sha256": "70a42173ea59d7b7fa1414e823e7aa21e1a63eb2bc2221f8a02582a11be55f90"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/head_1101.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/head_1101.png.meta",
+      "sha256": "e9b95fb47503c35dfa56f7036400506de51f96a03020ffe9bed1840049df7d2c",
+      "guid": "5cb52101ada4f8640942a9796257fe06"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/icon_cabinet_03.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/icon_cabinet_03.png",
+      "sha256": "a98a04ece73e317147a09d7459714cb7399822b6e1cc4a001b964cf81b89d6a3"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/icon_cabinet_03.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/icon_cabinet_03.png.meta",
+      "sha256": "c167b6cf633c06687c017d4756d1be540fde478a81da48b4460730311e480f3e",
+      "guid": "59c95d95f93ac5a4c9fa69dd3410ad7d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/jsjm_yichu.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/jsjm_yichu.png",
+      "sha256": "0b213bc46a4d951a5d8721aea014fda9f86656d45b60d9e64ffb62aec3477112"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/jsjm_yichu.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/jsjm_yichu.png.meta",
+      "sha256": "35d649634aab1a7221afa5a9e6aa6a2537097c8cc092211ed070ef35e554fcb6",
+      "guid": "fa076f5b3358d9c488d1662a5b150f68"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/jsjm_yichu_2.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/jsjm_yichu_2.png",
+      "sha256": "0b213bc46a4d951a5d8721aea014fda9f86656d45b60d9e64ffb62aec3477112"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/jsjm_yichu_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/jsjm_yichu_2.png.meta",
+      "sha256": "52725e0258659df1a465781408fd1e654255470646aeb0216bb7932a30254e94",
+      "guid": "072b09b2d6a73a9489f019211fffe835"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/mergetipimage.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/mergetipimage.png",
+      "sha256": "ac4e6edcc2f04b6c5a27983df5a0da948af5a605634cdcab8f4cbe70e3271ca0"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/mergetipimage.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/mergetipimage.png.meta",
+      "sha256": "7d8a8939a6497fa6999ce0cf180e01d636a05eaa1b5e950868e6c007db7cfd63",
+      "guid": "cd34bce19b86b144c87071629552c39d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_bb_db_pinzhi.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_bb_db_pinzhi.png",
+      "sha256": "71c6921df373d1288b0b99fa127303c5dfb78b619636be9bda5aae226f685700"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_bb_db_pinzhi.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_bb_db_pinzhi.png.meta",
+      "sha256": "faef745167e3b46ba79672b281255d0d4c5f9386833a2af0e3a2fe7f05b0f098",
+      "guid": "95fe32400ec6df24e9326fbaa27e2843"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_bb_db_pinzhi_2.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_bb_db_pinzhi_2.png",
+      "sha256": "71c6921df373d1288b0b99fa127303c5dfb78b619636be9bda5aae226f685700"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_bb_db_pinzhi_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_bb_db_pinzhi_2.png.meta",
+      "sha256": "d5f6961ea85325f2e03c2e0d4292e42d30bef2ea4a3bd44be1f0fd8f0bde24d1",
+      "guid": "f31b52b1304e93a41b8518a7019a78f6"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_bb_db_pinzhi_lan.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_bb_db_pinzhi_lan.png",
+      "sha256": "130c25ad152eb417ff4d468bde77a26a3613e147d271fde88d72a5adaea52f20"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_bb_db_pinzhi_lan.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_bb_db_pinzhi_lan.png.meta",
+      "sha256": "413521b25c9076693e1bfe3b680248ee3f0f80d6a0726387f7a12ffc61138f8e",
+      "guid": "5c5980493c6af0b4f9c4c88355e6f1e2"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qygl_db_kapaidi_xiao.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qygl_db_kapaidi_xiao.png",
+      "sha256": "b257ff094d707b6146d24773302a75ad584be67967625793693a2f206a989451"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qygl_db_kapaidi_xiao.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qygl_db_kapaidi_xiao.png.meta",
+      "sha256": "d8347c148be613749261f297f0bf7deb5645a07ff92974dc972772860b42987a",
+      "guid": "262a4e3dd0cf37c4db38c90577f1ad38"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_icon_db.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_icon_db.png",
+      "sha256": "7450f18ac5f353830f472c5dac0eed4900a6115ee43f310fcc439e74c85f69a2"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_icon_db.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_icon_db.png.meta",
+      "sha256": "3481cc626596811253d394cde1f67076403780e43e85a2ea5cde66fdd6b37008",
+      "guid": "050de3a3f39147648b5f969aa50ff1a0"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_techang_lvse.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_techang_lvse.png",
+      "sha256": "8126a53014a2504e7c07b90d9b2f88144bfd892a981c77e6cb8424c5e114e393"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_techang_lvse.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_techang_lvse.png.meta",
+      "sha256": "bad8465b2137c0b92384e4b0ee58f60e8625a740990b0d60cf95381f60645b9b",
+      "guid": "dbb27f8c97b571d4fb6289a7e0a2da09"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji.png",
+      "sha256": "6f4b9da72796445282d8e3dce702180f75ddb39520cc81ae7f8de6a557fbaf2d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji.png.meta",
+      "sha256": "795d6208925e5783748a10632bccbb78ea1eb75ab7bc6faaec6a036159fad57f",
+      "guid": "8a9d2952b978f0646b2dbcaefa70ffba"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_2.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_2.png",
+      "sha256": "6f4b9da72796445282d8e3dce702180f75ddb39520cc81ae7f8de6a557fbaf2d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_2.png.meta",
+      "sha256": "d043a7c50b03d779433de1028db732be6a2fb7c54c285fc7c29f26532165544f",
+      "guid": "76b3c3711226f2f41a18e5dc3a295fe7"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_3.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_3.png",
+      "sha256": "6f4b9da72796445282d8e3dce702180f75ddb39520cc81ae7f8de6a557fbaf2d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_3.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_3.png.meta",
+      "sha256": "3b4547860e5614d936dd0afc04735e195c97e9e7eb249b4634eff47e97be60be",
+      "guid": "18db9fda943f71d488a7717896ee6f00"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_4.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_4.png",
+      "sha256": "6f4b9da72796445282d8e3dce702180f75ddb39520cc81ae7f8de6a557fbaf2d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_4.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_4.png.meta",
+      "sha256": "36c4ac8a6016dbf93c263a75e2daf1349e2654d184a0641b0781ed97dcba743d",
+      "guid": "eeccc116b5b176143aef4ad1fcee3b67"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_5.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_5.png",
+      "sha256": "6f4b9da72796445282d8e3dce702180f75ddb39520cc81ae7f8de6a557fbaf2d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_5.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_5.png.meta",
+      "sha256": "a1fae27a4b1976a9adfc71ce920bf0422a69eeb9bc1b4f1ad61c153ffb85042b",
+      "guid": "07576c9a0403ae542bf94565a3e0cac5"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_6.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_6.png",
+      "sha256": "6f4b9da72796445282d8e3dce702180f75ddb39520cc81ae7f8de6a557fbaf2d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_xingji_6.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_xingji_6.png.meta",
+      "sha256": "0530cf1578afd1a6f4fc1d4797753cb58e330f4d6d1ad0a67594745061ceee70",
+      "guid": "19b1ba4eff27c6c4785205a93a925669"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_zhuangbeizhong.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_zhuangbeizhong.png",
+      "sha256": "6e584e09481bb3d732975f8e0f8ee925d735031d721a6d4d2d79eb2b5cfbcd77"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_qytc_zhuangbeizhong.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_qytc_zhuangbeizhong.png.meta",
+      "sha256": "aaf83d131dc01b6429832003b0fe6c181a8b950e12e12fb148fab5c9865f15ad",
+      "guid": "77a2d0677bcaa1a4886032981616a173"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_tc_icon_chuanqiu.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_tc_icon_chuanqiu.png",
+      "sha256": "f1aa7df33c202b992e938ee882c0ebea230745211c52666c02221bb9164360e5"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_tc_icon_chuanqiu.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_tc_icon_chuanqiu.png.meta",
+      "sha256": "ea705ee0fc65dd8e37e0eb2d8add56e2965163d933171808af674120faeef721",
+      "guid": "15252d4d68d24534e84c5d0948a9909d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_db_tanchuang_huidi.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_db_tanchuang_huidi.png",
+      "sha256": "e5d39e2b44f85b07edca26b11a529e5a5dc0badccb902501b8e4b22b89c4fe1c"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_db_tanchuang_huidi.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_db_tanchuang_huidi.png.meta",
+      "sha256": "09e955419c180ab16b0a2e1919351bda3e674604bc2f59875ebe11548d9aed8e",
+      "guid": "6c3a4cd9afb4d7e42bd9a67b2b7a5b74"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_db_tanchuang_huidi_2.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_db_tanchuang_huidi_2.png",
+      "sha256": "e5d39e2b44f85b07edca26b11a529e5a5dc0badccb902501b8e4b22b89c4fe1c"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_db_tanchuang_huidi_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_db_tanchuang_huidi_2.png.meta",
+      "sha256": "664d2a8376e440e5f29a2bbda5f6c5ac63169230c02791bd2e8742fce7adcf06",
+      "guid": "132d89c8427938a4387883facb6eceb6"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_gailv.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_gailv.png",
+      "sha256": "97e43290daa46de3010c44f3af4920a216d42f9c226a11719b37b4f4d5b82975"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_gailv.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_gailv.png.meta",
+      "sha256": "7d520a675245ff534398f00c5991bbc81708f15212939062f4104f3607e6d004",
+      "guid": "b36024d1b3c60a94b86c0ecaaf631744"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_icon_suoding.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_icon_suoding.png",
+      "sha256": "9350a2efc6d88a6387ad6259820e8a88e6c06e41108f00b21305fea8f43d5b7b"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/new_ty_icon_suoding.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/new_ty_icon_suoding.png.meta",
+      "sha256": "30db096b0169750015c9cc9bf15a8100ae5b5be8cadc35ee65e2a1b8a53ad528",
+      "guid": "81a246ee193ad38458cdaee6aefd3038"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ty_tishi.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ty_tishi.png",
+      "sha256": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ty_tishi.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ty_tishi.png.meta",
+      "sha256": "85f7b30b78d89a79ec7c77636d0eb513dcf02c3d7d7ccec3b908216274cd2227",
+      "guid": "decdd587278db204c8176a9eaa6c703d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_chargebenefitsobt_jb.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_chargebenefitsobt_jb.png",
+      "sha256": "98ed74f596d0d9e379cf8f67ef64a5c76cb494cac903358f5653fef8300045bc"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_chargebenefitsobt_jb.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_chargebenefitsobt_jb.png.meta",
+      "sha256": "b57c6e10b10107b99222135f20fbaa239a1ac130b9254648e5b29637511797b4",
+      "guid": "b84597b057c4b224da042fc56042e768"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_homestead_250.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_homestead_250.png",
+      "sha256": "ea966501918e3d91d86982ae84017704682a3880b70f6c7631f3f226225f10fa"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_homestead_250.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_homestead_250.png.meta",
+      "sha256": "1dc771b4f1c365db3a1a1978ade8e64d3fbf3bb9069b3bd71b33d50625f20cd4",
+      "guid": "1a333d1e97c71244abf312cdf95907d3"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_information_14.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_information_14.png",
+      "sha256": "5ce1b9294583e8304b0b442536ef6e478e2785df414dd2a8a46a34c42bee57e2"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_information_14.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_information_14.png.meta",
+      "sha256": "9954d289d6f57ab54a22393a13f81ea2668a3c53df50e3a54f0621923c9ca33e",
+      "guid": "d5790edc7a036704b93bc83942c745bf"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_playerspecialty_19.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_playerspecialty_19.png",
+      "sha256": "2d810298636aee6bb1fcc7d5b09d708716dc43842ddc4f1282ad4c21c3ebe5d8"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_playerspecialty_19.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_playerspecialty_19.png.meta",
+      "sha256": "64605bf512b71f7928c7a05323dce756445544013c38432435fca3a1c987cb80",
+      "guid": "c25a15f978662994a84016a0bb2f4713"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_playerspecialty_23.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_playerspecialty_23.png",
+      "sha256": "84b60d08ff87b854afbc856aca6ba5d898c9805e3876f4892f82ce30137a0ec2"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_playerspecialty_23.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_playerspecialty_23.png.meta",
+      "sha256": "086ff66da0ec65b6b47b31e8f39bb59f347f317dbaefbb50697a5d42fec06883",
+      "guid": "5a8644f38dce92b40ba80d431a705ff7"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_recall_06.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_recall_06.png",
+      "sha256": "88a4a6eeafa6f2668351c7154fadff5cb780bd980ec1c92dedbe3b6950488898"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_recall_06.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_recall_06.png.meta",
+      "sha256": "847dc7cffcf1176f5925787ae8bca8a4144218a2decf77b62c04ef46f7b0a424",
+      "guid": "c5a4bace4b9d2d644ae612c63d23de2c"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_recall_15.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_recall_15.png",
+      "sha256": "c7ba096c515d3fa41a0fe4fd5b70f0d14ed3101447c27b825f73209c0086cb4e"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_recall_15.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_recall_15.png.meta",
+      "sha256": "f854dcc6b65711c4fda5818240a3f8abc2c1648a29c3b4ed123e66b144d05d68",
+      "guid": "5b6d4e71777861a4a93ef0804ce97788"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_recall_16.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_recall_16.png",
+      "sha256": "46d8422db958eb7c26dbbc9457eeb9cb304fe5bb88adec7bf26a729090b2f605"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_recall_16.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_recall_16.png.meta",
+      "sha256": "d073d9a8d330013aace4cfc7f18f5445e5b0ad6572d2ae1b5f42332945da68a3",
+      "guid": "b8264dbcb6c8c6d43b7daa011e7dc11a"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_support_118.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_support_118.png",
+      "sha256": "8e478c9095ac8fa31d20db82d3f282d594dcba197eec1e688ecb54431c2e64f8"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_support_118.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_support_118.png.meta",
+      "sha256": "5871b5c82473b214482142fa4e5ee3878b26ffcc485266aca6ed60bc779e6ee6",
+      "guid": "47bbb89f652f3e74cb28e393f55c908b"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_support_118_2.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_support_118_2.png",
+      "sha256": "8e478c9095ac8fa31d20db82d3f282d594dcba197eec1e688ecb54431c2e64f8"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_support_118_2.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_support_118_2.png.meta",
+      "sha256": "4ef1d7c4815bacb6ec6ba140e5c0622a03f13251c2c3d9613facc18145e94fcf",
+      "guid": "b8c4970dbb9915f468dab9ec5f742aaa"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_unlock_new.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_unlock_new.png",
+      "sha256": "8d91f67ebf2a158c9f3a88cf21c6fd5c150ad6323457fd4db8f6b86abb017e4d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_system_unlock_new.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_system_unlock_new.png.meta",
+      "sha256": "d0ab32dcdd4ed32b0f74b4a663c51cf6b776162c2c39f69afaa21de4f2dc0399",
+      "guid": "701cb0966f8949d468ee0cf51fb46ef1"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_trainingcamp_20.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_trainingcamp_20.png",
+      "sha256": "ed0c7c61a0abbd1445faa08862888795bdd2c0aff942afed64bc6855208f0479"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ui_trainingcamp_20.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ui_trainingcamp_20.png.meta",
+      "sha256": "a548214826ec0e7852cdd7e3024eb43c64aa8e2711255e086c0a8d343e1252ad",
+      "guid": "9be1f07f1fadb404da2b59d01c5f772d"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ziti_lsbb.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ziti_lsbb.png",
+      "sha256": "95b272de8b842af23ae4d2ecb989b370dd0472751deea61240beb276c12c8169"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/ziti_lsbb.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/ziti_lsbb.png.meta",
+      "sha256": "8baff41a32e8b9cf40ce5bdde7135891007d0d6ec98a967a110feb42f207542d",
+      "guid": "c72a160c07c84c84dad4f339852b8a05"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/zyfb_bottom.png",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/zyfb_bottom.png",
+      "sha256": "192ce7b94c1edf0a5cf6dbd0b5fca6c11b4038e01631987e5abc7138484adc33"
+    },
+    {
+      "from": "Assets/Data/Widgets/ItemSlot/Resources/zyfb_bottom.png.meta",
+      "to": "Assets/Data/Widgets/Micros/ItemSlot/Resources/zyfb_bottom.png.meta",
+      "sha256": "65da37942550c5228593d427cfb201154f6388b0d2204926d76808ee8a572de4",
+      "guid": "80021a406b2849c4f849a0f6391f36fd"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward.meta",
+      "sha256": "400f333440595001f1b8301864db8355ab4d4126836fd3614e097c899f77aace",
+      "guid": "84994dd0bfe42d24d872c0e95a1d175d"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources.meta",
+      "sha256": "f4646efe244fbcb1d28867521f6bab23182893182a550ce59e43dba65365a294",
+      "guid": "de4eae70ff50e6b4490c71e3685948f1"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/RewardEntry.prefab",
+      "to": "Assets/Data/Widgets/Micros/Reward/RewardEntry.prefab",
+      "sha256": "d3e5af8df249b98a12d09d49ed11351521c4c17c22e006b14416b7309e9c4279"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/RewardEntry.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward/RewardEntry.prefab.meta",
+      "sha256": "83f0ffed6571a3753dfea3119b413162a270aff23d9727ef7cd404be51a6e803",
+      "guid": "1ada91738a9aded45ae170364282d4d2"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/Animation_93F9E97EE1D34120.anim",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/Animation_93F9E97EE1D34120.anim",
+      "sha256": "dea1c56971e9699d4083556de0d61e4da0bc3c42bf1b7a06e48bc669b618fb9a"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/Animation_93F9E97EE1D34120.anim.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/Animation_93F9E97EE1D34120.anim.meta",
+      "sha256": "eef26c41f7a5eb2a0226888f7cbbe288ecbee57f9246c9303b8b92c1da52c760",
+      "guid": "a6ae6f0bfb434a44d92511406f9e8486"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/Animation_93F9E97EE1D34120.controller",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/Animation_93F9E97EE1D34120.controller",
+      "sha256": "83f23765b96aa54a968211571db068d44c34874becfb55f694c1db54c3f0bd32"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/Animation_93F9E97EE1D34120.controller.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/Animation_93F9E97EE1D34120.controller.meta",
+      "sha256": "30cc6b40cd5046b085d8eb44186c2ffad9916b8f0f071958bbfc36e9adfee78b",
+      "guid": "e8365bea1af51254681aaf9a07374a83"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/ui_system_mail_44.png",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/ui_system_mail_44.png",
+      "sha256": "2afa0221c6ae1a12371c8f942a24f9c8f6e13daa0b8ee501f5d4a9c1beff29ef"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/ui_system_mail_44.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/ui_system_mail_44.png.meta",
+      "sha256": "9d46c8ae8b503cc9eeb8823f04d4b2ba8432e9b1410aeeede15d422d5864497a",
+      "guid": "b13ec63b0c818644593d85505caed2a2"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/ui_system_mail_45.png",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/ui_system_mail_45.png",
+      "sha256": "147cf07751ea5ab05fbe7af7216d58248c6d0241a3989dc3eb013616747a2832"
+    },
+    {
+      "from": "Assets/Data/Widgets/Reward/Resources/ui_system_mail_45.png.meta",
+      "to": "Assets/Data/Widgets/Micros/Reward/Resources/ui_system_mail_45.png.meta",
+      "sha256": "4e3db442d0bf4f436bc6217b43dababd1305a91d9c4a827fda1c23598e264b14",
+      "guid": "a4f421117f38c104f95c31428db4d3f8"
+    },
+    {
+      "from": "Assets/Data/Widgets/ShopGiftItem.meta",
+      "to": "Assets/Data/Widgets/Micros/ShopGiftItem.meta",
+      "sha256": "9246e6bd869f89930842a034ae6231350d5b90c7c12923b12763e15904b33d74",
+      "guid": "370adf74a74c11c48a9c34f9967c5e9e"
+    },
+    {
+      "from": "Assets/Data/Widgets/ShopGiftItem/ShopGiftItem.prefab",
+      "to": "Assets/Data/Widgets/Micros/ShopGiftItem/ShopGiftItem.prefab",
+      "sha256": "8892053a137d5e274d64b60c394741dff8443f5044137ec59fc76fe2e5943e5e"
+    },
+    {
+      "from": "Assets/Data/Widgets/ShopGiftItem/ShopGiftItem.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/ShopGiftItem/ShopGiftItem.prefab.meta",
+      "sha256": "03c0d6d4b5c92da16c71f36595c47d85885b70ce303d4a5e9df68ae91a7636fb",
+      "guid": "873a43357f9251d4e843084c994ec402"
+    },
+    {
+      "from": "Assets/Data/Widgets/ShopRechargeItem.meta",
+      "to": "Assets/Data/Widgets/Micros/ShopRechargeItem.meta",
+      "sha256": "2e9462903fd379b63d27f8f9ceb2bd1ee52c2014d78ba51adace207a4118c489",
+      "guid": "4e02ccd83fb48764f8447a94a6ad1707"
+    },
+    {
+      "from": "Assets/Data/Widgets/ShopRechargeItem/ShopRechargeItem.prefab",
+      "to": "Assets/Data/Widgets/Micros/ShopRechargeItem/ShopRechargeItem.prefab",
+      "sha256": "be11ada47c7d42aa55521c7e233d2cd1b4c134b99b25aabc19460a7bc98125a2"
+    },
+    {
+      "from": "Assets/Data/Widgets/ShopRechargeItem/ShopRechargeItem.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/ShopRechargeItem/ShopRechargeItem.prefab.meta",
+      "sha256": "23a6eaeef8f401b9d3540a63dcd93630f7419e74120160f617e7c8ee38accc68",
+      "guid": "5e74341a599e4b34fa04b0560508c4f6"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common.meta",
+      "sha256": "43496d7e0053cbaa49c13f05b585cd3f2f57aefdf1d55ef3897f94347409812d",
+      "guid": "495f2af91500c2040b7b68a3954b46c9"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges/AdvertisementDefault.prefab",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common/AdvertisementDefault.prefab",
+      "sha256": "b416d7591901caaa958d6921d4d71e8383b26fc70068c178c80a30890eeacbef"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges/AdvertisementDefault.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common/AdvertisementDefault.prefab.meta",
+      "sha256": "38754ec227f10e4f6eff52cd8ee0fd4d81a516631ecb9d0fba39d0bd4c8b030a",
+      "guid": "ef1c8c3f86bab144394ec7adb3a18c6e"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges/New378f50ee8b.prefab",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common/New378f50ee8b.prefab",
+      "sha256": "78ae60a5a221d7f0f9dbcffcc6255236fd3a6e859b862b8d2a24e54c24d905be"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges/New378f50ee8b.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common/New378f50ee8b.prefab.meta",
+      "sha256": "5efde5350580142928f00b5d1db598b16a1876999412d659c468baa0771696cc",
+      "guid": "1f9a9f14b19496b479236370b2a280bd"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges/NewDefault.prefab",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common/NewDefault.prefab",
+      "sha256": "c32048f7875f7ae09cd09b1a52c957ea7ea2b74f8628c0bb9016fb6a056d2a61"
+    },
+    {
+      "from": "Assets/Data/Widgets/Common/Badges/NewDefault.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Common/NewDefault.prefab.meta",
+      "sha256": "b3c54ce3f9b9c62cd4e938dcb35164e63f306d5393033e092f764f9b63648bbe",
+      "guid": "b4b1382a4311fb54ea7408199ecdbbdb"
+    },
+    {
+      "from": "Assets/Data/Widgets/Home/Badges.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Home.meta",
+      "sha256": "b99e06c08866866537975f8100a586565ec579a2a6456f582196d751716b1a99",
+      "guid": "d922a29305db9f247b9c6f6604d54ed6"
+    },
+    {
+      "from": "Assets/Data/Widgets/Home/Badges/Advertisement44101ed8e9.prefab",
+      "to": "Assets/Data/Widgets/Micros/Badges/Home/Advertisement44101ed8e9.prefab",
+      "sha256": "baec8e7c9f0ef3954254435d17ea60b06efc4a01930cbf19d2c8ca6f10e8fca0"
+    },
+    {
+      "from": "Assets/Data/Widgets/Home/Badges/Advertisement44101ed8e9.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Home/Advertisement44101ed8e9.prefab.meta",
+      "sha256": "acb6271145697616c5d8725483e2ea4da6c8bad6e3e88dfe3cc3e019f7cc6a1e",
+      "guid": "ffdd21c994ccf614992221a9383d1e9a"
+    },
+    {
+      "from": "Assets/Data/Widgets/Home/Badges/Newbf18cf9fd6.prefab",
+      "to": "Assets/Data/Widgets/Micros/Badges/Home/Newbf18cf9fd6.prefab",
+      "sha256": "b6bb938d7129deda6345c7ff18ed26fffe67da69620593c435e2d735fa74f038"
+    },
+    {
+      "from": "Assets/Data/Widgets/Home/Badges/Newbf18cf9fd6.prefab.meta",
+      "to": "Assets/Data/Widgets/Micros/Badges/Home/Newbf18cf9fd6.prefab.meta",
+      "sha256": "b6eb7b4b362c8d4fd80fb1964003f4ae8e3fa0acf60a9a2607b8bdfeca4402ca",
+      "guid": "326ba873e5477ab44b09882c18977bfc"
+    }
+  ],
+  "legacyItemSlotSha256": "6356b2480da8ff98f0dc5522d5ae8818d8593f3cb7c2e0b696ac536d6bd371e7"
+}

@@ -1,0 +1,138 @@
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Oathx.Core;
+using Oathx.Entity;
+using Oathx.Widget;
+using UnityEngine;
+
+/// <summary>Exercises the local mail reference without network or inventory writes.</summary>
+public static class MailProbe
+{
+    /// <summary>Open mail through the real lifecycle coordinator.</summary>
+    public static void Open()
+    {
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(MailSystem) });
+    }
+
+    /// <summary>Read the current page and select its Metadata Inspector.</summary>
+    /// <returns>Current display and receipt counts.</returns>
+    public static string Read()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIMail>(out var widget))
+            throw new InvalidOperationException("Mail is not open.");
+
+        var entity = XEntityManager.GetSingleton().QueryEntity<MailEntity>();
+        UnityEditor.Selection.activeGameObject = widget.gameObject;
+        UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+
+        return JsonConvert.SerializeObject(new {
+            count = widget.vm.Messages.Count,
+            title = widget.vm.Title,
+            body = widget.vm.Body,
+            rewards = widget.vm.Rewards.Count,
+            selected = entity.selectedId,
+            receipts = entity.GetReceipts().Count,
+            empty = widget.vm.EmptyVisible,
+            cells = widget.GetComponentsInChildren<UIMailEntry>(false).Length
+        });
+    }
+
+    /// <summary>Exercise inbox invariants on a detached entity.</summary>
+    /// <returns>True when every invariant holds.</returns>
+    public static bool CheckEntity()
+    {
+        var entity = new MailEntity();
+        var source = new MailMessage {
+            id = 1, title = "Test", body = "Body", sentAt = 100, expiresAt = 200,
+            rewards = new List<MailReward> { new MailReward { itemId = 1, count = 5, icon = "icon" } }
+        };
+        if (!entity.ReplaceInbox(new[] { source }))
+            throw new InvalidOperationException("Valid input rejected.");
+
+        source.rewards[0].count = 99;
+        var snapshot = entity.GetMessages(150);
+        snapshot[0].rewards.Clear();
+        if (entity.GetMessages(150)[0].rewards[0].count != 5 || entity.Delete(1) != MailResult.Unread)
+            throw new InvalidOperationException("Snapshot ownership or unread protection failed.");
+
+        if (!entity.Select(1, 150) || entity.Delete(1) != MailResult.PendingAttachments
+            || entity.Claim(1, 201) != MailResult.Expired || entity.Claim(1, 150) != MailResult.Success
+            || entity.Claim(1, 150) != MailResult.AlreadyClaimed || entity.ClaimAll(150) != 0)
+            throw new InvalidOperationException("Claim validation failed.");
+
+        var receipts = entity.GetReceipts();
+        receipts[0].rewards[0].count = 1;
+        if (entity.GetReceipts()[0].rewards[0].count != 5 || entity.Delete(1) != MailResult.Success
+            || entity.GetMessages(150).Count != 0)
+            throw new InvalidOperationException("Receipt ownership or deletion failed.");
+
+        if (!entity.ReplaceInbox(new[] { source }) || !entity.GetMessages(150)[0].claimed
+            || entity.ReplaceInbox(new[] { source, source }) || entity.GetMessages(150).Count != 1)
+            throw new InvalidOperationException("Receipt replay or atomic validation failed.");
+
+        source.expiresAt = long.MaxValue;
+        if (entity.ReplaceInbox(new[] { source }))
+            throw new InvalidOperationException("Invalid date accepted.");
+
+        return true;
+    }
+
+    /// <summary>Exercise live claim and delete actions through the real system.</summary>
+    /// <returns>The final display state after removing the local example inbox.</returns>
+    public static string CheckFlow()
+    {
+        var system = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<MailSystem>();
+        var entity = XEntityManager.GetSingleton().QueryEntity<MailEntity>();
+        int initial = entity.GetMessages(DateTimeOffset.UtcNow.ToUnixTimeSeconds()).Count;
+        if (initial != 3 || system.Delete() || !system.Claim() || system.Claim() || !system.Delete())
+            throw new InvalidOperationException("Single-message workflow failed.");
+
+        if (!system.ClaimAll() || system.ClaimAll() || !system.DeleteRead())
+            throw new InvalidOperationException("Batch workflow failed.");
+
+        if (entity.GetReceipts().Count != 2)
+            throw new InvalidOperationException("Unexpected local receipt count.");
+
+        return Read();
+    }
+
+    /// <summary>Close through the actual coordinator.</summary>
+    public static void Close()
+    {
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(MailSystem) });
+    }
+
+    /// <summary>Raycast and dispatch a pointer click to an active mail button.</summary>
+    /// <param name="name">Exact button object name.</param>
+    /// <returns>The selected raycast target.</returns>
+    public static string Click(string name)
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIMail>(out var widget))
+            throw new InvalidOperationException("Mail is not open.");
+
+        var buttons = widget.GetComponentsInChildren<UnityEngine.UI.Button>(false);
+        var button = Array.Find(buttons, item => item.name == name);
+        if (!button || !button.IsInteractable())
+            throw new InvalidOperationException("Button unavailable: " + name);
+
+        var rect = button.transform as RectTransform;
+        var canvas = button.GetComponentInParent<Canvas>();
+        var position = RectTransformUtility.WorldToScreenPoint(canvas.renderMode == RenderMode.ScreenSpaceOverlay
+            ? null : canvas.worldCamera, rect.TransformPoint(rect.rect.center));
+        var pointer = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current) {
+            position = position, button = UnityEngine.EventSystems.PointerEventData.InputButton.Left
+        };
+        var hits = new List<UnityEngine.EventSystems.RaycastResult>();
+        UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointer, hits);
+        if (hits.Count == 0 || hits[0].gameObject.GetComponentInParent<UnityEngine.UI.Button>() != button)
+            throw new InvalidOperationException("Button occluded: " + name);
+
+        UnityEngine.EventSystems.ExecuteEvents.ExecuteHierarchy(hits[0].gameObject, pointer,
+            UnityEngine.EventSystems.ExecuteEvents.pointerClickHandler);
+
+        return hits[0].gameObject.name;
+    }
+}
+#endif

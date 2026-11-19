@@ -1,0 +1,3 @@
+import {openDatabase} from '../server/database.mjs';
+import {writeFile,mkdir} from 'node:fs/promises';
+const db=await openDatabase();try{const rows=(await db.pool.query('SELECT * FROM gamecli_ui.templates ORDER BY id')).rows;await mkdir('.data/micros-directory',{recursive:true});await writeFile('.data/micros-directory/templates-before.json',JSON.stringify(rows));for(const r of rows){const text=JSON.stringify([r.payload,r.scripts]);if(/Widgets\/(Currency|Profile|ItemSlot|Reward|ShopGiftItem|ShopRechargeItem|Common\/Badges|Home\/Badges)/.test(text))console.log(JSON.stringify({id:r.id,version:r.version,files:r.scripts?.files?.length,dependencies:r.payload?.configurations?.dependencies}));}}finally{await db.close();}

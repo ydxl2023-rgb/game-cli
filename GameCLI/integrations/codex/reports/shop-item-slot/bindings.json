@@ -1,0 +1,94 @@
+[
+  {
+    "kind": "Recharge",
+    "page": "Assets/Data/Widgets/ShopRecharge/ShopRecharge.prefab",
+    "card": "Assets/Data/Widgets/ShopRechargeItem/ShopRechargeItem.prefab",
+    "root": "ShopRechargeItem",
+    "cell": "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell",
+    "slot": "ShopRechargeItem/RechargeField/GoodsIcon",
+    "fields": [
+      [
+        "price",
+        "SyncText",
+        "ShopRechargeItem/RechargeField/CurrencyNum",
+        "Text"
+      ],
+      [
+        "title",
+        "SyncText",
+        "ShopRechargeItem/RechargeField/ZuanShi/Name",
+        "Text"
+      ],
+      [
+        "bonus",
+        "SyncText",
+        "ShopRechargeItem/RechargeField/AddNum",
+        "Text"
+      ],
+      [
+        "item",
+        "SyncMetadata",
+        "ShopRechargeItem/RechargeField/GoodsIcon",
+        "Oathx.Widget.UIItemSlot"
+      ],
+      [
+        "firstPay",
+        "SyncVisible",
+        "ShopRechargeItem/RechargeField/FirstPay",
+        "RectTransform"
+      ],
+      [
+        "firstPayText",
+        "SyncText",
+        "ShopRechargeItem/RechargeField/FirstPay/LanguageText",
+        "Text"
+      ]
+    ]
+  },
+  {
+    "kind": "Gift",
+    "page": "Assets/Data/Widgets/ShopGift/ShopGift.prefab",
+    "card": "Assets/Data/Widgets/ShopGiftItem/ShopGiftItem.prefab",
+    "root": "ShopGiftItem",
+    "cell": "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell",
+    "slot": "ShopGiftItem/RechargeField/ItemInfo",
+    "fields": [
+      [
+        "price",
+        "SyncText",
+        "ShopGiftItem/RechargeField/CurrencyBG/Price",
+        "Text"
+      ],
+      [
+        "title",
+        "SyncText",
+        "ShopGiftItem/RechargeField/ZuanShi/Name",
+        "Text"
+      ],
+      [
+        "limit",
+        "SyncText",
+        "ShopGiftItem/RechargeField/LimitNum",
+        "Text"
+      ],
+      [
+        "item",
+        "SyncMetadata",
+        "ShopGiftItem/RechargeField/ItemInfo",
+        "Oathx.Widget.UIItemSlot"
+      ],
+      [
+        "soldOut",
+        "SyncVisible",
+        "ShopGiftItem/RechargeField/SoldOut",
+        "RectTransform"
+      ],
+      [
+        "soldOutText",
+        "SyncText",
+        "ShopGiftItem/RechargeField/SoldOut/SoldOutBg/SoldOutText",
+        "Text"
+      ]
+    ]
+  }
+]

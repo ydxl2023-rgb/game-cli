@@ -11,6 +11,52 @@ SYS_BACKPACK=10006
 SYS_SEVENDAYLOGIN=10007
 SYS_FIGHT=10008
 SYS_NOTICE=10009
+SYS_SHOP=10010
+SYS_RED_DOT=10020
+SYS_FUNCTION_OPEN=10021
+SYS_ACTIVITY_TASKBUTTON=12000
+SYS_ACTIVITY_SEVENDAYSTASK=12002
+SYS_ACTIVITY_FOURTEENDAYSTASK=12003
+SYS_ACTIVITY_DIRECTPURCHASEBUTTON=12004
+SYS_ACTIVITY_DIRECTPURCHASEBUTTON1=12005
+SYS_ACTIVITY_CNBATTLEPASSBUTTON=12006
+SYS_ACTIVITY_TIMELIMITGIFTBUTTON=12007
+SYS_ACTIVITY_UPINPROBUTTON=12008
+SYS_ACTIVITY_COMEBACKBUTTON=12009
+SYS_ACTIVITY_POWERFULBAIT=12010
+SYS_ACTIVITY_KINGSETTER=12011
+SYS_ACTIVITY_ZHANSHUNODE=12012
+SYS_ACTIVITY_FATEBATTLENODE=12013
+SYS_ACTIVITY_YEJIUNODE=12014
+SYS_ACTIVITY_PLAYERTHEME=12015
+SYS_ACTIVITY_BTNTURNCARD=12016
+SYS_ACTIVITY_ALIPAYPACKAGE=12017
+SYS_ACTIVITY_QUESTIONNODE=12018
+SYS_ACTIVITY_BTNPREORDER=12019
+SYS_ACTIVITY_BTNMATCHGUESS=12020
+SYS_ACTIVITY_BTNTOPBATTLE=12021
+SYS_ACTIVITY_BTNSERVEGAME=12022
+SYS_ACTIVITY_BTNNEWYEAR=12023
+SYS_ACTIVITY_BTNCHAINGIFT=12024
+SYS_ACTIVITY_BTNSPTOPIC=12025
+SYS_ACTIVITY_BTNANNIVERSARY=12026
+SYS_ACTIVITY_BTNFREEMATCH=12027
+SYS_ACTIVITY_BTNRUNNINGGAME=12028
+SYS_ACTIVITY_BTN15ANNIVERSARYACTIVE=12029
+SYS_ACTIVITY_BTNLUCKYDRAW=12030
+SYS_ACTIVITY_BTNWUYECANTEEN=12031
+SYS_ACTIVITY_BTNACEDUEL=12032
+SYS_ACTIVITY_BTNCAMPTRAINING=12033
+SYS_ACTIVITY_BTNSPECIALOFFERPACKAGE=12034
+SYS_ACTIVITY_BTNBARBECUE=12035
+SYS_ACTIVITY_BTNCOMBINATIONGIFT=12036
+SYS_ACTIVITY_BTNSELECTSELFGIFT=12037
+SYS_ACTIVITY_BTNSELECTSELFGACHA=12038
+SYS_ACTIVITY_BTNSKILLRESONANCE=12039
+SYS_ACTIVITY_BTNNATIONALTOURNAMENT=12040
+SYS_ACTIVITY_SEVENDAYSLOGIN=12001
+SYS_MAIL=10022
+SYS_SETTINGS=10023
 
 
 propFunctionSystemConfig = {
@@ -22,6 +68,52 @@ propFunctionSystemConfig = {
 	[10006]:{ID:10006,NumID:10006,Name:"1857346161",ClassType:"BackpackSystem",InstallOnStartup:1,Condtions:[],Active:0,SceneId:0},
 	[10007]:{ID:10007,NumID:10007,Name:"1216255419",ClassType:"SevenDayLoginSystem",InstallOnStartup:1,Condtions:[],Active:0,SceneId:0},
 	[10008]:{ID:10008,NumID:10008,Name:"1777863556",ClassType:"FightSystem",InstallOnStartup:1,Condtions:[],Active:0,SceneId:0},
-	[10009]:{ID:10009,NumID:10009,Name:"518964932",ClassType:"NoticeSystem",InstallOnStartup:0,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0,Version:""}
+	[10009]:{ID:10009,NumID:10009,Name:"518964932",ClassType:"NoticeSystem",InstallOnStartup:0,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0,Version:""},
+	[10010]:{ID:10010,NumID:10010,Name:"Shop",ClassType:"ShopSystem",InstallOnStartup:0,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0},
+	[10020]:{ID:10020,NumID:10020,Name:"RedDot",ClassType:"RedDotSystem",InstallOnStartup:1,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0,Version:""},
+	[10021]:{ID:10021,NumID:10021,Name:"FunctionOpen",ClassType:"FunctionManagerSystem",InstallOnStartup:1,Condtions:[],Active:1,StartTime:"",StopTime:"",SceneId:0,Version:""},
+	[12000]:{ID:12000,NumID:12000,Name:"TaskButton",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,StartTime:"",StopTime:"",SceneId:0,Version:""},
+	[12002]:{ID:12002,NumID:12002,Name:"SevendaysTask",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,StartTime:"",StopTime:"",SceneId:0,Version:""},
+	[12003]:{ID:12003,NumID:12003,Name:"FourteendaysTask",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12004]:{ID:12004,NumID:12004,Name:"DirectPurchaseButton",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12005]:{ID:12005,NumID:12005,Name:"DirectPurchaseButton1",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12006]:{ID:12006,NumID:12006,Name:"CNBattlePassButton",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12007]:{ID:12007,NumID:12007,Name:"TimeLimitGiftButton",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12008]:{ID:12008,NumID:12008,Name:"UpInProButton",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12009]:{ID:12009,NumID:12009,Name:"ComeBackButton",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12010]:{ID:12010,NumID:12010,Name:"PowerfulBait",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12011]:{ID:12011,NumID:12011,Name:"KingSetter",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12012]:{ID:12012,NumID:12012,Name:"ZhanShuNode",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12013]:{ID:12013,NumID:12013,Name:"FateBattleNode",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12014]:{ID:12014,NumID:12014,Name:"YeJiuNode",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12015]:{ID:12015,NumID:12015,Name:"PlayerTheme",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12016]:{ID:12016,NumID:12016,Name:"BtnTurnCard",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12017]:{ID:12017,NumID:12017,Name:"AliPayPackage",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12018]:{ID:12018,NumID:12018,Name:"QuestionNode",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12019]:{ID:12019,NumID:12019,Name:"BtnPreOrder",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12020]:{ID:12020,NumID:12020,Name:"BtnMatchGuess",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12021]:{ID:12021,NumID:12021,Name:"BtnTopBattle",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12022]:{ID:12022,NumID:12022,Name:"BtnServeGame",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12023]:{ID:12023,NumID:12023,Name:"BtnNewYear",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12024]:{ID:12024,NumID:12024,Name:"BtnChainGift",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12025]:{ID:12025,NumID:12025,Name:"BtnSPTopic",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12026]:{ID:12026,NumID:12026,Name:"BtnAnniversary",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12027]:{ID:12027,NumID:12027,Name:"BtnFreeMatch",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12028]:{ID:12028,NumID:12028,Name:"BtnRunningGame",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12029]:{ID:12029,NumID:12029,Name:"Btn15AnniversaryActive",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12030]:{ID:12030,NumID:12030,Name:"BtnLuckyDraw",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12031]:{ID:12031,NumID:12031,Name:"BtnWuYeCanteen",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12032]:{ID:12032,NumID:12032,Name:"BtnAceDuel",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12033]:{ID:12033,NumID:12033,Name:"BtnCampTraining",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[12034]:{ID:12034,NumID:12034,Name:"BtnSpecialOfferPackage",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12035]:{ID:12035,NumID:12035,Name:"BtnBarbecue",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12036]:{ID:12036,NumID:12036,Name:"BtnCombinationGift",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12037]:{ID:12037,NumID:12037,Name:"BtnSelectSelfGift",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12038]:{ID:12038,NumID:12038,Name:"BtnSelectSelfGacha",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12039]:{ID:12039,NumID:12039,Name:"BtnSkillResonance",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12040]:{ID:12040,NumID:12040,Name:"BtnNationalTournament",ClassType:"",InstallOnStartup:0,Condtions:["Switch:0","Level:0"],Active:0,SceneId:0},
+	[12001]:{ID:12001,NumID:12001,Name:"SevendaysLogin",ClassType:"",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[10022]:{ID:10022,NumID:10022,Name:"Mail",ClassType:"MailSystem",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0},
+	[10023]:{ID:10023,NumID:10023,Name:"Settings",ClassType:"SettingsSystem",InstallOnStartup:0,Condtions:["Switch:1","Level:0"],Active:0,SceneId:0}
 
 }

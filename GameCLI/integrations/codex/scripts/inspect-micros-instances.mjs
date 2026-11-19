@@ -1,0 +1,3 @@
+import {createWorkspaces} from '../server/workspaces.mjs';
+import {readFile,writeFile} from 'node:fs/promises';
+const w=createWorkspaces();try{const s=await w.snapshot('p-2d314388-18c4-42f5-80eb-f6729dd23f0e');await writeFile('.data/micros-directory/project-before.json',JSON.stringify(s));console.log(JSON.stringify(s.design.nodes.filter(n=>n.parent===null).map(n=>({id:n.id,source:n.templateSourceId,version:n.templateSourceVersion}))));const rows=JSON.parse(await readFile('.data/micros-directory/templates-before.json','utf8'));for(const r of rows)for(const f of r.scripts?.files??[])if(/(resource-moves|migration)\.json$/.test(f.path)&&['ItemSlot','SvMail'].includes(r.id))console.log(r.id,f.path,f.content.slice(0,700));}finally{await w.close();}

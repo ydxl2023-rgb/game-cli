@@ -1,0 +1,2 @@
+import {openDatabase} from '../server/database.mjs';
+const db=await openDatabase();try{for(const id of ['ItemSlot','RewardEntry','SvMail']){const r=(await db.pool.query('SELECT version,payload,scripts FROM gamecli_ui.templates WHERE id=$1',[id])).rows[0];console.log(JSON.stringify({id,version:r.version,config:r.payload.configurations,readme:r.scripts.files.filter(f=>f.path.endsWith('README.md'))}));}}finally{await db.close();}

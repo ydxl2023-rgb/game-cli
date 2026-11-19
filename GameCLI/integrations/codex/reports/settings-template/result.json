@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "status": "reference-validated-with-explicit-limits",
+  "template": "SvSettings",
+  "version": 1,
+  "checks": {
+    "entity-final": {
+      "status": "passed",
+      "evidence": "entity-final.json"
+    },
+    "sliders-final": {
+      "status": "passed",
+      "evidence": "sliders-final.json"
+    },
+    "signals-final": {
+      "status": "passed",
+      "evidence": "signals-final.json"
+    },
+    "animations-final": {
+      "status": "passed",
+      "evidence": "animations-final.json"
+    },
+    "reopen-animations": {
+      "status": "passed",
+      "evidence": "reopen-animations.json"
+    },
+    "scroll-final": {
+      "status": "passed",
+      "evidence": "scroll-final.json"
+    },
+    "rapid-closed": {
+      "status": "passed",
+      "evidence": "rapid-closed.json"
+    },
+    "closed-final": {
+      "status": "passed",
+      "evidence": "closed-final.json"
+    },
+    "compile-final": {
+      "status": "passed",
+      "evidence": "compile-final.json"
+    },
+    "metadata-final": {
+      "status": "passed",
+      "evidence": "metadata-final.json"
+    },
+    "console-final": {
+      "status": "passed",
+      "evidence": "console-final.json"
+    },
+    "screen": {
+      "status": "passed",
+      "evidence": [
+        "click-screen-final.json",
+        "state-screen-final.json",
+        "screen-final.png"
+      ]
+    },
+    "sound": {
+      "status": "passed",
+      "evidence": [
+        "click-sound-final.json",
+        "state-sound-final.json",
+        "sound-final.png"
+      ]
+    },
+    "function": {
+      "status": "passed",
+      "evidence": [
+        "click-function-final.json",
+        "state-function-final.json",
+        "function-final.png"
+      ]
+    },
+    "privacy": {
+      "status": "passed",
+      "evidence": [
+        "click-privacy-final.json",
+        "state-privacy-final.json",
+        "privacy-final.png"
+      ]
+    },
+    "download": {
+      "status": "passed",
+      "evidence": [
+        "click-download-final.json",
+        "state-download-final.json",
+        "download-final.png"
+      ]
+    },
+    "code": {
+      "status": "passed",
+      "evidence": "code-final.json"
+    }
+  },
+  "independentReview": "independent-review.md",
+  "limitations": [
+    "Local preferences are implemented; product audio/rendering/network/SDK consumers are external integration points.",
+    "Source mesh/particle tab glow remains archived; two native source clips are preserved and sampled.",
+    "Chinese regional service variant is selected; overseas account Box remains inactive for product adaptation.",
+    "Native runtime evidence uses EventSystem pointer/scroll dispatch and Animator sampling, not a physical mouse session.",
+    "Strict GameCLI prefab comparison runs after reference instantiation and may be incomplete for unsupported exported components; this report does not assert pixel or schema identity.",
+    "Master code verifier reports pre-existing documentation issues outside the new coordinator changes; see master-code.json."
+  ],
+  "editorFinalState": "stopped; temporary probe and binding helper removed",
+  "strictPrefab": {
+    "status": "failed",
+    "differences": 45,
+    "unverified": 986,
+    "evidence": "prefab.json",
+    "interpretation": "31 raycast differences come from the comparator assumption that only Button design nodes can raycast; native source uses child Image hit areas. Remaining differences include the native animation wrapper anchors, RawImage-to-Image adaptation, disabled/masked source graphic properties and one float layout drift. Strict equality is not certified."
+  },
+  "publication": {
+    "template": "SvSettings",
+    "version": 1,
+    "scriptFiles": 25,
+    "materials": 97,
+    "configRows": 1,
+    "root": "T1Settings0",
+    "projectRevision": 69,
+    "hashesVerified": true
+  }
+}

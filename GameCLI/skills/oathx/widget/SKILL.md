@@ -11,7 +11,7 @@ description: 使用 com.oathx.widget 编写 UIWidget 与 VM，维护 Binding、M
 
 - 页面使用 `UIWidget<TVM>`；VM 使用 `partial` 与私有语义的 camelCase `[Binding]` 字段；`[Binding]` 必须独占一行，字段声明另起一行，`private` 可以省略，不强制补写。具体格式遵循[开发规范的 VM 绑定字段格式](../development-rules/SKILL.md#vm-绑定字段格式)。生成器提供的数据属性属于绑定机制，不是公开 Unity UI 引用；不要手工重复生成成员。
 - 系统代码目录遵循[共享目录规范](../development-rules/SKILL.md#系统代码目录)：所有 VM 放 `<System>/VM/`，UIWidget 实现放 `<System>/UI/`，其余代码放系统根目录。
-- 页面 prefab 和配套 UI 资源统一位于 `Assets/Data/Widgets/<模块>/`；`[Config]` 与模板源码必须指向实际 prefab 的完整资产路径。
+- 页面 prefab 位于 `Assets/Data/Widgets/<系统或页面>/`；独立小预制统一位于 `Assets/Data/Widgets/Common/Micros/`，单 prefab 且无配套资源时直接存放；多个预制或携带配套资源时使用 `<模块>/` 子目录；`[Config]` 与模板源码必须指向实际 prefab 的完整资产路径。
 - 按绑定目标选 Sync 类型：文本、可交互状态和显隐分别对照现有 SyncText、SyncInteractable、SyncVisible；按钮对照 ButtonClick。
 - UIWidget.Ref 依赖 prefab Metadata；字段存在不代表绑定完成。通过 UnityCLI widget-metadata 先 dry-run 再生成，检查字段覆盖和真实目标组件。
 - 固定 UI 引用采用序列化绑定，禁止用运行时节点路径搜索替代 Metadata 或序列化引用。
@@ -35,3 +35,5 @@ Metadata 的 type 字符串是同步器身份，hash 仅作 Inspector 缓存；�
 ## 图片绑定优先复用
 
 图片先检查现有 SyncImage / SyncSprite：SyncImage 接收路径，SyncSprite 支持路径或 Sprite；路径经 UIResourceManager 和宿主 UILoader 加载。按实际生命周期选用，不为单个业务另写 ISyncAction。显隐复用 SyncVisible，不以 null 或空路径替代隐藏。仅在确认已有同步器无法满足明确需求时扩展，并记录能力缺口。
+
+图片路径规范：ItemSlot.Icon 固定为 string，优先传有效资源路径，由现有 SyncSprite/UILoader 加载。Mail 不再自行 LoadAsync<Sprite> 或维护图片回调；IconVisible 表示宿主是否要求显示图标，并非加载完成状态。路径加载的取消/乱序保护属于共享框架能力，不能把旧业务回调保护的验收结论沿用于此实现。

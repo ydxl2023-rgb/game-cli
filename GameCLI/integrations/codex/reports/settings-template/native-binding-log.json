@@ -1,0 +1,3356 @@
+[
+  {
+    "args": [
+      "prefab",
+      "inspect",
+      "--prefab",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--recursive"
+    ],
+    "status": "inspected"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "className",
+      "--value",
+      "VMSettings"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "classGuid",
+      "--value",
+      "712148c652e719342921fc11d17a4dce"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.size",
+      "--value",
+      "156"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[0].name",
+      "--value",
+      "screenClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].name",
+      "--value",
+      "screenVisible"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].targets.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].components.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/ScreenSet"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/ScreenSet#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].targets.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/ScreenTog/SetSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[1].components.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/ScreenTog/SetSelected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[2].name",
+      "--value",
+      "screenUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[2].targets.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[2].components.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[2].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/ScreenTog/SetUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[2].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/ScreenTog/SetUnselected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[3].name",
+      "--value",
+      "soundClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].name",
+      "--value",
+      "soundVisible"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].targets.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].components.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/SouneSet"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/SouneSet#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].targets.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/VoiceTog/SetSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[4].components.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/VoiceTog/SetSelected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[5].name",
+      "--value",
+      "soundUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[5].targets.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[5].components.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[5].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/VoiceTog/SetUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[5].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/VoiceTog/SetUnselected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[6].name",
+      "--value",
+      "functionClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].name",
+      "--value",
+      "functionVisible"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].targets.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].components.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/FunctionSet"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/FunctionSet#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].targets.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/FunctionTog/SetSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[7].components.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/FunctionTog/SetSelected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[8].name",
+      "--value",
+      "functionUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[8].targets.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[8].components.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[8].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/FunctionTog/SetUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[8].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/FunctionTog/SetUnselected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[9].name",
+      "--value",
+      "privacyClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].name",
+      "--value",
+      "privacyVisible"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].targets.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].components.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/PrivateSet"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/PrivateSet#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].targets.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/PrivateTog/SetSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[10].components.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/PrivateTog/SetSelected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[11].name",
+      "--value",
+      "privacyUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[11].targets.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[11].components.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[11].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/PrivateTog/SetUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[11].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/PrivateTog/SetUnselected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[12].name",
+      "--value",
+      "downloadClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].name",
+      "--value",
+      "downloadVisible"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].targets.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].components.Array.size",
+      "--value",
+      "2"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/DownloadSet"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/DownloadSet#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].targets.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/DownloadTog/SetSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[13].components.Array.data[1]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/DownloadTog/SetSelected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[14].name",
+      "--value",
+      "downloadUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[14].targets.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[14].components.Array.size",
+      "--value",
+      "1"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[14].targets.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/DownloadTog/SetUnselected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[14].components.Array.data[0]",
+      "--value",
+      "@Settings/Animator/LeftTagGroup/DownloadTog/SetUnselected#RectTransform"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[15].name",
+      "--value",
+      "audienceClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[16].name",
+      "--value",
+      "audienceOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[17].name",
+      "--value",
+      "audienceOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[18].name",
+      "--value",
+      "playerOutlineClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[19].name",
+      "--value",
+      "playerOutlineOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[20].name",
+      "--value",
+      "playerOutlineOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[21].name",
+      "--value",
+      "tapEffectClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[22].name",
+      "--value",
+      "tapEffectOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[23].name",
+      "--value",
+      "tapEffectOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[24].name",
+      "--value",
+      "soundEnabledClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[25].name",
+      "--value",
+      "soundEnabledOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[26].name",
+      "--value",
+      "soundEnabledOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[27].name",
+      "--value",
+      "musicEnabledClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[28].name",
+      "--value",
+      "musicEnabledOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[29].name",
+      "--value",
+      "musicEnabledOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[30].name",
+      "--value",
+      "voiceEnabledClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[31].name",
+      "--value",
+      "voiceEnabledOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[32].name",
+      "--value",
+      "voiceEnabledOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[33].name",
+      "--value",
+      "showFpsClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[34].name",
+      "--value",
+      "showFpsOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[35].name",
+      "--value",
+      "showFpsOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[36].name",
+      "--value",
+      "vibrationClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[37].name",
+      "--value",
+      "vibrationOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[38].name",
+      "--value",
+      "vibrationOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[39].name",
+      "--value",
+      "matchEffectClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[40].name",
+      "--value",
+      "matchEffectOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[41].name",
+      "--value",
+      "matchEffectOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[42].name",
+      "--value",
+      "matchAnimationClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[43].name",
+      "--value",
+      "matchAnimationOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[44].name",
+      "--value",
+      "matchAnimationOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[45].name",
+      "--value",
+      "friendInviteClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[46].name",
+      "--value",
+      "friendInviteOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[47].name",
+      "--value",
+      "friendInviteOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[48].name",
+      "--value",
+      "associationInviteClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[49].name",
+      "--value",
+      "associationInviteOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[50].name",
+      "--value",
+      "associationInviteOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[51].name",
+      "--value",
+      "personalInfoClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[52].name",
+      "--value",
+      "personalInfoOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[53].name",
+      "--value",
+      "personalInfoOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[54].name",
+      "--value",
+      "horseRaceLampClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[55].name",
+      "--value",
+      "horseRaceLampOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[56].name",
+      "--value",
+      "horseRaceLampOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[57].name",
+      "--value",
+      "inGamePushClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[58].name",
+      "--value",
+      "inGamePushOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[59].name",
+      "--value",
+      "inGamePushOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[60].name",
+      "--value",
+      "nightPushClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[61].name",
+      "--value",
+      "nightPushOn"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[62].name",
+      "--value",
+      "nightPushOff"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[63].name",
+      "--value",
+      "chatWorldClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[64].name",
+      "--value",
+      "chatWorldSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[65].name",
+      "--value",
+      "chatAssociationClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[66].name",
+      "--value",
+      "chatAssociationSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[67].name",
+      "--value",
+      "onlyWifiClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[68].name",
+      "--value",
+      "onlyWifiSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[69].name",
+      "--value",
+      "wifiAndNetClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[70].name",
+      "--value",
+      "wifiAndNetSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[71].name",
+      "--value",
+      "resolutionLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[72].name",
+      "--value",
+      "resolutionLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[73].name",
+      "--value",
+      "resolutionMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[74].name",
+      "--value",
+      "resolutionMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[75].name",
+      "--value",
+      "resolutionHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[76].name",
+      "--value",
+      "resolutionHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[77].name",
+      "--value",
+      "fpsLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[78].name",
+      "--value",
+      "fpsLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[79].name",
+      "--value",
+      "fpsMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[80].name",
+      "--value",
+      "fpsMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[81].name",
+      "--value",
+      "fpsHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[82].name",
+      "--value",
+      "fpsHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[83].name",
+      "--value",
+      "refLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[84].name",
+      "--value",
+      "refLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[85].name",
+      "--value",
+      "refMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[86].name",
+      "--value",
+      "refMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[87].name",
+      "--value",
+      "refHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[88].name",
+      "--value",
+      "refHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[89].name",
+      "--value",
+      "sceneLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[90].name",
+      "--value",
+      "sceneLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[91].name",
+      "--value",
+      "sceneMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[92].name",
+      "--value",
+      "sceneMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[93].name",
+      "--value",
+      "sceneHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[94].name",
+      "--value",
+      "sceneHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[95].name",
+      "--value",
+      "tex2dLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[96].name",
+      "--value",
+      "tex2dLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[97].name",
+      "--value",
+      "tex2dMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[98].name",
+      "--value",
+      "tex2dMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[99].name",
+      "--value",
+      "tex2dHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[100].name",
+      "--value",
+      "tex2dHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[101].name",
+      "--value",
+      "volLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[102].name",
+      "--value",
+      "volLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[103].name",
+      "--value",
+      "volMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[104].name",
+      "--value",
+      "volMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[105].name",
+      "--value",
+      "volHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[106].name",
+      "--value",
+      "volHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[107].name",
+      "--value",
+      "msaaLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[108].name",
+      "--value",
+      "msaaLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[109].name",
+      "--value",
+      "msaaMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[110].name",
+      "--value",
+      "msaaMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[111].name",
+      "--value",
+      "msaaHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[112].name",
+      "--value",
+      "msaaHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[113].name",
+      "--value",
+      "modelLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[114].name",
+      "--value",
+      "modelLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[115].name",
+      "--value",
+      "modelHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[116].name",
+      "--value",
+      "modelHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[117].name",
+      "--value",
+      "presetLowClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[118].name",
+      "--value",
+      "presetLowSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[119].name",
+      "--value",
+      "presetMidClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[120].name",
+      "--value",
+      "presetMidSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[121].name",
+      "--value",
+      "presetHighClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[122].name",
+      "--value",
+      "presetHighSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[123].name",
+      "--value",
+      "customClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[124].name",
+      "--value",
+      "customSelected"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[125].name",
+      "--value",
+      "musicVolume"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[126].name",
+      "--value",
+      "musicChanged"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[127].name",
+      "--value",
+      "musicPercent"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[128].name",
+      "--value",
+      "soundVolume"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[129].name",
+      "--value",
+      "soundChanged"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[130].name",
+      "--value",
+      "soundPercent"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[131].name",
+      "--value",
+      "voiceVolume"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[132].name",
+      "--value",
+      "voiceChanged"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[133].name",
+      "--value",
+      "voicePercent"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[134].name",
+      "--value",
+      "closeClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[135].name",
+      "--value",
+      "ruleButtonClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[136].name",
+      "--value",
+      "reLoginClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[137].name",
+      "--value",
+      "deleteDataClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[138].name",
+      "--value",
+      "switchAccountClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[139].name",
+      "--value",
+      "giftExchangeClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[140].name",
+      "--value",
+      "confirmDetailBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[141].name",
+      "--value",
+      "takeOverCodeBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[142].name",
+      "--value",
+      "btnBindClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[143].name",
+      "--value",
+      "confirmAIHelpBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[144].name",
+      "--value",
+      "growthBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[145].name",
+      "--value",
+      "userBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[146].name",
+      "--value",
+      "privacyBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[147].name",
+      "--value",
+      "threeBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[148].name",
+      "--value",
+      "personInfoBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[149].name",
+      "--value",
+      "childrenBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[150].name",
+      "--value",
+      "antiAddictionBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[151].name",
+      "--value",
+      "iCPBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[152].name",
+      "--value",
+      "takeOverCloseBtnClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[153].name",
+      "--value",
+      "takeOverCopyButtonClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[154].name",
+      "--value",
+      "takeOverConfirmButtonClick"
+    ],
+    "status": "completed"
+  },
+  {
+    "args": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Settings/Settings.prefab",
+      "--path",
+      "Settings",
+      "--component",
+      "Metadata",
+      "--property",
+      "metadatas.Array.data[155].name",
+      "--value",
+      "serverName"
+    ],
+    "status": "completed"
+  }
+]

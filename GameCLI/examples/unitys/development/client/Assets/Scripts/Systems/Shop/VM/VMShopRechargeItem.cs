@@ -15,9 +15,9 @@ public partial class VMShopRechargeItem : VM
     [Binding(typeof(SyncText))]
     string bonus;
 
-    /// <summary>Bound icon presentation value.</summary>
-    [Binding(typeof(SyncImage))]
-    string icon;
+    /// <summary>Shared item presentation hosted by this product card.</summary>
+    [Binding(typeof(SyncMetadata))]
+    VMItemSlot item;
 
     /// <summary>Bound firstPay presentation value.</summary>
     [Binding(typeof(SyncVisible))]

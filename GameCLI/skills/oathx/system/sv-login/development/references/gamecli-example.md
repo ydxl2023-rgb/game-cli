@@ -64,13 +64,13 @@
 
 - ServerEntry 仅提供 state 枚举，不包含状态文案转换。LoginSystem 将状态传入 UILogin.SetServerState，由登录页面决定显示文字；业务层仍按枚举判断能否进入。
 
-- LoginEntity 读写键统一通过 `StorageKey.For<LoginSystem, LoginEntity>(entity => entity.selectedServer)` 等表达式反射生成；不手写键、不保留旧大小写键迁移。共享接口位于 `Assets/Scripts/Systems/StorageKey.cs`，归档代码包时一并包含。
+- LoginEntity 读写键统一通过 `StorageKey.For<LoginSystem, LoginEntity>(entity => entity.selectedServer)` 等表达式反射生成；不手写键、不保留旧大小写键迁移。共享接口位于 `Assets/Scripts/Systems/Common/Utility/StorageKey.cs`，归档代码包时一并包含。
 
 ## 固定文案
 
 - Login 的固定文案使用 `propCommonText.xlsx`，遵循 development-rules 的固定文案与多语言规则。
 - 当前新增 ID 1001–1007，别名为 LOGIN_RECENT_SERVER、LOGIN_RECOMMENDED_SERVER、LOGIN_SERVER_RANGE、LOGIN_LOCAL_SERVER_NAME、LOGIN_SERVER_NORMAL、LOGIN_SERVER_BUSY、LOGIN_SERVER_MAINTENANCE。
-- `LoginSystem` 和 `UILogin` 通过共享 `Assets/Scripts/Systems/CommonText.cs` 的 `CommonText.Get(Config.Excel.LOGIN_..., args)` 获取显示文本；不在 Entity 中处理显示文案。
+- `LoginSystem` 和 `UILogin` 通过共享 `Assets/Scripts/Systems/Common/Utility/CommonText.cs` 的 `CommonText.Get(Config.Excel.LOGIN_..., args)` 获取显示文本；不在 Entity 中处理显示文案。
 - 源码包需包含 CommonText 辅助代码；接入工程同时安装 CommonText 源表条目并执行导表，不能只复制脚本而遗漏配置依赖。
 
 ## 2026-11-12 源码及生产资料同步

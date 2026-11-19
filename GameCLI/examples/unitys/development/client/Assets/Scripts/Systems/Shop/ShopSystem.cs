@@ -301,7 +301,11 @@ public class ShopSystem : RuntimeSystem
                     items.Add(new VMShopRechargeItem {
                         Title = ProductTitle(product),
                         Price = CommonText.Get(Excel.SHOP_PRICE, Money(product.price)),
-                        Icon = product.icon,
+                        Item = new VMItemSlot {
+                            Icon = product.icon,
+                            IconVisible = true,
+                            Text = string.Empty
+                        },
                         Bonus = string.Empty,
                         FirstPay = false,
                         FirstPayText = CommonText.Get(Excel.SHOP_FIRST_PAY),
@@ -321,8 +325,11 @@ public class ShopSystem : RuntimeSystem
                     items.Add(new VMShopGiftItem {
                         Title = ProductTitle(product),
                         Price = CommonText.Get(Excel.SHOP_PRICE, Money(product.price)),
-                        Icon = product.icon,
-                        Count = CommonText.Get(Excel.SHOP_COUNT, product.reward),
+                        Item = new VMItemSlot {
+                            Icon = product.icon,
+                            IconVisible = true,
+                            Text = CommonText.Get(Excel.SHOP_COUNT, product.reward)
+                        },
                         Limit = CommonText.Get(Excel.SHOP_LIMIT, product.remaining),
                         SoldOut = product.remaining == 0,
                         SoldOutText = CommonText.Get(Excel.SHOP_SOLD_OUT),

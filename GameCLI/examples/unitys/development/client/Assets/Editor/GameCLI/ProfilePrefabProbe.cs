@@ -36,7 +36,7 @@ public static class ProfilePrefabProbe
     /// <returns>Default and visibility behavior.</returns>
     public static string CheckDefaults()
     {
-        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Profile/Profile.prefab");
+        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Common/Micros/Profile/Profile.prefab");
         foreach (bool clear in new[] { false, true })
         {
             var instance = UnityEngine.Object.Instantiate(asset);
@@ -74,7 +74,7 @@ public static class ProfilePrefabProbe
     /// <returns>Group binding, movement and release evidence.</returns>
     public static string CheckGroup()
     {
-        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Profile/ProfileShortcuts.prefab");
+        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Common/Micros/Profile/ProfileShortcuts.prefab");
         var instance = UnityEngine.Object.Instantiate(asset);
         try
         {
@@ -165,7 +165,7 @@ public static class ProfilePrefabProbe
     /// <returns>Evidence for the standalone profile contract.</returns>
     private static System.Collections.IEnumerator CheckRoutine()
     {
-        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Profile/Profile.prefab");
+        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Common/Micros/Profile/Profile.prefab");
         var instance = UnityEngine.Object.Instantiate(asset);
         try
         {

@@ -15,7 +15,7 @@ public static class CurrencyProbe
     /// <returns>Checks completed against actual widgets and buttons.</returns>
     public static string Check()
     {
-        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Currency/CurrencyBar.prefab");
+        var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Common/Micros/Currency/CurrencyBar.prefab");
         var instance = UnityEngine.Object.Instantiate(asset);
         try
         {

@@ -43,3 +43,12 @@ UISystem 关闭类型数组必须取消尚未完成的加载，并用请求身�
 ## 实体职责约定
 
 ShopEntity 私有持有商品目录，并复制输入和查询结果中的可变商品元素；通过 GetProducts 获取当前分类快照。目录、选择、余额、限购及购买校验统一在实体中，System 只驱动页面、显示文本并发出购买结果。
+
+
+## 独立商品卡与 ItemSlot
+
+- 充值卡 `Widgets/Common/Micros/ShopRechargeItem.prefab` 与礼包卡 `Widgets/Common/Micros/ShopGiftItem.prefab` 是独立预制；页面只嵌套引用，并保持 Fancy.cellPrefab 和 ProductTemplate 指向实际嵌套实例。代码仍属于 Shop/UI 与 Shop/VM。
+- 两种商品 VM 通过 `[Binding(typeof(SyncMetadata))] VMItemSlot item` 组合共享 [ItemSlot](../../item-slot/development/SKILL.md)。图标只传 string 资源路径；礼包数量使用 Item.Text。名称、价格、首充标记、限购、售罄由商品卡自身 VM 管理，交易规则继续归 ShopEntity。
+- 保留商品卡原有外观与入场/点击动画。嵌套 ItemSlot 的皮肤差异通过商品卡实例 overrides 表达，不改共享槽位；充值大图不显示槽位底板、边框和数量，礼包保留原白底与数量。内层 Graphic 不拦截点击，商品卡仅保留外层购买点击。
+- 列表解绑时先临时清空 Item 释放子订阅，父 Unref 后恢复相同 Item，避免复用销毁数据。不要永久清空模型；销毁时释放嵌套监听。该处理不表示共享图片加载器已具备取消或乱序保护。
+- 当前材料包包含两张独立商品卡及它们在页面中的嵌套引用，依赖精确版本 ItemSlot；先恢复 ItemSlot 再恢复 Shop。`compose-shop-items.py` 是制作端迁移工具，不能把历史 `build-shop-bindings.mjs` 输出直接覆盖已编辑代码。

@@ -30,6 +30,10 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 | system/red-dot | RedDot：[开发](system/red-dot/development/SKILL.md) / [验收](system/red-dot/acceptance/SKILL.md) |
 | system/shop | Shop：[开发](system/shop/development/SKILL.md) / [验收](system/shop/acceptance/SKILL.md) |
 | system/notice | Notice：[开发](system/notice/development/SKILL.md) / [验收](system/notice/acceptance/SKILL.md) |
+| system/mail | Mail：[开发](system/mail/development/SKILL.md) / [验收](system/mail/acceptance/SKILL.md) |
+| system/settings | Settings：[开发](system/settings/development/SKILL.md) / [验收](system/settings/acceptance/SKILL.md) |
+| system/reward | Reward 公共展示：[开发](system/reward/development/SKILL.md) / [验收](system/reward/acceptance/SKILL.md) |
+| system/item-slot | ItemSlot 基础控件：[开发](system/item-slot/development/SKILL.md) / [验收](system/item-slot/acceptance/SKILL.md) |
 
 ## 组织规则
 

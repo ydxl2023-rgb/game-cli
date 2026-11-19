@@ -15,13 +15,9 @@ public partial class VMShopGiftItem : VM
     [Binding(typeof(SyncText))]
     string limit;
 
-    /// <summary>Bound icon presentation value.</summary>
-    [Binding(typeof(SyncImage))]
-    string icon;
-
-    /// <summary>Bound count presentation value.</summary>
-    [Binding(typeof(SyncText))]
-    string count;
+    /// <summary>Shared item presentation hosted by this product card.</summary>
+    [Binding(typeof(SyncMetadata))]
+    VMItemSlot item;
 
     /// <summary>Bound soldOut presentation value.</summary>
     [Binding(typeof(SyncVisible))]

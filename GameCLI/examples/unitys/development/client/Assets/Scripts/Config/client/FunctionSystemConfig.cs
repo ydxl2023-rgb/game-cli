@@ -153,6 +153,8 @@ namespace Config
         public const int SYS_ACTIVITY_BTNSKILLRESONANCE = 12039;
         public const int SYS_ACTIVITY_BTNNATIONALTOURNAMENT = 12040;
         public const int SYS_ACTIVITY_SEVENDAYSLOGIN = 12001;
+        public const int SYS_MAIL = 10022;
+        public const int SYS_SETTINGS = 10023;
         /// <summary>
         /// config FunctionSystemConfig table
         /// </summary>

@@ -1,0 +1,890 @@
+{
+  "specs": [
+    {
+      "name": "Shop",
+      "page": "main",
+      "root": "0",
+      "fields": [
+        {
+          "name": "closeClick",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/1/1/0"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/BackGather2/Layout/CloseBtn"
+          ]
+        },
+        {
+          "name": "helpClick",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/1/1/2"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/BackGather2/Layout/RuleButton"
+          ]
+        },
+        {
+          "name": "previousClick",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/0/1"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/BtnTabLeft"
+          ]
+        },
+        {
+          "name": "nextClick",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/0/3"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/BtnTabRight"
+          ]
+        },
+        {
+          "name": "currency1",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/2/0/2"
+          ],
+          "component": "Text",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token1/Value1"
+          ]
+        },
+        {
+          "name": "currency1Click",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/2/0/0"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token1/Icon1"
+          ]
+        },
+        {
+          "name": "addCurrency1Click",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/2/0/3"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token1/Add1"
+          ]
+        },
+        {
+          "name": "currency2",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/2/1/2"
+          ],
+          "component": "Text",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token2/Value2"
+          ]
+        },
+        {
+          "name": "currency2Click",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/2/1/1"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token2/Good2"
+          ]
+        },
+        {
+          "name": "addCurrency2Click",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/2/1/3"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token2/Add2"
+          ]
+        },
+        {
+          "name": "currency3",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/2/2/2"
+          ],
+          "component": "Text",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token3/Value3"
+          ]
+        },
+        {
+          "name": "currency3Click",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/2/2/0"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token3/Icon3"
+          ]
+        },
+        {
+          "name": "addCurrency3Click",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/3/2/2/3"
+          ],
+          "component": "Button",
+          "targets": [
+            "Shop/Animator/UILayer/ItemToolTips/Token3/Add3"
+          ]
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/5/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "Shop/Animator/UILayer/CNTip/PayTipText"
+          ]
+        },
+        {
+          "name": "messageVisible",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/5"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/CNTip"
+          ]
+        },
+        {
+          "name": "groups",
+          "type": "VList<VMShopGroup>",
+          "sync": "SyncFancyGridScrollView",
+          "paths": [
+            "0/3/0/0/0/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport"
+          ]
+        },
+        {
+          "name": "groupClick",
+          "type": "FancyGridClick",
+          "sync": "SyncFancyGridClick",
+          "paths": [
+            "0/3/0/0/0/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport"
+          ]
+        },
+        {
+          "name": "groupTemplate",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0/0/0/0"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell"
+          ]
+        },
+        {
+          "name": "tabs",
+          "type": "VList<VMShopTab>",
+          "sync": "SyncFancyGridScrollView",
+          "paths": [
+            "0/3/0/2/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/SecTabList/SecTabViewport"
+          ]
+        },
+        {
+          "name": "tabClick",
+          "type": "FancyGridClick",
+          "sync": "SyncFancyGridClick",
+          "paths": [
+            "0/3/0/2/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/SecTabList/SecTabViewport"
+          ]
+        },
+        {
+          "name": "tabTemplate",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/2/2"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell"
+          ]
+        }
+      ],
+      "cell": false,
+      "nativeRoot": "Shop"
+    },
+    {
+      "name": "ShopGroup",
+      "page": "main",
+      "root": "0/3/0/0/0/0/0/0",
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/0/0/0/0/0/0/0/0/1",
+            "0/3/0/0/0/0/0/0/0/1/1"
+          ],
+          "component": "Text",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell/ShopTab/UnselectBg/TabUnSelect",
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell/ShopTab/Select/TabTitle"
+          ]
+        },
+        {
+          "name": "selected",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0/0/0/0/0/1"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell/ShopTab/Select"
+          ]
+        },
+        {
+          "name": "unselected",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0/0/0/0/0/0"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell/ShopTab/UnselectBg"
+          ]
+        },
+        {
+          "name": "redPoint",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0/0/0/0/0/0/2"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell/ShopTab/UnselectBg/RedPoint"
+          ]
+        },
+        {
+          "name": "selectedRedPoint",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0/0/0/0/0/1/2"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell/ShopTab/Select/RedPoint2"
+          ]
+        }
+      ],
+      "cell": true,
+      "nativeRoot": "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell"
+    },
+    {
+      "name": "ShopTab",
+      "page": "main",
+      "root": "0/3/0/2/2",
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/0/2/2/0/0/0",
+            "0/3/0/2/2/0/1/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell/SecTabCell/SecUnSelectImg/SecUnSelectText",
+            "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell/SecTabCell/SecSelectImg/SecSelectText"
+          ]
+        },
+        {
+          "name": "selected",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/2/2/0/1"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell/SecTabCell/SecSelectImg"
+          ]
+        },
+        {
+          "name": "unselected",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/2/2/0/0"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell/SecTabCell/SecUnSelectImg"
+          ]
+        }
+      ],
+      "cell": true,
+      "nativeRoot": "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell"
+    },
+    {
+      "name": "ShopRecharge",
+      "page": "recharge",
+      "root": "0",
+      "fields": [
+        {
+          "name": "products",
+          "type": "VList<VMShopRechargeItem>",
+          "sync": "SyncFancyGridScrollView",
+          "paths": [
+            "0/1/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport"
+          ]
+        },
+        {
+          "name": "productClick",
+          "type": "FancyGridClick",
+          "sync": "SyncFancyGridClick",
+          "paths": [
+            "0/1/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport"
+          ]
+        },
+        {
+          "name": "productTemplate",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/0/0/0"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell"
+          ]
+        }
+      ],
+      "cell": false,
+      "nativeRoot": "ShopRecharge"
+    },
+    {
+      "name": "ShopRechargeItem",
+      "page": "recharge",
+      "root": "0/1/0/0/0",
+      "fields": [
+        {
+          "name": "price",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/0/0/0/1/2"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell/RechargeField/CurrencyNum"
+          ]
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/0/0/0/1/4/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell/RechargeField/ZuanShi/Name"
+          ]
+        },
+        {
+          "name": "bonus",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/0/0/0/1/6"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell/RechargeField/AddNum"
+          ]
+        },
+        {
+          "name": "item",
+          "type": "VMItemSlot",
+          "sync": "SyncMetadata",
+          "component": "Oathx.Widget.UIItemSlot",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell/RechargeField/GoodsIcon"
+          ]
+        },
+        {
+          "name": "firstPay",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/0/0/0/1/5"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell/RechargeField/FirstPay"
+          ]
+        },
+        {
+          "name": "firstPayText",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/0/0/0/1/5/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell/RechargeField/FirstPay/LanguageText"
+          ]
+        }
+      ],
+      "cell": true,
+      "nativeRoot": "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell",
+      "prefab": "Assets/Data/Widgets/ShopRechargeItem/ShopRechargeItem.prefab",
+      "standaloneRoot": "ShopRechargeItem"
+    },
+    {
+      "name": "ShopGift",
+      "page": "gift",
+      "root": "0",
+      "fields": [
+        {
+          "name": "products",
+          "type": "VList<VMShopGiftItem>",
+          "sync": "SyncFancyGridScrollView",
+          "paths": [
+            "0/3/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport"
+          ]
+        },
+        {
+          "name": "productClick",
+          "type": "FancyGridClick",
+          "sync": "SyncFancyGridClick",
+          "paths": [
+            "0/3/0"
+          ],
+          "component": "FancyGridScrollView",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport"
+          ]
+        },
+        {
+          "name": "productTemplate",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell"
+          ]
+        }
+      ],
+      "cell": false,
+      "nativeRoot": "ShopGift"
+    },
+    {
+      "name": "ShopGiftItem",
+      "page": "gift",
+      "root": "0/3/0/0/0",
+      "fields": [
+        {
+          "name": "price",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/0/0/0/0/1/1"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell/RechargeField/CurrencyBG/Price"
+          ]
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/0/0/0/0/3/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell/RechargeField/ZuanShi/Name"
+          ]
+        },
+        {
+          "name": "limit",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/0/0/0/0/4"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell/RechargeField/LimitNum"
+          ]
+        },
+        {
+          "name": "item",
+          "type": "VMItemSlot",
+          "sync": "SyncMetadata",
+          "component": "Oathx.Widget.UIItemSlot",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell/RechargeField/ItemInfo"
+          ]
+        },
+        {
+          "name": "soldOut",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/3/0/0/0/0/6"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell/RechargeField/SoldOut"
+          ]
+        },
+        {
+          "name": "soldOutText",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/3/0/0/0/0/6/0/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell/RechargeField/SoldOut/SoldOutBg/SoldOutText"
+          ]
+        }
+      ],
+      "cell": true,
+      "nativeRoot": "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell",
+      "prefab": "Assets/Data/Widgets/ShopGiftItem/ShopGiftItem.prefab",
+      "standaloneRoot": "ShopGiftItem"
+    },
+    {
+      "name": "ShopPurchase",
+      "page": "giftbuy",
+      "root": "0",
+      "fields": [
+        {
+          "name": "closeClick",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/0",
+            "0/1/1"
+          ],
+          "component": "Button",
+          "targets": [
+            "ShopPurchase/Animator/BgMask",
+            "ShopPurchase/Animator/Center/CloseBtn"
+          ]
+        },
+        {
+          "name": "confirmClick",
+          "type": "ButtonClick",
+          "sync": "SyncClick",
+          "paths": [
+            "0/1/0/2"
+          ],
+          "component": "Button",
+          "targets": [
+            "ShopPurchase/Animator/Center/BatchUseBg/ConfirmButton"
+          ]
+        },
+        {
+          "name": "confirmText",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/0/2/0/1"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopPurchase/Animator/Center/BatchUseBg/ConfirmButton/SellPanel/ConfirmText"
+          ]
+        },
+        {
+          "name": "price",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/0/2/0/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopPurchase/Animator/Center/BatchUseBg/ConfirmButton/SellPanel/TotalPrice"
+          ]
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/2/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopPurchase/Animator/Center/GiftBagField/GoodsName"
+          ]
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "sync": "SyncImage",
+          "paths": [
+            "0/1/2/2"
+          ],
+          "component": "Image",
+          "targets": [
+            "ShopPurchase/Animator/Center/GiftBagField/GoodsIcon"
+          ]
+        },
+        {
+          "name": "rewardTitle",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/3/0/0/0/0"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopPurchase/Animator/Center/ScrollView/MaskViewport/Content/ConfirmImage/ConfirmGet"
+          ]
+        },
+        {
+          "name": "rewardName",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/3/0/0/1/0/2"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopPurchase/Animator/Center/ScrollView/MaskViewport/Content/ConfirmList/Cell/ItemName"
+          ]
+        },
+        {
+          "name": "rewardCount",
+          "type": "string",
+          "sync": "SyncText",
+          "paths": [
+            "0/1/3/0/0/1/0/3"
+          ],
+          "component": "Text",
+          "targets": [
+            "ShopPurchase/Animator/Center/ScrollView/MaskViewport/Content/ConfirmList/Cell/ItemNumber2"
+          ]
+        },
+        {
+          "name": "rewardIcon",
+          "type": "string",
+          "sync": "SyncImage",
+          "paths": [
+            "0/1/3/0/0/1/0/1/0/0/0/2"
+          ],
+          "component": "Image",
+          "targets": [
+            "ShopPurchase/Animator/Center/ScrollView/MaskViewport/Content/ConfirmList/Cell/BagIconNew/BagIcon1/IconVisible/ItemInfo/ItemIcon"
+          ]
+        },
+        {
+          "name": "alternatePurchase",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/0/3"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopPurchase/Animator/Center/BatchUseBg/BuyBtnsNode"
+          ]
+        },
+        {
+          "name": "freeText",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/0/2/0/2"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopPurchase/Animator/Center/BatchUseBg/ConfirmButton/SellPanel/FreeText"
+          ]
+        },
+        {
+          "name": "randomTitle",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/3/0/0/2"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopPurchase/Animator/Center/ScrollView/MaskViewport/Content/Random"
+          ]
+        },
+        {
+          "name": "randomRewards",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/3/0/0/3"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopPurchase/Animator/Center/ScrollView/MaskViewport/Content/RandomList"
+          ]
+        },
+        {
+          "name": "discount",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/2/4"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopPurchase/Animator/Center/GiftBagField/PriceLayout"
+          ]
+        },
+        {
+          "name": "labels",
+          "type": "bool",
+          "sync": "SyncVisible",
+          "paths": [
+            "0/1/2/5"
+          ],
+          "component": "RectTransform",
+          "targets": [
+            "ShopPurchase/Animator/Center/GiftBagField/LabelNode"
+          ]
+        }
+      ],
+      "cell": false,
+      "nativeRoot": "ShopPurchase"
+    }
+  ],
+  "grids": [
+    {
+      "page": "main",
+      "view": "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport",
+      "content": "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList",
+      "cell": "Shop/Animator/UILayer/TabsNode/RawImage2/ScrollView/Viewport/TabScrollList/ScrollCell",
+      "widget": "ShopGroup",
+      "size": [
+        261.8235,
+        109.3212
+      ],
+      "columns": 1,
+      "spacing": 8
+    },
+    {
+      "page": "main",
+      "view": "Shop/Animator/UILayer/TabsNode/SecTabList/SecTabViewport",
+      "content": "Shop/Animator/UILayer/TabsNode/SecTabList/SecTabViewport/SecTabContent",
+      "cell": "Shop/Animator/UILayer/TabsNode/SecTabList/ScrollCell",
+      "widget": "ShopTab",
+      "size": [
+        280,
+        68
+      ],
+      "columns": 5,
+      "spacing": 0
+    },
+    {
+      "page": "recharge",
+      "view": "ShopRecharge/Animator/ScrollView/Viewport",
+      "content": "ShopRecharge/Animator/ScrollView/Viewport/Grid",
+      "cell": "ShopRecharge/Animator/ScrollView/Viewport/Grid/ScrollCell",
+      "widget": "ShopRechargeItem",
+      "size": [
+        345.0117,
+        416.8375
+      ],
+      "columns": 4,
+      "spacing": 20
+    },
+    {
+      "page": "gift",
+      "view": "ShopGift/Animator/ScrollView/Viewport",
+      "content": "ShopGift/Animator/ScrollView/Viewport/Grid",
+      "cell": "ShopGift/Animator/ScrollView/Viewport/Grid/GridCell",
+      "widget": "ShopGiftItem",
+      "size": [
+        300.7105,
+        408.3737
+      ],
+      "columns": 4,
+      "spacing": 20
+    }
+  ]
+}

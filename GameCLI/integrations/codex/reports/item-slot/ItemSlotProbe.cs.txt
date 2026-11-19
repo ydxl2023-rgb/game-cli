@@ -1,0 +1,124 @@
+#if UNITY_EDITOR
+using System;
+using Oathx.Widget;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>Checks both slot skins and nested reward binding without product services.</summary>
+public static class ItemSlotProbe
+{
+    /// <summary>Exercise item presentation and nested reward release.</summary>
+    /// <returns>True when all actual controls follow their VMs.</returns>
+    public static bool Check()
+    {
+        var texture = new Texture2D(2, 2);
+        var sprite = Sprite.Create(texture, new Rect(0f, 0f, 2f, 2f), Vector2.zero);
+        try
+        {
+            foreach (string path in new[] { "Assets/Data/Widgets/ItemSlot/ItemSlot.prefab", "Assets/Data/Widgets/Micros/ItemSlot.prefab" })
+            {
+                var instance = UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(path));
+                var widget = instance.GetComponent<UIItemSlot>();
+                var metadata = instance.GetComponent<Metadata>();
+                var vm = new VMItemSlot { type = 7, Icon = sprite, Text = "12", Locked = false, Amount = 0f, Select = false, Arrow = false, Edge = Color.white, IconVisible = true };
+                try
+                {
+                    if (!widget.Ref(vm))
+                        throw new InvalidOperationException("Slot binding failed.");
+
+                    var icon = metadata.metadatas[1].components[0] as Image;
+                    if (vm.type != 7 || icon.sprite != sprite || !icon.gameObject.activeSelf)
+                        throw new InvalidOperationException("Slot icon or type failed.");
+
+                    vm.Locked = true;
+                    vm.Select = true;
+                    vm.Arrow = true;
+                    vm.Amount = 0.5f;
+                    vm.Edge = Color.red;
+                    vm.IconVisible = false;
+                    vm.Text = "34";
+                    var text = metadata.metadatas[2].components[0];
+                    string actual = text is Text label ? label.text : ((TMPro.TMP_Text)text).text;
+                    if (actual != "34" || icon.gameObject.activeSelf || !metadata.metadatas[3].targets[0].activeSelf
+                        || !metadata.metadatas[5].targets[0].activeSelf || !metadata.metadatas[6].targets[0].activeSelf
+                        || ((Image)metadata.metadatas[4].components[0]).fillAmount != 0.5f
+                        || ((Image)metadata.metadatas[7].components[0]).color != Color.red)
+                        throw new InvalidOperationException("Slot state updates failed.");
+                }
+                finally
+                {
+                    widget.Unref(vm);
+                    UnityEngine.Object.Destroy(instance);
+                }
+            }
+
+            var reward = UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Reward/RewardEntry.prefab"));
+            var entry = reward.GetComponent<UIRewardEntry>();
+            var slot = reward.GetComponentInChildren<UIItemSlot>(true);
+            var item = new VMItemSlot { Icon = sprite, Text = "55", IconVisible = true };
+            var model = new VMRewardEntry { Item = item, Claimed = true };
+            try
+            {
+                if (!entry.Ref(model) || slot.vm != item)
+                    throw new InvalidOperationException("Reward did not bind its slot.");
+
+                var label = (Text)slot.GetComponent<Metadata>().metadatas[2].components[0];
+                entry.Unref(model);
+                item.Text = "99";
+                if (model.Item != item || label.text != "55")
+                    throw new InvalidOperationException("Child subscription survived reward release.");
+
+                for (int index = 0; index < 3; index++)
+                {
+                    if (!entry.Ref(model) || slot.vm != item || label.text != "99")
+                        throw new InvalidOperationException("Same-model recycle failed.");
+
+                    entry.Unref(model);
+                    var other = new VMRewardEntry { Item = new VMItemSlot { Icon = sprite, Text = "77", IconVisible = true }, Claimed = false };
+                    if (!entry.Ref(other) || label.text != "77")
+                        throw new InvalidOperationException("Alternating-model recycle failed.");
+
+                    entry.Unref(other);
+                    if (!other.Item || model.Item != item)
+                        throw new InvalidOperationException("Recycling consumed item data.");
+                }
+            }
+            finally
+            {
+                UnityEngine.Object.Destroy(reward);
+            }
+
+            return true;
+        }
+        finally
+        {
+            UnityEngine.Object.Destroy(sprite);
+            UnityEngine.Object.Destroy(texture);
+        }
+    }
+
+    /// <summary>Check the actual mail reward after asynchronous icon loading.</summary>
+    /// <returns>True when mail uses the composed item slot.</returns>
+    public static bool CheckMail()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIMail>(out var mail))
+            throw new InvalidOperationException("Mail is not open.");
+
+        var cells = mail.GetComponentsInChildren<UIRewardEntry>(false);
+        if (cells.Length != 1 || !cells[0].vm.Item || !(cells[0].vm.Item.Icon is Sprite))
+            throw new InvalidOperationException("Mail slot icon is not ready.");
+
+        var slot = cells[0].GetComponentInChildren<UIItemSlot>(true);
+        var metadata = slot.GetComponent<Metadata>();
+        if (slot.vm != cells[0].vm.Item || ((Text)metadata.metadatas[2].components[0]).text != "100"
+            || !metadata.metadatas[1].targets[0].activeInHierarchy)
+            throw new InvalidOperationException("Mail slot display failed.");
+
+        Selection.activeGameObject = slot.gameObject;
+        UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+
+        return true;
+    }
+}
+#endif

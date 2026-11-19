@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Master",
+  "status": "failed",
+  "passed": false,
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 13,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 13,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 14,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 14,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 15,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 15,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 16,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 16,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 17,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 17,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 18,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 18,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 19,
+      "rule": "OX005",
+      "severity": "error",
+      "message": "Provide a nonempty English XML summary."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 19,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 41,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: levelId"
+    },
+    {
+      "file": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "line": 41,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document the return value."
+    }
+  ],
+  "statistics": {
+    "files": 2,
+    "lines": 347,
+    "blankLines": 49,
+    "commentLines": 103,
+    "members": 38,
+    "documentedMembers": 31,
+    "blankLineRate": 0.14121037463976946,
+    "commentLineRate": 0.2968299711815562,
+    "documentedMemberRate": 0.8157894736842105
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "sha256": "d448c1dee5232d93cfdaeb440c0ca75c328b81e9147f7eb5c1c93bce1447b1e7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterSystem.cs",
+      "sha256": "3884650a80c958327ae1af1babd59ec5efc648ffc476cec81348fa3199b47700"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\0d282f92-fbb0-454a-a683-e9eae39064f8"
+}

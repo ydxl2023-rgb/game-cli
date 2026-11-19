@@ -1,0 +1,26 @@
+#if UNITY_EDITOR
+using System;
+using Newtonsoft.Json;
+using Oathx.Widget;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+public static class ItemPathProbe
+{
+    public static string Check()
+    {
+        var slots = UnityEngine.Object.FindObjectsOfType<UIItemSlot>();
+        foreach (var slot in slots)
+        {
+            if (!slot.vm || string.IsNullOrEmpty(slot.vm.Icon))
+                continue;
+            var image = slot.transform.Find("BagIcon1/IconVisible/ItemInfo/ItemIcon").GetComponent<Image>();
+            var actual = AssetDatabase.GetAssetPath(image.sprite);
+            if (actual != slot.vm.Icon)
+                throw new Exception("Icon path mismatch: " + actual + " != " + slot.vm.Icon);
+            return JsonConvert.SerializeObject(new { verified = true, requested = slot.vm.Icon, actual, visible = image.gameObject.activeInHierarchy });
+        }
+        throw new Exception("No active bound item slot.");
+    }
+}
+#endif

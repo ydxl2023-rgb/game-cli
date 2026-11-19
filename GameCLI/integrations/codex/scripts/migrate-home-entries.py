@@ -78,7 +78,7 @@ def build():
   r=children[0]; r.update(name='Badge',active=True,parentId=None,siblingIndex=0,localPosition=[0,0,0],localScale=[1,1,1],rect={'anchorMin':[0,0],'anchorMax':[1,1],'pivot':[.5,.5],'anchoredPosition':[0,0],'sizeDelta':[0,0]})
   key=hashlib.sha256(json.dumps(children,sort_keys=True).encode()).hexdigest()[:10]
   kind=2 if st['name']=='AdsNode' else 1
-  badge='Assets/Data/Widgets/Home/Badges/'+('Advertisement' if kind==2 else 'New')+key+'.prefab'
+  badge='Assets/Data/Widgets/Common/Micros/Badges/Home/'+('Advertisement' if kind==2 else 'New')+key+'.prefab'
   if key not in variants:
    variants[key]=badge; data={'schemaVersion':'ui-template/1','resources':{},'prefab':{'name':'Badge','rootNodeId':'root','nodes':children}}
    textures=set(re.findall(r'"assetPath": "([^"]+\.png)"',json.dumps(data)))
@@ -101,7 +101,7 @@ def build():
   mount=next(m for m in mounts if m['kind']==kind and ('Duiyuan' in m['path'] if kind==1 else True))
   data=read(OUT/(mount['prefab'].split('/')[-1].removesuffix('.prefab').removeprefix('Advertisement').removeprefix('New')+'.json'))
   root=data['prefab']['nodes'][0];root['rect'].update(anchorMin=[1,1] if kind==1 else [.5,0],anchorMax=[1,1] if kind==1 else [.5,0],anchoredPosition=[-15,-2] if kind==1 else [0,12],sizeDelta=[75,30] if kind==1 else [70,26])
-  badge='Assets/Data/Widgets/Home/Badges/'+('NewDefault' if kind==1 else 'AdvertisementDefault')+'.prefab';file=OUT/('default'+str(kind)+'.json');save(file,data)
+  badge='Assets/Data/Widgets/Common/Micros/Badges/Home/'+('NewDefault' if kind==1 else 'AdvertisementDefault')+'.prefab';file=OUT/('default'+str(kind)+'.json');save(file,data)
   command('prefab','restore','--json',str(file),'--prefab',badge,'--dry-run');command('prefab','restore','--json',str(file),'--prefab',badge);add(badge,'Badge','UIActivityBadge')
   field(badge,'Badge','Metadata','className','VMActivityBadge');field(badge,'Badge','Metadata','classGuid',guid);field(badge,'Badge','Metadata','metadatas.Array.size',1);metadata(badge,'Badge',0,'visible','SyncVisible',[('Badge','RectTransform')]);defaults[kind]=badge
  enum=(PROJECT/'Assets/Scripts/Systems/Home/HomeEvents.cs').read_text(encoding='utf-8').split('public enum HomeEntry')[1].split('}')[0]

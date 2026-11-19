@@ -1,0 +1,114 @@
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Oathx.Core;
+using Oathx.Widget;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>Read-only resource validation and runtime smoke checks for the Micros migration.</summary>
+public static class MicrosProbe
+{
+    public static string Native()
+    {
+        var prefixes = new[] { "Currency", "Profile", "ItemSlot", "Reward", "Badges" };
+        var paths = prefixes.SelectMany(p => AssetDatabase.FindAssets("t:Prefab", new[] { "Assets/Data/Widgets/Common/Micros/" + p })).Select(AssetDatabase.GUIDToAssetPath).ToList();
+        paths.AddRange(new[] { "Assets/Data/Widgets/Common/Micros/ShopGiftItem.prefab", "Assets/Data/Widgets/Common/Micros/ShopRechargeItem.prefab", "Assets/Data/Widgets/Home/Home.prefab", "Assets/Data/Widgets/Mail/Mail.prefab", "Assets/Data/Widgets/ShopGift/ShopGift.prefab", "Assets/Data/Widgets/ShopRecharge/ShopRecharge.prefab" });
+        int references = 0;
+        foreach (var path in paths)
+        {
+            var root = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (!root)
+                throw new Exception("Missing prefab: " + path);
+            foreach (var component in root.GetComponentsInChildren<Component>(true))
+            {
+                if (!component)
+                    throw new Exception("Missing script: " + path);
+                var property = new SerializedObject(component).GetIterator();
+                while (property.Next(true))
+                    if (property.propertyType == SerializedPropertyType.ObjectReference)
+                    {
+                        references++;
+                        if (property.objectReferenceValue == null && property.objectReferenceInstanceIDValue != 0)
+                            throw new Exception("Broken reference: " + path + ":" + property.propertyPath);
+                    }
+            }
+        }
+        return JsonConvert.SerializeObject(new { verified = true, prefabs = paths.Count, references, paths });
+    }
+
+    public static void Home()
+    {
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(LoginSystem) });
+        XApp.GetSingleton().ShowLaunchBackground();
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(HomeSystem) });
+    }
+
+    public static string CheckHome()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIHome>(out var home))
+            throw new Exception("Home not loaded.");
+        var names = new[] { "UICurrencyBar", "UIProfile", "UIProfileShortcuts" };
+        foreach (string name in names)
+        {
+            var widget = home.GetComponentsInChildren<IWidget>(true).FirstOrDefault(w => w.GetType().Name == name);
+            if (!widget || !widget.GetVM())
+                throw new Exception("Unbound Home control: " + name);
+        }
+        return "Home currency, profile and shortcut group loaded and bound.";
+    }
+
+    public static void Mail()
+    {
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(MailSystem) });
+    }
+
+    public static string CheckMail()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIMail>(out var mail))
+            throw new Exception("Mail not loaded.");
+        var slots = mail.GetComponentsInChildren<UIItemSlot>();
+        if (slots.Length == 0)
+            throw new Exception("No attachment slots.");
+        foreach (var slot in slots)
+        {
+            if (!slot.vm || !slot.vm.Icon.StartsWith("Assets/Data/Widgets/Common/Micros/ItemSlot/"))
+                throw new Exception("Old attachment path.");
+            var image = (Image)slot.GetComponent<Metadata>().metadatas[1].components[0];
+            if (AssetDatabase.GetAssetPath(image.sprite) != slot.vm.Icon)
+                throw new Exception("Moved icon not loaded.");
+        }
+        return JsonConvert.SerializeObject(new { verified = true, slots = slots.Length, icon = slots[0].vm.Icon });
+    }
+
+    public static void Shop()
+    {
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(MailSystem) });
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(HomeSystem) });
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(ShopSystem) });
+    }
+
+    public static string CheckShop()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UIShopRecharge>(out var shop))
+            throw new Exception("Recharge not loaded.");
+        var cards = shop.GetComponentsInChildren<UIShopRechargeItem>();
+        if (cards.Length == 0)
+            throw new Exception("No product cards.");
+        foreach (var card in cards)
+        {
+            var slot = card.GetComponentInChildren<UIItemSlot>();
+            if (!slot || !slot.vm)
+                throw new Exception("Unbound nested product slot.");
+            var image = (Image)slot.GetComponent<Metadata>().metadatas[1].components[0];
+            if (AssetDatabase.GetAssetPath(image.sprite) != slot.vm.Icon)
+                throw new Exception("Product image not loaded.");
+        }
+        return JsonConvert.SerializeObject(new { verified = true, cards = cards.Length });
+    }
+}
+#endif

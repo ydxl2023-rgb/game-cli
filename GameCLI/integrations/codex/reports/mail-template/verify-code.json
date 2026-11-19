@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Mail",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 8,
+    "lines": 787,
+    "blankLines": 148,
+    "commentLines": 141,
+    "members": 99,
+    "documentedMembers": 99,
+    "blankLineRate": 0.1880559085133418,
+    "commentLineRate": 0.17916137229987295,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Mail/MailEntity.cs",
+      "sha256": "a0b7431c97dc94fe24ce2099297077618c3360d3ebbb436b58f134b131caed0f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/MailSystem.cs",
+      "sha256": "1384db5b55eef4d9c75cdbba87ce89595c777d8088547f668261da5aa2221f70"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMail.cs",
+      "sha256": "75a57b788ee86acf8522bbb53eab506703ee626be0b07967607b9929eed4e676"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMailEntry.cs",
+      "sha256": "bef34577dfb3d3723ead6f7e86a38962a2cf0ee89253a7b8e9549fa0e44046de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMailReward.cs",
+      "sha256": "95ab71ab8392ead881ed56900a64c9271f33ca5a65e669db50776a1e324a95ec"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMail.cs",
+      "sha256": "4619ae5a69adb3143ba8d60ea1acca4ccaf40a7aed0f99dbdb760675f80f5db3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMailEntry.cs",
+      "sha256": "2aaa7bf5a827cd1fdac12d63ec60f72b6f231032b6f6431fa3bf3f3fbc38192b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMailReward.cs",
+      "sha256": "f2a47028f11fd1af6cd8fc9842f2fd0575a3496aec91d19f379d3ca7d2d23f90"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\753c3a18-bb7b-4ed2-9554-648964a97fc2"
+}

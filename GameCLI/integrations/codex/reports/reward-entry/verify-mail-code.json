@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Mail",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 6,
+    "lines": 755,
+    "blankLines": 141,
+    "commentLines": 135,
+    "members": 93,
+    "documentedMembers": 93,
+    "blankLineRate": 0.18675496688741722,
+    "commentLineRate": 0.17880794701986755,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Mail/MailEntity.cs",
+      "sha256": "a0b7431c97dc94fe24ce2099297077618c3360d3ebbb436b58f134b131caed0f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/MailSystem.cs",
+      "sha256": "13caf321ea6714ec02a6ab38a11a6ab630241848006152972f78a99a74f41f99"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMail.cs",
+      "sha256": "75a57b788ee86acf8522bbb53eab506703ee626be0b07967607b9929eed4e676"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMailEntry.cs",
+      "sha256": "bef34577dfb3d3723ead6f7e86a38962a2cf0ee89253a7b8e9549fa0e44046de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMail.cs",
+      "sha256": "32b3d8394292d1dbc369fce25fc595fa932e7be17ad6509f31a1126e5ba03ab3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMailEntry.cs",
+      "sha256": "2aaa7bf5a827cd1fdac12d63ec60f72b6f231032b6f6431fa3bf3f3fbc38192b"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\c0aefd19-5793-4e6c-b47f-7e995498d040"
+}

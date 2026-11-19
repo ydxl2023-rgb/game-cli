@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-2d314388-18c4-42f5-80eb-f6729dd23f0e",
+  "unityProjectId": "b99aae81-c4b3-44ea-a032-a8df17831096",
+  "system": "Shop",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 19,
+    "lines": 1186,
+    "blankLines": 226,
+    "commentLines": 182,
+    "members": 143,
+    "documentedMembers": 143,
+    "blankLineRate": 0.1905564924114671,
+    "commentLineRate": 0.15345699831365936,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopDemoCatalog.cs",
+      "sha256": "507fa3cb83620358fae235af41b3d0a1f5d5e75d95de22bf026e5adce7a92d4c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopEntity.cs",
+      "sha256": "c71941a9c4932d05d5182766986ed87a49fa36071c808b246fca52e7b1429e08"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopSystem.cs",
+      "sha256": "0a3924558dc1eb5a2b2fecc284f52cb74678a0f6dadb03c8eb6ceba93c7ec35d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShop.cs",
+      "sha256": "a17b24186f6b2fe5d3b2d7cb47cf1b565ebcae19a012115169980e7bf6f26c11"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopGift.cs",
+      "sha256": "adf1f4ceb16815cd4512fafe3dadaa6452d27518ae4e26277817bed355f65bc9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopGiftItem.cs",
+      "sha256": "639e8b2403161395d4121bd6bcd3c1c917c29ab5083f1a7b4989deaa034be1d1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopGroup.cs",
+      "sha256": "bd608f2e62a94063ebbf4324713e4784bbb343ccc8ff81daba412d21bdb1f31e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopPurchase.cs",
+      "sha256": "d4d50f650aa8100c1f11e528f2b5fa8da012907fb6eda425471554ee569061c8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopRecharge.cs",
+      "sha256": "9f037ea213aeb4861600d542e856accf30c84e05d7025947f0aaec60d7964de4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopRechargeItem.cs",
+      "sha256": "792852a8796c622864dbfa2ee21bb5144c0b403a783d87165e3a170d2cb57b1b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopTab.cs",
+      "sha256": "2892d33d24759b85c57c844218b67468698b555d99a58fd1b73e1a55c0515e0a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShop.cs",
+      "sha256": "3bf22a732cfb8ec8222ae3e8d3ecef5898392b84d57f07218135611c7f81c136"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopGift.cs",
+      "sha256": "3a8553651eb8f5bc07eca7fa67d6339d824dd926a6db7f7ac53d87ba738d0336"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopGiftItem.cs",
+      "sha256": "c2fbaf507e010a368c7bd3090dded4894bb25943bfdebe2ac1ac4d2bf027d50f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopGroup.cs",
+      "sha256": "fa50a69c9c894fcea12d9293d5982359eba9b41a77a5510b4405ed8929dae93c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopPurchase.cs",
+      "sha256": "d5e638d20c6e8b618dc6858720b1ae92243916f53be1cd68d01f9508300b9398"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopRecharge.cs",
+      "sha256": "cd52211a77e7afeef86d2f47b8d85071b2355e2b5ba2337a283b44a9cd8f6a92"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopRechargeItem.cs",
+      "sha256": "9a287233e3cdaa6e5697e64dabb78467cc3b38f730586113e16cf2aa05d4654d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopTab.cs",
+      "sha256": "d6915e65aedd2b1d709e1294a481e0125478c8a51a60390c36fbf9109f4c4827"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\development\\client\\Library\\GameCLI\\Verify\\6239c74f-e0a4-4c3c-90f2-26bbb12e5d09"
+}

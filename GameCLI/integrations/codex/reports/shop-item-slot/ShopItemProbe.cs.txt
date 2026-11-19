@@ -1,0 +1,154 @@
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+using Oathx.Core;
+using Oathx.Entity;
+using Oathx.Widget;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+/// <summary>Temporary evidence for composed shop cards and existing purchase flow.</summary>
+public static class ShopItemProbe
+{
+    public static void Open()
+    {
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(LoginSystem) });
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(HomeSystem) });
+        XApp.GetSingleton().ShowLaunchBackground();
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(ShopSystem) });
+    }
+
+    public static void Close()
+    {
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(ShopSystem) });
+    }
+
+    public static string Native()
+    {
+        var evidence = new List<object>();
+        foreach (string kind in new[] { "Recharge", "Gift" })
+        {
+            string cardPath = "Assets/Data/Widgets/Shop" + kind + "Item/Shop" + kind + "Item.prefab";
+            string pagePath = "Assets/Data/Widgets/Shop" + kind + "/Shop" + kind + ".prefab";
+            var page = AssetDatabase.LoadAssetAtPath<GameObject>(pagePath);
+            var cell = page.GetComponentsInChildren<IWidget>(true).First(w => w is UIShopGiftItem || w is UIShopRechargeItem);
+            if (AssetDatabase.GetAssetPath(PrefabUtility.GetCorrespondingObjectFromSource(cell.gameObject)) != cardPath)
+                throw new Exception("Page does not nest independent card.");
+            var slot = cell.GetComponentInChildren<UIItemSlot>(true);
+            if (AssetDatabase.GetAssetPath(PrefabUtility.GetCorrespondingObjectFromOriginalSource(slot.gameObject)) != "Assets/Data/Widgets/ItemSlot/ItemSlot.prefab")
+                throw new Exception("Card does not nest shared slot.");
+            foreach (var component in page.GetComponentsInChildren<Component>(true))
+            {
+                if (!component)
+                    throw new Exception("Missing script.");
+                var serialized = new SerializedObject(component);
+                var property = serialized.GetIterator();
+                while (property.Next(true))
+                    if (property.propertyType == SerializedPropertyType.ObjectReference && property.objectReferenceValue == null && property.objectReferenceInstanceIDValue != 0)
+                        throw new Exception("Missing reference: " + property.propertyPath);
+            }
+            var grid = page.GetComponentInChildren<FancyGridScrollView>(true);
+            if (new SerializedObject(grid).FindProperty("cellPrefab").objectReferenceValue != cell.GetComponent<FancyGridScrollViewCell>())
+                throw new Exception("Wrong Fancy template.");
+            if (page.GetComponent<Metadata>().metadatas[2].targets[0] != cell.gameObject)
+                throw new Exception("Wrong hidden template binding.");
+            evidence.Add(new { card = cardPath, page = pagePath, nested = true, dependencies = AssetDatabase.GetDependencies(cardPath, true) });
+        }
+        return JsonConvert.SerializeObject(evidence);
+    }
+
+    public static bool Category(int category)
+    {
+        return XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<ShopSystem>().SelectCategory((ShopCategory)category);
+    }
+
+    public static string Inspect()
+    {
+        var rows = new List<object>();
+        foreach (var card in UnityEngine.Object.FindObjectsOfType<IWidget>().Where(w => w is UIShopGiftItem || w is UIShopRechargeItem))
+        {
+            var slot = card.GetComponentInChildren<UIItemSlot>();
+            if (!slot || !slot.vm)
+                throw new Exception("Missing bound slot: " + card.name);
+            var metadata = slot.GetComponent<Metadata>();
+            var image = (Image)metadata.metadatas[1].components[0];
+            string actual = AssetDatabase.GetAssetPath(image.sprite);
+            if (actual != slot.vm.Icon)
+                throw new Exception("Sprite path mismatch: " + card.name + " " + actual);
+            var animator = card.GetComponentInChildren<Animator>();
+            rows.Add(new { card = card.GetType().Name, icon = actual, text = ((Text)metadata.metadatas[2].components[0]).text,
+                children = card.GetComponentsInChildren<UIItemSlot>(true).Length,
+                buttons = card.GetComponentsInChildren<Button>(true).Length,
+                animation = animator ? animator.GetCurrentAnimatorStateInfo(0).normalizedTime : -1,
+                open = animator && animator.GetCurrentAnimatorStateInfo(0).IsName("Open") });
+            Selection.activeGameObject = card.gameObject;
+        }
+        if (rows.Count == 0)
+            throw new Exception("No visible product cards.");
+        UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+        return JsonConvert.SerializeObject(rows);
+    }
+
+    public static bool ClickFirst()
+    {
+        var card = UnityEngine.Object.FindObjectsOfType<IWidget>().First(w => w is UIShopGiftItem || w is UIShopRechargeItem);
+        var rect = (RectTransform)card.transform;
+        var canvas = card.GetComponentInParent<Canvas>().rootCanvas;
+        var camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+        var position = RectTransformUtility.WorldToScreenPoint(camera, rect.TransformPoint(rect.rect.center));
+        var data = new PointerEventData(EventSystem.current) { position = position, button = PointerEventData.InputButton.Left };
+        var hits = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(data, hits);
+        if (hits.Count == 0 || !hits[0].gameObject.transform.IsChildOf(card.transform))
+            throw new Exception("Product card is not the first raycast hit.");
+        return ExecuteEvents.ExecuteHierarchy(hits[0].gameObject, data, ExecuteEvents.pointerClickHandler) != null;
+    }
+
+    public static string Purchase()
+    {
+        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
+        if (entity.selectedProduct <= 0)
+            throw new Exception("Card did not select a product.");
+        var system = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<ShopSystem>();
+        long balance = entity.demoBalance;
+        if (!system.ConfirmPurchase() || system.ConfirmPurchase() || entity.demoBalance >= balance)
+            throw new Exception("Purchase or duplicate protection failed.");
+        return JsonConvert.SerializeObject(new { entity.demoBalance, entity.demoTokens, entity.purchaseCount });
+    }
+
+    public static string Recycle()
+    {
+        foreach (string kind in new[] { "Recharge", "Gift" })
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Shop" + kind + "Item/Shop" + kind + "Item.prefab");
+            var obj = UnityEngine.Object.Instantiate(asset);
+            var widget = obj.GetComponent<IWidget>();
+            var child = obj.GetComponentInChildren<UIItemSlot>(true);
+            var slot = new VMItemSlot { Text = "1", IconVisible = false };
+            VM model = kind == "Gift" ? (VM)new VMShopGiftItem { Item = slot } : new VMShopRechargeItem { Item = slot };
+            for (int i = 0; i < 3; i++)
+            {
+                widget.Ref(model);
+                slot.Text = "bound" + i;
+                var label = (Text)child.GetComponent<Metadata>().metadatas[2].components[0];
+                if (label.text != "bound" + i)
+                    throw new Exception("Rebind failed: " + kind);
+                widget.Unref(model);
+                slot.Text = "released";
+                if (label.text != "bound" + i)
+                    throw new Exception("Subscription leaked: " + kind);
+                var retained = kind == "Gift" ? ((VMShopGiftItem)model).Item : ((VMShopRechargeItem)model).Item;
+                if (retained != slot)
+                    throw new Exception("Recycle lost model data.");
+            }
+            UnityEngine.Object.DestroyImmediate(obj);
+            slot.Text = "destroyed";
+        }
+        return "Both independent cards preserve their child model and release subscriptions across three rebinds.";
+    }
+}
+#endif

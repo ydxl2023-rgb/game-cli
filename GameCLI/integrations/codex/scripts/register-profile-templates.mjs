@@ -14,7 +14,7 @@ try {
  const source=JSON.parse(await readFile('.data/imports/sv-home/fidelity-candidate/template.json','utf8'));
  const specs=[['PlayerProfile','ProfileView'],['ProfileShortcuts','ProfileShortcuts']];
  const files=[],materials=[],assets=new Map();
- for(const name of ['UIActivityEntry.cs','UIActivityBadge.cs','VM/VMActivityEntry.cs','VM/VMActivityBadge.cs','ActivityBadge.cs','HomeTextOutline.cs','UIProfileShortcuts.cs','VM/VMProfileShortcuts.cs','UIProfile.cs','VM/VMProfile.cs'])for(const suffix of ['', '.meta']){
+ for(const name of ['UIActivityEntry.cs','UIActivityBadge.cs','VM/VMActivityEntry.cs','VM/VMActivityBadge.cs','Components/CustomTextOutline.cs','UIProfileShortcuts.cs','VM/VMProfileShortcuts.cs','UIProfile.cs','VM/VMProfile.cs'])for(const suffix of ['', '.meta']){
   const path='Assets/Scripts/Systems/Common/UI/'+name+suffix;files.push({path,content:await readFile(join(binding.path,path),'utf8')});
  }
  async function walk(path){const all=[];for(const e of await readdir(path,{withFileTypes:true})){const p=join(path,e.name);if(e.isDirectory())all.push(...await walk(p));else all.push(p);}return all;}

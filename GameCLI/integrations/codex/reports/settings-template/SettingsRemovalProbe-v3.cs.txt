@@ -1,0 +1,69 @@
+#if UNITY_EDITOR
+using System;
+using System.Linq;
+using Newtonsoft.Json;
+using Oathx.Core;
+using Oathx.Widget;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>Temporary removal and persistence migration checks; excluded from delivery.</summary>
+public static class SettingsRemovalProbe
+{
+    /// <summary>Check removed names and numbers do not discard other saved preferences.</summary>
+    public static bool Persistence()
+    {
+        string key = StorageKey.For<SettingsSystem, SettingsEntity>(entity => entity.values);
+        bool existed = PlayerPrefs.HasKey(key);
+        string before = PlayerPrefs.GetString(key);
+        try
+        {
+            foreach (string json in new [] {
+                "{\"RiceRoll\":1,\"Power\":1,\"Weekend\":1,\"HeadquartersMatch\":1,\"MusicVolume\":0.37,\"Texture\":0,\"ExtremeTrain\":1,\"HomeDaily\":1,\"FriendInvite\":0}",
+                "{\"10\":1,\"11\":1,\"12\":1,\"13\":1,\"33\":0.37,\"29\":0,\"14\":1,\"15\":1,\"16\":0}"
+            })
+            {
+                PlayerPrefs.SetString(key, json);
+                var entity = new SettingsEntity();
+                if (entity.values.Count != 30 || !Mathf.Approximately(entity.ReadVolume(SettingsOption.MusicVolume), 0.37f)
+                    || entity.ReadQuality(SettingsOption.Texture) != SettingsQuality.Low || entity.IsEnabled(SettingsOption.FriendInvite))
+                    throw new InvalidOperationException("Remaining saved settings were not preserved.");
+
+                for (int value = 10; value <= 15; value++)
+                    if (entity.TogglePreference((SettingsOption)value))
+                        throw new InvalidOperationException("A deleted preference is still accepted.");
+            }
+
+            return true;
+        }
+        finally
+        {
+            if (existed) PlayerPrefs.SetString(key, before);
+            else PlayerPrefs.DeleteKey(key);
+            PlayerPrefs.Save();
+        }
+    }
+
+    /// <summary>Open through the coordinator.</summary>
+    public static void Open()
+    {
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(SettingsSystem) });
+    }
+
+    /// <summary>Verify the live hierarchy and show the function tab.</summary>
+    public static string Inspect()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
+            throw new InvalidOperationException("Settings is not open.");
+
+        string[] removed = { "TxKefu", "RiceRoll", "PowerSet", "Weekend", "HQMatch", "ExtremeTrain", "HomeDaily", "GridPushMessage" };
+        var names = widget.GetComponentsInChildren<Transform>(true).Select(item => item.name).ToArray();
+        if (names.Any(name => removed.Any(value => name.Contains(value))))
+            throw new InvalidOperationException("Removed hierarchy remains.");
+
+        widget.GetComponentsInChildren<Button>(true).Single(button => button.name == "FunctionTog").onClick.Invoke();
+
+        return JsonConvert.SerializeObject(new { nodes = names.Length, retained = names.Contains("MatchAnimation") || names.Contains("ChatWorld"), tab = widget.selectedTab.ToString() });
+    }
+}
+#endif

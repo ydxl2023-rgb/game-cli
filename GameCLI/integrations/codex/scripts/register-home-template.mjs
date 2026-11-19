@@ -46,7 +46,7 @@ for(const path of ['HomeSystem.cs','HomeEntity.cs','HomeEvents.cs','UI/UIHome.cs
     files.push({path:relative,content:await readFile(join(project,relative),'utf8')});
   }
 }
-for(const name of ['RuntimeSystem.cs','CommonText.cs']){
+for(const name of ['RuntimeSystem.cs','Common/Utility/CommonText.cs']){
   const path='Assets/Scripts/Systems/'+name;
   files.push({path,content:await readFile(join(project,path),'utf8')});
 }

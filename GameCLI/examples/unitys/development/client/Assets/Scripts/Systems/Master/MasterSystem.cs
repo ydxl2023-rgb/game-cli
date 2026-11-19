@@ -1,6 +1,7 @@
 using Oathx.Core;
 using Oathx.Entity;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Requests system loading and activation through MasterSystem.
@@ -63,6 +64,9 @@ public class LoginFailure : IEvent
 /// </summary>
 public class MasterSystem : RuntimeSystem
 {
+    /// <summary>Pending coordinator requests, canceled when their system is unloaded.</summary>
+    private readonly Dictionary<System.Type, SystemActive> pending = new Dictionary<System.Type, SystemActive>();
+
     /// <summary>
     /// Subscribe to local login success without starting Home.
     /// </summary>
@@ -116,6 +120,10 @@ public class MasterSystem : RuntimeSystem
     /// <returns>True after requesting Home removal from the dispatcher.</returns>
     public bool Unload()
     {
+        pending.Clear();
+
+        dispatcher.Unload(typeof(SettingsSystem));
+        dispatcher.Unload(typeof(MailSystem));
         dispatcher.Unload(typeof(ShopSystem));
         dispatcher.Unload(typeof(NoticeSystem));
         dispatcher.Unload(typeof(FightSystem));
@@ -147,15 +155,28 @@ public class MasterSystem : RuntimeSystem
     private void OnSystemActive(SystemActive data)
     {
         if (IsActive() && IsSystemType(data.type) && FunctionManagerAccess.CanActivate(data.type))
+        {
+            pending[data.type] = data;
+
             XCoroutine.Run(ActivateSystem(data));
+        }
     }
 
-    /// <summary>Route the reference Home mall entry through the system coordinator.</summary>
+    /// <summary>Activate the system requested by a Home navigation entry.</summary>
     /// <param name="data">Home navigation request.</param>
     private void OnHomeEntryRequested(HomeEntryRequested data)
     {
         if (IsActive() && data.entry == HomeEntry.Shop)
             OnSystemActive(new SystemActive { type = typeof(ShopSystem) });
+
+        if (IsActive() && data.entry == HomeEntry.Mail)
+            OnSystemActive(new SystemActive { type = typeof(MailSystem) });
+
+        if (IsActive() && data.entry == HomeEntry.Settings)
+            OnSystemActive(new SystemActive { type = typeof(SettingsSystem) });
+
+        if (IsActive() && data.entry == HomeEntry.Notice)
+            OnSystemActive(new SystemActive { type = typeof(NoticeSystem) });
     }
 
     /// <summary>
@@ -167,8 +188,13 @@ public class MasterSystem : RuntimeSystem
     {
         yield return null;
 
-        if (IsActive() && FunctionManagerAccess.CanActivate(data.type))
-            LoadSystem(data.type, data.complete);
+        if (pending.TryGetValue(data.type, out var current) && ReferenceEquals(current, data))
+        {
+            pending.Remove(data.type);
+
+            if (IsActive() && FunctionManagerAccess.CanActivate(data.type))
+                LoadSystem(data.type, data.complete);
+        }
     }
 
     /// <summary>
@@ -179,6 +205,8 @@ public class MasterSystem : RuntimeSystem
     {
         if (IsActive() && IsSystemType(data.type))
         {
+            pending.Remove(data.type);
+
             if (data.type == typeof(LoginSystem))
                 dispatcher.Unload(typeof(NoticeSystem));
 

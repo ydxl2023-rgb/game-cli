@@ -1,0 +1,248 @@
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+using Oathx.Core;
+using Oathx.Entity;
+using Oathx.Widget;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+/// <summary>Temporary runtime evidence collector; not part of the template package.</summary>
+public static class SettingsProbe
+{
+    /// <summary>Open the settings system through the product coordinator.</summary>
+    public static void Open()
+    {
+        XPluginUtility.FireEvent(new SystemActive { type = typeof(SettingsSystem) });
+    }
+
+    /// <summary>Read visible tabs, fonts, metadata targets and animation state.</summary>
+    /// <returns>The current runtime presentation snapshot.</returns>
+    public static string Read()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
+            throw new InvalidOperationException("Settings is not open.");
+
+        var entity = XEntityManager.GetSingleton().QueryEntity<SettingsEntity>();
+        var texts = widget.GetComponentsInChildren<Text>(true);
+        return JsonConvert.SerializeObject(new {
+            root = new { widget.name, widget.gameObject.layer, widget.gameObject.activeInHierarchy, scale = widget.transform.lossyScale.ToString(), position = widget.transform.position.ToString(), rect = ((RectTransform)widget.transform).rect.ToString() },
+            ancestors = widget.GetComponentsInParent<Canvas>(true).Select(c => new { c.name, c.enabled, mode = c.renderMode.ToString(), c.sortingOrder, c.overrideSorting, camera = c.worldCamera ? c.worldCamera.name : null }).ToArray(),
+            groups = widget.GetComponentsInParent<CanvasGroup>(true).Select(c => new { c.name, c.alpha, c.interactable, c.blocksRaycasts }).ToArray(),
+            cameras = Camera.allCameras.Select(c => new { c.name, c.enabled, c.cullingMask, c.depth, target = c.targetTexture ? c.targetTexture.name : null }).ToArray(),
+            images = widget.GetComponentsInChildren<Image>(false).Take(6).Select(c => new { c.name, c.enabled, color = c.color.ToString(), sprite = c.sprite ? c.sprite.name : null, rect = c.rectTransform.rect.ToString(), position = c.transform.position.ToString() }).ToArray(),
+            tab = widget.selectedTab.ToString(), preset = entity.qualityPreset.ToString(),
+            music = entity.ReadVolume(SettingsOption.MusicVolume), sound = entity.ReadVolume(SettingsOption.SoundVolume),
+            voice = entity.ReadVolume(SettingsOption.VoiceVolume),
+            visiblePages = new [] { widget.vm.ScreenVisible, widget.vm.SoundVisible, widget.vm.FunctionVisible, widget.vm.PrivacyVisible, widget.vm.DownloadVisible },
+            textCount = texts.Length, missingFont = texts.Count(text => !text.font),
+            placeholders = texts.Where(text => text.text.Contains("[LID:")).Select(text => text.name).ToArray(),
+            activeButtons = widget.GetComponentsInChildren<Button>(false).Count(button => button.IsInteractable()),
+            sliders = widget.GetComponentsInChildren<Slider>(true).Select(slider => new { slider.name, slider.value, slider.minValue, slider.maxValue }).ToArray(),
+            animations = widget.GetComponentsInChildren<Animator>(true).Select(animator => new {
+                animator.name, controller = animator.runtimeAnimatorController ? animator.runtimeAnimatorController.name : null,
+                active = animator.isActiveAndEnabled, time = animator.isActiveAndEnabled ? animator.GetCurrentAnimatorStateInfo(0).normalizedTime : -1f
+            }).ToArray()
+        });
+    }
+
+    /// <summary>Validate entity boundaries while preserving the user's saved preferences.</summary>
+    /// <returns>True when every invariant passed.</returns>
+    public static bool CheckEntity()
+    {
+        string key = StorageKey.For<SettingsSystem, SettingsEntity>(entity => entity.values);
+        bool existed = PlayerPrefs.HasKey(key);
+        string before = PlayerPrefs.GetString(key);
+        try
+        {
+            PlayerPrefs.DeleteKey(key);
+            var entity = new SettingsEntity();
+            Require(entity.values.Count == 36, "Known option count");
+            Require(entity.SelectPreset(SettingsQuality.Low) && entity.qualityPreset == SettingsQuality.Low, "Low preset");
+            Require(entity.SelectPreset(SettingsQuality.Medium) && entity.qualityPreset == SettingsQuality.Medium
+                && entity.ReadQuality(SettingsOption.Model) == SettingsQuality.Low, "Medium preset mapping");
+            Require(!entity.SelectQuality(SettingsOption.Model, SettingsQuality.Medium), "Reject model middle tier");
+            Require(entity.SelectPreset(SettingsQuality.High) && entity.qualityPreset == SettingsQuality.High, "High preset");
+            Require(entity.SelectQuality(SettingsOption.Texture, SettingsQuality.Low) && entity.qualityPreset == SettingsQuality.Custom, "Custom derivation");
+            Require(!entity.SelectPreset((SettingsQuality)99) && !entity.SelectQuality((SettingsOption)999, SettingsQuality.Low)
+                && !entity.TogglePreference(SettingsOption.MusicVolume) && !entity.TogglePreference((SettingsOption)999), "Invalid kinds");
+            Require(!entity.ChangeVolume(SettingsOption.SoundVolume, float.NaN)
+                && !entity.ChangeVolume(SettingsOption.SoundVolume, float.PositiveInfinity), "Nonfinite volume");
+            Require(entity.ChangeVolume(SettingsOption.MusicVolume, 0.37f) && entity.TogglePreference(SettingsOption.MusicEnabled), "Volume and mute");
+            Require(!entity.IsEnabled(SettingsOption.MusicEnabled) && Mathf.Approximately(entity.ReadVolume(SettingsOption.MusicVolume), 0.37f), "Mute retains volume");
+            var snapshot = entity.values;
+            entity.ChangeVolume(SettingsOption.MusicVolume, 0.62f);
+            Require(Mathf.Approximately(snapshot[SettingsOption.MusicVolume], 0.37f), "Detached snapshot");
+            var restored = new SettingsEntity();
+            Require(Mathf.Approximately(restored.ReadVolume(SettingsOption.MusicVolume), 0.62f)
+                && !restored.IsEnabled(SettingsOption.MusicEnabled) && restored.qualityPreset == SettingsQuality.Custom, "Persist and restore");
+            PlayerPrefs.SetString(key, "{\"Model\":1,\"999\":1,\"SoundVolume\":-3,\"MusicEnabled\":2}");
+            restored = new SettingsEntity();
+            Require(restored.ReadQuality(SettingsOption.Model) == SettingsQuality.High && restored.values.Count == 36
+                && restored.ReadVolume(SettingsOption.SoundVolume) == 1f && restored.IsEnabled(SettingsOption.MusicEnabled), "Invalid persisted values");
+            PlayerPrefs.SetString(key, "broken-json");
+            Require(new SettingsEntity().values.Count == 36, "Malformed persistence");
+
+            return true;
+        }
+        finally
+        {
+            if (existed)
+                PlayerPrefs.SetString(key, before);
+            else
+                PlayerPrefs.DeleteKey(key);
+
+            PlayerPrefs.Save();
+        }
+    }
+
+    /// <summary>Raycast and dispatch a real UGUI pointer click to a visible named button.</summary>
+    /// <returns>The input target and top raycast result.</returns>
+    public static string Click(string name)
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
+            throw new InvalidOperationException("Settings is not open.");
+
+        Canvas.ForceUpdateCanvases();
+        var button = widget.GetComponentsInChildren<Button>(false).Single(item => item.name == name);
+        var rect = (RectTransform)button.transform;
+        var canvas = button.GetComponentInParent<Canvas>();
+        var position = RectTransformUtility.WorldToScreenPoint(canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera, rect.TransformPoint(rect.rect.center));
+        var data = new PointerEventData(EventSystem.current) { position = position, button = PointerEventData.InputButton.Left };
+        var hits = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(data, hits);
+        Require(hits.Count > 0, "Raycast missed " + name);
+        var handler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject);
+        Require(handler == button.gameObject, "Unexpected top click handler: " + (handler ? handler.name : "none"));
+        ExecuteEvents.Execute(handler, data, ExecuteEvents.pointerClickHandler);
+
+        return JsonConvert.SerializeObject(new { name, hit = hits[0].gameObject.name, position = new { position.x, position.y } });
+    }
+
+    /// <summary>Exercise the three native slider callbacks and their VM percentage readback.</summary>
+    /// <returns>True when native slider values reached the entity.</returns>
+    public static bool Sliders()
+    {
+        Require(UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget), "Settings page");
+        var entity = XEntityManager.GetSingleton().QueryEntity<SettingsEntity>();
+        var options = new [] { SettingsOption.MusicVolume, SettingsOption.SoundVolume, SettingsOption.VoiceVolume };
+        var names = new [] { "MusicSlider", "SoundSlider", "VoiceSlider" };
+        var sliders = widget.GetComponentsInChildren<Slider>(true);
+        for (int i = 0; i < options.Length; i++)
+        {
+            float before = entity.ReadVolume(options[i]);
+            var slider = sliders.Single(item => item.name == names[i]);
+            slider.value = 0.23f + i * 0.1f;
+            Require(Mathf.Approximately(entity.ReadVolume(options[i]), slider.value), "Slider did not reach entity");
+            slider.value = before;
+        }
+
+        return true;
+    }
+
+    /// <summary>Check event delivery without invoking any external product service.</summary>
+    public static bool Signals()
+    {
+        var system = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<SettingsSystem>();
+        var entity = XEntityManager.GetSingleton().QueryEntity<SettingsEntity>();
+        int changed = 0;
+        int requested = 0;
+        int changedId = system.Subscribe<SettingsChanged>((evt) => changed++);
+        int requestedId = system.Subscribe<SettingsActionRequested>((evt) => {
+            Require(evt.action == SettingsAction.TxKefu, "Named service action");
+            requested++;
+        });
+        float before = entity.ReadVolume(SettingsOption.MusicVolume);
+        try
+        {
+            float test = Mathf.Approximately(before, 0.31f) ? 0.32f : 0.31f;
+            system.ChangeVolume(SettingsOption.MusicVolume, test);
+            XPluginUtility.DispatchEvents();
+            Require(changed == 1, "One change event");
+            system.ChangeVolume(SettingsOption.MusicVolume, test);
+            system.Refresh();
+            XPluginUtility.DispatchEvents();
+            Require(changed == 1, "No duplicate event on refresh or no-op");
+            Click("TxKefu");
+            XPluginUtility.DispatchEvents();
+            Require(requested == 1, "One service event for real click");
+
+            return true;
+        }
+        finally
+        {
+            system.Unsubscribe<SettingsChanged>(changedId);
+            system.Unsubscribe<SettingsActionRequested>(requestedId);
+            system.ChangeVolume(SettingsOption.MusicVolume, before);
+        }
+    }
+
+    /// <summary>Sample the actual Animator components and verify target transforms move.</summary>
+    public static string Animations()
+    {
+        Require(UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget), "Settings page");
+        var animators = widget.GetComponentsInChildren<Animator>(true);
+        var sound = animators.Single(item => item.runtimeAnimatorController.name == "SettingsSound");
+        var back = animators.Single(item => item.runtimeAnimatorController.name == "SettingsBack");
+        var headset = widget.GetComponentsInChildren<RectTransform>(true).Single(item => item.name == "Headset");
+        sound.Play("Sound", 0, 0f);
+        sound.Update(0f);
+        float first = headset.anchoredPosition.x;
+        sound.Update(0.5f);
+        float last = headset.anchoredPosition.x;
+        Require(Mathf.Abs(first - last) > 100f, "Sound headset motion");
+        back.Play("Open", 0, 0f);
+        back.Update(0f);
+        float top = ((RectTransform)back.transform).anchoredPosition.y;
+        back.Update(0.7f);
+        float bottom = ((RectTransform)back.transform).anchoredPosition.y;
+        Require(Mathf.Abs(top - bottom) > 80f, "Return entrance motion");
+
+        return JsonConvert.SerializeObject(new { first, last, top, bottom });
+    }
+
+    /// <summary>Verify coordinator closure has removed the page instance.</summary>
+    public static bool Closed()
+    {
+        Require(!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget), "Settings still registered after close");
+        Require(Resources.FindObjectsOfTypeAll<UISettings>().Count(item => item.gameObject.scene.IsValid()) == 0, "Settings instance leaked");
+
+        return true;
+    }
+
+    /// <summary>Exercise the actual scroll event on the visible function viewport.</summary>
+    public static string Scroll()
+    {
+        Require(UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget), "Settings page");
+        Require(widget.selectedTab == SettingsTab.Function, "Select function page first");
+        var scroll = widget.GetComponentsInChildren<ScrollRect>(false).Single();
+        Canvas.ForceUpdateCanvases();
+        Require(scroll.viewport.GetComponent<RectMask2D>(), "Function clipping component");
+        float before = scroll.content.anchoredPosition.y;
+        var data = new PointerEventData(EventSystem.current) { scrollDelta = new Vector2(0, -2000) };
+        ExecuteEvents.Execute(scroll.gameObject, data, ExecuteEvents.scrollHandler);
+        Canvas.ForceUpdateCanvases();
+        float after = scroll.content.anchoredPosition.y;
+        Require(Mathf.Abs(after - before) > 1f, "Scroll content did not move");
+
+        return JsonConvert.SerializeObject(new { before, after });
+    }
+
+    /// <summary>Deactivate immediately after requesting asynchronous opening.</summary>
+    public static void Rapid()
+    {
+        Open();
+        XPluginUtility.FireEvent(new SystemDetive { type = typeof(SettingsSystem) });
+    }
+
+    /// <summary>Fail the evidence probe instead of silently recording a false success.</summary>
+    private static void Require(bool passed, string description)
+    {
+        if (!passed)
+            throw new InvalidOperationException(description);
+    }
+}
+#endif

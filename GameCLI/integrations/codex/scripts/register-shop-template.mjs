@@ -49,7 +49,7 @@ payload.source=contract;payload.acceptance=acceptance;
 const files=[],assets=new Map(),resources=[];
 async function walk(dir){const list=[];for(const entry of await readdir(dir,{withFileTypes:true})){const path=join(dir,entry.name);if(entry.isDirectory())list.push(...await walk(path));else list.push(path);}return list;}
 for(const absolute of await walk(join(project,'Assets/Scripts/Systems/Shop'))){const path=absolute.slice(project.length+1).replaceAll('\\','/');files.push({path,content:await readFile(absolute,'utf8')});}
-for(const name of ['RuntimeSystem.cs','CommonText.cs'])files.push({path:'Assets/Scripts/Systems/'+name,content:await readFile(join(project,'Assets/Scripts/Systems',name),'utf8')});
+for(const name of ['RuntimeSystem.cs','Common/Utility/CommonText.cs'])files.push({path:'Assets/Scripts/Systems/'+name,content:await readFile(join(project,'Assets/Scripts/Systems',name),'utf8')});
 files.push({path:'GameCLI/Templates/Shop/FrameworkReference/UISystem.cs',content:await readFile(join(project,'LocalPackages/com.oathx.widget.extension/Runtime/Scripts/UISystem.cs'),'utf8')});
 for(const name of ['Shop','ShopRecharge','ShopGift','ShopPurchase']){
  const root='Assets/Data/Widgets/'+name;

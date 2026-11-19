@@ -36,14 +36,14 @@ foreach ($style in $contract.textStyles) {
         Set-Field $path Text "m_FontData.$property" $style.fontData.$property
     }
     if ($style.outline) {
-        if (!($present[$path].components.type -contains 'HomeTextOutline')) {
-            Invoke-Unity @('components','add','--asset',$asset,'--path',$path,'--component','HomeTextOutline') | Out-Null
+        if (!($present[$path].components.type -contains 'CustomTextOutline')) {
+            Invoke-Unity @('components','add','--asset',$asset,'--path',$path,'--component','CustomTextOutline') | Out-Null
         }
         $outline = ($style.outline.json | ConvertFrom-Json).MonoBehaviour
-        Set-Field $path HomeTextOutline outlineShader 'Assets/Data/Widgets/Common/Resources/OutlineEx.shader'
-        Set-Field $path HomeTextOutline outlineWidth $outline.OutlineWidth
+        Set-Field $path CustomTextOutline outlineShader 'Assets/Data/Widgets/Common/Resources/OutlineEx.shader'
+        Set-Field $path CustomTextOutline outlineWidth $outline.OutlineWidth
         $color = $outline.OutlineColor
-        Set-Field $path HomeTextOutline outlineColor "$($color.r),$($color.g),$($color.b),$($color.a)"
+        Set-Field $path CustomTextOutline outlineColor "$($color.r),$($color.g),$($color.b),$($color.a)"
     }
     $count++
 }

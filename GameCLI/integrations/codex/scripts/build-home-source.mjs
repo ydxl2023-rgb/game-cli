@@ -46,6 +46,6 @@ try {
   }
  }
  for(const name of ['Home','Function'])await copy('Assets/Scripts/Systems/'+name);
- for(const relative of ["UIActivityEntry.cs", "UIActivityBadge.cs", "VM/VMActivityEntry.cs", "VM/VMActivityBadge.cs", "ActivityBadge.cs", "HomeTextOutline.cs", "UIProfileShortcuts.cs", "VM/VMProfileShortcuts.cs", "UIProfile.cs", "VM/VMProfile.cs"])for(const suffix of ['', '.meta']){const path='Assets/Scripts/Systems/Common/UI/'+relative+suffix;const target=join(folder,'source',path);await mkdir(dirname(target),{recursive:true});await writeFile(target,await readFile(join(binding.path,path)));count++;}
+ for(const relative of ["UIActivityEntry.cs", "UIActivityBadge.cs", "VM/VMActivityEntry.cs", "VM/VMActivityBadge.cs", "Components/CustomTextOutline.cs", "UIProfileShortcuts.cs", "VM/VMProfileShortcuts.cs", "UIProfile.cs", "VM/VMProfile.cs"])for(const suffix of ['', '.meta']){const path='Assets/Scripts/Systems/Common/UI/'+relative+suffix;const target=join(folder,'source',path);await mkdir(dirname(target),{recursive:true});await writeFile(target,await readFile(join(binding.path,path)));count++;}
  console.log(JSON.stringify({files:count,source:'verified Unity project; maintained Widget code'}));
 }finally{await w.close();}

@@ -1,0 +1,400 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-11-18T09:57:17.5141867Z"
+[Licensing::Client] Code 1 while verifying Licensing Client signature (process Id: 30336, path: "D:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.16.2'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Administrator"
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-2022.3.62" at "2026-11-18T09:57:18.1738932Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 28852, path: "C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.16.2+bdef8f5
+  Session Id:              2097ce5a4dd2447ea2b3719a9efdde68
+  Correlation Id:          d2f48f08c01550f32c2a387dd6dcc2ab
+  External correlation Id: 200705610482684678
+  Machine Id:              c/5DmAMKwToXy5242GxYQsE9NhI=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator-2022.3.62" (connect: 0.00s, validation: 0.01s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-2022.3.62-notifications" at "2026-11-18T09:57:18.1929408Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Error: Code 500 while processing request (status: Unable to update licenses. Errors: Request (POST https://license.unity3d.com/update/poll?cmd=2&tx_id=a2a9f71fec984130a29964b060ea0f58) failed [400 Bad Request]: Bad ULF signature - suspect foul play,Token not found in cache)
+[Licensing::Client] Error: Code 500 while updating license in client (status: Unable to update licenses. Errors: Request (POST https://license.unity3d.com/update/poll?cmd=2&tx_id=a2a9f71fec984130a29964b060ea0f58) failed [400 Bad Request]: Bad ULF signature - suspect foul play,Token not found in cache)
+Built from '2022.3/respin/2022.3.62f2-4af31df585-v2' branch; Version is '2022.3.62f2 (7670c08855a9) revision 7762112'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'zh' Physical Memory: 32601 MB
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Serial number assigned to: "F4-OIDX-K6ZW-V5B0-UY0R-XXXX"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+[Licensing::Client] Successfully resolved entitlement details
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unitys\Unity 2022.3.62f2\Editor\Unity.exe
+-batchmode
+-nographics
+-projectPath
+G:/Works/SV/Development/Project
+-logFile
+G:/Works/GameCLI/GameCLI/integrations/codex/reports/settings-template/source-export.log
+Successfully changed project path to: G:/Works/SV/Development/Project
+G:/Works/SV/Development/Project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [47628]  Target information:
+
+Player connection [47628]  * "[IP] 192.168.72.39 [Port] 55505 [Flags] 2 [Guid] 3467732865 [EditorId] 3467732865 [Version] 1048832 [Id] WindowsEditor(7,PC-701) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [47628] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [47628] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[Package Manager] UpmClient::Connect -- Connected to IPC stream "Upm-26728" after 0.4 seconds.
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 66 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@1.1.6 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.ai.navigation@1.1.6)
+    com.unity.ide.rider@3.0.36 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.ide.rider@3.0.36)
+    com.unity.ide.visualstudio@2.0.22 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.ide.visualstudio@2.0.22)
+    com.unity.ide.vscode@1.2.5 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.ide.vscode@1.2.5)
+    com.unity.test-framework@1.1.33 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.test-framework@1.1.33)
+    com.unity.timeline@1.7.7 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.timeline@1.7.7)
+    com.unity.ext.nunit@1.0.6 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.ext.nunit@1.0.6)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.2d.sprite@1.0.0)
+    com.unity.ugui@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.ugui@1.0.0)
+    com.unity.modules.ai@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.ai@1.0.0)
+    com.unity.modules.androidjni@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.androidjni@1.0.0)
+    com.unity.modules.animation@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.animation@1.0.0)
+    com.unity.modules.assetbundle@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.assetbundle@1.0.0)
+    com.unity.modules.audio@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.audio@1.0.0)
+    com.unity.modules.cloth@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.cloth@1.0.0)
+    com.unity.modules.director@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.director@1.0.0)
+    com.unity.modules.imageconversion@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.imageconversion@1.0.0)
+    com.unity.modules.imgui@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.imgui@1.0.0)
+    com.unity.modules.jsonserialize@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0)
+    com.unity.modules.particlesystem@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.particlesystem@1.0.0)
+    com.unity.modules.physics@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.physics@1.0.0)
+    com.unity.modules.physics2d@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.physics2d@1.0.0)
+    com.unity.modules.screencapture@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.screencapture@1.0.0)
+    com.unity.modules.terrain@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.terrain@1.0.0)
+    com.unity.modules.terrainphysics@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.terrainphysics@1.0.0)
+    com.unity.modules.tilemap@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.tilemap@1.0.0)
+    com.unity.modules.ui@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.ui@1.0.0)
+    com.unity.modules.uielements@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.uielements@1.0.0)
+    com.unity.modules.umbra@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.umbra@1.0.0)
+    com.unity.modules.unityanalytics@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.unityanalytics@1.0.0)
+    com.unity.modules.unitywebrequest@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0)
+    com.unity.modules.vehicles@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.vehicles@1.0.0)
+    com.unity.modules.video@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.video@1.0.0)
+    com.unity.modules.vr@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.vr@1.0.0)
+    com.unity.modules.wind@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.wind@1.0.0)
+    com.unity.modules.xr@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.xr@1.0.0)
+    com.unity.modules.subsystems@1.0.0 (location: G:\Works\SV\Development\Project\Library\PackageCache\com.unity.modules.subsystems@1.0.0)
+  Local packages:
+    com.code-philosophy.hybridclr@file:G:\Works\SV\Development\Project\LocalPackages\com.code-philosophy.hybridclr@6.6.0 (location: G:\Works\SV\Development\Project\LocalPackages\com.code-philosophy.hybridclr@6.6.0)
+    com.coffee.ui-particle@file:G:\Works\SV\Development\Project\LocalPackages\com.coffee.ui-particle@3.3.6 (location: G:\Works\SV\Development\Project\LocalPackages\com.coffee.ui-particle@3.3.6)
+    com.cysharp.unitask@file:G:\Works\SV\Development\Project\LocalPackages\com.cysharp.unitask (location: G:\Works\SV\Development\Project\LocalPackages\com.cysharp.unitask)
+    com.demigiant.dotweenpro@file:G:\Works\SV\Development\Project\LocalPackages\com.demigiant.dotweenpro (location: G:\Works\SV\Development\Project\LocalPackages\com.demigiant.dotweenpro)
+    com.google.protobuf@file:G:\Works\SV\Development\PublicProject\Protobuf\src (location: G:\Works\SV\Development\PublicProject\Protobuf\src)
+    com.kybernetik.animancer@file:G:\Works\SV\Development\Project\LocalPackages\Animancer (location: G:\Works\SV\Development\Project\LocalPackages\Animancer)
+    com.lmd.e3dpainter@file:G:\Works\SV\Development\Project\UrpPackages\ThirdLib\com.lmd.e3dpainter (location: G:\Works\SV\Development\Project\UrpPackages\ThirdLib\com.lmd.e3dpainter)
+    com.lmd.p@file:G:\Works\SV\Development\Project\UrpPackages\com.lmd.p\com.lmd.p (location: G:\Works\SV\Development\Project\UrpPackages\com.lmd.p\com.lmd.p)
+    com.sv.config@file:G:\Works\SV\Development\PublicProject\ConfigProject\src (location: G:\Works\SV\Development\PublicProject\ConfigProject\src)
+    com.undefined.multilanguage@file:G:\Works\SV\Development\Project\LocalPackages\com.undefined.multilanguage (location: G:\Works\SV\Development\Project\LocalPackages\com.undefined.multilanguage)
+    com.unity.burst@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.burst@1.8.26 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.burst@1.8.26)
+    com.unity.cinemachine@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.cinemachine@2.7.1 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.cinemachine@2.7.1)
+    com.unity.collections@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.collections@1.2.4 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.collections@1.2.4)
+    com.unity.editorcoroutines@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.editorcoroutines@1.0.0 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.editorcoroutines@1.0.0)
+    com.unity.mathematics@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.mathematics@1.2.6 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.mathematics@1.2.6)
+    com.unity.mobile.android-logcat@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.mobile.android-logcat@1.2.3 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.mobile.android-logcat@1.2.3)
+    com.unity.nuget.newtonsoft-json@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.nuget.newtonsoft-json@3.2.1 (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.nuget.newtonsoft-json@3.2.1)
+    com.unity.playablegraph-visualizer@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.playablegraph-visualizer (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.playablegraph-visualizer)
+    com.unity.render-pipelines.core@file:G:\Works\SV\Development\Project\UrpPackages\com.unity.render-pipelines.core@7.4.3 (location: G:\Works\SV\Development\Project\UrpPackages\com.unity.render-pipelines.core@7.4.3)
+    com.unity.render-pipelines.universal@file:G:\Works\SV\Development\Project\UrpPackages\com.unity.render-pipelines.universal@7.4.3 (location: G:\Works\SV\Development\Project\UrpPackages\com.unity.render-pipelines.universal@7.4.3)
+    com.unity.scriptablebuildpipeline@file:G:\Works\SV\Development\Project\LocalPackages\com.unity.scriptablebuildpipeline (location: G:\Works\SV\Development\Project\LocalPackages\com.unity.scriptablebuildpipeline)
+    com.unity.shader-variant-collector@file:G:\Works\SV\Development\Project\UrpPackages\ThirdLib\com.unity.shader-variant-collector (location: G:\Works\SV\Development\Project\UrpPackages\ThirdLib\com.unity.shader-variant-collector)
+    com.unity.shadergraph@file:G:\Works\SV\Development\Project\UrpPackages\com.unity.shadergraph@7.4.3 (location: G:\Works\SV\Development\Project\UrpPackages\com.unity.shadergraph@7.4.3)
+    jp.setchi.fancyscrollview@file:G:\Works\SV\Development\Project\LocalPackages\jp.setchi.fancyscrollview@1.9.0 (location: G:\Works\SV\Development\Project\LocalPackages\jp.setchi.fancyscrollview@1.9.0)
+    litjson@file:G:\Works\SV\Development\Project\LocalPackages\litjson (location: G:\Works\SV\Development\Project\LocalPackages\litjson)
+[Subsystems] No new subsystems found in resolved package list.
+Package Manager log level set to [2]
+[Package Manager] Done registering packages in 0.10 seconds
+Refreshing native plugins compatible for Editor in 33.58 ms, found 29 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.62f2 (7670c08855a9)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path G:/Works/SV/Development/Project/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; threaded=0; jobified=0
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader 'Universal Render Pipeline/JumpHalfPBR/LightSwordEmission': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/SubstancePBRHalfCel': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/SubstanceOutlineAndShadow': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'Universal Render Pipeline/Baked Lit': fallback shader 'Universal Render Pipeline/Unlit' not found
+Shader 'Universal Render Pipeline/LMD/UI/UIParticlesDisSelf': fallback shader 'Mobile/Particles/Addtive' not found
+Shader 'ZJ/ParticlesDisSelf': fallback shader 'Mobile/Particles/Addtive' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/SubstancePBRHalfCel_Alpha': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'TA_Test/ManyAudience_BillBoard_Combine02': fallback shader 'Universal Render Pipeline/Unlit' not found
+[Licensing::Client] Successfully resolved entitlement details
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56728
+Using cacheserver namespaces - metadata:dev_2022metadata, artifacts:dev_2022artifacts
+Using cacheserver namespaces - metadata:dev_2022metadata, artifacts:dev_2022artifacts
+ImportWorker Server TCP listen port: 0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unitys/Unity 2022.3.62f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.020757 seconds.
+- Loaded All Assemblies, in  0.285 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 428 ms
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.640 seconds
+Domain Reload Profiling: 923ms
+	BeginReloadAssembly (88ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (60ms)
+	LoadAllAssembliesAndSetupDomain (102ms)
+		LoadAssemblies (87ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (100ms)
+			TypeCache.Refresh (99ms)
+				TypeCache.ScanAssembly (90ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (640ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (609ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (485ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (82ms)
+			ProcessInitializeOnLoadMethodAttributes (38ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+Script 'Packages/com.undefined.multilanguage/Samples/Example/SampleExample.cs' will not be compiled because it exists outside the Assets folder and does not to belong to any assembly definition file.
+Script 'Packages/com.undefined.multilanguage/Samples/Example/SampleExample.cs' will not be compiled because it exists outside the Assets folder and does not to belong to any assembly definition file.
+Assembly for Assembly Definition File 'Assets/Plugins/EPPlus/EPPlus.asmdef' will not be compiled, because it has no scripts associated with it.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:LogFormat (UnityEngine.LogType,string,object[])
+UnityEngine.Debug:LogWarningFormat (string,object[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:WarnIfThereAreAssembliesWithoutAnyScripts (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings,UnityEditor.Scripting.ScriptCompilation.ScriptAssembly[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScriptsWithSettings (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,string[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface/<>c__DisplayClass21_0:<CompileScripts>b__0 ()
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:EmitExceptionAsError<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus> (System.Func`1<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus>,UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,string[])
+
+Starting: C:\Program Files\Unitys\Unity 2022.3.62f2\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: G:/Works/SV/Development/Project
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s551ms
+[ 772/1025  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.48 seconds), 1 items updated, 1025 evaluated
+AssetDatabase: script compilation time: 1.011938s
+Script 'Packages/com.undefined.multilanguage/Samples/Example/SampleExample.cs' will not be compiled because it exists outside the Assets folder and does not to belong to any assembly definition file.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.844 seconds
+Refreshing native plugins compatible for Editor in 16.86 ms, found 29 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Refreshing native plugins compatible for Editor in 15.43 ms, found 29 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Script 'Packages/com.undefined.multilanguage/Samples/Example/SampleExample.cs' will not be compiled because it exists outside the Assets folder and does not to belong to any assembly definition file.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+未找到多语言表 G:\Works\SV\Development\Config\Excels\Main\Language.xlsx.txt，请检查根目录的Config.txt文件和LanguageWindowData配置(打开 Tools/多语言 进行修改)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+LanguageEditorUtils:GetLanguageExcelPath (bool) (at ./LocalPackages/com.undefined.multilanguage/Editor/LanguageEditorUtils.cs:71)
+LanguageInit:OnLoad () (at ./LocalPackages/com.undefined.multilanguage/Editor/LanguageInit.cs:19)
+System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
+System.Reflection.MethodBase:Invoke (object,object[])
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
+
+(Filename: ./LocalPackages/com.undefined.multilanguage/Editor/LanguageEditorUtils.cs Line: 71)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.861 seconds
+Domain Reload Profiling: 4702ms
+	BeginReloadAssembly (124ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (646ms)
+		LoadAssemblies (372ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (350ms)
+			TypeCache.Refresh (294ms)
+				TypeCache.ScanAssembly (275ms)
+			ScanForSourceGeneratedMonoScriptInfo (43ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (3862ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3662ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (109ms)
+			ProcessInitializeOnLoadAttributes (2457ms)
+			ProcessInitializeOnLoadMethodAttributes (1072ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Asset Pipeline Refresh (id=dcf14281a46518a47b548005293b243d): Total: 11.652 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=362 (actual=0, local cache=362, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=5373 ms
+		Asset DB Callback time: managed=34 ms, native=2 ms
+		Scripting: domain reloads=1, domain reload time=5140 ms, compile time=1014 ms, other=87 ms
+		Project Asset Count: scripts=26857, non-scripts=61937
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeBeforeRefreshCallbacks: 2.720ms
+	ApplyChangesToAssetFolders: 0.058ms
+	Scan: 1706.739ms
+	OnSourceAssetsModified: 0.001ms
+	GetAllGuidsForCategorization: 7.984ms
+	CategorizeAssets: 1210.109ms
+	ImportOutOfDateAssets: 4328.816ms (3200.427ms without children)
+		CompileScripts: 1013.593ms
+		ReloadNativeAssets: 0.032ms
+		UnloadImportedAssets: 77.529ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 22.091ms
+		InitializingProgressBar: 0.001ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 15.141ms
+	PostProcessAllAssets: 34.202ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.000ms
+	UnloadStreamsBegin: 2.561ms
+	PersistCurrentRevisions: 4.492ms
+	UnloadStreamsEnd: 0.194ms
+	GenerateScriptTypeHashes: 5.686ms
+	Untracked: 4354.237ms
+Application.AssetDatabase Initial Refresh End
+Shader 'Universal Render Pipeline/LMD/UI/UIParticlesDisSelf': fallback shader 'Mobile/Particles/Addtive' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/SubstancePBRHalfCel_Alpha': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/SubstancePBRHalfCel': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'TA_Test/ManyAudience_BillBoard_Combine02': fallback shader 'Universal Render Pipeline/Unlit' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/SubstanceOutlineAndShadow': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Shader 'Universal Render Pipeline/Baked Lit': fallback shader 'Universal Render Pipeline/Unlit' not found
+Shader 'ZJ/ParticlesDisSelf': fallback shader 'Mobile/Particles/Addtive' not found
+Shader 'Universal Render Pipeline/JumpHalfPBR/LightSwordEmission': fallback shader 'Hidden/Shader Graph/FallbackErrors' not found
+Scanning for USB devices : 4.877ms
+Initializing Unity extensions:
+[Licensing::Client] Successfully resolved entitlement details
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-ハイキュー!!FLY HIGH
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ProgressiveSceneManager::Cancel()
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2550 unused Assets / (3.2 MB). Loaded Objects now: 15931.
+Memory consumption went from 502.0 MB to 498.9 MB.
+Total: 23.721300 ms (FindLiveObjects: 0.826900 ms CreateObjectMapping: 0.607800 ms MarkObjects: 19.765700 ms  DeleteObjects: 2.520100 ms)
+
+Unity is running with Administrator privileges, which is not supported. Unity executes scripts and binary libraries in your project that may originate from third party sources and potentially be harmful to your computer. Unity may also execute scripts and binary libraries that are still under development and not yet fully tested. Running Unity with Administrator privileges may lead to catastrophic consequences, including but not limited to accidental data loss, change of global system settings or even bricking your device.
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+[Project] Loading completed in 19.661 seconds
+	Project init time: 				15.783 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.350 seconds
+		Asset Database init time: 		0.774 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			0.940 seconds
+		Unity extensions init time: 	0.016 seconds
+		Asset Database refresh time: 	0.000 seconds
+	Scene opening time: 			0.262 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1794995857071,"processId":26728,"projectLoad":19.6612404,"projectInit":15.7827708,"templateInit":0.0,"packageManagerInit":0.3501311,"assetDatabaseInit":0.773783,"globalIlluminationInit":0.0026005,"assembliesLoad":0.9404587,"unityExtensionsInit":0.0157507,"assetDatabaseRefresh":0.0,"sceneOpening":0.2622516}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1794995857071,"processId":26728,"editorVersion":"2022.3.62f2 (7670c08855a9)","branch":"2022.3/respin/2022.3.62f2-4af31df585-v2","buildType":"Release","platform":"Windows"}
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+Loaded scene 'Library/Unused/99ec255febbcb7842a3dd87583edf986'
+	Deserialize:            88.591 ms
+	Integration:            55.256 ms
+	Integration of assets:  0.710 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   144.587 ms
+GameCLI exported Assets/data/UI/Set/@SetView/Prefab/SetSystemView.prefab to G:\Works\GameCLI\GameCLI\integrations\codex\.data\imports\sv-settings\source\main
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GameCliPrefabExporter:Run (GameCliPrefabExporter/Request) (at Assets/Editor/GameCLI/GameCliPrefabExporter.cs:81)
+GameCliPrefabExporter:Poll () (at Assets/Editor/GameCLI/GameCliPrefabExporter.cs:48)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: Assets/Editor/GameCLI/GameCliPrefabExporter.cs Line: 81)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at C:/Users/Administrator/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.030s, timestamps: [19.670 - 19.700]
+gi::BakeBackendSwitch: switching bake backend from 3 to 1.
+GfxDevice renderer is null. Unity cannot update the Ambient Probe and Reflection Probes that the SkyManager generates. Run the Editor without the -nographics argument or generate lighting for your scene.
+Curl error 35: Cert verify failed. Certificate could not be verified (either omitted or unsupported). UnityTls error code: 7
