@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Login",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 10,
+    "lines": 677,
+    "blankLines": 139,
+    "commentLines": 136,
+    "members": 71,
+    "documentedMembers": 71,
+    "blankLineRate": 0.20531757754800592,
+    "commentLineRate": 0.20088626292466766,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "sha256": "56db321672cb2a35f2800d84e10c6ecb326c9653ec54592e5531be634c371a95"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "sha256": "1bb118771cc67e5fcf45a78b7e0b3ed2feec71ba656f7ac4bec5e3834f0d1911"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "sha256": "6c6aaacff901ab37875028b093b941fa81a51b2f8a88e5edfdb1df077a2ddef1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerGroupItem.cs",
+      "sha256": "e125c4a095f3f24026dbf99527f8c31a1ff1a86b947b2a2ebb030f284c5679b9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerItem.cs",
+      "sha256": "dea09ead40dd5bc1aeeeb1ae206b99b7337a7a1979f110a09fe944145decf152"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerSelect.cs",
+      "sha256": "0649b913794adad29519c35e321d67ea848aabda75e506c73b5774b396c2be12"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "sha256": "4bcc38ab57ec7166ad0ace4f08f4cc027f68a3954c5ce07048c98c8bb8b165fb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerGroupItem.cs",
+      "sha256": "2b8e42fc28489d3408d27c374ef63028eadd93987ae76555d9956aa52963f0bc"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerItem.cs",
+      "sha256": "d34eb43af6a1f6faabc7d261f4072513936bcf6f2522e158e289f35f94df1167"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerSelect.cs",
+      "sha256": "41fa523d02d9030dff11e31782d5632116a8c15f5475aeb1e69129bb0b63a3c6"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\007d5d32-8edb-4484-b1a0-0151d3148acd"
+}

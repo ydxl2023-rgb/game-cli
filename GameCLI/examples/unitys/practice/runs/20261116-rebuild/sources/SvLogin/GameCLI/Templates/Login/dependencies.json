@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "template": "SvLogin",
+  "source": "development",
+  "pages": [
+    {
+      "widget": "UILogin",
+      "asset": "Assets/Data/Widgets/SVLogin/SVLogin.prefab"
+    },
+    {
+      "widget": "UIServerSelect",
+      "asset": "Assets/Data/Widgets/ServerSelect/ServerSelect.prefab"
+    }
+  ],
+  "inlineCells": [
+    "UIServerGroupItem / VMServerGroupItem",
+    "UIServerItem / VMServerItem"
+  ],
+  "syncActions": [
+    "SyncFancyGridScrollView",
+    "SyncFancyGridClick"
+  ],
+  "sharedTypes": [
+    "RuntimeSystem : XEventModule",
+    "SystemActive.type : System.Type",
+    "LoginSucceed.pid : int",
+    "NoticeSystem",
+    "MasterEntity.GetAttr(MasterPropertyDef.PID)",
+    "Oathx.HttpProtocol.LoginResponse (pid, loginAt, tmcreate)"
+  ],
+  "legacyDependency": "LoginEntity.Refresh(LoginResponse) is still present in development. Its original Protocols.cs is archived in reference scope; do not install unrelated protocol types blindly. The local login path does not invoke a network service.",
+  "entityInitialization": [
+    "LoginEntity",
+    "MasterEntity"
+  ],
+  "configuration": {
+    "source": "propCommonText.xlsx",
+    "ids": {
+      "LOGIN_RECENT_SERVER": 1001,
+      "LOGIN_RECOMMENDED_SERVER": 1002,
+      "LOGIN_SERVER_RANGE": 1003,
+      "LOGIN_LOCAL_SERVER_NAME": 1004,
+      "LOGIN_SERVER_NORMAL": 1005,
+      "LOGIN_SERVER_BUSY": 1006,
+      "LOGIN_SERVER_MAINTENANCE": 1007
+    },
+    "requires": [
+      "Config.Excel generated aliases",
+      "Excel.propCommonTextById",
+      "Excel.propLanguageById",
+      "loaded CommonText and Language tables"
+    ]
+  },
+  "semantics": "Local test server catalog and local LoginSucceed event; no server authentication.",
+  "packageDependencies": {
+    "com.oathx.unitycli": "Target-compatible local package required",
+    "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+    "com.oathx.avatar": "Target-compatible local package required",
+    "com.oathx.bundle": "Target-compatible local package required",
+    "com.oathx.core": "Target-compatible local package required",
+    "com.oathx.entity": "Target-compatible local package required",
+    "com.oathx.rpc": "Target-compatible local package required",
+    "com.oathx.widget": "Target-compatible local package required",
+    "com.oathx.widget.extension": "Target-compatible local package required",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.ai.navigation": "Target-compatible local package required",
+    "com.unity.collab-proxy": "2.7.1",
+    "com.unity.ide.rider": "3.0.36",
+    "com.unity.ide.visualstudio": "2.0.22",
+    "com.unity.ide.vscode": "1.2.5",
+    "com.unity.render-pipelines.universal": "14.0.12",
+    "com.unity.test-framework": "1.1.33",
+    "com.unity.textmeshpro": "3.0.7",
+    "com.unity.timeline": "1.7.7",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.visualscripting": "1.9.4",
+    "com.unity.modules.ai": "1.0.0",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.modules.assetbundle": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.cloth": "1.0.0",
+    "com.unity.modules.director": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.screencapture": "1.0.0",
+    "com.unity.modules.terrain": "1.0.0",
+    "com.unity.modules.terrainphysics": "1.0.0",
+    "com.unity.modules.tilemap": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.umbra": "1.0.0",
+    "com.unity.modules.unityanalytics": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
+    "com.unity.modules.unitywebrequestaudio": "1.0.0",
+    "com.unity.modules.unitywebrequesttexture": "1.0.0",
+    "com.unity.modules.unitywebrequestwww": "1.0.0",
+    "com.unity.modules.vehicles": "1.0.0",
+    "com.unity.modules.video": "1.0.0",
+    "com.unity.modules.vr": "1.0.0",
+    "com.unity.modules.wind": "1.0.0",
+    "com.unity.modules.xr": "1.0.0"
+  },
+  "resourcePackage": "GameCLI/Templates/Login/materials.json"
+}

@@ -1,0 +1,40 @@
+2026-11-16T06:42:52.6981902Z
+2026-11-16T06:42:52.7001853Z LGN-start passed Login loaded
+2026-11-16T06:42:52.7021820Z LGN-vm passed Acceptance local label
+2026-11-16T06:42:52.7341868Z MST-enter passed pid=1
+2026-11-16T06:42:52.7501258Z MST-invalid-pid passed pid=1
+2026-11-16T06:42:52.7670862Z MST-invalid-types passed Login remains open
+2026-11-16T06:42:53.7735992Z NTC-open-0 passed via Login button and Master
+2026-11-16T06:42:53.7895084Z NTC-content-0 passed Test announcement body
+2026-11-16T06:42:53.8057895Z NTC-collapse-0 passed expanded=False
+2026-11-16T06:42:53.8227950Z NTC-empty-0 passed empty=True
+2026-11-16T06:42:54.3397049Z NTC-close-0 passed via close Button and Master
+2026-11-16T06:42:55.3556185Z NTC-open-1 passed via Login button and Master
+2026-11-16T06:42:55.3735751Z NTC-content-1 passed Test announcement body
+2026-11-16T06:42:55.3895318Z NTC-collapse-1 passed expanded=False
+2026-11-16T06:42:55.4064922Z NTC-empty-1 passed empty=True
+2026-11-16T06:42:55.9223055Z NTC-close-1 passed via close Button and Master
+2026-11-16T06:42:56.9390774Z NTC-open-2 passed via Login button and Master
+2026-11-16T06:42:56.9563365Z NTC-content-2 passed Test announcement body
+2026-11-16T06:42:56.9722745Z NTC-collapse-2 passed expanded=False
+2026-11-16T06:42:56.9902271Z NTC-empty-2 passed empty=True
+2026-11-16T06:42:57.5059639Z NTC-close-2 passed via close Button and Master
+2026-11-16T06:42:57.5059639Z NTC-url passed https://example.com -> True
+2026-11-16T06:42:57.5069615Z NTC-url passed http://example.org -> True
+2026-11-16T06:42:57.5069615Z NTC-url passed javascript:alert(1) -> False
+2026-11-16T06:42:57.5069615Z NTC-url passed file:///tmp/a -> False
+2026-11-16T06:42:57.5069615Z NTC-url passed /relative -> False
+2026-11-16T06:42:57.5079582Z NTC-url passed  -> False
+2026-11-16T06:42:58.5229553Z LDG-open passed explicit callback
+2026-11-16T06:42:58.5399093Z LDG-progress passed -1 -> Probe(0%)
+2026-11-16T06:42:58.5566356Z LDG-progress passed 0 -> Probe(0%)
+2026-11-16T06:42:58.5728150Z LDG-progress passed 0.375 -> Probe(38%)
+2026-11-16T06:42:58.5896930Z LDG-progress passed 1 -> Probe(100%)
+2026-11-16T06:42:58.6059440Z LDG-progress passed 2 -> Probe(100%)
+2026-11-16T06:42:58.6225555Z LDG-progress passed NaN -> Probe(0%)
+2026-11-16T06:42:58.6395684Z LDG-progress passed -Infinity -> Probe(0%)
+2026-11-16T06:42:58.6564275Z LDG-progress passed Infinity -> Probe(100%)
+2026-11-16T06:42:58.6730295Z LDG-null-tip passed cleared
+2026-11-16T06:42:58.6889880Z LDG-close passed closed
+2026-11-16T06:42:58.6899854Z LCH-background passed Launch retained behind Login
+PROBE_COMPLETED

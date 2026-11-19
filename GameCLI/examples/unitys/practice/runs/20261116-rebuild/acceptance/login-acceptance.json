@@ -1,0 +1,415 @@
+{
+  "fingerprint": "77b8fd30d980629b4f8df0af76406795b3816421185dea459c1fab8290796f7e",
+  "reviewer": "independent agent /root/practice_acceptance",
+  "scope": "Practice local offline trial; project v3 layout, SvLogin v8 source/companions. No external account/login/network destinations for action:none entries. Programmatic EventSystem and binding callbacks, not OS input.",
+  "reviews": [
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "approved": true,
+      "reason": "Reviewed adapter-LoginEntity.diff: removes unused network LoginResponse dependency and uses explicitly local pid1; server persistence preserved; third-probe and deep-runtime-retest verify selection."
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "approved": true,
+      "reason": "Reviewed adapter-LoginSystem.diff: local event uses LoginEntity.pid instead of development Master attribute API; runtime-probe and reopen-probe confirm pid1 routing."
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "approved": true,
+      "reason": "Reviewed adapter-UILogin.diff: Config points to project Login prefab; login-prefab comparison has zero layout differences and valid binding report; runtime opens correctly."
+    },
+    {
+      "path": "Assets/Scripts/Systems/CommonText.cs",
+      "approved": true,
+      "reason": "Reviewed adapter-CommonText.diff: source-language PracticeCommonText export replaces development table manager; runtime category, range, state labels resolve. Scope is offline source-language trial, not multilingual production certification."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin.meta",
+      "approved": true,
+      "reason": "Folder/prefab metadata GUID/path adaptation required by project-owned Login directory. Actual prefab loads, Sprite settings and Metadata references checked, no MissingReference or missing Sprite errors in deep-play/final evidence."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLogin.prefab",
+      "approved": true,
+      "reason": "Generated main prefab uses frozen Practice project v3 as design authority. login-prefab.json has zero differences and binding verification; runtime selection/labels/animation and screenshot supplement exporter gaps. Generic exporter incomplete remains unchanged."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLogin.prefab.meta",
+      "approved": true,
+      "reason": "Folder/prefab metadata GUID/path adaptation required by project-owned Login directory. Actual prefab loads, Sprite settings and Metadata references checked, no MissingReference or missing Sprite errors in deep-play/final evidence."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/12.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/12.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.anim",
+      "approved": true,
+      "reason": "Mapped to project-generated Login animation/controller resources rather than overwriting project design with archived reference paths. Runtime GameLoginViewFx1 transform changes sampled in deep-runtime-retest; parent bindings/import records and main layout comparison retained. Approval is functional local-trial adaptation, not bit-identical source animation."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.anim.meta",
+      "approved": true,
+      "reason": "Mapped to project-generated Login animation/controller resources rather than overwriting project design with archived reference paths. Runtime GameLoginViewFx1 transform changes sampled in deep-runtime-retest; parent bindings/import records and main layout comparison retained. Approval is functional local-trial adaptation, not bit-identical source animation."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.controller",
+      "approved": true,
+      "reason": "Mapped to project-generated Login animation/controller resources rather than overwriting project design with archived reference paths. Runtime GameLoginViewFx1 transform changes sampled in deep-runtime-retest; parent bindings/import records and main layout comparison retained. Approval is functional local-trial adaptation, not bit-identical source animation."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.controller.meta",
+      "approved": true,
+      "reason": "Mapped to project-generated Login animation/controller resources rather than overwriting project design with archived reference paths. Runtime GameLoginViewFx1 transform changes sampled in deep-runtime-retest; parent bindings/import records and main layout comparison retained. Approval is functional local-trial adaptation, not bit-identical source animation."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_db_zhanghao.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_db_zhanghao.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_icon_zc.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_icon_zc.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_2.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_2.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_3.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_3.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_4.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_4.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ty_tishi.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ty_tishi.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui__msdk_icon_02.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui__msdk_icon_02.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_2.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_2.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_3.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_3.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_4.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_4.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_5.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_5.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_02.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_02.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_03.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_03.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_04.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_04.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_05.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_05.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_06.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_06.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_07.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_07.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_08.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_08.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_110.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_110.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_12.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_12.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_13.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_13.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_17.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_17.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_18.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_18.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19_2.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19_2.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_21.png",
+      "approved": true,
+      "reason": "Independently compared decoded original material bytes against mapped target: exact match (48 images across Login/ServerSelect). Hash changes in inventory are source-path mapping context, not artwork replacement."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_21.png.meta",
+      "approved": true,
+      "reason": "Independently compared spriteMode, textureType, spritePixelsToUnits, spriteBorder, alphaIsTransparency: all match original material; new GUID/name mapping is technical adaptation, visible artwork and Sprite loading restored."
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets.meta",
+      "approved": true,
+      "reason": "Folder/prefab metadata GUID/path adaptation required by project-owned Login directory. Actual prefab loads, Sprite settings and Metadata references checked, no MissingReference or missing Sprite errors in deep-play/final evidence."
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelect.prefab",
+      "approved": true,
+      "reason": "Independent textual comparison found only three formerly empty Metadata classGuid values populated; template visual/serialized layout otherwise unchanged. Deep pointer tests cover both Fancy cells and main selector, selection and close."
+    },
+    {
+      "path": "propCommonText.xlsx",
+      "approved": true,
+      "reason": "Source configuration reference retained; Practice uses isolated CommonText source-language export verified by actual labels; no replacement of product table."
+    },
+    {
+      "path": "Assets/Scripts/Protocols/Protocols.cs",
+      "approved": true,
+      "reason": "Legacy network protocol reference intentionally not installed for the explicitly offline trial; LoginEntity.Refresh dependency removed and diff reviewed; no network authentication claim."
+    },
+    {
+      "path": "Assets/Scripts/Protocols/Protocols.cs.meta",
+      "approved": true,
+      "reason": "Legacy network protocol reference intentionally not installed for the explicitly offline trial; LoginEntity.Refresh dependency removed and diff reviewed; no network authentication claim."
+    }
+  ],
+  "checks": [
+    {
+      "name": "Unity 编译与 Console",
+      "status": "passed",
+      "evidence": "runs/20261116-rebuild/acceptance/deep-final-compile.json; deep-final-errors.json; deep-play-errors.json"
+    },
+    {
+      "name": "组件及 Metadata 引用",
+      "status": "passed",
+      "evidence": "runs/20261116-rebuild/acceptance/login-prefab.json; third-probe.log; deep-runtime-retest.log; ServerSelect original comparison only three Metadata classGuid fixes"
+    },
+    {
+      "name": "全部入口与独立子页面",
+      "status": "passed",
+      "evidence": "runs/20261116-rebuild/acceptance/deep-runtime-retest.log EventSystem pointers for Change/category/server10/close; runtime-probe.log Announcement. action:none without business contract excluded."
+    },
+    {
+      "name": "关闭与返回流程",
+      "status": "passed",
+      "evidence": "runs/20261116-rebuild/acceptance/third-probe.log; deep-runtime-retest.log; reopen-probe.log"
+    },
+    {
+      "name": "动画与布局",
+      "status": "passed",
+      "evidence": "runs/20261116-rebuild/acceptance/login-prefab.json zero differences; serverselect-restored.png; login-restored.png; deep-runtime-retest.log login-animation. Generic exporter diagnostics remain incomplete."
+    },
+    {
+      "name": "数据回填与持久化",
+      "status": "passed",
+      "evidence": "runs/20261116-rebuild/acceptance/third-probe.log select/stored/maintenance; deep-runtime-retest.log row-mapping/catalog-atomic; LoginEntity saves through PlayerPrefs and new entity restores. Full Editor restart not claimed."
+    }
+  ],
+  "limitations": [
+    "Generic prefab exporter result remains incomplete due to unsupported component/object-reference diagnostics; this attestation supplements, never rewrites, its result.",
+    "Immediate same-frame unload/load is outside deferred dispatcher contract; completed removal before reactivation verified.",
+    "No full Editor/process restart or platform storage test; PlayerPrefs.Save/new entity and repeated Play sessions exercised.",
+    "No production network authentication, multilingual pipeline or undefined UI destinations certified."
+  ]
+}

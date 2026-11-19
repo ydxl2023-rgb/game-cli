@@ -1,0 +1,13 @@
+diff --git a/GameCLI/examples/unitys/practice/runs/20261116-rebuild/sources/SvLogin/Assets/Scripts/Systems/Login/LoginSystem.cs b/GameCLI/examples/unitys/practice/client/Assets/Scripts/Systems/Login/LoginSystem.cs
+index 7029959..4dea7d8 100644
+--- a/GameCLI/examples/unitys/practice/runs/20261116-rebuild/sources/SvLogin/Assets/Scripts/Systems/Login/LoginSystem.cs
++++ b/GameCLI/examples/unitys/practice/client/Assets/Scripts/Systems/Login/LoginSystem.cs
+@@ -329,7 +329,7 @@ public class LoginSystem : RuntimeSystem
+             return false;
+ 
+         bool posted = XPluginUtility.PostEvent(new LoginSucceed() {
+-            pid = master.GetAttr(MasterPropertyDef.PID)
++            pid = login.pid
+         });
+ 
+         if (posted)

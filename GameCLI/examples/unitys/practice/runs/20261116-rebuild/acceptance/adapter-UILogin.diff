@@ -1,0 +1,13 @@
+diff --git a/GameCLI/examples/unitys/practice/runs/20261116-rebuild/sources/SvLogin/Assets/Scripts/Systems/Login/UI/UILogin.cs b/GameCLI/examples/unitys/practice/client/Assets/Scripts/Systems/Login/UI/UILogin.cs
+index 4b90ffb..afe3061 100644
+--- a/GameCLI/examples/unitys/practice/runs/20261116-rebuild/sources/SvLogin/Assets/Scripts/Systems/Login/UI/UILogin.cs
++++ b/GameCLI/examples/unitys/practice/client/Assets/Scripts/Systems/Login/UI/UILogin.cs
+@@ -3,7 +3,7 @@ using Oathx.Widget;
+ /// <summary>
+ /// SV login view with serialized Widget Metadata bindings.
+ /// </summary>
+-[Config("Assets/Data/Widgets/SVLogin/SVLogin.prefab", WidgetLayer.center, cacheWidget: false)]
++[Config("Assets/Data/Widgets/Login/Login.prefab", WidgetLayer.center, cacheWidget: false)]
+ public class UILogin : UIWidget<VMLogin>
+ {
+     /// <summary>Render the server state using this page's display labels.</summary>

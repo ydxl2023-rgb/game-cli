@@ -1,0 +1,44 @@
+diff --git a/GameCLI/examples/unitys/practice/runs/20261116-rebuild/sources/SvLogin/Assets/Scripts/Systems/CommonText.cs b/GameCLI/examples/unitys/practice/client/Assets/Scripts/Systems/CommonText.cs
+index 9b38c95..5f6abd5 100644
+--- a/GameCLI/examples/unitys/practice/runs/20261116-rebuild/sources/SvLogin/Assets/Scripts/Systems/CommonText.cs
++++ b/GameCLI/examples/unitys/practice/client/Assets/Scripts/Systems/CommonText.cs
+@@ -1,25 +1,24 @@
+ using System;
+-using Config;
++using System.Collections.Generic;
++using Newtonsoft.Json;
++using UnityEngine;
+ 
+-/// <summary>Resolves fixed UI text through CommonText and the active language table.</summary>
++/// <summary>Reads the practice source-language table exported from propCommonText.</summary>
+ public static class CommonText
+ {
+-    /// <summary>Read a localized CommonText entry and substitute its placeholders.</summary>
+-    /// <param name="id">Stable business identifier generated from propCommonText.</param>
+-    /// <param name="args">Values for the complete phrase's format placeholders.</param>
+-    /// <returns>The localized and formatted display text.</returns>
++    /// <summary>Resolve a fixed text identifier without embedding UI strings in code.</summary>
++    /// <param name="id">Generated CommonText identifier.</param>
++    /// <param name="args">Optional phrase substitutions.</param>
++    /// <returns>The source-language phrase.</returns>
+     public static string Get(int id, params object[] args)
+     {
+-        var entry = Excel.propCommonTextById(id);
+-        if (entry == null)
+-            throw new InvalidOperationException($"CommonText entry {id} is missing.");
+-
+-        string text = entry.Context;
+-        if (int.TryParse(text, out int languageId))
+-            text = Excel.propLanguageById(languageId);
++        var resource = Resources.Load<TextAsset>("PracticeCommonText");
++        if (!resource)
++            throw new InvalidOperationException("Practice CommonText export is missing.");
+ 
+-        if (text == null)
+-            throw new InvalidOperationException($"CommonText entry {id} has no language text.");
++        var entries = JsonConvert.DeserializeObject<Dictionary<int, string>>(resource.text);
++        if (entries == null || !entries.TryGetValue(id, out string text))
++            throw new InvalidOperationException($"CommonText entry {id} is missing.");
+ 
+         if (args == null || args.Length == 0)
+             return text;

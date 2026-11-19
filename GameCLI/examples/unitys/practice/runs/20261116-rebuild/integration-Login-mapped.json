@@ -1,0 +1,860 @@
+{
+  "schemaVersion": "gamecli-integration-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "templateId": "SvLogin",
+  "templateVersion": 8,
+  "passed": false,
+  "status": "failed",
+  "items": [
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "status": "adapted-review-required",
+      "sha256": "56db321672cb2a35f2800d84e10c6ecb326c9653ec54592e5531be634c371a95"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/LoginEntity.cs.meta",
+      "status": "present",
+      "sha256": "02b0511e31b04ba9fda4feec570be28ca65df7fb81d838933b00bb8583c48a5e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "status": "adapted-review-required",
+      "sha256": "1bb118771cc67e5fcf45a78b7e0b3ed2feec71ba656f7ac4bec5e3834f0d1911"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/LoginSystem.cs.meta",
+      "status": "present",
+      "sha256": "30fa2a2f68c5937d244dc8362986826dfbfb1dcdf6d3c194a4beae3d087b9594"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "status": "adapted-review-required",
+      "sha256": "6c6aaacff901ab37875028b093b941fa81a51b2f8a88e5edfdb1df077a2ddef1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UILogin.cs.meta",
+      "status": "present",
+      "sha256": "0ac546243321145f5e1e6846da7016586a6641caa7c8c08e6655c9d852a0f97d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerGroupItem.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UIServerGroupItem.cs",
+      "status": "present",
+      "sha256": "e125c4a095f3f24026dbf99527f8c31a1ff1a86b947b2a2ebb030f284c5679b9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerGroupItem.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UIServerGroupItem.cs.meta",
+      "status": "present",
+      "sha256": "d0c7787f292a863ebc81564d81c1ceafd0d5f97bc7195f98c8b06fed652901b7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerItem.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UIServerItem.cs",
+      "status": "present",
+      "sha256": "dea09ead40dd5bc1aeeeb1ae206b99b7337a7a1979f110a09fe944145decf152"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerItem.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UIServerItem.cs.meta",
+      "status": "present",
+      "sha256": "803b1ceb4ed8f572fca4997675b723ffc4d6fc5b86354fc9c56ca192cdb11951"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerSelect.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UIServerSelect.cs",
+      "status": "present",
+      "sha256": "0649b913794adad29519c35e321d67ea848aabda75e506c73b5774b396c2be12"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UIServerSelect.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/UI/UIServerSelect.cs.meta",
+      "status": "present",
+      "sha256": "36dd5cbb40f6645964781265a4424a0b0deac946f6becc43230348d676fbfbcf"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "status": "present",
+      "sha256": "4bcc38ab57ec7166ad0ace4f08f4cc027f68a3954c5ce07048c98c8bb8b165fb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMLogin.cs.meta",
+      "status": "present",
+      "sha256": "7ebacda09b0856f1bb38d38a4e43761a031910c5646f4078ea7021a30ffb86e6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerGroupItem.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMServerGroupItem.cs",
+      "status": "present",
+      "sha256": "2b8e42fc28489d3408d27c374ef63028eadd93987ae76555d9956aa52963f0bc"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerGroupItem.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMServerGroupItem.cs.meta",
+      "status": "present",
+      "sha256": "19c27c8b20d0790b74473e73edebfa272b96b0a28b8617a46ec2cc56010656cf"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerItem.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMServerItem.cs",
+      "status": "present",
+      "sha256": "d34eb43af6a1f6faabc7d261f4072513936bcf6f2522e158e289f35f94df1167"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerItem.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMServerItem.cs.meta",
+      "status": "present",
+      "sha256": "e63fe2b40b6f40192ae0dffe8082f5ea9a651e665665e7c5131156374f917ef9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerSelect.cs",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMServerSelect.cs",
+      "status": "present",
+      "sha256": "41fa523d02d9030dff11e31782d5632116a8c15f5475aeb1e69129bb0b63a3c6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMServerSelect.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/Login/VM/VMServerSelect.cs.meta",
+      "status": "present",
+      "sha256": "502b54db64b93e5988d7c3fc4f93a8028f4a9c2c0439ccb2a192aaacd9d431d7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/CommonText.cs",
+      "targetPath": "Assets/Scripts/Systems/CommonText.cs",
+      "status": "adapted-review-required",
+      "sha256": "657bcdd2877221d39984c9f55e8e232f220db49b631593fc65cee28deb84d396"
+    },
+    {
+      "path": "Assets/Scripts/Systems/CommonText.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/CommonText.cs.meta",
+      "status": "present",
+      "sha256": "16d0ebf6d34592d87d0b97bcb330237e7e2e04339fdfd0ed9cec1bbfe0f7af10"
+    },
+    {
+      "path": "Assets/Scripts/Systems/StorageKey.cs",
+      "targetPath": "Assets/Scripts/Systems/StorageKey.cs",
+      "status": "present",
+      "sha256": "06d7bcae58a748035f7037bfe968a1f5b238a702b5824ffe6ebc998f1f91b39d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/StorageKey.cs.meta",
+      "targetPath": "Assets/Scripts/Systems/StorageKey.cs.meta",
+      "status": "present",
+      "sha256": "0df329a9da50824f4d1ec159b7f1698fac9d8b159cb2f038f7a5a85d80c9f32e"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin.meta",
+      "targetPath": "Assets/Data/Widgets/Login.meta",
+      "status": "adapted-review-required",
+      "sha256": "ecdf2dbf3d6b26b32ce5f470a51920a991060a11ee7303f05e94cff56ff48a9f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLogin.prefab",
+      "targetPath": "Assets/Data/Widgets/Login/Login.prefab",
+      "status": "adapted-review-required",
+      "sha256": "deb7b621a07fc38f1f160436113130f62004bbff9476d9e2f1cc9feaeda90aed"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLogin.prefab.meta",
+      "targetPath": "Assets/Data/Widgets/Login/Login.prefab.meta",
+      "status": "adapted-review-required",
+      "sha256": "29c64f49d3d4deeacca265d0bbf46729aca4016574654fce20fd35ce61428685"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/12.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/12.png",
+      "status": "adapted-review-required",
+      "sha256": "96c71f344e19de112c9eb296740660c230cc71d30c5e96e29c39a17822853140"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/12.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/12.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "c0077373fbdd42680f747ef4554bfa7defef0c5a7caaa338e642663f06455531"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.anim",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/Animation_D3C2187F7B21571C.anim",
+      "status": "adapted-review-required",
+      "sha256": "58982ea5ac03c794f4c7f1752595eefe5014d5386b3bc9f633ab9411630d0ad1"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.anim.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/Animation_D3C2187F7B21571C.anim.meta",
+      "status": "adapted-review-required",
+      "sha256": "17c42e37cd8417159fe14d698a2d54d3a48761e5284a9f8b0ba52f210acd1371"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.controller",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/Animation_D3C2187F7B21571C.controller",
+      "status": "adapted-review-required",
+      "sha256": "04dfc4a385e0d272fb6e2e1c44fd95bd4b107b1a19299b572e390e1e7af8738f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/Animation_A07D8909D5E4A3C5.controller.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/Animation_D3C2187F7B21571C.controller.meta",
+      "status": "adapted-review-required",
+      "sha256": "68212d614b11d361a761ddefe67ce1ebb02ed15fd8dbe950d5ffb0623f598667"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_db_zhanghao.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/dl_db_zhanghao.png",
+      "status": "adapted-review-required",
+      "sha256": "490b0f8d39d09cf83c9c03fbb3cafa30bb8e0143f92a6ba4110e43fab838408d"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_db_zhanghao.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/dl_db_zhanghao.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "3a31f62cd1c59f05e20367a98bccb6ff022eb87fff985d4de651b7c2f2e8c4c2"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_icon_zc.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/dl_icon_zc.png",
+      "status": "adapted-review-required",
+      "sha256": "1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/dl_icon_zc.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/dl_icon_zc.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "710bca7568d60277e8f11737d3aff7c0b5deefbd2cda2db2fb322e2b4636da74"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_2.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi_2.png",
+      "status": "adapted-review-required",
+      "sha256": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_2.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi_2.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "5bcd4de9d29b000806342a05cc05063bf539f5f0e06c53f342999ebc9baadaf6"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_3.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi_3.png",
+      "status": "adapted-review-required",
+      "sha256": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_3.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi_3.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "0447c04eb0407e41feca7da2fbf936d9b285357f7e6360587da5c6f5748fdf62"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_4.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi_4.png",
+      "status": "adapted-review-required",
+      "sha256": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi_4.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi_4.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "cfb55cbd66bb822811aecbcd7f050c09a7d40667f8718d84f654c2695927955d"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi.png",
+      "status": "adapted-review-required",
+      "sha256": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/head_2d_qingshuijiezi.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/head_2d_qingshuijiezi.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "a97dcc468bdbf90858e670ca6e7e53cc5e94227779773e028a796833d6601cd9"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ty_tishi.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ty_tishi.png",
+      "status": "adapted-review-required",
+      "sha256": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ty_tishi.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ty_tishi.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "99659aa50a220027166a9ddb2f9dc0fb975f8d0407b24afca99654f2e80205d5"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui__msdk_icon_02.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui__msdk_icon_02.png",
+      "status": "adapted-review-required",
+      "sha256": "795ee609fefa80d5e5ed9afd8ae6fb51c3d3a75826ea66bdd7a4d154208501a3"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui__msdk_icon_02.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui__msdk_icon_02.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "d1c8a04e10f92e62e85c24856afea0cac275d6eeeeb20e079d08c463ef853877"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_2.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_2.png",
+      "status": "adapted-review-required",
+      "sha256": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_2.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_2.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "4df1f8de992b830dc864a9f1862e5cce0f9a820a3c7c9f676015dc934146fc41"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_3.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_3.png",
+      "status": "adapted-review-required",
+      "sha256": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_3.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_3.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "fa25687b29da7fbea414d1893aec065e2f6bf26422bb75c0cb18d2584a0651f4"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_4.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_4.png",
+      "status": "adapted-review-required",
+      "sha256": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_4.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_4.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "664d55638b266f5174e7626c4764317bbeefea66e41b1c6083db1f93b01c0787"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_5.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_5.png",
+      "status": "adapted-review-required",
+      "sha256": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74_5.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74_5.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "0fd187d2fdbc8ae86f035cf5cd0468f3cae5e1dfd1051cac7e3d6b443adb7e2a"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74.png",
+      "status": "adapted-review-required",
+      "sha256": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system__teamlineup_74.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system__teamlineup_74.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "397b33f10a2e1a576c700d0c53b106599f79bc6b500e33b8de17c389a11b5bdc"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_02.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_02.png",
+      "status": "adapted-review-required",
+      "sha256": "13bce639ef89b339fe6b8566f2c67fe5add84863c88f7199d996d776b3ad25ce"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_02.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_02.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "4423114dafed29743a9b00411bf21e917d653ac25a48127c132c102a0f723c51"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_03.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_03.png",
+      "status": "adapted-review-required",
+      "sha256": "1a4ca0bb3c9e89f1b4abb2cb096cd987ce697f8b86e01c764c8f92fba410ef45"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_03.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_03.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "7b9f3161088622f179cee4635aef4c7de0a4dde79faa7d381b599d6a8c3b2bb6"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_04.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_04.png",
+      "status": "adapted-review-required",
+      "sha256": "7e24cbc2f72bc2b6a571572ebb571e8831e28276ac4cb2d5192d8f0fe730adec"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_04.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_04.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "74746bfdddb5db89034c0f7e895b1a963aaa84cb6805ff8080b5b84b85aff659"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_05.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_05.png",
+      "status": "adapted-review-required",
+      "sha256": "c6c83c346fa753ee0661fdc03ee674f567bdfe98e5013dabd8b5797f5a610285"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_05.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_05.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "9dc0957614c29b54496c20727165b91d49bbb602c06cc5cd1c7c0f8078e7a6be"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_06.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_06.png",
+      "status": "adapted-review-required",
+      "sha256": "76d3715066d471a7d7ee81b80c0183119ab02bfebd6130d353fcfb4c88fbe01b"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_06.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_06.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "365d1f977063e415edb13a8f7c4faa3c2cbd2000940b51698ea37ccc65148b38"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_07.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_07.png",
+      "status": "adapted-review-required",
+      "sha256": "90849657d8dd0ffcc2cad7562b5e8a518b220894c6d254b48515936186a60514"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_07.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_07.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "4add34589c61afab14d781a15813a984ec68217e66781c496068610b0fd53628"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_08.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_08.png",
+      "status": "adapted-review-required",
+      "sha256": "32e06c5aff62f6de38457fdc068c027cc1db30f2f07eec181e90cfee09820f1b"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_08.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_08.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "689b2310d0380003b7dd872361a7d727b8db986a40283e01975a1eb98d6d2297"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_110.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_110.png",
+      "status": "adapted-review-required",
+      "sha256": "93a32b4d8bef49d046bda9bdd1f1eeef602a74b878c790518112bf01942b71d4"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_110.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_110.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "c426fd8836fd024acca0f9624ba7d2d781a071ecb30da1abb84b7de3c89a9ce9"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_12.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_12.png",
+      "status": "adapted-review-required",
+      "sha256": "cc124122a0fba82a6584c4c13a04aa31a3f77d3943ee3eb16f94cfd22d751e40"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_12.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_12.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "00a50b2ab9ae474fac31231007828b30a097f4f9ea44a3bfd5c647c0099ec9a3"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_13.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_13.png",
+      "status": "adapted-review-required",
+      "sha256": "02f14634a6e190f7d46da015889cbf7c30f951c592b6d974bd22fd8c5893460c"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_13.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_13.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "914a4472096cff2357b6eb50a7b3ca1dcd5ff3c6f24c4536c4cba150aacb3453"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_17.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_17.png",
+      "status": "adapted-review-required",
+      "sha256": "80462bceb61a944c839c428b718244afdd2f75e058fb143419bb7b9fbee0a0a3"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_17.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_17.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "8e811a1bf27ab0c7b952133ab898086f9d964ca6d849be633aa7d5ca98912924"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_18.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_18.png",
+      "status": "adapted-review-required",
+      "sha256": "9981398578663413d91e268c3b101425fc2019ed8d3a8d877f7526dcbcfcc6f3"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_18.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_18.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "1d088a0801394212f148f7e1be0b8becee535ceeca6d338749914afaf99d08cb"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19_2.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_19_2.png",
+      "status": "adapted-review-required",
+      "sha256": "921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19_2.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_19_2.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "c41968b93b8a13330b302ba517d0abef0a17afb9554f87f3b682582c615a73e1"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_19.png",
+      "status": "adapted-review-required",
+      "sha256": "921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_19.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_19.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "631e0b557d565a14ae0bfdb37311c18eda5341e6036305ddc11c1f3655ea6a8f"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_21.png",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_21.png",
+      "status": "adapted-review-required",
+      "sha256": "cc3a7f60a77851cb6634f7347628357880cd9e97ceb74679f6b72911d24e2cb0"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets/ui_system_login_21.png.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets/ui_system_login_21.png.meta",
+      "status": "adapted-review-required",
+      "sha256": "1d476cf32aa5dda90fece792b28929b05945f7bdab2efddd184da8955bdc0bd9"
+    },
+    {
+      "path": "Assets/Data/Widgets/SVLogin/SVLoginAssets.meta",
+      "targetPath": "Assets/Data/Widgets/Login/LoginAssets.meta",
+      "status": "adapted-review-required",
+      "sha256": "c7afcde9e31cd6f766aa3d4c9afe2730db8b3c5744d8cf874e8709bb111288f9"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect.meta",
+      "status": "present",
+      "sha256": "7019e5289441ef5e34e1197daeae7a937e5c64fce6be4552ad4ae2c70e8808df"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelect.prefab",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelect.prefab",
+      "status": "adapted-review-required",
+      "sha256": "5ace5881c358d071382bb87b8a9cfaf0b4c14a8ca842f8b3bdcd770b3b1b303f"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelect.prefab.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelect.prefab.meta",
+      "status": "present",
+      "sha256": "bf2961c1f26461f436d68cae961df27bd2daa1c7a65fdf7808bbca97f47e56e2"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di2.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di2.png",
+      "status": "present",
+      "sha256": "7b41c3adc5cf49056ce8d85d602d3dc15360fa8aef0c0af33bcb15872623fddf"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di2.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di2.png.meta",
+      "status": "present",
+      "sha256": "2def2dc1840c1b61d10be579e7fb5d4af57388461dfa8ff954e7df33e09020a9"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di3.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di3.png",
+      "status": "present",
+      "sha256": "122c37c3d452a21e43a03ae2f3cf632b9f9e4b59a9a7bb422aadf6b8b922e289"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di3.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_di3.png.meta",
+      "status": "present",
+      "sha256": "054d9f1e25145007b7682de8525e5fceb967daf9efe5b833bb129f7f06129d78"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang_2.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang_2.png",
+      "status": "present",
+      "sha256": "6c0b113963de3d7c29d68b635ed3610cd823e1267f50fbb605fa12a460518923"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang_2.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang_2.png.meta",
+      "status": "present",
+      "sha256": "e1fad152d89212f67aa3a156f24ead0d902a0864e798906206a0392f63055364"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang.png",
+      "status": "present",
+      "sha256": "4e23d65a00f1686885eeecaf6455af6d10e9038e73a0ccb469b548fb44352ddc"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_kuang.png.meta",
+      "status": "present",
+      "sha256": "3e424fcf700fe0537435cd29e555525ac1104248e8e656f4165257b9901b8dc1"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_left_di.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_left_di.png",
+      "status": "present",
+      "sha256": "70cf0a9a93bb163f718dfb2f680a798d86507680c0f62f41cbc2de78a9543c99"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_left_di.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_left_di.png.meta",
+      "status": "present",
+      "sha256": "3954549c18fefee667ae759abb7837ad77549c07516ea560ec0c9ad17c49da27"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_title.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_title.png",
+      "status": "present",
+      "sha256": "7d5dbc444f30daffdd7ca4d7c3c0e9031ecb2b31a77bc905ea206ef22bd1380d"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_title.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_fwqxz_title.png.meta",
+      "status": "present",
+      "sha256": "60cc0c28fe087d5292058309e2d5e72dd8efc58d8a537296c9e1552ba5525705"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_ml.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_ml.png",
+      "status": "present",
+      "sha256": "313713c5a7168a04fadbe572e8c6faf233e5f6d32c52c194781f764e8a3be553"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_ml.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_ml.png.meta",
+      "status": "present",
+      "sha256": "6c4f3ae4738310204fefdc3494090899cc6d8d85ab9b921ce1eaf230b59ad55d"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_new.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_new.png",
+      "status": "present",
+      "sha256": "3d61e25931387b847dc8aaa3505575f065c5684c4cd54be9f45fad9acbff0551"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_new.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_new.png.meta",
+      "status": "present",
+      "sha256": "b3f322bdf6802deaed58ebd9ea6eaca440bdc87d92feb3538d3ffa9d996b4b4d"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_wh.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_wh.png",
+      "status": "present",
+      "sha256": "3a25811ebcc44a87de7f947132edaefa719422b838d5b15f2aedabfe50a7bd73"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_wh.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_wh.png.meta",
+      "status": "present",
+      "sha256": "b6e119b890e42ecf20dbeddb1cc85f4c7d1fcf3e71376b22dc32eee33cc63a37"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc_2.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc_2.png",
+      "status": "present",
+      "sha256": "1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc_2.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc_2.png.meta",
+      "status": "present",
+      "sha256": "4253642ab47ce2dadb3b862f52e8c5e0ffa664978c7fe6a64bc7413e1228a30e"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc.png",
+      "status": "present",
+      "sha256": "1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_icon_zc.png.meta",
+      "status": "present",
+      "sha256": "9163c7bb4333f3508fbab05d3d246cd6e184db0d5b8de0c95194c14f8efd140a"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_loding_beijing03.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_loding_beijing03.png",
+      "status": "present",
+      "sha256": "54cee1b4528c20fce164ab8675be5eeba04654027dcfe227404fc2aaab368021"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_loding_beijing03.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/dl_loding_beijing03.png.meta",
+      "status": "present",
+      "sha256": "9890914c24ef215822c91d1ebf81c12b2b23d32ab93b446cf8376c7ea6c52ab7"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_db_fengexian.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_db_fengexian.png",
+      "status": "present",
+      "sha256": "f1e888dc692bb7f2b39132f34d1bcba8462f38f1e9c9962cc03c7862ee267878"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_db_fengexian.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_db_fengexian.png.meta",
+      "status": "present",
+      "sha256": "cb4857fbb006cb800184e20c8c8d06ebb70ee4e7afed689b27d6d6741c532047"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_title_fwqxz.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_title_fwqxz.png",
+      "status": "present",
+      "sha256": "b02b9f8162e2b5f6945a24a2079bf26a5ce23c81761dd50d4882ed9cae9b4b2d"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_title_fwqxz.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_qygl_title_fwqxz.png.meta",
+      "status": "present",
+      "sha256": "b913df36ded33b2d20e242693c14301f6a704870a272f422195e8cc770708724"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_guanbi.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_guanbi.png",
+      "status": "present",
+      "sha256": "f5994c753dca009e49ef62207e7bc2439d16f98f461b5b5f3a36815ce91c582d"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_guanbi.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_guanbi.png.meta",
+      "status": "present",
+      "sha256": "67274c10987450cef12576e282806c7e51dd47ecb73f0338ed90db92ef0b487a"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_yeqian_lanse.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_yeqian_lanse.png",
+      "status": "present",
+      "sha256": "8ff332f0a460bdef5e9cc4e9da38b37227a64f2ac4fe77e88693b9735782a457"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_yeqian_lanse.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_btn_yeqian_lanse.png.meta",
+      "status": "present",
+      "sha256": "149842a7fa62706f56dcdbc74ec2fa512550dd32764612cdc961ce75f71b73ea"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_db_tanchuang01.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_db_tanchuang01.png",
+      "status": "present",
+      "sha256": "27a0a23fec0b66a99085db3bdd35ff47af691bad45eb67563af56c085e83b6d8"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_db_tanchuang01.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_db_tanchuang01.png.meta",
+      "status": "present",
+      "sha256": "a0a9f88eb2ed1ceb48841f06acbebb3be328023063ed1ac90a81e98fb4040a08"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_title_zhaungshi.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_title_zhaungshi.png",
+      "status": "present",
+      "sha256": "3bfce9f79e6f06993370d423a2709d566bc90555b821e5863154d7fbd05bbfc9"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_title_zhaungshi.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/new_ty_title_zhaungshi.png.meta",
+      "status": "present",
+      "sha256": "32485c99a44438b0fd082ea8a9b3941fe824973f21f227347659b1b20950de99"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/ty_wjtx_di.png",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/ty_wjtx_di.png",
+      "status": "present",
+      "sha256": "f7137095ae96c51fac4d93f3a747acd669d7a691ca037d061f8f32f580f7cc50"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/ty_wjtx_di.png.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets/ty_wjtx_di.png.meta",
+      "status": "present",
+      "sha256": "598b5a447681c56cff4f9639481e63694478e3df0b09b5ccc35db6d13613d48c"
+    },
+    {
+      "path": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets.meta",
+      "targetPath": "Assets/Data/Widgets/ServerSelect/ServerSelectAssets.meta",
+      "status": "present",
+      "sha256": "ca928e562475d25c54e913b16e09e9fa560e4a3cbda2ddd65837e1fc2effc782"
+    }
+  ],
+  "references": [
+    {
+      "path": "propCommonText.xlsx",
+      "scope": "configuration",
+      "status": "review-required"
+    },
+    {
+      "path": "Assets/Scripts/Protocols/Protocols.cs",
+      "scope": "reference",
+      "status": "review-required"
+    },
+    {
+      "path": "Assets/Scripts/Protocols/Protocols.cs.meta",
+      "scope": "reference",
+      "status": "review-required"
+    }
+  ],
+  "placeholders": [],
+  "checks": [
+    {
+      "name": "Unity 编译与 Console",
+      "status": "not-verified"
+    },
+    {
+      "name": "组件及 Metadata 引用",
+      "status": "not-verified"
+    },
+    {
+      "name": "全部入口与独立子页面",
+      "status": "not-verified"
+    },
+    {
+      "name": "关闭与返回流程",
+      "status": "not-verified"
+    },
+    {
+      "name": "动画与布局",
+      "status": "not-verified"
+    },
+    {
+      "name": "数据回填与持久化",
+      "status": "not-verified"
+    }
+  ],
+  "limitations": [
+    "文件路径缺失可能是产品适配，需要核实映射；内容一致不代表功能已验收。",
+    "不会自动安装资源、覆盖工程或将占位功能标记为完成。"
+  ],
+  "projectVersion": 3,
+  "fingerprint": "77b8fd30d980629b4f8df0af76406795b3816421185dea459c1fab8290796f7e",
+  "workflow": {
+    "stage": "repair",
+    "label": "返回修复",
+    "passed": false
+  },
+  "acceptance": null,
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\45defe26-f502-4263-be40-fd0b889068c4"
+}
