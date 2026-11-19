@@ -8,6 +8,17 @@ const key=(time,value)=>({time,value,inTangent:-180,outTangent:-180,inWeight:1/3
 const nodes=[{id:'Root',name:'Loading',parent:null},{id:'Host',name:'Animator',parent:'Root',animationHost:true},{id:'Ball',name:'Ball',parent:'Host'}].map(n=>({...n,type:'Container',x:0,y:0,width:128,height:128,color:'#ffffff',text:'',fontSize:20}));
 const animation={id:'Spin',hostNodeId:'Host',clip:{startTime:0,stopTime:2,frameRate:30,loopTime:true,curves:[{targetNodeId:'Ball',component:'UnityEngine.Transform',property:'localEulerAnglesRaw.z',keys:[key(0,0),key(2,-360)]}]},state:{default:true,speed:1,cycleOffset:0}};
 
+test('a multi-system project supports 65 animation hosts while retaining a bounded limit',()=>{
+ const allNodes=[],allAnimations=[];
+ for(let i=0;i<257;i++){
+  allNodes.push(...nodes.map(n=>({...n,id:n.id+i,parent:n.parent===null?null:n.parent+i})));
+  const a=structuredClone(animation);a.id+=i;a.hostNodeId+=i;a.clip.curves[0].targetNodeId+=i;allAnimations.push(a);
+ }
+ assert.equal(validateAnimations(allAnimations.slice(0,65),allNodes).length,65);
+ assert.equal(validateAnimations(allAnimations.slice(0,256),allNodes).length,256);
+ assert.throws(()=>validateAnimations(allAnimations,allNodes));
+});
+
 test('Home entrance translates from anchored positions and restores opacity',t=>{
  const targetNodes=structuredClone(nodes);targetNodes[2].rectTransform={anchoredPosition:{x:20,y:30}};
  const a=structuredClone(animation);a.clip.loopTime=false;

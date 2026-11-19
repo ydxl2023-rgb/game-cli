@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS gamecli_ui.templates (
  name text NOT NULL, description text NOT NULL DEFAULT '', sort integer NOT NULL DEFAULT 0,
  version integer NOT NULL DEFAULT 1 CHECK(version>0), payload jsonb NOT NULL,
  created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now()
-);`;
+);
+ALTER TABLE gamecli_ui.templates ADD COLUMN IF NOT EXISTS deprecated_at timestamptz;`;
 
 export async function migrateTemplateGroups(client){
  await client.query(`CREATE TABLE IF NOT EXISTS gamecli_ui.template_groups (
@@ -53,7 +54,7 @@ export function createTemplateStore({connect=openDatabase}={}) {
       connection??=await connect(config);
       const categoryRows=await connection.pool.query('SELECT id,name,sort FROM gamecli_ui.template_categories ORDER BY sort,id');
       const groups=await connection.pool.query('SELECT category_id AS category,id,name,sort FROM gamecli_ui.template_groups ORDER BY sort,id');
-      const rows=await connection.pool.query('SELECT id,category_id AS category,group_id AS "group",name,description,sort,version,payload,scripts,configurations,updated_at AS "updatedAt" FROM gamecli_ui.templates ORDER BY sort,id');
+      const rows=await connection.pool.query('SELECT id,category_id AS category,group_id AS "group",name,description,sort,version,payload,scripts,configurations,updated_at AS "updatedAt" FROM gamecli_ui.templates WHERE deprecated_at IS NULL ORDER BY sort,id');
       return {source:'postgresql',categories:categoryRows.rows,groups:groups.rows,templates:rows.rows.map(t=>({...t,payload:validateTemplate(t.payload,t.category)}))};
     } catch(e){if(connection){await connection.close().catch(()=>{});connection=null;}throw new Error('模板数据库连接或读取失败，请检查 SSH 隧道与数据库配置。');}
   }

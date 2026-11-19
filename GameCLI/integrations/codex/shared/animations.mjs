@@ -3,7 +3,7 @@
 export function validateAnimations(value, nodes) {
   if(value===undefined)return undefined;
   const fail=()=>{throw new Error('动画数据无效或包含尚未支持的曲线。');};
-  if(!Array.isArray(value)||value.length>64)fail();
+  if(!Array.isArray(value)||value.length>256)fail();
   const map=new Map(nodes.map(n=>[n.id,n])),ids=new Set(),bindings=new Set();
   for(const a of value) {
     if(!a || typeof a.id!=='string'||!a.id||ids.has(a.id)||!map.get(a.hostNodeId)?.animationHost)fail();ids.add(a.id);

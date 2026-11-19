@@ -38,13 +38,16 @@ function offerRecovery(cached){const recovery=document.createElement('button');r
 
 async function loadTemplates() {
   const area=$('template-library');
-  const refresh=$('refresh-templates');refresh.disabled=true;refresh.setAttribute('aria-busy','true');
+  const refreshButtons=[$('refresh-templates'),$('refresh-template-library'),$('refresh-prefab-library')].filter(Boolean);
+  if(refreshButtons.some(button=>button.disabled))return;
+  for(const button of refreshButtons){button.disabled=true;button.setAttribute('aria-busy','true');}
   try {
     const result=await bridge.call('templates');librarySource=result.source;
-    const expanded=new Map([...area.querySelectorAll('[data-template-group]')].map(e=>[e.dataset.templateGroup,e.open]));
-    area.replaceChildren();library.clear();
+    const prefabArea=$('prefab-library');
+    const expanded=new Map([...document.querySelectorAll('#template-library [data-template-group],#prefab-library [data-template-group]')].map(e=>[e.dataset.templateGroup,e.open]));
+    area.replaceChildren();prefabArea.replaceChildren();library.clear();
     for(const category of result.categories) {
-      const panel=document.createElement('div');panel.dataset.libraryCategory=category.id;panel.id='library-panel-'+category.id;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','library-tab-'+category.id);area.append(panel);
+      const panel=document.createElement('div');panel.dataset.libraryCategory=category.id;panel.id='library-panel-'+category.id;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby',category.id==='prefab'?'standard-resource-tab-1':'library-tab-'+category.id);(category.id==='prefab'?prefabArea:area).append(panel);
       const heading=document.createElement('div');heading.className='section-title prefab-title';heading.textContent=category.name;
       const source=document.createElement('span');source.textContent=result.source==='postgresql'?'数据库':'内置';heading.append(source);panel.append(heading);
       for(const group of groupedTemplates(category.id,result.groups??[],result.templates)){
@@ -69,9 +72,9 @@ async function loadTemplates() {
     refreshTemplateDock();
     cardScripts.render();
   } catch(e) {
-    area.replaceChildren();const message=document.createElement('p');message.className='palette-note';message.textContent=e.message;area.append(message);
-    const retry=document.createElement('button');retry.textContent='重新加载模板';retry.onclick=loadTemplates;area.append(retry);
-  } finally {refresh.disabled=false;refresh.removeAttribute('aria-busy');}
+    for(const target of [area,$('prefab-library')].filter(Boolean)){target.replaceChildren();const message=document.createElement('p');message.className='palette-note';message.textContent=e.message;target.append(message);
+    const retry=document.createElement('button');retry.textContent='重新加载模板';retry.onclick=loadTemplates;target.append(retry);}
+  } finally {for(const button of refreshButtons){button.disabled=false;button.removeAttribute('aria-busy');}}
 }
 let previewState = null;
 function applyPreviewState() {
@@ -575,7 +578,7 @@ new ResizeObserver(fit).observe($('viewport'));
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 render();
 async function start() {
-  try { const snapshot = await bridge.init(); const workspace=snapshot.workspace??snapshot.project; const original = validateDesign(snapshot.design); design = bridge.templateMode?validateDesign(original):validateDesign(phoneDesign(original)); revision = snapshot.revision;projectVersion=workspace.version;projectRole=workspace.role;if(!bridge.templateMode)showUnityBinding(workspace.unityBinding);$('project-label').textContent=bridge.templateLanding?'模板库 · 请在下方选择模板':bridge.templateMode?`模板：${workspace.name} · ${bridge.draftId?'草稿 r'+revision+' / 基于 v'+workspace.baseVersion:'已发布 v'+revision+'（只读）'}`:`项目：${workspace.name} [${workspace.id}]`;$('project-label').title=`${bridge.templateMode?'模板':'项目'} ID：${workspace.id} · 权限：${projectRole}`; ready = true; $('save').disabled = $('sync').disabled = upgradeButton.disabled = projectRole==='viewer';$('export').disabled=false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机';
+  try { const snapshot = await bridge.init(); const workspace=snapshot.workspace??snapshot.project; const original = validateDesign(snapshot.design); design = bridge.templateMode?validateDesign(original):validateDesign(phoneDesign(original)); revision = snapshot.revision;projectVersion=workspace.version;projectRole=workspace.role;if(!bridge.templateMode)showUnityBinding(workspace.unityBinding);$('project-label').textContent=bridge.templateLanding?'模板库 · 请选择系统模板或右侧预制控件':bridge.templateMode?`模板：${workspace.name} · ${bridge.draftId?'草稿 r'+revision+' / 基于 v'+workspace.baseVersion:'已发布 v'+revision+'（只读）'}`:`项目：${workspace.name} [${workspace.id}]`;$('project-label').title=`${bridge.templateMode?'模板':'项目'} ID：${workspace.id} · 权限：${projectRole}`; ready = true; $('save').disabled = $('sync').disabled = upgradeButton.disabled = projectRole==='viewer';$('export').disabled=false; $('connection').textContent = bridge.embedded ? 'MCP 已连接' : '本机';
    let cached;try{cached=await drafts.read(draftKey());}catch{}
    for(const key of drafts.conflictKeys(draftKey())){try{const conflict=await drafts.read(key);if(conflict?.design)offerRecovery(conflict);}catch{}}
    if(cached){
