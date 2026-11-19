@@ -13,7 +13,9 @@ npm test
 npm start
 ```
 
-打开 `http://127.0.0.1:18091/studio`，兼容 `/track`。`GAMECLI_STUDIO_PORT` 可覆盖端口，仅绑定本机。
+打开 `http://127.0.0.1:18091/studio`，兼容 `/track`。默认监听 `0.0.0.0:18091`，局域网可通过 `http://<本机局域网IPv4>:18091/studio` 访问。Windows 防火墙需允许局域网来源连接此 TCP 端口。
+
+`GAMECLI_STUDIO_PORT` 可覆盖端口，`GAMECLI_STUDIO_HOST=127.0.0.1` 可恢复仅本机监听。访问地址仅接受 localhost、127.0.0.1 和本机网卡的私有 IPv4，保留同源写入校验。浏览器使用服务端的工作区身份和 Unity 绑定，不会自动为每位局域网访问者建立独立账户。
 
 ## Codex 侧边工作台
 

@@ -4,11 +4,12 @@ import { pathToFileURL } from 'node:url';
 import { createStore } from './store.mjs';
 import { createTemplateStore } from './templates.mjs';
 import {createWorkspaces} from './workspaces.mjs';
+import {isStudioHost, studioAddresses} from './network-access.mjs';
 export function createHttpServer(store = createStore(), templates = createTemplateStore(),workspaces=createWorkspaces()) {
   const server = createServer(async (req, res) => {
     const send = (status, data, type = 'application/json; charset=utf-8') => { res.writeHead(status, { 'Content-Type': type, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }); res.end(type.startsWith('application/json') ? JSON.stringify(data) : data); };
     try {
-      if (!/^127\.0\.0\.1:\d+$/.test(req.headers.host ?? '')) return send(403, { error: '仅允许本机访问。' });
+      if (!isStudioHost(req.headers.host, req.socket.localPort)) return send(403, { error: '请通过本机或本机局域网 IP 访问。' });
       const url = new URL(req.url, `http://${req.headers.host}`);
       if (req.method === 'GET' && ['/','/track','/studio','/studio/projects/library','/studio/templates/library','/studio/templates/review'].includes(url.pathname)) return send(200, await readFile(new URL('../dist/workspace-portal.html', import.meta.url)), 'text/html; charset=utf-8');
       if(req.method==='GET'&&['/studio/templates','/studio/projects'].includes(url.pathname))return send(200,await readFile(new URL('../dist/studio.html',import.meta.url)),'text/html; charset=utf-8');
@@ -67,5 +68,9 @@ export function createHttpServer(store = createStore(), templates = createTempla
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const port = Number(process.env.GAMECLI_STUDIO_PORT || 18091);
-  createHttpServer().listen(port, '127.0.0.1', () => console.log(`GameCLI UI Studio: http://127.0.0.1:${port}/studio`));
+  const host = process.env.GAMECLI_STUDIO_HOST || '0.0.0.0';
+  createHttpServer().listen(port, host, () => {
+    const addresses = host === '0.0.0.0' ? studioAddresses() : [host];
+    for (const address of addresses) console.log(`GameCLI UI Studio: http://${address}:${port}/studio`);
+  });
 }
