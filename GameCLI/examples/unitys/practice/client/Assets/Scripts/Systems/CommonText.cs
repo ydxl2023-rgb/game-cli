@@ -1,24 +1,25 @@
 using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using UnityEngine;
+using Config;
 
-/// <summary>Reads the practice source-language table exported from propCommonText.</summary>
+/// <summary>Resolves fixed UI text through CommonText and the active language table.</summary>
 public static class CommonText
 {
-    /// <summary>Resolve a fixed text identifier without embedding UI strings in code.</summary>
-    /// <param name="id">Generated CommonText identifier.</param>
-    /// <param name="args">Optional phrase substitutions.</param>
-    /// <returns>The source-language phrase.</returns>
+    /// <summary>Read a localized CommonText entry and substitute its placeholders.</summary>
+    /// <param name="id">Stable business identifier generated from propCommonText.</param>
+    /// <param name="args">Values for the complete phrase's format placeholders.</param>
+    /// <returns>The localized and formatted display text.</returns>
     public static string Get(int id, params object[] args)
     {
-        var resource = Resources.Load<TextAsset>("PracticeCommonText");
-        if (!resource)
-            throw new InvalidOperationException("Practice CommonText export is missing.");
-
-        var entries = JsonConvert.DeserializeObject<Dictionary<int, string>>(resource.text);
-        if (entries == null || !entries.TryGetValue(id, out string text))
+        var entry = Excel.propCommonTextById(id);
+        if (entry == null)
             throw new InvalidOperationException($"CommonText entry {id} is missing.");
+
+        string text = entry.Context;
+        if (int.TryParse(text, out int languageId))
+            text = Excel.propLanguageById(languageId);
+
+        if (text == null)
+            throw new InvalidOperationException($"CommonText entry {id} has no language text.");
 
         if (args == null || args.Length == 0)
             return text;

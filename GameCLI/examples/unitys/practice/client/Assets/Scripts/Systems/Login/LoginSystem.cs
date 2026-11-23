@@ -10,9 +10,6 @@ using Oathx.Widget;
 /// </summary>
 public class LoginSystem : RuntimeSystem
 {
-    /// <summary>Local server catalog until the server list service is connected.</summary>
-    private readonly List<ServerEntry> servers = new List<ServerEntry>();
-
     /// <summary>Server categories owned by the login flow.</summary>
     private readonly List<List<ServerEntry>> categories = new List<List<ServerEntry>>();
 
@@ -71,25 +68,12 @@ public class LoginSystem : RuntimeSystem
     /// <returns>True when the nonempty catalog has been accepted.</returns>
     public bool SetServers(IEnumerable<ServerEntry> entries)
     {
-        if (entries == null)
+        var entity = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();
+        if (!entity)
             return false;
 
-        var catalog = new List<ServerEntry>();
-        var ids = new HashSet<int>();
-        foreach (var entry in entries)
-        {
-            if (entry == null || entry.id <= 0 || string.IsNullOrWhiteSpace(entry.name)
-                || !System.Enum.IsDefined(typeof(ServerState), entry.state) || !ids.Add(entry.id))
-                return false;
-
-            catalog.Add(entry);
-        }
-
-        if (catalog.Count == 0)
+        if (!entity.SetServers(entries))
             return false;
-
-        servers.Clear();
-        servers.AddRange(catalog);
 
         if (IsActive())
         {
@@ -115,8 +99,9 @@ public class LoginSystem : RuntimeSystem
         if (!entity)
             return false;
 
-        if (servers.Count == 0)
+        if (entity.serverCount == 0)
         {
+            var servers = new List<ServerEntry>();
             for (int i = 1; i <= 12; i++)
                 servers.Add(new ServerEntry() {
                     id = i,
@@ -124,16 +109,21 @@ public class LoginSystem : RuntimeSystem
                     state = i == 3 ? ServerState.Maintenance : i == 2 ? ServerState.Busy : ServerState.Normal,
                     recommended = i <= 2
                 });
+
+            if (!entity.SetServers(servers))
+                return false;
         }
 
-        var entry = servers.Find(item => item.id == entity.selectedServer) ?? servers[0];
+        if (!entity.RestoreSelection())
+            return false;
 
-        if (!entity.SelectServer(entry.id))
+        var entry = entity.GetSelectedServer();
+        if (entry == null)
             return false;
 
         vm.ServerName = entry.name;
         widget.SetServerState(entry.state);
-        vm.CanEnter = entry.state != ServerState.Maintenance;
+        vm.CanEnter = entity.CanEnter();
 
         return true;
     }
@@ -176,6 +166,7 @@ public class LoginSystem : RuntimeSystem
         categoryTitles.Clear();
 
         int recent = entity.recentServer;
+        var servers = entity.GetServers();
 
         AddCategory(CommonText.Get(Config.Excel.LOGIN_RECENT_SERVER), servers.Where(entry => entry.id == recent).ToList());
         AddCategory(CommonText.Get(Config.Excel.LOGIN_RECOMMENDED_SERVER), servers.Where(entry => entry.recommended).ToList());
@@ -270,7 +261,7 @@ public class LoginSystem : RuntimeSystem
 
         vm.ServerName = entry.name;
         widget.SetServerState(entry.state);
-        vm.CanEnter = entry.state != ServerState.Maintenance;
+        vm.CanEnter = entity.CanEnter();
 
         CloseServers();
 
@@ -317,11 +308,11 @@ public class LoginSystem : RuntimeSystem
         if (!vm)
             return false;
 
-        if (!vm.CanEnter)
-            return false;
-
         var login = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();
         if (!login)
+            return false;
+
+        if (!login.CanEnter())
             return false;
 
         if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)
@@ -329,7 +320,7 @@ public class LoginSystem : RuntimeSystem
             return false;
 
         bool posted = XPluginUtility.PostEvent(new LoginSucceed() {
-            pid = login.pid
+            pid = master.GetAttr(MasterPropertyDef.pid)
         });
 
         if (posted)

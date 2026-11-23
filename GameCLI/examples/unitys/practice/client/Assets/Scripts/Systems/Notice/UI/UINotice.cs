@@ -42,7 +42,7 @@ public class UINotice : UIWidget<VMNotice>
         vm.Body = text ?? string.Empty;
         vm.Entry = hasContent;
         vm.Empty = !hasContent;
-        vm.EmptyText = CommonText.Get(Config.Excel.NOTICE_EMPTY);
+
         vm.Expanded = hasContent;
 
         return true;

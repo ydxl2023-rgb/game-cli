@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "本地示例 · 欢迎使用邮件",
+    "body": "这是一封本地测试邮件。\n\n选择邮件后会标记为已读。你可以测试附件领取、删除和批量操作。\n\n本模板不连接网络，附件领取仅生成本地领取记录，不会增加背包物品。",
+    "sentAt": 1794985439,
+    "expiresAt": 1795590239,
+    "read": false,
+    "claimed": false,
+    "rewards": [
+      {
+        "itemId": 1001,
+        "count": 100,
+        "icon": "Assets/Data/Widgets/Common/Micros/ItemSlot/Resources/ui_system_information_14.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "本地示例 · 系统通知",
+    "body": "这是一封没有附件的本地示例邮件。\n阅读之后可以删除，也可以使用“删除已读”。",
+    "sentAt": 1794899039,
+    "expiresAt": 1795590239,
+    "read": false,
+    "claimed": false,
+    "rewards": []
+  },
+  {
+    "id": 3,
+    "title": "本地示例 · 补给邮件",
+    "body": "这是一封带附件的本地示例邮件。\n附件领取前不可删除，领取不能重复执行。",
+    "sentAt": 1794812639,
+    "expiresAt": 1795590239,
+    "read": false,
+    "claimed": false,
+    "rewards": [
+      {
+        "itemId": 1001,
+        "count": 300,
+        "icon": "Assets/Data/Widgets/Common/Micros/ItemSlot/Resources/ui_system_information_14.png"
+      }
+    ]
+  }
+]

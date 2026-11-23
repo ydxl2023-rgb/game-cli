@@ -181,5 +181,4 @@ public class NoticeText : Text, IPointerDownHandler, IPointerClickHandler
             }
         }
     }
-
 }

@@ -2,23 +2,21 @@ using Oathx.Core;
 using Oathx.Entity;
 using Oathx.Widget;
 
-/// <summary>Integrates the five-module local practice trial.</summary>
-public class PracticePlugin : XPlugin
+/// <summary>Initializes the local ten-system practice integration.</summary>
+public class PracticePlugin : XPlugin, IUIEventSender
 {
     /// <summary>Initialize UI infrastructure.</summary>
     /// <returns>True when initialization completes.</returns>
     public override bool Install()
     {
-        UISystem.GetSingleton().Startup(new ResourceConfigure { loader = new PracticeUILoader(), cacher = new UIDefaultCacher() });
+        UISystem.GetSingleton().Startup(new ResourceConfigure { loader = new PracticeUILoader(), cacher = new UIDefaultCacher(), eventSenders = new System.Collections.Generic.List<IUIEventSender> { this } });
 
         UISystem.GetSingleton().RegisterSyncActions(new System.Type[] {
             typeof(SyncFancyGridScrollView),
             typeof(SyncFancyGridClick)
         });
 
-        XEntityManager.GetSingleton().CreateEntity<MasterEntity>();
-        XEntityManager.GetSingleton().CreateEntity<LoginEntity>();
-        XEntityManager.GetSingleton().CreateEntity<NoticeEntity>();
+
 
         return true;
     }
@@ -32,10 +30,21 @@ public class PracticePlugin : XPlugin
     /// <returns>True when the practice entry is ready.</returns>
     public override bool Startup()
     {
-        Load<MasterSystem>();
-
-        XPluginUtility.PostEvent(new SystemActive { type = typeof(LoginSystem) });
-        UnityEngine.Debug.Log("Practice trial ready: local template flow, no network authentication.");
+        LoadConfiguration();
+        var types = new System.Collections.Generic.List<System.Type>();
+        foreach (var type in GetType().Assembly.GetTypes())
+        {
+            if (typeof(XEntity).IsAssignableFrom(type) && !type.IsAbstract && type.GetCustomAttributes(typeof(Initialize), true).Length > 0)
+                types.Add(type);
+        }
+        XEntityManager.GetSingleton().Startup(types);
+        foreach (var type in new[] { typeof(MasterSystem), typeof(FunctionManagerSystem), typeof(RedDotSystem), typeof(LoginSystem) })
+        {
+            var module = Load(type);
+            if (module != null && !module.IsActive())
+                module.Active();
+        }
+        UnityEngine.Debug.Log("Practice ten-system offline integration ready.");
 
         return true;
     }
@@ -48,6 +57,37 @@ public class PracticePlugin : XPlugin
         UISystem.GetSingleton().Shutdown();
         XEntityManager.GetSingleton().Shutdown();
     }
+
+    /// <summary>Forward widget activation into the plugin event dispatcher.</summary>
+    /// <param name="widget">Activated widget.</param>
+    public void OnWidgetOpened(IWidget widget)
+    {
+        DispatchEvent(new WidgetOpenedEvent { data = new WidgetOpened { widget = widget } });
+    }
+
+    /// <summary>Forward widget closing into the plugin event dispatcher.</summary>
+    /// <param name="widget">Closing widget.</param>
+    public void OnWidgetClosing(IWidget widget)
+    {
+        DispatchEvent(new WidgetClosingEvent { data = new WidgetClosing { widget = widget } });
+    }
+
+    /// <summary>Load exported configuration before creating business entities.</summary>
+    private void LoadConfiguration()
+    {
+        foreach (var asset in UnityEngine.Resources.LoadAll<UnityEngine.TextAsset>("PracticeConfig"))
+        {
+            var type = GetType().Assembly.GetType("Config." + asset.name);
+            if (type == null)
+                continue;
+
+            var data = (Config.IConfigData)Newtonsoft.Json.JsonConvert.DeserializeObject(asset.text, type);
+            var field = typeof(Config.Excel).GetField(data.GetName());
+            if (field != null)
+                field.SetValue(null, data.GetData());
+        }
+    }
+
 }
 
 /// <summary>Loads practice UI assets through the framework resource layer.</summary>
@@ -73,3 +113,19 @@ public class PracticeUILoader : UILoader
     }
 }
 
+
+/// <summary>Application wrapper for a widget activation.</summary>
+public class WidgetOpenedEvent : IEvent
+{
+    /// <summary>Widget event data.</summary>
+    public WidgetOpened data
+    { get; set; }
+}
+
+/// <summary>Application wrapper for a widget closing.</summary>
+public class WidgetClosingEvent : IEvent
+{
+    /// <summary>Widget event data.</summary>
+    public WidgetClosing data
+    { get; set; }
+}

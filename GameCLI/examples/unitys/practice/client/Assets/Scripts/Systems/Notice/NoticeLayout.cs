@@ -31,6 +31,39 @@ public class NoticeLayout : UIBehaviour
     [SerializeField]
     private RectTransform entries;
 
+    /// <summary>Keep the authored top edges fixed when text increases content height.</summary>
+    protected override void Awake()
+    {
+        base.Awake();
+
+        if (!body || !entries)
+            return;
+
+        RectTransform current = body.rectTransform;
+        while (current)
+        {
+            Vector3[] corners = new Vector3[4];
+            current.GetWorldCorners(corners);
+            float height = current.rect.height;
+            Vector2 minimum = current.anchorMin;
+            Vector2 maximum = current.anchorMax;
+            minimum.y = 1f;
+            maximum.y = 1f;
+            current.anchorMin = minimum;
+            current.anchorMax = maximum;
+            current.pivot = new Vector2(current.pivot.x, 1f);
+            current.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            Vector3 position = current.position;
+            position.y = corners[1].y;
+            current.position = position;
+
+            if (current == entries)
+                break;
+
+            current = current.parent as RectTransform;
+        }
+    }
+
     /// <summary>
     /// Keep text, entry background and scroll bounds aligned after VM updates.
     /// </summary>

@@ -13,13 +13,12 @@ public class UILoading : UIWidget<VMLoading>
     /// <param name="progress">Progress from zero to one; NaN is treated as zero.</param>
     /// <param name="message">Status message preceding the percentage.</param>
     /// <returns>True when the bound view model was updated.</returns>
-    public bool UpdateProgress(float progress, string message)
+    public bool UpdateProgress(float progress, string message = "Loading...")
     {
         if (!vm)
             return false;
 
         progress = float.IsNaN(progress) ? 0f : Mathf.Clamp01(progress);
-
         vm.Rate = $"{message ?? string.Empty}({Mathf.RoundToInt(progress * 100f)}%)";
 
         return true;

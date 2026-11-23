@@ -1,92 +1,295 @@
 using Oathx.Core;
 using Oathx.Entity;
+using System.Collections;
 
-/// <summary>Requests activation through the product coordinator.</summary>
+/// <summary>
+/// Requests system loading and activation through MasterSystem.
+/// </summary>
 public class SystemActive : IEvent
 {
-    /// <summary>System type requested by the caller.</summary>
-    public System.Type type
-    { get; set; }
+    /// <summary>
+    /// Runtime system type to activate.
+    /// </summary>
+    public System.Type type { get; set; }
+
+    /// <summary>
+    /// Optional action after the system activation step completes.
+    /// </summary>
+    public System.Action complete { get; set; }
 }
 
-/// <summary>Requests deactivation through the product coordinator.</summary>
+/// <summary>
+/// Requests system deactivation and unloading through MasterSystem.
+/// </summary>
 public class SystemDetive : IEvent
 {
-    /// <summary>System type requested by the caller.</summary>
-    public System.Type type
-    { get; set; }
+    /// <summary>
+    /// Runtime system type to unload.
+    /// </summary>
+    public System.Type type { get; set; }
+
+    /// <summary>
+    /// Optional action after the system unloading step completes.
+    /// </summary>
+    public System.Action complete { get; set; }
 }
 
-/// <summary>Reports successful local test login without server authentication.</summary>
+/// <summary>
+/// Local login success notification that permits game startup.
+/// </summary>
 public class LoginSucceed : IEvent
 {
-    /// <summary>Positive local player identifier.</summary>
-    public int pid
+    /// <summary>
+    /// Player identifier supplied by the local caller.
+    /// </summary>
+    public int pid 
     { get; set; }
 }
 
-/// <summary>Coordinates local system events without introducing game systems.</summary>
+/// <summary>
+/// Local login failure notification.
+/// </summary>
+public class LoginFailure : IEvent
+{
+    /// <summary>
+    /// Player identifier supplied by the local caller.
+    /// </summary>
+    public int code
+    { get; set; }
+}
+
+/// <summary>
+/// Coordinates local player persistence and business system startup.
+/// </summary>
 public class MasterSystem : RuntimeSystem
 {
-    /// <summary>Subscribe to local lifecycle requests.</summary>
-    /// <returns>True after all handlers have been registered.</returns>
+    /// <summary>Generation used to reject callbacks from a previous activation.</summary>
+    private int generation;
+
+    /// <summary>Whether a validated login has already started Home for this activation.</summary>
+    private bool loginAccepted;
+
+    /// <summary>Current coordinator activation generation.</summary>
+    protected override int operationVersion { get { return generation; } }
+
+    /// <summary>
+    /// Subscribe to local login success without starting Home.
+    /// </summary>
+    /// <returns>True after registering the local login handler.</returns>
     public override bool OnActive()
     {
+        generation++;
+        loginAccepted = false;
+
+        Subscribe<LoginSucceed>(OnLoginSucceed);
         Subscribe<SystemActive>(OnSystemActive);
         Subscribe<SystemDetive>(OnSystemDetive);
-        Subscribe<LoginSucceed>(OnLoginSucceed);
+        Subscribe<HomeEntryRequested>(OnHomeEntryRequested);
+        Subscribe<FunctionOpenChanged>(OnFunctionChanged);
 
         return true;
     }
 
-    /// <summary>Release local subscriptions when the coordinator stops.</summary>
+    /// <summary>
+    /// Release local event subscriptions and unload Home.
+    /// </summary>
     public override void OnDetive()
     {
+        generation++;
+        loginAccepted = false;
+
         UnsubscribeAll();
+
+        Unload();
     }
 
-    /// <summary>Request a valid system activation after event dispatch completes.</summary>
-    /// <param name="data">Requested system type.</param>
+    /// <summary>
+    /// Restore local data or persist initial values before starting business systems.
+    /// </summary>
+    /// <returns>True when local player data is ready.</returns>
+    public bool Load()
+    {
+        if (!IsActive())
+            return false;
+
+        if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)
+            || !(entity is MasterEntity master))
+            return false;
+
+        bool ready = master.ExistsSerializeFile()
+            ? master.Deserialize()
+            : !string.IsNullOrEmpty(master.Serialize());
+        if (!ready)
+            return false;
+
+        return true;
+    }
+
+    /// <summary>
+    /// Unload Home, including during deactivation.
+    /// </summary>
+    /// <returns>True after requesting Home removal from the dispatcher.</returns>
+    public bool Unload()
+    {
+        dispatcher.Unload(typeof(LoginSystem));
+        dispatcher.Unload(typeof(MailSystem));
+        dispatcher.Unload(typeof(SettingsSystem));
+        dispatcher.Unload(typeof(ShopSystem));
+        dispatcher.Unload(typeof(NoticeSystem));
+
+        dispatcher.Unload(typeof(HomeSystem));
+
+        return true;
+    }
+
+    /// <summary>
+    /// Persist the current local player data without contacting a server.
+    /// </summary>
+    /// <returns>True when the local archive has been written.</returns>
+    public bool Save()
+    {
+        if (!IsActive())
+            return false;
+
+        if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)
+            || !(entity is MasterEntity master))
+            return false;
+
+        return !string.IsNullOrEmpty(master.Serialize());
+    }
+
+    /// <summary>
+    /// Load and activate a requested business system.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
     private void OnSystemActive(SystemActive data)
     {
-        if (data != null && IsSystemType(data.type))
-        {
-            LoadSystem(data.type);
-        }
+        if (data != null && IsActive() && IsSystemType(data.type) && FunctionManagerAccess.CanActivate(data.type))
+            XCoroutine.Run(ActivateSystem(data, generation));
     }
 
-    /// <summary>Request a valid system deactivation after event dispatch completes.</summary>
-    /// <param name="data">Requested system type.</param>
+    /// <summary>Route the reference Home mall entry through the system coordinator.</summary>
+    /// <param name="data">Home navigation request.</param>
+    private void OnHomeEntryRequested(HomeEntryRequested data)
+    {
+        if (!IsActive() || data == null)
+            return;
+
+        System.Type target = null;
+        switch (data.entry)
+        {
+            case HomeEntry.Shop: target = typeof(ShopSystem); break;
+            case HomeEntry.Mail: target = typeof(MailSystem); break;
+            case HomeEntry.Settings: target = typeof(SettingsSystem); break;
+            case HomeEntry.Notice: target = typeof(NoticeSystem); break;
+        }
+        if (target != null)
+            OnSystemActive(new SystemActive { type = target });
+    }
+
+    /// <summary>
+    /// Wait until event dispatch has finished before changing the system registry.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
+    /// <returns>The deferred activation sequence.</returns>
+    /// <param name="version">Activation generation captured at request time.</param>
+    private IEnumerator ActivateSystem(SystemActive data, int version)
+    {
+        yield return null;
+
+        if (IsActive() && version == generation && FunctionManagerAccess.CanActivate(data.type))
+            LoadSystem(data.type, data.complete);
+    }
+
+    /// <summary>
+    /// Unload a requested business system and its dependent pages.
+    /// </summary>
+    /// <param name="data">Target system and optional completion action.</param>
     private void OnSystemDetive(SystemDetive data)
     {
-        if (data != null && IsSystemType(data.type))
+        if (data != null && IsActive() && IsSystemType(data.type))
         {
-            UnloadSystem(data.type);
+            if (data.type == typeof(LoginSystem))
+                dispatcher.Unload(typeof(NoticeSystem));
+
+            UnloadSystem(data.type, data.complete);
         }
     }
 
-    /// <summary>Record successful local login without creating a Home system.</summary>
-    /// <param name="data">Local login result.</param>
-    private void OnLoginSucceed(LoginSucceed data)
+    /// <summary>Close a business system when its configured gate becomes unavailable.</summary>
+    /// <param name="data">Calculated availability transition.</param>
+    private void OnFunctionChanged(FunctionOpenChanged data)
     {
-        if (data != null && data.pid > 0)
+        if (data != null && IsActive() && !data.opened && Config.Excel.functionSystemConfig.TryGetValue(data.id, out var row))
         {
-            var entity = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
-            if (entity)
-            {
-                entity.pid = data.pid;
-            }
+            var type = FunctionManagerAccess.ResolveType(row);
+            if (IsSystemType(type) && type != typeof(FunctionManagerSystem) && type != typeof(RedDotSystem))
+                XCoroutine.Run(CloseUnavailable(type, generation));
         }
     }
 
-    /// <summary>Validate a concrete runtime system type.</summary>
-    /// <param name="type">Requested type.</param>
-    /// <returns>True for supported systems other than this coordinator.</returns>
+    /// <summary>Defer registry changes and reject stale close messages.</summary>
+    /// <param name="type">Business system to close.</param>
+    /// <returns>The deferred close sequence.</returns>
+    /// <param name="version">Activation generation captured at request time.</param>
+    private IEnumerator CloseUnavailable(System.Type type, int version)
+    {
+        yield return null;
+
+        if (IsActive() && version == generation && !FunctionManagerAccess.CanActivate(type))
+            UnloadSystem(type, null);
+    }
+
+    /// <summary>
+    /// Reject invalid targets and requests to replace the lifecycle coordinator.
+    /// </summary>
+    /// <param name="type">Requested system type.</param>
+    /// <returns>True for a concrete business runtime system.</returns>
     private bool IsSystemType(System.Type type)
     {
-        return IsActive() && type != null && type != typeof(MasterSystem)
-            && !type.IsAbstract && !type.ContainsGenericParameters
-            && typeof(RuntimeSystem).IsAssignableFrom(type)
-            && type.GetConstructor(System.Type.EmptyTypes) != null;
+        return type != null && type != typeof(MasterSystem) && !type.IsAbstract
+            && !type.ContainsGenericParameters && type.GetConstructor(System.Type.EmptyTypes) != null
+            && typeof(RuntimeSystem).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Prepare local player data and start Home after local login succeeds.
+    /// </summary>
+    /// <param name="data">Local login success notification.</param>
+    private void OnLoginSucceed(LoginSucceed data)
+    {
+        if (data == null || data.pid <= 0 || loginAccepted || !Load())
+            return;
+
+        if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)
+            || !(entity is MasterEntity master) || !master.AcceptIdentity(data.pid))
+            return;
+
+        if (!Save())
+            return;
+
+        loginAccepted = Launch();
+    }
+
+    /// <summary>
+    /// Unload login and request Home startup.
+    /// </summary>
+    /// <returns>True when the transition has been requested.</returns>
+    private bool Launch()
+    {
+        if (!IsActive())
+            return false;
+
+        dispatcher.Unload(typeof(NoticeSystem));
+
+        UnloadSystem(typeof(LoginSystem), () => {
+            if (IsActive())
+            {
+                LoadSystem(typeof(HomeSystem));
+            }
+        });
+
+        return true;
     }
 }
+

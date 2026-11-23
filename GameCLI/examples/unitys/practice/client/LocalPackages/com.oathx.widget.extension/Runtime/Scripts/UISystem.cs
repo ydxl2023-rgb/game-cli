@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Oathx.Widget;
@@ -7,6 +7,22 @@ using System.Linq;
 
 namespace Oathx.Widget
 {
+    /// <summary>Lifecycle data emitted after widget activation and before the caller callback.</summary>
+    public class WidgetOpened
+    {
+        /// <summary>The activated widget.</summary>
+        public IWidget widget
+        { get; set; }
+    }
+
+    /// <summary>Lifecycle data emitted when closing begins, before animation completion.</summary>
+    public class WidgetClosing
+    {
+        /// <summary>The widget entering its close sequence.</summary>
+        public IWidget widget
+        { get; set; }
+    }
+
 
     /// <summary>
     /// 
@@ -14,6 +30,9 @@ namespace Oathx.Widget
     public class UISystem : MonoBehaviour
     {
         public static UISystem instance;
+
+        /// <summary>Registered lifecycle adapters owned by this UI system.</summary>
+        private readonly List<IUIEventSender> eventSenders = new List<IUIEventSender>();
 
         /// <summary>
         /// 
@@ -56,8 +75,8 @@ namespace Oathx.Widget
         /// <summary>
         /// Under loading widget
         /// </summary>
-        protected readonly Dictionary<string, bool>
-            loadingMap = new Dictionary<string, bool>();
+        protected readonly Dictionary<string, object>
+            loadingMap = new Dictionary<string, object>();
 
         /// <summary>
         /// current opened widgets
@@ -137,14 +156,48 @@ namespace Oathx.Widget
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="complete"></param>
+        /// <param name="configure">Optional resource services and lifecycle notification adapter.</param>
         public void Startup(ResourceConfigure configure = null)
         {
+            eventSenders.Clear();
+            if (configure?.eventSenders != null)
+            {
+                foreach (var sender in configure.eventSenders)
+                    RegisterEventSender(sender);
+            }
+
             UIResourceManager.GetSingleton().Startup(configure ?? new ResourceConfigure()
             {
                 loader = new UIDefaultLoader(),
                 cacher = new UIDefaultCacher()
             });
+        }
+
+        /// <summary>Register one lifecycle adapter without duplicate instance delivery.</summary>
+        /// <param name="sender">The adapter to register.</param>
+        /// <returns>True when the adapter was added.</returns>
+        public bool RegisterEventSender(IUIEventSender sender)
+        {
+            if (sender == null || eventSenders.Exists(item => ReferenceEquals(item, sender)))
+                return false;
+
+            eventSenders.Add(sender);
+
+            return true;
+        }
+
+        /// <summary>Remove one previously registered lifecycle adapter.</summary>
+        /// <param name="sender">The exact adapter instance to remove.</param>
+        /// <returns>True when the adapter was registered and removed.</returns>
+        public bool UnregisterEventSender(IUIEventSender sender)
+        {
+            int index = eventSenders.FindIndex(item => ReferenceEquals(item, sender));
+            if (index < 0)
+                return false;
+
+            eventSenders.RemoveAt(index);
+
+            return true;
         }
 
         /// <summary>
@@ -171,6 +224,8 @@ namespace Oathx.Widget
             customModleAttributes.Clear();
             // clear all cache resources
             UIResourceManager.GetSingleton().Shutdown();
+
+            eventSenders.Clear();
         }
 
         /// <summary>
@@ -428,11 +483,18 @@ namespace Oathx.Widget
             {
                 if (!loadingMap.ContainsKey(widgetName))
                 {
-                    loadingMap[widgetName] = true;
+                    var request = new object();
+                    loadingMap[widgetName] = request;
 
                     UIResourceManager.GetSingleton().LoadAsync<GameObject>(path, (prefab) =>
                     {
+                        // A closed or replaced request must never create a stale page.
+                        if (!loadingMap.TryGetValue(widgetName, out var current) || !ReferenceEquals(current, request))
+                            return;
+
                         loadingMap.Remove(widgetName);
+                        if (!prefab || !parent)
+                            return;
 
                         T widget = CreateWidget<T>(widgetName, path, prefab as GameObject, setting, parent);
 #if UNITY_EDITOR
@@ -463,11 +525,18 @@ namespace Oathx.Widget
             {
                 if (!loadingMap.ContainsKey(widgetName))
                 {
-                    loadingMap[widgetName] = true;
+                    var request = new object();
+                    loadingMap[widgetName] = request;
 
                     UIResourceManager.GetSingleton().LoadAsync<GameObject>(path, (prefab) =>
                     {
+                        // A closed or replaced request must never create a stale page.
+                        if (!loadingMap.TryGetValue(widgetName, out var current) || !ReferenceEquals(current, request))
+                            return;
+
                         loadingMap.Remove(widgetName);
+                        if (!prefab || !parent)
+                            return;
 
                         IWidget widget = CreateWidget(widgetType, path, prefab as GameObject, setting, parent);
 #if UNITY_EDITOR
@@ -526,24 +595,10 @@ namespace Oathx.Widget
             return CreateWidget<T>(widgetName, path, prefab, setting, parent);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="widget"></param>
-        /// <param name="done"></param>
-        /// <summary>
-        /// Global widget-opened notification, fired after the widget is activated.
-        /// The game layer can subscribe to this to play a unified popup-open sound.
-        /// </summary>
-        public static event System.Action<IWidget> OnWidgetOpened;
-
-        /// <summary>
-        /// Global widget-closed notification, fired when the widget starts closing.
-        /// The game layer can subscribe to this to play a unified popup-close sound.
-        /// </summary>
-        public static event System.Action<IWidget> OnWidgetClosed;
-
+        /// <summary>Activate the widget, notify the application, then complete its open request.</summary>
+        /// <typeparam name="T">The widget type.</typeparam>
+        /// <param name="widget">The loaded widget.</param>
+        /// <param name="done">The caller's initialization callback.</param>
         private void NotifyOpenWidget<T>(T widget, System.Action<T> done) where T : IWidget
         {
             SetTopWidget(widget);
@@ -567,7 +622,7 @@ namespace Oathx.Widget
                 group.blocksRaycasts = true;
             }
 
-            OnWidgetOpened?.Invoke(widget);
+            DispatchWidgetEvent(widget, true);
             done?.Invoke(widget);
         }
 
@@ -774,6 +829,8 @@ namespace Oathx.Widget
         public void CloseWidget(System.Type type, System.Action complete = null, bool immediate = false)
         {
             var widgetName = type.Name;
+            loadingMap.Remove(widgetName);
+
             if (widgets.ContainsKey(widgetName))
             {
                 var widget = widgets[widgetName];
@@ -808,6 +865,8 @@ namespace Oathx.Widget
         public void UnloadWidget<T>(System.Action complete = null, bool immediate = false) where T : IWidget
         {
             var widgetName = typeof(T).Name;
+            loadingMap.Remove(widgetName);
+
             if (widgets.ContainsKey(widgetName))
             {
                 var widget = widgets[widgetName];
@@ -848,7 +907,7 @@ namespace Oathx.Widget
                 return;
             }
 
-            OnWidgetClosed?.Invoke(widget);
+            DispatchWidgetEvent(widget, false);
 
             int generation = GetCurrentGeneration(widget);
 
@@ -968,6 +1027,28 @@ namespace Oathx.Widget
 
             group.interactable = value;
             group.blocksRaycasts = value;
+        }
+
+        /// <summary>Notify the registration snapshot; changes apply to the next notification.</summary>
+        /// <param name="widget">The widget whose lifecycle changed.</param>
+        /// <param name="opened">True for activation, false for the start of closing.</param>
+        private void DispatchWidgetEvent(IWidget widget, bool opened)
+        {
+            var senders = eventSenders.ToArray();
+            foreach (var sender in senders)
+            {
+                try
+                {
+                    if (opened)
+                        sender.OnWidgetOpened(widget);
+                    else
+                        sender.OnWidgetClosing(widget);
+                }
+                catch (System.Exception exception)
+                {
+                    Debug.LogException(exception);
+                }
+            }
         }
 
         /// <summary>

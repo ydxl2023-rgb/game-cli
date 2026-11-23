@@ -9,6 +9,10 @@ namespace Oathx.Widget
     {
         public UILoader loader;
         public UICacher cacher;
+
+        /// <summary>Optional lifecycle adapters copied into UISystem during startup.</summary>
+        public List<IUIEventSender> eventSenders
+        { get; set; } = new List<IUIEventSender>();
     }
 
     /// <summary>

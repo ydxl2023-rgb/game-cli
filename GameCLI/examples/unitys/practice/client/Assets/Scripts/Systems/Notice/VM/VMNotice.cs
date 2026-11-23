@@ -70,8 +70,4 @@ public partial class VMNotice : VM
     /// </summary>
     [Binding(typeof(SyncVisible))]
     private bool selected;
-
-    /// <summary>Localized text shown when no announcement is available.</summary>
-    [Binding(typeof(SyncText))]
-    private string emptyText;
 }

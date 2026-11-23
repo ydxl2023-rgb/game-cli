@@ -4,6 +4,7 @@ using Oathx.Entity;
 using UnityEngine;
 
 /// <summary>Owns the local trial's announcement reminder preference.</summary>
+[Initialize]
 public class NoticeEntity : XEntity
 {
     /// <summary>UTC expiration of automatic announcement suppression.</summary>

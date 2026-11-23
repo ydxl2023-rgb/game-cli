@@ -151,6 +151,7 @@ namespace Oathx.Core
                 // Retain the separate label when an older prefab still supplies one.
                 loadingText.text = loadingPercent ? text : $"{text} ({percent}%)";
                 if (loadingPercent) loadingPercent.text = $"({percent}%)";
+
                 return true;
             }
 
