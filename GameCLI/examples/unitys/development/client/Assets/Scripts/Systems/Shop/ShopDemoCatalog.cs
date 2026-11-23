@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public static class ShopDemoCatalog
 {
     /// <summary>Independent reward image retained with the mall materials.</summary>
-    public const string tokenIcon = "Assets/Data/Widgets/Shop/ShopAssets/icon_wupin_zuanshi.png";
+    public const string tokenIcon = "Assets/Data/Widgets/Common/Icons/Variants/Currency/icon_wupin_zuanshi.png";
 
     /// <summary>Create local examples without implying real offers or live prices.</summary>
     /// <returns>New independent product objects for the local simulation.</returns>
@@ -31,7 +31,7 @@ public static class ShopDemoCatalog
                 price = amount * 10L,
                 reward = amount,
                 remaining = 99,
-                icon = $"Assets/Data/Widgets/Shop/ShopAssets/sc_czsd_icon_{amount}zuanshi_cn.png"
+                icon = $"Assets/Data/Widgets/Common/Icons/sc_czsd_icon_{amount}zuanshi_cn.png"
             });
         }
 

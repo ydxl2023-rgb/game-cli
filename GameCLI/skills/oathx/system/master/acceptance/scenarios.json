@@ -1,0 +1,28 @@
+{
+  "schema": "gamecli-scenarios/1",
+  "templateId": "MasterSystem",
+  "steps": [
+    {
+      "id": "login-ready",
+      "op": "wait",
+      "type": "SystemScenarioProbe",
+      "member": "LoginReady",
+      "equals": "True"
+    },
+    {
+      "id": "enter-game",
+      "op": "call",
+      "type": "SystemScenarioProbe",
+      "member": "EnterGame",
+      "equals": "True"
+    },
+    {
+      "id": "home-opened-once",
+      "op": "wait",
+      "type": "SystemScenarioProbe",
+      "member": "HomeOpenings",
+      "equals": "1",
+      "stableMs": 1200
+    }
+  ]
+}

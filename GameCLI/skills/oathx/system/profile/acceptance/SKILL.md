@@ -5,6 +5,8 @@ description: Independently verify shared avatar/profile and shortcut prefab depe
 
 # Profile 公共组件验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 先读 [开发规范](../../../development-rules/SKILL.md) 和 [开发契约](../development/SKILL.md)。独立 agent 只检查交付，缺陷交回开发，保留实际 CLI 证据。
 
 1. 检查两个主要组合预制及 Parts 内部资源及共享代码、字体、shader、图片、标记和动画的 GUID 闭包，不允许依赖 Home 私有资源。Profile 根必须为 UIProfile/VMProfile，其 ProfileBody 主体内的 Avatar 仍为嵌套实例。

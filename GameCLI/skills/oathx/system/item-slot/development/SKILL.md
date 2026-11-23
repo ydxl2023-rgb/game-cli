@@ -5,6 +5,8 @@ description: Reuse the foundational UIItemSlot/VMItemSlot control, preserve lega
 
 # ItemSlot 基础控件
 
+开发前读取[系统模板开发流程](../../../system-development/SKILL.md)，交付本模块的场景基准与复现数据。
+
 先读[开发规范](../../../development-rules/SKILL.md)、[Widget](../../../widget/SKILL.md)。由另一 agent 使用[本控件验收](../acceptance/SKILL.md)复核。
 
 - `UIItemSlot` 位于 `Systems/Common/UI`，保留 `Oathx.Widget` 命名空间；`VMItemSlot` 位于 `Common/UI/VM`。槽位没有系统、配置查询或装备业务。

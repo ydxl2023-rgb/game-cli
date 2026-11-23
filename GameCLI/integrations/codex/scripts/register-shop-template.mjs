@@ -51,14 +51,13 @@ async function walk(dir){const list=[];for(const entry of await readdir(dir,{wit
 for(const absolute of await walk(join(project,'Assets/Scripts/Systems/Shop'))){const path=absolute.slice(project.length+1).replaceAll('\\','/');files.push({path,content:await readFile(absolute,'utf8')});}
 for(const name of ['RuntimeSystem.cs','Common/Utility/CommonText.cs'])files.push({path:'Assets/Scripts/Systems/'+name,content:await readFile(join(project,'Assets/Scripts/Systems',name),'utf8')});
 files.push({path:'GameCLI/Templates/Shop/FrameworkReference/UISystem.cs',content:await readFile(join(project,'LocalPackages/com.oathx.widget.extension/Runtime/Scripts/UISystem.cs'),'utf8')});
-for(const name of ['Shop','ShopRecharge','ShopGift','ShopPurchase']){
- const root='Assets/Data/Widgets/'+name;
- for(const absolute of [join(project,root+'.meta'),...await walk(join(project,root))]){
-  const path=absolute.slice(project.length+1).replaceAll('\\','/'),body=await readFile(absolute);
-  if(path.endsWith('.png')){assets.set(hash(body),{body,path});resources.push({path,assetId:hash(body),sha256:hash(body),mime:'image/png'});}
-  else resources.push({path,encoding:'utf8',sha256:hash(body),content:body.toString('utf8')});
- }
+const root='Assets/Data/Widgets/Shop';
+for(const absolute of [join(project,root+'.meta'),...await walk(join(project,root))]){
+ const path=absolute.slice(project.length+1).replaceAll('\\','/'),body=await readFile(absolute);
+ if(path.endsWith('.png')){assets.set(hash(body),{body,path});resources.push({path,assetId:hash(body),sha256:hash(body),mime:'image/png'});}
+ else resources.push({path,encoding:'utf8',sha256:hash(body),content:body.toString('utf8')});
 }
+
 for(const key of ['main','recharge','gift','giftbuy']){
  const design=await readJson(join(folder,key,'template.json'));
  for(const id of design.design.nodes.map(n=>n.image).filter(Boolean))assert(assets.has(id),'Missing resource '+id);

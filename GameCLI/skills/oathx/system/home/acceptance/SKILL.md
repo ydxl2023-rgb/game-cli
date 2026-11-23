@@ -5,6 +5,8 @@ description: 由未参与实现的 agent 独立验收 Home 基础大厅的展示
 
 # Home 独立验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与本轮开发的 agent 执行。读取 [Home 开发契约](../development/SKILL.md)、[编码规范](../../../development-rules/SKILL.md)、[Widget](../../../widget/SKILL.md) 和 [CLI 说明](../../../../../integrations/codex/cli/README.md)。不自动派发 agent，不修改交付或基准来消除差异。
 
 记录需求、设计版本、工程绑定身份、起止哈希与实际资源路径。Studio 任务先核对 verified 绑定与 ProjectSettings/GameCLIProject.json；与开发串行操作同一 Editor。

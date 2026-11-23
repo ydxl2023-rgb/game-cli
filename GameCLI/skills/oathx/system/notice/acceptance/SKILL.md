@@ -5,6 +5,8 @@ description: 独立验收产品 Notice 交付，检查公告内容、超链接�
 
 # Notice 独立验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与本轮 Notice 实现的 agent 执行。本技能只定义本模块验收，不自动派发 agent 或启动试跑。阅读[本模块开发契约](../development/SKILL.md)、[编码规范](../../../development-rules/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)及 [CLI 命令说明](../../../../../integrations/codex/cli/README.md)。
 
 ## 开始前

@@ -5,6 +5,8 @@ description: Reuse RewardEntry as a standalone or Fancy-list reward display with
 
 # Reward 公共展示组件
 
+开发前读取[系统模板开发流程](../../../system-development/SKILL.md)，交付本模块的场景基准与复现数据。
+
 先读[开发规范](../../../development-rules/SKILL.md)、[Widget](../../../widget/SKILL.md)与[Widget Extension](../../../widget-extension/SKILL.md)。验收由另一 agent 使用[本模块验收](../acceptance/SKILL.md)。
 
 - 数据库模板 `RewardEntry` 归入预制控件，不拥有 RuntimeSystem。原生资源是 `Assets/Data/Widgets/Common/Micros/Reward/RewardEntry.prefab`；UI 为 `Systems/Common/UI/UIRewardEntry.cs`，VM 为 `Systems/Common/UI/VM/VMRewardEntry.cs`。

@@ -1,6 +1,7 @@
 """Extract reviewed source layout into UnityCLI input; never author native YAML."""
 import json
 from pathlib import Path
+from shared_icon_path import exported_image_path
 base=Path(__file__).resolve().parents[1]
 f=base/'.data/imports/sv-settings'
 payload=json.loads((f/'main/template.json').read_text(encoding='utf8'))
@@ -20,7 +21,7 @@ for n in d['nodes']:
 def convert(n,x=0,y=0):
  x+=n['x'];y+=n['y']
  return dict(id=n['id'],name=n['name'],element=n['type'],active=n.get('active',True),rect=dict(x=x,y=y,width=n['width'],height=n['height']),rectTransform=n['rectTransform'],style=dict(color='#ffffff00' if n.get('surface')=='transparent' and not n.get('image') else n['color'],opacity=n.get('opacity',1),sprite=n.get('image',''),imageType=n.get('imageType','simple')),text=dict(content=n.get('text',''),fontSize=n.get('fontSize',20),color=n['color'],alignment={'left':'Left','center':'Center','right':'Right'}[n.get('textAlign','left')]) if n['type']=='Text' else None,children=[convert(c,x,y) for c in d['nodes'] if c['parent']==n['id']])
-assets=[dict(id=h,file='../assets/'+h+'.png',path='Assets/Data/Widgets/Settings/Images/'+h+'.png',usedBy=[n['id'] for n in d['nodes'] if n.get('image')==h]) for h in sorted(set(n['image'] for n in d['nodes'] if n.get('image')))]
+assets=[dict(id=h,file='../assets/'+h+'.png',path=exported_image_path('Settings',h),usedBy=[n['id'] for n in d['nodes'] if n.get('image')==h]) for h in sorted(set(n['image'] for n in d['nodes'] if n.get('image')))]
 for asset in assets:
  borders=[n['imageBorder'] for n in d['nodes'] if n.get('image')==asset['id'] and n.get('imageBorder')]
  if borders:asset['spriteBorder']=[borders[0][k] for k in 'xyzw']

@@ -1,3 +1,4 @@
+import {shopWidgetPath} from './shop-widget-path.mjs';
 // Build explicit VM/Metadata contracts from reviewed native paths.
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 const folder='.data/imports/sv-shop',pages={},specs=[];
@@ -36,7 +37,7 @@ for(const spec of specs){
  spec.nativeRoot=nativePath(spec.page,node(spec.page,spec.root).id);
  for(const field of spec.fields)field.targets=field.paths.map(path=>{const n=node(spec.page,path);if(!n)throw Error(`${spec.name}.${field.name} missing ${path}`);return nativePath(spec.page,n.id);});
  const vm=`using Oathx.Widget;\n\n/// <summary>Presentation bindings for ${spec.name}.</summary>\npublic partial class VM${spec.name} : VM\n{\n`+spec.fields.map(field=>`    /// <summary>Bound ${field.name} presentation value.</summary>\n    [Binding${field.type==='ButtonClick'?'':`(typeof(${field.sync}))`}]\n    ${field.type} ${field.name};`).join('\n\n')+'\n}\n';
- const ui=`using Oathx.Widget;\n${spec.cell?'using UnityEngine;\n':''}\n/// <summary>Displays the ${spec.name} view through serialized Metadata.</summary>\n`+(spec.cell?'[RequireComponent(typeof(FancyGridScrollViewCell), typeof(Metadata))]':`[Config("Assets/Data/Widgets/${pageName[spec.page]}/${pageName[spec.page]}.prefab", WidgetLayer.topmost, cacheWidget: false)]`)+`\npublic class UI${spec.name} : UIWidget<VM${spec.name}>\n{\n}\n`;
+ const ui=`using Oathx.Widget;\n${spec.cell?'using UnityEngine;\n':''}\n/// <summary>Displays the ${spec.name} view through serialized Metadata.</summary>\n`+(spec.cell?'[RequireComponent(typeof(FancyGridScrollViewCell), typeof(Metadata))]':`[Config("${shopWidgetPath(pageName[spec.page])}", WidgetLayer.topmost, cacheWidget: false)]`)+`\npublic class UI${spec.name} : UIWidget<VM${spec.name}>\n{\n}\n`;
  for(const [dir,content]of [[`VM/VM${spec.name}.cs`,vm],[`UI/UI${spec.name}.cs`,ui]]){await mkdir(`${folder}/code/${dir.split('/')[0]}`,{recursive:true});await writeFile(`${folder}/code/${dir}`,content);}
 }
 const grids=[

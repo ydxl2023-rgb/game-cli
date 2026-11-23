@@ -11,7 +11,8 @@ description: 使用 com.oathx.widget 编写 UIWidget 与 VM，维护 Binding、M
 
 - 页面使用 `UIWidget<TVM>`；VM 使用 `partial` 与私有语义的 camelCase `[Binding]` 字段；`[Binding]` 必须独占一行，字段声明另起一行，`private` 可以省略，不强制补写。具体格式遵循[开发规范的 VM 绑定字段格式](../development-rules/SKILL.md#vm-绑定字段格式)。生成器提供的数据属性属于绑定机制，不是公开 Unity UI 引用；不要手工重复生成成员。
 - 系统代码目录遵循[共享目录规范](../development-rules/SKILL.md#系统代码目录)：所有 VM 放 `<System>/VM/`，UIWidget 实现放 `<System>/UI/`，其余代码放系统根目录。
-- 页面 prefab 位于 `Assets/Data/Widgets/<系统或页面>/`；独立小预制统一位于 `Assets/Data/Widgets/Common/Micros/`，单 prefab 且无配套资源时直接存放；多个预制或携带配套资源时使用 `<模块>/` 子目录；`[Config]` 与模板源码必须指向实际 prefab 的完整资产路径。
+- 页面 prefab 位于 `Assets/Data/Widgets/<所属系统>/`，子页与弹窗随所属系统归档；独立小预制统一位于 `Assets/Data/Widgets/Common/Micros/`，单 prefab 且无配套资源时直接存放；多个预制或携带配套资源时使用 `<模块>/` 子目录；`[Config]` 与模板源码必须指向实际 prefab 的完整资产路径。
+- 通用图标统一引用 `Assets/Data/Widgets/Common/Icons/` 下的 Sprite。预制、VM 字符串路径及配置表遵循同一目录规则。
 - 按绑定目标选 Sync 类型：文本、可交互状态和显隐分别对照现有 SyncText、SyncInteractable、SyncVisible；按钮对照 ButtonClick。
 - UIWidget.Ref 依赖 prefab Metadata；字段存在不代表绑定完成。通过 UnityCLI widget-metadata 先 dry-run 再生成，检查字段覆盖和真实目标组件。
 - 固定 UI 引用采用序列化绑定，禁止用运行时节点路径搜索替代 Metadata 或序列化引用。

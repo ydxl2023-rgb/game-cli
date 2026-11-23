@@ -38,6 +38,7 @@ description: 整理和使用 com.oathx.* Unity 框架的开发规范，按框架
 ## 组织规则
 
 - 数据库中的 Launch、Login、Loading、Master、Notice 是产品开发范式，不要求原样安装或组成固定业务。负责其中一个模块的独立 agent 先读 system-development，再读对应 SKILL；产品特有需求优先于示例业务，共享编码规范仍必须遵守。
+- 新建系统的开发和验收 SKILL 均应接入[模板提取与复验](system-development/references/template-fidelity.md)，具体场景、数据和通过条件由本系统维护。
 - 各系统 development/references/gamecli-example.md 保存旧 GameCLI 实现与历史同步资料，按需读取，不作为产品默认需求或当前数据库版本依据。开发与验收由不同 agent 负责，分别使用该系统的 development/SKILL.md 与 acceptance/SKILL.md；验收范围、用例与判定由各系统独立维护，不再使用统一系统验收入口。
 - 所有使用该框架的 skill 放在 `skills/oathx`，一个系统一个目录；新增系统采用 `skills/oathx/system/<system-name>/development/SKILL.md` 与 `acceptance/SKILL.md` 成对组织。Launch、Loading 也采用该目录结构，但不因此新增 RuntimeSystem。
 - 共享编码规范只维护一份；框架模块记录通用契约，业务目录记录该系统的数据、页面、配置和验收要求。不要将某个业务的限制扩展为整个框架限制。

@@ -5,6 +5,8 @@ description: 独立验收 Settings 的五页签、偏好校验与保存、滑块
 
 # Settings 验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与实现的 agent 执行。读取[开发契约](../development/SKILL.md)与[开发规范](../../../development-rules/SKILL.md)，核实项目 verified 绑定、模板版本和源码/材料哈希。修改返回开发 agent，同一个 Unity Editor 串行操作。
 
 | 项目 | 必需证据 |

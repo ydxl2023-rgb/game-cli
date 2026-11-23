@@ -5,6 +5,8 @@ description: 独立验收系统开放条件、事件时序、窗口关停和配�
 
 # Function 验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与实现的 agent 读取 [开发契约](../development/SKILL.md) 和 [共享规范](../../../development-rules/SKILL.md)，只读核对后执行授权的独立测试，不修改基准消除问题。
 
 验证 Switch 默认/覆盖、等级达标/回落、起止时间包含规则、未知条件/非法时间/重复类型拒绝。等级变化不改变任何开放状态时，也必须刷新 UI 等级；来源输入不得与完成通知混淆。重复激活只保留一个时钟和一套订阅，停用后时钟释放。关闭窗口以及未显示 Home 时仍会检测到期。已关闭系统的直接 Load、Master 请求及延迟请求必须被拒绝。空 ClassType 不发起网络或虚构系统。

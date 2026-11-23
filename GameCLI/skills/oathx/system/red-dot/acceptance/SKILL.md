@@ -5,6 +5,8 @@ description: 独立验收 RedDot 配置、条件计算、事件更新、Widget �
 
 # RedDot 验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 先读 [开发契约](../development/SKILL.md) 和 [开发规范](../../../development-rules/SKILL.md)。只读检查，由开发者修复发现的问题，不以编译通过替代运行验证。
 
 - 验证工程绑定、配置源表与导出资源一致、启动注册生效；未知条件、缺失父节点、循环和非法标识必须明确拒绝。

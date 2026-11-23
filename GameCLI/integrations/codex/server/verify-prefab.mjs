@@ -1,36 +1,15 @@
-import {execFile} from 'node:child_process';
-import {promisify} from 'node:util';
-import {readFile,mkdir,writeFile,realpath,access} from 'node:fs/promises';
+import {readFile,mkdir,writeFile,realpath} from 'node:fs/promises';
 import {join,basename,relative,isAbsolute,resolve} from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';
 import {selectPrefab,comparePrefab} from '../shared/prefab-verification.mjs';
 import {nodeName} from '../shared/design.mjs';
-const execute=promisify(execFile);
+import {connectUnityCli} from './unity-cli.mjs';
 export async function verifyPrefab({projectId,prefabId,cliPath,assetPath,output},workspaces){
  const binding=await workspaces.unityBindings.requireBinding(projectId);
  const snapshot=await workspaces.snapshot(projectId);
  const design=selectPrefab(snapshot.design,prefabId);
  const root=design.nodes.find(n=>n.id===prefabId);
- let executable=cliPath??process.env.GAMECLI_UNITY_CLI;
- if(!executable){
-  // A local bridge may be developed in another Unity project with its matching CLI build.
-  const packages=JSON.parse(await readFile(join(binding.path,'Packages','manifest.json'),'utf8'));
-  const source=packages.dependencies?.['com.oathx.unitycli'];
-  if(source?.startsWith('file:')){
-   const packagePath=resolve(binding.path,'Packages',source.slice(5));
-   const candidate=resolve(packagePath,'..','..','Library','UnityCLI','UnityCLI.exe');
-   try{await access(candidate);executable=candidate;}catch{}
-  }
-  executable??=join(binding.path,'Library','UnityCLI','unity-cli.exe');
- }
- async function cli(args){
-  let stdout;
-  try{({stdout}=await execute(executable,['--project',binding.path,'--format','json',...args],{timeout:120000,maxBuffer:32*1024*1024,windowsHide:true}));}
-  catch(e){throw Error('UnityCLI 执行失败：'+(e.stderr||e.stdout||e.message));}
-  const result=JSON.parse(stdout);if(!result.ok)throw Error(result.error?.message||result.message||'UnityCLI failed');return result.data;
- }
- const ping=await cli(['ping']);
- if(await realpath(ping.endpoint.projectPath)!==await realpath(binding.path))throw Error('UnityCLI 连接到了其他工程。');
+ const cli=await connectUnityCli(binding.path,cliPath);
  if(!assetPath){
   const result=await cli(['asset','search',nodeName(root),'--type','Prefab','--count','200']);
   const matches=(result.assets??[]).filter(a=>basename(a.path??a.assetPath??'')===nodeName(root)+'.prefab');

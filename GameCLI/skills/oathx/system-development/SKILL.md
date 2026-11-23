@@ -1,6 +1,6 @@
 ---
 name: oathx-system-development
-description: 独立 agent 参考 Oathx 数据库标准模板，为具体产品开发 Launch、Login、Loading、Master 或 Notice。规定任务输入、产品适配、共享接口和修改边界，不是模板原样安装或业务验收流程。
+description: 从原作提取 Oathx 标准模板，或由独立 agent 参考数据库模板开发产品系统与公共组件。规定任务输入、产品适配、共享接口和修改边界，不是模板原样安装或业务验收流程。
 ---
 
 # 系统模板的产品开发流程
@@ -8,6 +8,8 @@ description: 独立 agent 参考 Oathx 数据库标准模板，为具体产品�
 标准模板提供开发范式，不是要求原样安装的成品业务。一个 agent 负责一个系统或 UI 模块的实现，通过明确的接口协作；独立负责不等于无依赖，也不代表必须新增 RuntimeSystem 类。本流程不自动调度 agent。
 
 必须读取 [开发规范](../development-rules/SKILL.md) 和对应系统 SKILL。框架规则必须遵守；示例产品的美术、数据、系统名称、存储键、流程去向和网络方案可以按产品需求替换。参考资料中的“当前”“必须”“保留”等历史约定，除共享编码规范外，只约束其所描述的参考实现，不自动约束新产品。
+
+提取和制作时先读[模板提取与复验](references/template-fidelity.md)，按范围建立可复现的场景基准，并随本系统交付。
 
 ## 默认保留模板设计
 

@@ -5,6 +5,8 @@ description: Independently verify generic item type, legacy-slot compatibility, 
 
 # ItemSlot 验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由非实现 agent 执行。读取[开发契约](../development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)，先核实工程绑定；同一 Unity 串行操作，不修改业务交付。
 
 - 检查 type 为整数属性、无 EquipPartType 依赖和遗留 PartType 调用；产品自己的装备配置/枚举未误改。

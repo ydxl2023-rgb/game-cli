@@ -5,6 +5,8 @@ description: 基于 FunctionSystem 表实现本地系统开放状态、条件检
 
 # Function 开发
 
+开发前读取[系统模板开发流程](../../../system-development/SKILL.md)，交付本模块的场景基准与复现数据。
+
 遵循 [开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)；由另一 agent 按相邻 acceptance 验收。
 
 FunctionManagerEntity 统一保存 level、会话开关和已计算开放状态，提供 IsOpen、UpdateLevel、UpdateSwitch、Refresh 与条件计算。集合保持私有，外部不得直接改写状态；Refresh 返回独立的变更快照，不派发事件。FunctionManagerSystem 只负责订阅输入、时间调度、调用实体方法并发送变更事件。FunctionManagerAccess 仅保留类型解析与加载入口适配，开放判断委托实体，不再实现条件规则。Home 等业务按需获取实体并直接调用 IsOpen；系统不持有 Home VM，也不直接打开关闭 UI。

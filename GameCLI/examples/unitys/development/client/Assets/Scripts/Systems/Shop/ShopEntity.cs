@@ -18,6 +18,23 @@ public partial class ShopEntity : XEntity
     public ShopCategory category
     { get; private set; }
 
+    /// <summary>Selected source navigation indices.</summary>
+    public int sectionIndex
+    { get; private set; }
+
+    /// <summary>Selected page within the current section.</summary>
+    public int pageIndex
+    { get; private set; }
+
+    /// <summary>Record a validated navigation change and release the previous purchase.</summary>
+    public void SetPage(int section, int page)
+    {
+        sectionIndex = section;
+        pageIndex = page;
+
+        CancelPurchase();
+    }
+
     /// <summary>Pending product identifier, or zero when no confirmation is open.</summary>
     public int selectedProduct
     { get; private set; }
@@ -253,3 +270,4 @@ public class ShopProduct
     public string icon
     { get; set; }
 }
+

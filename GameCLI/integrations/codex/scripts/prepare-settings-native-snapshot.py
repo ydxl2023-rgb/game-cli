@@ -3,6 +3,7 @@ import json
 import re
 import hashlib
 from pathlib import Path
+from shared_icon_path import exported_image_path
 from PIL import Image
 
 base=Path(__file__).resolve().parents[1]
@@ -73,7 +74,7 @@ for original in source['nodes']:
             if graphic:
                 graphic['properties'].update(flatten({k:data[k] for k in ['m_Color','m_Enabled','m_Maskable','m_RaycastTarget'] if k in data}))
             if graphic and view.get('image'):
-                graphic['properties']['m_Sprite']={'assetPath':'Assets/Data/Widgets/Settings/Images/'+view['image']+'.png'}
+                graphic['properties']['m_Sprite']={'assetPath':exported_image_path('Settings',view['image'])}
                 graphic['properties']['m_Type']=1 if view.get('imageType')=='sliced' else 0
         if name in ['HorizontalLayoutGroup','VerticalLayoutGroup','GridLayoutGroup','LayoutElement','ContentSizeFitter']:
             props={k:v for k,v in data.items() if k.startswith('m_') and k not in ['m_EditorHideFlags','m_Name','m_EditorClassIdentifier']}
@@ -109,6 +110,6 @@ for identifier,sourcePath in assetNames.items():
     meta=Path('G:/Works/SV/Development/Project',sourcePath+'.meta').read_text(encoding='utf8')
     border=re.search(r'spriteBorder: \{x: ([\d.]+), y: ([\d.]+), z: ([\d.]+), w: ([\d.]+)\}',meta)
     pixels=re.search(r'spritePixelsToUnits: ([\d.]+)',meta)
-    snapshot['visualTextures'].append(dict(path='Assets/Data/Widgets/Settings/Images/'+identifier+'.png',deliverySha256=hashlib.sha256(body).hexdigest(),deliveryWidth=width,deliveryHeight=height,settings=dict(spriteMode=1,spritePixelsToUnits=float(pixels[1]) if pixels else 100,spriteBorder=dict(zip('xyzw',map(float,border.groups()))) if border else dict.fromkeys('xyzw',0),wrapMode=1)))
+    snapshot['visualTextures'].append(dict(path=exported_image_path('Settings',identifier),deliverySha256=hashlib.sha256(body).hexdigest(),deliveryWidth=width,deliveryHeight=height,settings=dict(spriteMode=1,spritePixelsToUnits=float(pixels[1]) if pixels else 100,spriteBorder=dict(zip('xyzw',map(float,border.groups()))) if border else dict.fromkeys('xyzw',0),wrapMode=1)))
 (folder/'settings-native.json').write_text(json.dumps(snapshot,ensure_ascii=False,indent=2),encoding='utf8')
 print('Prepared',len(snapshot['prefab']['nodes']),'native nodes with explicit source UGUI properties')

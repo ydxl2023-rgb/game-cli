@@ -13,7 +13,7 @@ function Invoke-Unity([string[]]$Arguments) {
 }
 foreach ($page in $Pages) {
     $name = $names[$page]
-    $asset = "Assets/Data/Widgets/$name/$name.prefab"
+    $asset = if ($page -eq "main") { "Assets/Data/Widgets/Shop/Shop.prefab" } else { "Assets/Data/Widgets/Shop/$name/$name.prefab" }
     $inspection = Invoke-Unity @('prefab','inspect','--prefab',$asset,'--recursive')
     $components = @{}
     foreach ($node in $inspection.nodes) { $components[$node.path] = [System.Collections.Generic.HashSet[string]]::new(); foreach ($component in $node.components) { [void]$components[$node.path].Add($component.type.Split('.')[-1]) } }

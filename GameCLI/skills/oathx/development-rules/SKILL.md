@@ -80,7 +80,9 @@ VList<VMServerGroupItem> groups;
 
 - 图片 VM 字段优先使用 `string` 资源路径，交给现有 SyncSprite/SyncImage 和统一 UILoader 加载。不得为了同时接受路径与 Sprite 默认声明为 `object`，也不在业务 System 中先加载 Sprite 再赋给 VM。只有运行时生成图片等确实没有资源路径的场景才考虑直接 Sprite，并明确理由。
 
-- 页面预制固定放在 `Assets/Data/Widgets/<系统或页面>/`，例如 `Assets/Data/Widgets/Loading/Loading.prefab`。独立复用的小预制统一归入 `Assets/Data/Widgets/Common/Micros/`，包括物品槽、奖励、货币栏、头像/快捷入口、商品卡与可选标记；若只有一个 prefab（及其 .meta），没有配套资源或子目录，直接存放在 Micros/<名称>.prefab，不创建同名目录；包含多个预制、Parts 或专属图片、动画、材质时，才保留模块目录并随模块管理。共享字体等公共资源可继续位于 Widgets/Common。禁止再为小预制建立 Widgets 下的同级模块目录，也不生成到 Assets/Resources/UI。
+- 页面资源按所属系统归档到 `Assets/Data/Widgets/<系统>/`。该系统的分页、伴随 Widget、弹窗及专属图片、动画均放在同一系统目录内；独立 Widget 类或独立数据库模板不改变资源归属。带配套资源的子页可以保留同名子目录，例如 `Assets/Data/Widgets/Loading/Loading.prefab`。独立复用的小预制统一归入 `Assets/Data/Widgets/Common/Micros/`，包括物品槽、奖励、货币栏、头像/快捷入口、商品卡与可选标记；若只有一个 prefab（及其 .meta），没有配套资源或子目录，直接存放在 Micros/<名称>.prefab，不创建同名目录；包含多个预制、Parts 或专属图片、动画、材质时，才保留模块目录并随模块管理。共享字体等公共资源可继续位于 Widgets/Common。禁止再为小预制建立 Widgets 下的同级模块目录，也不生成到 Assets/Resources/UI。
+
+通用 UI 图标统一存放于 `Assets/Data/Widgets/Common/Icons/`。货币、道具、头像、入口、红点和状态标记由各系统及 Micros 引用同一资产。导入前先核对图片内容、Sprite 导入设置和子资源标识。迁移时保留主资产的 .meta，合并副本后更新 GUID 引用、配置路径、动态拼接路径及生产脚本。系统专属背景和动画帧随所属系统管理。发布模板时按实际依赖收录公共图标及其 .meta，并验证独立安装后的路径。
 - Micros 只规定 Unity 资源位置，不改变代码归属：通用组件仍在 Systems/Common/UI 及 VM 子目录，商品卡等业务组件仍在所属系统 UI/VM。已有同名旧皮肤保留 GUID，不以迁移覆盖或替换；当前旧 Micros/ItemSlot.prefab 与新 Micros/ItemSlot/ItemSlot.prefab 并存。
 - Widget 的 `[Config]`、CLI 生成目标、模板 scripts 中的资源路径必须一致使用该目录。初始化新工程时建立此目录；迁移现有资源使用 Unity AssetDatabase/UnityCLI 保留 `.meta` GUID，并核对场景、Metadata、序列化引用和资源加载。
 - 路径或代码迁移时同步数据库当前标准模板与源码包，重新计算源码 SHA256；保留历史版本用于回滚，不覆盖模板布局。AssetBundle 发布前重新生成资源索引并构建资源包，不能复用旧路径的构建产物。

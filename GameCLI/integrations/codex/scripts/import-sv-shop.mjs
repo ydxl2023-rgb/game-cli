@@ -4,18 +4,22 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {normalizeRect,resolveLayout} from '../shared/rect-transform.mjs';
+import {normalizeRect,resolveLayout,bounds} from '../shared/rect-transform.mjs';
 import {validateTemplate} from '../shared/templates.mjs';
 import {readChineseLanguage} from '../server/sv-language.mjs';
 
 const project=process.env.SV_PROJECT??'G:/Works/SV/Development/Project';
-const folder='.data/imports/sv-shop';
+const full = process.argv.includes('--full-source');
+const base = '.data/imports/sv-shop';
+const folder = full ? base + '/full-designs' : base;
 const language=await readChineseLanguage(join(project,'Assets/data/@Cfg/language_cfg.bytes'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-const pages={main:'Shop',recharge:'ShopRecharge',gift:'ShopGift',giftbuy:'ShopPurchase'};
+const nativeFiles = full ? JSON.parse(await readFile('reports/shop-item-slot/source-prefabs.json','utf8')) : [];
+const pages = full ? Object.fromEntries(nativeFiles.map(f => {const name=f.path.split('/').pop().replace(/\.prefab$/, ''); return [name,name];})) : {main:'Shop',recharge:'ShopRecharge',gift:'ShopGift',giftbuy:'ShopPurchase'};
 const assets=new Map(),contracts=[];
 for(const [key,name] of Object.entries(pages)){
- const bytes=await readFile(`${folder}/source/${key}/unity-prefab.json`),source=JSON.parse(bytes);
+ try {
+ const bytes=await readFile(full ? `${base}/full-export/${key}/unity-prefab.json` : `${folder}/source/${key}/unity-prefab.json`),source=JSON.parse(bytes);
  const nodes=[],mapping=[],notes=[],sourceNames=new Map();
  for(const n of source.nodes)sourceNames.set(n.path,n.parent?sourceNames.get(n.parent)+'/'+n.name:'');
  // Authoring libraries and inactive particle branches remain in the source archive.
@@ -27,8 +31,9 @@ for(const [key,name] of Object.entries(pages)){
   const graphic=components.find(c=>c.data?.m_Color&&('m_FontData'in c.data||'m_Sprite'in c.data||'m_Texture'in c.data));
   const g=graphic?.data,button=components.find(c=>c.type.startsWith('UnityEngine.UI.Button,'));
   const match=g?.m_Text?.match(/^\[LID:(\d+)\]$/);
-  if(match)assert(language.has(Number(match[1])),'Missing language '+match[1]);
-  const text=match?language.get(Number(match[1])):g?.m_Text??'';
+  if(full && match && !language.has(Number(match[1]))) notes.push({path:n.path,missingLanguageId:match[1]});
+  if(match && !full)assert(language.has(Number(match[1])),'Missing language '+match[1]);
+  const text=match?(language.get(Number(match[1])) ?? g.m_Text):g?.m_Text??'';
   const node={id:id(n.path),name:n.path==='0'?name:n.name.replace(/[^a-zA-Z0-9]+(.)?/g,(_,c)=>c?.toUpperCase()??'')||'Node',parent:n.parent?id(n.parent):null,type:g?.m_FontData?'Text':button?'Button':graphic?'Image':'Container',x:0,y:0,width:1,height:1,color:g?'#'+['r','g','b'].map(k=>Math.round(g.m_Color[k]*255).toString(16).padStart(2,'0')).join(''):'#ffffff',text,fontSize:g?.m_FontData?.m_FontSize??20,active:n.activeSelf,rectTransform:normalizeRect(n.rectTransform),localScale:{x:n.rectTransform.localScale.x,y:n.rectTransform.localScale.y},rotation:n.rectTransform.localEulerAngles.z};
   if(!graphic)node.surface='transparent';
   if(button){node.interactable=true;node.action={type:'none'};}
@@ -56,6 +61,18 @@ for(const [key,name] of Object.entries(pages)){
    nodes.push({id:`ShopCatalogAsset${index}`,name:`CatalogAsset${index}`,parent:id('0'),type:'Image',x:0,y:0,width:1,height:1,color:'#ffffff',text:'',fontSize:20,active:false,image:assetId,imageFit:'contain'});
   }
  }
+ if (full) {
+  // Unity stores float coordinates. Snap only sub-pixel negative extents at zero.
+  const frames = new Map();
+  for (const node of nodes) {
+   const parent = frames.get(node.parent) ?? {width:1920,height:1080};
+   const frame = bounds(node.rectTransform,parent);
+   for (const [dim,axis] of [['width','x'],['height','y']]) {
+    if (frame[dim] < 0 && frame[dim] > -0.0001) node.rectTransform.sizeDelta[axis] -= frame[dim];
+   }
+   frames.set(node.id,bounds(node.rectTransform,parent));
+  }
+ }
  const design=resolveLayout({schemaVersion:1,name,width:1920,height:1080,nodes});
  for(const n of design.nodes){n.width=Math.max(1,n.width);n.height=Math.max(1,n.height);}
  const payload=validateTemplate({root:id('0'),design},'system');
@@ -65,9 +82,14 @@ for(const [key,name] of Object.entries(pages)){
  await writeFile(`${folder}/${key}/template.json`,JSON.stringify(payload,null,2));
  await writeFile(`${folder}/${key}/contract.json`,JSON.stringify(contract,null,2));
  contracts.push(contract);
+ } catch (error) {
+   if (!full) throw error;
+   contracts.push({key,name,error:error.message});
+ }
 }
 await mkdir(`${folder}/assets`,{recursive:true});
 for(const [id,asset]of assets)await writeFile(`${folder}/assets/${id}.png`,asset.body);
 await writeFile(`${folder}/assets/asset-names.json`,JSON.stringify(Object.fromEntries([...assets].map(([id,a])=>[id,a.path])),null,2));
 await writeFile(`${folder}/source-inventory.json`,JSON.stringify({status:'extracted-not-published',scope:'RechargeMain lobby mall with local simulated purchases',pages:contracts.map(({mapping,...c})=>c),images:assets.size},null,2));
 console.log(JSON.stringify({pages:contracts.map(c=>({name:c.name,nodes:c.nodes})),images:assets.size}));
+if (full && contracts.some(c=>c.error)) { console.error(contracts.filter(c=>c.error)); process.exitCode=1; }

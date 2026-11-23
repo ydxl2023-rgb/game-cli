@@ -5,6 +5,8 @@ description: Independently verify RewardEntry resource independence, VM binding,
 
 # Reward 验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与实现的 agent 执行；读[开发契约](../development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)与[Widget](../../../widget/SKILL.md)。先验证工程 ID，串行使用目标 Unity，不替开发修改业务或资源。
 
 1. 检查 UIRewardEntry/VMRewardEntry 无 MailEntity/System、物品业务查询、网络、保存和发奖。旧槽位类型不能被顺带改写。

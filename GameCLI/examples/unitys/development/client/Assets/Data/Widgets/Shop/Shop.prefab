@@ -834,7 +834,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6635000c8b6c56c47913986d215c4430, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d724be40279c3b247bb619778c4016dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3c632a755ad7a1f4cbf0b7028235b15d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ee8a661c5d40fc448b540f44e6cfeea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2265,6 +2265,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2143041469117865526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2949780589909377173}
+  m_Layer: 0
+  m_Name: ProductPages
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2949780589909377173
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143041469117865526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3616126417211018042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2153987681296472581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,7 +2878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60f96fe43ccce4143a58baa408bab376, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df9cd121213b3824db66103116e4c3d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3072,7 +3107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aecb171033ca9e04bb0e487bd56572f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: decdd587278db204c8176a9eaa6c703d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3449,7 +3484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f073891eabbf5a14cad912ce231a077d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0cda399f404e464d9cda60386f82c7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5074,7 +5109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56281c9937f7bbe4db129705923156d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cce71814f5d4a424aaa2159cde706988, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5563,6 +5598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737c753cf233ca947a969d1a54b027d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sectionIcon: {fileID: 4312944491912865654}
 --- !u!1 &6327741765852220781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,7 +5665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3cce87476b6b8154498afcb218205375, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b653b6b4ce410144a6d2c3213e371a2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5810,6 +5846,214 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interaction: {fileID: 6271816125727021264}
+  sections:
+  - title: "\u63A8\u8350\u5546\u54C1"
+    icon: {fileID: 21300000, guid: 8a38fbf84b0af9b44b81389c0549e4c4, type: 3}
+    pages:
+    - id: 11801
+      title: "\u6BCF\u65E5\u7279\u60E0\u793C\u5305"
+      window: EverydayPreferentialGiftView
+      prefab: {fileID: 4637860619237086557, guid: 05666c951cb740746a1b3dcb4de82a93,
+        type: 3}
+  - title: "\u65B0\u4EBA\u7279\u60E0"
+    icon: {fileID: 21300000, guid: 320367b64d0806841afe86bd91fc7283, type: 3}
+    pages:
+    - id: 11201
+      title: "\u65B0\u624B\u9650\u5B9A\u793C\u5305"
+      window: SetterGiftView
+      prefab: {fileID: 5036871419540267662, guid: 7e7ed37034c889a4892ad503b602893d,
+        type: 3}
+    - id: 11202
+      title: "\u5165\u90E8\u793C\u5305"
+      window: NewPeopleGiftView
+      prefab: {fileID: 7025180660750722230, guid: 19a29d3ab656a5f4e83cbed68b544202,
+        type: 3}
+  - title: "\u6708\u5361"
+    icon: {fileID: 21300000, guid: acd31af44a5381944b9167ce7669699d, type: 3}
+    pages:
+    - id: 10401
+      title: "\u6708\u5361"
+      window: MonthCardView
+      prefab: {fileID: 1406465654663407113, guid: b5f3aa2d93ea7494d91ca6ebf54658e7,
+        type: 3}
+    - id: 10498
+      title: "\u8FFD\u5FC6\u793C\u5305"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+  - title: "\u7279\u60E0\u5546\u54C1"
+    icon: {fileID: 21300000, guid: 7ac58c4660bdffb47b9d1dfa1f0909ee, type: 3}
+    pages:
+    - id: 10302
+      title: "\u7279\u60E0\u5546\u54C1"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+    - id: 10301
+      title: "\u6210\u957F\u793C\u5305"
+      window: GiftTabView
+      prefab: {fileID: 2743199890570585114, guid: 6c15ae3941ece294fb4cba4a1d866176,
+        type: 3}
+    - id: 10305
+      title: "\u9650\u65F6\u7279\u60E0"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 10310
+      title: "\u7279\u60E0\u793C\u5305"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 10306
+      title: "\u7279\u522B\u62DB\u52DF"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 10399
+      title: "\u542F\u7A0B\u5546\u5E97\uFF08\u6E2F\u6FB3\u53F0\u4E13\u5C5E\uFF09"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 10104
+      title: "\u793E\u56E2\u5546\u5E97"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+    - id: 10303
+      title: "\u9650\u5B9A\u5E94\u63F4"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 10312
+      title: "\u9650\u65F6\u793C\u5305"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 10105
+      title: "\u8FDE\u6218\u5BF9\u51B3\u5546\u5E97"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+    - id: 10102
+      title: "\u6311\u6218\u5546\u5E97"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+    - id: 10802
+      title: "\u5E94\u63F4\u5546\u5E97"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+    - id: 10103
+      title: "\u5206\u89E3\u5546\u5E97"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+  - title: "\u6210\u957F\u7279\u60E0"
+    icon: {fileID: 21300000, guid: 1f9ad003d56b95b49a3f8ebcb509a0ea, type: 3}
+    pages:
+    - id: 11915
+      title: "43\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11914
+      title: "40\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11913
+      title: "37\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11912
+      title: "35\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11911
+      title: "33\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11910
+      title: "30\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11909
+      title: "27\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11908
+      title: "25\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11907
+      title: "23\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11906
+      title: "20\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11905
+      title: "17\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11904
+      title: "15\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11903
+      title: "12\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11902
+      title: "10\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+    - id: 11901
+      title: "6\u7EA7\u793C\u5305"
+      window: GrowUpPreferentialGiftView
+      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
+        type: 3}
+  - title: "\u88C5\u9970\u5546\u5E97"
+    icon: {fileID: 21300000, guid: bcc6d2ddc80cf0143b8a45dd4ce8ca87, type: 3}
+    pages:
+    - id: 11001
+      title: "\u80CC\u666F\u5546\u5E97"
+      window: WallpaperMallView
+      prefab: {fileID: 4726861146857432086, guid: 047c5f658ba7dae4c961e9020bef0d59,
+        type: 3}
+    - id: 11002
+      title: "\u5934\u50CF\u5546\u5E97"
+      window: NormalGiftView
+      prefab: {fileID: 0}
+    - id: 11003
+      title: "\u6A2A\u5E45\u5546\u5E97"
+      window: DailyTabView
+      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
+        type: 3}
+  - title: "\u8D85\u503C\u8FD4\u8FD8"
+    icon: {fileID: 21300000, guid: cd275c6e3726d9142a24e0570f19dd08, type: 3}
+    pages:
+    - id: 11301
+      title: "\u8D85\u503C\u8FD4\u8FD8"
+      window: GrowthFindsView
+      prefab: {fileID: 3731166365269119924, guid: 4d3d895e14c25644f845e730f5282c82,
+        type: 3}
+  - title: "\u5145\u503C"
+    icon: {fileID: 21300000, guid: e3c1808f13f7034458e5bd4fd9d7e57d, type: 3}
+    pages:
+    - id: 10501
+      title: "\u94BB\u77F3\u5145\u503C"
+      window: RechargeShopView
+      prefab: {fileID: 0}
+  pageHost: {fileID: 2949780589909377173}
+  tabStrip: {fileID: 7936509695981896980}
 --- !u!114 &320627138885429788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6542,6 +6786,7 @@ RectTransform:
   m_Children:
   - {fileID: 4726389206515690192}
   - {fileID: 4268942283464001791}
+  - {fileID: 2949780589909377173}
   - {fileID: 5856972411154261384}
   - {fileID: 1884779266642410317}
   - {fileID: 8364416866152155178}
@@ -6947,7 +7192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eea32386a40454e4bb3aa2d6c0adbbae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b713afff6e9a9d84ea5f79fd87e0f258, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7427,7 +7672,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 824149f6c4381094b873c7e74ea6ad86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd8ac72ba3390bf4e92738a860e2b121, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7969,7 +8214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b2df9ffc6249422409c44b37c4f983f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d4c768ab799b2143abe160b6e8d7a0d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

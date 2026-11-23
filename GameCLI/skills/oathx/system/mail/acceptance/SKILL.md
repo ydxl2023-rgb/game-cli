@@ -5,6 +5,8 @@ description: 独立验收 Mail 的列表与详情、已读、领取幂等、删�
 
 # Mail 验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与本轮实现的 agent 执行。读取[开发契约](../development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Entity](../../../entity/SKILL.md)。核实显式项目 ID 和 verified Unity 绑定；同一 Editor 串行操作，修改交回开发 agent。
 
 冻结实际模板版本与交付文件哈希，测试范围按产品契约确定，当前本地范式至少检查：

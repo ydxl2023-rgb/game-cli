@@ -23,10 +23,10 @@ public class ShopSystem : RuntimeSystem
 
                 vm.CloseClick = (sender) => Close();
                 vm.HelpClick = (sender) => ShowMessage(Excel.SHOP_HELP);
-                vm.PreviousClick = (sender) => SelectCategory(ShopCategory.Recharge);
-                vm.NextClick = (sender) => SelectCategory(ShopCategory.Gift);
-                vm.GroupClick = (sender, index) => SelectCategory((ShopCategory)index);
-                vm.TabClick = (sender, index) => Refresh();
+                vm.PreviousClick = (sender) => MoveSection(-1);
+                vm.NextClick = (sender) => MoveSection(1);
+                vm.GroupClick = (sender, index) => OpenPage(index, 0);
+                vm.TabClick = (sender, index) => SelectTab(index);
                 vm.Currency1Click = (sender) => ShowMessage(Excel.SHOP_HELP);
                 vm.Currency2Click = (sender) => ShowMessage(Excel.SHOP_HELP);
                 vm.Currency3Click = (sender) => ShowMessage(Excel.SHOP_HELP);
@@ -37,7 +37,7 @@ public class ShopSystem : RuntimeSystem
                 vm.TabTemplate = false;
                 vm.MessageVisible = true;
 
-                SelectCategory(ShopCategory.Recharge);
+                OpenPage(0, 0);
                 ShowMessage(Excel.SHOP_DEMO_NOTICE);
             }
         });
@@ -82,31 +82,84 @@ public class ShopSystem : RuntimeSystem
         vm.Currency1 = Money(entity.demoBalance);
         vm.Currency2 = "0";
         vm.Currency3 = entity.demoTokens.ToString(CultureInfo.InvariantCulture);
-        vm.Groups = new VList<VMShopGroup> {
-            new VMShopGroup {
-                Title = CommonText.Get(Excel.SHOP_RECHARGE),
-                Selected = entity.category == ShopCategory.Recharge,
-                Unselected = entity.category != ShopCategory.Recharge,
-            },
-            new VMShopGroup {
-                Title = CommonText.Get(Excel.SHOP_GIFTS),
-                Selected = entity.category == ShopCategory.Gift,
-                Unselected = entity.category != ShopCategory.Gift,
-            }
-        };
-        vm.Tabs = new VList<VMShopTab> {
-            new VMShopTab {
-                Title = CommonText.Get(entity.category == ShopCategory.Recharge ? Excel.SHOP_RECHARGE : Excel.SHOP_GIFTS),
-                Selected = true,
-                Unselected = false,
-            }
-        };
+        var groups = new VList<VMShopGroup>();
+        for (int i = 0; widget.GetSection(i) != null; i++)
+        {
+            groups.Add(new VMShopGroup {
+                Title = widget.GetSection(i).title,
+                icon = widget.GetSection(i).icon,
+                Selected = i == entity.sectionIndex,
+                Unselected = i != entity.sectionIndex
+            });
+        }
 
+        var tabs = new VList<VMShopTab>();
+        var section = widget.GetSection(entity.sectionIndex);
+        if (section != null)
+        {
+            for (int i = 0; i < section.pages.Length; i++)
+            {
+                tabs.Add(new VMShopTab {
+                    Title = section.pages[i].title,
+                    Selected = i == entity.pageIndex,
+                    Unselected = i != entity.pageIndex
+                });
+            }
+        }
+
+        vm.Groups = groups;
+        vm.Tabs = tabs;
         RefreshProducts(entity);
 
         return true;
     }
 
+    /// <summary>Open a configured source section and secondary tab.</summary>
+    public bool OpenPage(int sectionIndex, int pageIndex)
+    {
+        if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UIShop>(out var widget))
+            return false;
+
+        var section = widget.GetSection(sectionIndex);
+        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
+        if (!entity || section == null || pageIndex < 0 || pageIndex >= section.pages.Length)
+            return false;
+
+        var page = section.pages[pageIndex];
+        entity.SetPage(sectionIndex, pageIndex);
+        widget.DisplayPage(page.prefab, section.pages.Length > 1, page.id);
+
+        if (page.window == "RechargeShopView")
+            return SelectCategory(ShopCategory.Recharge);
+
+        if (page.window == "NormalGiftView")
+            return SelectCategory(ShopCategory.Gift);
+
+        System.Type[] widgets = new System.Type[] {
+            typeof(UIShopPurchase),
+            typeof(UIShopGift),
+            typeof(UIShopRecharge)
+        };
+        UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
+
+        return Refresh();
+    }
+
+    /// <summary>Navigate to the adjacent primary section.</summary>
+    private bool MoveSection(int offset)
+    {
+        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
+
+        return entity && OpenPage(entity.sectionIndex + offset, 0);
+    }
+
+    /// <summary>Navigate within the current primary section.</summary>
+    private bool SelectTab(int index)
+    {
+        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
+
+        return entity && OpenPage(entity.sectionIndex, index);
+    }
     /// <summary>Switch between the supported local recharge and gift catalogs.</summary>
     /// <param name="category">Requested category.</param>
     /// <returns>True when the child page was requested.</returns>
@@ -374,3 +427,7 @@ public class ShopSystem : RuntimeSystem
         return (amount / 100m).ToString("0.00", CultureInfo.InvariantCulture);
     }
 }
+
+
+
+

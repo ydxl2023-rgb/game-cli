@@ -1,3 +1,4 @@
+import {shopWidgetPath} from './shop-widget-path.mjs';
 // Preserve source dynamic sizing/state defaults when replacing the SV runtime.
 import {readFile,writeFile} from 'node:fs/promises';
 const folder='.data/imports/sv-shop';
@@ -9,7 +10,7 @@ for(const [key,name]of Object.entries(names)){
  const nodes=payload.design.nodes,map=new Map(nodes.map(n=>[n.id,n]));
  const at=path=>map.get(name+path.replaceAll('/','_'));
  const native=id=>{const n=map.get(id);return n.parent?native(n.parent)+'/'+n.name:n.name;};
- const op=(node,component,property,value)=>operations.push({asset:`Assets/Data/Widgets/${name}/${name}.prefab`,path:native(node.id),component,property,value:String(value)});
+ const op=(node,component,property,value)=>operations.push({asset:shopWidgetPath(name),path:native(node.id),component,property,value:String(value)});
  for(const spec of contract.specs.filter(s=>s.page===key))for(const field of spec.fields.filter(f=>f.type==='bool'))for(const path of field.paths){const n=at(path);n.active=false;op(n,'GameObject','m_IsActive','false');}
  if(key==='main'){
   // The source hides secondary navigation when there is only one child category.

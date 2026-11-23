@@ -24,7 +24,7 @@ if all((project/f'Assets/Data/Widgets/Common/Micros/Shop{k}Item.prefab').exists(
 source=json.loads(pathlib.Path('.data/imports/sv-shop/bindings.json').read_text())
 contracts=[]
 for kind,cell in [('Recharge','ScrollCell'),('Gift','GridCell')]:
- page=f'Assets/Data/Widgets/Shop{kind}/Shop{kind}.prefab'
+ page=f'Assets/Data/Widgets/Shop/Shop{kind}/Shop{kind}.prefab'
  src=f'Shop{kind}/Animator/ScrollView/Viewport/Grid/{cell}'
  card=f'Assets/Data/Widgets/Common/Micros/Shop{kind}Item.prefab'
  # Preserve exact pre-change sources for review, without touching Unity assets.

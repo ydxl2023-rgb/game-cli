@@ -5,6 +5,8 @@ description: 独立验收产品 Master 交付，检查纯代码 Master 的系统
 
 # Master 独立验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 由未参与本轮 Master 实现的 agent 执行。本技能只定义本模块验收，不自动派发 agent 或启动试跑。阅读[本模块开发契约](../development/SKILL.md)、[编码规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)及 [CLI 命令说明](../../../../../integrations/codex/cli/README.md)。
 
 ## 开始前
@@ -58,3 +60,7 @@ Master 不运行 verify prefab，不生成 UIMaster/VMMaster/占位预制，其 
 ## 实体边界验收
 
 按开发规范的统一实体职责，检查本系统业务数据与规则归属、输入与输出集合隔离、非法操作不改变状态，以及 System/UI 无直接改写内部数据。纯展示模块不强制新增实体；区分实体数据与展示/调度状态。
+
+## 可执行用例
+
+使用本目录的[本地登录用例](scenarios.json)走绑定的登录操作，观察 UI 生命周期发出的 Home 打开次数。一次登录后在约定观察窗口内应保持一次。重复登录事件及卸载期间的竞态需要单独用例。

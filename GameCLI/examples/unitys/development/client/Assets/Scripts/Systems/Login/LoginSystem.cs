@@ -215,7 +215,7 @@ public class LoginSystem : RuntimeSystem
             string icon = entry.state == ServerState.Maintenance ? "dl_icon_wh" : entry.state == ServerState.Busy ? "dl_icon_ml" : "dl_icon_zc";
             items.Add(new VMServerItem {
                 ServerName = entry.name,
-                ServerStatus = $"Assets/Data/Widgets/ServerSelect/ServerSelectAssets/{icon}.png",
+                ServerStatus = $"Assets/Data/Widgets/Common/Icons/{icon}.png",
                 Recommend = entry.recommended,
                 PlayerHead = false
             });

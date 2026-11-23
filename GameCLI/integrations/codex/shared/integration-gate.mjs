@@ -4,8 +4,8 @@ export function integrationGate(report,acceptance){
  const reviews=[...report.items.filter(i=>i.status==='adapted-review-required'),...report.references].map(i=>i.path);
  const valid=acceptance?.fingerprint===report.fingerprint&&typeof acceptance.reviewer==='string'&&acceptance.reviewer.trim();
  const reviewed=valid&&reviews.every(path=>acceptance.reviews?.some(r=>r.path===path&&r.approved===true&&r.reason?.trim()));
- if(failures||!report.items.length||reviews.length&&!reviewed)return {stage:'repair',label:'返回修复',passed:false};
+ if(report.scenarios?.status==='failed'||failures||!report.items.length||reviews.length&&!reviewed)return {stage:'repair',label:'返回修复',passed:false};
  if(valid&&acceptance.checks?.some(c=>c.status==='failed'))return {stage:'repair',label:'返回修复',passed:false};
- const complete=valid&&runtimeChecks.every(name=>acceptance.checks?.some(c=>c.name===name&&c.status==='passed'&&c.evidence?.trim()));
+ const complete=(!report.scenarios||report.scenarios.status==='passed')&&valid&&runtimeChecks.every(name=>acceptance.checks?.some(c=>c.name===name&&c.status==='passed'&&c.evidence?.trim()));
  return complete?{stage:'complete',label:'已完成',passed:true}:{stage:'awaiting-acceptance',label:'待验收',passed:false};
 }

@@ -20,9 +20,9 @@ public static class ShopDelayedLoadProbe
         var cache = cacheField.GetValue(manager);
         var delayed = new DeferredLoader();
         var parent = new GameObject("ShopDelayedLoadEvidence", typeof(RectTransform));
-        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/ShopRecharge/ShopRecharge.prefab");
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Data/Widgets/Shop/ShopRecharge/ShopRecharge.prefab");
         var ui = UISystem.GetSingleton();
-        var config = new ConfigAttribute("Assets/Data/Widgets/ShopRecharge/ShopRecharge.prefab", WidgetLayer.topmost, cacheWidget: false);
+        var config = new ConfigAttribute("Assets/Data/Widgets/Shop/ShopRecharge/ShopRecharge.prefab", WidgetLayer.topmost, cacheWidget: false);
         var types = new Type[] { typeof(UIShopRecharge) };
         var passed = new List<string>();
         int stale = 0;

@@ -5,6 +5,8 @@ description: Independently verify reusable currency widgets, native asset isolat
 
 # Currency 独立验收
 
+独立复验时按[模板提取与复验](../../../system-development/references/template-fidelity.md)对照来源、示例输入和运行证据，具体判定采用本系统用例。
+
 读取 [开发规范](../../../development-rules/SKILL.md) 和 [组件契约](../development/SKILL.md)。验收 agent 不修改交付；保留原始 CLI 证据，缺陷退回开发。
 
 1. 核查 Currency 不引用 HomeEntity、HomeSystem 或 Home 私有资源；四类源码、图片、字体、两个预制及 meta 完整。检查所有 GUID，而不只检查 Image。

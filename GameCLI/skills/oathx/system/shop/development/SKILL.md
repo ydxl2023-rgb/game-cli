@@ -20,7 +20,7 @@ description: 独立 agent 参考 SV 大厅商城范式开发充值、普通礼�
 - 本地模拟必须明确标识，不调用真实支付/充值接口，不把示例价格、余额和奖励视为正式商品。产品接入时由产品定义付款、订单和发货契约。
 - 确认时重新验证商品、余额及限购；成功后消费待确认选择，重复确认不能重复扣款/发奖。取消、分类切换及系统停用清理待确认状态。Entity 返回枚举状态，展示层查表生成文案。
 - 固定文案合并进 propCommonText；配置包按[配置交付规范](../../../system-development/references/configurations.md)独立保存源表、条目、哈希及导表依赖。示例商品初始化需明确标记且不能覆盖产品提供的目录。
-- 资源固定在 Assets/Data/Widgets/Shop、ShopRecharge、ShopGift、ShopPurchase。主模板之外的伴随页面、列表项 Metadata 与图片必须随源码材料交付，不能只发布主卡片。
+- 商城页面统一位于 `Assets/Data/Widgets/Shop/`。商城主预制为 `Shop.prefab`，内嵌分页放在 `Pages/`；独立 Widget 及各自的配套资源放在 `ShopGift/`、`ShopPurchase/`、`ShopRecharge/` 子目录。主模板之外的伴随页面、列表项 Metadata 与图片必须随源码材料交付，不能只发布主卡片。
 
 ## 动画与交互
 
