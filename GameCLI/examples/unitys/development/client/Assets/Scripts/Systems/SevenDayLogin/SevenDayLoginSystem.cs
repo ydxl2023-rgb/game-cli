@@ -31,26 +31,6 @@ public class SevenDayLoginSystem : RuntimeSystem
     /// </summary>
     private bool isDestroyed = false;
 
-    /// <summary>
-    /// install seven day login system, loads the seven day login entity for the player using their player id (PID) obtained from the master entity,
-    /// </summary>
-    /// <returns></returns>
-    public override bool Install()
-    {
-        Subscribe<SevenDayLoginEvent>(OnSevenDayLoginEvent);
-        Subscribe<LoginSucceed>(OnLoginSucceedEvent);
-
-        return true;
-    }
-
-    /// <summary>
-    /// uninstall seven day login system, unsubscribe all events to prevent memory leaks and unintended behavior after detive
-    /// </summary>
-    public override void Uninstall()
-    {
-        // unsubscribe all events to prevent memory leaks and unintended behavior after detive
-        UnsubscribeAll();
-    }
 
     /// <summary>
     /// on active, load entity data and subscribe events
@@ -62,9 +42,23 @@ public class SevenDayLoginSystem : RuntimeSystem
         if (!master)
             return false;
 
+        isDestroyed = false;
+        UnsubscribeAll();
+
+        Subscribe<SevenDayLoginEvent>(OnSevenDayLoginEvent);
+        Subscribe<LoginSucceed>(OnLoginSucceedEvent);
+        Subscribe<ReqSevenDayLoginSelectDay>(OnDayRequested);
+        Subscribe<ReqSevenDayLoginClaim>(OnClaimRequested);
+        Subscribe<ReqSevenDayLoginClose>(OnCloseRequested);
+
         var pid = master.GetAttr(MasterPropertyDef.PID);
         Rpc.Load<SevenDayLoginEntity>(pid, (code, sevenDayLogin) => {
-            entity = sevenDayLogin;
+            if (IsActive() && sevenDayLogin)
+            {
+                entity = sevenDayLogin;
+                if (UISystem.GetSingleton().TryGetWidget<UISevenDayLogin>(out var widget))
+                    widget.Invalidate(entity);
+            }
         });
 
         return true;
@@ -75,7 +69,10 @@ public class SevenDayLoginSystem : RuntimeSystem
     /// </summary>
     public override void OnDetive()
     {
+        if (entity)
+            entity.selectedDay = null;
         isDestroyed = true;
+        UnsubscribeAll();
 
         // force save entity data on detive
         var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
@@ -176,96 +173,43 @@ public class SevenDayLoginSystem : RuntimeSystem
         return 0;
     }
 
-    /// <summary>
-    /// load data into widget and setup click handlers
-    /// </summary>
-    /// <param name="widget"></param>
+    /// <summary>Render the loaded sign-in data on the visible widget.</summary>
     private void Refresh(UISevenDayLogin widget)
     {
-        if (entity)
+        if (widget && entity)
             widget.Invalidate(entity);
-        
-        SetupClicks(widget);
     }
 
-    /// <summary>
-    /// setup click handlers for fancy click, claim click and close click in the widget
-    /// </summary>
-    /// <param name="widget"></param>
-    /// <returns></returns>
-    private bool SetupClicks(UISevenDayLogin widget)
+    /// <summary>Accept a visible day selection while the sign-in module is active.</summary>
+    private void OnDayRequested(ReqSevenDayLoginSelectDay request)
     {
-        var vm = widget.GetVM() as VMSevenDayLogin;
-        if (!vm)
-            return false;
-
-        SetupFancyClick(vm);
-        SetupClaimClick(vm);
-        SetupCloseClick(vm);
-
-        return true;
+        if (entity && entity.days.Exists(item => item.day == request.day))
+            entity.selectedDay = request.day;
     }
 
-    /// <summary>
-    /// setup fancy click handler to update selected day and refresh widget selection
-    /// </summary>
-    /// <param name="vm"></param>
-    private void SetupFancyClick(VMSevenDayLogin vm)
+    /// <summary>Delegate an eligible day to the existing reward integration hook.</summary>
+    private void OnClaimRequested(ReqSevenDayLoginClaim request)
     {
-        vm.FancyClick = (view, index) =>
-        {
-            return true;
+        if (entity && entity.selectedDay.HasValue)
+            GiveReward(entity.selectedDay.Value);
+    }
+
+    /// <summary>Close the sign-in page after an explicit player request.</summary>
+    private void OnCloseRequested(ReqSevenDayLoginClose request)
+    {
+        if (entity)
+            entity.selectedDay = null;
+
+        System.Type[] widgets = new System.Type[] {
+            typeof(UISevenDayLogin)
         };
+
+        UISystem.GetSingleton().CloseWidget(widgets);
     }
 
-    /// <summary>
-    /// setup claim click handler to claim reward for selected day, give reward, save data and refresh widget on success
-    /// </summary>
-    /// <param name="vm"></param>
-    private void SetupClaimClick(VMSevenDayLogin vm)
-    {
-        vm.Claim = (sender) =>
-        {
-            if (!entity)
-                return false;
-
-            return true;
-        };
-    }
-
-    /// <summary>
-    /// setup close click handler to close the widget
-    /// </summary>
-    /// <param name="vm"></param>
-    private void SetupCloseClick(VMSevenDayLogin vm)
-    {
-        vm.Close = (sender) =>
-        {
-            System.Type[] widgets = new System.Type[] {
-                typeof(UISevenDayLogin)
-            };
-
-            UISystem.GetSingleton().CloseWidget(widgets);
-
-            return true;
-        };
-    }
-
-    /// <summary>
-    /// give reward for the claimed day, this is a placeholder function and should be implemented with actual reward logic
-    /// </summary>
-    /// <param name="day"></param>
+    /// <summary>Product reward integration point.</summary>
     private void GiveReward(int day)
     {
-        // TODO: implement reward giving logic
-        // Example: read reward config and add items to backpack
-        // var rewardConfig = Excel.propSevenDayLoginById(day);
-        // if (rewardConfig != null)
-        // {
-        //     foreach (var item in rewardConfig.items)
-        //     {
-        //         BackpackSystem.AddItem(item.itemId, item.count);
-        //     }
-        // }
+        // Reward delivery is supplied by the product.
     }
 }

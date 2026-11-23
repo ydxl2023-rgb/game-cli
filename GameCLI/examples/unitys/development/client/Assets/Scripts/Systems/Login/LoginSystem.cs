@@ -1,6 +1,4 @@
-using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
 using Oathx.Core;
 using Oathx.Entity;
 using Oathx.Widget;
@@ -10,15 +8,6 @@ using Oathx.Widget;
 /// </summary>
 public class LoginSystem : RuntimeSystem
 {
-    /// <summary>Server categories owned by the login flow.</summary>
-    private readonly List<List<ServerEntry>> categories = new List<List<ServerEntry>>();
-
-    /// <summary>Category labels matching the category data.</summary>
-    private readonly List<string> categoryTitles = new List<string>();
-
-    /// <summary>Current category index.</summary>
-    private int categoryIndex;
-
     /// <summary>
     /// Load and open the SV login page through UISystem.
     /// </summary>
@@ -28,17 +17,18 @@ public class LoginSystem : RuntimeSystem
         if (!IsActive())
             return false;
 
+        UnsubscribeAll();
+
+        Subscribe<ReqLoginEnterGame>(request => EnterGame());
+        Subscribe<ReqLoginOpenServers>(request => OpenServers());
+        Subscribe<ReqLoginOpenNotice>(request => OpenNotice());
+        Subscribe<ReqLoginCloseServers>(request => CloseServers());
+        Subscribe<ReqLoginSelectCategory>(request => SelectCategory(request.index));
+        Subscribe<ReqLoginSelectServer>(request => SelectServer(request.serverId));
+
         UISystem.GetSingleton().OpenWidget<UILogin>((widget) => {
             if (widget)
             {
-                var vm = widget.vm;
-                if (!vm)
-                    return;
-
-                vm.EnterClick = (sender) => EnterGame();
-                vm.ChangeClick = (sender) => OpenServers();
-                vm.AnnouncementClick = (sender) => OpenNotice();
-
                 InitializeServers();
 
                 XApp.GetSingleton().ShowLaunchBackground();
@@ -91,10 +81,6 @@ public class LoginSystem : RuntimeSystem
         if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UILogin>(out var widget))
             return false;
 
-        var vm = widget.vm;
-        if (!vm)
-            return false;
-
         var entity = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();
         if (!entity)
             return false;
@@ -117,15 +103,7 @@ public class LoginSystem : RuntimeSystem
         if (!entity.RestoreSelection())
             return false;
 
-        var entry = entity.GetSelectedServer();
-        if (entry == null)
-            return false;
-
-        vm.ServerName = entry.name;
-        widget.SetServerState(entry.state);
-        vm.CanEnter = entity.CanEnter();
-
-        return true;
+        return widget.Invalidate(entity);
     }
 
     /// <summary>Open the server selector while Login owns its lifecycle.</summary>
@@ -138,130 +116,37 @@ public class LoginSystem : RuntimeSystem
         return UISystem.GetSingleton().OpenWidget<UIServerSelect>((widget) => {
             if (widget)
             {
-                var vm = widget.vm;
-                if (!vm)
-                    return;
-
-                vm.CloseClick = (sender) => CloseServers();
-                vm.GroupTemplate = false;
-                vm.ServerTemplate = false;
-                vm.GroupClick = (sender, index) => SelectCategory(widget, index);
-                vm.ServerClick = (sender, index) => SelectServerIndex(index);
-
-                if (BuildCategories())
-                    SelectCategory(widget, 0);
+                var entity = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();
+                widget.Invalidate(entity);
             }
         });
     }
 
-    /// <summary>Build SV categories from the current catalog.</summary>
-    /// <returns>True when the login entity was available and categories were rebuilt.</returns>
-    private bool BuildCategories()
+    /// <summary>Refresh the requested server category.</summary>
+    private bool SelectCategory(int index)
     {
-        var entity = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();
-        if (!entity)
+        if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UIServerSelect>(out var widget))
             return false;
 
-        categories.Clear();
-        categoryTitles.Clear();
-
-        int recent = entity.recentServer;
-        var servers = entity.GetServers();
-
-        AddCategory(CommonText.Get(Config.Excel.LOGIN_RECENT_SERVER), servers.Where(entry => entry.id == recent).ToList());
-        AddCategory(CommonText.Get(Config.Excel.LOGIN_RECOMMENDED_SERVER), servers.Where(entry => entry.recommended).ToList());
-        for (int start = 0; start < servers.Count; start += 10)
-            AddCategory(CommonText.Get(Config.Excel.LOGIN_SERVER_RANGE, start + 1, start + 10), servers.Skip(start).Take(10).ToList());
-
-        return true;
-    }
-
-    /// <summary>Add a populated category.</summary>
-    /// <param name="title">Display label.</param>
-    /// <param name="entries">Server definitions.</param>
-    private void AddCategory(string title, List<ServerEntry> entries)
-    {
-        if (entries.Count > 0)
-        {
-            categoryTitles.Add(title);
-            categories.Add(entries);
-        }
-    }
-
-    /// <summary>Publish category and server view models through VList bindings.</summary>
-    /// <param name="widget">Bound page.</param>
-    /// <param name="index">Category index.</param>
-    /// <returns>True when the active page has been refreshed.</returns>
-    private bool SelectCategory(UIServerSelect widget, int index)
-    {
-        if (!IsActive() || !widget || index < 0 || index >= categories.Count)
-            return false;
-
-        var vm = widget.vm;
-        if (!vm)
-            return false;
-
-        categoryIndex = index;
-
-        var groups = new VList<VMServerGroupItem>();
-        for (int i = 0; i < categories.Count; i++)
-            groups.Add(new VMServerGroupItem { Title = categoryTitles[i], Selected = i == index, Unselected = i != index });
-
-        vm.Groups = groups;
-
-        var items = new VList<VMServerItem>();
-        foreach (var entry in categories[index])
-        {
-            string icon = entry.state == ServerState.Maintenance ? "dl_icon_wh" : entry.state == ServerState.Busy ? "dl_icon_ml" : "dl_icon_zc";
-            items.Add(new VMServerItem {
-                ServerName = entry.name,
-                ServerStatus = $"Assets/Data/Widgets/Common/Icons/{icon}.png",
-                Recommend = entry.recommended,
-                PlayerHead = false
-            });
-        }
-
-        vm.Servers = items;
-
-        widget.ResetScroll();
-
-        return true;
-    }
-
-    /// <summary>Resolve a Fancy cell index to the current server definition.</summary>
-    /// <param name="index">Index in the selected category.</param>
-    /// <returns>True when a server was selected.</returns>
-    private bool SelectServerIndex(int index)
-    {
-        if (!IsActive() || categoryIndex < 0 || categoryIndex >= categories.Count
-            || index < 0 || index >= categories[categoryIndex].Count)
-            return false;
-
-        return SelectServer(categories[categoryIndex][index]);
+        return widget.SelectCategory(index);
     }
 
     /// <summary>Apply a selected server and return to the login page.</summary>
-    /// <param name="entry">Selected local server.</param>
+    /// <param name="serverId">Selected local server identifier.</param>
     /// <returns>True when the selection was saved and the login page was refreshed.</returns>
-    private bool SelectServer(ServerEntry entry)
+    private bool SelectServer(int serverId)
     {
-        if (!IsActive() || entry == null || !UISystem.GetSingleton().TryGetWidget<UILogin>(out var widget))
-            return false;
-
-        var vm = widget.vm;
-        if (!vm)
+        if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UILogin>(out var widget))
             return false;
 
         var entity = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();
         if (!entity)
             return false;
 
-        if (!entity.SelectServer(entry.id))
+        if (!entity.SelectServer(serverId))
             return false;
 
-        vm.ServerName = entry.name;
-        widget.SetServerState(entry.state);
-        vm.CanEnter = entity.CanEnter();
+        widget.Invalidate(entity);
 
         CloseServers();
 
@@ -302,10 +187,6 @@ public class LoginSystem : RuntimeSystem
     private bool EnterGame()
     {
         if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UILogin>(out var widget))
-            return false;
-
-        var vm = widget.vm;
-        if (!vm)
             return false;
 
         var login = XEntityManager.GetSingleton().QueryEntity<LoginEntity>();

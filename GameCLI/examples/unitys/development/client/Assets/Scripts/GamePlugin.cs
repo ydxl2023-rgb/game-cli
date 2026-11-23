@@ -63,7 +63,7 @@ public class UIResourceLoader : UILoader
 /// <summary>
 /// Game Plugin Main Entry
 /// </summary>
-public class GamePlugin : XPlugin, IUIEventSender
+public class GamePlugin : XPlugin, IUIEventSender, UISender
 {
     /// <summary>
     /// Install the plugin
@@ -99,6 +99,18 @@ public class GamePlugin : XPlugin, IUIEventSender
         });
 
         return true;
+    }
+
+    /// <summary>Dispatch a widget request to application listeners immediately.</summary>
+    public bool Send(IUIRequest request)
+    {
+        return request is UIRequestEvent message && XPluginUtility.FireEvent(message);
+    }
+
+    /// <summary>Queue a widget request until the application processes pending events.</summary>
+    public bool Post(IUIRequest request)
+    {
+        return request is UIRequestEvent message && XPluginUtility.PostEvent(message);
     }
 
     /// <summary>Forward widget activation through this plugin's event dispatcher.</summary>
@@ -264,7 +276,7 @@ public class GamePlugin : XPlugin, IUIEventSender
     /// </summary>
     private void InstallUISystem()
     {
-        UISystem.GetSingleton().Startup(new ResourceConfigure() {
+        UISystem.GetSingleton().Startup(new ResourceConfigure(this) {
             loader = new UIResourceLoader(),
             cacher = new UIDefaultCacher(),
             eventSenders = new List<IUIEventSender> { this }

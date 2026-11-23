@@ -168,13 +168,25 @@ UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
 - Unity 生命周期、事件委托、继承重写等框架规定的签名保持兼容；不为这条规则修改固定签名。没有提前返回需求的显隐等简单方法可以保留 `void`。
 - 方法返回结果时补充英文 `<returns>` 注释。
 
+## System、Widget 与 UI 意图事件
+
+- System 管理激活、订阅、业务校验、实体操作及窗口开关。主页面、弹窗和列表项的 VM 均由所属 Widget 绑定和修改。System 不读取或缓存 VM，不透过 Widget 注入按钮委托。
+- `UIWidget<TVM>.Ref(VM)` 校验 VM 类型、建立 Metadata 绑定、订阅属性变更并初始化 VM，最后通过 `return Bind();` 返回子类的绑定结果。
+- 页面、弹窗和列表项在 `protected override bool Bind()` 中连接按钮及完成当前 VM 的一次绑定。直接使用已就绪的 `vm`。无需自定义绑定时沿用父类默认的 `true`。仅当控件确实需要在基础绑定前执行逻辑（如注册自定义同步器）时才重写 `Ref`。
+- `Active()` 负责每次打开时的入场动画、默认页签等展示复位。`Invalidate(entity)` 负责随后可重复执行的数据刷新。两者都应避免重复注册按钮。
+- 需要业务处理的操作用具有业务语义的强类型 `IEvent`，优先通过 `UIWidget.Send` 同步派发，监听器在调用返回前执行。需要延后处理时显式使用 `Post` 入队，监听器在事件循环处理队列时执行。同步监听器如需卸载自身所属系统，通过排队的生命周期请求交由 Master 处理。应用通过 `new ResourceConfigure(adapter)` 向 `UISystem.Startup` 注入 `UISender`，发送端通过 `UIResourceManager.GetSingleton().GetSender()` 读取当前接口，由适配器转交业务事件总线；System 在打开窗口前 `Subscribe<T>`，在 `OnDetive` 先 `UnsubscribeAll()`，空一行再关闭窗口。纯显示交互可在 Widget 内完成。
+- **本系统所有由 UI 发起的业务请求事件类型统一定义在主 UI 源文件**，例如商城主页面、商品卡、购买弹窗的请求均声明于 `Shop/UI/UIShop.cs`。UI 业务请求统一采用 PascalCase 的 `Req<系统名><动作>`，动作使用动词或动宾短语，例如 `ReqShopClose`、`ReqShopSelectProduct`、`ReqShopConfirmPurchase`。声明、发送和订阅使用同一类型，载荷只含处理该操作所需的业务 ID 或值。列表点击在视图将行索引转换成所展示记录的 ID。不要携带 VM、Widget、sender 或回调。领域通知仍由其业务模块定义。
+- UI 请求继承共享的 `UIRequestEvent`（`Systems/Common/UI/UIRequestEvent.cs`）。每次操作新建请求。无参数按钮可直接绑定 `vm.CloseClick = Send<ReqShopClose>;`，带参数操作使用 `Send(new ReqShopSelectProduct { productId = id })`。统一入口按实际 Widget 类型填写 `sourceKey`。基类在创建时记录本地 `Time.frameCount` 到 `createdFrame`，反序列化时保留原值。入队后保持载荷不变。独立交付系统时包含此公共源码依赖，复用工程中已有定义。
+- 实体变更后，System 向已打开的 Widget 调用强类型 `Invalidate(entity)`。Widget 将实体投影为文本、列表、图标及状态；重复刷新同一状态不会二次订阅、提交业务、打开页面或重播入场动画。没有业务实体的纯展示控件保留其显示 API。
+- 验收覆盖按钮经事件触发业务、同一状态连续刷新、关闭再打开只响应一次。检查 System 和子窗口同时满足规则。
+
 ## 空行与逻辑分组
 
 - 成员注释前必须与上一组成员声明保留一个空行，禁止字段声明后紧接下一成员的 `/// <summary>`。此规则适用于所有字段、属性、构造函数和方法，不仅限于 VM；类的第一个成员无需在开括号后额外插入空行。注释、特性和其对应声明属于同一组，组内保持紧凑。
 
 - 获取 VM 或实体后立即单独检查有效性，再读取属性或调用方法。支持框架布尔转换的对象统一使用 `if (!vm)`、`if (!entity)`，bool 方法中返回 `false`；不要把 VM 检查藏在获取 Widget 的复合条件中，也不要链式调用 `QueryEntity<T>().Member`。
-- `var vm = widget.vm;` 与紧随其后的判空属于同一组；实体查询与判空属于另一组，两组之间空一行。方法内按“获取与校验 → 准备数据 → 修改/保存实体 → 刷新 UI → 后续操作 → 返回结果”分块，不同职责之间空一行。
-- `OpenWidget` 完成回调中的 Widget 检查必须使用 `if (widget) { ... }` 正向包裹初始化逻辑，禁止以 `if (!widget) return;` 开头。在该块内获取 VM 后仍单独判空。
+- Widget 内使用 VM 前的有效性检查与使用属于同一组；实体查询与判空属于另一组，两组之间空一行。方法内按“获取与校验 → 准备数据 → 修改/保存实体 → 刷新 UI → 后续操作 → 返回结果”分块，不同职责之间空一行。
+- `OpenWidget` 完成回调中的 Widget 检查必须使用 `if (widget) { ... }` 正向包裹初始化逻辑，禁止以 `if (!widget) return;` 开头。在该块内调用 Widget 的页面方法，VM 判空由 Widget 负责。
 - 框架规定的 void 回调保留签名，其中 VM 无效时可使用 `if (!vm) return;`，不要为了返回 bool 改变委托契约。自定义 bool 操作方法仍使用 `if (!vm)` / `if (!entity)` 返回 false，并向调用方传递失败结果。
 
 - 执行赋值、保存、同步或其他操作后，`return` 之前必须保留一个空行，将处理过程与返回结果分开。此规则同样适用于前面是完整条件块的情况。

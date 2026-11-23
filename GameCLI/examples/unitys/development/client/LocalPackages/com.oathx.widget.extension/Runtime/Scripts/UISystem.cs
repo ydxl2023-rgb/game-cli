@@ -404,7 +404,8 @@ namespace Oathx.Widget
             if (!widget)
                 widget = widgetGo.AddComponent<T>();
 
-            BindWidget(widget, widgetGo, setting);
+            if (!BindWidget(widget, widgetGo, setting))
+                return null;
 
             if (setting.cache)
                 widgets[name] = widget;
@@ -451,7 +452,8 @@ namespace Oathx.Widget
             if (!widget)
                 widget = (IWidget)widgetGo.AddComponent(widgetType);
 
-            BindWidget(widget, widgetGo, setting);
+            if (!BindWidget(widget, widgetGo, setting))
+                return null;
             
             if (setting.cache)
                 widgets[widgetName] = widget;
@@ -673,7 +675,10 @@ namespace Oathx.Widget
 #if UNITY_EDITOR
                         setting.loadTime = System.DateTime.Now.Millisecond - millisecond;
 #endif
-                        NotifyOpenWidget((T)widget, complete);
+                        if (widget)
+                            NotifyOpenWidget((T)widget, complete);
+                        else
+                            complete?.Invoke(null);
                     }, setting, parent);
                 }
                 else
@@ -683,13 +688,17 @@ namespace Oathx.Widget
                     int millisecond = System.DateTime.Now.Millisecond;
 #endif
                     var widget = LoadWidget(widgetType, setting.path, setting, parent);
-                    if (widget)
+                    if (!widget)
                     {
-#if UNITY_EDITOR
-                        setting.loadTime = System.DateTime.Now.Millisecond - millisecond;
-#endif
-                        NotifyOpenWidget((T)widget, complete);
+                        complete?.Invoke(null);
+
+                        return false;
                     }
+
+#if UNITY_EDITOR
+                    setting.loadTime = System.DateTime.Now.Millisecond - millisecond;
+#endif
+                    NotifyOpenWidget((T)widget, complete);
 
                 }
             }
@@ -723,19 +732,41 @@ namespace Oathx.Widget
         /// <param name="setting"></param>
         private bool BindWidget(IWidget widget, GameObject vmGo, ConfigAttribute setting)
         {
-            Metadata metadata = vmGo.GetComponent<Metadata>();
-            if (!metadata)
-                throw new System.NullReferenceException(vmGo.name);
-
             widget.setting = setting;
-
-            // bind view model property infos
-            VM vm = (VM)System.Activator.CreateInstance(widget.GetVMType());
-            if (widget.Ref(vm))
+            bool bound = false;
+            try
             {
-#if UNITY_EDITOR
-                Debug.Log($"[UISystem] {widget.GetVMType().Name} binding to {widget.GetType().Name} in {vmGo.name} scucceed");
-#endif
+                VM vm = (VM)System.Activator.CreateInstance(widget.GetVMType());
+                bound = widget.Ref(vm);
+            }
+            catch (System.Exception exception)
+            {
+                Debug.LogException(exception, widget);
+            }
+
+            if (!bound)
+            {
+                vmGo.SetActive(false);
+                try
+                {
+                    var current = widget.GetVM();
+                    if (current)
+                        widget.Unref(current);
+                }
+                catch (System.Exception exception)
+                {
+                    Debug.LogException(exception, widget);
+                }
+                finally
+                {
+                    Debug.LogError($"[UISystem] Failed to bind {widget.GetType().Name}.", widget);
+                    if (Application.isPlaying)
+                        Destroy(vmGo);
+                    else
+                        DestroyImmediate(vmGo);
+                }
+
+                return false;
             }
 
             // set widget order

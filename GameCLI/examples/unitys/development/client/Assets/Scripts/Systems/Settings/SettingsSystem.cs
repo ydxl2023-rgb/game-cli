@@ -13,92 +13,23 @@ public class SettingsSystem : RuntimeSystem
         if (!IsActive())
             return false;
 
+        UnsubscribeAll();
+
+        Subscribe<ReqSettingsSelectTab>(request => SelectTab(request.tab));
+        Subscribe<ReqSettingsTogglePreference>(request => TogglePreference(request.option));
+        Subscribe<ReqSettingsSetNetwork>(request => ChangeNetwork(request.wifiOnly));
+        Subscribe<ReqSettingsSetQuality>(request => ChooseQuality(request.option, request.quality));
+        Subscribe<ReqSettingsSelectPreset>(request => SelectPreset(request.quality));
+        Subscribe<ReqSettingsShowCustom>(request => ShowCustom());
+        Subscribe<ReqSettingsSetVolume>(request => ChangeVolume(request.option, request.volume));
+        Subscribe<ReqSettingsClose>(request => Close());
+        Subscribe<ReqSettingsOpenService>(request => RequestService(request.action));
+
         MetadataSyncFactory.GetSingleton().Register(nameof(SyncSliderChange), new SyncSliderChange());
 
         UISystem.GetSingleton().OpenWidget<UISettings>((widget) => {
             if (widget)
             {
-                var vm = widget.vm;
-                if (!vm)
-                    return;
-
-                vm.ScreenClick = (sender) => SelectTab(SettingsTab.Screen);
-                vm.SoundClick = (sender) => SelectTab(SettingsTab.Sound);
-                vm.FunctionClick = (sender) => SelectTab(SettingsTab.Function);
-                vm.PrivacyClick = (sender) => SelectTab(SettingsTab.Privacy);
-                vm.DownloadClick = (sender) => SelectTab(SettingsTab.Download);
-                vm.AudienceClick = (sender) => TogglePreference(SettingsOption.Audience);
-                vm.PlayerOutlineClick = (sender) => TogglePreference(SettingsOption.PlayerOutline);
-                vm.TapEffectClick = (sender) => TogglePreference(SettingsOption.TapEffect);
-                vm.SoundEnabledClick = (sender) => TogglePreference(SettingsOption.SoundEnabled);
-                vm.MusicEnabledClick = (sender) => TogglePreference(SettingsOption.MusicEnabled);
-                vm.VoiceEnabledClick = (sender) => TogglePreference(SettingsOption.VoiceEnabled);
-                vm.ShowFpsClick = (sender) => TogglePreference(SettingsOption.ShowFps);
-                vm.VibrationClick = (sender) => TogglePreference(SettingsOption.Vibration);
-                vm.MatchEffectClick = (sender) => TogglePreference(SettingsOption.MatchEffect);
-                vm.MatchAnimationClick = (sender) => TogglePreference(SettingsOption.MatchAnimation);
-                vm.FriendInviteClick = (sender) => TogglePreference(SettingsOption.FriendInvite);
-                vm.AssociationInviteClick = (sender) => TogglePreference(SettingsOption.AssociationInvite);
-                vm.PersonalInfoClick = (sender) => TogglePreference(SettingsOption.PersonalInfo);
-                vm.HorseRaceLampClick = (sender) => TogglePreference(SettingsOption.HorseRaceLamp);
-                vm.InGamePushClick = (sender) => TogglePreference(SettingsOption.InGamePush);
-                vm.NightPushClick = (sender) => TogglePreference(SettingsOption.NightPush);
-                vm.ChatWorldClick = (sender) => TogglePreference(SettingsOption.ChatWorld);
-                vm.ChatAssociationClick = (sender) => TogglePreference(SettingsOption.ChatAssociation);
-                vm.OnlyWifiClick = (sender) => ChangeNetwork(true);
-                vm.WifiAndNetClick = (sender) => ChangeNetwork(false);
-                vm.ResolutionLowClick = (sender) => ChooseQuality(SettingsOption.Resolution, SettingsQuality.Low);
-                vm.ResolutionMidClick = (sender) => ChooseQuality(SettingsOption.Resolution, SettingsQuality.Medium);
-                vm.ResolutionHighClick = (sender) => ChooseQuality(SettingsOption.Resolution, SettingsQuality.High);
-                vm.FpsLowClick = (sender) => ChooseQuality(SettingsOption.FrameRate, SettingsQuality.Low);
-                vm.FpsMidClick = (sender) => ChooseQuality(SettingsOption.FrameRate, SettingsQuality.Medium);
-                vm.FpsHighClick = (sender) => ChooseQuality(SettingsOption.FrameRate, SettingsQuality.High);
-                vm.RefLowClick = (sender) => ChooseQuality(SettingsOption.Reflection, SettingsQuality.Low);
-                vm.RefMidClick = (sender) => ChooseQuality(SettingsOption.Reflection, SettingsQuality.Medium);
-                vm.RefHighClick = (sender) => ChooseQuality(SettingsOption.Reflection, SettingsQuality.High);
-                vm.SceneLowClick = (sender) => ChooseQuality(SettingsOption.Scene, SettingsQuality.Low);
-                vm.SceneMidClick = (sender) => ChooseQuality(SettingsOption.Scene, SettingsQuality.Medium);
-                vm.SceneHighClick = (sender) => ChooseQuality(SettingsOption.Scene, SettingsQuality.High);
-                vm.Tex2dLowClick = (sender) => ChooseQuality(SettingsOption.Texture, SettingsQuality.Low);
-                vm.Tex2dMidClick = (sender) => ChooseQuality(SettingsOption.Texture, SettingsQuality.Medium);
-                vm.Tex2dHighClick = (sender) => ChooseQuality(SettingsOption.Texture, SettingsQuality.High);
-                vm.VolLowClick = (sender) => ChooseQuality(SettingsOption.Volume, SettingsQuality.Low);
-                vm.VolMidClick = (sender) => ChooseQuality(SettingsOption.Volume, SettingsQuality.Medium);
-                vm.VolHighClick = (sender) => ChooseQuality(SettingsOption.Volume, SettingsQuality.High);
-                vm.MsaaLowClick = (sender) => ChooseQuality(SettingsOption.AntiAliasing, SettingsQuality.Low);
-                vm.MsaaMidClick = (sender) => ChooseQuality(SettingsOption.AntiAliasing, SettingsQuality.Medium);
-                vm.MsaaHighClick = (sender) => ChooseQuality(SettingsOption.AntiAliasing, SettingsQuality.High);
-                vm.ModelLowClick = (sender) => ChooseQuality(SettingsOption.Model, SettingsQuality.Low);
-                vm.ModelHighClick = (sender) => ChooseQuality(SettingsOption.Model, SettingsQuality.High);
-                vm.PresetLowClick = (sender) => SelectPreset(SettingsQuality.Low);
-                vm.PresetMidClick = (sender) => SelectPreset(SettingsQuality.Medium);
-                vm.PresetHighClick = (sender) => SelectPreset(SettingsQuality.High);
-                vm.CustomClick = (sender) => ShowCustom();
-                vm.MusicChanged = (sender, value) => ChangeVolume(SettingsOption.MusicVolume, value);
-                vm.SoundChanged = (sender, value) => ChangeVolume(SettingsOption.SoundVolume, value);
-                vm.VoiceChanged = (sender, value) => ChangeVolume(SettingsOption.VoiceVolume, value);
-                vm.CloseClick = (sender) => Close();
-                vm.RuleButtonClick = (sender) => RequestService(SettingsAction.RuleButton);
-                vm.ReLoginClick = (sender) => RequestService(SettingsAction.ReLogin);
-                vm.DeleteDataClick = (sender) => RequestService(SettingsAction.DeleteData);
-                vm.SwitchAccountClick = (sender) => RequestService(SettingsAction.SwitchAccount);
-                vm.GiftExchangeClick = (sender) => RequestService(SettingsAction.GiftExchange);
-                vm.ConfirmDetailBtnClick = (sender) => RequestService(SettingsAction.ConfirmDetailBtn);
-                vm.TakeOverCodeBtnClick = (sender) => RequestService(SettingsAction.TakeOverCodeBtn);
-                vm.BtnBindClick = (sender) => RequestService(SettingsAction.BtnBind);
-                vm.ConfirmAIHelpBtnClick = (sender) => RequestService(SettingsAction.ConfirmAIHelpBtn);
-                vm.GrowthBtnClick = (sender) => RequestService(SettingsAction.GrowthBtn);
-                vm.UserBtnClick = (sender) => RequestService(SettingsAction.UserBtn);
-                vm.PrivacyBtnClick = (sender) => RequestService(SettingsAction.PrivacyBtn);
-                vm.ThreeBtnClick = (sender) => RequestService(SettingsAction.ThreeBtn);
-                vm.PersonInfoBtnClick = (sender) => RequestService(SettingsAction.PersonInfoBtn);
-                vm.ChildrenBtnClick = (sender) => RequestService(SettingsAction.ChildrenBtn);
-                vm.AntiAddictionBtnClick = (sender) => RequestService(SettingsAction.AntiAddictionBtn);
-                vm.ICPBtnClick = (sender) => RequestService(SettingsAction.ICPBtn);
-                vm.TakeOverCloseBtnClick = (sender) => RequestService(SettingsAction.TakeOverCloseBtn);
-                vm.TakeOverCopyButtonClick = (sender) => RequestService(SettingsAction.TakeOverCopyButton);
-                vm.TakeOverConfirmButtonClick = (sender) => RequestService(SettingsAction.TakeOverConfirmButton);
-
                 Refresh();
                 NotifyPreferences();
             }
@@ -126,95 +57,9 @@ public class SettingsSystem : RuntimeSystem
         if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
             return false;
 
-        var vm = widget.vm;
-        if (!vm)
-            return false;
-
         var entity = XEntityManager.GetSingleton().QueryEntity<SettingsEntity>();
-        if (!entity)
-            return false;
 
-        vm.ScreenVisible = widget.selectedTab == SettingsTab.Screen;
-        vm.ScreenUnselected = widget.selectedTab != SettingsTab.Screen;
-        vm.SoundVisible = widget.selectedTab == SettingsTab.Sound;
-        vm.SoundUnselected = widget.selectedTab != SettingsTab.Sound;
-        vm.FunctionVisible = widget.selectedTab == SettingsTab.Function;
-        vm.FunctionUnselected = widget.selectedTab != SettingsTab.Function;
-        vm.PrivacyVisible = widget.selectedTab == SettingsTab.Privacy;
-        vm.PrivacyUnselected = widget.selectedTab != SettingsTab.Privacy;
-        vm.DownloadVisible = widget.selectedTab == SettingsTab.Download;
-        vm.DownloadUnselected = widget.selectedTab != SettingsTab.Download;
-        vm.AudienceOn = entity.IsEnabled(SettingsOption.Audience);
-        vm.AudienceOff = !entity.IsEnabled(SettingsOption.Audience);
-        vm.PlayerOutlineOn = entity.IsEnabled(SettingsOption.PlayerOutline);
-        vm.PlayerOutlineOff = !entity.IsEnabled(SettingsOption.PlayerOutline);
-        vm.TapEffectOn = entity.IsEnabled(SettingsOption.TapEffect);
-        vm.TapEffectOff = !entity.IsEnabled(SettingsOption.TapEffect);
-        vm.SoundEnabledOn = entity.IsEnabled(SettingsOption.SoundEnabled);
-        vm.SoundEnabledOff = !entity.IsEnabled(SettingsOption.SoundEnabled);
-        vm.MusicEnabledOn = entity.IsEnabled(SettingsOption.MusicEnabled);
-        vm.MusicEnabledOff = !entity.IsEnabled(SettingsOption.MusicEnabled);
-        vm.VoiceEnabledOn = entity.IsEnabled(SettingsOption.VoiceEnabled);
-        vm.VoiceEnabledOff = !entity.IsEnabled(SettingsOption.VoiceEnabled);
-        vm.ShowFpsOn = entity.IsEnabled(SettingsOption.ShowFps);
-        vm.ShowFpsOff = !entity.IsEnabled(SettingsOption.ShowFps);
-        vm.VibrationOn = entity.IsEnabled(SettingsOption.Vibration);
-        vm.VibrationOff = !entity.IsEnabled(SettingsOption.Vibration);
-        vm.MatchEffectOn = entity.IsEnabled(SettingsOption.MatchEffect);
-        vm.MatchEffectOff = !entity.IsEnabled(SettingsOption.MatchEffect);
-        vm.MatchAnimationOn = entity.IsEnabled(SettingsOption.MatchAnimation);
-        vm.MatchAnimationOff = !entity.IsEnabled(SettingsOption.MatchAnimation);
-        vm.FriendInviteOn = entity.IsEnabled(SettingsOption.FriendInvite);
-        vm.FriendInviteOff = !entity.IsEnabled(SettingsOption.FriendInvite);
-        vm.AssociationInviteOn = entity.IsEnabled(SettingsOption.AssociationInvite);
-        vm.AssociationInviteOff = !entity.IsEnabled(SettingsOption.AssociationInvite);
-        vm.PersonalInfoOn = entity.IsEnabled(SettingsOption.PersonalInfo);
-        vm.PersonalInfoOff = !entity.IsEnabled(SettingsOption.PersonalInfo);
-        vm.HorseRaceLampOn = entity.IsEnabled(SettingsOption.HorseRaceLamp);
-        vm.HorseRaceLampOff = !entity.IsEnabled(SettingsOption.HorseRaceLamp);
-        vm.InGamePushOn = entity.IsEnabled(SettingsOption.InGamePush);
-        vm.InGamePushOff = !entity.IsEnabled(SettingsOption.InGamePush);
-        vm.NightPushOn = entity.IsEnabled(SettingsOption.NightPush);
-        vm.NightPushOff = !entity.IsEnabled(SettingsOption.NightPush);
-        vm.ChatWorldSelected = entity.IsEnabled(SettingsOption.ChatWorld);
-        vm.ChatAssociationSelected = entity.IsEnabled(SettingsOption.ChatAssociation);
-        vm.OnlyWifiSelected = entity.IsEnabled(SettingsOption.WifiOnly);
-        vm.WifiAndNetSelected = !entity.IsEnabled(SettingsOption.WifiOnly);
-        vm.ResolutionLowSelected = entity.ReadQuality(SettingsOption.Resolution) == SettingsQuality.Low;
-        vm.ResolutionMidSelected = entity.ReadQuality(SettingsOption.Resolution) == SettingsQuality.Medium;
-        vm.ResolutionHighSelected = entity.ReadQuality(SettingsOption.Resolution) == SettingsQuality.High;
-        vm.FpsLowSelected = entity.ReadQuality(SettingsOption.FrameRate) == SettingsQuality.Low;
-        vm.FpsMidSelected = entity.ReadQuality(SettingsOption.FrameRate) == SettingsQuality.Medium;
-        vm.FpsHighSelected = entity.ReadQuality(SettingsOption.FrameRate) == SettingsQuality.High;
-        vm.RefLowSelected = entity.ReadQuality(SettingsOption.Reflection) == SettingsQuality.Low;
-        vm.RefMidSelected = entity.ReadQuality(SettingsOption.Reflection) == SettingsQuality.Medium;
-        vm.RefHighSelected = entity.ReadQuality(SettingsOption.Reflection) == SettingsQuality.High;
-        vm.SceneLowSelected = entity.ReadQuality(SettingsOption.Scene) == SettingsQuality.Low;
-        vm.SceneMidSelected = entity.ReadQuality(SettingsOption.Scene) == SettingsQuality.Medium;
-        vm.SceneHighSelected = entity.ReadQuality(SettingsOption.Scene) == SettingsQuality.High;
-        vm.Tex2dLowSelected = entity.ReadQuality(SettingsOption.Texture) == SettingsQuality.Low;
-        vm.Tex2dMidSelected = entity.ReadQuality(SettingsOption.Texture) == SettingsQuality.Medium;
-        vm.Tex2dHighSelected = entity.ReadQuality(SettingsOption.Texture) == SettingsQuality.High;
-        vm.VolLowSelected = entity.ReadQuality(SettingsOption.Volume) == SettingsQuality.Low;
-        vm.VolMidSelected = entity.ReadQuality(SettingsOption.Volume) == SettingsQuality.Medium;
-        vm.VolHighSelected = entity.ReadQuality(SettingsOption.Volume) == SettingsQuality.High;
-        vm.MsaaLowSelected = entity.ReadQuality(SettingsOption.AntiAliasing) == SettingsQuality.Low;
-        vm.MsaaMidSelected = entity.ReadQuality(SettingsOption.AntiAliasing) == SettingsQuality.Medium;
-        vm.MsaaHighSelected = entity.ReadQuality(SettingsOption.AntiAliasing) == SettingsQuality.High;
-        vm.ModelLowSelected = entity.ReadQuality(SettingsOption.Model) == SettingsQuality.Low;
-        vm.ModelHighSelected = entity.ReadQuality(SettingsOption.Model) == SettingsQuality.High;
-        vm.PresetLowSelected = entity.qualityPreset == SettingsQuality.Low;
-        vm.PresetMidSelected = entity.qualityPreset == SettingsQuality.Medium;
-        vm.PresetHighSelected = entity.qualityPreset == SettingsQuality.High;
-        vm.CustomSelected = entity.qualityPreset == SettingsQuality.Custom;
-        vm.MusicVolume = entity.ReadVolume(SettingsOption.MusicVolume);
-        vm.MusicPercent = UnityEngine.Mathf.RoundToInt(entity.ReadVolume(SettingsOption.MusicVolume) * 100f).ToString() + "%";
-        vm.SoundVolume = entity.ReadVolume(SettingsOption.SoundVolume);
-        vm.SoundPercent = UnityEngine.Mathf.RoundToInt(entity.ReadVolume(SettingsOption.SoundVolume) * 100f).ToString() + "%";
-        vm.VoiceVolume = entity.ReadVolume(SettingsOption.VoiceVolume);
-        vm.VoicePercent = UnityEngine.Mathf.RoundToInt(entity.ReadVolume(SettingsOption.VoiceVolume) * 100f).ToString() + "%";
-
-        return true;
+        return widget.Invalidate(entity);
     }
 
     /// <summary>Provide the product's current server label without depending on Login.</summary>
@@ -225,13 +70,7 @@ public class SettingsSystem : RuntimeSystem
         if (!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
             return false;
 
-        var vm = widget.vm;
-        if (!vm)
-            return false;
-
-        vm.ServerName = name ?? string.Empty;
-
-        return true;
+        return widget.ShowServer(name);
     }
 
     /// <summary>Select the presentation page.</summary>

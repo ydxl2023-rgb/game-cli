@@ -10,9 +10,29 @@ namespace Oathx.Widget
         public UILoader loader;
         public UICacher cacher;
 
+        /// <summary>Application adapter for business requests from widgets.</summary>
+        private readonly UISender sender;
+
         /// <summary>Optional lifecycle adapters copied into UISystem during startup.</summary>
         public List<IUIEventSender> eventSenders
         { get; set; } = new List<IUIEventSender>();
+
+        /// <summary>Create a configuration without a request sender.</summary>
+        public ResourceConfigure()
+        {
+        }
+
+        /// <summary>Create a configuration with the application's request sender.</summary>
+        public ResourceConfigure(UISender adapter)
+        {
+            sender = adapter;
+        }
+
+        /// <summary>Return the request sender supplied by the application.</summary>
+        public UISender GetSender()
+        {
+            return sender;
+        }
     }
 
     /// <summary>
@@ -40,6 +60,9 @@ namespace Oathx.Widget
         private UILoader loader;
         private UICacher cacher;
 
+        /// <summary>Request adapter installed for the current UI session.</summary>
+        private UISender sender;
+
         private readonly Dictionary<string, bool> loading = new Dictionary<string, bool>();
 
         /// <summary>
@@ -55,6 +78,13 @@ namespace Oathx.Widget
         {
             loader = conf.loader;
             cacher = conf.cacher;
+            sender = conf.GetSender();
+        }
+
+        /// <summary>Return the request sender installed for the current UI session.</summary>
+        public UISender GetSender()
+        {
+            return sender;
         }
 
         /// <summary>
@@ -62,6 +92,7 @@ namespace Oathx.Widget
         /// </summary>
         public void Shutdown()
         {
+            sender = null;
             if (cacher != null)
                 cacher.Clear();
         }

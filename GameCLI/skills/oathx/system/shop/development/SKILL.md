@@ -7,6 +7,8 @@ description: 独立 agent 参考 SV 大厅商城范式开发充值、普通礼�
 
 先读[系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)。由不同 agent 按[本系统验收](../acceptance/SKILL.md)检查。
 
+页面和子窗口的业务请求事件统一定义在 `UIShop.cs`。Widget 通过事件提交用户操作，System 调用 Widget 的 `Invalidate` 刷新实体数据。
+
 ## 设计来源与范围
 
 用户选定 SV 大厅入口实际打开的 RechargeMainView；不得替换为旧 ShopTabView/ShopView 或普通道具商店。主预制只是动态容器，还必须交付充值页 Recharge、普通礼包页 NormalGiftView 和礼包弹窗 NormalGiftBagBuyView。GoodsBuy 不是此礼包流程的购买弹窗。

@@ -9,6 +9,8 @@ description: 独立 agent 参考 SvNotice 标准模板开发产品公告系统�
 
 必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)。数据实体需要时读取 [Entity](../../../entity/SKILL.md)。
 
+页面和子窗口的业务请求事件统一定义在 `UINotice.cs`。Widget 通过事件提交用户操作，System 调用 Widget 的 `Invalidate` 刷新实体数据。
+
 ## 默认设计
 
 未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。

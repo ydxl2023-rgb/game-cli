@@ -5,6 +5,8 @@ description: 使用 com.oathx.widget 编写 UIWidget 与 VM，维护 Binding、M
 
 # Oathx Widget
 
+系统级页面和子窗口统一遵循[System、Widget 与 UI 意图事件](../development-rules/SKILL.md#systemwidget-与-ui-意图事件)。
+
 必须遵守 [开发规范](../development-rules/SKILL.md)。工程定位见 [Oathx](../SKILL.md)。
 
 先读包内 `Runtime/UIWidget.cs`、`IWidget.cs`、`Metadata/Metadata.cs` 和 `WidgetGenerator~` 中的生成器；VM 蓝本为业务侧 `VMSevenDayLogin`。先确认当前程序集内 VM、Binding 与 Sync 类型的定义，不凭名称补造接口。
@@ -14,7 +16,19 @@ description: 使用 com.oathx.widget 编写 UIWidget 与 VM，维护 Binding、M
 - 页面 prefab 位于 `Assets/Data/Widgets/<所属系统>/`，子页与弹窗随所属系统归档；独立小预制统一位于 `Assets/Data/Widgets/Common/Micros/`，单 prefab 且无配套资源时直接存放；多个预制或携带配套资源时使用 `<模块>/` 子目录；`[Config]` 与模板源码必须指向实际 prefab 的完整资产路径。
 - 通用图标统一引用 `Assets/Data/Widgets/Common/Icons/` 下的 Sprite。预制、VM 字符串路径及配置表遵循同一目录规则。
 - 按绑定目标选 Sync 类型：文本、可交互状态和显隐分别对照现有 SyncText、SyncInteractable、SyncVisible；按钮对照 ButtonClick。
-- UIWidget.Ref 依赖 prefab Metadata；字段存在不代表绑定完成。通过 UnityCLI widget-metadata 先 dry-run 再生成，检查字段覆盖和真实目标组件。
+- 父类 `Ref(VM)` 根据预制 Metadata 建立绑定。通过 UnityCLI `widget-metadata` 先 dry-run 再生成，检查字段覆盖和真实目标组件。
+- 页面、弹窗、列表项在 `protected override bool Bind()` 中连接当前 VM 的按钮。无参数业务请求直接绑定到 `Send<T>`，携带业务数据时在点击回调内构造请求。需要延迟派发时使用 `Post`。例如购买确认窗口的绑定如下。
+
+  ```csharp
+  /// <summary>Bind the purchase dialog actions.</summary>
+  protected override bool Bind()
+  {
+      vm.CloseClick = Send<ReqShopCancelPurchase>;
+      vm.ConfirmClick = Send<ReqShopConfirmPurchase>;
+
+      return true;
+  }
+  ```
 - 固定 UI 引用采用序列化绑定，禁止用运行时节点路径搜索替代 Metadata 或序列化引用。
 - 检查 Ref/Unref 的绑定与监听释放；重开页面不能重复注册点击事件。不要仅销毁可见对象而遗留绑定。
 - 业务 Entity 是数据来源，VM 是展示状态；按系统已授权范围刷新，不在视图层新增网络管理。

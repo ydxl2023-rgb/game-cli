@@ -14,9 +14,11 @@ public static class RedDotProbe
     /// <param name="enabled">Whether to inject the current game plugin.</param>
     public static void ConfigureSender(bool enabled)
     {
-        var configure = new ResourceConfigure { loader = new UIResourceLoader(), cacher = new UIDefaultCacher() };
+        var plugin = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>();
+        var configure = new ResourceConfigure(plugin) { loader = new UIResourceLoader(), cacher = new UIDefaultCacher() };
+
         if (enabled)
-            configure.eventSenders.Add(XPluginManager.GetSingleton().QueryPlugin<GamePlugin>());
+            configure.eventSenders.Add(plugin);
 
         UISystem.GetSingleton().Startup(configure);
     }

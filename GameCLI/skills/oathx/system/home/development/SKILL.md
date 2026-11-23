@@ -7,6 +7,8 @@ description: 独立 agent 参考 SvHome 基础大厅模板开发 Home 的玩家�
 
 先读 [系统开发流程](../../../system-development/SKILL.md)、[编码规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)、[Widget](../../../widget/SKILL.md) 和 [Widget Extension](../../../widget-extension/SKILL.md)。由另一名 agent 按 [Home 验收](../acceptance/SKILL.md) 独立检查。
 
+页面和子窗口的业务请求事件统一定义在 `UIHome.cs`。Widget 通过事件提交用户操作，System 调用 Widget 的 `Invalidate` 刷新实体数据。
+
 ## 默认范围
 
 读取数据库 SvHome 的实际版本、scripts、configurations 和生产资料。未提出设计变更时保留所选版本的布局、独立图片、入口和行为；不依赖原 SV 工程重新提取。模板是产品开发范式，不把其静态夏季背景或示例数值强加给产品。

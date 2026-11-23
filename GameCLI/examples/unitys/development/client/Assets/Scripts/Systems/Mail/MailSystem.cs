@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json;
 using Oathx.Core;
@@ -16,13 +15,18 @@ public class MailSystem : RuntimeSystem
         if (!IsActive())
             return false;
 
+        UnsubscribeAll();
+
+        Subscribe<ReqMailClose>(request => Close());
+        Subscribe<ReqMailClaim>(request => Claim());
+        Subscribe<ReqMailDelete>(request => Delete());
+        Subscribe<ReqMailClaimAll>(request => ClaimAll());
+        Subscribe<ReqMailDeleteRead>(request => DeleteRead());
+        Subscribe<ReqMailSelectMessage>(request => SelectMessage(request.mailId));
+
         UISystem.GetSingleton().OpenWidget<UIMail>((widget) => {
             if (widget)
             {
-                var vm = widget.vm;
-                if (!vm)
-                    return;
-
                 var entity = XEntityManager.GetSingleton().QueryEntity<MailEntity>();
                 if (!entity)
                     return;
@@ -45,15 +49,6 @@ public class MailSystem : RuntimeSystem
                     if (!entity.ReplaceInbox(messages))
                         throw new InvalidOperationException("Invalid local mail example.");
                 }
-
-                vm.CloseClick = (sender) => Close();
-                vm.MessageClick = (sender, index) => Select(index);
-                vm.ClaimClick = (sender) => Claim();
-                vm.DeleteClick = (sender) => Delete();
-                vm.ClaimAllClick = (sender) => ClaimAll();
-                vm.DeleteReadClick = (sender) => DeleteRead();
-                vm.MessageTemplate = false;
-                vm.RewardTemplate = false;
 
                 Refresh();
             }
@@ -81,10 +76,6 @@ public class MailSystem : RuntimeSystem
         if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UIMail>(out var widget))
             return false;
 
-        var vm = widget.vm;
-        if (!vm)
-            return false;
-
         var entity = XEntityManager.GetSingleton().QueryEntity<MailEntity>();
         if (!entity)
             return false;
@@ -94,44 +85,7 @@ public class MailSystem : RuntimeSystem
         if (entity.GetSelected(now) == null && messages.Count > 0)
             entity.Select(messages[0].id, now);
 
-        messages = entity.GetMessages(now);
-        var selected = entity.GetSelected(now);
-        vm.Messages = messages.Select(item => new VMMailEntry {
-            mailId = item.id,
-            Title = item.title,
-            SentAt = DateTimeOffset.FromUnixTimeSeconds(item.sentAt).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture),
-            Selected = item.id == entity.selectedId,
-            Unselected = item.id != entity.selectedId && !(item.claimed || item.read && item.rewards.Count == 0),
-            Received = item.id != entity.selectedId && (item.claimed || item.read && item.rewards.Count == 0),
-            Unread = !item.read,
-            HasAttachment = item.rewards.Count > 0,
-            Claimed = item.claimed,
-            Pending = !item.claimed && item.rewards.Count > 0
-        }).ToList();
-        vm.Total = messages.Count.ToString(CultureInfo.InvariantCulture);
-        vm.Unread = messages.Count(item => !item.read).ToString(CultureInfo.InvariantCulture);
-        vm.EmptyVisible = messages.Count == 0;
-        vm.EnvelopeState = messages.Count > 0 ? "EnvelopeOpen" : "EnvelopeClose";
-        vm.DetailVisible = selected != null;
-        vm.CanClaimAll = messages.Any(item => entity.CheckClaim(item.id, now) == MailResult.Success);
-        vm.CanDeleteRead = messages.Any(item => entity.CheckDelete(item.id) == MailResult.Success);
-        vm.Title = selected == null ? string.Empty : selected.title;
-        vm.Body = selected == null ? string.Empty : selected.body;
-        vm.SentAt = selected == null ? string.Empty : DateTimeOffset.FromUnixTimeSeconds(selected.sentAt).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
-        vm.Expiry = selected == null ? string.Empty : Math.Ceiling((selected.expiresAt - now) / 86400d).ToString(CultureInfo.InvariantCulture);
-        vm.ClaimVisible = selected != null && entity.CheckClaim(selected.id, now) == MailResult.Success;
-        vm.DeleteVisible = selected != null && entity.CheckDelete(selected.id) == MailResult.Success;
-        vm.Rewards = (selected == null ? new System.Collections.Generic.List<MailReward>() : selected.rewards)
-            .Select(item => new VMRewardEntry {
-                Item = new VMItemSlot {
-                    Text = item.count.ToString(CultureInfo.InvariantCulture),
-                    Icon = item.icon,
-                    IconVisible = true
-                },
-                Claimed = selected.claimed
-            }).ToList();
-
-        return true;
+        return widget.Invalidate(entity);
     }
 
     /// <summary>Open a displayed record by its stable identifier.</summary>
@@ -142,18 +96,7 @@ public class MailSystem : RuntimeSystem
         if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UIMail>(out var widget))
             return false;
 
-        var vm = widget.vm;
-        if (!vm)
-            return false;
-
-        var entity = XEntityManager.GetSingleton().QueryEntity<MailEntity>();
-        if (!entity)
-            return false;
-
-        if (vm.Messages == null || index < 0 || index >= vm.Messages.Count)
-            return false;
-
-        return entity.Select(vm.Messages[index].mailId, DateTimeOffset.UtcNow.ToUnixTimeSeconds()) && Refresh();
+        return widget.TryGetMailId(index, out var id) && SelectMessage(id);
     }
 
     /// <summary>Record the selected attachment claim and refresh the current state.</summary>
@@ -210,6 +153,14 @@ public class MailSystem : RuntimeSystem
         Refresh();
 
         return count > 0;
+    }
+
+    /// <summary>Select the record identified when the player clicked the displayed row.</summary>
+    private bool SelectMessage(int id)
+    {
+        var entity = XEntityManager.GetSingleton().QueryEntity<MailEntity>();
+
+        return IsActive() && entity && entity.Select(id, DateTimeOffset.UtcNow.ToUnixTimeSeconds()) && Refresh();
     }
 
     /// <summary>Request closure through the lifecycle coordinator.</summary>

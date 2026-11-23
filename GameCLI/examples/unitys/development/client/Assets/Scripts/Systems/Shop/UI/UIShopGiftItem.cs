@@ -11,15 +11,13 @@ public class UIShopGiftItem : UIWidget<VMShopGiftItem>, IPointerClickHandler
     private Animator entrance;
 
     /// <summary>Replay entrance when a recycled cell receives new content.</summary>
-    /// <param name="value">The new list item presentation.</param>
     /// <returns>True when Metadata binding succeeded.</returns>
-    public override bool Ref(VM value)
+    protected override bool Bind()
     {
-        bool bound = base.Ref(value);
-        if (bound && entrance)
+        if (entrance)
             entrance.Play("Open", 0, 0f);
 
-        return bound;
+        return true;
     }
 
     /// <summary>Release the child slot while preserving the recycled product model.</summary>

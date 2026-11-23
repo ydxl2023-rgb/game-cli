@@ -7,7 +7,7 @@ using Oathx.Widget;
 using System.Collections.Generic;
 
 /// <summary>
-/// 
+/// Request an inbox visibility change.
 /// </summary>
 public class EmailEvent : IEvent
 {
@@ -18,15 +18,11 @@ public class EmailEvent : IEvent
     { get; set; }
 }
 
-/// <summary>
-/// 
-/// </summary>
+/// <summary>Mail reward delivery notification.</summary>
 public class EmailClaimEvent : IEvent
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public List<ItemEntity> items 
+    /// <summary>Items granted by the mail service.</summary>
+    public List<ItemEntity> items
     { get; set; } = new List<ItemEntity>();
 }
 
@@ -42,24 +38,6 @@ public class EmailSystem : RuntimeSystem
     { get; private set; }
 
     /// <summary>
-    /// install email system
-    /// </summary>
-    /// <returns></returns>
-    public override bool Install()
-    {
-        Subscribe<EmailEvent>(OnEmailEvent);
-        return true;
-    }
-
-    /// <summary>
-    /// uninstall email system
-    /// </summary>
-    public override void Uninstall()
-    {
-        UnsubscribeAll();
-    }
-
-    /// <summary>
     /// active email system
     /// </summary>
     /// <returns></returns>
@@ -68,6 +46,14 @@ public class EmailSystem : RuntimeSystem
         var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
         if (!master)
             return false;
+
+        UnsubscribeAll();
+
+        Subscribe<EmailEvent>(OnEmailEvent);
+        Subscribe<ReqEmailClose>(request => CloseInbox());
+        Subscribe<ReqEmailSelectMessage>(request => SelectEmail(request.emailId));
+        Subscribe<ReqEmailClaim>(request => ClaimEmail(request.emailId));
+        Subscribe<ReqEmailClaimAll>(request => ClaimAll());
 
         Rpc.Load<EmailEntity>(master.GetAttr(MasterPropertyDef.PID), (code, email) => {
             if (code == HttpCode.SUCCEED)
@@ -84,6 +70,8 @@ public class EmailSystem : RuntimeSystem
     /// </summary>
     public override void OnDetive()
     {
+        UnsubscribeAll();
+
         var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
         if (master)
         {
@@ -91,11 +79,7 @@ public class EmailSystem : RuntimeSystem
             Rpc.Save(pid, entity);
         }
 
-        System.Type[] widgets = new System.Type[] {
-            typeof(UIEmail)
-        };
-
-        UISystem.GetSingleton().CloseWidget(widgets);
+        CloseInbox();
     }
 
     /// <summary>
@@ -107,148 +91,75 @@ public class EmailSystem : RuntimeSystem
         if (evt.show)
         {
             UISystem.GetSingleton().OpenWidget<UIEmail>((widget) => {
-                FetchEmails(widget);
+                if (widget)
+                    FetchEmails(widget);
             });
         }
         else
         {
-            System.Type[] widgets = new System.Type[] {
-                typeof(UIEmail)
-            };
-
-            UISystem.GetSingleton().CloseWidget(widgets);
+            CloseInbox();
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="widget"></param>
-    /// <returns></returns>
-    private bool SetupClicks(UIEmail widget)
+    /// <summary>Close the inbox through the system-owned window list.</summary>
+    private void CloseInbox()
     {
-        var vm = widget.GetVM() as VMEmail;
-        if (!vm)
-            return false;
-
-        SetupFancyClick(vm);
-        SetupReceiveAllClick(vm);
-        SetupCloseClick(vm);
-        SetupReadClick(vm);
-
-        return true;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="widget"></param>
-    private void SetupFancyClick(VMEmail vm)
-    {
-        vm.FancyClick = (view, index) =>
-        {
-            if (!entity)
-                return false;
-                
-            var email = entity.GetEmail(index);
-            if (email != null)
-            {
-                entity.UpdateSelect(index);
-
-                var widget = UISystem.GetSingleton().GetWidget<UIEmail>();
-                if (widget)
-                    widget.Select(email);
-            }
-                
-            return true;
-        };   
-    }
-
-    /// <summary>
-    /// click  receive all
-    /// </summary>
-    /// <param name="widget"></param>
-    private void SetupReceiveAllClick(VMEmail vm)
-    {
-        vm.ReceiveAll = (sender) =>
-        {
-            if (entity)
-            {
-                var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
-
-                var emails = entity.Emails;
-                foreach(var email in emails )
-                {
-                    if (email.claimStatus == 0)
-                    {
-                        XAppEmail.GetSingleton().Claim(master.GetAttr(MasterPropertyDef.PID), email.id, (success, text) =>
-                        {
-                            if (success)
-                            {
-                                Claim(email);
-                            }
-                        });
-                    }
-                }
-            }
-
-            return true;
+        System.Type[] widgets = new System.Type[] {
+            typeof(UIEmail)
         };
+
+        UISystem.GetSingleton().CloseWidget(widgets);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="widget"></param>
-    private void SetupCloseClick(VMEmail vm)
+    /// <summary>Display the selected message by its service identifier.</summary>
+    private void SelectEmail(int emailId)
     {
-        vm.Close = (sender) => {
-            System.Type[] widgets = new System.Type[] {
-                typeof(UIEmail)
-            };
-
-            UISystem.GetSingleton().CloseWidget(widgets);
-
-            return true;
-        };    
+        if (entity && entity.SelectEmail(emailId))
+            RefreshInbox();
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="vm"></param>
-    private void SetupReadClick(VMEmail vm)
+    /// <summary>Claim the requested attachment through the existing mail service.</summary>
+    private void ClaimEmail(int emailId)
     {
-        vm.Read = (sender) => {
-            var emailEntity = XEntityManager.GetSingleton().QueryEntity<EmailEntity>();
-            if (emailEntity)
+        var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
+        if (entity && master)
+        {
+            var email = entity.Emails.Find(item => item.id == emailId);
+            if (email != null && email.claimStatus == 0)
             {
-                var email = emailEntity.GetSelectEmail();
-                if (email != null && email.claimStatus == 0)
-                {
-                    var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
-                    if (!master)
-                        return false;
-
-                    XAppEmail.GetSingleton().Claim(master.GetAttr(MasterPropertyDef.PID), email.id, (success, text) => {
-                        if (success)
-                        {
-                            Claim(email);
-                        }
-                    });
-                }
+                XAppEmail.GetSingleton().Claim(master.GetAttr(MasterPropertyDef.PID), email.id, (success, text) => {
+                    if (success)
+                        Claim(email);
+                });
             }
-
-            return true;
-        };
+        }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="email"></param>
+    /// <summary>Request each outstanding attachment.</summary>
+    private void ClaimAll()
+    {
+        if (entity)
+        {
+            foreach (var email in entity.Emails)
+            {
+                if (email.claimStatus == 0)
+                    ClaimEmail(email.id);
+            }
+        }
+    }
+
+    /// <summary>Refresh the open page after the inbox changes.</summary>
+    private void RefreshInbox()
+    {
+        if (UISystem.GetSingleton().TryGetWidget<UIEmail>(out var widget))
+            widget.Invalidate(entity);
+    }
+
+    /// <summary>Deliver the granted rewards after service confirmation.</summary>
     private void Claim(Email email)
     {
+        email.claimStatus = 1;
+
         if (TryParseEmailRewards(email, out var items))
         {
             XPluginUtility.FireEvent(new GrabItemEvent() {
@@ -256,11 +167,7 @@ public class EmailSystem : RuntimeSystem
             });
         }
 
-        var widget = UISystem.GetSingleton().GetWidget<UIEmail>();
-        if (widget)
-        {
-            widget.ClaimSucceed(email);
-        }
+        RefreshInbox();
 
         var master = XEntityManager.GetSingleton().QueryEntity<MasterEntity>();
         if (entity && master)
@@ -309,17 +216,17 @@ public class EmailSystem : RuntimeSystem
                         var emailEntity = XEntityManager.GetSingleton().QueryEntity<EmailEntity>();
                         if (emailEntity)
                         {
+                            entity = emailEntity;
                             bool succeed = emailEntity.SetEmails(result.data);
                             if (succeed)
                                 Rpc.Save(pid, emailEntity);
                         }
                             
-                        widget.Full(emailEntity);
+                        widget.Invalidate(emailEntity);
                     }
                 }
             });
         }
 
-        SetupClicks(widget);
     }
 }

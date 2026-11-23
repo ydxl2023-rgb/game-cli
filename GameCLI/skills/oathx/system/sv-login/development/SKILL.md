@@ -9,6 +9,8 @@ description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSys
 
 必须读取 [系统开发流程](../../../system-development/SKILL.md)、[开发规范](../../../development-rules/SKILL.md)、[Core](../../../core/SKILL.md)、[Entity](../../../entity/SKILL.md)、[Widget](../../../widget/SKILL.md)、[Widget Extension](../../../widget-extension/SKILL.md)。
 
+页面和子窗口的业务请求事件统一定义在 `UILogin.cs`。Widget 通过事件提交用户操作，System 调用 Widget 的 `Invalidate` 刷新实体数据。
+
 ## 默认设计
 
 未明确提出设计变更时，保留选用标准模板的布局、视觉、交互和动画，不自行改版。仅做保持表现与行为一致的必要技术适配；产品契约缺失时不虚构业务。遵循[共享默认规则](../../../system-development/SKILL.md#默认保留模板设计)。
@@ -31,7 +33,7 @@ description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSys
 2. 按需求组织 Login/VM、Login/UI，System、Entity 及实体专用类型放 Login 根目录。复用已存在公共基类与事件。
 3. 将身份、区服选择等数据放入实体；状态使用枚举，显示文案从 propCommonText 查表；保存操作封装在实体方法中。
 4. 按产品 UI 建立 Metadata/Fancy 列表绑定，字段顺序以本次 VM 为准；不沿用历史九项绑定数量作为新产品契约。保留按钮视觉，未接业务不等于统一禁用。
-5. OnActive 在异步打开前检查激活状态，回调用 if (widget) 包裹初始化并检查 VM。OnDetive 取消订阅，通过局部 widgets 类型数组关闭本系统页面。
+5. OnActive 在异步打开前检查激活状态，回调用 if (widget) 包裹初始化并调用页面的 Invalidate。OnDetive 取消订阅，通过局部 widgets 类型数组关闭本系统页面。
 6. 按产品约定发出登录结果/入口事件，配置共享负责人完成系统注册及必要配置。没有登录服务契约时不伪造成功，不擅自开发 Master/Home/Notice。
 
 开发结果列出事件载荷、实体数据、页面入口及待接业务接口。具体 SV 换区资源、存储示例、源码归档历史见 [参考实现](references/gamecli-example.md)，仅在需要复用时读取。
@@ -42,4 +44,4 @@ description: 独立 agent 参考 SvLogin 标准模板，为产品开发 LoginSys
 
 ## 实体职责约定
 
-LoginEntity 持有区服目录与选择，SetServers 验证并复制输入，GetServers / GetSelectedServer 返回独立快照；RestoreSelection、SelectServer、CanEnter、RecordLoginServer 封装业务判断和持久化。LoginSystem 保留分类标题与当前页面索引等展示状态，不持有权威区服目录；登录前调用实体 CanEnter，不以 VM.CanEnter 作为业务依据。
+LoginEntity 持有区服目录与选择，SetServers 验证并复制输入，GetServers / GetSelectedServer 返回独立快照；RestoreSelection、SelectServer、CanEnter、RecordLoginServer 封装业务判断和持久化。UIServerSelect 管理分类标题与当前页面索引等展示状态，不持有权威区服目录；登录前调用实体 CanEnter，不以 VM.CanEnter 作为业务依据。

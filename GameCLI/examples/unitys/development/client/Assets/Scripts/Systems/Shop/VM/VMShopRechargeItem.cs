@@ -3,6 +3,10 @@ using Oathx.Widget;
 /// <summary>Presentation bindings for ShopRechargeItem.</summary>
 public partial class VMShopRechargeItem : VM
 {
+    /// <summary>Stable catalog identifier for selection.</summary>
+    public int productId
+    { get; set; }
+
     /// <summary>Bound price presentation value.</summary>
     [Binding(typeof(SyncText))]
     string price;

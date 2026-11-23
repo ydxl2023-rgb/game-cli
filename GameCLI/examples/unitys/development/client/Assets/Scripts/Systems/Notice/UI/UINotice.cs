@@ -1,6 +1,4 @@
-using System;
 using Oathx.Widget;
-using UnityEngine;
 
 /// <summary>
 /// Presents a local login notice without requesting server content.
@@ -8,27 +6,29 @@ using UnityEngine;
 [Config("Assets/Data/Widgets/Notice/Notice.prefab", WidgetLayer.topmost, cacheWidget: false)]
 public class UINotice : UIWidget<VMNotice>
 {
-    /// <summary>
-    /// Persistent expiration key for automatic notice suppression.
-    /// </summary>
-    private const string reminderKey = "GameCLI.Notice.SuppressUntil";
-
-    /// <summary>
-    /// Bind page actions and reset the displayed notice.
-    /// </summary>
-    /// <returns>True when the page has a bound view model.</returns>
-    public bool Initialize()
+    /// <summary>Connect view interactions when the notice opens.</summary>
+    protected override bool Bind()
     {
-        if (!vm)
+        vm.CloseClick = Send<ReqNoticeClose>;
+        vm.ExpandClick = sender => ToggleContent();
+        vm.ArrowClick = sender => ToggleContent();
+        vm.WeekClick = Send<ReqNoticeToggleReminder>;
+        vm.WeekAreaClick = Send<ReqNoticeToggleReminder>;
+
+        return true;
+    }
+
+    /// <summary>Update content and suppression while preserving the reader's expansion choice.</summary>
+    public bool Invalidate(NoticeEntity entity)
+    {
+        if (!entity || !vm)
             return false;
 
-        vm.ExpandClick = (sender) => ToggleContent();
-        vm.ArrowClick = (sender) => ToggleContent();
-        vm.WeekClick = (sender) => ToggleReminder();
-        vm.WeekAreaClick = (sender) => ToggleReminder();
-        vm.Selected = IsReminderSuppressed();
+        vm.Selected = entity.suppressed;
+        if (vm.NoticeTitleName != entity.title || vm.Body != entity.content)
+            return SetContent(entity.title, entity.content);
 
-        return SetContent(string.Empty, string.Empty);
+        return true;
     }
 
     /// <summary>
@@ -52,6 +52,12 @@ public class UINotice : UIWidget<VMNotice>
         return true;
     }
 
+    /// <summary>Read the current local preference for callers deciding whether to open a notice.</summary>
+    public static bool IsReminderSuppressed()
+    {
+        return NoticeEntity.ReadSuppression();
+    }
+
     /// <summary>
     /// Toggle the visible body of the local notice.
     /// </summary>
@@ -64,34 +70,14 @@ public class UINotice : UIWidget<VMNotice>
         vm.Expanded = !vm.Expanded;
         return true;
     }
+}
 
-    /// <summary>
-    /// Toggle and persist automatic notice suppression for seven days.
-    /// </summary>
-    /// <returns>True when the reminder preference was updated.</returns>
-    private bool ToggleReminder()
-    {
-        if (!vm)
-            return false;
+/// <summary>Close the notice page.</summary>
+public sealed class ReqNoticeClose : UIRequestEvent
+{
+}
 
-        bool selected = !IsReminderSuppressed();
-        if (selected)
-            PlayerPrefs.SetString(reminderKey, DateTimeOffset.UtcNow.AddDays(7).ToUnixTimeSeconds().ToString(System.Globalization.CultureInfo.InvariantCulture));
-        else
-            PlayerPrefs.DeleteKey(reminderKey);
-
-        PlayerPrefs.Save();
-        vm.Selected = selected;
-        return true;
-    }
-
-    /// <summary>
-    /// Check whether automatic opening is suppressed; manual opening remains available.
-    /// </summary>
-    /// <returns>True while the saved expiration is in the future.</returns>
-    public static bool IsReminderSuppressed()
-    {
-        return long.TryParse(PlayerPrefs.GetString(reminderKey, string.Empty), out long expires)
-            && expires > DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-    }
+/// <summary>Toggle the seven-day reminder preference.</summary>
+public sealed class ReqNoticeToggleReminder : UIRequestEvent
+{
 }

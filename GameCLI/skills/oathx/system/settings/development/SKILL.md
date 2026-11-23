@@ -9,6 +9,8 @@ description: 独立开发 Settings 设置系统，参考 SV 五页签界面、�
 
 从数据库读取 SvSettings 的实际发布版本、scripts、configurations 和 materials。未明确提出产品设计变更时，保留五页签、字体、控件状态、滚动区域与原版动画；不要把所有设置改为通用列表。产品开发不依赖 SV 源工程，不覆盖产品已有账号、音频或渲染系统。
 
+页面和子窗口的业务请求事件统一定义在 `UISettings.cs`。Widget 通过事件提交用户操作，System 调用 Widget 的 `Invalidate` 刷新实体数据。
+
 ## 参考契约
 
 - SettingsSystem 协调生命周期、实体操作和事件；SettingsEntity 校验、保存与恢复设备偏好。UISettings 仅管理当前页签与原生动画；VMSettings 只放动态值及交互，固定标签在 prefab 上。

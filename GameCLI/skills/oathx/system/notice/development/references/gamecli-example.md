@@ -19,7 +19,7 @@
 ## Unity 实现
 
 - Login 的 VMLogin.announcementClick 绑定 Announcement 按钮，LoginSystem.OpenNotice 检查 IsActive 后投递 SystemActive(type=NoticeSystem)，由 MasterSystem 加载。NoticeSystem.OnActive 在 OpenWidget 前检查 IsActive，并在显式异步回调中初始化 UINotice、绑定关闭按钮为投递 SystemDetive(type=NoticeSystem)，由 MasterSystem 卸载、填充本地测试公告。OnDetive 先 UnsubscribeAll，空行后关闭页面。Master 切换退出 Login 时卸载 NoticeSystem，Login 不直接管理公告生命周期。
-- UINotice.Initialize 绑定标题/箭头展开、勾选/标签点击；关闭按钮由 NoticeSystem 绑定为系统卸载请求。初始化先清空正文，再由 NoticeSystem 填充默认测试公告；空内容仍显示“暂无公告”。SetContent(title, text) 提供单条本地文本入口，空白正文清空；支持 UGUI 富文本与 HTTP/HTTPS 超链接，暂不支持多条列表和图片公告。
+- UINotice 激活时绑定关闭、展开、免打扰操作，业务请求事件定义在 UINotice.cs。NoticeSystem 监听关闭与免打扰请求，调用 Invalidate(NoticeEntity) 展示公告。SetContent(title, text) 提供单条本地文本入口，空白正文清空；支持 UGUI 富文本与 HTTP/HTTPS 超链接，暂不支持多条列表和图片公告。
 - 一周免打扰到期时间写入 PlayerPrefs 的 GameCLI.Notice.SuppressUntil。IsReminderSuppressed 可供未来自动打开流程判断；手动公告按钮始终允许打开，目前没有自动弹公告逻辑。
 - VMNotice 有 11 项 Metadata；VMLogin 增加公告入口后为 8 项。固定组件引用通过 Metadata 或 NoticeLayout 的 private SerializeField 绑定，不使用运行时路径搜索。
 - NoticeLayout 根据正文 preferredHeight 更新条目和 ScrollRect 内容高度。Entries、Entry、Expanded、BodyContent、BodyRow、Body 保持顶部锚点/轴心，避免长文本将标题推离视口。

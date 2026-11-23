@@ -10,12 +10,11 @@ public class UIShopGroup : UIWidget<VMShopGroup>
     private UnityEngine.UI.Image sectionIcon;
 
     /// <summary>Refresh the icon when the list recycles a section.</summary>
-    public override bool Ref(VM value)
+    protected override bool Bind()
     {
-        bool bound = base.Ref(value);
-        if (bound && sectionIcon && value is VMShopGroup group)
-            sectionIcon.sprite = group.icon;
+        if (sectionIcon)
+            sectionIcon.sprite = vm.icon;
 
-        return bound;
+        return true;
     }
 }
