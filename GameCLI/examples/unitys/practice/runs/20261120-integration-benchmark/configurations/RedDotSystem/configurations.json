@@ -1,0 +1,679 @@
+{
+  "tables": [
+    {
+      "name": "propRedDot",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "name": "NumID",
+          "type": "int"
+        },
+        {
+          "name": "ParentID",
+          "type": "int"
+        },
+        {
+          "name": "RedDotCondition",
+          "type": "enum"
+        },
+        {
+          "name": "RedDotDisplay",
+          "type": "enum"
+        },
+        {
+          "name": "Enabled",
+          "type": "int"
+        },
+        {
+          "name": "RefreshOnOpen",
+          "type": "int"
+        },
+        {
+          "name": "RefreshOnClose",
+          "type": "int"
+        }
+      ],
+      "source": {
+        "sheet": "RedDot",
+        "sha256": "97da23b66d76e67ad3164cbd8d05b4d8c326c4edc3408764ea3977e030929c2f",
+        "assetId": "97da23b66d76e67ad3164cbd8d05b4d8c326c4edc3408764ea3977e030929c2f",
+        "fileName": "propRedDot.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "RED_DOT_HOME",
+          "NumID": "11000",
+          "Enabled": "1",
+          "ParentID": "0",
+          "RedDotDisplay": "Count",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "None"
+        },
+        {
+          "ID": "RED_DOT_HOME_MAILTIPS",
+          "NumID": "11001",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_SETTIPS",
+          "NumID": "11002",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_ANNOUNCEMENTTIPS",
+          "NumID": "11003",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_FRIENDTIPS",
+          "NumID": "11004",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_FAVORTIPS",
+          "NumID": "11005",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_MANUALTIPS",
+          "NumID": "11006",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_TASKTIPS",
+          "NumID": "11007",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_REDTIPS",
+          "NumID": "11008",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_REDTIPS0620200",
+          "NumID": "11009",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_REDTIPS0620300",
+          "NumID": "11010",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_DIRECTPURCHASEREDDOT",
+          "NumID": "11011",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_DIRECTPURCHASE1REDDOT",
+          "NumID": "11012",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_CNBATTLEPASSREDDOT",
+          "NumID": "11013",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_TIMELIMITGIFTTIPS",
+          "NumID": "11014",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_UPINPROTIPS",
+          "NumID": "11015",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_COMEBACKREDDOT",
+          "NumID": "11016",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_REDDOTBAIT",
+          "NumID": "11017",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_REDDOTKINGSETTER",
+          "NumID": "11018",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_APPEARREDDOT",
+          "NumID": "11019",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_REDDOTPLAYERTHEME",
+          "NumID": "11020",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTTURNCARD",
+          "NumID": "11021",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTPREORDER",
+          "NumID": "11022",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTMATCHGUESS",
+          "NumID": "11023",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTTOPBATTLE",
+          "NumID": "11024",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTSERVEGAME",
+          "NumID": "11025",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTNEWYEAR",
+          "NumID": "11026",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTCHAINGIFT",
+          "NumID": "11027",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTSPTOPIC",
+          "NumID": "11028",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTANNIVERSARY",
+          "NumID": "11029",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTFREEMATCH",
+          "NumID": "11030",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTRUNNINGGAME",
+          "NumID": "11031",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOT15ANNIVERSARY",
+          "NumID": "11032",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTLUCKYDRAW",
+          "NumID": "11033",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTWUYECANTEEN",
+          "NumID": "11034",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTACEDUEL",
+          "NumID": "11035",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTCAMPTRAINING",
+          "NumID": "11036",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTSPECIALOFFERPACKAGE",
+          "NumID": "11037",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTBARBECUE",
+          "NumID": "11038",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTCOMBINATIONGIFT",
+          "NumID": "11039",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTSELECTSELFGIFT",
+          "NumID": "11040",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTSELECTSELFGACHA",
+          "NumID": "11041",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTSKILLRESONANCE",
+          "NumID": "11042",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_IMGREDDOTNATIONALTOURNAMENT",
+          "NumID": "11043",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_SHOPTIPS",
+          "NumID": "11044",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_FULITIPS",
+          "NumID": "11045",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_BEIBAOTIPS",
+          "NumID": "11046",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_GALLERYTIPS",
+          "NumID": "11047",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_HONORTIPS",
+          "NumID": "11048",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_EXPEDITIONTIPS",
+          "NumID": "11049",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_HESUJIDITIPS",
+          "NumID": "11050",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_ZHAOMUTIPS",
+          "NumID": "11051",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_ASSOCIATIONTIPS",
+          "NumID": "11052",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        },
+        {
+          "ID": "RED_DOT_HOME_DAILYPLAYTIPS",
+          "NumID": "11053",
+          "Enabled": "1",
+          "ParentID": "11000",
+          "RedDotDisplay": "Dot",
+          "RefreshOnOpen": "1",
+          "RefreshOnClose": "1",
+          "RedDotCondition": "SignalCount"
+        }
+      ],
+      "purpose": "example",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    },
+    {
+      "name": "propFunctionSystem",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "name": "NumID",
+          "type": "int"
+        },
+        {
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "name": "TargetType",
+          "type": "enum"
+        },
+        {
+          "name": "ClassType",
+          "type": "string"
+        },
+        {
+          "name": "InstallOnStartup",
+          "type": "int"
+        },
+        {
+          "name": "Condtions",
+          "type": "List<string>"
+        },
+        {
+          "name": "Active",
+          "type": "int"
+        },
+        {
+          "name": "StartTime",
+          "type": "string"
+        },
+        {
+          "name": "StopTime",
+          "type": "string"
+        },
+        {
+          "name": "SceneId",
+          "type": "int"
+        },
+        {
+          "name": "Version",
+          "type": "string"
+        }
+      ],
+      "source": {
+        "sheet": "FunctionSystem",
+        "sha256": "429051a00685ee35bddd85e296c544ebbe69f6d4b1f208768d95a2b7ad659e77",
+        "assetId": "429051a00685ee35bddd85e296c544ebbe69f6d4b1f208768d95a2b7ad659e77",
+        "fileName": "propFunctionSystem.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "SYS_RED_DOT",
+          "Name": "RedDot",
+          "NumID": 10020,
+          "Active": 1,
+          "ClassType": "RedDotSystem",
+          "TargetType": "None",
+          "InstallOnStartup": 1
+        }
+      ],
+      "purpose": "required",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    }
+  ],
+  "integration": [
+    "Merge propRedDot and SYS_RED_DOT into product configuration; export with the existing e2cs tool and load RedDotConfig before system startup. Do not replace the product enum/configuration files with reference outputs.",
+    "RedDotCondition=None aggregates children; RedDotEntity.UpdateSignal validates inputs; Refresh evaluates conditions and parent aggregation; GetCount exposes calculated state. Add explicit enum detectors for product entity conditions. All signals start at zero; no mock unread mail or rewards.",
+    "Attach RedDotScope to the widget root with serialized configuration IDs, targets and optional Count labels. Existing Home references this exact component GUID. The 53 Home bindings are an example, not mandatory product entries.",
+    "Require IUIEventSender in the widget package. GamePlugin implements it; Startup(new ResourceConfigure { loader = ..., cacher = ..., eventSenders = new List<IUIEventSender> { this } }). OnWidgetOpened forwards DispatchEvent(new WidgetOpenedEvent { data = new WidgetOpened { widget = widget } }); OnWidgetClosing forwards DispatchEvent(new WidgetClosingEvent { data = new WidgetClosing { widget = widget } }). Framework files are merge references, not permission to overwrite product packages. Widget close is a start-closing event. Frame-end coalescing happens after open callbacks; disabling a page releases presentation, never clears business state."
+  ],
+  "dependencies": [
+    "RuntimeSystem",
+    "com.oathx.core",
+    "com.oathx.entity",
+    "com.oathx.widget.extension",
+    "Config.Excel"
+  ],
+  "schemaVersion": 1
+}

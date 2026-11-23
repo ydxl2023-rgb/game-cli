@@ -1,0 +1,9 @@
+# R1 implementation handoff
+
+2026-11-20 09:01 UTC. Editor stopped; independent acceptance may take ownership. Formal rework round 1. Original R0 evidence unchanged.
+
+Master rejects null/nonpositive identity and duplicate accepted login; positive identity applied by MasterEntity and persisted before transition. Deactivation invalidates activation generation, unloads Login/Mail/Settings/Shop/Notice/Home. Deferred registry requests and completion callbacks reject old generations. Type validation rejects open generic, abstract and no-public-default-constructor types. Property integer IDs unchanged; names and docs conform to code policy. Notice/Loading/Launch/PracticePlugin style repairs by configuration agent, no behavioral changes. Developer direct policy analyzer covers Master/shared with zero issues; independent validation still required.
+
+Home prefab was not edited. home-r1-serialized-references.json records original asset loaded via PrefabUtility, all 13 flagged Metadata targets/components inside Home and identical GameObjects. 177 static differences: 3 nested PrefabInstance kinds and 52 hidden descendants; 49 Image and 1 Text removed from marker mounts, 72 XY mount-scale differences. Frozen sources/Home/GameCLI/Templates/Home/README.md explicitly documents optional badge graphics/pulse migration and mandates keeping static comparison failed. Acceptance must independently exercise profile data and badge attach/release. These are evidence-supported representation differences, not an automated visual pass.
+
+r1-build-manifest.json freezes original delivered paths after repair. Additional temporary Editor probe PracticeHomeEvidence.Inspect returns all 13 full paths, actual instance IDs, inside and sameTarget; archived after acceptance alongside other temporary probes. No original acceptance reports changed.

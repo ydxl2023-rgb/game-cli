@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Function",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 4,
+    "lines": 330,
+    "blankLines": 62,
+    "commentLines": 54,
+    "members": 30,
+    "documentedMembers": 30,
+    "blankLineRate": 0.18787878787878787,
+    "commentLineRate": 0.16363636363636364,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Function/FunctionManagerAccess.cs",
+      "sha256": "eb71dfb0df55a7080e4051db17a08cdf7ab4d83703043dee94d1066c3d045411"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Function/FunctionManagerEntity.cs",
+      "sha256": "332d7aeff1e9c15f11b0e813e259193d5b3f0f6b4cfbbe3df4cb267215905ece"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Function/FunctionManagerEvents.cs",
+      "sha256": "c66daddebafc74ea31c9be2e2f1aad303389d0d2dd19cd6585059392b9945750"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Function/FunctionManagerSystem.cs",
+      "sha256": "6dfcc9d9d1c06f0a0181b9be6720f42156ac924409c14661f27a4cab2332ca87"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\0d9c76a0-1e49-4103-b07d-e49edafcc54b"
+}

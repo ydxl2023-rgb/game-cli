@@ -1,0 +1,3262 @@
+{
+  "root": "T1T1Login0",
+  "design": {
+    "name": "ProjectUI",
+    "nodes": [
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0",
+        "name": "Login",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "active": true,
+        "height": 1080,
+        "parent": null,
+        "scripts": {
+          "files": [
+            {
+              "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+              "sha256": "7d1f3cc3f106d43196e7e61e0b44a62bd99ac538e0130c98e7e83a2c2c57517c",
+              "content": "using Oathx.Core;\r\nusing Oathx.Entity;\r\nusing Oathx.Widget;\r\n\r\n/// <summary>\r\n/// Manages the SV login page lifecycle.\r\n/// </summary>\r\npublic class LoginSystem : RuntimeSystem\r\n{\r\n    /// <summary>\r\n    /// Load and open the SV login page through UISystem.\r\n    /// </summary>\r\n    /// <returns>True after starting the page open request; false if the system is inactive.</returns>\r\n    public override bool OnActive()\r\n    {\r\n        if (!IsActive())\r\n            return false;\r\n\r\n        UISystem.GetSingleton().OpenWidget<UILogin>((widget) => {\r\n            if (widget)\r\n            {\r\n                widget.vm.EnterClick = (sender) => EnterGame(widget.vm);\r\n                widget.vm.CanEnter = true;\r\n\r\n                XApp.GetSingleton().ShowLaunchBackground();\r\n            }\r\n        });\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>\r\n    /// Publish local login success when the player enters the game.\r\n    /// </summary>\r\n    /// <param name=\"vm\">View model controlling the enter button.</param>\r\n    /// <returns>True when the local login success event has been queued.</returns>\r\n    private bool EnterGame(VMLogin vm)\r\n    {\r\n        if (!IsActive() || !vm || !vm.CanEnter)\r\n            return false;\r\n\r\n        if (!XEntityManager.GetSingleton().TryGetEntity(nameof(MasterEntity), out var entity)\r\n            || !(entity is MasterEntity master))\r\n            return false;\r\n\r\n        return XPluginUtility.PostEvent(new LoginSucceed() {\r\n            pid = master.GetAttr(MasterPropertyDef.PID)\r\n        });\r\n    }\r\n\r\n    /// <summary>\r\n    /// Release subscriptions and close the SV login page when deactivated.\r\n    /// </summary>\r\n    public override void OnDetive()\r\n    {\r\n        UnsubscribeAll();\r\n\r\n        UISystem.GetSingleton().CloseWidget<UILogin>(immediate: true);\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/LoginSystem.cs.meta",
+              "sha256": "30fa2a2f68c5937d244dc8362986826dfbfb1dcdf6d3c194a4beae3d087b9594",
+              "content": "fileFormatVersion: 2\nguid: fad2b6859a451ee468c59a2bbb1276be\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+              "sha256": "dc6874b624f185219612d5a00ef5c22df90f926c388df14c590f2f390bd25c87",
+              "content": "using Oathx.Entity;\r\nusing Oathx.HttpProtocol;\r\nusing UnityEngine;\r\n\r\n/// <summary>\r\n/// \r\n/// </summary>\r\n[Initialize]\r\npublic partial class LoginEntity : XEntity\r\n{\r\n    /// <summary>\r\n    /// constructor\r\n    /// </summary>\r\n    public int pid\r\n    { get; set; }\r\n\r\n    /// <summary>\r\n    /// login time\r\n    /// </summary>\r\n    public long loginAt\r\n    { get; set; }\r\n\r\n    /// <summary>\r\n    /// create time\r\n    /// </summary>\r\n    public long tmcreate\r\n    { get; set; }\r\n\r\n    /// <summary>\r\n    /// query login entity\r\n    /// </summary>\r\n    /// <param name=\"response\"></param>\r\n    /// <returns></returns>\r\n    public bool Refresh(LoginResponse response)\r\n    {\r\n        pid = response.pid; loginAt = response.loginAt; tmcreate = response.tmcreate;\r\n        return true;\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/LoginEntity.cs.meta",
+              "sha256": "02b0511e31b04ba9fda4feec570be28ca65df7fb81d838933b00bb8583c48a5e",
+              "content": "fileFormatVersion: 2\nguid: 841f36a51007ce849a81d8d866fda6c2\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+              "sha256": "bb608ac829024d40f48faf0b9e0dd6637246408dd5a089364def9e4eff1a7c16",
+              "content": "using Oathx.Widget;\r\n\r\n/// <summary>\r\n/// SV login view with serialized Widget Metadata bindings.\r\n/// </summary>\r\n[Config(\"Assets/Data/Widgets/SVLogin/SVLogin.prefab\", WidgetLayer.center, cacheWidget: false)]\r\npublic class UILogin : UIWidget<VMLogin>\r\n{\r\n    /// <summary>\r\n    /// Refresh the account display from the existing login entity.\r\n    /// </summary>\r\n    /// <param name=\"entity\">Current login data.</param>\r\n    /// <returns>True when the view model was refreshed.</returns>\r\n    public bool Invalidate(LoginEntity entity)\r\n    {\r\n        if (!entity || !vm)\r\n            return false;\r\n\r\n        vm.Username = entity.pid > 0 ? entity.pid.ToString() : string.Empty;\r\n        return true;\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs.meta",
+              "sha256": "0ac546243321145f5e1e6846da7016586a6641caa7c8c08e6655c9d852a0f97d",
+              "content": "fileFormatVersion: 2\nguid: 5d36753cd0b54074b8499a2bed07fd64\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/UI/VMLogin.cs",
+              "sha256": "e0a57f9267a286afad2c77c7cdad56d11b2bd5a79d00bd93e8d165784244e770",
+              "content": "using Oathx.Widget;\r\n\r\n/// <summary>\r\n/// Generated bindings for the SV login page.\r\n/// </summary>\r\npublic partial class VMLogin : VM\r\n{\r\n    /// <summary>\r\n    /// Login button callback.\r\n    /// </summary>\r\n    [Binding]\r\n    private ButtonClick enterClick;\r\n\r\n    /// <summary>\r\n    /// Whether another login request can be started.\r\n    /// </summary>\r\n    [Binding(typeof(SyncInteractable))]\r\n    private bool canEnter;\r\n\r\n    /// <summary>\r\n    /// Selected authentication or game server name.\r\n    /// </summary>\r\n    [Binding(typeof(SyncText))]\r\n    private string serverName;\r\n\r\n    /// <summary>\r\n    /// Current login status or retryable failure message.\r\n    /// </summary>\r\n    [Binding(typeof(SyncText))]\r\n    private string serverStatus;\r\n\r\n    /// <summary>\r\n    /// Current client resource version.\r\n    /// </summary>\r\n    [Binding(typeof(SyncText))]\r\n    private string versionText;\r\n\r\n    /// <summary>\r\n    /// Player identifier obtained from LoginEntity.\r\n    /// </summary>\r\n    [Binding(typeof(SyncText))]\r\n    private string username;\r\n\r\n    /// <summary>\r\n    /// Friend suggestions remain hidden until their service is connected.\r\n    /// </summary>\r\n    [Binding(typeof(SyncVisible))]\r\n    private bool friends;\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/Login/UI/VMLogin.cs.meta",
+              "sha256": "7ebacda09b0856f1bb38d38a4e43761a031910c5646f4078ea7021a30ffb86e6",
+              "content": "fileFormatVersion: 2\nguid: 68a650d213c8d7c42ae59d51dc4f7fcb\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            }
+          ],
+          "schemaVersion": 1
+        },
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "relationPosition": {
+          "x": 342,
+          "y": 40
+        },
+        "templateSourceId": "SvLogin",
+        "templateSourceVersion": 7
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0Animator",
+        "name": "Animator",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "height": 1080,
+        "parent": "T1T1Login0",
+        "surface": "transparent",
+        "fontSize": 20,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "animationHost": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -260,
+        "y": 0,
+        "id": "T1T1Login0_0",
+        "name": "Content",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 2440,
+        "active": true,
+        "height": 1080,
+        "parent": "T1T1Login0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 2440,
+            "y": 1080
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 787.4000000953674,
+        "y": 615,
+        "id": "T1T1Login0_0_0",
+        "name": "Server",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "image": "32e06c5aff62f6de38457fdc068c027cc1db30f2f07eec181e90cfee09820f1b",
+        "width": 872,
+        "active": true,
+        "height": 66,
+        "parent": "T1T1Login0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 872,
+            "y": 66
+          },
+          "anchoredPosition": {
+            "x": 3.4000000953674316,
+            "y": -108
+          }
+        }
+      },
+      {
+        "x": 43,
+        "y": 19,
+        "id": "T1T1Login0_0_0_0",
+        "name": "Status",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "image": "1523e810a7513d7c2ca88389dddc5dc05b8c1a22e5aaeca9a51203de18dc9e77",
+        "width": 34,
+        "active": true,
+        "height": 34,
+        "parent": "T1T1Login0_0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 34,
+            "y": 34
+          },
+          "anchoredPosition": {
+            "x": -376,
+            "y": -3
+          }
+        }
+      },
+      {
+        "x": 45.004608154296875,
+        "y": -12.447137355804443,
+        "id": "T1T1Login0_0_0_0_0",
+        "name": "Status",
+        "text": "流畅",
+        "type": "Text",
+        "color": "#53c36e",
+        "width": 119.59063720703125,
+        "active": true,
+        "height": 51.69427490234375,
+        "parent": "T1T1Login0_0_0_0",
+        "opacity": 1,
+        "fontSize": 34,
+        "rotation": 0,
+        "textAlign": "left",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 1,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 119.59063720703125,
+            "y": 51.69427490234375
+          },
+          "anchoredPosition": {
+            "x": 70.7999267578125,
+            "y": 3.5999999046325684
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 0.2291259765625,
+        "y": -22.86145782470703,
+        "id": "T1T1Login0_0_0_1",
+        "name": "Change",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "width": 872,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 107.42109680175781,
+        "parent": "T1T1Login0_0_0",
+        "opacity": 1,
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 872,
+            "y": 107.42109680175781
+          },
+          "anchoredPosition": {
+            "x": 0.2291259765625,
+            "y": 2.150909423828125
+          }
+        }
+      },
+      {
+        "x": 709.600830078125,
+        "y": 76.36145782470703,
+        "id": "T1T1Login0_0_0_1_0",
+        "name": "ImgLine",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "cc124122a0fba82a6584c4c13a04aa31a3f77d3943ee3eb16f94cfd22d751e40",
+        "width": 147,
+        "active": true,
+        "height": 3,
+        "parent": "T1T1Login0_0_0_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 147,
+            "y": 3
+          },
+          "anchoredPosition": {
+            "x": 347.100830078125,
+            "y": -24.150909423828125
+          }
+        }
+      },
+      {
+        "x": 703.100830078125,
+        "y": 23.683345794677734,
+        "id": "T1T1Login0_0_0_1_1",
+        "name": "Change",
+        "text": "点击换区",
+        "type": "Text",
+        "color": "#b9b9b9",
+        "width": 160,
+        "active": true,
+        "height": 55.67828369140625,
+        "parent": "T1T1Login0_0_0_1",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 160,
+            "y": 55.67828369140625
+          },
+          "anchoredPosition": {
+            "x": 347.100830078125,
+            "y": 2.188060760498047
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 228,
+        "y": -0.000014543999895977322,
+        "id": "T1T1Login0_0_0_2",
+        "name": "Name",
+        "text": "",
+        "type": "Text",
+        "color": "#ededed",
+        "width": 400,
+        "active": true,
+        "height": 66,
+        "parent": "T1T1Login0_0_0",
+        "opacity": 1,
+        "fontSize": 35,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 400,
+            "y": 66
+          },
+          "anchoredPosition": {
+            "x": -8,
+            "y": 0.000014543999895977322
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 930,
+        "y": 492,
+        "id": "T1T1Login0_0_1",
+        "name": "Friends",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "image": "795ee609fefa80d5e5ed9afd8ae6fb51c3d3a75826ea66bdd7a4d154208501a3",
+        "width": 580,
+        "active": true,
+        "height": 98,
+        "parent": "T1T1Login0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "imageType": "sliced",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "imageBorder": {
+          "w": 6,
+          "x": 5,
+          "y": 5,
+          "z": 5
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 580,
+            "y": 98
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -1
+          }
+        }
+      },
+      {
+        "x": -0.0028533935546875,
+        "y": 12.941107272796216,
+        "id": "T1T1Login0_0_1_0",
+        "name": "FriendsText",
+        "text": "同玩好友：",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 189.02569580078125,
+        "active": true,
+        "height": 72.11773681640625,
+        "parent": "T1T1Login0_0_1",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 189.02569580078125,
+            "y": 72.11773681640625
+          },
+          "anchoredPosition": {
+            "x": -195.49000549316406,
+            "y": 0.00002431900065857917
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 189.02337646484375,
+        "y": -1,
+        "id": "T1T1Login0_0_1_1",
+        "name": "FriendList",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 390.9532470703125,
+        "active": true,
+        "height": 100,
+        "parent": "T1T1Login0_0_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 390.9532470703125,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": 94.5,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 10,
+        "id": "T1T1Login0_0_1_1_0",
+        "name": "Item",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 40,
+            "y": -50
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0_0_1_1_0_0",
+        "name": "HeadIcon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 95,
+        "y": 10,
+        "id": "T1T1Login0_0_1_1_1",
+        "name": "Cell1",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 135,
+            "y": -50
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0_0_1_1_1_0",
+        "name": "HeadIcon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 190,
+        "y": 10,
+        "id": "T1T1Login0_0_1_1_2",
+        "name": "Cell2",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 230,
+            "y": -50
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0_0_1_1_2_0",
+        "name": "HeadIcon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1_2",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 285,
+        "y": 10,
+        "id": "T1T1Login0_0_1_1_3",
+        "name": "Cell3",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 325,
+            "y": -50
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0_0_1_1_3_0",
+        "name": "HeadIcon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "0141cd7f56e4f332bfffec99c2e281d8c58f7997903b63168d440e779993e28f",
+        "width": 80,
+        "active": true,
+        "height": 80,
+        "parent": "T1T1Login0_0_1_1_3",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 80,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -0.002404203172773123,
+        "y": -1,
+        "id": "T1T1Login0_0_1_2",
+        "name": "FriendButton",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "width": 580.00244140625,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 100,
+        "parent": "T1T1Login0_0_1",
+        "opacity": 0,
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 580.00244140625,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": -0.0011835000477731228,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 1010,
+        "y": 776,
+        "id": "T1T1Login0_0_2",
+        "name": "Enter",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "width": 420,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 84,
+        "parent": "T1T1Login0_0",
+        "opacity": 1,
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 420,
+            "y": 84
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -278
+          }
+        }
+      },
+      {
+        "x": 160,
+        "y": -14,
+        "id": "T1T1Login0_0_2_0",
+        "name": "Effect",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 100,
+        "active": true,
+        "height": 100,
+        "parent": "T1T1Login0_0_2",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 100,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 6
+          }
+        }
+      },
+      {
+        "x": -30,
+        "y": -30,
+        "id": "T1T1Login0_0_2_0_0",
+        "name": "GameLoginViewFx1",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "image": "9981398578663413d91e268c3b101425fc2019ed8d3a8d877f7526dcbcfcc6f3",
+        "width": 160,
+        "active": true,
+        "height": 160,
+        "parent": "T1T1Login0_0_2_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 160,
+            "y": 160
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 62,
+        "y": -8.5,
+        "id": "T1T1Login0_0_2_0_0_0",
+        "name": "GameLoginViewFx1D",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769",
+        "width": 36,
+        "active": true,
+        "height": 36,
+        "parent": "T1T1Login0_0_2_0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 36,
+            "y": 36
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 70.5
+          }
+        }
+      },
+      {
+        "x": 71,
+        "y": 140.5999984741211,
+        "id": "T1T1Login0_0_2_0_0_1",
+        "name": "GameLoginViewFx1D1",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "921e69c8a9b3eb2652d6a5b3a175b734907b6fc7b3bb4fd14cb50c9ced700769",
+        "width": 18,
+        "active": true,
+        "height": 18,
+        "parent": "T1T1Login0_0_2_0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 18,
+            "y": 18
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -69.5999984741211
+          }
+        }
+      },
+      {
+        "x": -30,
+        "y": -30,
+        "id": "T1T1Login0_0_2_0_1",
+        "name": "GameLoginViewFx2",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "80462bceb61a944c839c428b718244afdd2f75e058fb143419bb7b9fbee0a0a3",
+        "width": 160,
+        "active": true,
+        "height": 160,
+        "parent": "T1T1Login0_0_2_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 160,
+            "y": 160
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -9.359999656677246,
+        "y": 0,
+        "id": "T1T1Login0_0_2_1",
+        "name": "ImgStartGame",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "02f14634a6e190f7d46da015889cbf7c30f951c592b6d974bd22fd8c5893460c",
+        "width": 420,
+        "active": true,
+        "height": 84,
+        "parent": "T1T1Login0_0_2",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 420,
+            "y": 84
+          },
+          "anchoredPosition": {
+            "x": -9.359999656677246,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -39.34764462709427,
+        "y": -58.64209747314453,
+        "id": "T1T1Login0_0_2_2",
+        "name": "ClickArea",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 497.2876892089844,
+        "active": true,
+        "height": 186.34019470214844,
+        "parent": "T1T1Login0_0_2",
+        "opacity": 0,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 497.2876892089844,
+            "y": 186.34019470214844
+          },
+          "anchoredPosition": {
+            "x": -0.7038000226020813,
+            "y": 7.4720001220703125
+          }
+        }
+      },
+      {
+        "x": -80,
+        "y": 1011,
+        "id": "T1T1Login0_0_3",
+        "name": "Version",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "490b0f8d39d09cf83c9c03fbb3cafa30bb8e0143f92a6ba4110e43fab838408d",
+        "width": 2600,
+        "active": true,
+        "height": 70,
+        "parent": "T1T1Login0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "imageType": "sliced",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "imageBorder": {
+          "w": 1,
+          "x": 31,
+          "y": 1,
+          "z": 31
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 2600,
+            "y": 70
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -506
+          }
+        }
+      },
+      {
+        "x": 1579,
+        "y": 0,
+        "id": "T1T1Login0_1",
+        "name": "ButtonGroup",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 341,
+        "active": true,
+        "height": 1080,
+        "parent": "T1T1Login0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 1,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 1,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 341,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -322,
+        "y": 1024,
+        "id": "T1T1Login0_1_0",
+        "name": "Version",
+        "text": "版本 V1.2",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 600,
+        "active": true,
+        "height": 66,
+        "parent": "T1T1Login0_1",
+        "opacity": 1,
+        "fontSize": 26,
+        "rotation": 0,
+        "textAlign": "right",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 1,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 600,
+            "y": 66
+          },
+          "anchoredPosition": {
+            "x": -363,
+            "y": 23
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 147.5,
+        "y": 152.48681640625,
+        "id": "T1T1Login0_1_1",
+        "name": "LayoutGroup",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 166,
+        "active": true,
+        "height": 755.0263671875,
+        "parent": "T1T1Login0_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 166,
+            "y": 755.0263671875
+          },
+          "anchoredPosition": {
+            "x": 60,
+            "y": 10
+          }
+        }
+      },
+      {
+        "x": 37,
+        "y": 0,
+        "id": "T1T1Login0_1_1_0",
+        "name": "Announcement",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "image": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2",
+        "width": 92,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 92,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 83,
+            "y": -46
+          }
+        }
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "id": "T1T1Login0_1_1_0_0",
+        "name": "Icon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "7e24cbc2f72bc2b6a571572ebb571e8831e28276ac4cb2d5192d8f0fe730adec",
+        "width": 78,
+        "active": true,
+        "height": 78,
+        "parent": "T1T1Login0_1_1_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 78,
+            "y": 78
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -22.5,
+        "y": 38.80000305175781,
+        "id": "T1T1Login0_1_1_0_1",
+        "name": "Announce",
+        "text": "公告",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 137,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1_0",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 137,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -38.80000305175781
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 57,
+        "y": -11,
+        "id": "T1T1Login0_1_1_0_2",
+        "name": "Red",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "8c936864d7c911cf19735aa6c4f27a9398a56d93c69c5cffe9a647532dd8a1cf",
+        "width": 40,
+        "active": false,
+        "height": 40,
+        "parent": "T1T1Login0_1_1_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 40,
+            "y": 40
+          },
+          "anchoredPosition": {
+            "x": 31,
+            "y": 37
+          }
+        }
+      },
+      {
+        "x": -17.63129997253418,
+        "y": -19.671599864959717,
+        "id": "T1T1Login0_1_1_0_3",
+        "name": "ClickArea",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 125,
+        "active": true,
+        "height": 141,
+        "parent": "T1T1Login0_1_1_0",
+        "opacity": 0,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 125,
+            "y": 141
+          },
+          "anchoredPosition": {
+            "x": -1.1312999725341797,
+            "y": -4.828400135040283
+          }
+        }
+      },
+      {
+        "x": 37,
+        "y": 147,
+        "id": "T1T1Login0_1_1_1",
+        "name": "UserCenter",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "image": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2",
+        "width": 92,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 92,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 83,
+            "y": -193
+          }
+        }
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "id": "T1T1Login0_1_1_1_0",
+        "name": "Icon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "c6c83c346fa753ee0661fdc03ee674f567bdfe98e5013dabd8b5797f5a610285",
+        "width": 78,
+        "active": true,
+        "height": 78,
+        "parent": "T1T1Login0_1_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 78,
+            "y": 78
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -22.5,
+        "y": 41.5,
+        "id": "T1T1Login0_1_1_1_1",
+        "name": "User",
+        "text": "用户中心",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 137,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1_1",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 137,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -41.5
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": -16.5,
+        "y": -18.769999980926514,
+        "id": "T1T1Login0_1_1_1_2",
+        "name": "ClickArea",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 125,
+        "active": true,
+        "height": 141,
+        "parent": "T1T1Login0_1_1_1",
+        "opacity": 0,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 125,
+            "y": 141
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -5.730000019073486
+          }
+        }
+      },
+      {
+        "x": 37,
+        "y": 294,
+        "id": "T1T1Login0_1_1_2",
+        "name": "Cancellation",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "image": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2",
+        "width": 92,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 92,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 83,
+            "y": -340
+          }
+        }
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "id": "T1T1Login0_1_1_2_0",
+        "name": "Icon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "76d3715066d471a7d7ee81b80c0183119ab02bfebd6130d353fcfb4c88fbe01b",
+        "width": 78,
+        "active": true,
+        "height": 78,
+        "parent": "T1T1Login0_1_1_2",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 78,
+            "y": 78
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -22.5,
+        "y": 41.5,
+        "id": "T1T1Login0_1_1_2_1",
+        "name": "LogOut",
+        "text": "注销",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 137,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1_2",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 137,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -41.5
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": -16.5,
+        "y": -20.09000015258789,
+        "id": "T1T1Login0_1_1_2_2",
+        "name": "ClickArea",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 125,
+        "active": true,
+        "height": 141,
+        "parent": "T1T1Login0_1_1_2",
+        "opacity": 0,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 125,
+            "y": 141
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -4.409999847412109
+          }
+        }
+      },
+      {
+        "x": 37,
+        "y": 441,
+        "id": "T1T1Login0_1_1_3",
+        "name": "Clear",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "image": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2",
+        "width": 92,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 92,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 83,
+            "y": -487
+          }
+        }
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "id": "T1T1Login0_1_1_3_0",
+        "name": "Icon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "93a32b4d8bef49d046bda9bdd1f1eeef602a74b878c790518112bf01942b71d4",
+        "width": 78,
+        "active": true,
+        "height": 78,
+        "parent": "T1T1Login0_1_1_3",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 78,
+            "y": 78
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -22.5,
+        "y": 41.5,
+        "id": "T1T1Login0_1_1_3_1",
+        "name": "ClearLogOut",
+        "text": "修复",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 137,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1_3",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 137,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -41.5
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": -16.5,
+        "y": -20.09000015258789,
+        "id": "T1T1Login0_1_1_3_2",
+        "name": "ClickArea",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 125,
+        "active": true,
+        "height": 141,
+        "parent": "T1T1Login0_1_1_3",
+        "opacity": 0,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 125,
+            "y": 141
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -4.409999847412109
+          }
+        }
+      },
+      {
+        "x": 37,
+        "y": 588,
+        "id": "T1T1Login0_1_1_4",
+        "name": "Legal",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "image": "3d68e222279a0fab29410eefbffdfc95d413b4007f443f41c49b44ba4085b1e2",
+        "width": 92,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 92,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 83,
+            "y": -634
+          }
+        }
+      },
+      {
+        "x": 26,
+        "y": 20,
+        "id": "T1T1Login0_1_1_4_0",
+        "name": "Icon",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "cc3a7f60a77851cb6634f7347628357880cd9e97ceb74679f6b72911d24e2cb0",
+        "width": 40,
+        "active": true,
+        "height": 52,
+        "parent": "T1T1Login0_1_1_4",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 40,
+            "y": 52
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -39.55999755859375,
+        "y": 41.5,
+        "id": "T1T1Login0_1_1_4_1",
+        "name": "LogOut",
+        "text": "権利表記标题",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 171.1199951171875,
+        "active": true,
+        "height": 92,
+        "parent": "T1T1Login0_1_1_4",
+        "opacity": 1,
+        "fontSize": 27,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 171.1199951171875,
+            "y": 92
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -41.5
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": -16.5,
+        "y": -19.59000015258789,
+        "id": "T1T1Login0_1_1_4_2",
+        "name": "ClickArea",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 125,
+        "active": true,
+        "height": 141,
+        "parent": "T1T1Login0_1_1_4",
+        "opacity": 0,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 125,
+            "y": 141
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -4.909999847412109
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 929,
+        "id": "T1T1Login0_2",
+        "name": "NoticeCN",
+        "text": "",
+        "type": "Container",
+        "color": "#000000",
+        "width": 1920,
+        "active": true,
+        "height": 192,
+        "parent": "T1T1Login0Animator",
+        "opacity": 1,
+        "surface": "transparent",
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 192
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -41
+          }
+        }
+      },
+      {
+        "x": -174.75,
+        "y": -249.64999389648438,
+        "id": "T1T1Login0_2_0",
+        "name": "ChinaTips",
+        "text": "本公司积极履行《网络游戏行业防沉迷自律公约》\r  本网络游戏适合年满12周岁以上的用户使用；为了您的健康，请合理控制游戏时间。\r\n批准文号：国新出审[2023]308号    ISBN 978-7-498-09488-7    京新出文[2022]178号\r\n著作权人：深圳边锋科技有限公司   出版单位：北京侠客行网络技术有限公司    运营单位：成都兴盛创帆科技有限公司",
+        "type": "Text",
+        "color": "#b9b9b9",
+        "width": 2269.5,
+        "active": true,
+        "height": 541.2999877929688,
+        "parent": "T1T1Login0_2",
+        "opacity": 1,
+        "fontSize": 28,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 2269.5,
+            "y": 541.2999877929688
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 75
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 40,
+        "y": -317,
+        "id": "T1T1Login0_2_1",
+        "name": "Notice",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "width": 120,
+        "active": true,
+        "height": 180,
+        "parent": "T1T1Login0_2",
+        "opacity": 1,
+        "surface": "transparent",
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 120,
+            "y": 180
+          },
+          "anchoredPosition": {
+            "x": 100,
+            "y": 419
+          }
+        }
+      },
+      {
+        "x": 78,
+        "y": 701,
+        "id": "T1T1Login0_4",
+        "name": "AgeIconParent",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 150,
+        "active": true,
+        "height": 150,
+        "parent": "T1T1Login0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 150,
+            "y": 150
+          },
+          "anchoredPosition": {
+            "x": 153,
+            "y": -236
+          }
+        }
+      },
+      {
+        "x": -14,
+        "y": -38.5,
+        "id": "T1T1Login0_4_0",
+        "name": "AgeIconBtn",
+        "text": "",
+        "type": "Button",
+        "color": "#ffffff",
+        "image": "96c71f344e19de112c9eb296740660c230cc71d30c5e96e29c39a17822853140",
+        "width": 178,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 227,
+        "parent": "T1T1Login0_4",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 0.8999999761581421,
+          "y": 0.8999999761581421
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 178,
+            "y": 227
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 1579,
+        "y": 3.266204833984375,
+        "id": "T1T1Login0_5",
+        "name": "Account",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 263,
+        "active": true,
+        "height": 59.46759033203125,
+        "parent": "T1T1Login0Animator",
+        "opacity": 1,
+        "surface": "transparent",
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 1,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 1,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 263,
+            "y": 59.46759033203125
+          },
+          "anchoredPosition": {
+            "x": -78,
+            "y": -33
+          }
+        }
+      },
+      {
+        "x": -4.175994873046875,
+        "y": -0.001007080078125,
+        "id": "T1T1Login0_5_0",
+        "name": "Image",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "1a4ca0bb3c9e89f1b4abb2cb096cd987ce697f8b86e01c764c8f92fba410ef45",
+        "width": 267.1719970703125,
+        "active": true,
+        "height": 65.52960205078125,
+        "parent": "T1T1Login0_5",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "imageType": "sliced",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "imageBorder": {
+          "w": 0,
+          "x": 28,
+          "y": 0,
+          "z": 29
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 4.1719970703125,
+            "y": 6.06201171875
+          },
+          "anchoredPosition": {
+            "x": -2.089996337890625,
+            "y": -3.029998779296875
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 1.233795166015625,
+        "id": "T1T1Login0_5_1",
+        "name": "Exit",
+        "text": "",
+        "type": "Button",
+        "color": "#ededed",
+        "image": "13bce639ef89b339fe6b8566f2c67fe5add84863c88f7199d996d776b3ad25ce",
+        "width": 138,
+        "action": {
+          "type": "none"
+        },
+        "active": true,
+        "height": 57,
+        "parent": "T1T1Login0_5",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "interactable": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 138,
+            "y": 57
+          },
+          "anchoredPosition": {
+            "x": 69,
+            "y": -29.733795166015625
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T1Login0_5_1_0",
+        "name": "Exit",
+        "text": "退出",
+        "type": "Text",
+        "color": "#ededed",
+        "width": 138,
+        "active": true,
+        "height": 57,
+        "parent": "T1T1Login0_5_1",
+        "opacity": 1,
+        "fontSize": 30,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 148,
+        "y": 4.733795166015625,
+        "id": "T1T1Login0_5_2",
+        "name": "Username",
+        "text": "玩家账户",
+        "type": "Text",
+        "color": "#ededed",
+        "width": 100,
+        "active": true,
+        "height": 50,
+        "parent": "T1T1Login0_5",
+        "opacity": 1,
+        "fontSize": 25,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 100,
+            "y": 50
+          },
+          "anchoredPosition": {
+            "x": 198,
+            "y": -29.733795166015625
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 0,
+        "y": 0.00250244140625,
+        "id": "T1T1Login0_8",
+        "name": "Title",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 474.5,
+        "active": true,
+        "height": 253.9949951171875,
+        "parent": "T1T1Login0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 474.5,
+            "y": 253.9949951171875
+          },
+          "anchoredPosition": {
+            "x": 237.25,
+            "y": -127
+          }
+        }
+      },
+      {
+        "x": 34.85000038146973,
+        "y": 38.99748992919376,
+        "id": "T1T1Login0_8_0",
+        "name": "Logo",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "90849657d8dd0ffcc2cad7562b5e8a518b220894c6d254b48515936186a60514",
+        "width": 365,
+        "active": true,
+        "height": 176,
+        "parent": "T1T1Login0_8",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 365,
+            "y": 176
+          },
+          "anchoredPosition": {
+            "x": -19.899999618530273,
+            "y": 0.00000762939998821821
+          }
+        }
+      }
+    ],
+    "width": 1920,
+    "height": 1080,
+    "rootId": "Canvas",
+    "animations": [
+      {
+        "id": "T1T1LoginLoop",
+        "clip": {
+          "name": "LoginView_Animation_Loop",
+          "curves": [
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 5,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "localEulerAnglesRaw.x",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "GameLoginView_Fx_1",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T1Login0_0_2_0_0"
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 5,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "localEulerAnglesRaw.y",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "GameLoginView_Fx_1",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T1Login0_0_2_0_0"
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 72,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 5,
+                  "value": 360,
+                  "inWeight": 0.33333334,
+                  "inTangent": 72,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "localEulerAnglesRaw.z",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "GameLoginView_Fx_1",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T1Login0_0_2_0_0"
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 1,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 2.5,
+                  "value": 0.95,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 5,
+                  "value": 1,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "m_LocalScale.x",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "GameLoginView_Fx_2",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T1Login0_0_2_0_1"
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 1,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 2.5,
+                  "value": 0.95,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 5,
+                  "value": 1,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "m_LocalScale.y",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "GameLoginView_Fx_2",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T1Login0_0_2_0_1"
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 1,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 2.5,
+                  "value": 0.95,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 5,
+                  "value": 1,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "m_LocalScale.z",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "GameLoginView_Fx_2",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T1Login0_0_2_0_1"
+            }
+          ],
+          "loopTime": true,
+          "stopTime": 5,
+          "wrapMode": 0,
+          "frameRate": 30,
+          "startTime": 0
+        },
+        "state": {
+          "name": "LoginView_Animation_Loop",
+          "speed": 1,
+          "default": true,
+          "cycleOffset": 0,
+          "writeDefaultValues": true
+        },
+        "source": {
+          "clip": "Assets/data/UI/NewLogin/@NewLoginView/Effect/GameLoginView/LoginView_Animation_Loop.anim",
+          "sha256": "b8fc24734a0031f4b659f9adeb89af728b59807c695d77ebd34aa250d66b0575"
+        },
+        "hostNodeId": "T1T1Login0Animator"
+      }
+    ],
+    "schemaVersion": 1
+  }
+}

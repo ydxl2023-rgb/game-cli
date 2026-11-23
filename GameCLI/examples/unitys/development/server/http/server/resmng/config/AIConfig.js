@@ -1,0 +1,16 @@
+
+module('resmng');
+svnnum('$Id$');
+
+
+
+propAIConfig = {
+    [1000101]:{ID:0,NumID:0,GroupId:10001,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0},
+	[1000201]:{ID:0,NumID:0,GroupId:10002,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0},
+	[1000301]:{ID:0,NumID:0,GroupId:10003,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0},
+	[1000401]:{ID:0,NumID:0,GroupId:10004,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0},
+	[1000501]:{ID:0,NumID:0,GroupId:10005,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0},
+	[2000101]:{ID:0,NumID:0,GroupId:20001,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0},
+	[3000101]:{ID:0,NumID:0,GroupId:30001,Level:1,AlertRadius:10,FollowRadius:3,PursuitDuration:4,ThinkTime:[0.2,1],Version:0}
+
+}

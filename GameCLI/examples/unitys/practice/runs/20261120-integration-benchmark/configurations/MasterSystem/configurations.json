@@ -1,0 +1,86 @@
+{
+  "tables": [
+    {
+      "name": "propChapter",
+      "merge": "Merge by alias and numeric ID; reject differing meanings; never replace an entire product workbook.",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int",
+          "description": "别名"
+        },
+        {
+          "name": "NumID",
+          "type": "int",
+          "description": "数字ID"
+        },
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "名称"
+        },
+        {
+          "name": "Mode",
+          "type": "int",
+          "description": "玩法模式"
+        },
+        {
+          "name": "Levels",
+          "type": "List<int>",
+          "description": "启动时安装"
+        },
+        {
+          "name": "Awards",
+          "type": "List<int>",
+          "description": "章节奖励"
+        },
+        {
+          "name": "Version",
+          "type": "string",
+          "description": "版本信息"
+        }
+      ],
+      "layout": {
+        "typeRow": 3,
+        "headerRow": 2,
+        "dataStartRow": 4,
+        "descriptionRow": 1
+      },
+      "source": {
+        "sheet": "Chapter",
+        "sha256": "c1ba011024c161108b39fd300b8118c061ce90d0eb6785438ae43c992d4454b8",
+        "assetId": "c1ba011024c161108b39fd300b8118c061ce90d0eb6785438ae43c992d4454b8",
+        "fileName": "propChapter.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "CHAPTER_HOME",
+          "Mode": "1",
+          "Name": "",
+          "NumID": "10001",
+          "Awards": "{}",
+          "Levels": "{10001}",
+          "Version": "0.1"
+        }
+      ],
+      "purpose": "example",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    }
+  ],
+  "integration": [
+    "Use UnityCLI excel schema/query to inspect the target workbook; merge only the listed entries with dry-run before writes.",
+    "Run the target project e2cs export workflow to regenerate Config.Excel aliases, table classes and JSON/bytes. Do not copy development generated classes.",
+    "For localized text, regenerate and load CommonText and Language tables before opening the UI.",
+    "Check every code alias resolves and required tables load; this package is a reference, not an installed runtime."
+  ],
+  "dependencies": [
+    {
+      "kind": "reference",
+      "name": "propLevel",
+      "reason": "CHAPTER_HOME.Levels contains example 10001. Master only consumes the chapter alias; a product that uses Levels must supply its own level data.",
+      "required": false
+    }
+  ],
+  "schemaVersion": 1
+}

@@ -1,0 +1,106 @@
+{
+  "tables": [
+    {
+      "name": "propFunctionSystem",
+      "merge": "Merge SYS_SETTINGS only, resolve product NumID collisions and regenerate using the product exporter. Never replace the complete product table.",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "name": "NumID",
+          "type": "int"
+        },
+        {
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "name": "TargetType",
+          "type": "enum"
+        },
+        {
+          "name": "ClassType",
+          "type": "string"
+        },
+        {
+          "name": "InstallOnStartup",
+          "type": "int"
+        },
+        {
+          "name": "Condtions",
+          "type": "List<string>"
+        },
+        {
+          "name": "Active",
+          "type": "int"
+        },
+        {
+          "name": "StartTime",
+          "type": "string"
+        },
+        {
+          "name": "StopTime",
+          "type": "string"
+        },
+        {
+          "name": "SceneId",
+          "type": "int"
+        },
+        {
+          "name": "Version",
+          "type": "string"
+        }
+      ],
+      "layout": {
+        "typeRow": 3,
+        "headerRow": 2,
+        "dataStartRow": 4,
+        "descriptionRow": 1
+      },
+      "source": {
+        "sheet": "FunctionSystem",
+        "sha256": "1982141a6853a0e23bff4d8833352081fcaeb52cad532879629eaff082aac1ca",
+        "assetId": "1982141a6853a0e23bff4d8833352081fcaeb52cad532879629eaff082aac1ca",
+        "fileName": "propFunctionSystem.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "SYS_SETTINGS",
+          "Name": "Settings",
+          "NumID": "10023",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "SettingsSystem",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        }
+      ],
+      "purpose": "required",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    }
+  ],
+  "integration": [
+    "SettingsEntity owns local device preferences. Restore materials and meta GUIDs and compile the Widget source generator.",
+    "SettingsChanged supplies an independent snapshot to product audio/render/gameplay adapters. Saving an option does not implement SV-specific effects, remote privacy state or OS push registration.",
+    "SettingsActionRequested is an explicit unimplemented product service entry. No SDK, external URL, account deletion, account switching or resource download is executed.",
+    "Merge SYS_SETTINGS only. Master Home routing is an optional reference, not a requirement to install Home or overwrite product coordination.",
+    "Fixed Chinese labels and fonts are on the prefab. Runtime product messages belong in propCommonText. Language switching is not wired in this reference.",
+    "The source tab glow mesh/particle branches and dormant empty StaticList remain archived; active UGUI controls and both source animation clips are restored."
+  ],
+  "dependencies": [
+    {
+      "kind": "generated",
+      "name": "FunctionSystemConfig",
+      "reason": "Regenerate the registry before coordinator activation.",
+      "required": true
+    }
+  ],
+  "schemaVersion": 1
+}

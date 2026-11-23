@@ -1,0 +1,45 @@
+{
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 9,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 9,
+      "rule": "OX002",
+      "severity": "error",
+      "message": "Use a traditional method/property body, not an expression body."
+    }
+  ],
+  "statistics": {
+    "files": 3,
+    "lines": 364,
+    "blankLines": 57,
+    "commentLines": 108,
+    "members": 39,
+    "documentedMembers": 39,
+    "blankLineRate": 0.1565934065934066,
+    "commentLineRate": 0.2967032967032967,
+    "documentedMemberRate": 1
+  },
+  "sources": [
+    {
+      "path": "LocalPackages/com.oathx.core/Runtime/XLauncher.cs",
+      "sha256": "7a7834d017301ea0c228aff3f081a18dee4630a0341bd21024e2ea7c9deb7c65"
+    },
+    {
+      "path": "Assets/Scripts/PracticePlugin.cs",
+      "sha256": "6e687f12a2bae87e2a37f633992e534945d96bba4240cda207f5c1de6fdc2791"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "sha256": "04df37b5fb9ba2e1da31a289494058f3ec1834fef73e3e5fee6d4e6f5dc42b6e"
+    }
+  ],
+  "scope": "Supplemental direct analyzer; verified project scope from preceding verify code. No Unity Editor calls."
+}

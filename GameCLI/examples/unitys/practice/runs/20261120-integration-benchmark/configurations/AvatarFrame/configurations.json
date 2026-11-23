@@ -1,0 +1,16 @@
+{
+  "tables": [],
+  "integration": [
+    "These are reusable UI prefabs, not RuntimeSystems. Restore Profile and Common materials with their original GUIDs. Shared source lives in Systems/Common/UI and UI/VM; merge identical shared files instead of duplicating classes.",
+    "Bind each UIActivityEntry with one VMActivityEntry (OpenClick, Visible, Interactable, Badges). The host owns routing and data. The serialized id is a reference identifier; configure it for the product rather than depending on HomeEntry.",
+    "PlayerProfile embeds AvatarFrame. Bind its root entry and Avatar entry separately. PlayerName and Lv/Fitter/PlayerLevel are dynamic Text targets driven by host SyncText bindings, not automatically populated by the entry VM. Avatar/PlayerHeadImg and Avatar/PlayerFrameImg remain authored Image slots for product sprite binding.",
+    "Mail, Settings, Notice, Friends and Affinity each have an independent prefab. Retain their click areas and tip nodes. Register tip nodes with the product RedDotScope/configuration; do not hard-code Home red-dot IDs into these prefabs.",
+    "Bind each instance once and refresh its existing VM. Do not replace click callbacks: the current SyncClick appends listeners. Destroy/recreate after Unref. Optional NEW/ad visuals use existing serialized badge slots and the shared VM implementation.",
+    "Original native docking and sibling order are preserved. Browser cards normalize only the root for standalone preview. Home keeps TopLeft CanvasGroup/entrance animation; these components do not each replay a page entrance animation.",
+    "Upgrading existing Home: move UIActivityEntry, UIActivityBadge, their VMs, ActivityBadge and HomeTextOutline from Home to Common/UI, preserving .meta GUIDs. Move shared native resources using the included migration manifest before importing; do not leave duplicate GUIDs at old paths."
+  ],
+  "dependencies": [
+    "com.oathx.widget"
+  ],
+  "schemaVersion": 1
+}

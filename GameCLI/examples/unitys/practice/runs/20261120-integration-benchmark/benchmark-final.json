@@ -1,0 +1,101 @@
+{
+  "status": "bounded_local_functional_integration_passed",
+  "systems": 10,
+  "acceptanceEndUtc": "2026-11-20T09:46:00.5267109+00:00",
+  "executionStartUtc": "2026-11-20T08:27:01Z",
+  "executionSeconds": 4739.5267109,
+  "requestToAcceptanceSeconds": 4851.0987109,
+  "formalRepairRounds": 3,
+  "developerSelfCheckEvents": 7,
+  "humanBaselinePersonDays": 30,
+  "assumedHoursPerDay": 8,
+  "humanBaselineHours": 240,
+  "elapsedAccelerationRatio": 182.2966833403357,
+  "elapsedReductionPercent": 99.45144366771991,
+  "tokenCapturedAt": "2026-11-20T17:46:24.9862852+08:00",
+  "tokens": {
+    "input_tokens": 109739289.0,
+    "cached_input_tokens": 108897408.0,
+    "output_tokens": 163464.0,
+    "reasoning_output_tokens": 13771.0,
+    "total_tokens": 109902753.0
+  },
+  "noncachedInputTokens": 841881.0,
+  "noncachedInputPlusOutputTokens": 1005345.0,
+  "agentObservedSpanHours": 4.567025277777777,
+  "agents": [
+    {
+      "threadId": "01a1bfec-b177-70b3-b7b4-068df4067d0a",
+      "agentPath": "/root",
+      "startedAt": "2026-11-20T16:27:01+08:00",
+      "observedAt": "2026-11-20T09:46:17.806Z",
+      "observedSpanHours": 1.321335,
+      "input_tokens": 35002244,
+      "cached_input_tokens": 34804224,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 29425,
+      "reasoning_output_tokens": 2917,
+      "total_tokens": 35031669
+    },
+    {
+      "threadId": "01a1f811-79c7-7ed0-bc26-025781d4ea1d",
+      "agentPath": "/root/integration",
+      "startedAt": "2026-11-20T16:27:37.888+08:00",
+      "observedAt": "2026-11-20T09:44:29.621Z",
+      "observedSpanHours": 1.2810369444444445,
+      "input_tokens": 24880277,
+      "cached_input_tokens": 24738816,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 39076,
+      "reasoning_output_tokens": 1993,
+      "total_tokens": 24919353
+    },
+    {
+      "threadId": "01a1f811-c7df-7140-8764-bb354ba71f74",
+      "agentPath": "/root/acceptance",
+      "startedAt": "2026-11-20T16:27:57.88+08:00",
+      "observedAt": "2026-11-20T09:46:17.94Z",
+      "observedSpanHours": 1.3055722222222221,
+      "input_tokens": 32236286,
+      "cached_input_tokens": 31869312,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 73012,
+      "reasoning_output_tokens": 7976,
+      "total_tokens": 32309298
+    },
+    {
+      "threadId": "01a1f815-1b5a-78f3-9237-685491f94c84",
+      "agentPath": "/root/configuration",
+      "startedAt": "2026-11-20T16:31:35.87+08:00",
+      "observedAt": "2026-11-20T09:06:36.923Z",
+      "observedSpanHours": 0.5836258333333333,
+      "input_tokens": 15040220,
+      "cached_input_tokens": 14924032,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 19478,
+      "reasoning_output_tokens": 783,
+      "total_tokens": 15059698
+    },
+    {
+      "threadId": "01a1f830-ea59-75c1-8cb0-439c4a599723",
+      "agentPath": "/root/code_recheck",
+      "startedAt": "2026-11-20T17:01:58.349+08:00",
+      "observedAt": "2026-11-20T09:06:29.988Z",
+      "observedSpanHours": 0.07545527777777777,
+      "input_tokens": 2580262,
+      "cached_input_tokens": 2561024,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2473,
+      "reasoning_output_tokens": 102,
+      "total_tokens": 2582735
+    }
+  ],
+  "limitations": [
+    "Elapsed comparison uses a user-provided 30-person-day baseline and an assumed 8-hour workday; not measured equivalent manual effort.",
+    "Existing framework and template development costs are excluded.",
+    "Agent observed spans include waits and are not active compute time or human labor.",
+    "Strict browser/Unity visual equality and unsupported raw prefab exporter properties are not certified; original failed/incomplete reports retained.",
+    "No production authentication/payment/backend or all device/platform certification.",
+    "Token totals include cached input repeatedly read by model calls; cache is a subset, not extra tokens. Final response after capture is excluded."
+  ]
+}

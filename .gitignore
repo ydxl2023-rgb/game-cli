@@ -36,3 +36,33 @@ Thumbs.db
 *.key
 *.pfx
 *.p12
+
+
+# Local GameCLI exports and Unity editor captures
+/.data/
+/GameCLI/.data/
+/GameCLI/examples/unitys/*/client/UnityCLI-Screenshots/
+/GameCLI/examples/unitys/development/client/--help/
+/GameCLI/examples/unitys/*/client/*.csproj
+/GameCLI/examples/unitys/*/client/*.sln
+/GameCLI/examples/unitys/*/client/HomeEntranceEvidence.json
+/GameCLI/examples/unitys/*/client/Assets/Resources/PerformanceTestRun*.json*
+/GameCLI/examples/unitys/development/client/LocalMcps/unity-mcp-beta/
+
+# Practice run scratch data, retained locally
+/GameCLI/examples/unitys/practice/runs/**/*.log
+/GameCLI/examples/unitys/practice/runs/**/*.backup
+/GameCLI/examples/unitys/practice/runs/**/before/
+/GameCLI/examples/unitys/practice/runs/20261120-texture-refresh/originals/
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/staged-materials/
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/standard-sources/
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/sources/
+/GameCLI/examples/unitys/practice/runs/20261120-full-integration/sources/
+/GameCLI/examples/unitys/practice/runs/20261120-full-integration/before-*.json
+/GameCLI/examples/unitys/practice/runs/20261116-rebuild/launch-cli.jsonl
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/standards/
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/config-output/
+/GameCLI/examples/unitys/practice/runs/20261120-full-integration/project-snapshot.json
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/project-snapshot.json
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/usage-latest.json
+/GameCLI/examples/unitys/practice/runs/20261120-integration-benchmark/acceptance/browser/home-dom.html

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "RedDot",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 4,
+    "lines": 575,
+    "blankLines": 102,
+    "commentLines": 91,
+    "members": 56,
+    "documentedMembers": 56,
+    "blankLineRate": 0.17739130434782607,
+    "commentLineRate": 0.1582608695652174,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/RedDot/RedDotEntity.cs",
+      "sha256": "19e3c65f481af7989a148ccf78f4355e20c0bcaac4a953bfcba48c3c9f0fc850"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RedDot/RedDotEvents.cs",
+      "sha256": "1c98519e4910b48bbfb2edfd27392b6e93d2fbaf83cd0dd44f1cdb6140eed2ae"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RedDot/RedDotScope.cs",
+      "sha256": "3cbf05f047b86b418a500e540fd4f9fd45b484b4032a70115eb7c2d8a9213c9b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RedDot/RedDotSystem.cs",
+      "sha256": "c4412249d1c28776cd8d75d545a8babd10f15338c9d934c962916e9d704f70d7"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\962ddfab-916d-48cf-9a0a-5228f4a82dc7"
+}

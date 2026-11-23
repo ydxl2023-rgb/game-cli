@@ -1,0 +1,641 @@
+{
+  "nativeSha256": "9595430315324d0a0b81ca2a224c78ea51eea629140d92fba5a9475dac2a8ec3",
+  "installedSha256": "9595430315324d0a0b81ca2a224c78ea51eea629140d92fba5a9475dac2a8ec3",
+  "nativeBytesIdentical": true,
+  "count": 43,
+  "differences": [
+    {
+      "index": 1,
+      "node": "0:Settings/0:Animator",
+      "property": "rect.anchorMin[0]",
+      "expected": 0,
+      "actual": 0.5,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "8951159453583940696"
+      ]
+    },
+    {
+      "index": 2,
+      "node": "0:Settings/0:Animator",
+      "property": "rect.anchorMin[1]",
+      "expected": 0,
+      "actual": 0.5,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "8951159453583940696"
+      ]
+    },
+    {
+      "index": 3,
+      "node": "0:Settings/0:Animator",
+      "property": "rect.anchorMax[0]",
+      "expected": 1,
+      "actual": 0.5,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "8951159453583940696"
+      ]
+    },
+    {
+      "index": 4,
+      "node": "0:Settings/0:Animator",
+      "property": "rect.anchorMax[1]",
+      "expected": 1,
+      "actual": 0.5,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "8951159453583940696"
+      ]
+    },
+    {
+      "index": 5,
+      "node": "0:Settings/0:Animator",
+      "property": "rect.sizeDelta[0]",
+      "expected": 0,
+      "actual": 1920,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "8951159453583940696"
+      ]
+    },
+    {
+      "index": 6,
+      "node": "0:Settings/0:Animator",
+      "property": "rect.sizeDelta[1]",
+      "expected": 0,
+      "actual": 1080,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "8951159453583940696"
+      ]
+    },
+    {
+      "index": 7,
+      "node": "0:Settings/0:Animator/0:Bg/0:SetBg",
+      "property": "component.UnityEngine.UI.RawImage",
+      "expected": 1,
+      "actual": 0,
+      "classification": "native background component conversion; inspect installed SetBg Image sprite/material and runtime screenshot; not a raw static equality pass",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2021783102744587576"
+      ]
+    },
+    {
+      "index": 8,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "6291756674834864606"
+      ]
+    },
+    {
+      "index": 9,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/0:ScreenTog/0:SetUnselected",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2171102390390306310",
+        "4166593719564294958",
+        "5929050124957513895",
+        "7568442524834236784",
+        "9200201909527068903"
+      ]
+    },
+    {
+      "index": 10,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/0:ScreenTog/2:ClickArea",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1989499592663768802",
+        "4623276136319031009",
+        "6272176948177604421",
+        "7522891173190362504",
+        "8932838296678846875",
+        "9103184267150021567"
+      ]
+    },
+    {
+      "index": 11,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/1:VoiceTog/0:SetUnselected",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2171102390390306310",
+        "4166593719564294958",
+        "5929050124957513895",
+        "7568442524834236784",
+        "9200201909527068903"
+      ]
+    },
+    {
+      "index": 12,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/1:VoiceTog/2:ClickArea",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1989499592663768802",
+        "4623276136319031009",
+        "6272176948177604421",
+        "7522891173190362504",
+        "8932838296678846875",
+        "9103184267150021567"
+      ]
+    },
+    {
+      "index": 13,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/2:FunctionTog/0:SetUnselected",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2171102390390306310",
+        "4166593719564294958",
+        "5929050124957513895",
+        "7568442524834236784",
+        "9200201909527068903"
+      ]
+    },
+    {
+      "index": 14,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/2:FunctionTog/2:ClickArea",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1989499592663768802",
+        "4623276136319031009",
+        "6272176948177604421",
+        "7522891173190362504",
+        "8932838296678846875",
+        "9103184267150021567"
+      ]
+    },
+    {
+      "index": 15,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/3:PrivateTog/0:SetUnselected",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2171102390390306310",
+        "4166593719564294958",
+        "5929050124957513895",
+        "7568442524834236784",
+        "9200201909527068903"
+      ]
+    },
+    {
+      "index": 16,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/3:PrivateTog/3:ClickArea",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1989499592663768802",
+        "4623276136319031009",
+        "6272176948177604421",
+        "7522891173190362504",
+        "8932838296678846875",
+        "9103184267150021567"
+      ]
+    },
+    {
+      "index": 17,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/4:DownloadTog/0:SetUnselected",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2171102390390306310",
+        "4166593719564294958",
+        "5929050124957513895",
+        "7568442524834236784",
+        "9200201909527068903"
+      ]
+    },
+    {
+      "index": 18,
+      "node": "0:Settings/0:Animator/1:LeftTagGroup/4:DownloadTog/2:ClickArea",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1989499592663768802",
+        "4623276136319031009",
+        "6272176948177604421",
+        "7522891173190362504",
+        "8932838296678846875",
+        "9103184267150021567"
+      ]
+    },
+    {
+      "index": 19,
+      "node": "0:Settings/0:Animator/2:BackGather",
+      "property": "color[3]",
+      "expected": 0,
+      "actual": 1,
+      "classification": "native stored alpha; BackGather and ScrollView Graphic disabled, Viewport requires Mask/showMaskGraphic inspection before treating as visible fill",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "968669554299666608"
+      ]
+    },
+    {
+      "index": 20,
+      "node": "0:Settings/0:Animator/2:BackGather",
+      "property": "graphic.enabled",
+      "expected": true,
+      "actual": false,
+      "classification": "native disabled Graphic (retained component); companion color/alpha must be considered together; Placeholder is InputField-owned",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "968669554299666608"
+      ]
+    },
+    {
+      "index": 21,
+      "node": "0:Settings/0:Animator/2:BackGather/2:RuleButton",
+      "property": "raycastTarget",
+      "expected": true,
+      "actual": false,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "6755731474413252815"
+      ]
+    },
+    {
+      "index": 22,
+      "node": "0:Settings/0:Animator/2:BackGather/2:RuleButton/0:ClickArea",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1989499592663768802",
+        "4623276136319031009",
+        "6272176948177604421",
+        "7522891173190362504",
+        "8932838296678846875",
+        "9103184267150021567"
+      ]
+    },
+    {
+      "index": 23,
+      "node": "0:Settings/0:Animator/3:ScreenSet/0:DetailInfo/1:ScrollView",
+      "property": "color[3]",
+      "expected": 0,
+      "actual": 0.392,
+      "classification": "native stored alpha; BackGather and ScrollView Graphic disabled, Viewport requires Mask/showMaskGraphic inspection before treating as visible fill",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1109271375020358736",
+        "7749296047427321589"
+      ]
+    },
+    {
+      "index": 24,
+      "node": "0:Settings/0:Animator/3:ScreenSet/0:DetailInfo/1:ScrollView",
+      "property": "graphic.enabled",
+      "expected": true,
+      "actual": false,
+      "classification": "native disabled Graphic (retained component); companion color/alpha must be considered together; Placeholder is InputField-owned",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1109271375020358736",
+        "7749296047427321589"
+      ]
+    },
+    {
+      "index": 25,
+      "node": "0:Settings/0:Animator/3:ScreenSet/0:DetailInfo/1:ScrollView/1:Viewport",
+      "property": "color[3]",
+      "expected": 0,
+      "actual": 1,
+      "classification": "native stored alpha; BackGather and ScrollView Graphic disabled, Viewport requires Mask/showMaskGraphic inspection before treating as visible fill",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2540406538244190893",
+        "5006922634325822991"
+      ]
+    },
+    {
+      "index": 26,
+      "node": "0:Settings/0:Animator/3:ScreenSet/0:DetailInfo/1:ScrollView/1:Viewport",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2540406538244190893",
+        "5006922634325822991"
+      ]
+    },
+    {
+      "index": 27,
+      "node": "0:Settings/0:Animator/3:ScreenSet/0:DetailInfo/1:ScrollView/1:Viewport/0:Content/8:Merged/3:ClickEff/1:ClickEffSet/1:ClickEffTitle",
+      "property": "rect.anchoredPosition[0]",
+      "expected": -199.1300048828125,
+      "actual": -199.130112,
+      "classification": "native fixed 1920x1080 centered Animator vs stretch Studio container; equivalent at design resolution, other aspect ratios require runtime bounds evidence",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "2250221562844050518"
+      ]
+    },
+    {
+      "index": 28,
+      "node": "0:Settings/0:Animator/4:SouneSet/1:MusicVolume/2:MusicSlider/0:Background",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "889594671445342365",
+        "4840126862852612591",
+        "5749618589311987242"
+      ]
+    },
+    {
+      "index": 29,
+      "node": "0:Settings/0:Animator/4:SouneSet/1:MusicVolume/2:MusicSlider/1:FillArea/0:Fill",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "3521273412748127618",
+        "6763200890043162569",
+        "9010187088929253929"
+      ]
+    },
+    {
+      "index": 30,
+      "node": "0:Settings/0:Animator/4:SouneSet/1:MusicVolume/2:MusicSlider/2:HandleSlideArea/0:Handle",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "4001550436849135278",
+        "7580354869955370450",
+        "8792011342465851772"
+      ]
+    },
+    {
+      "index": 31,
+      "node": "0:Settings/0:Animator/4:SouneSet/2:SoundVolume/2:SoundSlider/0:Background",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "889594671445342365",
+        "4840126862852612591",
+        "5749618589311987242"
+      ]
+    },
+    {
+      "index": 32,
+      "node": "0:Settings/0:Animator/4:SouneSet/2:SoundVolume/2:SoundSlider/1:FillArea/0:Fill",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "3521273412748127618",
+        "6763200890043162569",
+        "9010187088929253929"
+      ]
+    },
+    {
+      "index": 33,
+      "node": "0:Settings/0:Animator/4:SouneSet/2:SoundVolume/2:SoundSlider/2:HandleSlideArea/0:Handle",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "4001550436849135278",
+        "7580354869955370450",
+        "8792011342465851772"
+      ]
+    },
+    {
+      "index": 34,
+      "node": "0:Settings/0:Animator/4:SouneSet/3:VoiceVolume/2:VoiceSlider/0:Background",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "889594671445342365",
+        "4840126862852612591",
+        "5749618589311987242"
+      ]
+    },
+    {
+      "index": 35,
+      "node": "0:Settings/0:Animator/4:SouneSet/3:VoiceVolume/2:VoiceSlider/1:FillArea/0:Fill",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "3521273412748127618",
+        "6763200890043162569",
+        "9010187088929253929"
+      ]
+    },
+    {
+      "index": 36,
+      "node": "0:Settings/0:Animator/4:SouneSet/3:VoiceVolume/2:VoiceSlider/2:HandleSlideArea/0:Handle",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "4001550436849135278",
+        "7580354869955370450",
+        "8792011342465851772"
+      ]
+    },
+    {
+      "index": 37,
+      "node": "0:Settings/0:Animator/5:FunctionSet/0:DetailInfo/0:ScrollView",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1109271375020358736",
+        "7749296047427321589"
+      ]
+    },
+    {
+      "index": 38,
+      "node": "0:Settings/0:Animator/6:PrivateSet/4:TakeOverCodeConfirmView/0:BgMask",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "7599152547316568674"
+      ]
+    },
+    {
+      "index": 39,
+      "node": "0:Settings/0:Animator/6:PrivateSet/4:TakeOverCodeConfirmView/1:Bg",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "1449873032051738167",
+        "2632914305081488584"
+      ]
+    },
+    {
+      "index": 40,
+      "node": "0:Settings/0:Animator/6:PrivateSet/4:TakeOverCodeConfirmView/1:Bg/0:BottomBg",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "4006769879249176265"
+      ]
+    },
+    {
+      "index": 41,
+      "node": "0:Settings/0:Animator/6:PrivateSet/4:TakeOverCodeConfirmView/1:Bg/1:TopBg",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "4437578481257356"
+      ]
+    },
+    {
+      "index": 42,
+      "node": "0:Settings/0:Animator/6:PrivateSet/4:TakeOverCodeConfirmView/1:Bg/3:TakeOverInputBox",
+      "property": "raycastTarget",
+      "expected": false,
+      "actual": true,
+      "classification": "native input surface routing; true surfaces support tab/slider/scroll/modal interaction, RuleButton routes via ClickArea child; no visual geometry change",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "126666445898464146"
+      ]
+    },
+    {
+      "index": 43,
+      "node": "0:Settings/0:Animator/6:PrivateSet/4:TakeOverCodeConfirmView/1:Bg/3:TakeOverInputBox/0:Placeholder",
+      "property": "graphic.enabled",
+      "expected": true,
+      "actual": false,
+      "classification": "native disabled Graphic (retained component); companion color/alpha must be considered together; Placeholder is InputField-owned",
+      "installedAsset": "GameCLI\\examples\\unitys\\practice\\client\\Assets\\Data\\Widgets\\Settings\\Settings.prefab",
+      "nativeMaterial": "staged-materials/Assets/Data/Widgets/Settings/Settings.prefab",
+      "serializedGameObjectIds": [
+        "3202390392680499078"
+      ]
+    }
+  ]
+}

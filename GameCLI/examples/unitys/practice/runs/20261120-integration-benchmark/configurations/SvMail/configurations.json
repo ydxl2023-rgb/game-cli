@@ -1,0 +1,117 @@
+{
+  "tables": [
+    {
+      "name": "propFunctionSystem",
+      "merge": "Merge SYS_MAIL only, resolve product NumID collisions and regenerate using the product exporter. Never replace the complete product table.",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "name": "NumID",
+          "type": "int"
+        },
+        {
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "name": "TargetType",
+          "type": "enum"
+        },
+        {
+          "name": "ClassType",
+          "type": "string"
+        },
+        {
+          "name": "InstallOnStartup",
+          "type": "int"
+        },
+        {
+          "name": "Condtions",
+          "type": "List<string>"
+        },
+        {
+          "name": "Active",
+          "type": "int"
+        },
+        {
+          "name": "StartTime",
+          "type": "string"
+        },
+        {
+          "name": "StopTime",
+          "type": "string"
+        },
+        {
+          "name": "SceneId",
+          "type": "int"
+        },
+        {
+          "name": "Version",
+          "type": "string"
+        }
+      ],
+      "layout": {
+        "typeRow": 3,
+        "headerRow": 2,
+        "dataStartRow": 4,
+        "descriptionRow": 1
+      },
+      "source": {
+        "sheet": "FunctionSystem",
+        "sha256": "d2b8cfc5dab80bd98418af42fe92c4867a9edde178dc0bb13e7bbaa142ad7a47",
+        "assetId": "d2b8cfc5dab80bd98418af42fe92c4867a9edde178dc0bb13e7bbaa142ad7a47",
+        "fileName": "propFunctionSystem.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "SYS_MAIL",
+          "Name": "Mail",
+          "NumID": "10022",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "MailSystem",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        }
+      ],
+      "purpose": "required",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    }
+  ],
+  "integration": [
+    "Install MailEntity and MailSystem using existing Oathx entity/system discovery. Use SystemActive/SystemDetive through the product coordinator.",
+    "Home Mail routing in Integration/MasterSystem.cs is a reference only. Do not overwrite product Master or require Home to install Mail.",
+    "Restore materials and adjacent meta GUIDs. Common font files may already exist: compare hashes before reuse; resolve conflicting GUIDs through Unity asset tooling.",
+    "MailExample.json is optional and explicitly local. Supply ReplaceInbox data before first activation to replace the example, or clear UIMail.example for an empty inbox.",
+    "Claims record in-memory receipts only. No inventory grant, service connection, persistence, timer-driven expiry or account-switch contract is provided.",
+    "Fixed labels are serialized in the prefab. Runtime fixed product messages belong in propCommonText; message bodies are host data.",
+    "Mail uses VList<VMRewardEntry> and a nested RewardEntry.prefab. Install RewardEntry v6 first; migrate old UIMailReward/VMMailReward scripts with their meta GUIDs using its migration.json. Do not keep duplicate old class files.",
+    "RewardEntry v6 requires ItemSlot v5. Mail constructs reward.Item and updates Item.Text/Icon/IconVisible; old reward Count/Icon fields no longer exist.",
+    "Icon is a string asset path resolved by existing SyncSprite/UILoader. IconVisible expresses host visibility intent, not loading completion. Mail does not load Sprite or maintain image callbacks. Shared loader cancellation and out-of-order completion need separate validation."
+  ],
+  "dependencies": [
+    {
+      "kind": "generated",
+      "name": "FunctionSystemConfig",
+      "reason": "Regenerate and load the function registry before activating MailSystem.",
+      "required": true
+    },
+    {
+      "kind": "template",
+      "name": "RewardEntry",
+      "reason": "Shared UIRewardEntry/VMRewardEntry, nested prefab and reward artwork; install before Mail.",
+      "version": 6,
+      "required": true,
+      "templateId": "RewardEntry"
+    }
+  ],
+  "schemaVersion": 1
+}

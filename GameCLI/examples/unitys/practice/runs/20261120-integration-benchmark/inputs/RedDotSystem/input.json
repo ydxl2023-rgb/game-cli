@@ -1,0 +1,821 @@
+{
+  "root": "CodeSystem2",
+  "design": {
+    "name": "ProjectUI",
+    "nodes": [
+      {
+        "x": 0,
+        "y": 0,
+        "id": "CodeSystem2",
+        "name": "RedDotSystem",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 0,
+        "active": false,
+        "height": 0,
+        "parent": null,
+        "scripts": {
+          "files": [
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotEntity.cs",
+              "sha256": "19e3c65f481af7989a148ccf78f4355e20c0bcaac4a953bfcba48c3c9f0fc850",
+              "content": "using System;\r\nusing System.Collections.Generic;\r\nusing Config;\r\nusing Oathx.Entity;\r\n\r\n/// <summary>Owns notification inputs, configuration validation and aggregated counts.</summary>\r\n[Initialize]\r\npublic partial class RedDotEntity : XEntity\r\n{\r\n    /// <summary>Validated configurations indexed by stable identifier.</summary>\r\n    private readonly Dictionary<int, RedDot> configurations = new Dictionary<int, RedDot>();\r\n\r\n    /// <summary>Business inputs retained independently of widget lifetime.</summary>\r\n    private readonly Dictionary<int, int> signals = new Dictionary<int, int>();\r\n\r\n    /// <summary>Cached own-condition results before parent aggregation.</summary>\r\n    private readonly Dictionary<int, int> evaluated = new Dictionary<int, int>();\r\n\r\n    /// <summary>Last calculated counts including child contributions.</summary>\r\n    private readonly Dictionary<int, int> counts = new Dictionary<int, int>();\r\n\r\n    /// <summary>Validate IDs, supported conditions, flags and an acyclic parent tree.</summary>\r\n    public void Initialize()\r\n    {\r\n        var validated = new Dictionary<int, RedDot>();\r\n        foreach (var item in Excel.redDotConfig)\r\n        {\r\n            var row = item.Value;\r\n            if (row == null || row.ID <= 0 || row.ID != row.NumID || validated.ContainsKey(row.ID))\r\n                throw new InvalidOperationException(\"Invalid or duplicate red dot identifier.\");\r\n\r\n            if (!Enum.IsDefined(typeof(ERedDotCondition), row.RedDotCondition)\r\n                || (row.RedDotCondition != ERedDotCondition.None && row.RedDotCondition != ERedDotCondition.SignalCount)\r\n                || (row.RedDotDisplay != ERedDotDisplay.Dot && row.RedDotDisplay != ERedDotDisplay.Count)\r\n                || row.Enabled < 0 || row.Enabled > 1 || row.RefreshOnOpen < 0 || row.RefreshOnOpen > 1\r\n                || row.RefreshOnClose < 0 || row.RefreshOnClose > 1)\r\n                throw new InvalidOperationException($\"Invalid red dot configuration: {row.ID}.\");\r\n\r\n            validated.Add(row.ID, row);\r\n        }\r\n\r\n        foreach (var row in validated.Values)\r\n        {\r\n            var ancestors = new HashSet<int> { row.ID };\r\n            int parent = row.ParentID;\r\n            while (parent != 0)\r\n            {\r\n                if (!validated.TryGetValue(parent, out var ancestor) || !ancestors.Add(parent))\r\n                    throw new InvalidOperationException($\"Missing or cyclic red dot parent: {row.ID}.\");\r\n\r\n                parent = ancestor.ParentID;\r\n            }\r\n        }\r\n\r\n        configurations.Clear();\r\n        foreach (var item in validated)\r\n            configurations.Add(item.Key, item.Value);\r\n    }\r\n\r\n    /// <summary>Read configured identifiers without exposing the owned collection.</summary>\r\n    /// <returns>A detached configuration identifier snapshot.</returns>\r\n    public List<int> GetIds()\r\n    {\r\n        return new List<int>(configurations.Keys);\r\n    }\r\n\r\n    /// <summary>Check whether a configured condition can be refreshed.</summary>\r\n    /// <param name=\"id\">Configuration identifier.</param>\r\n    /// <returns>True when the configuration exists.</returns>\r\n    public bool Contains(int id)\r\n    {\r\n        return configurations.ContainsKey(id);\r\n    }\r\n\r\n    /// <summary>Select conditions affected by a widget lifecycle notification.</summary>\r\n    /// <param name=\"opened\">True for opening, false for closing.</param>\r\n    /// <returns>A detached list of affected identifiers.</returns>\r\n    public List<int> GetLifecycleIds(bool opened)\r\n    {\r\n        var ids = new List<int>();\r\n        foreach (var row in configurations.Values)\r\n        {\r\n            if (opened ? row.RefreshOnOpen != 0 : row.RefreshOnClose != 0)\r\n                ids.Add(row.ID);\r\n        }\r\n\r\n        return ids;\r\n    }\r\n\r\n    /// <summary>Validate and store a business signal for the next refresh.</summary>\r\n    /// <param name=\"id\">Signal-driven configuration identifier.</param>\r\n    /// <param name=\"count\">Nonnegative notification count.</param>\r\n    /// <returns>True when the input was accepted.</returns>\r\n    public bool UpdateSignal(int id, int count)\r\n    {\r\n        if (count < 0 || !configurations.TryGetValue(id, out var row)\r\n            || row.RedDotCondition != ERedDotCondition.SignalCount)\r\n            return false;\r\n\r\n        signals[id] = count;\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>Read the calculated count without exposing mutable state.</summary>\r\n    /// <param name=\"id\">Configuration identifier.</param>\r\n    /// <returns>The last calculated count, or zero when unavailable.</returns>\r\n    public int GetCount(int id)\r\n    {\r\n        return counts.TryGetValue(id, out int count) ? count : 0;\r\n    }\r\n\r\n    /// <summary>Read a detached snapshot of business signal inputs.</summary>\r\n    /// <returns>Current inputs, safe for external inspection.</returns>\r\n    public Dictionary<int, int> GetSignals()\r\n    {\r\n        return new Dictionary<int, int>(signals);\r\n    }\r\n\r\n    /// <summary>Read a detached snapshot of calculated counts.</summary>\r\n    /// <returns>Current counts, safe for external inspection.</returns>\r\n    public Dictionary<int, int> GetCounts()\r\n    {\r\n        return new Dictionary<int, int>(counts);\r\n    }\r\n\r\n    /// <summary>Evaluate requested conditions and update the complete parent tree.</summary>\r\n    /// <param name=\"ids\">Condition identifiers scheduled by the caller.</param>\r\n    /// <returns>A detached snapshot containing only count changes.</returns>\r\n    public Dictionary<int, int> Refresh(IEnumerable<int> ids)\r\n    {\r\n        if (ids != null)\r\n        {\r\n            foreach (int id in ids)\r\n            {\r\n                if (configurations.TryGetValue(id, out var row))\r\n                    evaluated[id] = row.Enabled != 0 ? Evaluate(row) : 0;\r\n            }\r\n        }\r\n\r\n        var totals = new Dictionary<int, int>();\r\n        foreach (int id in configurations.Keys)\r\n            Aggregate(id, totals);\r\n\r\n        var changes = new Dictionary<int, int>();\r\n        foreach (var pair in totals)\r\n        {\r\n            if (!counts.TryGetValue(pair.Key, out int previous) || previous != pair.Value)\r\n                changes[pair.Key] = pair.Value;\r\n\r\n            counts[pair.Key] = pair.Value;\r\n        }\r\n\r\n        return changes;\r\n    }\r\n\r\n    /// <summary>Read one configured condition without changing business data.</summary>\r\n    /// <param name=\"row\">Validated condition configuration.</param>\r\n    /// <returns>The count contributed by this condition.</returns>\r\n    private int Evaluate(RedDot row)\r\n    {\r\n        switch (row.RedDotCondition)\r\n        {\r\n            case ERedDotCondition.None:\r\n                return 0;\r\n            case ERedDotCondition.SignalCount:\r\n                return signals.TryGetValue(row.ID, out int count) ? count : 0;\r\n            default:\r\n                throw new InvalidOperationException($\"Unsupported red dot condition: {row.RedDotCondition}.\");\r\n        }\r\n    }\r\n\r\n    /// <summary>Aggregate each configured subtree once, saturating large counts.</summary>\r\n    /// <param name=\"id\">The subtree root.</param>\r\n    /// <param name=\"totals\">Memoized aggregate results for this refresh.</param>\r\n    /// <returns>The count visible at the subtree root.</returns>\r\n    private int Aggregate(int id, Dictionary<int, int> totals)\r\n    {\r\n        if (totals.TryGetValue(id, out int known))\r\n            return known;\r\n\r\n        long total = 0;\r\n        if (configurations[id].Enabled != 0)\r\n        {\r\n            evaluated.TryGetValue(id, out int own);\r\n            total = own;\r\n            foreach (var row in configurations.Values)\r\n            {\r\n                if (row.ParentID == id)\r\n                    total = Math.Min(int.MaxValue, total + Aggregate(row.ID, totals));\r\n            }\r\n        }\r\n\r\n        totals[id] = (int)total;\r\n\r\n        return (int)total;\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotEntity.cs.meta",
+              "sha256": "f33a08a2ff0ebe8672535b4558aac3fba11be1ddaf2f23006f2d66127b133e27",
+              "content": "fileFormatVersion: 2\nguid: 8157bb7f18f03b54f80a7b554192d813\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotEvents.cs",
+              "sha256": "1c98519e4910b48bbfb2edfd27392b6e93d2fbaf83cd0dd44f1cdb6140eed2ae",
+              "content": "using Oathx.Core;\r\n\r\n/// <summary>Publishes a business condition count without referencing a widget.</summary>\r\npublic class RedDotSignalChanged : IEvent\r\n{\r\n    /// <summary>Stable identifier generated from propRedDot.</summary>\r\n    public int id\r\n    { get; set; }\r\n\r\n    /// <summary>Nonnegative business count; zero clears the condition.</summary>\r\n    public int count\r\n    { get; set; }\r\n}\r\n\r\n/// <summary>Requests reevaluation after external entity data changes.</summary>\r\npublic class RedDotRefreshRequested : IEvent\r\n{\r\n    /// <summary>Configured identifier, or zero to refresh all conditions.</summary>\r\n    public int id\r\n    { get; set; }\r\n}\r\n\r\n/// <summary>Reports a calculated count only when its value changes.</summary>\r\npublic class RedDotChanged : IEvent\r\n{\r\n    /// <summary>Changed configuration identifier.</summary>\r\n    public int id\r\n    { get; set; }\r\n\r\n    /// <summary>Calculated count including descendants.</summary>\r\n    public int count\r\n    { get; set; }\r\n}\r\n\r\n/// <summary>Registers an explicitly bound presentation scope with the active service.</summary>\r\npublic class RedDotScopeEnabled : IEvent\r\n{\r\n    /// <summary>The enabled scope; contains no business condition data.</summary>\r\n    public RedDotScope scope\r\n    { get; set; }\r\n}\r\n\r\n/// <summary>Releases presentation references when a scope is disabled.</summary>\r\npublic class RedDotScopeDisabled : IEvent\r\n{\r\n    /// <summary>The disabled scope.</summary>\r\n    public RedDotScope scope\r\n    { get; set; }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotEvents.cs.meta",
+              "sha256": "8bb84b2c7bd88ac2986cff1af92c96d6229cf42bb3e576919758a07d569a35e5",
+              "content": "fileFormatVersion: 2\nguid: 145aa32bcbcf3ac4fa5dbee5fdd22f72\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotScope.cs",
+              "sha256": "3cbf05f047b86b418a500e540fd4f9fd45b484b4032a70115eb7c2d8a9213c9b",
+              "content": "using System;\r\nusing System.Collections.Generic;\r\nusing System.Globalization;\r\nusing Config;\r\nusing Oathx.Core;\r\nusing UnityEngine;\r\nusing UnityEngine.UI;\r\n\r\n/// <summary>Owns explicit red dot bindings on a widget without searching its hierarchy.</summary>\r\npublic class RedDotScope : MonoBehaviour\r\n{\r\n    /// <summary>Enabled scopes used when the service activates after a widget.</summary>\r\n    private static readonly HashSet<RedDotScope> instances = new HashSet<RedDotScope>();\r\n\r\n    /// <summary>Serialized configuration identifiers and display targets.</summary>\r\n    [SerializeField]\r\n    private RedDotBinding[] bindings;\r\n\r\n    /// <summary>Read a safe snapshot of enabled scopes for late service activation.</summary>\r\n    /// <returns>The currently enabled scope instances.</returns>\r\n    public static RedDotScope[] Snapshot()\r\n    {\r\n        var result = new RedDotScope[instances.Count];\r\n        instances.CopyTo(result);\r\n\r\n        return result;\r\n    }\r\n\r\n    /// <summary>Render configured counts; hidden targets do not disable this scope.</summary>\r\n    /// <param name=\"entity\">Calculated state, or null to hide presentation during shutdown.</param>\r\n    /// <returns>True when every serialized binding is valid.</returns>\r\n    public bool Render(RedDotEntity entity)\r\n    {\r\n        if (bindings == null)\r\n            return false;\r\n\r\n        bool complete = true;\r\n        foreach (var binding in bindings)\r\n            complete &= binding != null && binding.Render(entity);\r\n\r\n        return complete;\r\n    }\r\n\r\n    /// <summary>Register this scope independently of target visibility.</summary>\r\n    private void OnEnable()\r\n    {\r\n        Render(null);\r\n        instances.Add(this);\r\n\r\n        XPluginUtility.FireEvent(new RedDotScopeEnabled { scope = this });\r\n    }\r\n\r\n    /// <summary>Release listeners without clearing the underlying business state.</summary>\r\n    private void OnDisable()\r\n    {\r\n        instances.Remove(this);\r\n\r\n        XPluginUtility.FireEvent(new RedDotScopeDisabled { scope = this });\r\n    }\r\n}\r\n\r\n/// <summary>Serialized association between a configuration row and its visual.</summary>\r\n[Serializable]\r\npublic class RedDotBinding\r\n{\r\n    /// <summary>Stable propRedDot identifier.</summary>\r\n    [SerializeField]\r\n    private int id;\r\n\r\n    /// <summary>Existing or product-instantiated visual controlled by this binding.</summary>\r\n    [SerializeField]\r\n    private GameObject target;\r\n\r\n    /// <summary>Optional label required by Count display mode.</summary>\r\n    [SerializeField]\r\n    private Text countText;\r\n\r\n    /// <summary>Apply state without changing its business source.</summary>\r\n    /// <param name=\"entity\">Current state, or null when the service stops.</param>\r\n    /// <returns>True when the configuration and its required target exist.</returns>\r\n    public bool Render(RedDotEntity entity)\r\n    {\r\n        var configuration = Excel.propRedDotById(id);\r\n        if (!target || configuration == null)\r\n            return false;\r\n\r\n        if (configuration.RedDotDisplay == ERedDotDisplay.Count && !countText)\r\n            return false;\r\n\r\n        int count = 0;\r\n        if (entity)\r\n            count = entity.GetCount(id);\r\n\r\n        if (countText)\r\n            countText.text = count.ToString(CultureInfo.InvariantCulture);\r\n\r\n        target.SetActive(configuration.Enabled != 0 && count > 0);\r\n\r\n        return true;\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotScope.cs.meta",
+              "sha256": "43008fa70a79128a2ec4daed94c62aae04ec6f7948d0710a278d662e06e0d9bb",
+              "content": "fileFormatVersion: 2\nguid: 4d359e660c083524fac26079c312865f\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotSystem.cs",
+              "sha256": "c4412249d1c28776cd8d75d545a8babd10f15338c9d934c962916e9d704f70d7",
+              "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing Oathx.Core;\r\nusing Oathx.Entity;\r\nusing Oathx.Widget;\r\nusing UnityEngine;\r\n\r\n/// <summary>Evaluates configured notification conditions and owns widget presentation lifetimes.</summary>\r\npublic class RedDotSystem : RuntimeSystem\r\n{\r\n    /// <summary>Presentation scopes currently owned by open widgets.</summary>\r\n    private readonly HashSet<RedDotScope> scopes = new HashSet<RedDotScope>();\r\n\r\n    /// <summary>Condition identifiers coalesced until the end of the frame.</summary>\r\n    private readonly HashSet<int> pending = new HashSet<int>();\r\n\r\n    /// <summary>Scheduled refresh owned exclusively by this system.</summary>\r\n    private Coroutine refresh;\r\n\r\n    /// <summary>Whether this instance already owns lifecycle subscriptions.</summary>\r\n    private bool subscribed;\r\n\r\n    /// <summary>Validate configuration and subscribe to widget and business events.</summary>\r\n    /// <returns>True when the independent service is ready.</returns>\r\n    public override bool OnActive()\r\n    {\r\n        if (!IsActive())\r\n            return false;\r\n\r\n        if (subscribed)\r\n            return true;\r\n\r\n        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n        if (!entity)\r\n            return false;\r\n\r\n        entity.Initialize();\r\n\r\n        Subscribe<WidgetOpenedEvent>(OnWidgetOpened);\r\n        Subscribe<WidgetClosingEvent>(OnWidgetClosing);\r\n        Subscribe<RedDotSignalChanged>(OnSignalChanged);\r\n        Subscribe<RedDotRefreshRequested>(OnRefreshRequested);\r\n        Subscribe<RedDotScopeEnabled>(OnScopeEnabled);\r\n        Subscribe<RedDotScopeDisabled>(OnScopeDisabled);\r\n\r\n        subscribed = true;\r\n\r\n        foreach (var scope in RedDotScope.Snapshot())\r\n        {\r\n            if (scope)\r\n                scopes.Add(scope);\r\n        }\r\n\r\n        RequestRefresh();\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>Cancel pending work and release visuals while retaining entity state.</summary>\r\n    public override void OnDetive()\r\n    {\r\n        UnsubscribeAll();\r\n\r\n        subscribed = false;\r\n\r\n        if (refresh != null)\r\n            XCoroutine.StopCoroutine(refresh);\r\n\r\n        refresh = null;\r\n        pending.Clear();\r\n        foreach (var scope in scopes)\r\n        {\r\n            if (scope)\r\n                scope.Render(null);\r\n        }\r\n\r\n        scopes.Clear();\r\n    }\r\n\r\n    /// <summary>Schedule one condition or all configured conditions for reevaluation.</summary>\r\n    /// <param name=\"id\">A configuration identifier, or zero for all conditions.</param>\r\n    /// <returns>True when the request is valid and scheduled.</returns>\r\n    public bool RequestRefresh(int id = 0)\r\n    {\r\n        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n        if (!entity)\r\n            return false;\r\n\r\n        if (!IsActive() || (id != 0 && !entity.Contains(id)))\r\n            return false;\r\n\r\n        if (id == 0)\r\n        {\r\n            foreach (var key in entity.GetIds())\r\n                pending.Add(key);\r\n        }\r\n        else\r\n        {\r\n            pending.Add(id);\r\n        }\r\n\r\n        if (refresh == null)\r\n            refresh = XCoroutine.Run(RefreshAtFrameEnd());\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>Attach only the explicit scope on the widget root after activation.</summary>\r\n    /// <param name=\"data\">The application widget-opened event.</param>\r\n    private void OnWidgetOpened(WidgetOpenedEvent data)\r\n    {\r\n        var widget = data.data.widget;\r\n        if (IsActive() && widget != null && widget.gameObject)\r\n        {\r\n            var scope = widget.gameObject.GetComponent<RedDotScope>();\r\n            if (scope)\r\n                scopes.Add(scope);\r\n\r\n            var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n            if (entity)\r\n            {\r\n                foreach (int id in entity.GetLifecycleIds(true))\r\n                    RequestRefresh(id);\r\n            }\r\n        }\r\n    }\r\n\r\n    /// <summary>Release closing visuals and reevaluate conditions affected by widget closure.</summary>\r\n    /// <param name=\"data\">The application widget-closing event.</param>\r\n    private void OnWidgetClosing(WidgetClosingEvent data)\r\n    {\r\n        var widget = data.data.widget;\r\n        if (IsActive() && widget != null && widget.gameObject)\r\n        {\r\n            var scope = widget.gameObject.GetComponent<RedDotScope>();\r\n            if (scope)\r\n                scopes.Remove(scope);\r\n\r\n            var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n            if (entity)\r\n            {\r\n                foreach (int id in entity.GetLifecycleIds(false))\r\n                    RequestRefresh(id);\r\n            }\r\n        }\r\n    }\r\n\r\n    /// <summary>Restore cached state without bypassing widget refresh configuration.</summary>\r\n    /// <param name=\"data\">The scope becoming available.</param>\r\n    private void OnScopeEnabled(RedDotScopeEnabled data)\r\n    {\r\n        if (IsActive() && data.scope)\r\n        {\r\n            scopes.Add(data.scope);\r\n\r\n            var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n            if (entity)\r\n                data.scope.Render(entity);\r\n        }\r\n    }\r\n\r\n    /// <summary>Release a disabled or destroyed scope without modifying condition inputs.</summary>\r\n    /// <param name=\"data\">The scope being released.</param>\r\n    private void OnScopeDisabled(RedDotScopeDisabled data)\r\n    {\r\n        scopes.Remove(data.scope);\r\n    }\r\n\r\n    /// <summary>Accept only valid counts for configurations driven by local business messages.</summary>\r\n    /// <param name=\"data\">Business-owned condition identifier and count.</param>\r\n    private void OnSignalChanged(RedDotSignalChanged data)\r\n    {\r\n        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n        if (!entity)\r\n            return;\r\n\r\n        if (IsActive() && entity.UpdateSignal(data.id, data.count))\r\n            RequestRefresh(data.id);\r\n    }\r\n\r\n    /// <summary>Schedule explicit business-driven condition checks.</summary>\r\n    /// <param name=\"data\">The requested configuration or all configurations.</param>\r\n    private void OnRefreshRequested(RedDotRefreshRequested data)\r\n    {\r\n        RequestRefresh(data.id);\r\n    }\r\n\r\n    /// <summary>Coalesce repeated events and render after widget initialization callbacks.</summary>\r\n    /// <returns>The frame-end refresh sequence.</returns>\r\n    private IEnumerator RefreshAtFrameEnd()\r\n    {\r\n        yield return new WaitForEndOfFrame();\r\n\r\n        refresh = null;\r\n        if (IsActive())\r\n            Recalculate();\r\n    }\r\n\r\n    /// <summary>Evaluate requested conditions and propagate their values through the parent tree.</summary>\r\n    /// <returns>True when current entity state and visible scopes were refreshed.</returns>\r\n    private bool Recalculate()\r\n    {\r\n        var entity = XEntityManager.GetSingleton().QueryEntity<RedDotEntity>();\r\n        if (!entity)\r\n            return false;\r\n\r\n        var changes = entity.Refresh(pending);\r\n        pending.Clear();\r\n\r\n        scopes.RemoveWhere(scope => !scope);\r\n        foreach (var scope in scopes)\r\n        {\r\n            if (!scope.Render(entity))\r\n                Debug.LogError($\"Invalid red dot bindings on {scope.name}.\");\r\n        }\r\n\r\n        foreach (var change in changes)\r\n            XPluginUtility.FireEvent(new RedDotChanged { id = change.Key, count = change.Value });\r\n\r\n        return true;\r\n    }\r\n\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot/RedDotSystem.cs.meta",
+              "sha256": "46168d229443da83cb61bb2d340e3b4c0b3b615e8e71e7a0ec0e7cd58c00f5df",
+              "content": "fileFormatVersion: 2\nguid: b9ea4bd6496b6314bb349e98ad82786c\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/framework/GamePlugin.cs",
+              "sha256": "d68ec8d445dfcb3653417c2d6f86bc9dea6cf20981db3947aa97e689f4e59a5b",
+              "content": "using Oathx.Bundle.Assets;\r\nusing Oathx.Core;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\nusing System.IO;\r\nusing Oathx.Entity;\r\nusing Oathx.Rpc;\r\nusing Config;\r\nusing Newtonsoft.Json;\r\nusing System.Reflection;\r\nusing UnityEditor;\r\nusing Oathx.Core.Sdk;\r\nusing Oathx.Core.Actitvity;\r\nusing Oathx.Widget;\r\n\r\n/// <summary>Adapts widget activation to the application event framework.</summary>\r\npublic class WidgetOpenedEvent : IEvent\r\n{\r\n    /// <summary>The activation data supplied by the UI layer.</summary>\r\n    public WidgetOpened data\r\n    { get; set; }\r\n}\r\n\r\n/// <summary>Adapts the start of widget closing to the application event framework.</summary>\r\npublic class WidgetClosingEvent : IEvent\r\n{\r\n    /// <summary>The closing data supplied by the UI layer.</summary>\r\n    public WidgetClosing data\r\n    { get; set; }\r\n}\r\n\r\n/// <summary>\r\n/// UI resource loader\r\n/// </summary>\r\npublic class UIResourceLoader : UILoader\r\n{\r\n    /// <summary>\r\n    /// \r\n    /// </summary>\r\n    /// <typeparam name=\"T\"></typeparam>\r\n    /// <param name=\"path\"></param>\r\n    /// <param name=\"done\"></param>\r\n    /// <returns></returns>\r\n    public Coroutine LoadAsync<T>(string path, System.Action<Object> done) where T : Object\r\n    {\r\n        return XRes.LoadAsync<T>(path, done);\r\n    }\r\n\r\n    /// <summary>\r\n    /// \r\n    /// </summary>\r\n    /// <param name=\"path\"></param>\r\n    /// <param name=\"type\"></param>\r\n    /// <param name=\"done\"></param>\r\n    /// <returns></returns>\r\n    public Coroutine LoadAsync(string path, System.Type type, System.Action<Object> done)\r\n    {\r\n        return XRes.LoadAsync(path, type, done);\r\n    }\r\n}\r\n\r\n/// <summary>\r\n/// Game Plugin Main Entry\r\n/// </summary>\r\npublic class GamePlugin : XPlugin, IUIEventSender\r\n{\r\n    /// <summary>\r\n    /// Install the plugin\r\n    /// </summary>\r\n    /// <returns></returns>\r\n    public override bool Install()\r\n    {\r\n        InstallSdkAPI();\r\n        InstallNetRpc();\r\n        InstallUISystem();\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>\r\n    /// Uninstall the plugin\r\n    /// </summary>\r\n    public override void Uninstall()\r\n    {\r\n        UninstallNetRpc();\r\n        UninstallSdkAPI();\r\n    }\r\n\r\n    /// <summary>\r\n    /// Startup the plugin\r\n    /// </summary>\r\n    /// <returns></returns>\r\n    public override bool Startup()\r\n    {\r\n        TryLoadAsyncConfiyFiles(() => {\r\n            InstallEntitys();\r\n            InstallSystems();\r\n        });\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>Forward widget activation through this plugin's event dispatcher.</summary>\r\n    /// <param name=\"widget\">The activated widget.</param>\r\n    public void OnWidgetOpened(IWidget widget)\r\n    {\r\n        DispatchEvent(new WidgetOpenedEvent { data = new WidgetOpened { widget = widget } });\r\n    }\r\n\r\n    /// <summary>Forward the start of widget closing through the game event pipeline.</summary>\r\n    /// <param name=\"widget\">The widget beginning its close sequence.</param>\r\n    public void OnWidgetClosing(IWidget widget)\r\n    {\r\n        DispatchEvent(new WidgetClosingEvent { data = new WidgetClosing { widget = widget } });\r\n    }\r\n\r\n    /// <summary>\r\n    /// Install game systems\r\n    /// </summary>\r\n    private void InstallSystems()\r\n    {\r\n        Assembly assembly = Assembly.GetExecutingAssembly();\r\n        foreach (var it in Excel.functionSystemConfig)\r\n        {\r\n            if (it.Value.InstallOnStartup != 0)\r\n            {\r\n                var type = assembly.GetType(it.Value.ClassType);\r\n                if (type != null)\r\n                    Load(type);\r\n            }\r\n        }\r\n    }\r\n\r\n    /// <summary>\r\n    /// Uninstall game systems\r\n    /// </summary>\r\n    private void UninstallSystems()\r\n    {\r\n        UnloadAll();\r\n    }\r\n\r\n    /// <summary>\r\n    /// Update the plugin\r\n    /// </summary>\r\n    /// <param name=\"deltaTime\"></param>\r\n    public override void Update(float deltaTime)\r\n    {\r\n        // update netrpc\r\n        XNetRpc.Update(deltaTime);\r\n\r\n        // update entity dispatcher, fire all entity in queue, notify all listener        \r\n        XEntityManager.GetSingleton().Update(Time.deltaTime);\r\n\r\n        // call base update, remove modules\r\n        base.Update(deltaTime);\r\n    }\r\n\r\n    /// <summary>\r\n    /// Shutdown the plugin\r\n    /// </summary>\r\n    public override void Shutdown()\r\n    {\r\n        UninstallUISystem();\r\n        UninstallSystems();\r\n        UninstallEntitys();\r\n    }\r\n\r\n    /// <summary>\r\n    /// Install NetRpc\r\n    /// </summary>\r\n    private void InstallNetRpc() \r\n    {\r\n        object[] protocols = new object[] {\r\n            new Rpc()\r\n        };\r\n        \r\n        XNetRpc.Startup(protocols,\r\n            new XNetInternalParser(), XRpcSessionFlag.Http);\r\n    }\r\n\r\n    /// <summary>\r\n    /// Uninstall NetRpc\r\n    /// </summary>\r\n    private void UninstallNetRpc()\r\n    {\r\n        XNetRpc.Shutdown();\r\n    }\r\n\r\n    /// <summary>\r\n    /// install all entity factorys\r\n    /// </summary>\r\n    private void InstallEntitys()\r\n    {\r\n        List<System.Type> autoInstallEntityTypes = new List<System.Type>();\r\n\r\n        Assembly assembly = Assembly.GetExecutingAssembly();\r\n        foreach (var type in assembly.GetTypes())\r\n        {\r\n            var attrs = type.GetCustomAttributes(true);\r\n            foreach (var attr in attrs)\r\n            {\r\n                if (attr is Initialize ii)\r\n                {\r\n                    if (ii.InstallType == InstallType.Startup)\r\n                        autoInstallEntityTypes.Add(type);\r\n                }\r\n            }\r\n        }\r\n\r\n        // start entity manager, set entity data syncer\r\n        XEntityManager.GetSingleton().Startup(autoInstallEntityTypes);\r\n    }\r\n\r\n    /// <summary>\r\n    /// uninstall all entity factorys\r\n    /// </summary>\r\n    private void UninstallEntitys()\r\n    {\r\n        XEntityManager.GetSingleton().Shutdown();\r\n    }\r\n\r\n    /// <summary>\r\n    /// Install product API\r\n    /// </summary>\r\n    /// <exception cref=\"System.NullReferenceException\"></exception>\r\n    private void InstallSdkAPI()\r\n    {\r\n        var conf = XApp.GetSingleton().GetAppConfigure();\r\n        if (!conf)\r\n            throw new System.NullReferenceException();\r\n\r\n        // register product api, the app sdk will call product api to get the product info,\r\n        // and the tracking api will call product api to get the product info when tracking events, so register product api before tracking api\r\n        var productAPI = new InternalProductAPI(conf.versionAPI, conf.appId);\r\n        XAppProduct.GetSingleton().RegisterAPI(productAPI);\r\n\r\n        // tracking api depends on product api, so register it after product api\r\n        var trackingAPI = new InternalTrackingAPI(conf);\r\n        XAppTracking.GetSingleton().RegisterAPI(trackingAPI);\r\n\r\n        // activity api depends on product api, so register it after product api\r\n        var activityAPI = new InternalActivityAPI(conf);\r\n        XAppActivity.GetSingleton().RegisterAPI(activityAPI);\r\n\r\n        // email api depends on product api, so register it after product api\r\n        var emailAPI = new InternalEmailAPI(conf);\r\n        XAppEmail.GetSingleton().RegisterAPI(emailAPI);\r\n    }\r\n\r\n    /// <summary>\r\n    /// Uninstall product API\r\n    /// </summary>\r\n    private void UninstallSdkAPI()\r\n    {\r\n        XAppProduct.GetSingleton().ClearAPI();\r\n        XAppTracking.GetSingleton().ClearAPI();\r\n        XAppActivity.GetSingleton().ClearAPI();\r\n        XAppEmail.GetSingleton().ClearAPI();\r\n    }\r\n\r\n    /// <summary>\r\n    /// install ui system\r\n    /// </summary>\r\n    private void InstallUISystem()\r\n    {\r\n        UISystem.GetSingleton().Startup(new ResourceConfigure() {\r\n            loader = new UIResourceLoader(),\r\n            cacher = new UIDefaultCacher(),\r\n            eventSenders = new List<IUIEventSender> { this }\r\n        });\r\n\r\n        UISystem.GetSingleton().RegisterSyncActions(new System.Type[] {\r\n            typeof(SyncFancyView),\r\n            typeof(SyncFancyJumpTo),\r\n            typeof(SyncFancyScrollTo),\r\n            typeof(SyncFancyClick),\r\n            typeof(SyncFancyAnimatorView),\r\n            typeof(SyncFancyAnimatorClick),\r\n            typeof(SyncFancyGridScrollView),\r\n            typeof(SyncFancyGridClick)\r\n        });\r\n    }\r\n\r\n    /// <summary>\r\n    /// uninstall ui system\r\n    /// </summary>\r\n    private void UninstallUISystem()\r\n    {\r\n        UISystem.GetSingleton().Shutdown();\r\n    }\r\n\r\n    /// <summary>\r\n    /// Load configuration files asynchronously\r\n    /// </summary>\r\n    /// <param name=\"complete\"></param>\r\n    /// <returns></returns>\r\n    private bool TryLoadAsyncConfiyFiles(System.Action complete)\r\n    {\r\n        var conf = XApp.GetSingleton().GetAppConfigure();\r\n        if (!conf)\r\n            return false;\r\n\r\n        Assembly assembly = Assembly.GetExecutingAssembly();\r\n        if (conf.bundleSource == AppBundleSource.Local)\r\n        {\r\n#if UNITY_EDITOR\r\n            LoadAsyncConfiyDirectory<TextAsset>(conf.cfgBundle, (assets) => {\r\n                if (ReadConfigFiles(assembly, assets))\r\n                    complete?.Invoke();\r\n            });\r\n#endif\r\n        }\r\n        else\r\n        {\r\n            XRes.LoadBundleAsync(conf.cfgBundle, (bundle) => {\r\n                var assets = bundle.LoadAllAssets();\r\n                if (assets.Length > 0)\r\n                {\r\n                    if (ReadConfigFiles(assembly, assets))\r\n                        complete?.Invoke();\r\n                }\r\n            });\r\n        }\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>\r\n    /// Read configuration files\r\n    /// </summary>\r\n    /// <param name=\"assembly\"></param>\r\n    /// <param name=\"assets\"></param>\r\n    /// <returns></returns>\r\n    private bool ReadConfigFiles(Assembly assembly, Object[] assets)\r\n    {\r\n        if (!TryGetExcelFields(out var fields))\r\n            return false;\r\n\r\n        for (int idx = 0; idx < assets.Length; idx++)\r\n        {\r\n            if (assets[idx] is TextAsset asset)\r\n            {\r\n                var text = System.Text.Encoding.UTF8.GetString(asset.bytes);\r\n                if (!string.IsNullOrEmpty(text))\r\n                {\r\n                    var name = GetConfigTypeName(asset.name);\r\n\r\n                    var type = assembly.GetType(name);\r\n                    if (type != null)\r\n                    {\r\n                        IConfigData configData = (IConfigData)JsonConvert.DeserializeObject(text, type);\r\n                        if (fields.TryGetValue(configData.GetName(), out var value))\r\n                        {\r\n                            var datas = configData.GetData();\r\n                            value.SetValue(null, datas);\r\n#if UNITY_EDITOR\r\n                            Debug.Log($\"[{Time.frameCount}] Load excel config file {configData.GetName()} done\");\r\n#endif\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        System.GC.Collect();\r\n\r\n#if UNITY_EDITOR\r\n        Debug.Log($\"[{Time.frameCount}] Load excel config file finished\");\r\n#endif\r\n        return true;\r\n    }\r\n\r\n    /// <summary>\r\n    /// Get excel fields\r\n    /// </summary>\r\n    /// <param name=\"fields\"></param>\r\n    /// <returns></returns>\r\n    private bool TryGetExcelFields(out Dictionary<string, FieldInfo> fields)\r\n    {\r\n        fields = new Dictionary<string, FieldInfo>();\r\n\r\n        System.Type excelType = typeof(Excel);\r\n        foreach (FieldInfo fiedlInfo in excelType.GetFields())\r\n        {\r\n            if (fiedlInfo.IsPublic && fiedlInfo.IsStatic && fiedlInfo.IsInitOnly)\r\n                fields.Add(fiedlInfo.Name, fiedlInfo);\r\n        }\r\n\r\n        return true;\r\n    }\r\n\r\n    /// <summary>\r\n    /// Get configuration type name\r\n    /// </summary>\r\n    /// <param name=\"name\"></param>\r\n    /// <returns></returns>\r\n    private string GetConfigTypeName(string name)\r\n    {\r\n        return $\"Config.{name}\";\r\n    }\r\n\r\n#if UNITY_EDITOR\r\n    /// <summary>\r\n    /// From directory value configuration file\r\n    /// </summary>\r\n    /// <typeparam name=\"T\"></typeparam>\r\n    /// <param name=\"path\"></param>\r\n    /// <param name=\"complete\"></param>\r\n    private void LoadAsyncConfiyDirectory<T>(string path, System.Action<T[]> complete) where T : Object\r\n    {\r\n        if (Directory.Exists(path))\r\n        {\r\n            List<T> assets = new List<T>();\r\n\r\n            var files = AssetDatabase.FindAssets(\"t:\" + typeof(T).Name, new string[] { path });\r\n            foreach (var file in files)\r\n            {\r\n                var assetPath = AssetDatabase.GUIDToAssetPath(file);\r\n                if (!string.IsNullOrEmpty(assetPath))\r\n                {\r\n                    var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);\r\n                    if (asset)\r\n                        assets.Add(asset);\r\n                }\r\n            }\r\n\r\n            complete?.Invoke(assets.ToArray());\r\n        }\r\n    }\r\n#endif\r\n\r\n    /// <summary>\r\n    /// Rewrite module loading to achieve RPC protocol registration\r\n    /// </summary>\r\n    /// <param name=\"type\"></param>\r\n    /// <returns></returns>\r\n    public override XEventModule Load(System.Type type)\r\n    {\r\n        if (!modules.TryGetValue(type.Name, out var module))\r\n        {\r\n            if (TryGetFunctionSystem(type, out var functionSystem))\r\n            {\r\n                module = (XEventModule)System.Activator.CreateInstance(type);\r\n                module.SetDispatcher(this);\r\n\r\n                if (module.Install())\r\n                {\r\n                    XNetRpc.RegisterProtocol(module);\r\n                    if (functionSystem.Active != 0)\r\n                        module.Active();\r\n                }\r\n\r\n#if UNITY_EDITOR\r\n                Debug.Log($\"[{Time.frameCount}] Load system {type.Name} done\");\r\n#endif\r\n\r\n                modules.Add(type.Name, module);\r\n            }\r\n        }\r\n        else\r\n        {\r\n            module.Active();\r\n        }\r\n\r\n        return module;\r\n    }\r\n\r\n    /// <summary>\r\n    /// Rewrite module loading to achieve RPC protocol unregistration\r\n    /// </summary>\r\n    /// <param name=\"type\"></param>\r\n    public override void Unload(System.Type type)\r\n    {\r\n        if (modules.TryGetValue(type.Name, out XEventModule module))\r\n        {\r\n            module.Detive();\r\n            module.Uninstall();\r\n\r\n#if UNITY_EDITOR\r\n            Debug.Log($\"[{Time.frameCount}] Unload system {type.Name} done\");\r\n#endif\r\n            XNetRpc.UnregisterProtocol(module);\r\n\r\n            removes.Enqueue(type.Name);\r\n        }\r\n    }\r\n\r\n    /// <summary>\r\n    /// Unload all modules\r\n    /// </summary>\r\n    public override void UnloadAll()\r\n    {\r\n        foreach (var it in modules)\r\n        {\r\n            // unregister rpc protocol\r\n            XNetRpc.UnregisterProtocol(it.Value);\r\n            \r\n            // destroy module\r\n            it.Value.Detive();\r\n            it.Value.Uninstall();\r\n\r\n#if UNITY_EDITOR\r\n            Debug.Log($\"[{Time.frameCount}] Unload module {it.Key}\");\r\n#endif\r\n        }\r\n\r\n        modules.Clear();\r\n    }\r\n\r\n    /// <summary>\r\n    /// Try get function system by type\r\n    /// </summary>\r\n    /// <param name=\"type\"></param>\r\n    /// <param name=\"functionSystem\"></param>\r\n    /// <returns></returns>\r\n    /// <exception cref=\"System.NullReferenceException\"></exception>\r\n    private bool TryGetFunctionSystem(System.Type type, out FunctionSystem functionSystem)\r\n    {\r\n        foreach (var it in Excel.functionSystemConfig)\r\n        {\r\n            if (it.Value.ClassType == type.Name)\r\n            {\r\n                functionSystem = it.Value;\r\n                return true;\r\n            }\r\n        }\r\n\r\n        throw new System.NullReferenceException($\"Can't find function system {type.Name}\");\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/framework/com.oathx.widget/Runtime/ResourceManager/IUIEventSender.cs",
+              "sha256": "80c7d484d938afdfbd49cb7c1b3dd53dc838a21efd96eb02a64917857c8694de",
+              "content": "namespace Oathx.Widget\r\n{\r\n    /// <summary>Receives UI lifecycle notifications without a dependency on the game event framework.</summary>\r\n    public interface IUIEventSender\r\n    {\r\n        /// <summary>Notify after widget activation and before the caller's completion callback.</summary>\r\n        /// <param name=\"widget\">The activated widget.</param>\r\n        void OnWidgetOpened(IWidget widget);\r\n\r\n        /// <summary>Notify before the widget starts its closing animation or immediate cleanup.</summary>\r\n        /// <param name=\"widget\">The widget that is starting to close.</param>\r\n        void OnWidgetClosing(IWidget widget);\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/framework/com.oathx.widget/Runtime/ResourceManager/IUIEventSender.cs.meta",
+              "sha256": "e0ea5c9b192034ab51477b37436f57197a7a882b9d3fca3512ebd8e98c7cb23e",
+              "content": "fileFormatVersion: 2\nguid: 6d97d288bdf1c7f47be51c5f62ebccf8\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/framework/com.oathx.widget/Runtime/ResourceManager/UIResourceManager.cs",
+              "sha256": "31a48902446924ee4098076703eb963bc877e4f10bb0da7664781d1969eff4db",
+              "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\n\r\nnamespace Oathx.Widget\r\n{\r\n    [System.Serializable]\r\n    public class ResourceConfigure\r\n    {\r\n        public UILoader loader;\r\n        public UICacher cacher;\r\n\r\n        /// <summary>Optional lifecycle adapters copied into UISystem during startup.</summary>\r\n        public List<IUIEventSender> eventSenders\r\n        { get; set; } = new List<IUIEventSender>();\r\n    }\r\n\r\n    /// <summary>\r\n    /// \r\n    /// </summary>\r\n    public sealed class UIResourceManager\r\n    {\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        private static readonly UIResourceManager instance = new UIResourceManager();\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <returns></returns>\r\n        public static UIResourceManager GetSingleton()\r\n        {\r\n            return instance;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        private UILoader loader;\r\n        private UICacher cacher;\r\n\r\n        private readonly Dictionary<string, bool> loading = new Dictionary<string, bool>();\r\n\r\n        /// <summary>\r\n        /// cache callbacks\r\n        /// </summary>\r\n        private readonly Dictionary<string, List<System.Action<Object>>> callbacks = new Dictionary<string, List<System.Action<Object>>>();\r\n\r\n        /// <summary>\r\n        /// resource startup, set loader and cacher\r\n        /// </summary>\r\n        /// <param name=\"conf\"></param>\r\n        public void Startup(ResourceConfigure conf)\r\n        {\r\n            loader = conf.loader;\r\n            cacher = conf.cacher;\r\n        }\r\n\r\n        /// <summary>\r\n        /// close ui resource mananger\r\n        /// </summary>\r\n        public void Shutdown()\r\n        {\r\n            if (cacher != null)\r\n                cacher.Clear();\r\n        }\r\n\r\n        /// <summary>\r\n        /// unload resource\r\n        /// </summary>\r\n        /// <param name=\"path\"></param>\r\n        public void Unload(string path)\r\n        {\r\n            var asset = cacher.Find(path);\r\n            if (asset != null)\r\n            {\r\n                if (asset.Unref() <= 0)\r\n                    Resources.UnloadAsset(asset.obj);\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// unload resource\r\n        /// </summary>\r\n        /// <param name=\"obj\"></param>\r\n        public void Unload(UnityEngine.Object obj)\r\n        {\r\n            if (cacher != null)\r\n            {\r\n                var address = obj.name;\r\n\r\n                var asset = cacher.Find(address);\r\n                if (asset != null)\r\n                {\r\n                    if (asset.Unref() <= 0)\r\n                    {\r\n                        Resources.UnloadAsset(asset.obj);\r\n\r\n                        // unload asset address and remove it\r\n                        cacher.Remove(address);\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// load resource\r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"done\"></param>\r\n        /// <returns></returns>\r\n        public bool LoadAsync<T>(string path, System.Action<Object> done) where T : Object\r\n        {\r\n            string address = path.ToLower();\r\n            if (loading.ContainsKey(address))\r\n            {\r\n                if (!callbacks.TryGetValue(address, out var actions))\r\n                {\r\n                    actions = new List<System.Action<Object>>();\r\n                    callbacks.Add(address, actions);\r\n                }\r\n\r\n                actions.Add(done);\r\n                return false;\r\n            }\r\n\r\n            if (cacher != null)\r\n            {\r\n                var asset = cacher.Find(address);\r\n                if (asset != null)\r\n                {\r\n                    done.Invoke(asset.obj);\r\n\r\n                    int count = asset.Ref();\r\n#if UNITY_EDITOR\r\n                    Debug.Log($\"Load resource {typeof(T).Name} : {path} ref {count}\");\r\n#endif\r\n                    return true;\r\n                }\r\n            }\r\n            \r\n            loading.Add(address, true);\r\n\r\n            loader.LoadAsync<T>(address, (Object obj) => {\r\n                if (loading.ContainsKey(address))\r\n                    loading.Remove(address);\r\n\r\n                if (obj)\r\n                {\r\n                    done?.Invoke(obj);\r\n\r\n                    if (callbacks.TryGetValue(address, out var actions))\r\n                    {\r\n                        foreach (var action in actions)\r\n                        {\r\n                            if (action != null)\r\n                            {\r\n                                action.Invoke(obj);\r\n                            }\r\n                        }\r\n\r\n                        callbacks.Remove(address);\r\n                    }\r\n\r\n                    if (cacher != null)\r\n                        cacher.Add(address, obj);\r\n                }\r\n                else\r\n                {\r\n                   Debug.LogError($\"Can't load {typeof(T).Name} {address}\");\r\n                }\r\n            });\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"type\"></param>\r\n        /// <param name=\"done\"></param>\r\n        /// <returns></returns>\r\n        public bool LoadAsync(string path, System.Type type, System.Action<Object> done)\r\n        {\r\n            string address = path.ToLower();\r\n            if (loading.ContainsKey(address))\r\n            {\r\n                if (!callbacks.TryGetValue(address, out var actions))\r\n                {\r\n                    actions = new List<System.Action<Object>>();\r\n                    callbacks.Add(address, actions);\r\n                }\r\n\r\n                actions.Add(done);\r\n                return false;\r\n            }\r\n\r\n            var asset = cacher.Find(address);\r\n            if (asset != null)\r\n            {\r\n                done.Invoke(asset.obj);\r\n\r\n                int count = asset.Ref();\r\n#if UNITY_EDITOR\r\n                Debug.Log($\"Load resource type {type.Name} : {path} ref count {count}\");\r\n#endif\r\n                return true;\r\n            }\r\n            \r\n            loading.Add(address, true);\r\n\r\n            loader.LoadAsync(address, type, (Object obj) => {\r\n                if (loading.ContainsKey(address))\r\n                    loading.Remove(address);\r\n\r\n                if (obj)\r\n                {\r\n                    done?.Invoke(obj);\r\n\r\n                    if (callbacks.TryGetValue(address, out var actions))\r\n                    {\r\n                        foreach (var action in actions)\r\n                        {\r\n                            if (action != null)\r\n                            {\r\n                                action.Invoke(obj);\r\n                            }\r\n                        }\r\n\r\n                        callbacks.Remove(address);\r\n                    }\r\n\r\n                    if (cacher != null)\r\n                        cacher.Add(address, obj);\r\n                }\r\n                else\r\n                {\r\n                    Debug.LogError($\"Can't load {type.Name} {address}\");\r\n                }\r\n            });\r\n\r\n            return true;\r\n        }\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/framework/com.oathx.widget.extension/Runtime/Scripts/UISystem.cs",
+              "sha256": "be0c5a0347cd4d710dea0bc098bea37521a7a3ee188749cdf3053a5f2a7aa761",
+              "content": "﻿using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\nusing Oathx.Widget;\r\nusing UnityEngine.Rendering.Universal;\r\nusing System.Linq;\r\n\r\nnamespace Oathx.Widget\r\n{\r\n    /// <summary>Lifecycle data emitted after widget activation and before the caller callback.</summary>\r\n    public class WidgetOpened\r\n    {\r\n        /// <summary>The activated widget.</summary>\r\n        public IWidget widget\r\n        { get; set; }\r\n    }\r\n\r\n    /// <summary>Lifecycle data emitted when closing begins, before animation completion.</summary>\r\n    public class WidgetClosing\r\n    {\r\n        /// <summary>The widget entering its close sequence.</summary>\r\n        public IWidget widget\r\n        { get; set; }\r\n    }\r\n\r\n\r\n    /// <summary>\r\n    /// \r\n    /// </summary>\r\n    public class UISystem : MonoBehaviour\r\n    {\r\n        public static UISystem instance;\r\n\r\n        /// <summary>Registered lifecycle adapters owned by this UI system.</summary>\r\n        private readonly List<IUIEventSender> eventSenders = new List<IUIEventSender>();\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <returns></returns>\r\n        public static UISystem GetSingleton()\r\n        {\r\n            if (!instance)\r\n            {\r\n                var root = GameObject.Find(typeof(UISystem).Name);\r\n                if (root)\r\n                {\r\n                    instance = root.GetComponent<UISystem>();\r\n                    if (!instance)\r\n                        instance = root.AddComponent<UISystem>();\r\n\r\n                    DontDestroyOnLoad(root);\r\n                }\r\n                else\r\n                {\r\n                    Debug.LogError($\"Can't find GameObject {typeof(UISystem).Name}\");\r\n                }\r\n            }\r\n\r\n            return instance;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        protected readonly Dictionary<string, ConfigAttribute>\r\n            customModleAttributes = new Dictionary<string, ConfigAttribute>();\r\n\r\n#pragma warning disable IDE0090\r\n        /// <summary>\r\n        /// It has been loaded widget\r\n        /// </summary>\r\n        protected readonly Dictionary<string, IWidget> widgets = new Dictionary<string, IWidget>();\r\n\r\n        /// <summary>\r\n        /// Under loading widget\r\n        /// </summary>\r\n        protected readonly Dictionary<string, object>\r\n            loadingMap = new Dictionary<string, object>();\r\n\r\n        /// <summary>\r\n        /// current opened widgets\r\n        /// </summary>\r\n        protected readonly List<IWidget> currents = new List<IWidget>();\r\n#pragma warning restore IDE0090\r\n\r\n        /// <summary>\r\n        /// 每个界面的开合代际号：每次打开与每次关闭收尾各递增一次。\r\n        /// 关闭动画的等待只在代际未变时才执行停用，避免把关闭中途重新打开的界面误关掉。\r\n        /// </summary>\r\n        protected readonly Dictionary<IWidget, int> openGenerations = new Dictionary<IWidget, int>();\r\n\r\n        private static readonly int OpenStateHash = Animator.StringToHash(\"Open\");\r\n\r\n        private static readonly int CloseStateHash = Animator.StringToHash(\"Close\");\r\n\r\n        /// <summary>\r\n        /// 等待关闭动画的硬超时上限，非缩放秒。\r\n        /// </summary>\r\n        private const float CloseAnimationTimeoutSeconds = 3f;\r\n\r\n        [SerializeField]\r\n        protected Camera uiCamera;\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        [SerializeField]\r\n        protected Vector3 deltaSize;\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        private void Start()\r\n        {\r\n            // init layer order value\r\n            string[] layerNames = System.Enum.GetNames(typeof(WidgetLayer));\r\n            for (int layer = 0; layer < layerNames.Length; layer++)\r\n            {\r\n                RectTransform layerGo = transform.Find(layerNames[layer]) as RectTransform;\r\n                if (!layerGo)\r\n                    throw new System.NullReferenceException($\"Can't find layer {layerNames[layer]}\");\r\n\r\n                Canvas layerCanvas = layerGo.GetComponent<Canvas>();\r\n                if (layerCanvas)\r\n                    layerCanvas.sortingOrder = layer;\r\n\r\n                if (layerNames[layer] == WidgetLayer.background.ToString())\r\n                    deltaSize = layerGo.sizeDelta;\r\n            }\r\n\r\n            if (uiCamera)\r\n            {\r\n                var uiCameraData = uiCamera.GetUniversalAdditionalCameraData();\r\n                uiCameraData.renderType = CameraRenderType.Overlay;\r\n\r\n                var mainCameraData = Camera.main.GetUniversalAdditionalCameraData();\r\n                if (mainCameraData)\r\n                {\r\n                    int index = mainCameraData.cameraStack.IndexOf(uiCamera);\r\n                    if (index < 0)\r\n                        mainCameraData.cameraStack.Add(uiCamera);\r\n                }\r\n            }\r\n        }\r\n\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        public void SetUICamera(Camera camera)\r\n        {\r\n            uiCamera = camera;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"configure\">Optional resource services and lifecycle notification adapter.</param>\r\n        public void Startup(ResourceConfigure configure = null)\r\n        {\r\n            eventSenders.Clear();\r\n            if (configure?.eventSenders != null)\r\n            {\r\n                foreach (var sender in configure.eventSenders)\r\n                    RegisterEventSender(sender);\r\n            }\r\n\r\n            UIResourceManager.GetSingleton().Startup(configure ?? new ResourceConfigure()\r\n            {\r\n                loader = new UIDefaultLoader(),\r\n                cacher = new UIDefaultCacher()\r\n            });\r\n        }\r\n\r\n        /// <summary>Register one lifecycle adapter without duplicate instance delivery.</summary>\r\n        /// <param name=\"sender\">The adapter to register.</param>\r\n        /// <returns>True when the adapter was added.</returns>\r\n        public bool RegisterEventSender(IUIEventSender sender)\r\n        {\r\n            if (sender == null || eventSenders.Exists(item => ReferenceEquals(item, sender)))\r\n                return false;\r\n\r\n            eventSenders.Add(sender);\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>Remove one previously registered lifecycle adapter.</summary>\r\n        /// <param name=\"sender\">The exact adapter instance to remove.</param>\r\n        /// <returns>True when the adapter was registered and removed.</returns>\r\n        public bool UnregisterEventSender(IUIEventSender sender)\r\n        {\r\n            int index = eventSenders.FindIndex(item => ReferenceEquals(item, sender));\r\n            if (index < 0)\r\n                return false;\r\n\r\n            eventSenders.RemoveAt(index);\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"types\"></param>\r\n        public void RegisterSyncActions(System.Type[] types)\r\n        {\r\n            foreach (var type in types)\r\n            {\r\n                var action = (ISyncAction)System.Activator.CreateInstance(type);\r\n                MetadataSyncFactory.GetSingleton().Register(type.Name, action);\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        public void Shutdown()\r\n        {\r\n            // clear all widgets\r\n            Clearup();\r\n\r\n            customModleAttributes.Clear();\r\n            // clear all cache resources\r\n            UIResourceManager.GetSingleton().Shutdown();\r\n\r\n            eventSenders.Clear();\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        public void Clearup()\r\n        {\r\n            // clear widget stacks\r\n            currents.Clear();\r\n\r\n            loadingMap.Clear();\r\n\r\n            foreach (var widget in widgets.Values.ToList())\r\n            {\r\n                if (IsWidgetAlive(widget))\r\n                {\r\n                    try\r\n                    {\r\n                        CloseWidget(widget.GetType(), null, true);\r\n                    }\r\n                    catch (System.Exception ex)\r\n                    {\r\n                        string widgetName = widget ? widget.name : \"DestroyedWidget\";\r\n                        Debug.LogError($\"[UISystem] Error closing widget {widgetName}: {ex.Message}\");\r\n                    }\r\n                }\r\n            }\r\n\r\n            // clear all\r\n            widgets.Clear();\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <returns></returns>\r\n        public Camera GetUICamera()\r\n        {\r\n            return uiCamera;\r\n        }\r\n\r\n        /// <summary>\r\n        /// push widget to stack top, open window auto push\r\n        /// </summary>\r\n        /// <param name=\"widget\"></param>\r\n        /// <returns></returns>\r\n        public void AdjustWidget(IWidget widget)\r\n        {\r\n            if (currents.Count <= 0)\r\n            {\r\n                currents.Add(widget);\r\n\r\n#if UNITY_EDITOR\r\n                Debug.Log($\"[UISystem] Adjust widget index {currents.Count - 1} {widget.name}\");\r\n#endif\r\n            }\r\n            else\r\n            {\r\n                var top = currents[currents.Count - 1];\r\n                if (top != widget)\r\n                {\r\n                    var index = currents.FindLastIndex((v) => {\r\n                        return v == widget;\r\n                    });\r\n                    if (index >= 0)\r\n                    {\r\n                        currents.RemoveAt(index);\r\n#if UNITY_EDITOR\r\n                        Debug.Log($\"[UISystem] Adjust widget remove index {index} {widget.name}\");\r\n#endif\r\n                    }\r\n\r\n                    currents.Add(widget);\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"widget\"></param>\r\n        public void SetTopWidget(IWidget widget)\r\n        {\r\n            AdjustWidget(widget);\r\n\r\n            var trans = widget.transform;\r\n            if (trans)\r\n                trans.SetAsLastSibling();\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <returns></returns>\r\n        public IWidget GetTopWidget()\r\n        {\r\n            if (currents.Count <= 0)\r\n                return null;\r\n\r\n            return currents[currents.Count - 1];\r\n        }\r\n\r\n        /// <summary>\r\n        /// get current stack top widget\r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <returns></returns>\r\n        public T GetTopWidget<T>() where T : IWidget\r\n        {\r\n            if (currents.Count <= 0)\r\n                return null;\r\n\r\n            return (T)currents[currents.Count - 1];\r\n        }\r\n\r\n        /// <summary>\r\n        /// pop stack top widget\r\n        /// </summary>\r\n        /// <param name=\"widget\"></param>\r\n        /// <returns></returns>\r\n        private bool RemoveWidget(IWidget widget)\r\n        {\r\n            if (currents.Count <= 0)\r\n                return false;\r\n\r\n            if (!IsWidgetAlive(widget))\r\n            {\r\n                currents.RemoveAll(v => !IsWidgetAlive(v));\r\n                return false;\r\n            }\r\n\r\n            var top = currents[currents.Count - 1];\r\n            if (top == widget)\r\n            {\r\n#if UNITY_EDITOR\r\n                Debug.Log($\"[UISystem] Remove widget {widget.name}\");\r\n#endif\r\n                currents.Remove(widget);\r\n            }\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// create widget\r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"styleId\"></param>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"prefab\"></param>\r\n        /// <param name=\"cache\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        /// <returns></returns>\r\n        private T CreateWidget<T>(string name, string path, GameObject prefab, ConfigAttribute setting, Transform parent) where T : IWidget, new()\r\n        {\r\n            GameObject widgetGo = GameObject.Instantiate(prefab);\r\n            if (!widgetGo)\r\n                throw new System.NullReferenceException();\r\n\r\n            widgetGo.transform.position = Vector3.zero;\r\n            widgetGo.transform.SetParent(parent, false);\r\n\r\n            // set widget type name\r\n            widgetGo.name = name;\r\n\r\n            RectTransform rt = widgetGo.GetComponent<RectTransform>();\r\n            if (rt)\r\n            {\r\n                rt.offsetMax = Vector2.zero;\r\n                rt.offsetMin = Vector2.zero;\r\n                rt.localScale = Vector3.one;\r\n                rt.localPosition = Vector3.zero;\r\n            }\r\n\r\n            T widget = widgetGo.GetComponent<T>();\r\n            if (!widget)\r\n                widget = widgetGo.AddComponent<T>();\r\n\r\n            BindWidget(widget, widgetGo, setting);\r\n\r\n            if (setting.cache)\r\n                widgets[name] = widget;\r\n\r\n#if UNITY_EDITOR\r\n            Debug.Log($\"[UISystem] Create Widget name [{name}] cache [{setting.cache}] path [{path}]\");\r\n#endif\r\n\r\n            return widget;\r\n        }\r\n\r\n        /// <summary>\r\n        /// create widdget\r\n        /// </summary>\r\n        /// <param name=\"widgetType\"></param>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"prefab\"></param>\r\n        /// <param name=\"cache\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        /// <returns></returns>\r\n        private IWidget CreateWidget(System.Type widgetType, string path, GameObject prefab, ConfigAttribute setting, Transform parent)\r\n        {\r\n            GameObject widgetGo = GameObject.Instantiate(prefab);\r\n            if (!widgetGo)\r\n                throw new System.NullReferenceException();\r\n\r\n            widgetGo.transform.position = Vector3.zero;\r\n            widgetGo.transform.SetParent(parent, false);\r\n\r\n            string widgetName = widgetType.Name;\r\n            // set widget type name\r\n            widgetGo.name = widgetName;\r\n\r\n            RectTransform rt = widgetGo.GetComponent<RectTransform>();\r\n            if (rt)\r\n            {\r\n                rt.offsetMax = Vector2.zero;\r\n                rt.offsetMin = Vector2.zero;\r\n                rt.localScale = Vector3.one;\r\n                rt.localPosition = Vector3.zero;\r\n            }\r\n\r\n            var widget = (IWidget)widgetGo.GetComponent(widgetType);\r\n            if (!widget)\r\n                widget = (IWidget)widgetGo.AddComponent(widgetType);\r\n\r\n            BindWidget(widget, widgetGo, setting);\r\n            \r\n            if (setting.cache)\r\n                widgets[widgetName] = widget;\r\n\r\n#if UNITY_EDITOR\r\n            Debug.Log($\"[UISystem] Create Widget {widgetName.ToLower()} cache {setting.cache} path {path}\");\r\n#endif\r\n\r\n            return widget;\r\n        }\r\n\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"cache\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        public void LoadAsyncWidget<T>(string path, System.Action<T> complete, ConfigAttribute setting, Transform parent) where T : IWidget, new()\r\n        {\r\n            string widgetName = typeof(T).Name;\r\n            if (widgets.ContainsKey(widgetName))\r\n            {\r\n                complete?.Invoke((T)widgets[widgetName]);\r\n            }\r\n            else\r\n            {\r\n                if (!loadingMap.ContainsKey(widgetName))\r\n                {\r\n                    var request = new object();\r\n                    loadingMap[widgetName] = request;\r\n\r\n                    UIResourceManager.GetSingleton().LoadAsync<GameObject>(path, (prefab) =>\r\n                    {\r\n                        // A closed or replaced request must never create a stale page.\r\n                        if (!loadingMap.TryGetValue(widgetName, out var current) || !ReferenceEquals(current, request))\r\n                            return;\r\n\r\n                        loadingMap.Remove(widgetName);\r\n                        if (!prefab || !parent)\r\n                            return;\r\n\r\n                        T widget = CreateWidget<T>(widgetName, path, prefab as GameObject, setting, parent);\r\n#if UNITY_EDITOR\r\n                        Debug.Log($\"[UISystem] Load widget [{widgetName}]\");\r\n#endif\r\n                        complete?.Invoke(widget);\r\n                    });\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"widgetType\"></param>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"cache\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        public void LoadAsyncWidget(System.Type widgetType, string path, System.Action<IWidget> complete, ConfigAttribute setting, Transform parent)\r\n        {\r\n            string widgetName = widgetType.Name;\r\n            if (widgets.ContainsKey(widgetName))\r\n            {\r\n                complete?.Invoke(widgets[widgetName]);\r\n            }\r\n            else\r\n            {\r\n                if (!loadingMap.ContainsKey(widgetName))\r\n                {\r\n                    var request = new object();\r\n                    loadingMap[widgetName] = request;\r\n\r\n                    UIResourceManager.GetSingleton().LoadAsync<GameObject>(path, (prefab) =>\r\n                    {\r\n                        // A closed or replaced request must never create a stale page.\r\n                        if (!loadingMap.TryGetValue(widgetName, out var current) || !ReferenceEquals(current, request))\r\n                            return;\r\n\r\n                        loadingMap.Remove(widgetName);\r\n                        if (!prefab || !parent)\r\n                            return;\r\n\r\n                        IWidget widget = CreateWidget(widgetType, path, prefab as GameObject, setting, parent);\r\n#if UNITY_EDITOR\r\n                        Debug.Log($\"[UISystem] Load widget {widgetName}\");\r\n#endif\r\n                        complete?.Invoke(widget);\r\n                    });\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"widgetType\"></param>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"cache\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        /// <returns></returns>\r\n        public IWidget LoadWidget(System.Type widgetType, string path, ConfigAttribute setting, Transform parent)\r\n        {\r\n            string widgetName = widgetType.Name;\r\n            if (widgets.ContainsKey(widgetName))\r\n            {\r\n                return widgets[widgetName];\r\n            }\r\n\r\n            GameObject prefab = Resources.Load<GameObject>(path);\r\n            if (!prefab)\r\n                throw new System.NullReferenceException(path);\r\n\r\n            return CreateWidget(widgetType, path, prefab, setting, parent);\r\n        }\r\n\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"path\"></param>\r\n        /// <param name=\"cache\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        /// <returns></returns>\r\n        public T LoadWidget<T>(string path, ConfigAttribute setting, Transform parent) where T : IWidget, new()\r\n        {\r\n            string widgetName = typeof(T).Name;\r\n            if (widgets.ContainsKey(widgetName))\r\n            {\r\n                return (T)widgets[widgetName];\r\n            }\r\n\r\n            GameObject prefab = Resources.Load<GameObject>(path);\r\n            if (!prefab)\r\n                throw new System.NullReferenceException(path);\r\n\r\n            return CreateWidget<T>(widgetName, path, prefab, setting, parent);\r\n        }\r\n\r\n        /// <summary>Activate the widget, notify the application, then complete its open request.</summary>\r\n        /// <typeparam name=\"T\">The widget type.</typeparam>\r\n        /// <param name=\"widget\">The loaded widget.</param>\r\n        /// <param name=\"done\">The caller's initialization callback.</param>\r\n        private void NotifyOpenWidget<T>(T widget, System.Action<T> done) where T : IWidget\r\n        {\r\n            SetTopWidget(widget);\r\n\r\n            // 使该界面仍在等待中的关闭动画收尾失效（关闭中途重开即打断）\r\n            openGenerations[widget] = GetCurrentGeneration(widget) + 1;\r\n\r\n            widget.Active();\r\n\r\n            // 关闭中途重开的恢复：Animator 拉回 Open 态并解锁交互\r\n            var animator = widget.gameObject.GetComponent<Animator>();\r\n            if (animator && animator.runtimeAnimatorController && animator.HasState(0, OpenStateHash))\r\n            {\r\n                animator.Play(OpenStateHash);\r\n            }\r\n\r\n            var group = widget.gameObject.GetComponent<CanvasGroup>();\r\n            if (group)\r\n            {\r\n                group.interactable = true;\r\n                group.blocksRaycasts = true;\r\n            }\r\n\r\n            DispatchWidgetEvent(widget, true);\r\n            done?.Invoke(widget);\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"parent\"></param>\r\n        /// <returns></returns>\r\n        public bool OpenWidget<T>(System.Action<T> complete, Transform parent = null) where T : IWidget\r\n        {\r\n            System.Type widgetType = typeof(T);\r\n\r\n            var attrs = widgetType.GetCustomAttributes(true);\r\n            if (!customModleAttributes.ContainsKey(widgetType.Name))\r\n            {\r\n                foreach (var attr in attrs)\r\n                {\r\n                    if (attr is ConfigAttribute c)\r\n                    {\r\n                        customModleAttributes.Add(widgetType.Name, c);\r\n                        break;\r\n                    }\r\n                }\r\n            }\r\n\r\n            ConfigAttribute setting = customModleAttributes[widgetType.Name];\r\n            if (widgets.ContainsKey(widgetType.Name))\r\n            {\r\n                T widget = (T)widgets[widgetType.Name];\r\n                NotifyOpenWidget(widget, complete);\r\n            }\r\n            else\r\n            {\r\n                if (!parent)\r\n                {\r\n                    parent = transform.Find(setting.layer.ToString());\r\n                }\r\n\r\n                if (setting.async)\r\n                {\r\n#if UNITY_EDITOR\r\n                    setting.createAt = System.DateTime.Now.Ticks;\r\n                    int millisecond = System.DateTime.Now.Millisecond;\r\n#endif\r\n                    LoadAsyncWidget(widgetType, setting.path, (widget) => {\r\n#if UNITY_EDITOR\r\n                        setting.loadTime = System.DateTime.Now.Millisecond - millisecond;\r\n#endif\r\n                        NotifyOpenWidget((T)widget, complete);\r\n                    }, setting, parent);\r\n                }\r\n                else\r\n                {\r\n#if UNITY_EDITOR\r\n                    setting.createAt = System.DateTime.Now.Ticks;\r\n                    int millisecond = System.DateTime.Now.Millisecond;\r\n#endif\r\n                    var widget = LoadWidget(widgetType, setting.path, setting, parent);\r\n                    if (widget)\r\n                    {\r\n#if UNITY_EDITOR\r\n                        setting.loadTime = System.DateTime.Now.Millisecond - millisecond;\r\n#endif\r\n                        NotifyOpenWidget((T)widget, complete);\r\n                    }\r\n\r\n                }\r\n            }\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <returns></returns>\r\n        public Vector2 GetDeltaSize()\r\n        {\r\n            return deltaSize;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"layer\"></param>\r\n        /// <returns></returns>\r\n        public Transform GetLayer(WidgetLayer layer)\r\n        {\r\n            return transform.Find(layer.ToString());\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"widget\"></param>\r\n        /// <param name=\"setting\"></param>\r\n        private bool BindWidget(IWidget widget, GameObject vmGo, ConfigAttribute setting)\r\n        {\r\n            Metadata metadata = vmGo.GetComponent<Metadata>();\r\n            if (!metadata)\r\n                throw new System.NullReferenceException(vmGo.name);\r\n\r\n            widget.setting = setting;\r\n\r\n            // bind view model property infos\r\n            VM vm = (VM)System.Activator.CreateInstance(widget.GetVMType());\r\n            if (widget.Ref(vm))\r\n            {\r\n#if UNITY_EDITOR\r\n                Debug.Log($\"[UISystem] {widget.GetVMType().Name} binding to {widget.GetType().Name} in {vmGo.name} scucceed\");\r\n#endif\r\n            }\r\n\r\n            // set widget order\r\n            if (setting.order != 0)\r\n            {\r\n                Canvas orderCanvas = vmGo.GetComponent<Canvas>();\r\n                if (!orderCanvas)\r\n                    orderCanvas = vmGo.gameObject.AddComponent<Canvas>();\r\n\r\n                orderCanvas.overrideSorting = true;\r\n                orderCanvas.sortingOrder = setting.order;\r\n            }\r\n\r\n            // If not displayed by default\r\n            if (!setting.show)\r\n            {\r\n                widget.gameObject.SetActive(false);\r\n            }\r\n            else\r\n            {\r\n                if (!widget.gameObject.activeSelf)\r\n                    widget.gameObject.SetActive(true);\r\n            }\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <returns></returns>\r\n        public T GetWidget<T>() where T : IWidget\r\n        {\r\n            string widgetName = typeof(T).Name;\r\n            return (T)widgets[widgetName];\r\n        }\r\n\r\n        /// <summary>Find an opened widget, including widgets that are not cached.</summary>\r\n        /// <typeparam name=\"T\">Requested widget type.</typeparam>\r\n        /// <param name=\"widget\">Opened widget, or null when it is not available.</param>\r\n        /// <returns>True when a live widget of the requested type is on the open stack.</returns>\r\n        public bool TryGetWidget<T>(out T widget) where T : IWidget\r\n        {\r\n            for (int index = currents.Count - 1; index >= 0; index--)\r\n            {\r\n                if (IsWidgetAlive(currents[index]) && currents[index] is T current)\r\n                {\r\n                    widget = current;\r\n                    return true;\r\n                }\r\n            }\r\n\r\n            widget = null;\r\n            return false;\r\n        }\r\n\r\n        /// <summary>\r\n        ///\r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"immediate\">跳过关闭动画立即隐藏（强制/流程关闭路径用）</param>\r\n        public void CloseWidget<T>(System.Action complete = null, bool immediate = false) where T : IWidget\r\n        {\r\n            UnloadWidget<T>(complete, immediate);\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"type\"></param>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"immediate\"></param>\r\n        public void CloseWidget(System.Type[] types, System.Action complete = null, bool immediate = false)\r\n        {\r\n            for(int index = 0; index<types.Length; index++)\r\n            {\r\n                CloseWidget(types[index], null, immediate);\r\n            }\r\n\r\n            complete?.Invoke();\r\n        }\r\n\r\n        /// <summary>\r\n        ///\r\n        /// </summary>\r\n        /// <param name=\"type\"></param>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"immediate\">跳过关闭动画立即隐藏（强制/流程关闭路径用）</param>\r\n        public void CloseWidget(System.Type type, System.Action complete = null, bool immediate = false)\r\n        {\r\n            var widgetName = type.Name;\r\n            loadingMap.Remove(widgetName);\r\n\r\n            if (widgets.ContainsKey(widgetName))\r\n            {\r\n                var widget = widgets[widgetName];\r\n                if (!IsWidgetAlive(widget))\r\n                {\r\n                    widgets.Remove(widgetName);\r\n                    complete?.Invoke();\r\n                    return;\r\n                }\r\n\r\n                RemoveWidget(widget);\r\n                CloseWidget(widget, widgetName, complete, immediate);\r\n            }\r\n            else\r\n            {\r\n                var widget = currents.Find(v => IsWidgetAlive(v) && v.name == widgetName);\r\n                if (widget != null)\r\n                {\r\n                    RemoveWidget(widget);\r\n                    CloseWidget(widget, widgetName, complete, immediate);\r\n                }\r\n            }\r\n\r\n        }\r\n\r\n        /// <summary>\r\n        ///\r\n        /// </summary>\r\n        /// <typeparam name=\"T\"></typeparam>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"immediate\">跳过关闭动画立即隐藏（强制/流程关闭路径用）</param>\r\n        public void UnloadWidget<T>(System.Action complete = null, bool immediate = false) where T : IWidget\r\n        {\r\n            var widgetName = typeof(T).Name;\r\n            loadingMap.Remove(widgetName);\r\n\r\n            if (widgets.ContainsKey(widgetName))\r\n            {\r\n                var widget = widgets[widgetName];\r\n                if (!IsWidgetAlive(widget))\r\n                {\r\n                    widgets.Remove(widgetName);\r\n                    complete?.Invoke();\r\n                    return;\r\n                }\r\n\r\n                RemoveWidget(widget);\r\n                CloseWidget(widget, widgetName, complete, immediate);\r\n            }\r\n            else\r\n            {\r\n                var widget = currents.Find(v => IsWidgetAlive(v) && v.name == widgetName);\r\n                if (widget != null)\r\n                {\r\n                    RemoveWidget(widget);\r\n                    CloseWidget(widget, widgetName, complete, immediate);\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        ///\r\n        /// </summary>\r\n        /// <param name=\"widget\"></param>\r\n        /// <param name=\"widgetName\"></param>\r\n        /// <param name=\"complete\"></param>\r\n        /// <param name=\"immediate\">跳过关闭动画立即隐藏（强制/流程关闭路径用）</param>\r\n        public virtual void CloseWidget(IWidget widget, string widgetName, System.Action complete = null, bool immediate = false)\r\n        {\r\n            if (!IsWidgetAlive(widget))\r\n            {\r\n                widgets.Remove(widgetName);\r\n                complete?.Invoke();\r\n                return;\r\n            }\r\n\r\n            DispatchWidgetEvent(widget, false);\r\n\r\n            int generation = GetCurrentGeneration(widget);\r\n\r\n            Animator animator = immediate ? null : widget.gameObject.GetComponent<Animator>();\r\n            if (animator && animator.enabled && animator.runtimeAnimatorController\r\n                && animator.HasState(0, CloseStateHash) && widget.gameObject.activeInHierarchy)\r\n            {\r\n                // 带动画关闭：先锁交互，播 Close 态，播完才真正停用/销毁\r\n                SetWidgetInteraction(widget, false);\r\n                animator.Play(CloseStateHash);\r\n                UICoroutine.Run(WaitCloseAnimation(widget, widgetName, complete, generation));\r\n            }\r\n            else\r\n            {\r\n                widget.Close(() => FinalizeCloseWidget(widget, widgetName, complete, generation));\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// 等待关闭动画播完（带硬超时兜底），再执行真正的停用/销毁收尾。\r\n        /// </summary>\r\n        private IEnumerator WaitCloseAnimation(IWidget widget, string widgetName, System.Action complete, int generation)\r\n        {\r\n            var animator = widget.gameObject.GetComponent<Animator>();\r\n\r\n            // 等一帧让 Close 态真正成为当前状态，避免读到旧状态\r\n            yield return null;\r\n\r\n            float deadline = Time.unscaledTime + CloseAnimationTimeoutSeconds;\r\n            while (Time.unscaledTime < deadline)\r\n            {\r\n                if (!IsWidgetAlive(widget) || !animator)\r\n                {\r\n                    break;\r\n                }\r\n\r\n                var info = animator.GetCurrentAnimatorStateInfo(0);\r\n                if (info.shortNameHash == CloseStateHash && info.normalizedTime >= 1f)\r\n                {\r\n                    break;\r\n                }\r\n\r\n                yield return null;\r\n            }\r\n\r\n            FinalizeCloseWidget(widget, widgetName, complete, generation);\r\n        }\r\n\r\n        /// <summary>\r\n        /// 真正停用或销毁界面。代际不一致说明等待期间界面已被重新打开（或已被另一次关闭收尾）：\r\n        /// 保持打开，仅恢复交互。\r\n        /// </summary>\r\n        private void FinalizeCloseWidget(IWidget widget, string widgetName, System.Action complete, int generation)\r\n        {\r\n            if (!IsWidgetAlive(widget))\r\n            {\r\n                widgets.Remove(widgetName);\r\n                openGenerations.Remove(widget);\r\n                complete?.Invoke();\r\n                return;\r\n            }\r\n\r\n            if (openGenerations.TryGetValue(widget, out int current) && current != generation)\r\n            {\r\n                SetWidgetInteraction(widget, true);\r\n                complete?.Invoke();\r\n                return;\r\n            }\r\n\r\n            // 收尾前递增代际，使同一界面仍挂着的其它关闭等待全部失效\r\n            openGenerations[widget] = generation + 1;\r\n\r\n            ConfigAttribute setting = customModleAttributes[widgetName];\r\n            if (!setting.cache)\r\n            {\r\n                var vm = widget.GetVM();\r\n                if (vm)\r\n                {\r\n                    widget.Unref(vm);\r\n                }\r\n\r\n                Destroy(widget.gameObject);\r\n\r\n#if UNITY_EDITOR || UNITY_DEVELOP\r\n                Debug.Log($\"[UISystem] Destroy widget [{widgetName}]\");\r\n#endif\r\n                widgets.Remove(widgetName);\r\n                openGenerations.Remove(widget);\r\n            }\r\n            else\r\n            {\r\n                SetWidgetInteraction(widget, true);\r\n                widget.Deactive();\r\n            }\r\n\r\n#if UNITY_EDITOR || UNITY_DEVELOP\r\n            Debug.Log($\"[UISystem] Unload widget [{widgetName}]\");\r\n#endif\r\n            complete?.Invoke();\r\n        }\r\n\r\n        private int GetCurrentGeneration(IWidget widget)\r\n        {\r\n            return openGenerations.TryGetValue(widget, out int generation) ? generation : 0;\r\n        }\r\n\r\n        /// <summary>\r\n        /// 关闭动画播放期间屏蔽（或恢复）界面根节点的射线交互。\r\n        /// </summary>\r\n        private static void SetWidgetInteraction(IWidget widget, bool value)\r\n        {\r\n            var group = widget.gameObject.GetComponent<CanvasGroup>();\r\n            if (!group)\r\n            {\r\n                group = widget.gameObject.AddComponent<CanvasGroup>();\r\n            }\r\n\r\n            group.interactable = value;\r\n            group.blocksRaycasts = value;\r\n        }\r\n\r\n        /// <summary>Notify the registration snapshot; changes apply to the next notification.</summary>\r\n        /// <param name=\"widget\">The widget whose lifecycle changed.</param>\r\n        /// <param name=\"opened\">True for activation, false for the start of closing.</param>\r\n        private void DispatchWidgetEvent(IWidget widget, bool opened)\r\n        {\r\n            var senders = eventSenders.ToArray();\r\n            foreach (var sender in senders)\r\n            {\r\n                try\r\n                {\r\n                    if (opened)\r\n                        sender.OnWidgetOpened(widget);\r\n                    else\r\n                        sender.OnWidgetClosing(widget);\r\n                }\r\n                catch (System.Exception exception)\r\n                {\r\n                    Debug.LogException(exception);\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Checks whether the widget and its GameObject are still alive.\r\n        /// </summary>\r\n        /// <param name=\"widget\">The widget to check.</param>\r\n        /// <returns>True when the widget can still be safely accessed.</returns>\r\n        private bool IsWidgetAlive(IWidget widget)\r\n        {\r\n            return widget && widget.gameObject;\r\n        }\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "Assets/Scripts/Systems/RedDot.meta",
+              "sha256": "5fe56932ea5484a65e42d200f12445c1b9c37ce346c1310ed35e89d7554199f2",
+              "content": "fileFormatVersion: 2\nguid: 06fba3ac02850fb4baa5945df1632d71\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/home-bindings.json",
+              "sha256": "4fa930322f83f80b3d2c4059a62c2ca1481211644c742be61b4ae8b9795d9709",
+              "content": "[\r\n  {\r\n    \"node\": \"Home0_6_0_4_1\",\r\n    \"sourcePath\": \"0/6/0/4/1\",\r\n    \"name\": \"MailTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"MailTips\",\r\n    \"value\": 1514372829,\r\n    \"redDotId\": 11001,\r\n    \"alias\": \"RED_DOT_HOME_MAILTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_0_5_1\",\r\n    \"sourcePath\": \"0/6/0/5/1\",\r\n    \"name\": \"SetTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"SetTips\",\r\n    \"value\": 418538246,\r\n    \"redDotId\": 11002,\r\n    \"alias\": \"RED_DOT_HOME_SETTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_0_6_1\",\r\n    \"sourcePath\": \"0/6/0/6/1\",\r\n    \"name\": \"AnnouncementTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"AnnouncementTips\",\r\n    \"value\": 3199919,\r\n    \"redDotId\": 11003,\r\n    \"alias\": \"RED_DOT_HOME_ANNOUNCEMENTTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_0_7_1\",\r\n    \"sourcePath\": \"0/6/0/7/1\",\r\n    \"name\": \"FriendTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"FriendTips\",\r\n    \"value\": 117418554,\r\n    \"redDotId\": 11004,\r\n    \"alias\": \"RED_DOT_HOME_FRIENDTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_0_11_0\",\r\n    \"sourcePath\": \"0/6/0/11/0\",\r\n    \"name\": \"FavorTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"FavorTips\",\r\n    \"value\": 1199347660,\r\n    \"redDotId\": 11005,\r\n    \"alias\": \"RED_DOT_HOME_FAVORTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_1_0_0_4\",\r\n    \"sourcePath\": \"0/6/1/0/0/4\",\r\n    \"name\": \"manualTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ManualTips\",\r\n    \"value\": 2087738905,\r\n    \"redDotId\": 11006,\r\n    \"alias\": \"RED_DOT_HOME_MANUALTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_0_0\",\r\n    \"sourcePath\": \"0/6/2/0/0/0\",\r\n    \"name\": \"TaskTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"TaskTips\",\r\n    \"value\": 1782727633,\r\n    \"redDotId\": 11007,\r\n    \"alias\": \"RED_DOT_HOME_TASKTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_1_0_0\",\r\n    \"sourcePath\": \"0/6/2/0/1/0/0\",\r\n    \"name\": \"RedTips\",\r\n    \"defaultActive\": true,\r\n    \"activity\": false,\r\n    \"key\": \"RedTips\",\r\n    \"value\": 2099569513,\r\n    \"redDotId\": 11008,\r\n    \"alias\": \"RED_DOT_HOME_REDTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_2_0_0\",\r\n    \"sourcePath\": \"0/6/2/0/2/0/0\",\r\n    \"name\": \"RedTips\",\r\n    \"defaultActive\": true,\r\n    \"activity\": false,\r\n    \"key\": \"RedTips0620200\",\r\n    \"value\": 1194081923,\r\n    \"redDotId\": 11009,\r\n    \"alias\": \"RED_DOT_HOME_REDTIPS0620200\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_3_0_0\",\r\n    \"sourcePath\": \"0/6/2/0/3/0/0\",\r\n    \"name\": \"RedTips\",\r\n    \"defaultActive\": true,\r\n    \"activity\": false,\r\n    \"key\": \"RedTips0620300\",\r\n    \"value\": 1228562200,\r\n    \"redDotId\": 11010,\r\n    \"alias\": \"RED_DOT_HOME_REDTIPS0620300\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_4_0\",\r\n    \"sourcePath\": \"0/6/2/0/4/0\",\r\n    \"name\": \"DirectPurchaseRedDot\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"DirectPurchaseRedDot\",\r\n    \"value\": 2028546540,\r\n    \"redDotId\": 11011,\r\n    \"alias\": \"RED_DOT_HOME_DIRECTPURCHASEREDDOT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_5_0\",\r\n    \"sourcePath\": \"0/6/2/0/5/0\",\r\n    \"name\": \"DirectPurchase1RedDot\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"DirectPurchase1RedDot\",\r\n    \"value\": 264176736,\r\n    \"redDotId\": 11012,\r\n    \"alias\": \"RED_DOT_HOME_DIRECTPURCHASE1REDDOT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_6_0\",\r\n    \"sourcePath\": \"0/6/2/0/6/0\",\r\n    \"name\": \"CNBattlePassRedDot\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"CNBattlePassRedDot\",\r\n    \"value\": 918252199,\r\n    \"redDotId\": 11013,\r\n    \"alias\": \"RED_DOT_HOME_CNBATTLEPASSREDDOT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_7_0\",\r\n    \"sourcePath\": \"0/6/2/0/7/0\",\r\n    \"name\": \"TimeLimitGiftTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"TimeLimitGiftTips\",\r\n    \"value\": 599903209,\r\n    \"redDotId\": 11014,\r\n    \"alias\": \"RED_DOT_HOME_TIMELIMITGIFTTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_8_2\",\r\n    \"sourcePath\": \"0/6/2/0/8/2\",\r\n    \"name\": \"UpInProTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"UpInProTips\",\r\n    \"value\": 33199695,\r\n    \"redDotId\": 11015,\r\n    \"alias\": \"RED_DOT_HOME_UPINPROTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_9_1\",\r\n    \"sourcePath\": \"0/6/2/0/9/1\",\r\n    \"name\": \"ComeBackRedDot\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ComeBackRedDot\",\r\n    \"value\": 1775596985,\r\n    \"redDotId\": 11016,\r\n    \"alias\": \"RED_DOT_HOME_COMEBACKREDDOT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_10_0_4\",\r\n    \"sourcePath\": \"0/6/2/0/10/0/4\",\r\n    \"name\": \"RedDotBait\",\r\n    \"defaultActive\": true,\r\n    \"activity\": false,\r\n    \"key\": \"RedDotBait\",\r\n    \"value\": 1483456732,\r\n    \"redDotId\": 11017,\r\n    \"alias\": \"RED_DOT_HOME_REDDOTBAIT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_11_0_3\",\r\n    \"sourcePath\": \"0/6/2/0/11/0/3\",\r\n    \"name\": \"RedDotKingSetter\",\r\n    \"defaultActive\": true,\r\n    \"activity\": false,\r\n    \"key\": \"RedDotKingSetter\",\r\n    \"value\": 1213193502,\r\n    \"redDotId\": 11018,\r\n    \"alias\": \"RED_DOT_HOME_REDDOTKINGSETTER\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_14_0_1\",\r\n    \"sourcePath\": \"0/6/2/0/14/0/1\",\r\n    \"name\": \"AppearRedDot\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"AppearRedDot\",\r\n    \"value\": 328521371,\r\n    \"redDotId\": 11019,\r\n    \"alias\": \"RED_DOT_HOME_APPEARREDDOT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_15_0_3\",\r\n    \"sourcePath\": \"0/6/2/0/15/0/3\",\r\n    \"name\": \"RedDotPlayerTheme\",\r\n    \"defaultActive\": true,\r\n    \"activity\": false,\r\n    \"key\": \"RedDotPlayerTheme\",\r\n    \"value\": 643335526,\r\n    \"redDotId\": 11020,\r\n    \"alias\": \"RED_DOT_HOME_REDDOTPLAYERTHEME\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_16_2\",\r\n    \"sourcePath\": \"0/6/2/0/16/2\",\r\n    \"name\": \"ImgRedDotTurnCard\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotTurnCard\",\r\n    \"value\": 2039259506,\r\n    \"redDotId\": 11021,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTTURNCARD\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_19_1\",\r\n    \"sourcePath\": \"0/6/2/0/19/1\",\r\n    \"name\": \"ImgRedDotPreOrder\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotPreOrder\",\r\n    \"value\": 692869669,\r\n    \"redDotId\": 11022,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTPREORDER\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_20_1\",\r\n    \"sourcePath\": \"0/6/2/0/20/1\",\r\n    \"name\": \"ImgRedDotMatchGuess\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotMatchGuess\",\r\n    \"value\": 178954592,\r\n    \"redDotId\": 11023,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTMATCHGUESS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_21_2\",\r\n    \"sourcePath\": \"0/6/2/0/21/2\",\r\n    \"name\": \"ImgRedDotTopBattle\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotTopBattle\",\r\n    \"value\": 831366068,\r\n    \"redDotId\": 11024,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTTOPBATTLE\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_22_2\",\r\n    \"sourcePath\": \"0/6/2/0/22/2\",\r\n    \"name\": \"ImgRedDotServeGame\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotServeGame\",\r\n    \"value\": 1994941811,\r\n    \"redDotId\": 11025,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTSERVEGAME\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_23_2\",\r\n    \"sourcePath\": \"0/6/2/0/23/2\",\r\n    \"name\": \"ImgRedDotNewYear\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotNewYear\",\r\n    \"value\": 946167488,\r\n    \"redDotId\": 11026,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTNEWYEAR\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_24_2\",\r\n    \"sourcePath\": \"0/6/2/0/24/2\",\r\n    \"name\": \"ImgRedDotChainGift\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotChainGift\",\r\n    \"value\": 1653909360,\r\n    \"redDotId\": 11027,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTCHAINGIFT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_25_2\",\r\n    \"sourcePath\": \"0/6/2/0/25/2\",\r\n    \"name\": \"ImgRedDotSPTopic\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotSPTopic\",\r\n    \"value\": 1660621660,\r\n    \"redDotId\": 11028,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTSPTOPIC\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_26_2\",\r\n    \"sourcePath\": \"0/6/2/0/26/2\",\r\n    \"name\": \"ImgRedDotAnniversary\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotAnniversary\",\r\n    \"value\": 1694412007,\r\n    \"redDotId\": 11029,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTANNIVERSARY\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_27_1\",\r\n    \"sourcePath\": \"0/6/2/0/27/1\",\r\n    \"name\": \"ImgRedDotFreeMatch\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotFreeMatch\",\r\n    \"value\": 1646092040,\r\n    \"redDotId\": 11030,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTFREEMATCH\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_28_2\",\r\n    \"sourcePath\": \"0/6/2/0/28/2\",\r\n    \"name\": \"ImgRedDotRunningGame\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotRunningGame\",\r\n    \"value\": 340229412,\r\n    \"redDotId\": 11031,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTRUNNINGGAME\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_29_2\",\r\n    \"sourcePath\": \"0/6/2/0/29/2\",\r\n    \"name\": \"ImgRedDot1_5Anniversary\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDot15Anniversary\",\r\n    \"value\": 1034379984,\r\n    \"redDotId\": 11032,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOT15ANNIVERSARY\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_30_2\",\r\n    \"sourcePath\": \"0/6/2/0/30/2\",\r\n    \"name\": \"ImgRedDotLuckyDraw\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotLuckyDraw\",\r\n    \"value\": 1552978579,\r\n    \"redDotId\": 11033,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTLUCKYDRAW\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_31_2\",\r\n    \"sourcePath\": \"0/6/2/0/31/2\",\r\n    \"name\": \"ImgRedDotWuYeCanteen\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotWuYeCanteen\",\r\n    \"value\": 372794262,\r\n    \"redDotId\": 11034,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTWUYECANTEEN\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_32_2\",\r\n    \"sourcePath\": \"0/6/2/0/32/2\",\r\n    \"name\": \"ImgRedDotAceDuel\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotAceDuel\",\r\n    \"value\": 1100961919,\r\n    \"redDotId\": 11035,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTACEDUEL\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_33_2\",\r\n    \"sourcePath\": \"0/6/2/0/33/2\",\r\n    \"name\": \"ImgRedDotCampTraining\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotCampTraining\",\r\n    \"value\": 1919820457,\r\n    \"redDotId\": 11036,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTCAMPTRAINING\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_34_2\",\r\n    \"sourcePath\": \"0/6/2/0/34/2\",\r\n    \"name\": \"ImgRedDotSpecialOfferPackage\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotSpecialOfferPackage\",\r\n    \"value\": 997624404,\r\n    \"redDotId\": 11037,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTSPECIALOFFERPACKAGE\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_35_2\",\r\n    \"sourcePath\": \"0/6/2/0/35/2\",\r\n    \"name\": \"ImgRedDotBarbecue\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotBarbecue\",\r\n    \"value\": 132605449,\r\n    \"redDotId\": 11038,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTBARBECUE\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_36_2\",\r\n    \"sourcePath\": \"0/6/2/0/36/2\",\r\n    \"name\": \"ImgRedDotCombinationGift\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotCombinationGift\",\r\n    \"value\": 1758652313,\r\n    \"redDotId\": 11039,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTCOMBINATIONGIFT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_37_2\",\r\n    \"sourcePath\": \"0/6/2/0/37/2\",\r\n    \"name\": \"ImgRedDotSelectSelfGift\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotSelectSelfGift\",\r\n    \"value\": 1300699865,\r\n    \"redDotId\": 11040,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTSELECTSELFGIFT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_38_2\",\r\n    \"sourcePath\": \"0/6/2/0/38/2\",\r\n    \"name\": \"ImgRedDotSelectSelfGacha\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotSelectSelfGacha\",\r\n    \"value\": 43765714,\r\n    \"redDotId\": 11041,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTSELECTSELFGACHA\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_39_2\",\r\n    \"sourcePath\": \"0/6/2/0/39/2\",\r\n    \"name\": \"ImgRedDotSkillResonance\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotSkillResonance\",\r\n    \"value\": 1681821900,\r\n    \"redDotId\": 11042,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTSKILLRESONANCE\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_2_0_40_2\",\r\n    \"sourcePath\": \"0/6/2/0/40/2\",\r\n    \"name\": \"ImgRedDotNationalTournament\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ImgRedDotNationalTournament\",\r\n    \"value\": 149912668,\r\n    \"redDotId\": 11043,\r\n    \"alias\": \"RED_DOT_HOME_IMGREDDOTNATIONALTOURNAMENT\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_3_0_1\",\r\n    \"sourcePath\": \"0/6/3/0/1\",\r\n    \"name\": \"ShopTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ShopTips\",\r\n    \"value\": 128375330,\r\n    \"redDotId\": 11044,\r\n    \"alias\": \"RED_DOT_HOME_SHOPTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_3_1_3\",\r\n    \"sourcePath\": \"0/6/3/1/3\",\r\n    \"name\": \"FuliTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"FuliTips\",\r\n    \"value\": 1995408800,\r\n    \"redDotId\": 11045,\r\n    \"alias\": \"RED_DOT_HOME_FULITIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_4_1_1\",\r\n    \"sourcePath\": \"0/6/4/1/1\",\r\n    \"name\": \"BeibaoTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"BeibaoTips\",\r\n    \"value\": 2016436025,\r\n    \"redDotId\": 11046,\r\n    \"alias\": \"RED_DOT_HOME_BEIBAOTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_4_2_1\",\r\n    \"sourcePath\": \"0/6/4/2/1\",\r\n    \"name\": \"GalleryTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"GalleryTips\",\r\n    \"value\": 1375427408,\r\n    \"redDotId\": 11047,\r\n    \"alias\": \"RED_DOT_HOME_GALLERYTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_4_3_1\",\r\n    \"sourcePath\": \"0/6/4/3/1\",\r\n    \"name\": \"_HonorTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"HonorTips\",\r\n    \"value\": 1344362679,\r\n    \"redDotId\": 11048,\r\n    \"alias\": \"RED_DOT_HOME_HONORTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_5_0_0\",\r\n    \"sourcePath\": \"0/6/5/0/0\",\r\n    \"name\": \"ExpeditionTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ExpeditionTips\",\r\n    \"value\": 615214434,\r\n    \"redDotId\": 11049,\r\n    \"alias\": \"RED_DOT_HOME_EXPEDITIONTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_5_1_4\",\r\n    \"sourcePath\": \"0/6/5/1/4\",\r\n    \"name\": \"HesujidiTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"HesujidiTips\",\r\n    \"value\": 2043321783,\r\n    \"redDotId\": 11050,\r\n    \"alias\": \"RED_DOT_HOME_HESUJIDITIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_5_2_2\",\r\n    \"sourcePath\": \"0/6/5/2/2\",\r\n    \"name\": \"ZhaomuTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"ZhaomuTips\",\r\n    \"value\": 979659919,\r\n    \"redDotId\": 11051,\r\n    \"alias\": \"RED_DOT_HOME_ZHAOMUTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_5_5_1\",\r\n    \"sourcePath\": \"0/6/5/5/1\",\r\n    \"name\": \"_AssociationTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"AssociationTips\",\r\n    \"value\": 337575171,\r\n    \"redDotId\": 11052,\r\n    \"alias\": \"RED_DOT_HOME_ASSOCIATIONTIPS\"\r\n  },\r\n  {\r\n    \"node\": \"Home0_6_5_6_2\",\r\n    \"sourcePath\": \"0/6/5/6/2\",\r\n    \"name\": \"DailyPlayTips\",\r\n    \"defaultActive\": false,\r\n    \"activity\": false,\r\n    \"key\": \"DailyPlayTips\",\r\n    \"value\": 244983610,\r\n    \"redDotId\": 11053,\r\n    \"alias\": \"RED_DOT_HOME_DAILYPLAYTIPS\"\r\n  }\r\n]"
+            },
+            {
+              "path": "GameCLI/Templates/RedDot/README.md",
+              "sha256": "c6acfa9b896ae09e2065cdf2d97f9bab649969911f0457edb1bca4169ebf287a",
+              "content": "Merge propRedDot and SYS_RED_DOT into product configuration; export with the existing e2cs tool and load RedDotConfig before system startup. Do not replace the product enum/configuration files with reference outputs.\nRedDotCondition=None aggregates children; RedDotEntity.UpdateSignal validates inputs; Refresh evaluates conditions and parent aggregation; GetCount exposes calculated state. Add explicit enum detectors for product entity conditions. All signals start at zero; no mock unread mail or rewards.\nAttach RedDotScope to the widget root with serialized configuration IDs, targets and optional Count labels. Existing Home references this exact component GUID. The 53 Home bindings are an example, not mandatory product entries.\nRequire IUIEventSender in the widget package. GamePlugin implements it; Startup(new ResourceConfigure { loader = ..., cacher = ..., eventSenders = new List<IUIEventSender> { this } }). OnWidgetOpened forwards DispatchEvent(new WidgetOpenedEvent { data = new WidgetOpened { widget = widget } }); OnWidgetClosing forwards DispatchEvent(new WidgetClosingEvent { data = new WidgetClosing { widget = widget } }). Framework files are merge references, not permission to overwrite product packages. Widget close is a start-closing event. Frame-end coalescing happens after open callbacks; disabling a page releases presentation, never clears business state.\nBusiness message: XPluginUtility.FireEvent(new RedDotSignalChanged { id = Excel.RED_DOT_HOME_MAILTIPS, count = 3 });\n"
+            }
+          ],
+          "schemaVersion": 1
+        },
+        "surface": "transparent",
+        "fontSize": 20,
+        "systemKind": "code",
+        "rectTransform": {
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "configurations": {
+          "tables": [
+            {
+              "name": "propRedDot",
+              "fields": [
+                {
+                  "name": "ID",
+                  "type": "int"
+                },
+                {
+                  "name": "NumID",
+                  "type": "int"
+                },
+                {
+                  "name": "ParentID",
+                  "type": "int"
+                },
+                {
+                  "name": "RedDotCondition",
+                  "type": "enum"
+                },
+                {
+                  "name": "RedDotDisplay",
+                  "type": "enum"
+                },
+                {
+                  "name": "Enabled",
+                  "type": "int"
+                },
+                {
+                  "name": "RefreshOnOpen",
+                  "type": "int"
+                },
+                {
+                  "name": "RefreshOnClose",
+                  "type": "int"
+                }
+              ],
+              "source": {
+                "sheet": "RedDot",
+                "sha256": "97da23b66d76e67ad3164cbd8d05b4d8c326c4edc3408764ea3977e030929c2f",
+                "assetId": "97da23b66d76e67ad3164cbd8d05b4d8c326c4edc3408764ea3977e030929c2f",
+                "fileName": "propRedDot.xlsx"
+              },
+              "entries": [
+                {
+                  "ID": "RED_DOT_HOME",
+                  "NumID": "11000",
+                  "Enabled": "1",
+                  "ParentID": "0",
+                  "RedDotDisplay": "Count",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "None"
+                },
+                {
+                  "ID": "RED_DOT_HOME_MAILTIPS",
+                  "NumID": "11001",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_SETTIPS",
+                  "NumID": "11002",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_ANNOUNCEMENTTIPS",
+                  "NumID": "11003",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_FRIENDTIPS",
+                  "NumID": "11004",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_FAVORTIPS",
+                  "NumID": "11005",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_MANUALTIPS",
+                  "NumID": "11006",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_TASKTIPS",
+                  "NumID": "11007",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_REDTIPS",
+                  "NumID": "11008",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_REDTIPS0620200",
+                  "NumID": "11009",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_REDTIPS0620300",
+                  "NumID": "11010",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_DIRECTPURCHASEREDDOT",
+                  "NumID": "11011",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_DIRECTPURCHASE1REDDOT",
+                  "NumID": "11012",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_CNBATTLEPASSREDDOT",
+                  "NumID": "11013",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_TIMELIMITGIFTTIPS",
+                  "NumID": "11014",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_UPINPROTIPS",
+                  "NumID": "11015",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_COMEBACKREDDOT",
+                  "NumID": "11016",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_REDDOTBAIT",
+                  "NumID": "11017",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_REDDOTKINGSETTER",
+                  "NumID": "11018",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_APPEARREDDOT",
+                  "NumID": "11019",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_REDDOTPLAYERTHEME",
+                  "NumID": "11020",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTTURNCARD",
+                  "NumID": "11021",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTPREORDER",
+                  "NumID": "11022",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTMATCHGUESS",
+                  "NumID": "11023",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTTOPBATTLE",
+                  "NumID": "11024",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTSERVEGAME",
+                  "NumID": "11025",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTNEWYEAR",
+                  "NumID": "11026",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTCHAINGIFT",
+                  "NumID": "11027",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTSPTOPIC",
+                  "NumID": "11028",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTANNIVERSARY",
+                  "NumID": "11029",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTFREEMATCH",
+                  "NumID": "11030",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTRUNNINGGAME",
+                  "NumID": "11031",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOT15ANNIVERSARY",
+                  "NumID": "11032",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTLUCKYDRAW",
+                  "NumID": "11033",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTWUYECANTEEN",
+                  "NumID": "11034",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTACEDUEL",
+                  "NumID": "11035",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTCAMPTRAINING",
+                  "NumID": "11036",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTSPECIALOFFERPACKAGE",
+                  "NumID": "11037",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTBARBECUE",
+                  "NumID": "11038",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTCOMBINATIONGIFT",
+                  "NumID": "11039",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTSELECTSELFGIFT",
+                  "NumID": "11040",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTSELECTSELFGACHA",
+                  "NumID": "11041",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTSKILLRESONANCE",
+                  "NumID": "11042",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_IMGREDDOTNATIONALTOURNAMENT",
+                  "NumID": "11043",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_SHOPTIPS",
+                  "NumID": "11044",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_FULITIPS",
+                  "NumID": "11045",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_BEIBAOTIPS",
+                  "NumID": "11046",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_GALLERYTIPS",
+                  "NumID": "11047",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_HONORTIPS",
+                  "NumID": "11048",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_EXPEDITIONTIPS",
+                  "NumID": "11049",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_HESUJIDITIPS",
+                  "NumID": "11050",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_ZHAOMUTIPS",
+                  "NumID": "11051",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_ASSOCIATIONTIPS",
+                  "NumID": "11052",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                },
+                {
+                  "ID": "RED_DOT_HOME_DAILYPLAYTIPS",
+                  "NumID": "11053",
+                  "Enabled": "1",
+                  "ParentID": "11000",
+                  "RedDotDisplay": "Dot",
+                  "RefreshOnOpen": "1",
+                  "RefreshOnClose": "1",
+                  "RedDotCondition": "SignalCount"
+                }
+              ],
+              "purpose": "example",
+              "aliasField": "ID",
+              "primaryKey": "NumID"
+            },
+            {
+              "name": "propFunctionSystem",
+              "fields": [
+                {
+                  "name": "ID",
+                  "type": "int"
+                },
+                {
+                  "name": "NumID",
+                  "type": "int"
+                },
+                {
+                  "name": "Name",
+                  "type": "string"
+                },
+                {
+                  "name": "TargetType",
+                  "type": "enum"
+                },
+                {
+                  "name": "ClassType",
+                  "type": "string"
+                },
+                {
+                  "name": "InstallOnStartup",
+                  "type": "int"
+                },
+                {
+                  "name": "Condtions",
+                  "type": "List<string>"
+                },
+                {
+                  "name": "Active",
+                  "type": "int"
+                },
+                {
+                  "name": "StartTime",
+                  "type": "string"
+                },
+                {
+                  "name": "StopTime",
+                  "type": "string"
+                },
+                {
+                  "name": "SceneId",
+                  "type": "int"
+                },
+                {
+                  "name": "Version",
+                  "type": "string"
+                }
+              ],
+              "source": {
+                "sheet": "FunctionSystem",
+                "sha256": "429051a00685ee35bddd85e296c544ebbe69f6d4b1f208768d95a2b7ad659e77",
+                "assetId": "429051a00685ee35bddd85e296c544ebbe69f6d4b1f208768d95a2b7ad659e77",
+                "fileName": "propFunctionSystem.xlsx"
+              },
+              "entries": [
+                {
+                  "ID": "SYS_RED_DOT",
+                  "Name": "RedDot",
+                  "NumID": 10020,
+                  "Active": 1,
+                  "ClassType": "RedDotSystem",
+                  "TargetType": "None",
+                  "InstallOnStartup": 1
+                }
+              ],
+              "purpose": "required",
+              "aliasField": "ID",
+              "primaryKey": "NumID"
+            }
+          ],
+          "integration": [
+            "Merge propRedDot and SYS_RED_DOT into product configuration; export with the existing e2cs tool and load RedDotConfig before system startup. Do not replace the product enum/configuration files with reference outputs.",
+            "RedDotCondition=None aggregates children; RedDotEntity.UpdateSignal validates inputs; Refresh evaluates conditions and parent aggregation; GetCount exposes calculated state. Add explicit enum detectors for product entity conditions. All signals start at zero; no mock unread mail or rewards.",
+            "Attach RedDotScope to the widget root with serialized configuration IDs, targets and optional Count labels. Existing Home references this exact component GUID. The 53 Home bindings are an example, not mandatory product entries.",
+            "Require IUIEventSender in the widget package. GamePlugin implements it; Startup(new ResourceConfigure { loader = ..., cacher = ..., eventSenders = new List<IUIEventSender> { this } }). OnWidgetOpened forwards DispatchEvent(new WidgetOpenedEvent { data = new WidgetOpened { widget = widget } }); OnWidgetClosing forwards DispatchEvent(new WidgetClosingEvent { data = new WidgetClosing { widget = widget } }). Framework files are merge references, not permission to overwrite product packages. Widget close is a start-closing event. Frame-end coalescing happens after open callbacks; disabling a page releases presentation, never clears business state."
+          ],
+          "dependencies": [
+            "RuntimeSystem",
+            "com.oathx.core",
+            "com.oathx.entity",
+            "com.oathx.widget.extension",
+            "Config.Excel"
+          ],
+          "schemaVersion": 1
+        },
+        "relationPosition": {
+          "x": 877,
+          "y": 332
+        },
+        "templateSourceId": "RedDotSystem",
+        "templateSourceVersion": 7
+      }
+    ],
+    "width": 1920,
+    "height": 1080,
+    "rootId": "Canvas",
+    "animations": [],
+    "schemaVersion": 1
+  }
+}

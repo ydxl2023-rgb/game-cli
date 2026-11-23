@@ -1,0 +1,25 @@
+{
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "projectPath": "G:/Works/GameCLI/GameCLI/examples/unitys/practice/client",
+  "repairedAt": "2026-11-20T16:19:22.9416040+08:00",
+  "symptoms": [
+    "Stale SourceAssetDB references to removed ServerSelect assets",
+    "Default window layout failed: no main window found"
+  ],
+  "actions": [
+    "Quarantined Library and Temp in this evidence folder",
+    "Removed the one-shot reset hook from Assets",
+    "Backed up user Default.wlt and restored the installed editor default layout",
+    "Reimported project successfully in batch mode",
+    "Opened existing Assets/Scenes/App.unity; removed temporary recovery hook"
+  ],
+  "validation": [
+    "Batch import exit code 0",
+    "Graphical editor opened App scene",
+    "Play reached Practice clean baseline ready: no business systems",
+    "Launch inactive after startup",
+    "Stopped Play; Console error count 0"
+  ],
+  "scope": "Editor and clean baseline recovery only; ten-system integration remains pending"
+}

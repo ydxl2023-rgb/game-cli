@@ -1,0 +1,13 @@
+
+module('resmng');
+svnnum('$Id$');
+
+SCENE_APP=10001
+SCENE_HOME=10002
+
+
+propSceneConfig = {
+    [10001]:{ID:10001,NumID:10001,Name:"930479215",Path:"Assets/Scenes/App.unity",Music:"",Version:"0.0.1"},
+	[10002]:{ID:10002,NumID:10002,Name:"341408041",Path:"Assets/Scenes/Game.unity",Music:"",Version:"0.0.1"}
+
+}

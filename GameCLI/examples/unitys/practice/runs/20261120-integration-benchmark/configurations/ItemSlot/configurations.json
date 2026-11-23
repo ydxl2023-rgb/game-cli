@@ -1,0 +1,22 @@
+{
+  "tables": [],
+  "integration": [
+    "Base item display with product-defined public int type. No EquipPartType, inventory, mail or reward service dependency.",
+    "Use UIItemSlot/VMItemSlot. Original eight binding indices are preserved: Back, Icon, Text, Locked, Amount, Select, Arrow, Edge. IconVisible is appended at index 8.",
+    "Icon is a string asset path resolved by existing SyncSprite/UILoader. IconVisible expresses host visibility intent, not loading completion. Mail does not load Sprite or maintain image callbacks. Shared loader cancellation and out-of-order completion need separate validation.",
+    "Text is a host-formatted quantity or label. type is an unbound integer property whose meaning belongs to the product.",
+    "Assets/Data/Widgets/Common/Micros/ItemSlot/ItemSlot.prefab retains the SV item appearance. Its Lock/Mask/Arrow controls reuse the legacy slot. The old Arrow controller is missing from the source project; the new Arrow is static and has no broken Animator reference.",
+    "Existing Widgets/Common/Micros/ItemSlot.prefab keeps its old art and GUID. Upgrade its icon Metadata to SyncSprite and append IconVisible binding to Icon; preserve its TMP text binding. See bindings.json. Do not overwrite unrelated old pages.",
+    "Restore native materials/meta first, preserving GUIDs. Included external dependencies are only the required Common fonts and shared UI textures. No Reward or Mail assets are required.",
+    "Browser preview retains default item artwork. Radial Mask fill is native-only and previewHidden; three additional controls are serialized in the native prefab. Dynamic behavior must be checked in Unity."
+  ],
+  "dependencies": [
+    {
+      "kind": "framework",
+      "name": "com.oathx.widget",
+      "reason": "UIWidget, VM and standard Sync actions",
+      "required": true
+    }
+  ],
+  "schemaVersion": 1
+}

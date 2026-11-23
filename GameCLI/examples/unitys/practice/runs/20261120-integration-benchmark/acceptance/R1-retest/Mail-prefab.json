@@ -1,0 +1,3632 @@
+{
+  "schemaVersion": "gamecli-prefab-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "prefabId": "T1Mail0",
+  "projectVersion": 6,
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "assetPath": "Assets/Data/Widgets/Mail/Mail.prefab",
+  "baselineSha256": "5e0b2be1f078af7e5374b5dd4e4fa273ae38054cc1602ac7d77e3ef9fac5537a",
+  "unitySourceRevision": "47051fd078cd856663828fa0a2405bf3",
+  "policy": "studio-prefab/3",
+  "tolerance": 0.0001,
+  "status": "failed",
+  "passed": false,
+  "differences": [
+    {
+      "node": "root/0/3/0/2/1",
+      "field": "item",
+      "code": "binding-reference-invalid",
+      "expected": "live component on its target inside exported hierarchy",
+      "actual": {
+        "nodeId": null,
+        "componentNodeId": null,
+        "componentType": "Oathx.Widget.UIItemSlot",
+        "componentIndex": 4,
+        "assignable": false
+      },
+      "property": "widgetBinding",
+      "source": "widget-bindings"
+    },
+    {
+      "node": "root/0/3/0/2/1",
+      "field": "item",
+      "code": "binding-component-type",
+      "expected": "Oathx.Widget.Metadata",
+      "actual": "Oathx.Widget.UIItemSlot",
+      "property": "widgetBinding",
+      "source": "widget-bindings"
+    },
+    {
+      "node": "root/0/3/0/2/1",
+      "field": "claimed",
+      "code": "binding-reference-invalid",
+      "expected": "live component on its target inside exported hierarchy",
+      "actual": {
+        "nodeId": null,
+        "componentNodeId": null,
+        "componentType": "UnityEngine.RectTransform",
+        "componentIndex": 0,
+        "assignable": true
+      },
+      "property": "widgetBinding",
+      "source": "widget-bindings"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell",
+      "property": "kind",
+      "expected": "Node",
+      "actual": "PrefabInstance"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/0:ItemHui",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/1:ItemRare",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/2:ItemIcon",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/3:PaperIcon",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/4:PaperTag",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/5:ItemButton",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/6:EffItemInfo001",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/6:EffItemInfo001/0:Yichu",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/6:EffItemInfo001/1:Daojuzhuanhuan",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/6:EffItemInfo001/2:Baidi",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/0:ItemInfo/6:EffItemInfo001/3:Glow",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/1:ItemIconSelect",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/2:BagIconEffect001",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/3:BagIconEffect002",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/4:BagIconEffect003",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/0:ImgQuality",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/1:ImgCard",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/2:ImgPosition",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/3:StaticImage",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/4:RecallStageBgMax",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/5:TextRank",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/6:RecallStageBg",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/7:RecallHead",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/8:ListStar",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/8:ListStar/0:Star",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/9:TextLevel",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/10:ImgLock",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/11:ImgNew",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/11:ImgNew/0:NewTag",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/5:UIRecallMemoryItem/12:BtnClick",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/6:NumVisible",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/6:NumVisible/0:ItemNumber",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/7:ItemEffectNode",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/0:ItemHui",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/1:SpecialBg",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/2:SpeicalRare",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/3:SpecialIcon",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/4:SpecialPosition",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar/0:StarIcon1",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar/1:StarIcon2",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar/2:StarIcon3",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar/3:StarIcon4",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar/4:StarIcon5",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/5:SpecialStar/5:StarIcon6",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/6:SpecialButton",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/7:Wear",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/8:ItemSpecialInfo/0:SpecialInfo/8:Lock",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo/0:Merge",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo/1:ItemOverflow",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo/2:Temporary",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo/3:Probability",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo/4:IsResolve",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/9:ItemTagInfo/5:ItemChange",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/10:ItemBagInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/10:ItemBagInfo/0:TimeLimitShow",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/10:ItemBagInfo/0:TimeLimitShow/0:Time",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/10:ItemBagInfo/1:ItemRed",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/11:ItemFinishGetInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/11:ItemFinishGetInfo/0:FinishGet",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/11:ItemFinishGetInfo/0:FinishGet/0:Mask",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/11:ItemFinishGetInfo/0:FinishGet/1:Check",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/12:ItemGiftInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/12:ItemGiftInfo/0:GiftMarkBg",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/12:ItemGiftInfo/0:GiftMarkBg/0:GiftMarkText",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/13:ThreeStarRewardInfo",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/13:ThreeStarRewardInfo/0:ReceivedBottom",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/13:ThreeStarRewardInfo/0:ReceivedBottom/0:ReceivedText",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/13:ThreeStarRewardInfo/1:FirstTextBottom",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/13:ThreeStarRewardInfo/1:FirstTextBottom/0:Surface",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/13:ThreeStarRewardInfo/1:FirstTextBottom/1:FirstText",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/14:BagIconEffect",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/14:BagIconEffect/0:BagIconEffectY",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/14:BagIconEffect/1:BagIconEffectR",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/14:BagIconEffect/2:BagIconEffectP",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/14:BagIconEffect/3:BagIconEffectSp",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/0:BagIcon1/0:IconVisible/14:BagIconEffect/3:BagIconEffectSp/0:BagIconMesh002",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/1:HadReward",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/1:HadReward/0:HadGot",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/1:Lock",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/2:Mask",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell/0:BagIconNew/3:Arrow",
+      "property": "node",
+      "expected": "present",
+      "actual": "missing"
+    }
+  ],
+  "unverified": [
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "UIMail"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.Metadata"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/3/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/3/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/3/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/3/5",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/5",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/6",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/7",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/8",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/9",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/5",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/6",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/7",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/8",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/9",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/2/10",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/0/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/0/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RectMask2D",
+        "property": "m_Softness",
+        "valueType": "Vector2Int"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/3/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/1/3/0/0/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2",
+        "code": "unsupported-component",
+        "type": "FancyScrollView.Scroller"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.FancyGridScrollView"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RectMask2D",
+        "property": "m_Softness",
+        "valueType": "Vector2Int"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2/1",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2/1",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.FancyGridScrollViewCell"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2/1",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.Metadata"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2/1",
+        "code": "unsupported-component",
+        "type": "UIRewardEntry"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/0/2/1",
+        "code": "nested-instance-requires-adapter",
+        "message": "Nested template is exported. Instance overrides/added objects require the next-stage adapter.",
+        "overrides": [
+          {
+            "property": "m_Name",
+            "value": "Cell",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_Pivot.x",
+            "value": "0.5",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_Pivot.y",
+            "value": "0.5",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_AnchorMax.x",
+            "value": "0.5",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_AnchorMax.y",
+            "value": "0.5",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_AnchorMin.x",
+            "value": "0.5",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_AnchorMin.y",
+            "value": "0.5",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_SizeDelta.x",
+            "value": "152",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_SizeDelta.y",
+            "value": "152",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalPosition.x",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalPosition.y",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalPosition.z",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalRotation.w",
+            "value": "1",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalRotation.x",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalRotation.y",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalRotation.z",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_AnchoredPosition.x",
+            "value": "185",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_AnchoredPosition.y",
+            "value": "-600",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalEulerAnglesHint.x",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalEulerAnglesHint.y",
+            "value": "0",
+            "target": "RewardEntry"
+          },
+          {
+            "property": "m_LocalEulerAnglesHint.z",
+            "value": "0",
+            "target": "RewardEntry"
+          }
+        ]
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1",
+        "code": "unsupported-component",
+        "type": "FancyScrollView.Scroller"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.FancyGridScrollView"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RectMask2D",
+        "property": "m_Softness",
+        "valueType": "Vector2Int"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.FancyGridScrollViewCell"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.Metadata"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1",
+        "code": "unsupported-component",
+        "type": "UIMailEntry"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/0/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/1/1/0/5",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/2/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/2/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/3/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "animation-evidence-unavailable",
+      "message": "当前 Unity 导出器不提供完整 Animator 曲线证据，禁止判定动画一致。"
+    },
+    {
+      "node": "0:Mail",
+      "code": "script-binding-contract-unavailable",
+      "message": "已检查可读取的 VM/Metadata 静态一致性；源码包不包含产品预期目标映射，不能证明绑定到了设计指定的节点。"
+    },
+    {
+      "node": "0:Mail",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Mail",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/0:Mask",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/0:WhiteBar",
+      "code": "resource-hash-unavailable",
+      "expected": "6d2d3609e086d8da4f0994c941b9d67995cfd64856fa6fb87940a6ccae3b89f2"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/0:WhiteBar",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/1:RightBg",
+      "code": "resource-hash-unavailable",
+      "expected": "2c68dc95f56a86c9b818168095a1b82ffa8e70539bd3826547680d559051b051"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/1:RightBg",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/2:LeftBg",
+      "code": "resource-hash-unavailable",
+      "expected": "8518b5c4c81f3889cca0c676a4f4c61e56bb9042c0b258ecfe33d978b36bdc23"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/2:LeftBg",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/0:UnreadBoard",
+      "code": "resource-hash-unavailable",
+      "expected": "3bb3421bd816a3d88239f0cd7f7fcfe9ba0bf41975fd9c38dd51d59532513495"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/0:UnreadBoard",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/1:Cutline3",
+      "code": "resource-hash-unavailable",
+      "expected": "08350bc691a38a12c47ef8f413e52d5664fe123e53bab56ccf355d6c9c9b32ed"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/2:Cutline2",
+      "code": "resource-hash-unavailable",
+      "expected": "3246ece20216c57fc5c291c856d935309a06d9c3f0c1fbcdea86b6f3aa75407f"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips/0:TopTitle",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips/1:Division",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips/2:PresentNum",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips/3:TotalNum",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips/4:UnreadNum",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/3:TopMailTips/5:UnreadTip",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/4:OpenStatus",
+      "code": "resource-hash-unavailable",
+      "expected": "ce9c97e0b3aa4223e255552ffb9e290fd653dcd3a4fd90de41ba0db4ea3a81c9"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/5:NoMailTip",
+      "code": "resource-hash-unavailable",
+      "expected": "4f720b1d64ecf29bfd92a33c33a6ecdb0e920bd463ed988e3859105be8794613"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/6:Light",
+      "code": "resource-hash-unavailable",
+      "expected": "3fc046af12e20b102da564413c6d992a5e77b4bd05d141a7a1d64aa467333bf5"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/7:LeftBgPattern",
+      "code": "resource-hash-unavailable",
+      "expected": "ff04d834a0064b616d5e15be6fe2df7706dbaec02ce9ad73d0e55f66c3e08633"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/8:CloseStatus",
+      "code": "resource-hash-unavailable",
+      "expected": "a9f5a6d521b5acb2aea1b9937a049bd9839494d520d699949f2e3945239ab6e5"
+    },
+    {
+      "node": "0:Mail/0:Animator/1:BgGather/3:LeftTop/9:NoMail",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/0:ColorBar1",
+      "code": "resource-hash-unavailable",
+      "expected": "a778716b09a6e759f8c4c1240cc89aae1fc7926410aaf11872b9e5dbd4410a1d"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/1:ColorBar2",
+      "code": "resource-hash-unavailable",
+      "expected": "a778716b09a6e759f8c4c1240cc89aae1fc7926410aaf11872b9e5dbd4410a1d"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/2:ColorBar3",
+      "code": "resource-hash-unavailable",
+      "expected": "8c8f7e403682f10d1a939321da44c8d374c933b089ff7f2ce8fb615d5868c4bd"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/3:TitleBar1",
+      "code": "resource-hash-unavailable",
+      "expected": "67fdc9f9013b5a4281978d5754f532a7e03fda547476fb4e80da39d38b6f0ab2"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/3:TitleBar1",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/4:TitleBar2",
+      "code": "resource-hash-unavailable",
+      "expected": "a51e3a13156fafc9de8ed1e98f97ca156036abcb129e51a0c15e565cbf09047b"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/4:TitleBar2",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/5:FrameLin1",
+      "code": "resource-hash-unavailable",
+      "expected": "b9886b75b983ba07541abc74deaab91f13c4c9fc4be2e9daea640b2ed74ba314"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/5:FrameLin1",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/6:Leaf1",
+      "code": "resource-hash-unavailable",
+      "expected": "30cd2eb505954cb4ca0f16c61a09a277f42ca12264f17aa7b9bd55d8ecbb1d8f"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/7:Leaf2",
+      "code": "resource-hash-unavailable",
+      "expected": "ac9c312a987ca561314bb2ad444a0c97f4e450ca0a81c748f07e1d12122834b3"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/8:Leaf3",
+      "code": "resource-hash-unavailable",
+      "expected": "d9907ded209f285a613f6d6a892da8e6ff89cb804ba16043a6eff730ae3b2a0d"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/9:Rainbow",
+      "code": "resource-hash-unavailable",
+      "expected": "d1cad20dbd82a09c29ca68d77761a1affd0b10f39d2bc318851c94b1cbe012aa"
+    },
+    {
+      "node": "0:Mail/0:Animator/2:DecorateGather/10:CutLine1",
+      "code": "resource-hash-unavailable",
+      "expected": "dca69d6b606736cdb94f1dca41a96db36684e776687bc9b161c1f24da6e164c7"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/0:GoToLinkBtn",
+      "code": "resource-hash-unavailable",
+      "expected": "bc736b2334ab60e03d0ef20889b98aba327e3c41587548842d5d1c4a09856fc3"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/0:GoToLinkBtn",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/0:GoToLinkBtn/0:LineText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/1:SingleGet",
+      "code": "resource-hash-unavailable",
+      "expected": "bc736b2334ab60e03d0ef20889b98aba327e3c41587548842d5d1c4a09856fc3"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/1:SingleGet",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/1:SingleGet/0:SingleGetText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/2:SingleDeleted",
+      "code": "resource-hash-unavailable",
+      "expected": "6e1a5b851cb3220ab4a4525b5064c5e6cac569615795cbd6a9667831c57d5f7f"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/2:SingleDeleted",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/0:BtnStateNode/2:SingleDeleted/0:SingleDeletedText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/0:MailTitle",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/1:MailTime",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/2:MailExpirationTime/0:DayShow",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/2:MailExpirationTime/1:Expiration",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.ScrollRect"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.RectMask2D"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport/0:Content",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.VerticalLayoutGroup"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport/0:Content",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.ContentSizeFitter"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport/0:Content/0:MailText",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.ContentSizeFitter"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport/0:Content/0:MailText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport/0:Content/1:MailImg",
+      "code": "resource-hash-unavailable",
+      "expected": "2698f970c3d08ab6f5be84736eddac68d006d23d496996cc63f48cf796df23e4"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/1:MailRelated/3:ScrollRectView/0:Viewport/0:Content/1:MailImg/0:MailImgBtn",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.RectMask2D"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.Image"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.Button"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/0:LetterGather/2:MailAccessory/1:Cell",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.RectMask2D"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.Image"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.Button"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/0:Unselected/0:UMailTitle",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/0:Unselected/1:UMailTime",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/1:Recived/0:RMailTitle",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/1:Recived/1:RMailTime",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/2:Selected",
+      "code": "resource-hash-unavailable",
+      "expected": "2c68dc95f56a86c9b818168095a1b82ffa8e70539bd3826547680d559051b051"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/2:Selected",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/2:Selected/0:SMailTitle",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/2:Selected/1:SMailTime",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/3:GiftIcon/0:Get",
+      "code": "resource-hash-unavailable",
+      "expected": "c1925f53b45922c262837f5a509c02b89223161cbeaf1126070c7a324ab0c8a6"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/3:GiftIcon/1:Unget",
+      "code": "resource-hash-unavailable",
+      "expected": "ec1bd05d1b6b6a43a4617ac68af65af3fd81ef722ba53b035d1d7d0a7b0b4c14"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/4:NewIcon",
+      "code": "resource-hash-unavailable",
+      "expected": "2698f970c3d08ab6f5be84736eddac68d006d23d496996cc63f48cf796df23e4"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/1:MailPreview/1:ScrollItem/0:NewMailFrame/5:CutLineShow",
+      "code": "resource-hash-unavailable",
+      "expected": "b1ccaf1b60cfbd0683c8509017f94d5e9f8c2e7bcf19c10ecfe303cc473ee52c"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather/0:DeletedRead",
+      "code": "resource-hash-unavailable",
+      "expected": "637f72a8d9906b6173d3b1d789257494f2ac3dcd97609fc7c8e672e4b4b0a211"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather/0:DeletedRead",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather/0:DeletedRead/0:DeletedText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather/1:OnekeyGet",
+      "code": "resource-hash-unavailable",
+      "expected": "53bc39ec291ccb8d4e19e57535df55f30481a8c07df6542f1f60db079287145d"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather/1:OnekeyGet",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/2:BtnGather/1:OnekeyGet/0:OnekeyText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Mail/0:Animator/3:MailInfoShow/3:Cutline4",
+      "code": "resource-hash-unavailable",
+      "expected": "fca3a841218012e10e974c70b8c1192ff724aff413ffe07f2dee5785fa3b9544"
+    },
+    {
+      "node": "0:Mail/0:Animator/4:CloseBtn",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Mail/0:Animator/4:CloseBtn",
+      "code": "resource-hash-unavailable",
+      "expected": "7c3b954ac54bcbdf0f1e5f279cad0a9e783be27d8d210b4fdf4bd374b0646bdc"
+    },
+    {
+      "node": "0:Mail/0:Animator/4:CloseBtn",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    }
+  ],
+  "bindings": {
+    "policy": "oathx-widget-bindings/1",
+    "status": "failed",
+    "passed": false,
+    "widgets": 3,
+    "fields": 34,
+    "differences": [
+      {
+        "node": "root/0/3/0/2/1",
+        "field": "item",
+        "code": "binding-reference-invalid",
+        "expected": "live component on its target inside exported hierarchy",
+        "actual": {
+          "nodeId": null,
+          "componentNodeId": null,
+          "componentType": "Oathx.Widget.UIItemSlot",
+          "componentIndex": 4,
+          "assignable": false
+        }
+      },
+      {
+        "node": "root/0/3/0/2/1",
+        "field": "item",
+        "code": "binding-component-type",
+        "expected": "Oathx.Widget.Metadata",
+        "actual": "Oathx.Widget.UIItemSlot"
+      },
+      {
+        "node": "root/0/3/0/2/1",
+        "field": "claimed",
+        "code": "binding-reference-invalid",
+        "expected": "live component on its target inside exported hierarchy",
+        "actual": {
+          "nodeId": null,
+          "componentNodeId": null,
+          "componentType": "UnityEngine.RectTransform",
+          "componentIndex": 0,
+          "assignable": true
+        }
+      }
+    ],
+    "unverified": [],
+    "limitations": [
+      "Static compiled-contract integrity only; intended product target mapping and runtime updates/callbacks are not verified.",
+      "Generated field order follows compiled declaration order; inherited VM contracts are incomplete."
+    ]
+  },
+  "renderOrder": {
+    "status": "passed",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "renderEvidence": [
+    {
+      "id": "root",
+      "name": "Mail",
+      "parentId": null,
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0",
+      "name": "Animator",
+      "parentId": "root",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0",
+      "name": "Mask",
+      "parentId": "root/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1",
+      "name": "BgGather",
+      "parentId": "root/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/0",
+      "name": "WhiteBar",
+      "parentId": "root/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/1",
+      "name": "RightBg",
+      "parentId": "root/0/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/2",
+      "name": "LeftBg",
+      "parentId": "root/0/1",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3",
+      "name": "LeftTop",
+      "parentId": "root/0/1",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/0",
+      "name": "UnreadBoard",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/1",
+      "name": "Cutline3",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/2",
+      "name": "Cutline2",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3",
+      "name": "TopMailTips",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3/0",
+      "name": "TopTitle",
+      "parentId": "root/0/1/3/3",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3/1",
+      "name": "Division",
+      "parentId": "root/0/1/3/3",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3/2",
+      "name": "PresentNum",
+      "parentId": "root/0/1/3/3",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            0.670588255,
+            0.09411765,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3/3",
+      "name": "TotalNum",
+      "parentId": "root/0/1/3/3",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3/4",
+      "name": "UnreadNum",
+      "parentId": "root/0/1/3/3",
+      "siblingIndex": 4,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            0.670588255,
+            0.09411765,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/3/5",
+      "name": "UnreadTip",
+      "parentId": "root/0/1/3/3",
+      "siblingIndex": 5,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/4",
+      "name": "OpenStatus",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 4,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/5",
+      "name": "NoMailTip",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 5,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/6",
+      "name": "Light",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 6,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0.921568632
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/7",
+      "name": "LeftBgPattern",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 7,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/8",
+      "name": "CloseStatus",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 8,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/9",
+      "name": "NoMail",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 9,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2",
+      "name": "DecorateGather",
+      "parentId": "root/0",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/0",
+      "name": "ColorBar1",
+      "parentId": "root/0/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/1",
+      "name": "ColorBar2",
+      "parentId": "root/0/2",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/2",
+      "name": "ColorBar3",
+      "parentId": "root/0/2",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/3",
+      "name": "TitleBar1",
+      "parentId": "root/0/2",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/4",
+      "name": "TitleBar2",
+      "parentId": "root/0/2",
+      "siblingIndex": 4,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/5",
+      "name": "FrameLin1",
+      "parentId": "root/0/2",
+      "siblingIndex": 5,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/6",
+      "name": "Leaf1",
+      "parentId": "root/0/2",
+      "siblingIndex": 6,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/7",
+      "name": "Leaf2",
+      "parentId": "root/0/2",
+      "siblingIndex": 7,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/8",
+      "name": "Leaf3",
+      "parentId": "root/0/2",
+      "siblingIndex": 8,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/9",
+      "name": "Rainbow",
+      "parentId": "root/0/2",
+      "siblingIndex": 9,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/2/10",
+      "name": "CutLine1",
+      "parentId": "root/0/2",
+      "siblingIndex": 10,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3",
+      "name": "MailInfoShow",
+      "parentId": "root/0",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0",
+      "name": "LetterGather",
+      "parentId": "root/0/3",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0",
+      "name": "BtnStateNode",
+      "parentId": "root/0/3/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0/0",
+      "name": "GoToLinkBtn",
+      "parentId": "root/0/3/0/0",
+      "siblingIndex": 0,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0/0/0",
+      "name": "LineText",
+      "parentId": "root/0/3/0/0/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0/1",
+      "name": "SingleGet",
+      "parentId": "root/0/3/0/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0/1/0",
+      "name": "SingleGetText",
+      "parentId": "root/0/3/0/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0/2",
+      "name": "SingleDeleted",
+      "parentId": "root/0/3/0/0",
+      "siblingIndex": 2,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/0/2/0",
+      "name": "SingleDeletedText",
+      "parentId": "root/0/3/0/0/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1",
+      "name": "MailRelated",
+      "parentId": "root/0/3/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/0",
+      "name": "MailTitle",
+      "parentId": "root/0/3/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.298039228,
+            0.392156869,
+            0.5372549,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/1",
+      "name": "MailTime",
+      "parentId": "root/0/3/0/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.298039228,
+            0.392156869,
+            0.5372549,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/2",
+      "name": "MailExpirationTime",
+      "parentId": "root/0/3/0/1",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/2/0",
+      "name": "DayShow",
+      "parentId": "root/0/3/0/1/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.6745098,
+            0.309803933,
+            0.309803933,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/2/1",
+      "name": "Expiration",
+      "parentId": "root/0/3/0/1/2",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.298039228,
+            0.392156869,
+            0.5372549,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/3",
+      "name": "ScrollRectView",
+      "parentId": "root/0/3/0/1",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/3/0",
+      "name": "Viewport",
+      "parentId": "root/0/3/0/1/3",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/3/0/0",
+      "name": "Content",
+      "parentId": "root/0/3/0/1/3/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/3/0/0/0",
+      "name": "MailText",
+      "parentId": "root/0/3/0/1/3/0/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.298039228,
+            0.392156869,
+            0.5372549,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/3/0/0/1",
+      "name": "MailImg",
+      "parentId": "root/0/3/0/1/3/0/0",
+      "siblingIndex": 1,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/1/3/0/0/1/0",
+      "name": "MailImgBtn",
+      "parentId": "root/0/3/0/1/3/0/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/2",
+      "name": "MailAccessory",
+      "parentId": "root/0/3/0",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/2/0",
+      "name": "Viewport",
+      "parentId": "root/0/3/0/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/2/0/0",
+      "name": "Content",
+      "parentId": "root/0/3/0/2/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/0/2/1",
+      "name": "Cell",
+      "parentId": "root/0/3/0/2",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1",
+      "name": "MailPreview",
+      "parentId": "root/0/3",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/0",
+      "name": "Viewport",
+      "parentId": "root/0/3/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/0/0",
+      "name": "MailContent",
+      "parentId": "root/0/3/1/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1",
+      "name": "ScrollItem",
+      "parentId": "root/0/3/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0",
+      "name": "NewMailFrame",
+      "parentId": "root/0/3/1/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/0",
+      "name": "Unselected",
+      "parentId": "root/0/3/1/1/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/0/0",
+      "name": "UMailTitle",
+      "parentId": "root/0/3/1/1/0/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.7529412,
+            0.8392157,
+            0.9254902,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/0/1",
+      "name": "UMailTime",
+      "parentId": "root/0/3/1/1/0/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.7529412,
+            0.8392157,
+            0.9254902,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/1",
+      "name": "Recived",
+      "parentId": "root/0/3/1/1/0",
+      "siblingIndex": 1,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/1/0",
+      "name": "RMailTitle",
+      "parentId": "root/0/3/1/1/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.58431375,
+            0.654902,
+            0.7294118,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/1/1",
+      "name": "RMailTime",
+      "parentId": "root/0/3/1/1/0/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.58431375,
+            0.654902,
+            0.7294118,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/2",
+      "name": "Selected",
+      "parentId": "root/0/3/1/1/0",
+      "siblingIndex": 2,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/2/0",
+      "name": "SMailTitle",
+      "parentId": "root/0/3/1/1/0/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.298039228,
+            0.392156869,
+            0.5372549,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/2/1",
+      "name": "SMailTime",
+      "parentId": "root/0/3/1/1/0/2",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.298039228,
+            0.392156869,
+            0.5372549,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/3",
+      "name": "GiftIcon",
+      "parentId": "root/0/3/1/1/0",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/3/0",
+      "name": "Get",
+      "parentId": "root/0/3/1/1/0/3",
+      "siblingIndex": 0,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/3/1",
+      "name": "Unget",
+      "parentId": "root/0/3/1/1/0/3",
+      "siblingIndex": 1,
+      "active": false,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/4",
+      "name": "NewIcon",
+      "parentId": "root/0/3/1/1/0",
+      "siblingIndex": 4,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/1/1/0/5",
+      "name": "CutLineShow",
+      "parentId": "root/0/3/1/1/0",
+      "siblingIndex": 5,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/2",
+      "name": "BtnGather",
+      "parentId": "root/0/3",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/2/0",
+      "name": "DeletedRead",
+      "parentId": "root/0/3/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/2/0/0",
+      "name": "DeletedText",
+      "parentId": "root/0/3/2/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/2/1",
+      "name": "OnekeyGet",
+      "parentId": "root/0/3/2",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/2/1/0",
+      "name": "OnekeyText",
+      "parentId": "root/0/3/2/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.929411769,
+            0.929411769,
+            0.929411769,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/3/3",
+      "name": "Cutline4",
+      "parentId": "root/0/3",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/4",
+      "name": "CloseBtn",
+      "parentId": "root/0",
+      "siblingIndex": 4,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\61a97f85-b093-403f-877b-75e2ac934c35"
+}

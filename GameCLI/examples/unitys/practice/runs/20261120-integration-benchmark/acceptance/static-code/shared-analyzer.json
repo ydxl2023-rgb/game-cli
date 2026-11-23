@@ -1,0 +1,129 @@
+{
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "LocalPackages/com.oathx.core/Runtime/XLauncher.cs",
+      "line": 154,
+      "rule": "OX010",
+      "severity": "error",
+      "message": "Separate processing from return with a blank line."
+    },
+    {
+      "file": "Assets/Scripts/PracticePlugin.cs",
+      "line": 82,
+      "rule": "OX007",
+      "severity": "error",
+      "message": "Order: fields/properties, constructors, lifecycle overrides, public, protected/internal, private methods."
+    },
+    {
+      "file": "Assets/Scripts/PracticePlugin.cs",
+      "line": 82,
+      "rule": "OX008",
+      "severity": "error",
+      "message": "Add a blank line before the next member documentation."
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 42,
+      "rule": "OX007",
+      "severity": "error",
+      "message": "Order: fields/properties, constructors, lifecycle overrides, public, protected/internal, private methods."
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 15,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: type"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 15,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: complete"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 26,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: type"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 26,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: complete"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 26,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document the return value."
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 42,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: type"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 42,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: complete"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 53,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: type"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 53,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document parameter: complete"
+    },
+    {
+      "file": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "line": 53,
+      "rule": "OX006",
+      "severity": "error",
+      "message": "Document the return value."
+    }
+  ],
+  "statistics": {
+    "files": 3,
+    "lines": 362,
+    "blankLines": 51,
+    "commentLines": 115,
+    "members": 38,
+    "documentedMembers": 38,
+    "blankLineRate": 0.1408839779005525,
+    "commentLineRate": 0.31767955801104975,
+    "documentedMemberRate": 1
+  },
+  "sources": [
+    {
+      "path": "LocalPackages/com.oathx.core/Runtime/XLauncher.cs",
+      "sha256": "729facc8a28ed78b8d88946bf4ad888016e8696482d48b0df18139e69c59e506"
+    },
+    {
+      "path": "Assets/Scripts/PracticePlugin.cs",
+      "sha256": "a7a1e34ecd92bf8f3c945e5af028573db1e0aec77b9080abce432fb95835cbd7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "sha256": "1067eabd6c79df9e7f5ecf57b11c49fe659d37e8113e34e3723ca843f46ad328"
+    }
+  ],
+  "scope": "Supplemental direct analyzer; verified project scope from preceding verify code. No Unity Editor calls."
+}

@@ -1,0 +1,15 @@
+{
+  "tables": [],
+  "integration": [
+    "Currency is a UI component, not a RuntimeSystem. Install native materials and four Currency classes before dependent Home prefabs.",
+    "Embed CurrencyBar.prefab; bind VMCurrencyBar with SyncMetadata and its three ordered Entries with existing SyncGroup.",
+    "Create three entries and callbacks once before Ref. Update Amount, Icon, Visible, CanAdd and Interactable in place; do not replace callbacks or Entries on a bound instance.",
+    "Host owns wallet data, formatting, red-dot rules and navigation. currencyId is a host-supplied identifier; Amount is a preformatted string.",
+    "Native bar preserves Home top-right docking; browser preview normalizes only the root. Override docking in each host. CurrencyEntry.prefab is a single-slot reference; bar slots retain individual authored icon shapes.",
+    "Bindings last one instance lifetime. Set the host CurrencyBar to null before Unref; OnDestroy also releases. Destroy and recreate after Unref. Existing SyncClick adds listeners on callback replacement."
+  ],
+  "dependencies": [
+    "com.oathx.widget"
+  ],
+  "schemaVersion": 1
+}

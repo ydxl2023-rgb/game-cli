@@ -1,0 +1,117 @@
+
+module('resmng');
+svnnum('$Id$');
+
+SKILL_ATTACK=11001
+SKILL_SWEEP=11002
+SKILL_ASSASSINATE=11003
+SKILL_THROATCUTTING=11004
+SKILL_EXECUTE=11005
+SKILL_LIGHT=11006
+SKILL_COUNTERATTACK=11007
+SKILL_CHARGE=11008
+SKILL_RIDICULE=11009
+SKILL_TENACITY=11010
+SKILL_ANGER=11011
+SKILL_SERIOUSINJURY=11012
+SKILL_ROAR=11013
+SKILL_ARMORPENETRATION=11014
+SKILL_SHIELDWALL=11015
+SKILL_BLOODTHIRSTY=11016
+SKILL_SHIELDSTRIKE=11017
+SKILL_REVENGE=11018
+SKILL_BREAKINGAXE=11019
+SKILL_SHOOTING=12001
+SKILL_AIMSHOOT=12002
+SKILL_PIERCINGHEART=12003
+SKILL_ARROWRAIN=12004
+SKILL_FLYINGARROW=12005
+SKILL_CHOPINDISCRIMINATELY=13001
+SKILL_DOUBLESWORDASSASSINATION=13002
+SKILL_FIERCEWINDSLASH=13003
+SKILL_GARROTE=13004
+SKILL_FURIOUSSLASH=13005
+SKILL_SLAM=13006
+SKILL_MURDER=13007
+SKILL_FIREBALL=14001
+SKILL_LIGHTNING=14002
+SKILL_ELECTRICSHOCKSTORM=14003
+SKILL_TELEPORTATION=14004
+SKILL_THUNDERBOLT=14005
+SKILL_FIRERAIN=14006
+SKILL_SUMMONING=14007
+SKILL_POISONBALL=15001
+SKILL_HEALING=15002
+SKILL_LIFEDELIVERY=15003
+SKILL_DODGE=15004
+SKILL_OFFICEFIRERAIN=20001
+SKILL_GROUPDEFENSESCROLL=30001
+SKILL_GROUPTHERAPYSCROLL=30002
+SKILL_GROUPMAGICSCROLL=30003
+SKILL_ACCELERATIONSCROLL=30004
+SKILL_ROARSCROLL=30005
+SKILL_MOCKINGSCROLL=30006
+SKILL_SILENTSCROLL=30007
+SKILL_LIFERECOVERYSCROLL=30008
+SKILL_MAGICRECOVERYSCROLL=30009
+SKILL_GOLDENSHIELD=30010
+SKILL_SUMMONINGMAGIC=30011
+
+
+propSkillConfig = {
+    [11001]:{ID:0,NumID:11001,Name:"1832221780",EnglishName:"Attack",Desc:"",Attr:11001,Clip:"Attack01",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior01\""},
+	[11002]:{ID:0,NumID:11002,Name:"1040508382",EnglishName:"Sweep",Desc:"",Attr:11002,Clip:"Attack02",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior02\""},
+	[11003]:{ID:0,NumID:11003,Name:"216297956",EnglishName:"Assassinate",Desc:"",Attr:11003,Clip:"Attack03",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior03\""},
+	[11004]:{ID:0,NumID:11004,Name:"1741689490",EnglishName:"ThroatCutting",Desc:"",Attr:11004,Clip:"Attack04",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior04\""},
+	[11005]:{ID:0,NumID:11005,Name:"595773932",EnglishName:"Execute",Desc:"",Attr:11005,Clip:"Attack05",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior05\""},
+	[11006]:{ID:0,NumID:11006,Name:"950525358",EnglishName:"Light",Desc:"",Attr:11006,Clip:"Attack06",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior06\""},
+	[11007]:{ID:0,NumID:11007,Name:"1905587020",EnglishName:"CounterAttack",Desc:"",Attr:11007,Clip:"Attack07",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_warrior07\""},
+	[11008]:{ID:0,NumID:11008,Name:"1046526021",EnglishName:"Charge",Desc:"",Attr:11008,Clip:"\"Charge\"",Priority:10,Icon:"\"ui/sprites/skills/icon_skill_warrior08\""},
+	[11009]:{ID:0,NumID:11009,Name:"1248360949",EnglishName:"Ridicule",Desc:"",Attr:11009,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_caofeng01\""},
+	[11010]:{ID:0,NumID:11010,Name:"300920226",EnglishName:"Tenacity",Desc:"",Attr:11010,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_jianren01\""},
+	[11011]:{ID:0,NumID:11011,Name:"1371989410",EnglishName:"Anger",Desc:"",Attr:11011,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_fengnu01\""},
+	[11012]:{ID:0,NumID:11012,Name:"1672738542",EnglishName:"SeriousInjury",Desc:"",Attr:11012,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_zhongshang01\""},
+	[11013]:{ID:0,NumID:11013,Name:"1235367646",EnglishName:"Roar",Desc:"",Attr:11013,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_nuhou01\""},
+	[11014]:{ID:0,NumID:11014,Name:"1997310562",EnglishName:"ArmorPenetration",Desc:"",Attr:11014,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_pojia01\""},
+	[11015]:{ID:0,NumID:11015,Name:"1025088146",EnglishName:"ShieldWall",Desc:"",Attr:11015,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_sdhs\""},
+	[11016]:{ID:0,NumID:11016,Name:"886168550",EnglishName:"Bloodthirsty",Desc:"",Attr:11016,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_sx\""},
+	[11017]:{ID:0,NumID:11017,Name:"1742867062",EnglishName:"ShieldStrike",Desc:"",Attr:11017,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_dunfan\""},
+	[11018]:{ID:0,NumID:11018,Name:"1569098731",EnglishName:"Revenge",Desc:"",Attr:11018,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_baofu\""},
+	[11019]:{ID:0,NumID:11019,Name:"1967927427",EnglishName:"BreakingAxe",Desc:"",Attr:11019,Clip:"",Priority:0,Icon:"\"ui/sprites/skills/icon_skill_dunqiang\""},
+	[12001]:{ID:0,NumID:12001,Name:"374648296",EnglishName:"Shooting",Desc:"",Attr:12001,Clip:"Attack01",Priority:0},
+	[12002]:{ID:0,NumID:12002,Name:"841268946",EnglishName:"AimShoot",Desc:"",Attr:12002,Clip:"Attack02",Priority:0},
+	[12003]:{ID:0,NumID:12003,Name:"549739256",EnglishName:"PiercingHeart",Desc:"",Attr:12003,Clip:"Attack03",Priority:0},
+	[12004]:{ID:0,NumID:12004,Name:"1770870582",EnglishName:"ArrowRain",Desc:"",Attr:12004,Clip:"Attack04",Priority:0},
+	[12005]:{ID:0,NumID:12005,Name:"1486131304",EnglishName:"FlyingArrow",Desc:"",Attr:12005,Clip:"Attack05",Priority:0},
+	[13001]:{ID:0,NumID:13001,Name:"1112632370",EnglishName:"ChopIndiscriminately",Desc:"",Attr:13001,Clip:"Attack01",Priority:0},
+	[13002]:{ID:0,NumID:13002,Name:"236206522",EnglishName:"DoubleSwordAssassination",Desc:"",Attr:13002,Clip:"Attack02",Priority:0},
+	[13003]:{ID:0,NumID:13003,Name:"47987930",EnglishName:"FierceWindSlash",Desc:"",Attr:13003,Clip:"Attack03",Priority:0},
+	[13004]:{ID:0,NumID:13004,Name:"358535817",EnglishName:"Garrote",Desc:"",Attr:13004,Clip:"Attack04",Priority:0},
+	[13005]:{ID:0,NumID:13005,Name:"1557367637",EnglishName:"FuriousSlash",Desc:"",Attr:13005,Clip:"Attack05",Priority:0},
+	[13006]:{ID:0,NumID:13006,Name:"686975033",EnglishName:"Slam",Desc:"",Attr:13006,Clip:"Attack06",Priority:0},
+	[13007]:{ID:0,NumID:13007,Name:"1368684141",EnglishName:"Murder",Desc:"",Attr:13007,Clip:"Attack07",Priority:0},
+	[14001]:{ID:0,NumID:14001,Name:"568850693",EnglishName:"Fireball",Desc:"",Attr:14001,Clip:"Attack01",Priority:0},
+	[14002]:{ID:0,NumID:14002,Name:"1362777123",EnglishName:"Lightning",Desc:"",Attr:14002,Clip:"Attack02",Priority:0},
+	[14003]:{ID:0,NumID:14003,Name:"1611426101",EnglishName:"ElectricShockStorm",Desc:"",Attr:14003,Clip:"Attack03",Priority:0},
+	[14004]:{ID:0,NumID:14004,Name:"1219869223",EnglishName:"Teleportation",Desc:"",Attr:14004,Clip:"Attack04",Priority:0},
+	[14005]:{ID:0,NumID:14005,Name:"2031532253",EnglishName:"Thunderbolt",Desc:"",Attr:14005,Clip:"Attack05",Priority:0},
+	[14006]:{ID:0,NumID:14006,Name:"2021544003",EnglishName:"FireRain",Desc:"",Attr:14006,Clip:"Attack01",Priority:0},
+	[14007]:{ID:0,NumID:14007,Name:"1170939596",EnglishName:"Summoning",Desc:"",Attr:14007,Clip:"Attack06",Priority:0},
+	[15001]:{ID:0,NumID:15001,Name:"2146694500",EnglishName:"PoisonBall",Desc:"",Attr:15001,Clip:"Attack01",Priority:0},
+	[15002]:{ID:0,NumID:15002,Name:"1992372052",EnglishName:"Healing",Desc:"",Attr:15002,Clip:"Attack04",Priority:0},
+	[15003]:{ID:0,NumID:15003,Name:"516993240",EnglishName:"LifeDelivery",Desc:"",Attr:15003,Clip:"Attack02",Priority:0},
+	[15004]:{ID:0,NumID:15004,Name:"1513952641",EnglishName:"Dodge",Desc:"",Attr:15004,Priority:0},
+	[20001]:{ID:0,NumID:20001,Name:"411148612",EnglishName:"OfficeFireRain",Desc:"",Attr:20001,Clip:"Idle",Priority:0},
+	[30001]:{ID:0,NumID:30001,Name:"271360734",EnglishName:"GroupDefenseScroll",Desc:"",Attr:30001,Priority:0},
+	[30002]:{ID:0,NumID:30002,Name:"1173704944",EnglishName:"GroupTherapyScroll",Desc:"",Attr:30002,Priority:0},
+	[30003]:{ID:0,NumID:30003,Name:"1218523462",EnglishName:"GroupMagicScroll",Desc:"",Attr:30003,Priority:0},
+	[30004]:{ID:0,NumID:30004,Name:"1061455900",EnglishName:"AccelerationScroll",Desc:"",Attr:30004,Priority:0},
+	[30005]:{ID:0,NumID:30005,Name:"946959149",EnglishName:"RoarScroll",Desc:"",Attr:30005,Priority:0},
+	[30006]:{ID:0,NumID:30006,Name:"516154247",EnglishName:"MockingScroll",Desc:"",Attr:30006,Priority:0},
+	[30007]:{ID:0,NumID:30007,Name:"605863789",EnglishName:"SilentScroll",Desc:"",Attr:30007,Priority:0},
+	[30008]:{ID:0,NumID:30008,Name:"1295965267",EnglishName:"LifeRecoveryScroll",Desc:"",Attr:30008,Priority:0},
+	[30009]:{ID:0,NumID:30009,Name:"189696725",EnglishName:"MagicRecoveryScroll",Desc:"",Attr:30009,Priority:0},
+	[30010]:{ID:0,NumID:30010,Name:"1758220824",EnglishName:"GoldenShield",Desc:"",Attr:30010,Priority:0},
+	[30011]:{ID:0,NumID:30011,Name:"1170939596",EnglishName:"SummoningMagic",Desc:"",Attr:30011,Clip:"Attack06",Priority:0}
+
+}

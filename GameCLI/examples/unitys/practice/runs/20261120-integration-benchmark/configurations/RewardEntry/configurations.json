@@ -1,0 +1,34 @@
+{
+  "tables": [],
+  "integration": [
+    "UIRewardEntry composes a child ItemSlot.prefab. VMRewardEntry contains Item (VMItemSlot/SyncMetadata) and Claimed (bool/SyncVisible), in that order.",
+    "Host assigns Item.Text, Item.Icon, Item.IconVisible and product-defined Item.type. Reward only displays its claim marker; it never owns grant rules.",
+    "Install ItemSlot v5 first. Keep BagIconNew child name so existing animation paths remain valid. Reward-native materials retain only claim-marker and outer animation assets.",
+    "UIRewardEntry.Unref sets Item=null before base.Unref, releasing the child subscription. Static instances should not repeatedly Ref; Fancy reuse retains the existing framework cache limitations.",
+    "Unref preserves the item data: temporarily clear Item to release the child subscription, unsubscribe the parent, then restore the same Item. Recycled cells may bind the same reward model again.",
+    "Icon is a string asset path resolved by existing SyncSprite/UILoader. IconVisible expresses host visibility intent, not loading completion. Mail does not load Sprite or maintain image callbacks. Shared loader cancellation and out-of-order completion need separate validation."
+  ],
+  "dependencies": [
+    {
+      "kind": "framework",
+      "name": "com.oathx.widget",
+      "reason": "UIWidget, VM, Metadata and Sync actions",
+      "required": true
+    },
+    {
+      "kind": "framework",
+      "name": "com.oathx.widget.extension",
+      "reason": "Existing Fancy cell/list integration",
+      "required": true
+    },
+    {
+      "kind": "template",
+      "name": "ItemSlot",
+      "reason": "Shared base slot, VM and item artwork; install before RewardEntry.",
+      "version": 5,
+      "required": true,
+      "templateId": "ItemSlot"
+    }
+  ],
+  "schemaVersion": 1
+}

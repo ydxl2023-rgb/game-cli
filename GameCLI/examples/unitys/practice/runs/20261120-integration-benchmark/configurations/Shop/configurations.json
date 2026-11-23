@@ -1,0 +1,177 @@
+{
+  "tables": [
+    {
+      "name": "propCommonText",
+      "merge": "Merge only SHOP aliases; resolve numeric collisions, retain product translations and regenerate with the product exporter.",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int",
+          "description": "Stable alias"
+        },
+        {
+          "name": "NumID",
+          "type": "int",
+          "description": "Numeric identifier"
+        },
+        {
+          "name": "Context",
+          "type": "string",
+          "description": "Localized display text"
+        }
+      ],
+      "layout": {
+        "typeRow": 3,
+        "headerRow": 2,
+        "dataStartRow": 4,
+        "descriptionRow": 1
+      },
+      "source": {
+        "sheet": "CommonText",
+        "sha256": "6e5ddadb39b5bfa5f5c4431aeabacfbd5771fee84adc4e9da3a6ebacd6a7c0d9",
+        "assetId": "6e5ddadb39b5bfa5f5c4431aeabacfbd5771fee84adc4e9da3a6ebacd6a7c0d9",
+        "fileName": "propCommonText.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "SHOP_RECHARGE",
+          "NumID": "3001",
+          "Context": "充值"
+        },
+        {
+          "ID": "SHOP_GIFTS",
+          "NumID": "3002",
+          "Context": "礼包"
+        },
+        {
+          "ID": "SHOP_DEMO_NOTICE",
+          "NumID": "3003",
+          "Context": "本地模拟商城 · 不产生真实扣款"
+        },
+        {
+          "ID": "SHOP_PRICE",
+          "NumID": "3004",
+          "Context": "¥{0}"
+        },
+        {
+          "ID": "SHOP_TOKEN_AMOUNT",
+          "NumID": "3005",
+          "Context": "{0}钻石"
+        },
+        {
+          "ID": "SHOP_GIFT_SMALL",
+          "NumID": "3006",
+          "Context": "每日补给礼包"
+        },
+        {
+          "ID": "SHOP_GIFT_MEDIUM",
+          "NumID": "3007",
+          "Context": "成长补给礼包"
+        },
+        {
+          "ID": "SHOP_GIFT_LARGE",
+          "NumID": "3008",
+          "Context": "豪华补给礼包"
+        },
+        {
+          "ID": "SHOP_LIMIT",
+          "NumID": "3009",
+          "Context": "剩余可购：{0}"
+        },
+        {
+          "ID": "SHOP_SOLD_OUT",
+          "NumID": "3010",
+          "Context": "已售罄"
+        },
+        {
+          "ID": "SHOP_CONFIRM",
+          "NumID": "3011",
+          "Context": "模拟购买"
+        },
+        {
+          "ID": "SHOP_REWARDS",
+          "NumID": "3012",
+          "Context": "模拟购买后获得以下道具"
+        },
+        {
+          "ID": "SHOP_TOKEN_NAME",
+          "NumID": "3013",
+          "Context": "钻石"
+        },
+        {
+          "ID": "SHOP_COUNT",
+          "NumID": "3014",
+          "Context": "×{0}"
+        },
+        {
+          "ID": "SHOP_SUCCESS",
+          "NumID": "3015",
+          "Context": "本地模拟购买成功，已发放{0}钻石"
+        },
+        {
+          "ID": "SHOP_INSUFFICIENT",
+          "NumID": "3016",
+          "Context": "模拟余额不足"
+        },
+        {
+          "ID": "SHOP_NO_SELECTION",
+          "NumID": "3017",
+          "Context": "请选择可购买的商品"
+        },
+        {
+          "ID": "SHOP_CAPACITY",
+          "NumID": "3018",
+          "Context": "本地奖励数量已达上限"
+        },
+        {
+          "ID": "SHOP_HELP",
+          "NumID": "3019",
+          "Context": "模板使用本地示例商品与模拟余额；付款、活动及客服接口尚未接入。"
+        },
+        {
+          "ID": "SHOP_BALANCE",
+          "NumID": "3020",
+          "Context": "模拟余额：{0}"
+        },
+        {
+          "ID": "SHOP_FIRST_PAY",
+          "NumID": "3021",
+          "Context": "首充赠送"
+        }
+      ],
+      "purpose": "required",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    }
+  ],
+  "integration": [
+    "Register ShopEntity and ShopSystem; allocate a product FunctionSystem identifier. Do not overwrite product startup configuration.",
+    "Use the product coordinator for SystemActive/SystemDetive. HomeEntryRequested.Shop may activate Shop; Home is an optional integration, not an installation dependency.",
+    "UISystem CloseWidget(Type[]) must cancel pending asynchronous loads by request identity. Include the reviewed cancellation fix from FrameworkReference when the installed package lacks it.",
+    "DemoCatalog is explicit sample data, not an SDK price catalog or real wallet. Product payment/receipt verification/grant interfaces must be supplied by the product.",
+    "Restore all four companion prefabs and Metadata. Main card is the dynamic shell; list items are populated by VM at runtime.",
+    "Install ItemSlot v5 first. Both product cards compose the shared UIItemSlot/VMItemSlot through SyncMetadata. Icon is a string asset path resolved by SyncSprite/UILoader; Gift quantity is Item.Text.",
+    "ShopRechargeItem/ShopRechargeItem.prefab and ShopGiftItem/ShopGiftItem.prefab are independent native product cards. The Shop pages reference nested instances through Fancy.cellPrefab and ProductTemplate. Root source cells remain inactive list templates; a standalone host activates its instance after binding.",
+    "Card code stays in Shop/UI and Shop/VM. Names, prices, first-pay display, purchase limits and sold-out markers belong to card VMs; purchases belong to ShopEntity. The purchase confirmation page is unchanged.",
+    "Retain source card artwork and entrance/click animations. Shop-specific nested overrides suppress ItemSlot default backgrounds/rarity borders; recharge also suppresses the quantity and white base. Gift quantity uses dark text on the original white base. Each card keeps one outer Button and inner item Graphics do not intercept clicks.",
+    "Unref temporarily clears Item to release its child subscription, unsubscribes the card, and restores Item for list reuse. Shared SyncSprite cancellation/out-of-order behavior is not claimed as fixed by this composition.",
+    "A single reusable prefab without companion assets is stored directly in Widgets/Common/Micros. Product cards are Micros/ShopGiftItem.prefab and Micros/ShopRechargeItem.prefab. Use a module subdirectory only for multiple prefabs, Parts or companion resources."
+  ],
+  "dependencies": [
+    {
+      "kind": "generated",
+      "name": "propLanguage",
+      "reason": "Generate and load CommonText/Language before Shop opens.",
+      "required": true
+    },
+    {
+      "kind": "template",
+      "name": "ItemSlot",
+      "reason": "Shared item slot code, prefab and resource closure; restore before Shop.",
+      "version": 5,
+      "required": true,
+      "templateId": "ItemSlot"
+    }
+  ],
+  "schemaVersion": 1
+}

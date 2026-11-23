@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Mail",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 6,
+    "lines": 732,
+    "blankLines": 139,
+    "commentLines": 131,
+    "members": 92,
+    "documentedMembers": 92,
+    "blankLineRate": 0.18989071038251365,
+    "commentLineRate": 0.17896174863387979,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Mail/MailEntity.cs",
+      "sha256": "a0b7431c97dc94fe24ce2099297077618c3360d3ebbb436b58f134b131caed0f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/MailSystem.cs",
+      "sha256": "97921c6d3eccf57c505c5022a79394c95f1cbedf407ea11e2d42f53733135287"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMail.cs",
+      "sha256": "75a57b788ee86acf8522bbb53eab506703ee626be0b07967607b9929eed4e676"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/UI/UIMailEntry.cs",
+      "sha256": "bef34577dfb3d3723ead6f7e86a38962a2cf0ee89253a7b8e9549fa0e44046de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMail.cs",
+      "sha256": "32b3d8394292d1dbc369fce25fc595fa932e7be17ad6509f31a1126e5ba03ab3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Mail/VM/VMMailEntry.cs",
+      "sha256": "2aaa7bf5a827cd1fdac12d63ec60f72b6f231032b6f6431fa3bf3f3fbc38192b"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\1e8d41ac-dd3d-4729-8947-7d4e7b5d3c7c"
+}

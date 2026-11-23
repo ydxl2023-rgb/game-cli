@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Settings",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 6,
+    "lines": 1475,
+    "blankLines": 306,
+    "commentLines": 325,
+    "members": 265,
+    "documentedMembers": 265,
+    "blankLineRate": 0.20745762711864407,
+    "commentLineRate": 0.22033898305084745,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Settings/SettingsEntity.cs",
+      "sha256": "7427fa1d07acc72cd97c037ce77c00e9614b1cb6a125a589899fd76620cc9f9b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Settings/SettingsEvents.cs",
+      "sha256": "2690bd3bf8cc1ce252f98b5f0ffe828fecbc94ac5b51fb4c8bce6e7729ca2dda"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Settings/SettingsSystem.cs",
+      "sha256": "5a184e9f0b8eb8d8977bbb7d3dd466056c844646562f9a11390d9207e3ff199d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Settings/SettingsTypes.cs",
+      "sha256": "881c094a10bb20cafe2e607d74a4a4d0232987e07711dc128deadfc1b13a5dce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Settings/UI/UISettings.cs",
+      "sha256": "78bf88672cc174405c5ed2302062176ac3bb698e7b9324067bfe0a2defe2f8c0"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Settings/VM/VMSettings.cs",
+      "sha256": "3f89977072023ff79846db59bcb218a0831667af786f7d357ccaacca85bae520"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\6cae49fe-c222-46e7-a387-73a59f3b2cd6"
+}

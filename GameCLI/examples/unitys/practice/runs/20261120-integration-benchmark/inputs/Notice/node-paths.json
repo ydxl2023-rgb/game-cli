@@ -1,0 +1,223 @@
+[
+  {
+    "id": "T1Notice0",
+    "path": "Notice",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0Animator",
+    "path": "Notice/Animator",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_0",
+    "path": "Notice/Animator/Bg",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0OpenPanel",
+    "path": "Notice/Animator/Panel",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_1",
+    "path": "Notice/Animator/Panel/WhiteBg",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_2",
+    "path": "Notice/Animator/Panel/TopBg",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_2_0",
+    "path": "Notice/Animator/Panel/TopBg/TitleDecorate",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_2_1",
+    "path": "Notice/Animator/Panel/TopBg/Title",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_2_2",
+    "path": "Notice/Animator/Panel/TopBg/Close",
+    "type": "Button",
+    "text": "",
+    "action": {
+      "type": "hide",
+      "target": "T1Notice0"
+    }
+  },
+  {
+    "id": "T1Notice0_3",
+    "path": "Notice/Animator/Panel/ScrollView",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeBottom",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Content",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_0_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Content/Item",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_0_0_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Content/Item/MainText",
+    "type": "Text",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_0_0_1",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Content/Item/Image",
+    "type": "Button",
+    "text": "",
+    "action": {
+      "type": "none"
+    }
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_1",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Ball",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_1_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Ball/Ball1",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_1_2",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/ExpandContent/Line",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_2",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeTitleList",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_2_0",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeTitleList/TitleGreen",
+    "type": "Button",
+    "text": "",
+    "action": {
+      "type": "toggle",
+      "target": "T1Notice0_3_0_0_0_1"
+    }
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_2_1",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeTitleList/TitleIcon",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_2_2",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeTitleList/NoticeTitleName",
+    "type": "Text",
+    "text": "防沉迷公告"
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_2_3",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeTitleList/TitleArrow",
+    "type": "Button",
+    "text": "",
+    "action": {
+      "type": "toggle",
+      "target": "T1Notice0_3_0_0_0_1"
+    }
+  },
+  {
+    "id": "T1Notice0_3_0_0_0_2_4",
+    "path": "Notice/Animator/Panel/ScrollView/Viewport/TextCells/Item/NoticeTitleList/RedPoint",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_4",
+    "path": "Notice/Animator/Panel/WeekNomoreShow",
+    "type": "Container",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_4_0",
+    "path": "Notice/Animator/Panel/WeekNomoreShow/ImgFrame",
+    "type": "Button",
+    "text": "",
+    "action": {
+      "type": "toggle",
+      "target": "T1Notice0_4_0_0"
+    }
+  },
+  {
+    "id": "T1Notice0_4_0_0",
+    "path": "Notice/Animator/Panel/WeekNomoreShow/ImgFrame/Selected",
+    "type": "Image",
+    "text": ""
+  },
+  {
+    "id": "T1Notice0_4_1",
+    "path": "Notice/Animator/Panel/WeekNomoreShow/WeekNomoreText",
+    "type": "Text",
+    "text": "一周内不再显示"
+  },
+  {
+    "id": "T1Notice0_4_2",
+    "path": "Notice/Animator/Panel/WeekNomoreShow/WeekNomoreBtn",
+    "type": "Button",
+    "text": "",
+    "action": {
+      "type": "toggle",
+      "target": "T1Notice0_4_0_0"
+    }
+  }
+]

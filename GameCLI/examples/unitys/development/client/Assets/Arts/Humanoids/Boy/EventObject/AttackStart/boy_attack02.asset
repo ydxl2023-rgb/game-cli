@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5206e8a888e72334a99982f3293d59bb, type: 3}
+  m_Name: boy_attack02
+  m_EditorClassIdentifier: 
+  AssetGUID: 
+  bone: 0
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  range: 0
+  checkType: 0
+  bulletPrefab: {fileID: 0}
+  fireNogPointName: 
+  fireOffset: {x: 0, y: 0, z: 0}
+  blur: 0
+  blurDist: 0.1
+  blurStrength: 3.5
+  blurFrame: 3
+  react:
+    hitAudioClip: {fileID: 8300000, guid: 2ec9728274ab45d4f96a36533b8dd05e, type: 3}
+    hitEffects:
+    - {fileID: 11400000, guid: cafde15df067a944695c867bfd5a4676, type: 2}
+    hitGround: 1
+    hitAir: 0
+    hitBlock: 0

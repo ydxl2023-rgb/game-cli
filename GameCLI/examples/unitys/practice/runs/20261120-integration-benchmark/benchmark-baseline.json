@@ -1,0 +1,56 @@
+{
+  "startUtc": "2026-11-20T08:27:01Z",
+  "requestTimestamp": "2026-11-20T08:25:09.428Z",
+  "parentRollout": "C:\\Users\\Administrator\\.codex\\sessions\\2026\\11\\09\\rollout-2026-11-09T18-48-42-01a1bfec-b177-70b3-b7b4-068df4067d0a.jsonl",
+  "baselineTokenEvent": {
+    "timestamp": "2026-11-19T08:33:42.879Z",
+    "ordinal": 258,
+    "type": "event_msg",
+    "payload": {
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 2895368,
+          "cached_input_tokens": 2544512,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7593,
+          "reasoning_output_tokens": 169,
+          "total_tokens": 2902961
+        },
+        "last_token_usage": {
+          "input_tokens": 127866,
+          "cached_input_tokens": 127616,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 88,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 127954
+        },
+        "last_usage_includes_reasoning": true,
+        "model_context_window": 258400
+      },
+      "rate_limits": {
+        "limit_id": "codex",
+        "limit_name": null,
+        "primary": {
+          "used_percent": 95.0,
+          "window_minutes": 10080,
+          "resets_at": 1795403765
+        },
+        "secondary": null,
+        "credits": {
+          "has_credits": false,
+          "unlimited": false,
+          "balance": "0"
+        },
+        "individual_limit": null,
+        "spend_control_reached": null,
+        "plan_type": null,
+        "rate_limit_reached_type": null
+      }
+    }
+  },
+  "humanBaselineDays": 30,
+  "hoursPerDayAssumption": 8,
+  "repairDefinition": "One independent acceptance rejection followed by developer correction and resubmission is one repair round; self-test fixes and environment repairs counted separately.",
+  "status": "running"
+}

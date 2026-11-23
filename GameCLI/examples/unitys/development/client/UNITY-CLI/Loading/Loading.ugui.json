@@ -1,0 +1,645 @@
+{
+  "format": "gamecli.ugui",
+  "version": 1,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "nodes": [
+    {
+      "id": "T1T1N0",
+      "name": "Loading",
+      "parent": null,
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": []
+    },
+    {
+      "id": "T1T1N0Animator",
+      "name": "Animator",
+      "parent": "T1T1N0",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0Animator:animator",
+          "type": "Animator",
+          "properties": {},
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_0",
+      "name": "LoadingBlackBg",
+      "parent": "T1T1N0Animator",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 1920,
+          "y": 1080
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_0:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            },
+            "m_RaycastTarget": false
+          },
+          "references": [],
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_1",
+      "name": "Root",
+      "parent": "T1T1N0Animator",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": []
+    },
+    {
+      "id": "T1T1N0_1_0",
+      "name": "Bg",
+      "parent": "T1T1N0_1",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 1
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 0,
+          "y": 0
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": []
+    },
+    {
+      "id": "T1T1N0_3",
+      "name": "RateBg",
+      "parent": "T1T1N0Animator",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 46
+        },
+        "sizeDelta": {
+          "x": 1920,
+          "y": 100
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_3:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "m_RaycastTarget": false,
+            "m_Type": 1
+          },
+          "references": [
+            {
+              "property": "m_Sprite",
+              "asset": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255"
+            }
+          ],
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_3_0",
+      "name": "Arrow",
+      "parent": "T1T1N0_3",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": -4
+        },
+        "sizeDelta": {
+          "x": 512,
+          "y": 152
+        },
+        "localScale": {
+          "x": 4.7625,
+          "y": 0.6,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_3_0:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.011764706
+            },
+            "m_RaycastTarget": false,
+            "m_UVRect": {
+              "x": 0,
+              "y": 0,
+              "width": 1.2999999523162842,
+              "height": 1
+            }
+          },
+          "references": [
+            {
+              "property": "m_Texture",
+              "asset": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc"
+            }
+          ],
+          "type": "RawImage"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_4",
+      "name": "TipText",
+      "parent": "T1T1N0_3",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 1,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "anchoredPosition": {
+          "x": 728.2900390625,
+          "y": 18
+        },
+        "sizeDelta": {
+          "x": -1018.2900390625,
+          "y": 60.900001525878906
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_4:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "m_RaycastTarget": false,
+            "m_Text": "\u6211\u4EEC\u662F\u5171\u4EA7\u4E3B\u4E49\u63A5\u73ED\u4EBA",
+            "m_FontData.m_FontSize": 32,
+            "m_FontData.m_Alignment": 5
+          },
+          "references": [],
+          "type": "Text"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_5",
+      "name": "Ball",
+      "parent": "T1T1N0_3",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 320,
+          "y": 50
+        },
+        "sizeDelta": {
+          "x": 64,
+          "y": 64
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_5:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "m_RaycastTarget": false
+          },
+          "references": [
+            {
+              "property": "m_Sprite",
+              "asset": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0"
+            }
+          ],
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_6",
+      "name": "Haikyu",
+      "parent": "T1T1N0_3",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 500,
+          "y": 50
+        },
+        "sizeDelta": {
+          "x": 540,
+          "y": 88
+        },
+        "localScale": {
+          "x": 0.8,
+          "y": 0.8,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_6:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "m_RaycastTarget": false
+          },
+          "references": [
+            {
+              "property": "m_Sprite",
+              "asset": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6"
+            }
+          ],
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0_7",
+      "name": "Rate",
+      "parent": "T1T1N0_3",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0,
+          "y": 0
+        },
+        "anchorMax": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 540,
+          "y": 47.5
+        },
+        "sizeDelta": {
+          "x": 362.15338134765625,
+          "y": 86.99996948242188
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0_7:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "m_RaycastTarget": false,
+            "m_Text": "Loading...(59%)",
+            "m_FontData.m_FontSize": 32,
+            "m_FontData.m_Alignment": 3
+          },
+          "references": [],
+          "type": "Text"
+        }
+      ]
+    },
+    {
+      "id": "T1T1N0LoadingBg",
+      "name": "LoadingBg",
+      "parent": "T1T1N0_1_0",
+      "active": true,
+      "rectTransform": {
+        "anchorMin": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchorMax": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "anchoredPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "sizeDelta": {
+          "x": 2440,
+          "y": 1080
+        },
+        "localScale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "components": [
+        {
+          "id": "T1T1N0LoadingBg:graphic",
+          "properties": {
+            "m_Color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "m_RaycastTarget": false
+          },
+          "references": [
+            {
+              "property": "m_Sprite",
+              "asset": "86b4bf996df813392c7faa6263fe5b54af31eaaa6064d772ee1a3d5ad1ac22b9"
+            }
+          ],
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255",
+      "kind": "sprite",
+      "file": "assets/99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255.png",
+      "sha256": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255",
+      "border": {
+        "w": 0,
+        "x": 2,
+        "y": 0,
+        "z": 2
+      }
+    },
+    {
+      "id": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc",
+      "kind": "sprite",
+      "file": "assets/0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc.png",
+      "sha256": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc",
+      "border": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 0
+      }
+    },
+    {
+      "id": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0",
+      "kind": "sprite",
+      "file": "assets/6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0.png",
+      "sha256": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0",
+      "border": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 0
+      }
+    },
+    {
+      "id": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6",
+      "kind": "sprite",
+      "file": "assets/23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6.png",
+      "sha256": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6",
+      "border": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 0
+      }
+    },
+    {
+      "id": "86b4bf996df813392c7faa6263fe5b54af31eaaa6064d772ee1a3d5ad1ac22b9",
+      "kind": "sprite",
+      "file": "assets/86b4bf996df813392c7faa6263fe5b54af31eaaa6064d772ee1a3d5ad1ac22b9.png",
+      "sha256": "86b4bf996df813392c7faa6263fe5b54af31eaaa6064d772ee1a3d5ad1ac22b9",
+      "border": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 0
+      }
+    }
+  ]
+}

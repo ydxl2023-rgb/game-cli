@@ -1,0 +1,301 @@
+
+module('resmng');
+svnnum('$Id$');
+
+ITEM_EQUIP_BELT1001=1001
+ITEM_EQUIP_BELT1002=1002
+ITEM_EQUIP_BELT1003=1003
+ITEM_EQUIP_CLOTH1004=1004
+ITEM_EQUIP_CLOTH1005=1005
+ITEM_EQUIP_CLOTH1006=1006
+ITEM_EQUIP_CLOTH1007=1007
+ITEM_EQUIP_CLOTH1008=1008
+ITEM_EQUIP_CLOTH1009=1009
+ITEM_EQUIP_CLOTH1010=1010
+ITEM_EQUIP_CLOTH1011=1011
+ITEM_EQUIP_CLOTH1012=1012
+ITEM_EQUIP_CROWN1013=1013
+ITEM_EQUIP_CROWN1014=1014
+ITEM_EQUIP_CROWN1015=1015
+ITEM_EQUIP_CROWN1016=1016
+ITEM_EQUIP_FACE1017=1017
+ITEM_EQUIP_FACE1018=1018
+ITEM_EQUIP_FACE1019=1019
+ITEM_EQUIP_FACE1020=1020
+ITEM_EQUIP_FACE1021=1021
+ITEM_EQUIP_GLOVE1022=1022
+ITEM_EQUIP_GLOVE1023=1023
+ITEM_EQUIP_GLOVE1024=1024
+ITEM_EQUIP_GLOVE1025=1025
+ITEM_EQUIP_GLOVE1026=1026
+ITEM_EQUIP_GLOVE1027=1027
+ITEM_EQUIP_HAIR1028=1028
+ITEM_EQUIP_HAIR1029=1029
+ITEM_EQUIP_HAIR1030=1030
+ITEM_EQUIP_HAIR1031=1031
+ITEM_EQUIP_HAIR1032=1032
+ITEM_EQUIP_HAIR1033=1033
+ITEM_EQUIP_HAIR1034=1034
+ITEM_EQUIP_HAIRHALF1035=1035
+ITEM_EQUIP_HAIRHALF1036=1036
+ITEM_EQUIP_HAIRHALF1037=1037
+ITEM_EQUIP_HAIRHALF1038=1038
+ITEM_EQUIP_HAIRHALF1039=1039
+ITEM_EQUIP_HAIRHALF1040=1040
+ITEM_EQUIP_HAIRHALF1041=1041
+ITEM_EQUIP_HAT1042=1042
+ITEM_EQUIP_HAT1043=1043
+ITEM_EQUIP_HAT1044=1044
+ITEM_EQUIP_HELM1045=1045
+ITEM_EQUIP_HELM1046=1046
+ITEM_EQUIP_HELM1047=1047
+ITEM_EQUIP_HELM1048=1048
+ITEM_EQUIP_HELM1049=1049
+ITEM_EQUIP_HELM1050=1050
+ITEM_EQUIP_SHOE1051=1051
+ITEM_EQUIP_SHOE1052=1052
+ITEM_EQUIP_SHOE1053=1053
+ITEM_EQUIP_SHOE1054=1054
+ITEM_EQUIP_SHOE1055=1055
+ITEM_EQUIP_SHOE1056=1056
+ITEM_EQUIP_SHOULDERPAD1057=1057
+ITEM_EQUIP_SHOULDERPAD1058=1058
+ITEM_EQUIP_SHOULDERPAD1059=1059
+ITEM_EQUIP_SHOULDERPAD1060=1060
+ITEM_EQUIP_SHOULDERPAD1061=1061
+ITEM_EQUIP_1062=1062
+ITEM_EQUIP_1063=1063
+ITEM_EQUIP_1064=1064
+ITEM_EQUIP_1065=1065
+ITEM_EQUIP_1066=1066
+ITEM_EQUIP_1067=1067
+ITEM_EQUIP_WEAPON1068=1068
+ITEM_EQUIP_WEAPON1069=1069
+ITEM_EQUIP_WEAPON1070=1070
+ITEM_EQUIP_WEAPON1071=1071
+ITEM_EQUIP_WEAPON1072=1072
+ITEM_EQUIP_WEAPON1073=1073
+ITEM_EQUIP_WEAPON1074=1074
+ITEM_EQUIP_WEAPON1075=1075
+ITEM_EQUIP_WEAPON1076=1076
+ITEM_EQUIP_WEAPON1077=1077
+ITEM_EQUIP_WEAPON1078=1078
+ITEM_EQUIP_WEAPON1079=1079
+ITEM_EQUIP_ASSISTANT1080=1080
+ITEM_EQUIP_ASSISTANT1081=1081
+ITEM_EQUIP_ASSISTANT1082=1082
+ITEM_EQUIP_ASSISTANT1083=1083
+ITEM_EQUIP_ASSISTANT1084=1084
+ITEM_EQUIP_ASSISTANT1085=1085
+ITEM_EQUIP_ASSISTANT1086=1086
+ITEM_EQUIP_ASSISTANT1087=1087
+ITEM_EQUIP_ASSISTANT1088=1088
+ITEM_EQUIP_ASSISTANT1089=1089
+ITEM_EQUIP_ASSISTANT1090=1090
+ITEM_EQUIP_ASSISTANT1091=1091
+ITEM_EQUIP_ASSISTANT1092=1092
+ITEM_EQUIP_ASSISTANT1093=1093
+ITEM_EQUIP_ASSISTANT1094=1094
+ITEM_EQUIP_ASSISTANT1095=1095
+ITEM_EQUIP_WEAPON1096=1096
+ITEM_EQUIP_WEAPON1097=1097
+ITEM_EQUIP_WEAPON1098=1098
+ITEM_EQUIP_WEAPON1099=1099
+ITEM_EQUIP_WEAPON1100=1100
+ITEM_EQUIP_WEAPON1101=1101
+ITEM_EQUIP_WEAPON1102=1102
+ITEM_EQUIP_WEAPON1103=1103
+ITEM_EQUIP_WEAPON1104=1104
+ITEM_EQUIP_WEAPON1105=1105
+ITEM_EQUIP_WEAPON1106=1106
+ITEM_EQUIP_WEAPON1107=1107
+ITEM_EQUIP_WEAPON1108=1108
+ITEM_EQUIP_WEAPON1109=1109
+ITEM_EQUIP_WEAPON1110=1110
+ITEM_EQUIP_WEAPON1111=1111
+ITEM_EQUIP_WEAPON1112=1112
+ITEM_EQUIP_WEAPON1113=1113
+ITEM_EQUIP_WEAPON1114=1114
+ITEM_EQUIP_WEAPON1115=1115
+ITEM_EQUIP_ASSISTANT1116=1116
+ITEM_EQUIP_ASSISTANT1117=1117
+ITEM_EQUIP_ASSISTANT1118=1118
+ITEM_EQUIP_ASSISTANT1119=1119
+ITEM_EQUIP_WEAPON1120=1120
+ITEM_EQUIP_WEAPON1121=1121
+ITEM_EQUIP_WEAPON1122=1122
+ITEM_EQUIP_WEAPON1123=1123
+ITEM_EQUIP_WEAPON1124=1124
+ITEM_EQUIP_WEAPON1125=1125
+ITEM_EQUIP_WEAPON1126=1126
+ITEM_EQUIP_WEAPON1127=1127
+ITEM_EQUIP_WEAPON1128=1128
+ITEM_EQUIP_WEAPON1129=1129
+ITEM_EQUIP_WEAPON1130=1130
+ITEM_EQUIP_WEAPON1131=1131
+ITEM_EQUIP_WEAPON1132=1132
+ITEM_EQUIP_WEAPON1133=1133
+ITEM_EQUIP_WEAPON1134=1134
+ITEM_EQUIP_WEAPON1135=1135
+ITEM_EQUIP_WEAPON1136=1136
+ITEM_EQUIP_WEAPON1137=1137
+ITEM_EQUIP_WEAPON1138=1138
+ITEM_EQUIP_WEAPON1139=1139
+ITEM_EQUIP_WEAPON1140=1140
+ITEM_EQUIP_WEAPON1141=1141
+ITEM_EQUIP_WEAPON1142=1142
+ITEM_EQUIP_WEAPON1143=1143
+ITEM_EQUIP_WEAPON1144=1144
+ITEM_EQUIP_WEAPON1145=1145
+ITEM_EQUIP_WEAPON1146=1146
+
+
+propItemConfig = {
+    [1001]:{ID:0,NumID:1001,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/belt1boypolyart.asset"]},
+	[1002]:{ID:0,NumID:1002,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/belt2boypolyart.asset"]},
+	[1003]:{ID:0,NumID:1003,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/belt3boypolyart.asset"]},
+	[1004]:{ID:0,NumID:1004,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth1boypolyart.asset"]},
+	[1005]:{ID:0,NumID:1005,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth2boypolyart.asset"]},
+	[1006]:{ID:0,NumID:1006,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth3boypolyart.asset"]},
+	[1007]:{ID:0,NumID:1007,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth4boypolyart.asset"]},
+	[1008]:{ID:0,NumID:1008,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth5boypolyart.asset"]},
+	[1009]:{ID:0,NumID:1009,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth6boypolyart.asset"]},
+	[1010]:{ID:0,NumID:1010,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth7boypolyart.asset"]},
+	[1011]:{ID:0,NumID:1011,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth8boypolyart.asset"]},
+	[1012]:{ID:0,NumID:1012,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Cloth9boypolyart.asset"]},
+	[1013]:{ID:0,NumID:1013,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Crown1boypolyart.asset"]},
+	[1014]:{ID:0,NumID:1014,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Crown2boypolyart.asset"]},
+	[1015]:{ID:0,NumID:1015,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Crown3boypolyart.asset"]},
+	[1016]:{ID:0,NumID:1016,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Crown4boypolyart.asset"]},
+	[1017]:{ID:0,NumID:1017,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Face1boypolyart.asset"]},
+	[1018]:{ID:0,NumID:1018,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Face2boypolyart.asset"]},
+	[1019]:{ID:0,NumID:1019,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Face3boypolyart.asset"]},
+	[1020]:{ID:0,NumID:1020,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Face4boypolyart.asset"]},
+	[1021]:{ID:0,NumID:1021,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Face5boypolyart.asset"]},
+	[1022]:{ID:0,NumID:1022,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Glove1boypolyart.asset"]},
+	[1023]:{ID:0,NumID:1023,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Glove2boypolyart.asset"]},
+	[1024]:{ID:0,NumID:1024,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Glove4boypolyart.asset"]},
+	[1025]:{ID:0,NumID:1025,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Glove5boypolyart.asset"]},
+	[1026]:{ID:0,NumID:1026,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Glove6boypolyart.asset"]},
+	[1027]:{ID:0,NumID:1027,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Glove7boypolyart.asset"]},
+	[1028]:{ID:0,NumID:1028,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair1boypolyart.asset"]},
+	[1029]:{ID:0,NumID:1029,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair2boypolyart.asset"]},
+	[1030]:{ID:0,NumID:1030,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair3boypolyart.asset"]},
+	[1031]:{ID:0,NumID:1031,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair4boypolyart.asset"]},
+	[1032]:{ID:0,NumID:1032,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair5boypolyart.asset"]},
+	[1033]:{ID:0,NumID:1033,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair6boypolyart.asset"]},
+	[1034]:{ID:0,NumID:1034,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair7boypolyart.asset"]},
+	[1035]:{ID:0,NumID:1035,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair1Halfboypolyart.asset"]},
+	[1036]:{ID:0,NumID:1036,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair2Halfboypolyart.asset"]},
+	[1037]:{ID:0,NumID:1037,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair3Halfboypolyart.asset"]},
+	[1038]:{ID:0,NumID:1038,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair4Halfboypolyart.asset"]},
+	[1039]:{ID:0,NumID:1039,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair5Halfboypolyart.asset"]},
+	[1040]:{ID:0,NumID:1040,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair6Halfboypolyart.asset"]},
+	[1041]:{ID:0,NumID:1041,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hair7Halfboypolyart.asset"]},
+	[1042]:{ID:0,NumID:1042,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hat1boypolyart.asset"]},
+	[1043]:{ID:0,NumID:1043,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hat2boypolyart.asset"]},
+	[1044]:{ID:0,NumID:1044,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Hat3boypolyart.asset"]},
+	[1045]:{ID:0,NumID:1045,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Helm1boypolyart.asset"]},
+	[1046]:{ID:0,NumID:1046,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Helm2boypolyart.asset"]},
+	[1047]:{ID:0,NumID:1047,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Helm3boypolyart.asset"]},
+	[1048]:{ID:0,NumID:1048,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Helm4boypolyart.asset"]},
+	[1049]:{ID:0,NumID:1049,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Helm5boypolyart.asset"]},
+	[1050]:{ID:0,NumID:1050,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Helm7boypolyart.asset"]},
+	[1051]:{ID:0,NumID:1051,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Shoe1boypolyart.asset"]},
+	[1052]:{ID:0,NumID:1052,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Shoe2boypolyart.asset"]},
+	[1053]:{ID:0,NumID:1053,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Shoe3boypolyart.asset"]},
+	[1054]:{ID:0,NumID:1054,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Shoe4boypolyart.asset"]},
+	[1055]:{ID:0,NumID:1055,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Shoe5boypolyart.asset"]},
+	[1056]:{ID:0,NumID:1056,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/Shoe6boypolyart.asset"]},
+	[1057]:{ID:0,NumID:1057,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/ShoulderPad1boypolyart.asset"]},
+	[1058]:{ID:0,NumID:1058,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/ShoulderPad2boypolyart.asset"]},
+	[1059]:{ID:0,NumID:1059,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/ShoulderPad4boypolyart.asset"]},
+	[1060]:{ID:0,NumID:1060,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/ShoulderPad5boypolyart.asset"]},
+	[1061]:{ID:0,NumID:1061,Name:"",BoneNogPointName:"",OverrideController:"",elements:["Assets/Datas/Humanoids/Boy/elements/ShoulderPad6boypolyart.asset"]},
+	[1062]:{ID:0,NumID:1062,Name:"",BoneNogPointName:"backpackShield01",OverrideController:"",elements:["Assets/Datas/Humanoids/boy/attachments/backpack1boypolyart.asset"]},
+	[1063]:{ID:0,NumID:1063,Name:"",BoneNogPointName:"backpackShield01",OverrideController:"",elements:["Assets/Datas/Humanoids/boy/attachments/backpack1boypolyartmaskbase.asset"]},
+	[1064]:{ID:0,NumID:1064,Name:"",BoneNogPointName:"backpackShield01",OverrideController:"",elements:["Assets/Datas/Humanoids/boy/attachments/backpack2boypolyart.asset"]},
+	[1065]:{ID:0,NumID:1065,Name:"",BoneNogPointName:"backpackShield01",OverrideController:"",elements:["Assets/Datas/Humanoids/boy/attachments/backpack2boypolyartmaskbase.asset"]},
+	[1066]:{ID:0,NumID:1066,Name:"",BoneNogPointName:"backpackShield01",OverrideController:"",elements:["Assets/Datas/Humanoids/boy/attachments/backpack3boypolyart.asset"]},
+	[1067]:{ID:0,NumID:1067,Name:"",BoneNogPointName:"backpackShield01",OverrideController:"",elements:["Assets/Datas/Humanoids/boy/attachments/backpack3boypolyartmaskbase.asset"]},
+	[1068]:{ID:0,NumID:1068,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe1_lboypolyart.asset"]},
+	[1069]:{ID:0,NumID:1069,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe1_lboypolyartmaskbase.asset"]},
+	[1070]:{ID:0,NumID:1070,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe2_lboypolyart.asset"]},
+	[1071]:{ID:0,NumID:1071,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe2_lboypolyartmaskbase.asset"]},
+	[1072]:{ID:0,NumID:1072,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/Bow.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/bow1boypolyart.asset"]},
+	[1073]:{ID:0,NumID:1073,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/bow1boypolyartmaskbase.asset"]},
+	[1074]:{ID:0,NumID:1074,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/bow2boypolyart.asset"]},
+	[1075]:{ID:0,NumID:1075,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/bow2boypolyartmaskbase.asset"]},
+	[1076]:{ID:0,NumID:1076,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer1_lboypolyart.asset"]},
+	[1077]:{ID:0,NumID:1077,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer1_lboypolyartmaskbase.asset"]},
+	[1078]:{ID:0,NumID:1078,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer2_lboypolyart.asset"]},
+	[1079]:{ID:0,NumID:1079,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer2_lboypolyartmaskbase.asset"]},
+	[1080]:{ID:0,NumID:1080,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield1boypolyart.asset"]},
+	[1081]:{ID:0,NumID:1081,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield1boypolyartmaskbase.asset"]},
+	[1082]:{ID:0,NumID:1082,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield2boypolyart.asset"]},
+	[1083]:{ID:0,NumID:1083,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield2boypolyartmaskbase.asset"]},
+	[1084]:{ID:0,NumID:1084,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield3boypolyart.asset"]},
+	[1085]:{ID:0,NumID:1085,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield3boypolyartmaskbase.asset"]},
+	[1086]:{ID:0,NumID:1086,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield4boypolyart.asset"]},
+	[1087]:{ID:0,NumID:1087,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield4boypolyartmaskbase.asset"]},
+	[1088]:{ID:0,NumID:1088,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield5boypolyart.asset"]},
+	[1089]:{ID:0,NumID:1089,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield5boypolyartmaskbase.asset"]},
+	[1090]:{ID:0,NumID:1090,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield6boypolyart.asset"]},
+	[1091]:{ID:0,NumID:1091,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield6boypolyartmaskbase.asset"]},
+	[1092]:{ID:0,NumID:1092,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield7boypolyart.asset"]},
+	[1093]:{ID:0,NumID:1093,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield7boypolyartmaskbase.asset"]},
+	[1094]:{ID:0,NumID:1094,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield8boypolyart.asset"]},
+	[1095]:{ID:0,NumID:1095,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/shield8boypolyartmaskbase.asset"]},
+	[1096]:{ID:0,NumID:1096,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword1_lboypolyart.asset"]},
+	[1097]:{ID:0,NumID:1097,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword1_lboypolyartmaskbase.asset"]},
+	[1098]:{ID:0,NumID:1098,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword2_lboypolyart.asset"]},
+	[1099]:{ID:0,NumID:1099,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword2_lboypolyartmaskbase.asset"]},
+	[1100]:{ID:0,NumID:1100,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword3_lboypolyart.asset"]},
+	[1101]:{ID:0,NumID:1101,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword3_lboypolyartmaskbase.asset"]},
+	[1102]:{ID:0,NumID:1102,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword4_lboypolyart.asset"]},
+	[1103]:{ID:0,NumID:1103,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword4_lboypolyartmaskbase.asset"]},
+	[1104]:{ID:0,NumID:1104,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword5_lboypolyart.asset"]},
+	[1105]:{ID:0,NumID:1105,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword5_lboypolyartmaskbase.asset"]},
+	[1106]:{ID:0,NumID:1106,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword6_lboypolyart.asset"]},
+	[1107]:{ID:0,NumID:1107,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword6_lboypolyartmaskbase.asset"]},
+	[1108]:{ID:0,NumID:1108,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword7_lboypolyart.asset"]},
+	[1109]:{ID:0,NumID:1109,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword7_lboypolyartmaskbase.asset"]},
+	[1110]:{ID:0,NumID:1110,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand1_lboypolyart.asset"]},
+	[1111]:{ID:0,NumID:1111,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand1_lboypolyartmaskbase.asset"]},
+	[1112]:{ID:0,NumID:1112,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand2_lboypolyart.asset"]},
+	[1113]:{ID:0,NumID:1113,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand2_lboypolyartmaskbase.asset"]},
+	[1114]:{ID:0,NumID:1114,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand3_lboypolyart.asset"]},
+	[1115]:{ID:0,NumID:1115,Name:"",BoneNogPointName:"weaponShield_l",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand3_lboypolyartmaskbase.asset"]},
+	[1116]:{ID:0,NumID:1116,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/Bow.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/arrow1boypolyart.asset"]},
+	[1117]:{ID:0,NumID:1117,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/Bow.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/arrow1boypolyartmaskbase.asset"]},
+	[1118]:{ID:0,NumID:1118,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/Bow.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/arrow2boypolyart.asset"]},
+	[1119]:{ID:0,NumID:1119,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/Bow.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/arrow2boypolyartmaskbase.asset"]},
+	[1120]:{ID:0,NumID:1120,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe1_rboypolyart.asset"]},
+	[1121]:{ID:0,NumID:1121,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe1_rboypolyartmaskbase.asset"]},
+	[1122]:{ID:0,NumID:1122,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe2_rboypolyart.asset"]},
+	[1123]:{ID:0,NumID:1123,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/axe2_rboypolyartmaskbase.asset"]},
+	[1124]:{ID:0,NumID:1124,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer1_rboypolyart.asset"]},
+	[1125]:{ID:0,NumID:1125,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer1_rboypolyartmaskbase.asset"]},
+	[1126]:{ID:0,NumID:1126,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer2_rboypolyart.asset"]},
+	[1127]:{ID:0,NumID:1127,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/hammer2_rboypolyartmaskbase.asset"]},
+	[1128]:{ID:0,NumID:1128,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword1_rboypolyart.asset"]},
+	[1129]:{ID:0,NumID:1129,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword1_rboypolyartmaskbase.asset"]},
+	[1130]:{ID:0,NumID:1130,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword2_rboypolyart.asset"]},
+	[1131]:{ID:0,NumID:1131,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword2_rboypolyartmaskbase.asset"]},
+	[1132]:{ID:0,NumID:1132,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword3_rboypolyart.asset"]},
+	[1133]:{ID:0,NumID:1133,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword3_rboypolyartmaskbase.asset"]},
+	[1134]:{ID:0,NumID:1134,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword4_rboypolyart.asset"]},
+	[1135]:{ID:0,NumID:1135,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword4_rboypolyartmaskbase.asset"]},
+	[1136]:{ID:0,NumID:1136,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword5_rboypolyart.asset"]},
+	[1137]:{ID:0,NumID:1137,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword5_rboypolyartmaskbase.asset"]},
+	[1138]:{ID:0,NumID:1138,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword6_rboypolyart.asset"]},
+	[1139]:{ID:0,NumID:1139,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword6_rboypolyartmaskbase.asset"]},
+	[1140]:{ID:0,NumID:1140,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword7_rboypolyart.asset"]},
+	[1141]:{ID:0,NumID:1141,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/SwordShield.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/sword7_rboypolyartmaskbase.asset"]},
+	[1142]:{ID:0,NumID:1142,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand1_rboypolyart.asset"]},
+	[1143]:{ID:0,NumID:1143,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand1_rboypolyartmaskbase.asset"]},
+	[1144]:{ID:0,NumID:1144,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand2_rboypolyart.asset"]},
+	[1145]:{ID:0,NumID:1145,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand2_rboypolyartmaskbase.asset"]},
+	[1146]:{ID:0,NumID:1146,Name:"",BoneNogPointName:"weaponShield_r",OverrideController:"Assets/Datas/Humanoids/boy/AnimatorOverrideController/MagicWand.OverrideController",elements:["Assets/Datas/Humanoids/boy/attachments/wand3_rboypolyart.asset"]}
+
+}

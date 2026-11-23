@@ -1,0 +1,28 @@
+{
+  "repairedUnique": 63,
+  "repairedFiles": 136,
+  "allDimensionsPreserved": true,
+  "originalAlphaRestoredFor": 62,
+  "recruitLeftTransparentInset": 22,
+  "recruitCanvas": [
+    262,
+    161
+  ],
+  "prefabsAnimationsAndMetaUnchanged": true,
+  "lockedFilesChecked": 1358,
+  "backgroundsUnchanged": 10,
+  "runtimeChecks": [
+    "Home recruitment separation",
+    "Settings selected/unselected contrast",
+    "Settings audience toggle OFF->ON->OFF, original preference restored",
+    "Sound tab toggle and slider edges"
+  ],
+  "staticAudit": "All 44 prefabs; 173 ColorTint and 73 None transitions; zero SpriteSwap references; state images are child layers or VM visibility",
+  "runtimeScreenshots": [
+    "home-fixed.png",
+    "settings-state-a.png",
+    "settings-state-b.png",
+    "settings-sound.png"
+  ],
+  "limitations": "Runtime visual inspection sampled main affected controls; not an exhaustive click-through of every button."
+}

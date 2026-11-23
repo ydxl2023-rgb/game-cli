@@ -1,0 +1,16 @@
+{
+  "tables": [],
+  "integration": [
+    "The two reusable components are Profile.prefab and ProfileShortcuts.prefab. Drag either root into a page to reuse the whole component. Avatar and individual shortcut prefabs live under Profile/Parts and are implementation pieces, not the primary integration surface.",
+    "ProfileShortcuts contains Mail, Settings, Notice, Friends and Affinity. Bind one VMProfileShortcuts at the group root; its five VMActivityEntry properties bind the existing entry widgets through SyncMetadata. Host-supplied callbacks and state retain the entry contract. No system routing or entity lookup is embedded in the shared UI.",
+    "Use the host SyncMetadata field once to assign VMProfileShortcuts with all five entries initialized. Refresh existing entry properties; do not replace callbacks or nested VMs. Set the group VM to null before host Unref. The group releases child bindings on Unref/OnDestroy, rejects rebinding and moves all five entries as one RectTransform.",
+    "Profile binds one VMProfile with PlayerName, PlayerLevel, Portrait, Frame, ProfileEntry and AvatarEntry. UIProfile owns all inner Text/Image/entry bindings. The host supplies formatted text, valid asset paths and entry callbacks. Existing SyncSprite resolves paths through UIResourceManager and the configured UILoader; SyncVisible binds PortraitVisible and FrameVisible. Unassigned paths preserve authored artwork. Hide and restore through visibility, never null or empty paths. No custom image ISyncAction or player lookup is introduced. Framework limitation: path callbacks do not guard request ordering or destruction during loading; products requiring these cases must improve shared loader lifecycle protection.",
+    "Keep original font, layout, click regions and tip nodes. RedDotScope and configuration remain host-owned. Home TopLeft entrance still animates both group roots; group extraction does not add a duplicate entrance animation.",
+    "Native code lives in Systems/Common/UI and UI/VM. Shared assets remain Widgets/Common. Preserve GUIDs and merge identical shared paths. resource-moves.json records the original shared-resource upgrade. The former Profile prefab body is now Parts/ProfileBody.prefab with its original GUID; the new Profile root wraps it and owns VMProfile bindings. AvatarFrame and individual buttons remain internal Parts.",
+    "Historical individually registered button templates are retained only in the legacy-parts catalog group for migration. New product work uses the two composite templates."
+  ],
+  "dependencies": [
+    "com.oathx.widget"
+  ],
+  "schemaVersion": 1
+}

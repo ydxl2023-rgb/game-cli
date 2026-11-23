@@ -1,0 +1,830 @@
+{
+  "tables": [
+    {
+      "name": "propCommonText",
+      "merge": "Merge these Home aliases only. Resolve numeric collisions before generation; preserve product data and translations.",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int",
+          "description": "Stable alias"
+        },
+        {
+          "name": "NumID",
+          "type": "int",
+          "description": "Numeric identifier"
+        },
+        {
+          "name": "Context",
+          "type": "string",
+          "description": "Localized display text"
+        }
+      ],
+      "layout": {
+        "typeRow": 3,
+        "headerRow": 2,
+        "dataStartRow": 4,
+        "descriptionRow": 1
+      },
+      "source": {
+        "sheet": "CommonText",
+        "sha256": "7101e3211354aba84020cbe087d57a94cfa30c2a2c04f14bdf28cf73d9e287f0",
+        "assetId": "7101e3211354aba84020cbe087d57a94cfa30c2a2c04f14bdf28cf73d9e287f0",
+        "fileName": "propCommonText.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "HOME_TEXT_0_6_3_0_0_1",
+          "NumID": "2001",
+          "Context": "商店"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_3_1_0",
+          "NumID": "2002",
+          "Context": "活动"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_3_2_0",
+          "NumID": "2003",
+          "Context": "排行榜"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_4_1_0",
+          "NumID": "2004",
+          "Context": "背包"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_4_2_0",
+          "NumID": "2005",
+          "Context": "图鉴"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_4_3_0",
+          "NumID": "2006",
+          "Context": "荣誉之路"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_4_4_4",
+          "NumID": "2007",
+          "Context": "故事"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_5_3_4",
+          "NumID": "2008",
+          "Context": "球员"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_5_4_4",
+          "NumID": "2009",
+          "Context": "球队"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_5_5_0",
+          "NumID": "2010",
+          "Context": "社团"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_5_6_0",
+          "NumID": "2011",
+          "Context": "自由时间"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_5_2",
+          "NumID": "3025",
+          "Context": "直购特典1"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_6_2",
+          "NumID": "3027",
+          "Context": "直购特典1"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_12_0_0_0",
+          "NumID": "3033",
+          "Context": "剩余:{0}次"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_12_0_1_0",
+          "NumID": "3034",
+          "Context": "{0}天{1}时{2}分"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_13_0_0_0",
+          "NumID": "3035",
+          "Context": "乌鸦VS猫"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_13_0_0_5_0",
+          "NumID": "3038",
+          "Context": "{0}天{1}时{2}分"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_13_0_1_0",
+          "NumID": "3039",
+          "Context": "预览"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_2_0_14_0_2_0",
+          "NumID": "3040",
+          "Context": "{0}天{1}时{2}分"
+        },
+        {
+          "ID": "HOME_TEXT_0_6_3_0_2_1",
+          "NumID": "3062",
+          "Context": "广告获取"
+        }
+      ],
+      "purpose": "required",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    },
+    {
+      "name": "propFunctionSystem",
+      "fields": [
+        {
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "name": "NumID",
+          "type": "int"
+        },
+        {
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "name": "TargetType",
+          "type": "enum"
+        },
+        {
+          "name": "ClassType",
+          "type": "string"
+        },
+        {
+          "name": "InstallOnStartup",
+          "type": "int"
+        },
+        {
+          "name": "Condtions",
+          "type": "List<string>"
+        },
+        {
+          "name": "Active",
+          "type": "int"
+        },
+        {
+          "name": "StartTime",
+          "type": "string"
+        },
+        {
+          "name": "StopTime",
+          "type": "string"
+        },
+        {
+          "name": "SceneId",
+          "type": "int"
+        },
+        {
+          "name": "Version",
+          "type": "string"
+        }
+      ],
+      "source": {
+        "sheet": "FunctionSystem",
+        "sha256": "4dde6fe36a85ae6ac1084ae0bb2231461d695591fa57de1815643ab1a487e573",
+        "assetId": "4dde6fe36a85ae6ac1084ae0bb2231461d695591fa57de1815643ab1a487e573",
+        "fileName": "propFunctionSystem.xlsx"
+      },
+      "entries": [
+        {
+          "ID": "SYS_HOME",
+          "Name": "家园系统",
+          "NumID": "10003",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "HomeSystem",
+          "Condtions": "",
+          "StartTime": "",
+          "TargetType": "Target|Self",
+          "InstallOnStartup": "1"
+        },
+        {
+          "ID": "SYS_FUNCTION_OPEN",
+          "Name": "FunctionOpen",
+          "NumID": "10021",
+          "Active": "1",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "FunctionManagerSystem",
+          "Condtions": "",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "1"
+        },
+        {
+          "ID": "SYS_ACTIVITY_TASKBUTTON",
+          "Name": "TaskButton",
+          "NumID": "12000",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_SEVENDAYSTASK",
+          "Name": "SevendaysTask",
+          "NumID": "12002",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_FOURTEENDAYSTASK",
+          "Name": "FourteendaysTask",
+          "NumID": "12003",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_DIRECTPURCHASEBUTTON",
+          "Name": "DirectPurchaseButton",
+          "NumID": "12004",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_DIRECTPURCHASEBUTTON1",
+          "Name": "DirectPurchaseButton1",
+          "NumID": "12005",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_CNBATTLEPASSBUTTON",
+          "Name": "CNBattlePassButton",
+          "NumID": "12006",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_TIMELIMITGIFTBUTTON",
+          "Name": "TimeLimitGiftButton",
+          "NumID": "12007",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_UPINPROBUTTON",
+          "Name": "UpInProButton",
+          "NumID": "12008",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_COMEBACKBUTTON",
+          "Name": "ComeBackButton",
+          "NumID": "12009",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_POWERFULBAIT",
+          "Name": "PowerfulBait",
+          "NumID": "12010",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_KINGSETTER",
+          "Name": "KingSetter",
+          "NumID": "12011",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_ZHANSHUNODE",
+          "Name": "ZhanShuNode",
+          "NumID": "12012",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_FATEBATTLENODE",
+          "Name": "FateBattleNode",
+          "NumID": "12013",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_YEJIUNODE",
+          "Name": "YeJiuNode",
+          "NumID": "12014",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_PLAYERTHEME",
+          "Name": "PlayerTheme",
+          "NumID": "12015",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNTURNCARD",
+          "Name": "BtnTurnCard",
+          "NumID": "12016",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_ALIPAYPACKAGE",
+          "Name": "AliPayPackage",
+          "NumID": "12017",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_QUESTIONNODE",
+          "Name": "QuestionNode",
+          "NumID": "12018",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNPREORDER",
+          "Name": "BtnPreOrder",
+          "NumID": "12019",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNMATCHGUESS",
+          "Name": "BtnMatchGuess",
+          "NumID": "12020",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNTOPBATTLE",
+          "Name": "BtnTopBattle",
+          "NumID": "12021",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNSERVEGAME",
+          "Name": "BtnServeGame",
+          "NumID": "12022",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNNEWYEAR",
+          "Name": "BtnNewYear",
+          "NumID": "12023",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNCHAINGIFT",
+          "Name": "BtnChainGift",
+          "NumID": "12024",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNSPTOPIC",
+          "Name": "BtnSPTopic",
+          "NumID": "12025",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNANNIVERSARY",
+          "Name": "BtnAnniversary",
+          "NumID": "12026",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNFREEMATCH",
+          "Name": "BtnFreeMatch",
+          "NumID": "12027",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNRUNNINGGAME",
+          "Name": "BtnRunningGame",
+          "NumID": "12028",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTN15ANNIVERSARYACTIVE",
+          "Name": "Btn15AnniversaryActive",
+          "NumID": "12029",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNLUCKYDRAW",
+          "Name": "BtnLuckyDraw",
+          "NumID": "12030",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNWUYECANTEEN",
+          "Name": "BtnWuYeCanteen",
+          "NumID": "12031",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNACEDUEL",
+          "Name": "BtnAceDuel",
+          "NumID": "12032",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNCAMPTRAINING",
+          "Name": "BtnCampTraining",
+          "NumID": "12033",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNSPECIALOFFERPACKAGE",
+          "Name": "BtnSpecialOfferPackage",
+          "NumID": "12034",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNBARBECUE",
+          "Name": "BtnBarbecue",
+          "NumID": "12035",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNCOMBINATIONGIFT",
+          "Name": "BtnCombinationGift",
+          "NumID": "12036",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNSELECTSELFGIFT",
+          "Name": "BtnSelectSelfGift",
+          "NumID": "12037",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNSELECTSELFGACHA",
+          "Name": "BtnSelectSelfGacha",
+          "NumID": "12038",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNSKILLRESONANCE",
+          "Name": "BtnSkillResonance",
+          "NumID": "12039",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_BTNNATIONALTOURNAMENT",
+          "Name": "BtnNationalTournament",
+          "NumID": "12040",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:0,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        },
+        {
+          "ID": "SYS_ACTIVITY_SEVENDAYSLOGIN",
+          "Name": "SevendaysLogin",
+          "NumID": "12001",
+          "Active": "0",
+          "SceneId": "",
+          "Version": "",
+          "StopTime": "",
+          "ClassType": "",
+          "Condtions": "{Switch:1,Level:0}",
+          "StartTime": "",
+          "TargetType": "None",
+          "InstallOnStartup": "0"
+        }
+      ],
+      "purpose": "required",
+      "aliasField": "ID",
+      "primaryKey": "NumID"
+    }
+  ],
+  "integration": [
+    "HomeEntity must be registered with the entity manager.",
+    "RuntimeSystem.LoadSystem must activate newly created inactive modules for explicit navigation, independently of startup Active configuration.",
+    "Register HomeSystem in the product FunctionSystem table using the existing product ID allocation; do not copy a reference numeric ID.",
+    "The product coordinator consumes HomeEntryRequested; all destinations remain unconnected in this basic reference.",
+    "HomePresentationRequested exposes optional keys; no Spine, season animation, remote activity or SDK implementation is included.",
+    "Function availability: merge the included Function sources and SYS_FUNCTION_OPEN startup row. Conditions use {Switch:1,Level:10}; UTC time windows are inclusive-start/exclusive-end. Empty ClassType is presentation-only. Each nonempty ClassType is unique. Merge the reference GamePlugin.Load gate and MasterSystem event handlers without replacing product files. Home authored items bind stable FunctionSystem IDs through existing SyncGroup and SyncVisible; retain local artwork, animations and per-item RedDotScope.",
+    "Currency component: install CurrencyBar template v2 before Home, preserving native asset GUIDs. Home embeds its nested CurrencyBar.prefab and supplies three VMCurrencyEntry values and callbacks once. Update existing Amount properties when refreshing. No Currency source or materials are duplicated in Home.",
+    "Profile widgets: install PlayerProfile v4 bundle before Home. It carries Profile and ProfileShortcuts as two composite roots; avatar and individual buttons are internal Parts. Shared code lives in Common/UI. Bind the five shortcut entries through one VMProfileShortcuts; preserve Common resource GUIDs. Keep all GUIDs. Home supplies one VMProfile for name, level, portrait, frame and two entry interactions; all inner bindings belong to UIProfile. Valid asset paths are supplied by the host and loaded through SyncSprite; PortraitVisible and FrameVisible use SyncVisible. The component does not query HomeEntity."
+  ],
+  "dependencies": [
+    {
+      "kind": "generated",
+      "name": "propLanguage",
+      "reason": "Generate with the product exporter and load CommonText/Language before opening Home.",
+      "required": true
+    },
+    "RedDotSystem",
+    "CurrencyBar",
+    "PlayerProfile"
+  ],
+  "schemaVersion": 1
+}

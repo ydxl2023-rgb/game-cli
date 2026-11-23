@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-9d60fb2d-eb5b-445b-9d1b-25b6a2207484",
+  "unityProjectId": "44f4f783-645c-41e7-80fe-aead8477c978",
+  "system": "Master",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 2,
+    "lines": 390,
+    "blankLines": 64,
+    "commentLines": 117,
+    "members": 41,
+    "documentedMembers": 41,
+    "blankLineRate": 0.1641025641025641,
+    "commentLineRate": 0.3,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "sha256": "a986395e8b1ec84d525062e73a7ff6c26ed75dca941d81f5b21824f514a15999"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterSystem.cs",
+      "sha256": "1cd040447dc65284a9aa347550aa879525a1fc5e217ede7e2ca4a82f221a84cc"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\practice\\client\\Library\\GameCLI\\Verify\\37e61d4c-d551-4ea7-80c3-ef452df919c9"
+}

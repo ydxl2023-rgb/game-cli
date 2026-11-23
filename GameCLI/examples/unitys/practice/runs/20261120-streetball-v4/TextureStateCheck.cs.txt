@@ -1,0 +1,51 @@
+using Oathx.Core;
+using Oathx.Widget;
+/// <summary>Temporary texture validation, removed after screenshots.</summary>
+public static class TextureStateCheck
+{
+    /// <summary>Dispatch the existing login callback.</summary>
+    /// <returns>Whether the callback succeeded.</returns>
+    public static bool Enter()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UILogin>(out var widget))
+            return false;
+        var vm = widget.vm;
+        if (!vm)
+            return false;
+
+        return vm.EnterClick(null);
+    }
+
+    /// <summary>Open the settings system.</summary>
+    /// <returns>Whether the event was dispatched.</returns>
+    public static bool Settings()
+    {
+        return XPluginUtility.PostEvent(new SystemActive { type = typeof(SettingsSystem) });
+    }
+
+    /// <summary>Toggle the same preference twice across validation to restore it.</summary>
+    /// <returns>Whether the existing action succeeded.</returns>
+    public static bool Toggle()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
+            return false;
+        var vm = widget.vm;
+        if (!vm)
+            return false;
+
+        return vm.AudienceClick(null);
+    }
+
+    /// <summary>Open the sound tab through its existing callback.</summary>
+    /// <returns>Whether navigation succeeded.</returns>
+    public static bool Sound()
+    {
+        if (!UISystem.GetSingleton().TryGetWidget<UISettings>(out var widget))
+            return false;
+        var vm = widget.vm;
+        if (!vm)
+            return false;
+
+        return vm.SoundClick(null);
+    }
+}

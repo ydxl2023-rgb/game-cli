@@ -1,0 +1,1201 @@
+{
+  "root": "T1T2Start0",
+  "design": {
+    "name": "ProjectUI",
+    "nodes": [
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0",
+        "name": "Launch",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "active": true,
+        "height": 1080,
+        "parent": null,
+        "scripts": {
+          "files": [
+            {
+              "path": "LocalPackages/com.oathx.core/Runtime/XLauncher.cs",
+              "sha256": "729facc8a28ed78b8d88946bf4ad888016e8696482d48b0df18139e69c59e506",
+              "content": "using UnityEngine;\r\nusing UnityEngine.UI;\r\nusing UnityEngine.EventSystems;\r\n\r\nnamespace Oathx.Core\r\n{\r\n    /// <summary>\r\n    /// Controls the Loading and Update panels in Assets/Data/Widgets/Launch/Launch.\r\n    /// Available before the game plugin and UISystem are initialized.\r\n    /// </summary>\r\n    [DisallowMultipleComponent]\r\n    [RequireComponent(typeof(RectTransform))]\r\n    public class XLauncher : UIBehaviour\r\n    {\r\n        /// <summary>\r\n        /// Root of the regular loading panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private GameObject loading;\r\n\r\n        /// <summary>\r\n        /// Root of the resource download panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private GameObject update;\r\n\r\n        /// <summary>\r\n        /// Status message displayed during regular loading.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text loadingText;\r\n\r\n        /// <summary>\r\n        /// Progress percentage displayed in the loading panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text loadingPercent;\r\n\r\n        /// <summary>\r\n        /// Additional tip displayed in the loading panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text tip;\r\n\r\n        /// <summary>\r\n        /// Status message displayed during resource downloads.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text downloadText;\r\n\r\n        /// <summary>\r\n        /// Progress percentage displayed in the download panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text downloadPercent;\r\n\r\n        /// <summary>\r\n        /// RawImage rectangle stretched to represent download progress.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private RectTransform fill;\r\n\r\n        /// <summary>\r\n        /// Download progress indicator positioned along the handle area.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private RectTransform handle;\r\n\r\n        /// <summary>\r\n        /// Whether progress updates target the download panel.\r\n        /// </summary>\r\n        private bool downloading;\r\n\r\n        /// <summary>\r\n        /// Show the view without resetting its current progress.\r\n        /// </summary>\r\n        public void Show()\r\n        {\r\n            gameObject.SetActive(true);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Hide the view while preserving its current state.\r\n        /// </summary>\r\n        public void Hide()\r\n        {\r\n            gameObject.SetActive(false);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Keep the launch background visible without loading or download overlays.\r\n        /// </summary>\r\n        public void ShowBackground()\r\n        {\r\n            loading.SetActive(false);\r\n            update.SetActive(false);\r\n\r\n            Show();\r\n        }\r\n\r\n        /// <summary>\r\n        /// Display the regular loading panel.\r\n        /// </summary>\r\n        /// <param name=\"message\">Initial status message; progress is reset to zero.</param>\r\n        public void ShowLoading(string message = \"Loading...\")\r\n        {\r\n            downloading = false;\r\n\r\n            loading.SetActive(true);\r\n            update.SetActive(false);\r\n\r\n            UpdateProgress(0f, message);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Display the resource download panel.\r\n        /// </summary>\r\n        /// <param name=\"message\">Initial download message; progress is reset to zero.</param>\r\n        public void ShowUpdate(string message = \"Downloading resources...\")\r\n        {\r\n            downloading = true;\r\n            \r\n            loading.SetActive(false);\r\n            update.SetActive(true);\r\n\r\n            UpdateProgress(0f, message);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Set the additional loading tip.\r\n        /// </summary>\r\n        /// <param name=\"text\">Tip text to display.</param>\r\n        public void SetTip(string text)\r\n        {\r\n            tip.text = text;\r\n        }\r\n\r\n        /// <summary>\r\n        /// Update the active panel. The prefab uses a RawImage fill, not an Image or Slider.\r\n        /// </summary>\r\n        /// <param name=\"progress\">Normalized progress, clamped to zero through one; NaN becomes zero.</param>\r\n        /// <param name=\"text\">Status message for the active panel.</param>\r\n        /// <returns>True when the active panel has been updated.</returns>\r\n        public bool UpdateProgress(float progress, string text)\r\n        {\r\n            progress = float.IsNaN(progress) ? 0f : Mathf.Clamp01(progress);\r\n            int percent = Mathf.RoundToInt(progress * 100f);\r\n            if (!downloading)\r\n            {\r\n                // Current templates combine the message and percentage in DownloadTips.\r\n                // Retain the separate label when an older prefab still supplies one.\r\n                loadingText.text = loadingPercent ? text : $\"{text} ({percent}%)\";\r\n                if (loadingPercent) loadingPercent.text = $\"({percent}%)\";\r\n                return true;\r\n            }\r\n\r\n            downloadText.text = downloadPercent ? text : $\"{text} {percent}%\";\r\n            if (downloadPercent) downloadPercent.text = $\"{percent}%\";\r\n            // Preserve the authored vertical offsets while stretching horizontally.\r\n            fill.anchorMin = new Vector2(0f, fill.anchorMin.y);\r\n            fill.anchorMax = new Vector2(progress, fill.anchorMax.y);\r\n            fill.offsetMin = new Vector2(0f, fill.offsetMin.y);\r\n            fill.offsetMax = new Vector2(0f, fill.offsetMax.y);\r\n            handle.anchorMin = new Vector2(progress, handle.anchorMin.y);\r\n            handle.anchorMax = new Vector2(progress, handle.anchorMax.y);\r\n            handle.anchoredPosition = new Vector2(0f, handle.anchoredPosition.y);\r\n\r\n            return true;\r\n        }\r\n    }\r\n}\r\n"
+            },
+            {
+              "path": "LocalPackages/com.oathx.core/Runtime/XLauncher.cs.meta",
+              "sha256": "168a3bd393b164cb2b38ae607647cdcbb8ae7463f3d743665c258c22f1afc152",
+              "content": "fileFormatVersion: 2\nguid: a7430fbd036945eab090df8dd3354b58\nMonoImporter:\n  externalObjects: {}\n  serializedVersion: 2\n  defaultReferences: []\n  executionOrder: 0\n  icon: {instanceID: 0}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+            }
+          ],
+          "schemaVersion": 1
+        },
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "relationPosition": {
+          "x": 32,
+          "y": 40
+        },
+        "templateSourceId": "SvStart",
+        "templateSourceVersion": 6
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0Animator",
+        "name": "Animator",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "height": 1080,
+        "parent": "T1T2Start0",
+        "surface": "transparent",
+        "fontSize": 20,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "animationHost": true,
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0_0",
+        "name": "Background",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "active": true,
+        "height": 1080,
+        "parent": "T1T2Start0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -260,
+        "y": 0,
+        "id": "T1T2Start0_0_0",
+        "name": "Image",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "17e6cedbf10c9dc2ae4da981d6494d921bf8446acbc16a79d0eccf6a1ac59088",
+        "width": 2440,
+        "active": true,
+        "height": 1080,
+        "parent": "T1T2Start0_0",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 2440,
+            "y": 1080
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0_0_2",
+        "name": "Video",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "active": true,
+        "height": 1080,
+        "parent": "T1T2Start0_0",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 910,
+        "y": 490,
+        "id": "T1T2Start0_2",
+        "name": "Loading",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 100,
+        "active": true,
+        "height": 100,
+        "parent": "T1T2Start0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 100,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -1170,
+        "y": 494,
+        "id": "T1T2Start0_2_0",
+        "name": "RateBg",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "image": "99b5c2c80a0ddad3a755e254dd4857e1207346f37f47f4f342ee419b8c970255",
+        "width": 2440,
+        "active": true,
+        "height": 100,
+        "parent": "T1T2Start0_2",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "imageType": "sliced",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "imageBorder": {
+          "w": 0,
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 2440,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -444
+          }
+        }
+      },
+      {
+        "x": 964,
+        "y": -21,
+        "id": "T1T2Start0_2_0_0",
+        "name": "Arrow",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "0cc3fc7599b77fd1dda9230e77eaf89334c658f3feb41a20522dfaad6f9257bc",
+        "width": 512,
+        "active": true,
+        "height": 152,
+        "parent": "T1T2Start0_2_0",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "opacity": 0.0117647061124444,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 4.762499809265137,
+          "y": 0.8999999761581421
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 512,
+            "y": 152
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -5
+          }
+        }
+      },
+      {
+        "x": -467.559326171875,
+        "y": 503.000057220459,
+        "id": "T1T2Start0_2_1",
+        "name": "Tip",
+        "text": "",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 1477.559326171875,
+        "active": true,
+        "height": 87.00000762939453,
+        "parent": "T1T2Start0_2",
+        "opacity": 1,
+        "fontSize": 32,
+        "rotation": 0,
+        "textAlign": "right",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 1,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1377.559326171875,
+            "y": 87.00000762939453
+          },
+          "anchoredPosition": {
+            "x": 910,
+            "y": -446.50006103515625
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": -906.2999877929688,
+        "y": 512,
+        "id": "T1T2Start0_2_2",
+        "name": "Ball",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "6f21f1e63671f9c56a9f839e61b6c81927b76420204670f96dbbf89bd326d2f0",
+        "width": 64,
+        "active": true,
+        "height": 64,
+        "parent": "T1T2Start0_2",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 64,
+            "y": 64
+          },
+          "anchoredPosition": {
+            "x": -874.2999877929688,
+            "y": -444
+          }
+        }
+      },
+      {
+        "x": -960.5999755859375,
+        "y": 500,
+        "id": "T1T2Start0_2_3",
+        "name": "Haikyu",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "23dae2738f86570e7bf463593a3623a129149fe3737e0efe8bcd94d6df97fae6",
+        "width": 540,
+        "active": true,
+        "height": 88,
+        "parent": "T1T2Start0_2",
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 0.800000011920929,
+          "y": 0.800000011920929
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 540,
+            "y": 88
+          },
+          "anchoredPosition": {
+            "x": -690.5999755859375,
+            "y": -444
+          }
+        }
+      },
+      {
+        "x": -834,
+        "y": 503.00001525878906,
+        "id": "T1T2Start0_2_4",
+        "name": "DownloadTips",
+        "text": "Loading... (0%)",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 520.1533813476562,
+        "active": true,
+        "height": 86.99996948242188,
+        "parent": "T1T2Start0_2",
+        "opacity": 1,
+        "fontSize": 32,
+        "rotation": 0,
+        "textAlign": "left",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 520.1533813476562,
+            "y": 86.99996948242188
+          },
+          "anchoredPosition": {
+            "x": -834,
+            "y": -446.5
+          }
+        },
+        "verticalAlign": "center"
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0_3",
+        "name": "Update",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1920,
+        "active": false,
+        "height": 1080,
+        "parent": "T1T2Start0Animator",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 136.999755859375,
+        "y": 973,
+        "id": "T1T2Start0_3_1",
+        "name": "Slider",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1693.0302734375,
+        "active": true,
+        "height": 40,
+        "parent": "T1T2Start0_3",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1693.0302734375,
+            "y": 40
+          },
+          "anchoredPosition": {
+            "x": 23.514892578125,
+            "y": 67
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 10,
+        "id": "T1T2Start0_3_1_0",
+        "name": "Background",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "d980196fafd7370ce229667b5fe30fd9e3d997b5612f6ba14c4455fcb12d7460",
+        "width": 1693.0302734375,
+        "active": true,
+        "height": 20,
+        "parent": "T1T2Start0_3_1",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0.75
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0.25
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": 8,
+        "y": -0.5000004768371582,
+        "id": "T1T2Start0_3_1_1",
+        "name": "FillArea",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1670.0302734375,
+        "active": true,
+        "height": 30.500000953674316,
+        "parent": "T1T2Start0_3_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0.75
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0.25
+          },
+          "sizeDelta": {
+            "x": -23,
+            "y": 10.500000953674316
+          },
+          "anchoredPosition": {
+            "x": -3.5,
+            "y": 5.25
+          }
+        }
+      },
+      {
+        "x": -4.9996337890625,
+        "y": 11.715723514556885,
+        "id": "T1T2Start0_3_1_1_0",
+        "name": "Fill",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "image": "e5c96a396ece22bd4794cc272b9b0f4843928827166048d1b9e83ea02afbe68e",
+        "width": 6.939208984375,
+        "active": true,
+        "height": 16.44855499267578,
+        "parent": "T1T2Start0_3_1_1",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "opacity": 1,
+        "fontSize": 20,
+        "imageFit": "100% 100%",
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 6.939208984375,
+            "y": -14.051445960998535
+          },
+          "anchoredPosition": {
+            "x": -1.530029296875,
+            "y": -4.690000534057617
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0_3_1_2",
+        "name": "HandleSlideArea",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 1693.0302734375,
+        "active": true,
+        "height": 40,
+        "parent": "T1T2Start0_3_1",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -370,
+        "y": -304.20002365112305,
+        "id": "T1T2Start0_3_1_2_0",
+        "name": "Handle",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 740,
+        "active": true,
+        "height": 627.4000244140625,
+        "parent": "T1T2Start0_3_1_2",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 740,
+            "y": 587.4000244140625
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 10.500011444091797
+          }
+        }
+      },
+      {
+        "x": 320,
+        "y": 263.70001220703125,
+        "id": "T1T2Start0_3_1_2_0_0",
+        "name": "LoadingWuYa",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 100,
+        "active": true,
+        "height": 100,
+        "parent": "T1T2Start0_3_1_2_0",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 100,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "x": -320,
+        "y": -283.6746873855591,
+        "id": "T1T2Start0_3_1_2_0_0_0",
+        "name": "Image",
+        "text": "",
+        "type": "Image",
+        "color": "#ffffff",
+        "width": 740,
+        "active": false,
+        "height": 644.609375,
+        "parent": "T1T2Start0_3_1_2_0_0",
+        "opacity": 1,
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 0.20000000298023224,
+          "y": 0.20000000298023224
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 740,
+            "y": 644.609375
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 11.369999885559082
+          }
+        }
+      },
+      {
+        "x": 82,
+        "y": 993,
+        "id": "T1T2Start0_3_3",
+        "name": "TipsGather",
+        "text": "",
+        "type": "Container",
+        "color": "#ffffff",
+        "width": 398,
+        "active": true,
+        "height": 100,
+        "parent": "T1T2Start0_3",
+        "surface": "transparent",
+        "fontSize": 20,
+        "rotation": 0,
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "sizeDelta": {
+            "x": 398,
+            "y": 100
+          },
+          "anchoredPosition": {
+            "x": -878,
+            "y": -503
+          }
+        }
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "id": "T1T2Start0_3_3_0",
+        "name": "DownloadTips",
+        "text": "资源下载中...({0}M/{1}M) 0%",
+        "type": "Text",
+        "color": "#ffffff",
+        "width": 398,
+        "active": true,
+        "height": 80,
+        "parent": "T1T2Start0_3_3",
+        "opacity": 1,
+        "fontSize": 30,
+        "rotation": 0,
+        "textAlign": "center",
+        "localScale": {
+          "x": 1,
+          "y": 1
+        },
+        "rectTransform": {
+          "pivot": {
+            "x": 0,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "sizeDelta": {
+            "x": 398,
+            "y": 80
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": -40
+          }
+        },
+        "verticalAlign": "center"
+      }
+    ],
+    "width": 1920,
+    "height": 1080,
+    "rootId": "Canvas",
+    "animations": [
+      {
+        "id": "T1T2Start0_2Loop",
+        "clip": {
+          "name": "Loading_Anim_01",
+          "curves": [
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 2,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "localEulerAnglesRaw.x",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "Ball",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T2Start0_2_2",
+              "sourceRotationOrder": 4
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 2,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "localEulerAnglesRaw.y",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "Ball",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T2Start0_2_2",
+              "sourceRotationOrder": 4
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": -180,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                },
+                {
+                  "time": 2,
+                  "value": -360,
+                  "inWeight": 0.33333334,
+                  "inTangent": -180,
+                  "outWeight": 0.33333334,
+                  "outTangent": -360,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 0
+                }
+              ],
+              "property": "localEulerAnglesRaw.z",
+              "component": "UnityEngine.Transform",
+              "sourcePath": "Ball",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T2Start0_2_2",
+              "sourceRotationOrder": 4
+            },
+            {
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inWeight": 0.33333334,
+                  "inTangent": 0,
+                  "outWeight": 0.33333334,
+                  "outTangent": -0.055,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 69
+                },
+                {
+                  "time": 2,
+                  "value": -0.11,
+                  "inWeight": 0.33333334,
+                  "inTangent": -0.055,
+                  "outWeight": 0.33333334,
+                  "outTangent": 0,
+                  "weightedMode": 0,
+                  "sourceTangentMode": 69
+                }
+              ],
+              "property": "m_UVRect.x",
+              "component": "UnityEngine.UI.RawImage",
+              "sourcePath": "RateBg/eff_jiantou_01",
+              "preWrapMode": 2,
+              "postWrapMode": 2,
+              "targetNodeId": "T1T2Start0_2_0_0",
+              "sourceRotationOrder": 4
+            }
+          ],
+          "loopTime": true,
+          "stopTime": 2,
+          "wrapMode": 0,
+          "frameRate": 30,
+          "startTime": 0
+        },
+        "state": {
+          "name": "Loading_Anim_01",
+          "speed": 1,
+          "default": true,
+          "cycleOffset": 0,
+          "writeDefaultValues": true
+        },
+        "source": {
+          "clip": "Assets/data/@00Launch/Loading/loading/Loading_Anim_01.anim",
+          "clipGuid": "fb4346d412d82d04fa02b46c1ecabc03",
+          "originalHost": "0/2"
+        },
+        "hostNodeId": "T1T2Start0Animator"
+      }
+    ],
+    "schemaVersion": 1
+  }
+}
