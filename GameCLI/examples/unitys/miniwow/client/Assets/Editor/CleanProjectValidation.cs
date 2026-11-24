@@ -23,6 +23,7 @@ public static class CleanProjectValidation
         SessionState.SetBool("miniwow.validation.ready", false);
         SessionState.SetBool("miniwow.validation.error", false);
         SessionState.SetFloat("miniwow.validation.started", (float)EditorApplication.timeSinceStartup);
+
         EditorApplication.isPlaying = true;
     }
 
@@ -32,13 +33,18 @@ public static class CleanProjectValidation
     /// <param name="type">Severity.</param>
     private static void Observe(string message, string trace, LogType type)
     {
-        if (SessionState.GetInt("miniwow.validation.cycle", 0) == 0) return;
+        if (SessionState.GetInt("miniwow.validation.cycle", 0) == 0)
+            return;
+
         if (trace.Contains("UnityEditor.PackageManager") || message.StartsWith("[Package Manager Window]"))
         {
             File.AppendAllText("../tools/editor-network-diagnostics.txt", message + "\n");
+
             return;
         }
-        if (message == "MINIWOW_CLEAN_ENTRY_READY") SessionState.SetBool("miniwow.validation.ready", true);
+
+        if (message == "MINIWOW_CLEAN_ENTRY_READY")
+            SessionState.SetBool("miniwow.validation.ready", true);
         if (type == LogType.Exception || type == LogType.Error || type == LogType.Assert)
             SessionState.SetBool("miniwow.validation.error", true);
     }
@@ -47,16 +53,22 @@ public static class CleanProjectValidation
     private static void Check()
     {
         int cycle = SessionState.GetInt("miniwow.validation.cycle", 0);
-        if (cycle == 0) return;
+        if (cycle == 0)
+            return;
+
         double elapsed = EditorApplication.timeSinceStartup - SessionState.GetFloat("miniwow.validation.started", 0);
         if (elapsed > 60)
         {
             File.WriteAllText("../tools/runtime-validation.txt", "FAIL: timeout");
             SessionState.SetInt("miniwow.validation.cycle", 0);
             EditorApplication.Exit(1);
+
             return;
         }
-        if (!EditorApplication.isPlaying || elapsed < 10) return;
+
+        if (!EditorApplication.isPlaying || elapsed < 10)
+            return;
+
         bool ready = SessionState.GetBool("miniwow.validation.ready", false);
         bool failed = SessionState.GetBool("miniwow.validation.error", false);
         if (!ready || failed)
@@ -64,8 +76,10 @@ public static class CleanProjectValidation
             File.WriteAllText("../tools/runtime-validation.txt", "FAIL: ready=" + ready + " errors=" + failed);
             SessionState.SetInt("miniwow.validation.cycle", 0);
             EditorApplication.Exit(1);
+
             return;
         }
+
         EditorApplication.isPlaying = false;
     }
 
@@ -77,14 +91,19 @@ public static class CleanProjectValidation
         if (cycle != 0 && state == PlayModeStateChange.EnteredPlayMode)
         {
             SessionState.SetFloat("miniwow.validation.started", (float)EditorApplication.timeSinceStartup);
+
             return;
         }
-        if (cycle == 0 || state != PlayModeStateChange.EnteredEditMode) return;
+
+        if (cycle == 0 || state != PlayModeStateChange.EnteredEditMode)
+            return;
+
         if (cycle == 1)
         {
             SessionState.SetInt("miniwow.validation.cycle", 2);
             SessionState.SetBool("miniwow.validation.ready", false);
             SessionState.SetFloat("miniwow.validation.started", (float)EditorApplication.timeSinceStartup);
+
             EditorApplication.isPlaying = true;
         }
         else

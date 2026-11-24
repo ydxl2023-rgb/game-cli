@@ -17,6 +17,7 @@ public sealed class HomeSafeArea : MonoBehaviour
     private void OnEnable()
     {
         target = GetComponent<RectTransform>();
+
         Apply();
     }
 
@@ -35,6 +36,7 @@ public sealed class HomeSafeArea : MonoBehaviour
 
         previousArea = Screen.safeArea;
         previousSize = new Vector2Int(Screen.width, Screen.height);
+
         target.anchorMin = new Vector2(previousArea.xMin / Screen.width, previousArea.yMin / Screen.height);
         target.anchorMax = new Vector2(previousArea.xMax / Screen.width, previousArea.yMax / Screen.height);
         target.offsetMin = Vector2.zero;

@@ -17,6 +17,8 @@ Miniwow 统一采用 **1080×1920 竖屏**设计分辨率。Studio 项目画布�
 
 Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型；查阅 [主场景还原记录](../../tools/main-scene/DELIVERY.md)与[资源用途索引](../../tools/main-scene/RESOURCE-INDEX.md)。`HomeEnvironmentCanvas` 为已禁用的历史背景，不要重新启用遮住 3D 场景。初始模型不代表建筑业务已解锁；NPC、粒子、导航及原 UberShader 尚未恢复。更新场景采用 `MiniwowMainSceneSetup` 原生资产流程，UI 继续走正式 UGUI CLI。
 
+MainPage 主界面现使用 `client/Assets/Data/Widgets/Home/UIHome.prefab`（旧 Home.prefab 已保留 GUID 改名）。开发入口为 [MainPage 实现记录](../../tools/home-ui/IMPLEMENTATION.md)：配置源 `config/Home.xlsx`，制作脚本 `tools/home-ui/build_uihome.py`，正式 UGUI 导入后执行 `bind-uihome.ps1`；旧 `tools/home/bind-home.ps1` 已停用。HomeEntity 管理本地状态，HomeSystem 管理场景与路由；未接入业务必须保留明确反馈，不能将入口事件当作系统已实现。
+
 最近提出的“探索 → 行动力消耗 → 旅店恢复 → 制造补给 → 再探索”是首个闭环建议，不是已经批准的完整功能清单。不要自行扩展为全部养成、商业化或在线服务开发。
 
 |目录|职责|
@@ -62,8 +64,9 @@ Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型�
 以下是项目应用共享规范的要点，详细规则以当前共享 Skill 为准：
 
 - **Entity** 拥有业务状态、校验、规则、条件计算与事务；**System** 编排流程和通知；**UIWidget** 接收用户意图及刷新、维护 **VM** 的展示绑定。System 不读取或缓存 VM。
-- 手写系统代码按 `<System>/<System>System.cs`、`<System>Entity.cs`、其他逻辑、`VM/`、`UI/` 组织。不要照搬原作 Proxy 单例或 FairyGUI 结构。
+- 手写系统代码按 `<System>/<System>System.cs`、`<System>Entity.cs`、其他逻辑、`VM/`、`UI/` 组织。按用户约定，Home 的非业务通用组件（HomeSafeArea、HomeSceneCamera 等）放在 `Home/Common/`。GamePlugin 只承担插件生命周期与依赖装配，UISender 使用独立 GameUISender 类实现，不由 GamePlugin 直接实现；GameUISender 与 GameUILoader 均放在 GamePlugin.cs 中，独立职责不要求拆分文件。不要照搬原作 Proxy 单例或 FairyGUI 结构。
 - 数值、配方、开放条件、奖励和可配置展示先建立本产品 Excel 源表与稳定 ID，再导表并接入。固定文案遵循共享多语言规则；不要直接修改 development 的业务数据作为本产品实现，也不以运行时硬编码掩盖缺表。
+- 复杂构造与对象初始化器使用多行排版，每个成员赋值独占一行。配置对象先用有意义的局部变量构造，再传给 Startup 等方法；不要把嵌套构造、多项初始化与方法调用挤在同一行。
 - 优先复用现有框架的生命周期、事件、资源加载、Widget/VM 和列表能力。业务需求先在本产品实现；框架包修改须有具体缺口与影响范围，不顺手改其他项目。
 - UI、prefab、Metadata 和资产变更使用正式 UnityCLI/AssetDatabase 流程，不手写 Unity YAML。导入只覆盖已选资源及依赖，不能把研究目录或完整反编译工程放入 Assets。
 - 明确每个系统的输入、输出事件、配置、状态/存档所有权、依赖与失败结果。模板和产品实例分别管理；仅在用户要求发布时执行模板发布流程。

@@ -36,6 +36,7 @@ internal sealed class WidgetMetadataCommand : ICommand
             uiName = options.UiName,
             vmName = options.VmName,
             prefabPath = options.PrefabPath,
+            objectPath = options.ObjectPath,
             dryRun = options.DryRun,
             validateExisting = options.ValidateExisting
         }, "POST");

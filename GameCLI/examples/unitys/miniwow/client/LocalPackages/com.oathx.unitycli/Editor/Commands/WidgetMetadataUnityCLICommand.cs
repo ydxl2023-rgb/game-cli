@@ -56,10 +56,10 @@ namespace Oathx.UnityCLI.Editor
             }
 
             var method = generatorType.GetMethod(
-                "Generate",
+                "GenerateAt",
                 BindingFlags.Public | BindingFlags.Static,
                 null,
-                new[] { typeof(string), typeof(string), typeof(string), typeof(bool) },
+                new[] { typeof(string), typeof(string), typeof(string), typeof(bool), typeof(string) },
                 null);
             if (method == null)
             {
@@ -70,7 +70,7 @@ namespace Oathx.UnityCLI.Editor
 
             try
             {
-                return method.Invoke(null, new object[] { request.prefabPath, request.uiName, request.vmName, request.dryRun });
+                return method.Invoke(null, new object[] { request.prefabPath, request.uiName, request.vmName, request.dryRun, request.objectPath });
             }
             catch (TargetInvocationException exception)
             {

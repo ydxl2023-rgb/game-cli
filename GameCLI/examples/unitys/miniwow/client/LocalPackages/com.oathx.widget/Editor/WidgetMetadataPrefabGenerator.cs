@@ -23,6 +23,12 @@ namespace Oathx.Widget.Editor
         /// <returns>可供 UnityCLI 序列化的生成结果</returns>
         public static object Generate(string prefabPath, string uiName, string vmName, bool dryRun)
         {
+            return GenerateAt(prefabPath, uiName, vmName, dryRun, null);
+        }
+
+        /// <summary>Generates bindings for a widget at an explicit prefab-relative path.</summary>
+        public static object GenerateAt(string prefabPath, string uiName, string vmName, bool dryRun, string objectPath)
+        {
             var result = CreateResult(prefabPath, uiName, vmName, dryRun);
             if (string.IsNullOrEmpty(prefabPath) || !prefabPath.EndsWith(".prefab", StringComparison.OrdinalIgnoreCase))
             {
@@ -61,9 +67,19 @@ namespace Oathx.Widget.Editor
             try
             {
                 root = PrefabUtility.LoadPrefabContents(prefabPath);
-                var generatedFields = BuildFields(root, bindingFields, result.data.issues);
+                var target = root;
+                if (!string.IsNullOrEmpty(objectPath) && objectPath != root.name)
+                {
+                    string relativePath = objectPath.StartsWith(root.name + "/", StringComparison.Ordinal)
+                        ? objectPath.Substring(root.name.Length + 1) : objectPath;
+                    var child = root.transform.Find(relativePath);
+                    if (!child)
+                        throw new ArgumentException("Widget path does not exist: " + objectPath);
+                    target = child.gameObject;
+                }
+                var generatedFields = BuildFields(target, bindingFields, result.data.issues);
                 result.data.boundTargetCount = generatedFields.Count;
-                result.data.metadataAdded = root.GetComponent<Metadata>() == null;
+                result.data.metadataAdded = target.GetComponent<Metadata>() == null;
 
                 if (result.data.issues.Count > 0)
                 {
@@ -72,7 +88,7 @@ namespace Oathx.Widget.Editor
 
                 if (!dryRun)
                 {
-                    var metadata = root.GetComponent<Metadata>() ?? root.AddComponent<Metadata>();
+                    var metadata = target.GetComponent<Metadata>() ?? target.AddComponent<Metadata>();
                     metadata.className = vmType.FullName;
                     metadata.classGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(vmScript));
                     metadata.metadatas = generatedFields;

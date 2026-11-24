@@ -30,6 +30,7 @@ public static class MiniwowLaunchSetup
         }
 
         File.Delete(RequestPath);
+
         try
         {
             Install();
@@ -73,10 +74,12 @@ public static class MiniwowLaunchSetup
         Canvas canvas = canvasObject.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.sortingOrder = -10;
+
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, canvasObject.transform);
         SerializedObject serialized = new SerializedObject(app);
         serialized.FindProperty("launcher").objectReferenceValue = instance.GetComponent<XLauncher>();
         serialized.FindProperty("startupResolution").vector2IntValue = new Vector2Int(1080, 1920);
+
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
         foreach (CanvasScaler scaler in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<CanvasScaler>(true)))
@@ -92,7 +95,9 @@ public static class MiniwowLaunchSetup
         PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
         PlayerSettings.allowedAutorotateToLandscapeLeft = false;
         PlayerSettings.allowedAutorotateToLandscapeRight = false;
+
         SetGameView();
+
         EditorSceneManager.SaveScene(scene);
         AssetDatabase.SaveAssets();
     }
@@ -111,6 +116,7 @@ public static class MiniwowLaunchSetup
         Type kindType = assembly.GetType("UnityEditor.GameViewSizeType");
         object size = Activator.CreateInstance(sizeType, new object[] { Enum.ToObject(kindType, 1), 1080, 1920, "Miniwow Portrait" });
         groupType.GetMethod("AddCustomSize").Invoke(group, new[] { size });
+
         Type viewType = assembly.GetType("UnityEditor.GameView");
         EditorWindow view = EditorWindow.GetWindow(viewType);
         viewType.GetProperty("selectedSizeIndex", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).SetValue(view, count);

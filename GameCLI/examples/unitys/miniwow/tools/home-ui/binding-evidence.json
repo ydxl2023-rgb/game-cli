@@ -1,0 +1,5849 @@
+[
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome",
+      "--component",
+      "UIHome"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 614884,
+        "objectPath": "UIHome",
+        "requestedComponent": "UIHome",
+        "resolvedComponent": "UIHome",
+        "componentInstanceId": -432036,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:45:56.9719425Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea",
+      "--component",
+      "HomeSafeArea"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 617702,
+        "objectPath": "UIHome/SafeArea",
+        "requestedComponent": "HomeSafeArea",
+        "resolvedComponent": "HomeSafeArea",
+        "componentInstanceId": -433528,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:45:57.2125687Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry101",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 620328,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry101",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -435022,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:45:57.4636299Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry101",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry101"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry102",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 626558,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry102",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -438022,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:45:58.2808899Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry102",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry102"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry103",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 634450,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry103",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -441030,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:45:59.0642274Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry103",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry103"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry104",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 641098,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry104",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -444046,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:00.0415516Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry104",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry104"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry105",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 648990,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry105",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -447070,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:00.8446853Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry105",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry105"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry201",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 656124,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry201",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -450102,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:01.788671Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry201",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry201"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry202",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 662732,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry202",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -453142,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:02.599429Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry202",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry202"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry203",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 670136,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry203",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -456190,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:03.3957584Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry203",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry203"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry204",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 677546,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry204",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -459246,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:04.3308329Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry204",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry204"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry205",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 685114,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry205",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -462310,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:05.1525628Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry205",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry205"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry301",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 692406,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry301",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -465382,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:05.945634Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry301",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry301"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry302",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 699096,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry302",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -468462,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:06.8971082Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry302",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry302"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry303",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 706558,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry303",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -471550,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:07.7009583Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry303",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry303"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry401",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 714442,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry401",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -474646,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:08.5149105Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry401",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry401"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry402",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 720934,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry402",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -477750,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:09.4806388Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry402",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry402"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry403",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 727834,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry403",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -480862,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:10.3000271Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry403",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry403"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry404",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 735904,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry404",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -483982,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:11.1983547Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry404",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry404"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry405",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 743340,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry405",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -487110,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:12.0265329Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry405",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry405"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry406",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 751222,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry406",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -490246,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:12.9116093Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry406",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry406"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry501",
+      "--component",
+      "UIHomeEntry"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 758498,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry501",
+        "requestedComponent": "UIHomeEntry",
+        "resolvedComponent": "UIHomeEntry",
+        "componentInstanceId": -493390,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:13.8854623Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry501",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHomeEntry",
+      "--vm",
+      "VMHomeEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry501"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeEntry",
+        "vmName": "VMHomeEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHome",
+      "--vm",
+      "VMHome",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHome",
+        "vmName": "VMHome",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 19,
+        "boundTargetCount": 19,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHome",
+      "--vm",
+      "VMHome",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHome.prefab"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHome",
+        "vmName": "VMHome",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 19,
+        "boundTargetCount": 19,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome",
+      "--component",
+      "UIHome",
+      "--property",
+      "entryOrder",
+      "--value",
+      "101,102,103,104,105,201,202,203,204,205,301,302,303,401,402,403,404,405,406,501"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 770800,
+        "objectPath": "UIHome",
+        "component": "UIHome",
+        "property": "entryOrder",
+        "propertyType": "String",
+        "oldValue": "",
+        "newValue": "101,102,103,104,105,201,202,203,204,205,301,302,303,401,402,403,404,405,406,501"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/GoldRail/Gold",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 773712,
+        "objectPath": "UIHome/SafeArea/CampVisible/GoldRail/Gold",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/GemRail/Gem",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 775570,
+        "objectPath": "UIHome/SafeArea/CampVisible/GemRail/Gem",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/EnergyRail/Energy",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 779052,
+        "objectPath": "UIHome/SafeArea/CampVisible/EnergyRail/Energy",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/PlayerName",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 781910,
+        "objectPath": "UIHome/SafeArea/CampVisible/PlayerName",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/GuildTitle",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 785374,
+        "objectPath": "UIHome/SafeArea/CampVisible/GuildTitle",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Power",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 788024,
+        "objectPath": "UIHome/SafeArea/CampVisible/Power",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/DemoLabel",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 791002,
+        "objectPath": "UIHome/SafeArea/CampVisible/DemoLabel",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry101/Position/Visible/OpenClick/Entry101Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 794814,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry101/Position/Visible/OpenClick/Entry101Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry102/Position/Visible/OpenClick/Entry102Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 797418,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry102/Position/Visible/OpenClick/Entry102Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry103/Position/Visible/OpenClick/Entry103Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 800686,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry103/Position/Visible/OpenClick/Entry103Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry104/Position/Visible/OpenClick/Entry104Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 803264,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry104/Position/Visible/OpenClick/Entry104Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry105/Position/Visible/OpenClick/Entry105Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 806452,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry105/Position/Visible/OpenClick/Entry105Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry201/Position/Visible/OpenClick/Entry201Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 808464,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry201/Position/Visible/OpenClick/Entry201Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry202/Position/Visible/OpenClick/Entry202Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 812710,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry202/Position/Visible/OpenClick/Entry202Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry203/Position/Visible/OpenClick/Entry203Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 815558,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry203/Position/Visible/OpenClick/Entry203Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry204/Position/Visible/OpenClick/Entry204Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 818546,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry204/Position/Visible/OpenClick/Entry204Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry205/Position/Visible/OpenClick/Entry205Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 820466,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry205/Position/Visible/OpenClick/Entry205Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry401/Position/Visible/OpenClick/Entry401Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 823754,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry401/Position/Visible/OpenClick/Entry401Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry402/Position/Visible/OpenClick/Entry402Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 826926,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry402/Position/Visible/OpenClick/Entry402Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry403/Position/Visible/OpenClick/Entry403Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 830468,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry403/Position/Visible/OpenClick/Entry403Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry404/Position/Visible/OpenClick/Entry404Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 832544,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry404/Position/Visible/OpenClick/Entry404Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry405/Position/Visible/OpenClick/Entry405Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 835986,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry405/Position/Visible/OpenClick/Entry405Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry406/Position/Visible/OpenClick/Entry406Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 838856,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry406/Position/Visible/OpenClick/Entry406Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "hanyijingkai (Font, 266498)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry501/Position/Visible/OpenClick/Entry501Label",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 842446,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry501/Position/Visible/OpenClick/Entry501Label",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/TaskClick/TaskProgress",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 844402,
+        "objectPath": "UIHome/SafeArea/CampVisible/TaskClick/TaskProgress",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/ChatClick/Channel",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 848566,
+        "objectPath": "UIHome/SafeArea/CampVisible/ChatClick/Channel",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/ChatClick/Chat",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 851354,
+        "objectPath": "UIHome/SafeArea/CampVisible/ChatClick/Chat",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/MapVisible/MapTitle",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 853618,
+        "objectPath": "UIHome/SafeArea/MapVisible/MapTitle",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/MapVisible/MapHint",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 856998,
+        "objectPath": "UIHome/SafeArea/MapVisible/MapHint",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/MapVisible/ReturnClick/ReturnLabel",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 860722,
+        "objectPath": "UIHome/SafeArea/MapVisible/ReturnClick/ReturnLabel",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/FeedbackVisible/FeedbackPanel/FeedbackText",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 862338,
+        "objectPath": "UIHome/SafeArea/FeedbackVisible/FeedbackPanel/FeedbackText",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/FeedbackVisible/FeedbackPanel/CloseFeedbackClick/CloseFeedbackLabel",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 865904,
+        "objectPath": "UIHome/SafeArea/FeedbackVisible/FeedbackPanel/CloseFeedbackClick/CloseFeedbackLabel",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "create-folder",
+      "--dst",
+      "Assets/Data/Widgets/Common/Icons"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "folder already exists",
+      "data": {
+        "action": "create-folder",
+        "srcPath": "",
+        "dstPath": "Assets/Data/Widgets/Common/Icons",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:26.3468771Z",
+        "assets": [
+          {
+            "guid": "4816bf92dd72467419dd13c90558cada",
+            "path": "Assets/Data/Widgets/Common/Icons",
+            "mainAssetType": "Folder",
+            "isFolder": true
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/GoldRail/GoldIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/CommonIcon_small_gold.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 868780,
+        "objectPath": "UIHome/SafeArea/CampVisible/GoldRail/GoldIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "commonicon_small_gold (Sprite, 611526)",
+        "newValue": "CommonIcon_small_gold (Sprite, 106150)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_gold.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_gold.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:27.0032131Z",
+        "assets": [
+          {
+            "guid": "c25e7585961c34145acb6e5b9a47ce03",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_gold.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/GemRail/GemIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/CommonIcon_small_zuanshi.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 872030,
+        "objectPath": "UIHome/SafeArea/CampVisible/GemRail/GemIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "commonicon_small_zuanshi (Sprite, 611532)",
+        "newValue": "CommonIcon_small_zuanshi (Sprite, 106162)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_zuanshi.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_zuanshi.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:27.8647666Z",
+        "assets": [
+          {
+            "guid": "d8655d8e69f450b43956c81ecb97aafd",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_zuanshi.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/EnergyRail/EnergyIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/CommonIcon_small_tili.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 875202,
+        "objectPath": "UIHome/SafeArea/CampVisible/EnergyRail/EnergyIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "commonicon_small_tili (Sprite, 611538)",
+        "newValue": "CommonIcon_small_tili (Sprite, 106174)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_tili.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_tili.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:28.4670656Z",
+        "assets": [
+          {
+            "guid": "7b73afaacf33df84889ce6563f1b2611",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/commonicon_small_tili.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/SettingsClick",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_player_bg_0.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 878270,
+        "objectPath": "UIHome/SafeArea/CampVisible/SettingsClick",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_player_bg_0 (Sprite, 611544)",
+        "newValue": "Common_player_bg_0 (Sprite, 106186)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/common_player_bg_0.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/common_player_bg_0.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:29.024678Z",
+        "assets": [
+          {
+            "guid": "cd06d74ef61248846ab4c4eb533e55e7",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/common_player_bg_0.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/SettingsClick/Portrait",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/CharacterIcon_hero_head_20032.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 881560,
+        "objectPath": "UIHome/SafeArea/CampVisible/SettingsClick/Portrait",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "charactericon_hero_head_20032 (Sprite, 611550)",
+        "newValue": "CharacterIcon_hero_head_20032 (Sprite, 106192)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/charactericon_hero_head_20032.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/charactericon_hero_head_20032.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:29.5877271Z",
+        "assets": [
+          {
+            "guid": "8aec0656e3ad9a64da97c1f612128fa3",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/charactericon_hero_head_20032.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/PowerIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_19.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 884128,
+        "objectPath": "UIHome/SafeArea/CampVisible/PowerIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_19 (Sprite, 611556)",
+        "newValue": "Common_common_icon_19 (Sprite, 106198)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/common_common_icon_19.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/common_common_icon_19.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:30.2506092Z",
+        "assets": [
+          {
+            "guid": "0fb66b315a45b9049abc6239b6d9f150",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/common_common_icon_19.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry101/Position/Visible/OpenClick/Entry101Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_18.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 887464,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry101/Position/Visible/OpenClick/Entry101Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_18 (Sprite, 611562)",
+        "newValue": "Main_hub_button_18 (Sprite, 106222)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_18.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_18.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:30.9362468Z",
+        "assets": [
+          {
+            "guid": "e045f4ee5414e2240bfad9247cc04533",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_18.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry101/Position/Visible/OpenClick/Locked/Entry101LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 890244,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry101/Position/Visible/OpenClick/Locked/Entry101LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16 (Sprite, 611568)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry102/Position/Visible/OpenClick/Locked/Entry102LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 892270,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry102/Position/Visible/OpenClick/Locked/Entry102LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_2 (Sprite, 106240)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry103/Position/Visible/OpenClick/Locked/Entry103LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 896210,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry103/Position/Visible/OpenClick/Locked/Entry103LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_3 (Sprite, 106252)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry104/Position/Visible/OpenClick/Locked/Entry104LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 898438,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry104/Position/Visible/OpenClick/Locked/Entry104LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_4 (Sprite, 106264)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry105/Position/Visible/OpenClick/Locked/Entry105LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 901578,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry105/Position/Visible/OpenClick/Locked/Entry105LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_5 (Sprite, 106276)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry201/Position/Visible/OpenClick/Locked/Entry201LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 905542,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry201/Position/Visible/OpenClick/Locked/Entry201LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_6 (Sprite, 106288)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry202/Position/Visible/OpenClick/Locked/Entry202LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 908038,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry202/Position/Visible/OpenClick/Locked/Entry202LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_7 (Sprite, 106300)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry203/Position/Visible/OpenClick/Locked/Entry203LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 911418,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry203/Position/Visible/OpenClick/Locked/Entry203LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_8 (Sprite, 106312)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry204/Position/Visible/OpenClick/Locked/Entry204LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 914712,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry204/Position/Visible/OpenClick/Locked/Entry204LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_9 (Sprite, 106324)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry205/Position/Visible/OpenClick/Locked/Entry205LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 916468,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry205/Position/Visible/OpenClick/Locked/Entry205LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_10 (Sprite, 106336)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry301/Position/Visible/OpenClick/Locked/Entry301LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 919652,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry301/Position/Visible/OpenClick/Locked/Entry301LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_11 (Sprite, 106348)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry302/Position/Visible/OpenClick/Locked/Entry302LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 922788,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry302/Position/Visible/OpenClick/Locked/Entry302LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_12 (Sprite, 106360)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry303/Position/Visible/OpenClick/Locked/Entry303LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 925444,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry303/Position/Visible/OpenClick/Locked/Entry303LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_13 (Sprite, 106372)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry401/Position/Visible/OpenClick/Locked/Entry401LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 928530,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry401/Position/Visible/OpenClick/Locked/Entry401LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_14 (Sprite, 106384)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry402/Position/Visible/OpenClick/Locked/Entry402LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 932670,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry402/Position/Visible/OpenClick/Locked/Entry402LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_15 (Sprite, 106396)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry403/Position/Visible/OpenClick/Locked/Entry403LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 935612,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry403/Position/Visible/OpenClick/Locked/Entry403LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_16 (Sprite, 106408)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry404/Position/Visible/OpenClick/Locked/Entry404LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 937486,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry404/Position/Visible/OpenClick/Locked/Entry404LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_17 (Sprite, 106420)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry405/Position/Visible/OpenClick/Locked/Entry405LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 941654,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry405/Position/Visible/OpenClick/Locked/Entry405LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_18 (Sprite, 106432)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry406/Position/Visible/OpenClick/Locked/Entry406LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 943896,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry406/Position/Visible/OpenClick/Locked/Entry406LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_19 (Sprite, 106444)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry501/Position/Visible/OpenClick/Locked/Entry501LockIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 946408,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry501/Position/Visible/OpenClick/Locked/Entry501LockIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "common_common_icon_16_20 (Sprite, 106456)",
+        "newValue": "Common_common_icon_16 (Sprite, 106228)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/common_common_icon_16.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/common_common_icon_16.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:37.9742547Z",
+        "assets": [
+          {
+            "guid": "81e7490a3924b6c468302272655ca7ff",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/common_common_icon_16.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry102/Position/Visible/OpenClick/Entry102Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_29.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 949494,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry102/Position/Visible/OpenClick/Entry102Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_29 (Sprite, 611574)",
+        "newValue": "Main_hub_button_29 (Sprite, 106234)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_29.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_29.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:38.5428845Z",
+        "assets": [
+          {
+            "guid": "60f516fc6192d294a94558b9f1225931",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_29.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry103/Position/Visible/OpenClick/Entry103Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_52.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 952374,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry103/Position/Visible/OpenClick/Entry103Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_52 (Sprite, 611580)",
+        "newValue": "Main_hub_button_52 (Sprite, 106246)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_52.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_52.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:39.1067753Z",
+        "assets": [
+          {
+            "guid": "9e23622345ac88c4fab9c636aec10212",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_52.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry105/Position/Visible/OpenClick/Entry105Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_31.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 956374,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry105/Position/Visible/OpenClick/Entry105Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_31 (Sprite, 611586)",
+        "newValue": "Main_hub_button_31 (Sprite, 106270)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_31.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_31.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:39.6928558Z",
+        "assets": [
+          {
+            "guid": "f63b831ad0aeeb646afbacf247559c80",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_31.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry201/Position/Visible/OpenClick/Entry201Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_12_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 958528,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry201/Position/Visible/OpenClick/Entry201Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_12_icon (Sprite, 611592)",
+        "newValue": "Main_hub_button_12_icon (Sprite, 106282)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_12_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_12_icon.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:40.2587809Z",
+        "assets": [
+          {
+            "guid": "198d4fc4a7554bf4c8868dc30a71a8a2",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_12_icon.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry202/Position/Visible/OpenClick/Entry202Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_20_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 961462,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry202/Position/Visible/OpenClick/Entry202Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_20_icon (Sprite, 611598)",
+        "newValue": "Main_hub_button_20_icon (Sprite, 106294)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_20_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_20_icon.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:40.821591Z",
+        "assets": [
+          {
+            "guid": "121799455f8c07f45a3ddd9943008cfa",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_20_icon.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry203/Position/Visible/OpenClick/Entry203Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_21_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 965236,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry203/Position/Visible/OpenClick/Entry203Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_21_icon (Sprite, 611604)",
+        "newValue": "Main_hub_button_21_icon (Sprite, 106306)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_21_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_21_icon.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:41.3928474Z",
+        "assets": [
+          {
+            "guid": "96ae55349cf563b4c9ce97b2c9876e64",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_21_icon.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry204/Position/Visible/OpenClick/Entry204Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_16_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 967206,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry204/Position/Visible/OpenClick/Entry204Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_16_icon (Sprite, 611610)",
+        "newValue": "Main_hub_button_16_icon (Sprite, 106318)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_16_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_16_icon.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:41.9744057Z",
+        "assets": [
+          {
+            "guid": "fb34dc1bd4b413d4ebe149306be02039",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_16_icon.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry205/Position/Visible/OpenClick/Entry205Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_11_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 970888,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry205/Position/Visible/OpenClick/Entry205Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_11_icon (Sprite, 611616)",
+        "newValue": "Main_hub_button_11_icon (Sprite, 106330)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_11_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_11_icon.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:42.5448948Z",
+        "assets": [
+          {
+            "guid": "d7ee57849eb337147b3c9945395b7cb5",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_11_icon.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry301/Position/Visible/OpenClick/Entry301Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_icon_18.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 974468,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry301/Position/Visible/OpenClick/Entry301Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_icon_18 (Sprite, 611622)",
+        "newValue": "Main_hub_icon_18 (Sprite, 106342)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_18.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_18.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:43.1336468Z",
+        "assets": [
+          {
+            "guid": "4a3c8413e89e9694c8997dce37f0dafd",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_18.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry302/Position/Visible/OpenClick/Entry302Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_icon_19.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 977088,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry302/Position/Visible/OpenClick/Entry302Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_icon_19 (Sprite, 611628)",
+        "newValue": "Main_hub_icon_19 (Sprite, 106354)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_19.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_19.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:43.7139539Z",
+        "assets": [
+          {
+            "guid": "9df4cc7648ba45c45a68797cfa5f63e5",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_19.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry303/Position/Visible/OpenClick/Entry303Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_icon_9.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 979576,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry303/Position/Visible/OpenClick/Entry303Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_icon_9 (Sprite, 611634)",
+        "newValue": "Main_hub_icon_9 (Sprite, 106366)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_9.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_9.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:44.2839516Z",
+        "assets": [
+          {
+            "guid": "43e74bc6b423d914d971c382d76f440b",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_9.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry401/Position/Visible/OpenClick/Entry401Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_22.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 983226,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry401/Position/Visible/OpenClick/Entry401Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_22 (Sprite, 611640)",
+        "newValue": "Main_hub_button_22 (Sprite, 106378)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_22.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_22.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:44.8757791Z",
+        "assets": [
+          {
+            "guid": "55384fc5b5c363642ae74c0091a1b0cd",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_22.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry402/Position/Visible/OpenClick/Entry402Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_24.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 985468,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry402/Position/Visible/OpenClick/Entry402Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_24 (Sprite, 611646)",
+        "newValue": "Main_hub_button_24 (Sprite, 106390)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_24.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_24.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:45.4517131Z",
+        "assets": [
+          {
+            "guid": "448237b7a82b3e8489c38fac99090b53",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_24.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry403/Position/Visible/OpenClick/Entry403Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_25.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 988304,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry403/Position/Visible/OpenClick/Entry403Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_25 (Sprite, 611652)",
+        "newValue": "Main_hub_button_25 (Sprite, 106402)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_25.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_25.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:46.0708168Z",
+        "assets": [
+          {
+            "guid": "f81348375633ba840b59f58436a58e82",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_25.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry404/Position/Visible/OpenClick/Entry404Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_26.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 992618,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry404/Position/Visible/OpenClick/Entry404Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_26 (Sprite, 611658)",
+        "newValue": "Main_hub_button_26 (Sprite, 106414)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_26.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_26.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:46.6683929Z",
+        "assets": [
+          {
+            "guid": "738cec56a81f9204cb9b2043b29647d4",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_26.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry405/Position/Visible/OpenClick/Entry405Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_27.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 995372,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry405/Position/Visible/OpenClick/Entry405Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_27 (Sprite, 611664)",
+        "newValue": "Main_hub_button_27 (Sprite, 106426)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_27.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_27.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:47.2470772Z",
+        "assets": [
+          {
+            "guid": "6b42c5fbf7227734d94347cb36edf374",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_27.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry406/Position/Visible/OpenClick/Entry406Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_32_1.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 997934,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry406/Position/Visible/OpenClick/Entry406Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_32_1 (Sprite, 611670)",
+        "newValue": "Main_hub_button_32_1 (Sprite, 106438)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_32_1.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_32_1.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:47.8439269Z",
+        "assets": [
+          {
+            "guid": "5270c955a51a70648bf51aa370a20529",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_32_1.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/Entries/Entry501/Position/Visible/OpenClick/Entry501Icon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_icon_13_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 1001372,
+        "objectPath": "UIHome/SafeArea/CampVisible/Entries/Entry501/Position/Visible/OpenClick/Entry501Icon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_icon_13_icon (Sprite, 611676)",
+        "newValue": "Main_hub_icon_13_icon (Sprite, 106450)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_13_icon.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_13_icon.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:48.4442183Z",
+        "assets": [
+          {
+            "guid": "b85a9e8c5b47e58479e6c26b5dfb7dcd",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_icon_13_icon.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/CampVisible/TaskClick/TaskIcon",
+      "--component",
+      "Image",
+      "--property",
+      "m_Sprite",
+      "--value",
+      "Assets/Data/Widgets/Common/Icons/Main_hub_button_14.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 1003688,
+        "objectPath": "UIHome/SafeArea/CampVisible/TaskClick/TaskIcon",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "propertyType": "ObjectReference",
+        "oldValue": "main_hub_button_14 (Sprite, 611682)",
+        "newValue": "Main_hub_button_14 (Sprite, 106468)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "delete",
+      "--src",
+      "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_14.png"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset deleted",
+      "data": {
+        "action": "delete",
+        "srcPath": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_14.png",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T09:46:49.0347355Z",
+        "assets": [
+          {
+            "guid": "97dccad6ee865b647ba8d26e28d4d8e0",
+            "path": "Assets/Data/Widgets/Home/UIHomeAssets/main_hub_button_14.png",
+            "mainAssetType": "Unknown",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/FeedbackVisible",
+      "--component",
+      "Image",
+      "--property",
+      "m_RaycastTarget",
+      "--value",
+      "true"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 1006792,
+        "objectPath": "UIHome/SafeArea/FeedbackVisible",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_RaycastTarget",
+        "propertyType": "Boolean",
+        "oldValue": "false",
+        "newValue": "true"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/MapVisible/MapBackground",
+      "--component",
+      "UnityEngine.UI.AspectRatioFitter"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 1010338,
+        "objectPath": "UIHome/SafeArea/MapVisible/MapBackground",
+        "requestedComponent": "UnityEngine.UI.AspectRatioFitter",
+        "resolvedComponent": "UnityEngine.UI.AspectRatioFitter",
+        "componentInstanceId": -625188,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-24T09:46:49.6090248Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/MapVisible/MapBackground",
+      "--component",
+      "AspectRatioFitter",
+      "--property",
+      "m_AspectMode",
+      "--value",
+      "4"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 1013340,
+        "objectPath": "UIHome/SafeArea/MapVisible/MapBackground",
+        "component": "UnityEngine.UI.AspectRatioFitter",
+        "property": "m_AspectMode",
+        "propertyType": "Enum",
+        "oldValue": "None",
+        "newValue": "Envelope Parent"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHome.prefab",
+      "--path",
+      "UIHome/SafeArea/MapVisible/MapBackground",
+      "--component",
+      "AspectRatioFitter",
+      "--property",
+      "m_AspectRatio",
+      "--value",
+      "0.5"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/UIHome.prefab",
+        "instanceId": 1016340,
+        "objectPath": "UIHome/SafeArea/MapVisible/MapBackground",
+        "component": "UnityEngine.UI.AspectRatioFitter",
+        "property": "m_AspectRatio",
+        "propertyType": "Float",
+        "oldValue": "1",
+        "newValue": "0.5"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "save"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "scene/asset save completed",
+      "data": {
+        "scenesSavedCount": 0,
+        "scenesSkippedCount": 1,
+        "assetsSaved": true,
+        "respondedAtUtc": "2026-11-24T09:46:50.6797551Z",
+        "scenes": [
+          {
+            "name": "App",
+            "path": "Assets/Scenes/App.unity",
+            "wasDirty": false,
+            "saved": false,
+            "skipReason": "not dirty"
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]

@@ -20,6 +20,7 @@ public static class MiniwowHomeProbe
     {
         UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget);
         XLauncher[] launchers = UnityEngine.Object.FindObjectsOfType<XLauncher>(true);
+
         return JsonConvert.SerializeObject(new {
             resolution = new[] { Screen.width, Screen.height },
             activeScene = SceneManager.GetActiveScene().path,
@@ -47,8 +48,12 @@ public static class MiniwowHomeProbe
         Canvas canvas = button.GetComponentInParent<Canvas>();
         Camera camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
         Vector2 point = RectTransformUtility.WorldToScreenPoint(camera, rect.TransformPoint(rect.rect.center));
-        PointerEventData data = new PointerEventData(EventSystem.current) { position = point, button = PointerEventData.InputButton.Left };
+        PointerEventData data = new PointerEventData(EventSystem.current) {
+            position = point,
+            button = PointerEventData.InputButton.Left
+        };
         List<RaycastResult> hits = new List<RaycastResult>();
+
         EventSystem.current.RaycastAll(data, hits);
         if (hits.Count == 0 || ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject) != button.gameObject)
             throw new InvalidOperationException("The intended button is not the first clickable raycast target.");
@@ -57,7 +62,112 @@ public static class MiniwowHomeProbe
         ExecuteEvents.Execute(button.gameObject, data, ExecuteEvents.pointerUpHandler);
         ExecuteEvents.Execute(button.gameObject, data, ExecuteEvents.pointerClickHandler);
 
-        return JsonConvert.SerializeObject(new { target = hits[0].gameObject.name, point = new[] { point.x, point.y }, state = JsonConvert.DeserializeObject(Snapshot()) });
+        return JsonConvert.SerializeObject(new {
+            target = hits[0].gameObject.name,
+            point = new[] { point.x, point.y },
+            state = JsonConvert.DeserializeObject(Snapshot())
+        });
+    }
+
+    /// <summary>Clicks an authored entry through the real graphic raycast and pointer handlers.</summary>
+    public static string ClickEntry(int id)
+    {
+        UIHome widget = UnityEngine.Object.FindObjectOfType<UIHome>();
+        var entry = widget.GetComponentsInChildren<UIHomeEntry>(true).Single(item => item.vm.entryId == id);
+        Button button = entry.GetComponentInChildren<Button>();
+        RectTransform rect = button.GetComponent<RectTransform>();
+        Vector2 point = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center));
+        PointerEventData data = new PointerEventData(EventSystem.current) {
+            position = point,
+            button = PointerEventData.InputButton.Left
+        };
+        var hits = new List<RaycastResult>();
+
+        EventSystem.current.RaycastAll(data, hits);
+        if (hits.Count == 0 || ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject) != button.gameObject)
+            throw new InvalidOperationException("Entry is obscured or cannot receive clicks: " + id);
+
+        ExecuteEvents.Execute(button.gameObject, data, ExecuteEvents.pointerDownHandler);
+        ExecuteEvents.Execute(button.gameObject, data, ExecuteEvents.pointerUpHandler);
+        ExecuteEvents.Execute(button.gameObject, data, ExecuteEvents.pointerClickHandler);
+
+        return Presentation();
+    }
+
+    /// <summary>Reports bound entry state and missing asset references.</summary>
+    public static string Presentation()
+    {
+        UIHome widget = UnityEngine.Object.FindObjectOfType<UIHome>();
+
+        return JsonConvert.SerializeObject(new {
+            feedback = widget.vm.FeedbackText,
+            feedbackVisible = widget.vm.FeedbackVisible,
+            gold = widget.vm.Gold,
+            energy = widget.vm.Energy,
+            entries = widget.GetComponentsInChildren<UIHomeEntry>(true).Select(item => new {
+                id = item.vm.entryId, visible = item.vm.Visible, locked = item.vm.Locked,
+                position = new[] { item.vm.Position.x, item.vm.Position.y }
+            }).ToArray(),
+            missingFonts = widget.GetComponentsInChildren<Text>(true).Count(text => !text.font),
+            state = JsonConvert.DeserializeObject(Snapshot())
+        });
+    }
+
+    /// <summary>Refreshes repeatedly to exercise the once-only list binding contract.</summary>
+    public static bool RefreshRepeatedly()
+    {
+        HomeSystem system = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<HomeSystem>();
+        for (int index = 0; index < 20; index++)
+            if (!system.Refresh())
+                return false;
+
+        return true;
+    }
+
+    /// <summary>Updates local availability through the entity and refreshes the active page.</summary>
+    public static bool SetEntryAvailability(int id, bool visible, bool unlocked)
+    {
+        if (!Oathx.Entity.XEntityManager.GetSingleton().QueryEntity<HomeEntity>().UpdateEntryAvailability(id, visible, unlocked))
+            return false;
+
+        return XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<HomeSystem>().Refresh();
+    }
+
+    /// <summary>Checks snapshot isolation and rejected resource transactions.</summary>
+    public static string CheckEntityOwnership()
+    {
+        var entity = Oathx.Entity.XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
+        var original = entity.Snapshot();
+        var copy = entity.Snapshot();
+        copy.entries[0].visible = !copy.entries[0].visible;
+        copy.profile.gold = -1;
+
+        bool isolated = entity.Snapshot().entries[0].visible == original.entries[0].visible && entity.Snapshot().profile.gold == original.profile.gold;
+        bool rejected = !entity.UpdateResources(-1, original.profile.gem, original.profile.energy, original.profile.energyLimit);
+
+        return JsonConvert.SerializeObject(new {
+            isolated,
+            rejected,
+            gold = entity.Snapshot().profile.gold
+        });
+    }
+
+    /// <summary>Reports actual runtime listener counts to catch accidental callback rebinding.</summary>
+    public static string ListenerCounts()
+    {
+        var widget = UnityEngine.Object.FindObjectOfType<UIHome>();
+        var callsField = typeof(UnityEngine.Events.UnityEventBase).GetField("m_Calls", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        return JsonConvert.SerializeObject(widget.GetComponentsInChildren<UIHomeEntry>(true).Select(entry => {
+            var button = entry.GetComponentInChildren<Button>(true);
+            var calls = callsField.GetValue(button.onClick);
+            var runtime = (System.Collections.ICollection)calls.GetType().GetField("m_RuntimeCalls", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(calls);
+
+            return new {
+                id = entry.vm.entryId,
+                listeners = runtime.Count
+            };
+        }).ToArray());
     }
 
     /// <summary>Exercises the real module deactivation path.</summary>
@@ -81,6 +191,7 @@ public static class MiniwowHomeProbe
     public static bool RapidRestart()
     {
         HomeSystem system = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<HomeSystem>();
+
         system.Detive();
         system.Active();
         system.Detive();
@@ -101,7 +212,12 @@ public static class MiniwowHomeProbe
         bool accepted = controls.Pan(from, from + new Vector2(x, y));
         Vector3 after = camera.transform.parent.position;
 
-        return JsonConvert.SerializeObject(new { accepted, before = new[] { before.x, before.y, before.z }, after = new[] { after.x, after.y, after.z }, displacement = Vector3.Distance(before, after) });
+        return JsonConvert.SerializeObject(new {
+            accepted,
+            before = new[] { before.x, before.y, before.z },
+            after = new[] { after.x, after.y, after.z },
+            displacement = Vector3.Distance(before, after)
+        });
     }
 
     /// <summary>Selects an actual fixed-size Game View for aspect-ratio checks.</summary>
@@ -120,11 +236,13 @@ public static class MiniwowHomeProbe
         Type kindType = assembly.GetType("UnityEditor.GameViewSizeType");
         object size = Activator.CreateInstance(sizeType, new object[] { Enum.ToObject(kindType, 1), width, height, "Miniwow Home QA" });
         groupType.GetMethod("AddCustomSize").Invoke(group, new[] { size });
+
         Type viewType = assembly.GetType("UnityEditor.GameView");
         EditorWindow view = EditorWindow.GetWindow(viewType);
         viewType.GetProperty("selectedSizeIndex", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).SetValue(view, count);
         view.Repaint();
         view.Focus();
+
         Application.runInBackground = true;
     }
 }

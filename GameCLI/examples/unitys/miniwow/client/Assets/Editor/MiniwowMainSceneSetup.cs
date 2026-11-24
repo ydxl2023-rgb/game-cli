@@ -33,13 +33,17 @@ public static class MiniwowMainSceneSetup
             return;
 
         File.Delete(request);
+
         try
         {
             Build();
         }
         catch (Exception exception)
         {
-            File.WriteAllText(sourceDirectory + "/install-result.json", new JObject { ["ok"] = false, ["error"] = exception.ToString() }.ToString());
+            File.WriteAllText(sourceDirectory + "/install-result.json", new JObject {
+                ["ok"] = false,
+                ["error"] = exception.ToString()
+            }.ToString());
             Debug.LogException(exception);
         }
     }
@@ -53,10 +57,12 @@ public static class MiniwowMainSceneSetup
 
         JObject data = JObject.Parse(File.ReadAllText(sourceDirectory + "/scene.json"));
         Directory.CreateDirectory(assetDirectory);
+
         foreach (JObject texture in data["textures"])
             File.Copy(sourceDirectory + "/" + (string)texture["file"], assetDirectory + "/" + (string)texture["id"] + ".png", true);
 
         AssetDatabase.Refresh();
+
         foreach (JObject texture in data["textures"])
         {
             string path = assetDirectory + "/" + (string)texture["id"] + ".png";
@@ -68,6 +74,7 @@ public static class MiniwowMainSceneSetup
             importer.mipmapEnabled = true;
             importer.textureCompression = TextureImporterCompression.Uncompressed;
             importer.maxTextureSize = 4096;
+
             importer.SaveAndReimport();
         }
 
@@ -76,7 +83,10 @@ public static class MiniwowMainSceneSetup
         {
             string id = (string)entry["id"];
             JObject raw = JObject.Parse(File.ReadAllText(sourceDirectory + "/" + (string)entry["file"]));
-            Mesh mesh = new Mesh { name = (string)raw["name"], indexFormat = IndexFormat.UInt32 };
+            Mesh mesh = new Mesh {
+                name = (string)raw["name"],
+                indexFormat = IndexFormat.UInt32
+            };
             mesh.vertices = Vectors3(raw["vertices"]);
             Vector3[] normals = Vectors3(raw["normals"]);
             if (normals.Length == mesh.vertexCount)
@@ -84,6 +94,7 @@ public static class MiniwowMainSceneSetup
 
             mesh.uv = Vectors2(raw["uv"]);
             mesh.uv2 = Vectors2(raw["uv2"]);
+
             float[] colors = raw["colors"].ToObject<float[]>();
             if (colors.Length == mesh.vertexCount * 4)
                 mesh.colors = Enumerable.Range(0, mesh.vertexCount).Select(index => new Color(colors[index * 4], colors[index * 4 + 1], colors[index * 4 + 2], colors[index * 4 + 3])).ToArray();
@@ -129,21 +140,26 @@ public static class MiniwowMainSceneSetup
 
             material.shader = shader;
             material.name = (string)entry["name"];
+
             string texture = (string)entry["texture"];
             material.mainTexture = string.IsNullOrEmpty(texture) ? null : AssetDatabase.LoadAssetAtPath<Texture2D>(assetDirectory + "/" + texture + ".png");
             material.mainTextureScale = Vector2Value(entry["scale"]);
             material.mainTextureOffset = Vector2Value(entry["offset"]);
             material.color = ColorValue(entry["colors"]["_Color"], Color.white);
+
             JObject values = (JObject)entry["floats"];
             float surface = (float?)values["_Surface"] ?? 0;
+
             material.SetFloat("_AlphaClip", surface == 1 ? 1 : 0);
             material.SetFloat("_Cutoff", (float?)values["_Cutoff"] ?? 0.5f);
             material.SetFloat("_Cull", (float?)values["_Cull"] ?? 2);
             material.SetFloat("_ZWrite", (float?)values["_ZWrite"] ?? 1);
             material.SetFloat("_SrcBlend", surface == 2 ? 5 : 1);
             material.SetFloat("_DstBlend", surface == 2 ? 10 : 0);
+
             int queue = (int)entry["queue"];
             material.renderQueue = queue >= 0 ? queue : surface == 2 ? 3000 : surface == 1 ? 2450 : 2000;
+
             if (create)
                 AssetDatabase.CreateAsset(material, path);
             else
@@ -183,12 +199,15 @@ public static class MiniwowMainSceneSetup
             target.transform.localScale = Vector3Value(node["scale"]);
             target.layer = 0;
             target.SetActive((bool)node["active"]);
+
             string meshId = (string)node["mesh"];
             string builtin = (string)node["builtinMesh"];
+
             if (!string.IsNullOrEmpty(meshId) || !string.IsNullOrEmpty(builtin))
             {
                 MeshFilter filter = target.AddComponent<MeshFilter>();
                 filter.sharedMesh = !string.IsNullOrEmpty(meshId) ? meshes[meshId] : Resources.GetBuiltinResource<Mesh>(builtin + ".fbx");
+
                 MeshRenderer renderer = target.AddComponent<MeshRenderer>();
                 renderer.sharedMaterials = node["materials"].Select(id => materials[(string)id]).ToArray();
                 renderer.enabled = (bool)node["rendererEnabled"];
@@ -220,14 +239,22 @@ public static class MiniwowMainSceneSetup
         SerializedObject bindings = new SerializedObject(controls);
         bindings.FindProperty("sceneCamera").objectReferenceValue = mainCamera;
         bindings.FindProperty("cameraHandle").objectReferenceValue = mainCamera.transform.parent;
+
         bindings.ApplyModifiedPropertiesWithoutUndo();
+
         EditorSceneManager.SaveScene(scene);
         AssetDatabase.SaveAssets();
         if (opened)
             EditorSceneManager.CloseScene(scene, true);
 
         EditorSceneManager.SetActiveScene(prior);
-        File.WriteAllText(sourceDirectory + "/install-result.json", new JObject { ["ok"] = true, ["nodes"] = objects.Count, ["meshes"] = meshes.Count, ["materials"] = materials.Count }.ToString());
+
+        File.WriteAllText(sourceDirectory + "/install-result.json", new JObject {
+            ["ok"] = true,
+            ["nodes"] = objects.Count,
+            ["meshes"] = meshes.Count,
+            ["materials"] = materials.Count
+        }.ToString());
     }
 
     /// <summary>Reads a source vector without changing coordinate handedness.</summary>

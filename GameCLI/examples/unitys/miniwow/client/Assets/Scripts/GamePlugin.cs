@@ -3,13 +3,20 @@ using Oathx.Widget;
 using UnityEngine;
 
 /// <summary>Initializes the product UI and its local Home system.</summary>
-public sealed class GamePlugin : XPlugin, UISender
+public sealed class GamePlugin : XPlugin
 {
     /// <summary>Initializes the UI resource loader without installing business systems.</summary>
     /// <returns>True when infrastructure is ready.</returns>
     public override bool Install()
     {
-        UISystem.GetSingleton().Startup(new ResourceConfigure(this) { loader = new GameUILoader(), cacher = new UIDefaultCacher() });
+        MetadataSyncFactory.GetSingleton().Register(nameof(SyncAnchoredPosition), new SyncAnchoredPosition());
+
+        var configure = new ResourceConfigure(new GameUISender(this)) {
+            loader = new GameUILoader(),
+            cacher = new UIDefaultCacher()
+        };
+
+        UISystem.GetSingleton().Startup(configure);
 
         return true;
     }
@@ -19,6 +26,7 @@ public sealed class GamePlugin : XPlugin, UISender
     public override bool Startup()
     {
         XApp.GetSingleton().ShowLaunchBackground();
+
         Load<HomeSystem>();
 
         return true;
@@ -28,33 +36,13 @@ public sealed class GamePlugin : XPlugin, UISender
     public override void Shutdown()
     {
         UnloadAll();
+
         UISystem.GetSingleton().Shutdown();
     }
 
     /// <summary>Releases plugin registrations; this baseline registers none.</summary>
     public override void Uninstall()
     {
-    }
-
-    /// <summary>Dispatches typed UI intent events through the existing plugin dispatcher.</summary>
-    /// <param name="request">The request originating from a bound widget.</param>
-    /// <returns>True when the request implements the application event contract.</returns>
-    public bool Send(IUIRequest request)
-    {
-        if (!(request is IEvent message))
-            return false;
-
-        DispatchEvent(message);
-
-        return true;
-    }
-
-    /// <summary>Queues UI intent through the existing application event loop.</summary>
-    /// <param name="request">The request to enqueue.</param>
-    /// <returns>True when the application accepts the event.</returns>
-    public bool Post(IUIRequest request)
-    {
-        return request is IEvent message && XPluginUtility.PostEvent(message);
     }
 }
 
@@ -78,5 +66,43 @@ public sealed class GameUILoader : UILoader
     public Coroutine LoadAsync(string path, System.Type type, System.Action<Object> done)
     {
         return Oathx.Bundle.Assets.XRes.LoadAsync(path, type, done);
+    }
+}
+
+/// <summary>Adapts widget intentions to synchronous plugin events or the application event queue.</summary>
+public sealed class GameUISender : UISender
+{
+    /// <summary>The dispatcher that owns this product's active systems.</summary>
+    private readonly XEventDispatcher dispatcher;
+
+    /// <summary>Requires an explicit dispatcher instead of looking up a global plugin.</summary>
+    /// <param name="dispatcher">The product event dispatcher.</param>
+    public GameUISender(XEventDispatcher dispatcher)
+    {
+        if (dispatcher == null)
+            throw new System.ArgumentNullException(nameof(dispatcher));
+
+        this.dispatcher = dispatcher;
+    }
+
+    /// <summary>Immediately dispatches valid application events to the configured product.</summary>
+    /// <param name="request">The widget intention.</param>
+    /// <returns>Whether the request implements the application event contract.</returns>
+    public bool Send(IUIRequest request)
+    {
+        if (!(request is IEvent message))
+            return false;
+
+        dispatcher.DispatchEvent(message);
+
+        return true;
+    }
+
+    /// <summary>Queues valid application events through the existing event loop.</summary>
+    /// <param name="request">The widget intention.</param>
+    /// <returns>Whether the application accepted the event.</returns>
+    public bool Post(IUIRequest request)
+    {
+        return request is IEvent message && XPluginUtility.PostEvent(message);
     }
 }

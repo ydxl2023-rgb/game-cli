@@ -27,6 +27,7 @@ public static class MiniwowHomeSetup
             return;
 
         File.Delete(RequestPath);
+
         try
         {
             Install();
@@ -64,6 +65,7 @@ public static class MiniwowHomeSetup
         }
 
         EditorSceneManager.SaveScene(app);
+
         string path = "Assets/Scenes/Home.unity";
         if (!File.Exists(path))
         {
@@ -73,15 +75,19 @@ public static class MiniwowHomeSetup
 
             Scene home = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
             EditorSceneManager.SetActiveScene(home);
+
             GameObject canvasObject = new GameObject("HomeEnvironmentCanvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler));
             Canvas canvas = canvasObject.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = -5;
+
             CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1080, 1920);
             scaler.matchWidthOrHeight = 0;
+
             PrefabUtility.InstantiatePrefab(prefab, canvasObject.transform);
+
             EditorSceneManager.SaveScene(home, path);
             EditorSceneManager.CloseScene(home, true);
             EditorSceneManager.SetActiveScene(app);
@@ -98,6 +104,7 @@ public static class MiniwowHomeSetup
         }
 
         EditorBuildSettings.scenes = scenes.ToArray();
+
         AssetDatabase.SaveAssets();
     }
 }

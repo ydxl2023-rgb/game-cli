@@ -31,6 +31,7 @@ public sealed class HomeSceneCamera : MonoBehaviour
         if (!sceneCamera || !cameraHandle)
         {
             enabled = false;
+
             return;
         }
 
@@ -43,6 +44,7 @@ public sealed class HomeSceneCamera : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+
             if (touch.phase == TouchPhase.Began)
                 Begin(touch.position, touch.fingerId);
             else if (touch.phase == TouchPhase.Moved && dragging && Input.touchCount == 1)
@@ -55,8 +57,10 @@ public sealed class HomeSceneCamera : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             Begin(Input.mousePosition, -1);
+
         if (Input.GetMouseButton(0) && dragging)
             Drag(Input.mousePosition);
+
         if (Input.GetMouseButtonUp(0))
             dragging = false;
 
@@ -91,6 +95,7 @@ public sealed class HomeSceneCamera : MonoBehaviour
         Vector3 delta = first.GetPoint(firstDistance) - second.GetPoint(secondDistance);
         Vector3 offset = cameraHandle.position + delta - origin;
         offset.y = 0f;
+
         cameraHandle.position = origin + Vector3.ClampMagnitude(offset, movementRadius);
 
         return true;
@@ -110,8 +115,8 @@ public sealed class HomeSceneCamera : MonoBehaviour
     private void Drag(Vector2 position)
     {
         Pan(previous, position);
+
         previous = position;
     }
-
 
 }

@@ -13,16 +13,22 @@ public static class CleanProjectSetup
     public static void Build()
     {
         EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
         foreach (string path in new[] { "Assets/Scripts/Systems/Expedition", "Assets/Data/Widgets/Expedition", "Assets/Data/Fonts", "Assets/Scenes/Miniwow.unity", "Assets/Editor/MiniwowSceneSetup.cs" })
-            if (AssetDatabase.LoadMainAssetAtPath(path)) AssetDatabase.DeleteAsset(path);
+            if (AssetDatabase.LoadMainAssetAtPath(path))
+                AssetDatabase.DeleteAsset(path);
         var analyzer = (PluginImporter)AssetImporter.GetAtPath("Assets/WidgetGenerator.dll");
         analyzer.SetCompatibleWithAnyPlatform(false);
         analyzer.SetCompatibleWithEditor(false);
+
         AssetDatabase.SetLabels(AssetDatabase.LoadMainAssetAtPath("Assets/WidgetGenerator.dll"), new[] { "RoslynAnalyzer" });
         analyzer.SaveAndReimport();
+
         PlayerSettings.productName = "Miniwow";
+
         var camera = new GameObject("Main Camera", typeof(Camera)).GetComponent<Camera>();
         camera.tag = "MainCamera";
+
         var ui = new GameObject("UISystem", typeof(RectTransform), typeof(UISystem));
 
         foreach (string layer in System.Enum.GetNames(typeof(WidgetLayer)))
@@ -31,6 +37,7 @@ public static class CleanProjectSetup
             root.transform.SetParent(ui.transform, false);
             root.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
         }
+
         new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         var launch = new GameObject("Launch", typeof(RectTransform), typeof(Canvas), typeof(XLauncher));
         launch.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
@@ -60,11 +67,11 @@ public static class CleanProjectSetup
 
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
-
         var app = new GameObject("XApp", typeof(XApp)).GetComponent<XApp>();
         var appData = new SerializedObject(app);
         appData.FindProperty("launcher").objectReferenceValue = launcher;
         appData.FindProperty("mainCamera").objectReferenceValue = camera;
+
         appData.ApplyModifiedPropertiesWithoutUndo();
 
         var config = AssetDatabase.LoadAssetAtPath<XAppConfigure>("Assets/Resources/XAppConfigure.asset");
@@ -78,16 +85,14 @@ public static class CleanProjectSetup
         config.clearLocalEntityArchiveOnStartup = false;
         config.syncEntityArchiveToRemote = false;
         config.plugins = new[] { "GamePlugin" };
+
         if (create)
             AssetDatabase.CreateAsset(config, "Assets/Resources/XAppConfigure.asset");
         else
             EditorUtility.SetDirty(config);
-
 
         EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene(), "Assets/Scenes/App.unity");
         EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene("Assets/Scenes/App.unity", true) };
         AssetDatabase.SaveAssets();
     }
 }
-
-
