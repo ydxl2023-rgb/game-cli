@@ -1427,16 +1427,15 @@ namespace Oathx.Widget
 
         private bool Add(ScrollRect scroll, GameObject prefab, VM element)
         {
-            var itemGo = GameObject.Instantiate(prefab);
+            var itemGo = GameObject.Instantiate(prefab, scroll.content, false);
             if (!itemGo)
                 throw new System.NullReferenceException();
 
-            itemGo.gameObject.SetActive(true);
-           
-            itemGo.transform.SetParent(scroll.content, true);
+            // Keep the cell on the content plane for camera-space canvases.
+            itemGo.transform.localPosition = Vector3.zero;
+            itemGo.transform.localRotation = Quaternion.identity;
             itemGo.transform.localScale = Vector3.one;
-            itemGo.transform.position = Vector3.zero;
-            itemGo.transform.eulerAngles = Vector3.zero;
+            itemGo.SetActive(true);
 
             var widget = itemGo.GetComponent<IWidget>();
             if (widget)

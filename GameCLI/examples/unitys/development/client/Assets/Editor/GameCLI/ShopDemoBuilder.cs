@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Reflection;
+using Oathx.Widget;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,16 +19,15 @@ public static class ShopDemoBuilder
         var root=PrefabUtility.LoadPrefabContents(path);
         try
         {
-            var page=Get<UIShopDemoList>(root);
+            var page=Get<UIShopProductList>(root);
             var data=new SerializedObject(page);
-            var catalog=AssetDatabase.LoadAssetAtPath<TextAsset>(shop+"Demo/ShopDemo.json");
-            Ref(data,"catalog",catalog);
-            var art=new List<Sprite>();
-            var rows=JsonUtility.FromJson<ShopDemoData>(catalog.text).tracks.SelectMany(t=>t.entries);
+            var catalog = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Data/Jsons/Excels/ShopPageItemConfig.bytes");
+            var rows = Newtonsoft.Json.JsonConvert.DeserializeObject<Config.ShopPageItemConfig>(catalog.text).data.Values;
+            var art = new List<Sprite>();
             var files = Directory.GetFiles("Assets/Data/Widgets/Common/Icons", "*.png")
                 .Concat(Directory.GetFiles(shop + "Demo/Images", "*.png"))
                 .ToDictionary(Path.GetFileName, StringComparer.OrdinalIgnoreCase);
-            foreach(var key in rows.SelectMany(e=>new[]{e.icon,e.preview,e.currency}).Where(k=>!string.IsNullOrEmpty(k)).Distinct())
+            foreach(var key in rows.SelectMany(e=>new[]{e.Icon,e.Preview,e.Currency}).Where(k=>!string.IsNullOrEmpty(k)).Distinct())
             {
                 string file=files[key].Replace(Path.DirectorySeparatorChar,'/');
                 var importer=(TextureImporter)AssetImporter.GetAtPath(file);
@@ -68,8 +69,9 @@ public static class ShopDemoBuilder
             if(!viewport || !cell) throw new InvalidDataException("Missing native list: "+name);
             for(var t=viewport;t!=root.transform;t=t.parent) t.gameObject.SetActive(true);
             if(!viewport.GetComponent<RectMask2D>())viewport.gameObject.AddComponent<RectMask2D>();
-            var cellView=Get<UIShopDemoCell>(cell.gameObject);
-            var item=new SerializedObject(cellView);
+            var cellView=Get<UIShopProductCell>(cell.gameObject);
+            var item = new Dictionary<string, UnityEngine.Object>();
+            var pageTargets = new Dictionary<string, UnityEngine.Object>();
             Ref(data,"template",cellView);
             Ref(data,"viewport",viewport);
             data.FindProperty("columns").intValue=daily?6:1;
@@ -86,8 +88,8 @@ public static class ShopDemoBuilder
                 Hide(cell,"FRewardCanGet","CRewardCanGet","FMask","CMask","CurrentLevelNode","ReachNode","CCheck");
                 Find(cell,"NotReachNode").gameObject.SetActive(true);
                 Find(cell,"CImgLock").gameObject.SetActive(true);
-                TextRef(data,"level",hierarchy,"PlayerLevel");
-                TextRef(data,"passPrice",hierarchy,"PayNum");
+                TextRef(pageTargets,"level",hierarchy,"PlayerLevel");
+                TextRef(pageTargets,"passPrice",hierarchy,"PayNum");
             }
             else
             {
@@ -122,11 +124,11 @@ public static class ShopDemoBuilder
                     var bg=hierarchy.Find("DemoWallpaper") ?? new GameObject("DemoWallpaper",typeof(RectTransform),typeof(Image)).transform;
                     bg.SetParent(hierarchy,false);bg.SetAsFirstSibling();
                     var rect=(RectTransform)bg;rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.offsetMin=rect.offsetMax=Vector2.zero;
-                    var image=bg.GetComponent<Image>();image.raycastTarget=false;Ref(data,"preview",image);
-                    TextRef(data,"previewTitle",hierarchy,"TextWallPaperName");
-                    TextRef(data,"previewPrice",Find(hierarchy,"BtnBuy"),"TextPrice");
-                    Ref(data,"previous",Get<Button>(Find(hierarchy,"LArrow").gameObject));
-                    Ref(data,"next",Get<Button>(Find(hierarchy,"RArrow").gameObject));
+                    var image=bg.GetComponent<Image>();image.raycastTarget=false;Ref(pageTargets,"preview",image);
+                    TextRef(pageTargets,"previewTitle",hierarchy,"TextWallPaperName");
+                    TextRef(pageTargets,"previewPrice",Find(hierarchy,"BtnBuy"),"TextPrice");
+                    Ref(pageTargets,"previous",Get<Button>(Find(hierarchy,"LArrow").gameObject));
+                    Ref(pageTargets,"next",Get<Button>(Find(hierarchy,"RArrow").gameObject));
                     Hide(hierarchy,"MaskChange");
                 }
                 else
@@ -148,27 +150,27 @@ public static class ShopDemoBuilder
             {
                 if(wall)
                 {
-                    var artRoot=(Image)item.FindProperty("icon").objectReferenceValue;
+                    var artRoot=(Image)item["icon"];
                     artRoot.transform.SetAsLastSibling();
                     Hide(cell,"ImgBG","OwnedNode","UnSelectNode","TimeNode","BtnClick");
                     var thumbButton=cell.GetComponent<Button>();
                     thumbButton.targetGraphic=artRoot;
                     artRoot.raycastTarget=true;
-                    var priceText=(Text)item.FindProperty("price").objectReferenceValue;
+                    var priceText=(Text)item["price"];
                     Pin(priceText.rectTransform,cell,new Vector2(.5f,.08f),new Vector2(170,40),Vector2.zero);
                     priceText.fontSize=27;priceText.alignment=TextAnchor.MiddleCenter;
-                    var big=(Text)data.FindProperty("previewPrice").objectReferenceValue;
+                    var big=(Text)pageTargets["previewPrice"];
                     Pin(big.rectTransform,Find(hierarchy,"BtnBuy"),new Vector2(.5f,.5f),new Vector2(250,90),Vector2.zero);
                     big.alignment=TextAnchor.MiddleCenter;
-                    var heading=(Text)data.FindProperty("previewTitle").objectReferenceValue;
+                    var heading=(Text)pageTargets["previewTitle"];
                     Pin(heading.rectTransform,hierarchy,new Vector2(.73f,.34f),new Vector2(1050,100),Vector2.zero);
                     heading.fontSize=55;heading.alignment=TextAnchor.MiddleRight;
                 }
                 else
                 {
                     var field=Find(cell,daily?"GoodField":"RechargeField");
-                    var priceText=(Text)item.FindProperty("price").objectReferenceValue;
-                    var money=(Image)item.FindProperty("currency").objectReferenceValue;
+                    var priceText=(Text)item["price"];
+                    var money=(Image)item["currency"];
                     Pin(priceText.rectTransform,field,new Vector2(.5f,.075f),new Vector2(daily?230:360,85),new Vector2(10,0));
                     priceText.horizontalOverflow=HorizontalWrapMode.Overflow;
                     priceText.verticalOverflow=VerticalWrapMode.Overflow;
@@ -178,22 +180,103 @@ public static class ShopDemoBuilder
                     Hide(cell,"DiscountPrice","CurrencyFreeShow","LockMaskLanText","LimitTimeHour");
                     if(!daily)
                     {
-                        var artwork=(Image)item.FindProperty("icon").objectReferenceValue;
+                        var artwork=(Image)item["icon"];
                         if(artwork)Pin(artwork.rectTransform,field,new Vector2(.5f,.57f),new Vector2(240,240),Vector2.zero);
                         BindGrowthOverlays(item, cell, field);
                     }
                 }
             }
-            item.ApplyModifiedPropertiesWithoutUndo();
+
             data.ApplyModifiedPropertiesWithoutUndo();
+            BindWidgets(data, pageTargets, cellView, item);
             PrefabUtility.SaveAsPrefabAsset(root,path);
             return art.Count;
         }
         finally {PrefabUtility.UnloadPrefabContents(root);}
     }
 
+    /// <summary>Store the authored skin targets in Widget binding order.</summary>
+    private static void BindWidgets(SerializedObject data, Dictionary<string, UnityEngine.Object> pageTargets,
+        UIShopProductCell cell, Dictionary<string, UnityEngine.Object> item)
+    {
+        var viewport = (RectTransform)data.FindProperty("viewport").objectReferenceValue;
+        var scroll = Get<ScrollRect>(viewport.gameObject);
+        var content = viewport.Find("ConfiguredItems") as RectTransform;
+        if (!content)
+        {
+            content = new GameObject("ConfiguredItems", typeof(RectTransform)).GetComponent<RectTransform>();
+            content.SetParent(viewport, false);
+        }
+
+        content.anchorMin = content.anchorMax = content.pivot = new Vector2(0f, 1f);
+        content.anchoredPosition = Vector2.zero;
+        bool grid = data.FindProperty("columns").intValue > 1;
+        scroll.enabled = false;
+        scroll.viewport = viewport;
+        scroll.content = content;
+        scroll.horizontal = !grid;
+        scroll.vertical = grid;
+        scroll.movementType = ScrollRect.MovementType.Clamped;
+        Ref(data, "scroll", scroll);
+        Ref(data, "layout", Get<GridLayoutGroup>(content.gameObject));
+        data.FindProperty("wallpaper").boolValue = pageTargets.ContainsKey("preview");
+        data.ApplyModifiedPropertiesWithoutUndo();
+
+        if (grid && item.TryGetValue("quantity", out var count) && count is Text quantity)
+        {
+            var rect = quantity.rectTransform;
+            rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(1f, .5f);
+            rect.anchoredPosition = new Vector2(-18f, -60f);
+            quantity.alignment = TextAnchor.MiddleRight;
+        }
+
+        pageTargets["items"] = scroll;
+        WriteMetadata<VMShopProductList>((Component)data.targetObject, pageTargets);
+        WriteMetadata<VMShopProductCell>(cell, item);
+    }
+
+    /// <summary>Keep empty slots for fields omitted by a skin so VM indices stay stable.</summary>
+    private static void WriteMetadata<T>(Component owner, Dictionary<string, UnityEngine.Object> targets) where T : VM
+    {
+        var metadata = Get<Metadata>(owner.gameObject);
+        metadata.className = typeof(T).Name;
+        metadata.classGuid = AssetDatabase.FindAssets(metadata.className + " t:MonoScript")
+            .Single(guid => Path.GetFileNameWithoutExtension(AssetDatabase.GUIDToAssetPath(guid)) == metadata.className);
+        metadata.metadatas.Clear();
+
+        foreach (var field in typeof(T).GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly).OrderBy(field => field.MetadataToken))
+        {
+            var binding = field.GetCustomAttribute<BindingAttribute>();
+            if (binding == null)
+                continue;
+
+            string name = field.Name;
+            string target = name.EndsWith("Visible", StringComparison.Ordinal) ? name.Substring(0, name.Length - 7) : name;
+            targets.TryGetValue(target, out var reference);
+            var component = reference is GameObject node ? node.transform : reference as Component;
+            var value = new MetadataField {
+                name = name,
+                type = binding.name,
+                targets = new List<GameObject>(),
+                components = new List<Component>()
+            };
+            if (component)
+            {
+                value.targets.Add(component.gameObject);
+                value.components.Add(binding.name == nameof(SyncVisible) ? component.transform : component);
+                if (binding.name == nameof(SyncSprite) && component is Image image)
+                {
+                    image.enabled = true;
+                    image.preserveAspect = true;
+                }
+            }
+
+            metadata.metadatas.Add(value);
+        }
+    }
+
     /// <summary>Keep both state overlays above the artwork and inside the animated card.</summary>
-    private static void BindGrowthOverlays(SerializedObject item, Transform cell, Transform field)
+    private static void BindGrowthOverlays(Dictionary<string, UnityEngine.Object> item, Transform cell, Transform field)
     {
         var sold = field.Find("SoldOut") ?? cell.Find("SoldOut");
         var condition = Find(cell, "TextUnlockCondition");
@@ -215,8 +298,8 @@ public static class ShopDemoBuilder
     /// <summary>Read active configuration rows and native layout in Play Mode.</summary>
     public static string Inspect()
     {
-        var lists=UnityEngine.Object.FindObjectsOfType<UIShopDemoList>();
-        return string.Join(";",lists.Select(p=>p.name+" "+string.Join(",",p.GetComponentsInChildren<UIShopDemoCell>().Select(v=>v.name+":"+((RectTransform)v.transform).rect.size+":"+v.transform.localScale).Take(2))+" total="+p.GetComponentsInChildren<UIShopDemoCell>().Length));
+        var lists=UnityEngine.Object.FindObjectsOfType<UIShopProductList>();
+        return string.Join(";",lists.Select(p=>p.name+" "+string.Join(",",p.GetComponentsInChildren<UIShopProductCell>().Select(v=>v.name+":"+((RectTransform)v.transform).rect.size+":"+v.transform.localScale).Take(2))+" total="+p.GetComponentsInChildren<UIShopProductCell>().Length));
     }
 
     /// <summary>Capture a rendered Game view frame after navigating to a demo page.</summary>
@@ -231,10 +314,12 @@ public static class ShopDemoBuilder
     /// <summary>Select the next local wallpaper and read the configured label for verification.</summary>
     public static string NextWallpaper()
     {
-        var list=UnityEngine.Object.FindObjectOfType<UIShopDemoList>();
-        var serialized=new SerializedObject(list);
-        ((Button)serialized.FindProperty("next").objectReferenceValue).onClick.Invoke();
-        return ((Text)serialized.FindProperty("previewTitle").objectReferenceValue).text;
+        var list=UnityEngine.Object.FindObjectOfType<UIShopProductList>();
+        var metadata = list.GetComponent<Metadata>();
+        var next = (Button)metadata.metadatas.Single(field => field.name == "next").components.Single();
+        next.onClick.Invoke();
+
+        return list.vm.PreviewTitle;
     }
 
     private static void Pin(RectTransform rect,Transform parent,Vector2 anchor,Vector2 size,Vector2 offset)
@@ -264,24 +349,29 @@ public static class ShopDemoBuilder
         for(;t && t!=root;t=t.parent)t.gameObject.SetActive(true);
     }
 
+    private static void Ref(Dictionary<string, UnityEngine.Object> targets, string key, UnityEngine.Object value)
+    {
+        targets[key] = value;
+    }
+
     private static void Ref(SerializedObject obj,string key,UnityEngine.Object value)
     {
         obj.FindProperty(key).objectReferenceValue=value;
     }
 
-    private static void TextRef(SerializedObject obj,string key,Transform root,string name)
+    private static void TextRef(Dictionary<string, UnityEngine.Object> obj,string key,Transform root,string name)
     {
         var t=Find(root,name);
         if(t && t.GetComponent<Text>()){Enable(t,root);Ref(obj,key,t.GetComponent<Text>());}
     }
 
-    private static void ImgRef(SerializedObject obj,string key,Transform root,string name)
+    private static void ImgRef(Dictionary<string, UnityEngine.Object> obj,string key,Transform root,string name)
     {
         var t=Find(root,name);
         if(t){Enable(t,root);Ref(obj,key,t.GetComponent<Image>());}
     }
 
-    private static void ObjRef(SerializedObject obj,string key,Transform root,string name)
+    private static void ObjRef(Dictionary<string, UnityEngine.Object> obj,string key,Transform root,string name)
     {
         var t=Find(root,name);
         if(t) Ref(obj,key,t.gameObject);
@@ -292,8 +382,3 @@ public static class ShopDemoBuilder
         foreach(var name in names){var t=Find(root,name);if(t)t.gameObject.SetActive(false);}
     }
 }
-
-
-
-
-

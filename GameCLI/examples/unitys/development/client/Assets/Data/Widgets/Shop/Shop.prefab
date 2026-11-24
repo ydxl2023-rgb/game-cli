@@ -5847,211 +5847,152 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interaction: {fileID: 6271816125727021264}
   sections:
-  - title: "\u63A8\u8350\u5546\u54C1"
+  - id: 118
+    title: "\u63A8\u8350\u5546\u54C1"
     icon: {fileID: 21300000, guid: 8a38fbf84b0af9b44b81389c0549e4c4, type: 3}
     pages:
-    - id: 11801
-      title: "\u6BCF\u65E5\u7279\u60E0\u793C\u5305"
-      window: EverydayPreferentialGiftView
-      prefab: {fileID: 4637860619237086557, guid: 05666c951cb740746a1b3dcb4de82a93,
-        type: 3}
-  - title: "\u65B0\u4EBA\u7279\u60E0"
+    - key: 11801
+      label: "\u6BCF\u65E5\u7279\u60E0\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Recommended/DailyOffer.prefab
+  - id: 112
+    title: "\u65B0\u4EBA\u7279\u60E0"
     icon: {fileID: 21300000, guid: 320367b64d0806841afe86bd91fc7283, type: 3}
     pages:
-    - id: 11201
-      title: "\u65B0\u624B\u9650\u5B9A\u793C\u5305"
-      window: SetterGiftView
-      prefab: {fileID: 5036871419540267662, guid: 7e7ed37034c889a4892ad503b602893d,
-        type: 3}
-    - id: 11202
-      title: "\u5165\u90E8\u793C\u5305"
-      window: NewPeopleGiftView
-      prefab: {fileID: 7025180660750722230, guid: 19a29d3ab656a5f4e83cbed68b544202,
-        type: 3}
-  - title: "\u6708\u5361"
+    - key: 11201
+      label: "\u65B0\u624B\u9650\u5B9A\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Newcomer/StarterOffer.prefab
+    - key: 11202
+      label: "\u5165\u90E8\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Newcomer/ClubGift.prefab
+  - id: 104
+    title: "\u6708\u5361"
     icon: {fileID: 21300000, guid: acd31af44a5381944b9167ce7669699d, type: 3}
     pages:
-    - id: 10401
-      title: "\u6708\u5361"
-      window: MonthCardView
-      prefab: {fileID: 1406465654663407113, guid: b5f3aa2d93ea7494d91ca6ebf54658e7,
-        type: 3}
-    - id: 10498
-      title: "\u8FFD\u5FC6\u793C\u5305"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-  - title: "\u7279\u60E0\u5546\u54C1"
+    - key: 10401
+      label: "\u6708\u5361"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/MonthCard/MonthCard.prefab
+    - key: 10498
+      label: "\u8FFD\u5FC6\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/MonthCard/MemoryGift.prefab
+  - id: 103
+    title: "\u7279\u60E0\u5546\u54C1"
     icon: {fileID: 21300000, guid: 7ac58c4660bdffb47b9d1dfa1f0909ee, type: 3}
     pages:
-    - id: 10302
-      title: "\u7279\u60E0\u5546\u54C1"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-    - id: 10301
-      title: "\u6210\u957F\u793C\u5305"
-      window: GiftTabView
-      prefab: {fileID: 2743199890570585114, guid: 6c15ae3941ece294fb4cba4a1d866176,
-        type: 3}
-    - id: 10305
-      title: "\u9650\u65F6\u7279\u60E0"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 10310
-      title: "\u7279\u60E0\u793C\u5305"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 10306
-      title: "\u7279\u522B\u62DB\u52DF"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 10399
-      title: "\u542F\u7A0B\u5546\u5E97\uFF08\u6E2F\u6FB3\u53F0\u4E13\u5C5E\uFF09"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 10104
-      title: "\u793E\u56E2\u5546\u5E97"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-    - id: 10303
-      title: "\u9650\u5B9A\u5E94\u63F4"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 10312
-      title: "\u9650\u65F6\u793C\u5305"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 10105
-      title: "\u8FDE\u6218\u5BF9\u51B3\u5546\u5E97"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-    - id: 10102
-      title: "\u6311\u6218\u5546\u5E97"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-    - id: 10802
-      title: "\u5E94\u63F4\u5546\u5E97"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-    - id: 10103
-      title: "\u5206\u89E3\u5546\u5E97"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-  - title: "\u6210\u957F\u7279\u60E0"
+    - key: 10302
+      label: "\u7279\u60E0\u5546\u54C1"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/DiscountGoods.prefab
+    - key: 10301
+      label: "\u6210\u957F\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/GrowthGift.prefab
+    - key: 10305
+      label: "\u9650\u65F6\u7279\u60E0"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/LimitedOffer.prefab
+    - key: 10310
+      label: "\u7279\u60E0\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/DiscountGift.prefab
+    - key: 10306
+      label: "\u7279\u522B\u62DB\u52DF"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/SpecialRecruit.prefab
+    - key: 10399
+      label: "\u542F\u7A0B\u5546\u5E97\uFF08\u6E2F\u6FB3\u53F0\u4E13\u5C5E\uFF09"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/RegionalShop.prefab
+    - key: 10104
+      label: "\u793E\u56E2\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/FriendShop.prefab
+    - key: 10303
+      label: "\u9650\u5B9A\u5E94\u63F4"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/LimitedSupport.prefab
+    - key: 10312
+      label: "\u9650\u65F6\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/LimitedGift.prefab
+    - key: 10105
+      label: "\u8FDE\u6218\u5BF9\u51B3\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/StreakShop.prefab
+    - key: 10102
+      label: "\u6311\u6218\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/ChallengeShop.prefab
+    - key: 10802
+      label: "\u5E94\u63F4\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/SupportShop.prefab
+    - key: 10103
+      label: "\u5206\u89E3\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/SpecialOffers/SalvageShop.prefab
+  - id: 119
+    title: "\u6210\u957F\u7279\u60E0"
     icon: {fileID: 21300000, guid: 1f9ad003d56b95b49a3f8ebcb509a0ea, type: 3}
     pages:
-    - id: 11915
-      title: "43\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11914
-      title: "40\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11913
-      title: "37\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11912
-      title: "35\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11911
-      title: "33\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11910
-      title: "30\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11909
-      title: "27\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11908
-      title: "25\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11907
-      title: "23\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11906
-      title: "20\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11905
-      title: "17\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11904
-      title: "15\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11903
-      title: "12\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11902
-      title: "10\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-    - id: 11901
-      title: "6\u7EA7\u793C\u5305"
-      window: GrowUpPreferentialGiftView
-      prefab: {fileID: 4035117310476756490, guid: 9e51a6bf0402851459f20779c17dfb04,
-        type: 3}
-  - title: "\u88C5\u9970\u5546\u5E97"
+    - key: 11915
+      label: "43\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level43Gift.prefab
+    - key: 11914
+      label: "40\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level40Gift.prefab
+    - key: 11913
+      label: "37\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level37Gift.prefab
+    - key: 11912
+      label: "35\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level35Gift.prefab
+    - key: 11911
+      label: "33\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level33Gift.prefab
+    - key: 11910
+      label: "30\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level30Gift.prefab
+    - key: 11909
+      label: "27\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level27Gift.prefab
+    - key: 11908
+      label: "25\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level25Gift.prefab
+    - key: 11907
+      label: "23\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level23Gift.prefab
+    - key: 11906
+      label: "20\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level20Gift.prefab
+    - key: 11905
+      label: "17\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level17Gift.prefab
+    - key: 11904
+      label: "15\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level15Gift.prefab
+    - key: 11903
+      label: "12\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level12Gift.prefab
+    - key: 11902
+      label: "10\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level10Gift.prefab
+    - key: 11901
+      label: "6\u7EA7\u793C\u5305"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Growth/Level6Gift.prefab
+  - id: 110
+    title: "\u88C5\u9970\u5546\u5E97"
     icon: {fileID: 21300000, guid: bcc6d2ddc80cf0143b8a45dd4ce8ca87, type: 3}
     pages:
-    - id: 11001
-      title: "\u80CC\u666F\u5546\u5E97"
-      window: WallpaperMallView
-      prefab: {fileID: 4726861146857432086, guid: 047c5f658ba7dae4c961e9020bef0d59,
-        type: 3}
-    - id: 11002
-      title: "\u5934\u50CF\u5546\u5E97"
-      window: NormalGiftView
-      prefab: {fileID: 0}
-    - id: 11003
-      title: "\u6A2A\u5E45\u5546\u5E97"
-      window: DailyTabView
-      prefab: {fileID: 2470891043982514992, guid: e1e24709460d4624284a21f3581474bf,
-        type: 3}
-  - title: "\u8D85\u503C\u8FD4\u8FD8"
+    - key: 11001
+      label: "\u80CC\u666F\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Cosmetics/Wallpaper.prefab
+    - key: 11002
+      label: "\u5934\u50CF\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Cosmetics/AvatarShop.prefab
+    - key: 11003
+      label: "\u6A2A\u5E45\u5546\u5E97"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Cosmetics/BannerShop.prefab
+  - id: 113
+    title: "\u8D85\u503C\u8FD4\u8FD8"
     icon: {fileID: 21300000, guid: cd275c6e3726d9142a24e0570f19dd08, type: 3}
     pages:
-    - id: 11301
-      title: "\u8D85\u503C\u8FD4\u8FD8"
-      window: GrowthFindsView
-      prefab: {fileID: 3731166365269119924, guid: 4d3d895e14c25644f845e730f5282c82,
-        type: 3}
-  - title: "\u5145\u503C"
+    - key: 11301
+      label: "\u8D85\u503C\u8FD4\u8FD8"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/ValueReturn/ValueReturn.prefab
+  - id: 105
+    title: "\u5145\u503C"
     icon: {fileID: 21300000, guid: e3c1808f13f7034458e5bd4fd9d7e57d, type: 3}
     pages:
-    - id: 10501
-      title: "\u94BB\u77F3\u5145\u503C"
-      window: RechargeShopView
-      prefab: {fileID: 0}
+    - key: 10501
+      label: "\u94BB\u77F3\u5145\u503C"
+      prefabPath: Assets/Data/Widgets/Shop/Pages/Recharge/Recharge.prefab
   pageHost: {fileID: 2949780589909377173}
   tabStrip: {fileID: 7936509695981896980}
 --- !u!114 &320627138885429788

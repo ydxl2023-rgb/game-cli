@@ -17,7 +17,7 @@ public static class ShopTemplateProbe
         var passed = new List<string>();
         var entity = new ShopEntity();
         var product = new ShopProduct { id = 1, category = ShopCategory.Gift, price = 600, reward = 100, remaining = 1 };
-        Require(entity.InitializeDemo(new[] { product }, 1000), "catalog");
+        Require(entity.InitializeCatalog(new[] { product }, 1000), "catalog");
         Require(entity.SelectProduct(1), "selection");
         entity.CancelPurchase();
         Require(entity.demoBalance == 1000 && entity.demoTokens == 0 && entity.products[0].remaining == 1, "cancel is inert");
@@ -29,13 +29,13 @@ public static class ShopTemplateProbe
         passed.Add("duplicate confirmation");
         Require(!entity.SelectProduct(1), "sold out");
         passed.Add("sold out selection");
-        Require(entity.InitializeDemo(new[] { product }, 100), "reset");
+        Require(entity.InitializeCatalog(new[] { product }, 100), "reset");
         Require(entity.SelectProduct(1) && entity.ConfirmPurchase() == ShopPurchaseResult.InsufficientBalance, "insufficient");
         Require(entity.demoBalance == 100 && entity.demoTokens == 0 && entity.products[0].remaining == 1, "insufficient is inert");
         passed.Add("insufficient balance");
         Require(entity.SelectProduct(1) && entity.SelectCategory(ShopCategory.Gift) && entity.ConfirmPurchase() == ShopPurchaseResult.NoSelection, "category cancels pending");
         passed.Add("category cancels pending");
-        Require(!entity.InitializeDemo(new[] { product, product }, 1000) && entity.demoBalance == 100, "duplicate catalog rejected atomically");
+        Require(!entity.InitializeCatalog(new[] { product, product }, 1000) && entity.demoBalance == 100, "duplicate catalog rejected atomically");
         passed.Add("invalid catalog");
         Require(!entity.SelectCategory((ShopCategory)999), "invalid category");
         passed.Add("invalid category");

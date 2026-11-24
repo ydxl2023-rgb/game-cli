@@ -30,7 +30,7 @@ public static class EntityContractProbe
 
         var product = new ShopProduct { id = 1, category = ShopCategory.Recharge, price = 10, reward = 2, remaining = 1 };
         var shop = new ShopEntity();
-        Check(shop.InitializeDemo(new[] { product }, 100), ref passed);
+        Check(shop.InitializeCatalog(new[] { product }, 100), ref passed);
         product.price = 99;
         var products = shop.GetProducts();
         products[0].price = 50;

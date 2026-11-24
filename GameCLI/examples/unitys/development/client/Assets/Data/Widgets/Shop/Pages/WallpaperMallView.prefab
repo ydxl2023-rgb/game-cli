@@ -495,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7324517330973794097}
   - component: {fileID: 668553785310778144}
+  - component: {fileID: 3971934202174020034}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -515,6 +516,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4861579075336525857}
+  - {fileID: 7468082338639933678}
   m_Father: {fileID: 6404262723949592179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -536,6 +538,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &3971934202174020034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963980575759050157}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 7468082338639933678}
+  m_Horizontal: 1
+  m_Vertical: 0
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 7324517330973794097}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2007963589988903224
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +712,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -780,6 +812,7 @@ GameObject:
   - component: {fileID: 2555197123630563646}
   - component: {fileID: 597151894389089080}
   - component: {fileID: 7127800543409497542}
+  - component: {fileID: 3343237357827854987}
   m_Layer: 5
   m_Name: ScrollCell
   m_TagString: Untagged
@@ -820,19 +853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf4be26aa0f7a74d80f7785144f9752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  price: {fileID: 168316203182597561}
-  quantity: {fileID: 0}
-  limit: {fileID: 0}
-  discount: {fileID: 0}
-  condition: {fileID: 0}
-  icon: {fileID: 7385994330489609176}
-  currency: {fileID: 0}
-  premium: {fileID: 0}
-  purchased: {fileID: 0}
-  locked: {fileID: 0}
-  discountTag: {fileID: 0}
-  select: {fileID: 2555197123630563646}
 --- !u!114 &2555197123630563646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,6 +935,109 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3343237357827854987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625215504003631928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMShopProductCell
+  metadatas:
+  - hash: 0
+    type: SyncText
+    name: title
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncText
+    name: price
+    targets:
+    - {fileID: 7265531028961436727}
+    components:
+    - {fileID: 168316203182597561}
+  - hash: 0
+    type: SyncText
+    name: quantity
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncText
+    name: limit
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncText
+    name: discount
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncText
+    name: condition
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncSprite
+    name: icon
+    targets:
+    - {fileID: 2259802744002168047}
+    components:
+    - {fileID: 7385994330489609176}
+  - hash: 0
+    type: SyncVisible
+    name: iconVisible
+    targets:
+    - {fileID: 2259802744002168047}
+    components:
+    - {fileID: 5774965769087516498}
+  - hash: 0
+    type: SyncSprite
+    name: currency
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncVisible
+    name: currencyVisible
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncSprite
+    name: premium
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncVisible
+    name: premiumVisible
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncVisible
+    name: purchased
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncVisible
+    name: locked
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncVisible
+    name: discountTag
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncClick
+    name: select
+    targets:
+    - {fileID: 2625215504003631928}
+    components:
+    - {fileID: 2555197123630563646}
+  classGuid: 5bfb13eb0b973e84cb0e97292d049bb9
 --- !u!1 &3134521306426152353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1141,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1378,6 +1501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6624587627400598075}
   - component: {fileID: 8537291730937085712}
+  - component: {fileID: 4324250050261300944}
   m_Layer: 5
   m_Name: WallpaperMallView
   m_TagString: Untagged
@@ -1419,7 +1543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ea154c6ef74c349b1e458aeac42482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catalog: {fileID: 4900000, guid: 585680d6023ff61448cf5ad4e3dbd814, type: 3}
   sprites:
   - {fileID: 21300000, guid: 0a8ec3637cc6d5942b9a88f08be3b863, type: 3}
   - {fileID: 21300000, guid: 1c242c63dac4d074f98998442a509e8c, type: 3}
@@ -1511,15 +1634,78 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ccad0638f1b12004d8a528cdc8445b98, type: 3}
   template: {fileID: 2390145684487040150}
   viewport: {fileID: 7324517330973794097}
+  layout: {fileID: 3432356556657978951}
+  scroll: {fileID: 3971934202174020034}
   columns: 1
   cellSize: {x: 200, y: 200}
-  preview: {fileID: 4014450751653234099}
-  previewTitle: {fileID: 1276805418227050271}
-  previewPrice: {fileID: 6946489907187064097}
-  previous: {fileID: 4604254097352354109}
-  next: {fileID: 7828108789804908079}
-  level: {fileID: 0}
-  passPrice: {fileID: 0}
+  wallpaper: 1
+--- !u!114 &4324250050261300944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4726861146857432086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7f74b16dd9318479e041df7d9434f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: VMShopProductList
+  metadatas:
+  - hash: 0
+    type: SyncScrollRect
+    name: items
+    targets:
+    - {fileID: 1963980575759050157}
+    components:
+    - {fileID: 3971934202174020034}
+  - hash: 0
+    type: SyncText
+    name: level
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncText
+    name: passPrice
+    targets: []
+    components: []
+  - hash: 0
+    type: SyncSprite
+    name: preview
+    targets:
+    - {fileID: 3535975460397832705}
+    components:
+    - {fileID: 4014450751653234099}
+  - hash: 0
+    type: SyncText
+    name: previewTitle
+    targets:
+    - {fileID: 1568576558213133114}
+    components:
+    - {fileID: 1276805418227050271}
+  - hash: 0
+    type: SyncText
+    name: previewPrice
+    targets:
+    - {fileID: 5087665863882285154}
+    components:
+    - {fileID: 6946489907187064097}
+  - hash: 0
+    type: SyncClick
+    name: previous
+    targets:
+    - {fileID: 525432135144713948}
+    components:
+    - {fileID: 4604254097352354109}
+  - hash: 0
+    type: SyncClick
+    name: next
+    targets:
+    - {fileID: 6551958420766034273}
+    components:
+    - {fileID: 7828108789804908079}
+  classGuid: 1c6bc3818d7163e4397551a8a1d72167
 --- !u!1 &4904010812461652112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +3096,66 @@ MonoBehaviour:
   m_EffectColor: {r: 0.9372549, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!1 &9075553125227172515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7468082338639933678}
+  - component: {fileID: 3432356556657978951}
+  m_Layer: 0
+  m_Name: ConfiguredItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7468082338639933678
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075553125227172515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7324517330973794097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &3432356556657978951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075553125227172515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1001 &4339332323021199134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3425,7 +3671,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4339332323021199134}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7265531028961436727}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -3464,3 +3710,9 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &7265531028961436727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6407564781051425577, guid: cbe59b693753c944fbd9161ab62d4adc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4339332323021199134}
+  m_PrefabAsset: {fileID: 0}

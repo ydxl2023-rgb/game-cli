@@ -1,6 +1,7 @@
 using Oathx.Widget;
 using System;
 using System.IO;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ public static class ShopNavigationBuilder
     private class Catalog { public Section[] sections; }
 
     [Serializable]
-    private class Section { public string icon; public string title; public Page[] pages; }
+    private class Section { public int id; public string icon; public string title; public Page[] pages; }
 
     [Serializable]
-    private class Page { public int id; public string title; public string window; public string asset; }
+    private class Page { public int id; public string title; public string window; public string asset; public string layout; public string view; }
 
     /// <summary>Apply native card dimensions and preserve a nested prefab reference in the decoration list.</summary>
     public static void FinishCards()
@@ -69,21 +70,19 @@ public static class ShopNavigationBuilder
     /// <summary>Check the requested section and its active content root.</summary>
     public static string Inspect(int index)
     {
-        var shop = Oathx.Core.XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().Query<ShopSystem>();
-        if (!shop.OpenPage(index, 0))
+        if (!UISystem.GetSingleton().TryGetWidget<UIShop>(out var view) || !view.OpenPage(index, 0))
             throw new InvalidOperationException("Section failed to open: " + index);
 
-        UISystem.GetSingleton().TryGetWidget<UIShop>(out var view);
         var page = view.GetSection(index).pages[0];
-        if (page.prefab)
+
+        var host = view.transform.Find("Animator/ProductPages");
+        foreach (Transform child in host)
         {
-            var host = view.transform.Find("Animator/ProductPages");
-            var child = host.GetChild(host.childCount - 1);
-            if (!child.gameObject.activeInHierarchy || !child.name.StartsWith(page.prefab.name))
-                throw new InvalidOperationException("Page inactive: " + page.window);
+            if (child.gameObject.activeSelf && child.name == Path.GetFileNameWithoutExtension(page.path) + "(Clone)")
+                return page.path;
         }
 
-        return page.window;
+        return "Loading " + page.path;
     }
 
     /// <summary>Assign serialized references and validate every configured page before saving.</summary>
@@ -91,6 +90,8 @@ public static class ShopNavigationBuilder
     {
         const string path = "Assets/Data/Widgets/Shop/Shop.prefab";
         var catalog = JsonUtility.FromJson<Catalog>(File.ReadAllText(source));
+        ValidateCatalog(catalog);
+
         var root = PrefabUtility.LoadPrefabContents(path);
         try
         {
@@ -122,6 +123,7 @@ public static class ShopNavigationBuilder
             {
                 var data = catalog.sections[i];
                 var section = sections.GetArrayElementAtIndex(i);
+                section.FindPropertyRelative("id").intValue = data.id;
                 section.FindPropertyRelative("title").stringValue = data.title;
                 var iconPath = "Assets/Data/Widgets/Shop/Images/" + data.icon;
                 if (!System.IO.File.Exists(iconPath))
@@ -140,14 +142,10 @@ public static class ShopNavigationBuilder
                 {
                     var route = data.pages[j];
                     var page = pages.GetArrayElementAtIndex(j);
-                    page.FindPropertyRelative("id").intValue = route.id;
-                    page.FindPropertyRelative("title").stringValue = route.title;
-                    page.FindPropertyRelative("window").stringValue = route.window;
-                    var prefab = string.IsNullOrEmpty(route.asset) ? null : AssetDatabase.LoadAssetAtPath<GameObject>(route.asset);
-                    if (!string.IsNullOrEmpty(route.asset) && !prefab)
-                        throw new FileNotFoundException(route.asset);
-
-                    page.FindPropertyRelative("prefab").objectReferenceValue = prefab;
+                    page.FindPropertyRelative("key").intValue = route.id;
+                    page.FindPropertyRelative("label").stringValue = route.title;
+                    EnsurePage(route);
+                    page.FindPropertyRelative("prefabPath").stringValue = route.asset;
                 }
             }
 
@@ -161,6 +159,80 @@ public static class ShopNavigationBuilder
             PrefabUtility.UnloadPrefabContents(root);
         }
     }
+    /// <summary>Reject ambiguous business destinations before writing any prefab.</summary>
+    private static void ValidateCatalog(Catalog catalog)
+    {
+        var sections = new HashSet<int>();
+        var pages = new HashSet<int>();
+        var paths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var section in catalog.sections)
+        {
+            if (section.id <= 0 || !sections.Add(section.id) || section.pages == null || section.pages.Length == 0)
+                throw new InvalidDataException($"Invalid shop section {section.id}.");
+
+            foreach (var route in section.pages)
+            {
+                if (route.id <= 0 || !pages.Add(route.id) || string.IsNullOrEmpty(route.view)
+                    || string.IsNullOrEmpty(route.asset) || !paths.Add(route.asset) || route.asset == route.layout)
+                    throw new InvalidDataException($"Invalid shop destination {route.id} in section {section.id}.");
+            }
+        }
+    }
+
+    /// <summary>Create a destination variant once and preserve later prefab edits.</summary>
+    private static void EnsurePage(Page route)
+    {
+        var existing = AssetDatabase.LoadAssetAtPath<GameObject>(route.asset);
+        var type = typeof(UIShopPage).Assembly.GetType(route.view, true);
+        if (existing)
+        {
+            var page = existing.GetComponent<UIShopPage>();
+            var parent = PrefabUtility.GetCorrespondingObjectFromSource(existing);
+            if (!page || page.GetType() != type || !page.AcceptsRoute(route.id) || AssetDatabase.GetAssetPath(parent) != route.layout)
+                throw new InvalidDataException(route.asset);
+
+            return;
+        }
+
+        var layout = AssetDatabase.LoadAssetAtPath<GameObject>(route.layout);
+        if (!layout || !typeof(UIShopPage).IsAssignableFrom(type))
+            throw new InvalidDataException(route.layout);
+
+        Directory.CreateDirectory(Path.GetDirectoryName(route.asset));
+        AssetDatabase.Refresh();
+        var scene = UnityEditor.SceneManagement.EditorSceneManager.NewPreviewScene();
+        try
+        {
+            var root = (GameObject)PrefabUtility.InstantiatePrefab(layout, scene);
+            root.name = Path.GetFileNameWithoutExtension(route.asset);
+            var page = (UIShopPage)root.AddComponent(type);
+            if (!page.AcceptsRoute(route.id))
+                throw new InvalidDataException(route.view);
+
+            var script = new SerializedObject(page);
+            var products = script.FindProperty("products");
+            if (products != null)
+                products.objectReferenceValue = root.GetComponent<UIShopProductList>();
+
+            var catalog = script.FindProperty("catalog");
+            if (catalog != null)
+                catalog.objectReferenceValue = root.GetComponent<IShopCatalog>() as IWidget;
+
+            if ((products != null && !products.objectReferenceValue) || (catalog != null && !catalog.objectReferenceValue))
+                throw new InvalidDataException("Missing page presentation: " + route.asset);
+
+            script.ApplyModifiedPropertiesWithoutUndo();
+            PrefabUtility.SaveAsPrefabAsset(root, route.asset, out bool saved);
+            if (!saved)
+                throw new IOException(route.asset);
+        }
+        finally
+        {
+            UnityEditor.SceneManagement.EditorSceneManager.ClosePreviewScene(scene);
+        }
+    }
+
     /// <summary>Restore the original natural size when a card is dragged into another page.</summary>
     private static void FixCard(string name, Vector2 size)
     {

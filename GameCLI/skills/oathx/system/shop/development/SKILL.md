@@ -17,12 +17,21 @@ description: 独立 agent 参考 SV 大厅商城范式开发充值、普通礼�
 
 ## 实现契约
 
-- ShopSystem 管理商城及子页；ShopEntity 持有分类、待确认商品、模拟余额、奖励和限购状态。所有 VM 在 Shop/VM，UIWidget 在 Shop/UI，其余代码在 Shop 根目录。
+- ShopSystem 管理商城业务，UIShop 管理分页；ShopEntity 持有分类、待确认商品、模拟余额、奖励和限购状态。主窗口的 UI 和 VM 在 Shop/UI、Shop/VM，分页专属代码归各自的模块目录。
 - 充值和礼包列表使用真实 Fancy 列表与独立 Widget Cell，保留主分类及二级页签结构；切换后数据、选中态和列表点击索引一致。禁止用固定按钮阵列替代列表。
 - 本地模拟必须明确标识，不调用真实支付/充值接口，不把示例价格、余额和奖励视为正式商品。产品接入时由产品定义付款、订单和发货契约。
 - 确认时重新验证商品、余额及限购；成功后消费待确认选择，重复确认不能重复扣款/发奖。取消、分类切换及系统停用清理待确认状态。Entity 返回枚举状态，展示层查表生成文案。
-- 固定文案合并进 propCommonText；配置包按[配置交付规范](../../../system-development/references/configurations.md)独立保存源表、条目、哈希及导表依赖。示例商品初始化需明确标记且不能覆盖产品提供的目录。
+- 固定文案合并进 propCommonText；配置包按[配置交付规范](../../../system-development/references/configurations.md)独立保存源表、条目、哈希及导表依赖。先编辑 propShopOffer（可购买商品）、propShopPageItem（分页商品及顺序）和 propShopSetting（本地钱包与展示参数），再导出配置。展示卡片与模拟购买从配置读取，测试数据也随表维护。商品目录已初始化后保留交易状态。
 - 商城页面统一位于 `Assets/Data/Widgets/Shop/`。商城主预制为 `Shop.prefab`，内嵌分页放在 `Pages/`；独立 Widget 及各自的配套资源放在 `ShopGift/`、`ShopPurchase/`、`ShopRecharge/` 子目录。主模板之外的伴随页面、列表项 Metadata 与图片必须随源码材料交付，不能只发布主卡片。
+
+## 分页身份、代码和预制
+
+- 每个标签用独立的 `ShopEntity.Page` 和唯一业务 ID 注册。布局与交互相同、仅 ID、标题或商品配置不同的标签共用分页类。静态布局使用 UIShopPage；按路由 ID 读取配置列表的分页使用 UIShopProductPage；礼包与充值由 UIShopCatalogPage 转交绑定的 IShopCatalog Widget 刷新和解绑。分页实例在 InitializePage 接收路由 ID。展示或交互行为分化时再拆类，预制可用 Variant 保留独立配置。
+- `ShopEntity.Page` 是纯配置数据，持有 ID、标题、预制路径、所属一级标签和显示顺序。打开的 `UIShop` 提供 RegisterPage、RemovePage、SelectPage，也支持增删一级标签。页面实例按业务 ID 缓存在本次窗口内，注销分页时释放其缓存；删除选中项时选相邻项，最后一项删除后清空内容。关闭时解绑并忽略迟到回调。
+- `Shop/UI/UIShopPage.cs` 定义初始化、显示、刷新、隐藏、释放钩子。代码按八个一级标签归档：Recommended、Newcomer、MonthCard、SpecialOffers、Growth、Cosmetics、ValueReturn、Recharge。二级分页类直接放在 `Shop/<一级标签>/UI/`，VM 放同级 VM 目录，预制直接放在 `Shop/Pages/<一级标签>/`。同类二级分页的共享实现放在所属一级标签目录。共享商品卡、列表和交易弹窗按实际复用范围归档。充值组件、卡片及 VM 集中在 Recharge 下。静态页无需空 VM。
+- `UIShop` 负责导航，购买、领取等业务通过 Widget Send 交给 ShopSystem。发布时核对 navigation.json 中每个业务 ID 与 prefabs.json 中的独立模板版本，材料必须带上 variant、本页 MonoScript、父预制及每个文件的原始 meta。
+
+配置商品列表在 RefreshPage 中接收 ShopEntity，通过 VList 和 SyncScrollRect 展示。四种商品卡布局使用各自的 Metadata 映射同一套 VM，覆盖价格、图片、数量和状态。验证每个配置分页的条目数量、重复刷新、成长礼包遮罩、壁纸点击与缓存返回。
 
 ## 动画与交互
 

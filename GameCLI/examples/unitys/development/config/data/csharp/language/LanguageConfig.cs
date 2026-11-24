@@ -362,6 +362,406 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext4420 = 763157560;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-3025-Context-48-2-0
+        /// 直购特典1
+        /// </summary>
+        public const int LGCommonTextContext4820 = 1476697072;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3033-Context-56-2-0
+        /// 剩余:{0}次
+        /// </summary>
+        public const int LGCommonTextContext5620 = 2118164682;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3034-Context-57-2-0
+        /// {0}天{1}时{2}分
+        /// </summary>
+        public const int LGCommonTextContext5720 = 1258060798;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3035-Context-58-2-0
+        /// 乌鸦VS猫
+        /// </summary>
+        public const int LGCommonTextContext5820 = 1575737738;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3039-Context-62-2-0
+        /// 预览
+        /// </summary>
+        public const int LGCommonTextContext6220 = 1773047179;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-3062-Context-85-2-0
+        /// 广告获取
+        /// </summary>
+        public const int LGCommonTextContext8520 = 2016919144;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20000-Context-86-2-0
+        /// 超级招募券
+        /// </summary>
+        public const int LGCommonTextContext8620 = 296039080;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20001-Context-87-2-0
+        /// 卓越招募券
+        /// </summary>
+        public const int LGCommonTextContext8720 = 632736598;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20002-Context-88-2-0
+        /// 追忆招募券
+        /// </summary>
+        public const int LGCommonTextContext8820 = 831840300;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20003-Context-89-2-0
+        /// 限定应援招募券
+        /// </summary>
+        public const int LGCommonTextContext8920 = 1101915470;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20004-Context-90-2-0
+        /// 追忆升阶球・红
+        /// </summary>
+        public const int LGCommonTextContext9020 = 1117519539;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20005-Context-91-2-0
+        /// 体力礼盒(大)
+        /// </summary>
+        public const int LGCommonTextContext9120 = 509777841;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20006-Context-92-2-0
+        /// 随机N球员(4星)
+        /// </summary>
+        public const int LGCommonTextContext9220 = 359010423;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20007-Context-93-2-0
+        /// 牛奶兑换券
+        /// </summary>
+        public const int LGCommonTextContext9320 = 1370199137;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20008-Context-94-2-0
+        /// 橙色潜能部位自选礼盒
+        /// </summary>
+        public const int LGCommonTextContext9420 = 481000283;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20009-Context-95-2-0
+        /// 橙色潜能随机礼盒
+        /// </summary>
+        public const int LGCommonTextContext9520 = 263842105;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20010-Context-96-2-0
+        /// 经验值
+        /// </summary>
+        public const int LGCommonTextContext9620 = 1368292130;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20011-Context-97-2-0
+        /// 潜能精华
+        /// </summary>
+        public const int LGCommonTextContext9720 = 559939552;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20012-Context-98-2-0
+        /// 紫色潜能随机礼盒
+        /// </summary>
+        public const int LGCommonTextContext9820 = 607176662;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20013-Context-99-2-0
+        /// 泽村大地碎片
+        /// </summary>
+        public const int LGCommonTextContext9920 = 363917672;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20014-Context-100-2-0
+        /// 田中龙之介碎片
+        /// </summary>
+        public const int LGCommonTextContext10020 = 570979064;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20015-Context-101-2-0
+        /// 青根高伸碎片
+        /// </summary>
+        public const int LGCommonTextContext10120 = 272723496;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20016-Context-102-2-0
+        /// 岩泉一碎片
+        /// </summary>
+        public const int LGCommonTextContext10220 = 1238955836;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20017-Context-103-2-0
+        /// 灰羽列夫碎片
+        /// </summary>
+        public const int LGCommonTextContext10320 = 441468516;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20018-Context-104-2-0
+        /// 金币
+        /// </summary>
+        public const int LGCommonTextContext10420 = 155063744;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20019-Context-105-2-0
+        /// 高级招募券
+        /// </summary>
+        public const int LGCommonTextContext10520 = 366821552;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20020-Context-106-2-0
+        /// SSR球员直升卡
+        /// </summary>
+        public const int LGCommonTextContext10620 = 483906133;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20021-Context-107-2-0
+        /// 橙色追忆直升卡
+        /// </summary>
+        public const int LGCommonTextContext10720 = 1857535781;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20022-Context-108-2-0
+        /// 长高高牛奶
+        /// </summary>
+        public const int LGCommonTextContext10820 = 704858421;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20023-Context-109-2-0
+        /// 能量棒
+        /// </summary>
+        public const int LGCommonTextContext10920 = 1616302397;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20024-Context-110-2-0
+        /// 随机N球员(3星)
+        /// </summary>
+        public const int LGCommonTextContext11020 = 1621584202;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20025-Context-111-2-0
+        /// 紫色应援碎片自选礼盒
+        /// </summary>
+        public const int LGCommonTextContext11120 = 128830694;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20026-Context-112-2-0
+        /// 装饰币
+        /// </summary>
+        public const int LGCommonTextContext11220 = 2027999658;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20027-Context-113-2-0
+        /// 谷地仁花(制服)碎片
+        /// </summary>
+        public const int LGCommonTextContext11320 = 343126990;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20028-Context-114-2-0
+        /// 青叶城西应援团碎片
+        /// </summary>
+        public const int LGCommonTextContext11420 = 904344274;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20029-Context-115-2-0
+        /// 伊达工业应援团碎片
+        /// </summary>
+        public const int LGCommonTextContext11520 = 496666982;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20030-Context-116-2-0
+        /// 泷之上祐辅碎片
+        /// </summary>
+        public const int LGCommonTextContext11620 = 466848033;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20031-Context-117-2-0
+        /// 岛田诚碎片
+        /// </summary>
+        public const int LGCommonTextContext11720 = 1747348165;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20032-Context-118-2-0
+        /// 强攻增强・WS
+        /// </summary>
+        public const int LGCommonTextContext11820 = 265368565;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20033-Context-119-2-0
+        /// 快攻增强・MB
+        /// </summary>
+        public const int LGCommonTextContext11920 = 2015177737;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20034-Context-120-2-0
+        /// 传球增强・S
+        /// </summary>
+        public const int LGCommonTextContext12020 = 681862092;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20035-Context-121-2-0
+        /// 广告补给礼包
+        /// </summary>
+        public const int LGCommonTextContext12120 = 1294709840;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20036-Context-122-2-0
+        /// 免费
+        /// </summary>
+        public const int LGCommonTextContext12220 = 1535723648;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20037-Context-123-2-0
+        /// 随机SR球员碎片礼盒
+        /// </summary>
+        public const int LGCommonTextContext12320 = 1767621684;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20038-Context-124-2-0
+        /// 应援招募券
+        /// </summary>
+        public const int LGCommonTextContext12420 = 2071887940;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20039-Context-125-2-0
+        /// 基地经费
+        /// </summary>
+        public const int LGCommonTextContext12520 = 329984640;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20040-Context-126-2-0
+        /// 改名卡
+        /// </summary>
+        public const int LGCommonTextContext12620 = 1506653741;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20041-Context-127-2-0
+        /// 训练手册
+        /// </summary>
+        public const int LGCommonTextContext12720 = 2118462337;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20042-Context-128-2-0
+        /// 谷地仁花(制服)
+        /// </summary>
+        public const int LGCommonTextContext12820 = 10031125;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20043-Context-129-2-0
+        /// 青叶城西应援团
+        /// </summary>
+        public const int LGCommonTextContext12920 = 516851457;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20044-Context-130-2-0
+        /// 伊达工业应援团
+        /// </summary>
+        public const int LGCommonTextContext13020 = 1306381962;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20045-Context-131-2-0
+        /// 泷之上祐辅
+        /// </summary>
+        public const int LGCommonTextContext13120 = 1984256082;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20046-Context-132-2-0
+        /// 岛田诚
+        /// </summary>
+        public const int LGCommonTextContext13220 = 1396283602;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20047-Context-133-2-0
+        /// 月岛明光
+        /// </summary>
+        public const int LGCommonTextContext13320 = 387914922;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20048-Context-134-2-0
+        /// 天内叶歌
+        /// </summary>
+        public const int LGCommonTextContext13420 = 1374453930;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20049-Context-135-2-0
+        /// 道宫结
+        /// </summary>
+        public const int LGCommonTextContext13520 = 1019769458;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20050-Context-136-2-0
+        /// 田代秀水
+        /// </summary>
+        public const int LGCommonTextContext13620 = 1860776545;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20051-Context-137-2-0
+        /// 内泽英纪
+        /// </summary>
+        public const int LGCommonTextContext13720 = 1150975401;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20052-Context-138-2-0
+        /// 森行成
+        /// </summary>
+        public const int LGCommonTextContext13820 = 1231781205;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20053-Context-139-2-0
+        /// 山本茜
+        /// </summary>
+        public const int LGCommonTextContext13920 = 1526627165;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20054-Context-140-2-0
+        /// 灰羽爱丽莎
+        /// </summary>
+        public const int LGCommonTextContext14020 = 1377428440;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20055-Context-141-2-0
+        /// 中岛夫妇
+        /// </summary>
+        public const int LGCommonTextContext14120 = 1482211152;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20056-Context-142-2-0
+        /// 中岛家的孩子
+        /// </summary>
+        public const int LGCommonTextContext14220 = 1207220492;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20057-Context-143-2-0
+        /// 2.5周年庆典 背景No.1
+        /// </summary>
+        public const int LGCommonTextContext14320 = 1282039572;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20058-Context-144-2-0
+        /// 2.5周年庆典 背景No.2
+        /// </summary>
+        public const int LGCommonTextContext14420 = 933045216;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20059-Context-145-2-0
+        /// 放课后 背景No.1
+        /// </summary>
+        public const int LGCommonTextContext14520 = 1675745352;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20060-Context-146-2-0
+        /// 东峰旭 背景No.1
+        /// </summary>
+        public const int LGCommonTextContext14620 = 443826805;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20061-Context-147-2-0
+        /// 赏樱 背景No.2
+        /// </summary>
+        public const int LGCommonTextContext14720 = 1181817597;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20062-Context-148-2-0
+        /// 爵士乐队 背景No.1 
+        /// </summary>
+        public const int LGCommonTextContext14820 = 917531341;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20063-Context-149-2-0
+        /// 二周年庆典 背景No.1
+        /// </summary>
+        public const int LGCommonTextContext14920 = 278683989;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20064-Context-150-2-0
+        /// 二周年庆典 背景No.2
+        /// </summary>
+        public const int LGCommonTextContext15020 = 626938874;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20065-Context-151-2-0
+        /// 免费礼包
+        /// </summary>
+        public const int LGCommonTextContext15120 = 472416926;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20066-Context-152-2-0
+        /// 新人补给礼包
+        /// </summary>
+        public const int LGCommonTextContext15220 = 1859815474;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20067-Context-153-2-0
+        /// 成长特惠礼包
+        /// </summary>
+        public const int LGCommonTextContext15320 = 1438371318;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20068-Context-154-2-0
+        /// 高级招募券*5
+        /// </summary>
+        public const int LGCommonTextContext15420 = 1507906082;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20069-Context-155-2-0
+        /// 招募超值礼包
+        /// </summary>
+        public const int LGCommonTextContext15520 = 1659376846;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20070-Context-156-2-0
+        /// 已购买
+        /// </summary>
+        public const int LGCommonTextContext15620 = 983341481;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20071-Context-157-2-0
+        /// 8折
+        /// </summary>
+        public const int LGCommonTextContext15720 = 166989805;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20072-Context-158-2-0
+        /// 合宿远征15-15
+        /// </summary>
+        public const int LGCommonTextContext15820 = 288675517;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-20073-Context-159-2-0
+        /// 已领取
+        /// </summary>
+        public const int LGCommonTextContext15920 = 1092090025;
+        /// <summary>
         /// LG-FunctionSystemConfig-FunctionSystem-10001-Name-3-2-0
         /// 核心系统
         /// </summary>

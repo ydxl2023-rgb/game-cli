@@ -14,6 +14,10 @@ description: GameCLI Unity C# 开发强制规范。编写、修改或审查本�
 - 所有使用 com.oathx.* 框架的 skill 集中在 `skills/oathx`；每个系统或展示模块使用独立的 `skills/oathx/system/<系统名>/`，其下分别维护 `development/SKILL.md` 与 `acceptance/SKILL.md`，共享规范集中维护于本文件，系统特有要求留在对应 skill。框架模块也各自独立成目录，不混入业务系统实现。
 - Windows 命令必须使用已安装的最新版 PowerShell 7，即 `pwsh.exe`；不使用 `powershell.exe`，除非用户明确要求兼容测试。
 
+## 本地展示先改配置表
+
+商品、价格、奖励、限购、开放条件、展示顺序等可配置内容，包括本地演示数据，必须先修改产品 Excel 源表，再导表、接入 Entity 和 Widget。固定展示文案使用 propCommonText 的稳定 ID。禁止在运行时代码、预制生成器或手写 JSON 中临时拼装样例，禁止缺表时回退到硬编码值。验收时核对源表、导出数据与运行时展示，模板交付时携带对应配置包。
+
 ## 系统代码目录
 
 所有系统统一按职责存放手写代码：
@@ -39,6 +43,9 @@ description: GameCLI Unity C# 开发强制规范。编写、修改或审查本�
 - 迁移通过 Unity AssetDatabase/UnityCLI 保留 `.meta` GUID；同步维护 SKILL 路径、源码包清单及工具引用，不手改自动生成代码，不改变 VM 字段顺序或 Metadata 绑定。
 
 ## 字段与序列化
+
+- 手写 C# 每条声明只允许定义一个变量。字段和局部变量即使类型相同也要分别声明、各占一行，禁止用逗号合并。
+- Unity 生命周期方法、嵌套序列化类型及其每个字段都必须有英文 XML `<summary>` 注释。每组字段声明与下一组注释之间留一个空行。
 
 - UI 引用和内部状态使用 `private` 字段，不对外暴露字段或包装属性。VM 的 `[Binding]` 字段适用下方专门规则，可省略 `private`（C# 类字段默认私有）。
 - 字段、局部变量和参数使用小写字母开头的 camelCase，例如 `loading`、`loadingText`、`downloadPercent`、`launcher`。禁止 `m_Loading`、`_loading` 等前缀和下划线命名。
@@ -77,6 +84,8 @@ VList<VMServerGroupItem> groups;
 ```
 
 ## UGUI 组件与引用绑定
+
+展示业务数据或响应用户操作的页面、商品卡和列表项优先使用 UIWidget、VM 与预制 Metadata。演示数据和正式数据走相同绑定流程。动态列表先核对已有的 VList、SyncScrollRect 和 Fancy 列表能力；原生布局组件负责尺寸与排列。
 
 - 图片 VM 字段优先使用 `string` 资源路径，交给现有 SyncSprite/SyncImage 和统一 UILoader 加载。不得为了同时接受路径与 Sprite 默认声明为 `object`，也不在业务 System 中先加载 Sprite 再赋给 VM。只有运行时生成图片等确实没有资源路径的场景才考虑直接 Sprite，并明确理由。
 

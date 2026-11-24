@@ -10,16 +10,13 @@ public class ShopSystem : RuntimeSystem
     /// <returns>True when the page was requested.</returns>
     public override bool OnActive()
     {
-        if (!IsActive() || !InitializeDemo())
+        if (!IsActive() || !InitializeCatalog())
             return false;
 
         UnsubscribeAll();
 
         Subscribe<ReqShopClose>(data => Close());
         Subscribe<ReqShopShowHelp>(data => ShowMessage(Excel.SHOP_HELP));
-        Subscribe<ReqShopShiftSection>(data => MoveSection(data.offset));
-        Subscribe<ReqShopSelectSection>(data => OpenPage(data.index, 0));
-        Subscribe<ReqShopSelectTab>(data => SelectTab(data.index));
         Subscribe<ReqShopSelectProduct>(data => OpenProduct(data.productId));
         Subscribe<ReqShopCancelPurchase>(data => CancelPurchase());
         Subscribe<ReqShopConfirmPurchase>(data => ConfirmPurchase());
@@ -27,7 +24,7 @@ public class ShopSystem : RuntimeSystem
         UISystem.GetSingleton().OpenWidget<UIShop>((widget) => {
             if (widget)
             {
-                OpenPage(0, 0);
+                Refresh();
                 ShowMessage(Excel.SHOP_DEMO_NOTICE);
             }
         });
@@ -46,8 +43,6 @@ public class ShopSystem : RuntimeSystem
 
         System.Type[] widgets = new System.Type[] {
             typeof(UIShopPurchase),
-            typeof(UIShopGift),
-            typeof(UIShopRecharge),
             typeof(UIShop)
         };
 
@@ -65,88 +60,7 @@ public class ShopSystem : RuntimeSystem
         if (!entity)
             return false;
 
-        if (!widget.Invalidate(entity))
-            return false;
-        RefreshProducts(entity);
-
-        return true;
-    }
-
-    /// <summary>Open a configured source section and secondary tab.</summary>
-    public bool OpenPage(int sectionIndex, int pageIndex)
-    {
-        if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UIShop>(out var widget))
-            return false;
-
-        var section = widget.GetSection(sectionIndex);
-        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
-        if (!entity || section == null || pageIndex < 0 || pageIndex >= section.pages.Length)
-            return false;
-
-        var page = section.pages[pageIndex];
-        entity.SetPage(sectionIndex, pageIndex);
-        widget.DisplayPage(page.prefab, section.pages.Length > 1, page.id);
-
-        if (page.window == "RechargeShopView")
-            return SelectCategory(ShopCategory.Recharge);
-
-        if (page.window == "NormalGiftView")
-            return SelectCategory(ShopCategory.Gift);
-
-        System.Type[] widgets = new System.Type[] {
-            typeof(UIShopPurchase),
-            typeof(UIShopGift),
-            typeof(UIShopRecharge)
-        };
-        UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
-
-        return Refresh();
-    }
-
-    /// <summary>Switch between the supported local recharge and gift catalogs.</summary>
-    /// <param name="category">Requested category.</param>
-    /// <returns>True when the child page was requested.</returns>
-    public bool SelectCategory(ShopCategory category)
-    {
-        if (!IsActive())
-            return false;
-
-        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
-        if (!entity)
-            return false;
-
-        if (!entity.SelectCategory(category))
-            return false;
-
-        System.Type[] widgets = new System.Type[] {
-            typeof(UIShopPurchase),
-            typeof(UIShopGift),
-            typeof(UIShopRecharge)
-        };
-
-        UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
-        Refresh();
-
-        if (category == ShopCategory.Recharge)
-        {
-            UISystem.GetSingleton().OpenWidget<UIShopRecharge>((widget) => {
-                if (widget)
-                {
-                    Refresh();
-                }
-            });
-        }
-        else
-        {
-            UISystem.GetSingleton().OpenWidget<UIShopGift>((widget) => {
-                if (widget)
-                {
-                    Refresh();
-                }
-            });
-        }
-
-        return true;
+        return widget.Invalidate(entity);
     }
 
     /// <summary>Open the local confirmation for one product in the visible list.</summary>
@@ -222,22 +136,6 @@ public class ShopSystem : RuntimeSystem
         return XPluginUtility.PostEvent(new SystemDetive { type = typeof(ShopSystem) });
     }
 
-    /// <summary>Navigate to the adjacent primary section.</summary>
-    private bool MoveSection(int offset)
-    {
-        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
-
-        return entity && OpenPage(entity.sectionIndex + offset, 0);
-    }
-
-    /// <summary>Navigate within the current primary section.</summary>
-    private bool SelectTab(int index)
-    {
-        var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
-
-        return entity && OpenPage(entity.sectionIndex, index);
-    }
-
     /// <summary>Open the confirmation for the selected catalog identifier.</summary>
     private bool OpenProduct(int productId)
     {
@@ -258,29 +156,13 @@ public class ShopSystem : RuntimeSystem
         return true;
     }
 
-    /// <summary>Install explicit sample data only when no product catalog exists.</summary>
+    /// <summary>Load configured shop offers when the system first opens.</summary>
     /// <returns>True when a catalog is available.</returns>
-    private bool InitializeDemo()
+    private bool InitializeCatalog()
     {
         var entity = XEntityManager.GetSingleton().QueryEntity<ShopEntity>();
-        if (!entity)
-            return false;
 
-        if (entity.productCount > 0)
-            return true;
-
-        return entity.InitializeDemo(ShopDemoCatalog.Create(), 100000);
-    }
-
-    /// <summary>Refresh the active catalog page from the mall entity.</summary>
-    /// <param name="entity">Validated local mall entity.</param>
-    private void RefreshProducts(ShopEntity entity)
-    {
-        if (entity.category == ShopCategory.Recharge && UISystem.GetSingleton().TryGetWidget<UIShopRecharge>(out var recharge))
-            recharge.Invalidate(entity);
-
-        if (entity.category == ShopCategory.Gift && UISystem.GetSingleton().TryGetWidget<UIShopGift>(out var gift))
-            gift.Invalidate(entity);
+        return entity && entity.LoadCatalog();
     }
 
     /// <summary>Display a localized local-operation message.</summary>

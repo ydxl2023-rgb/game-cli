@@ -1,276 +1,360 @@
 {
   "sections": [
     {
+      "id": 118,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopEverydaySaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Recommended/DailyOffer.prefab",
           "title": "每日特惠礼包",
           "window": "EverydayPreferentialGiftView",
-          "id": 11801
+          "id": 11801,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopEverydaySaleView.prefab",
+          "view": "UIShopPage"
         }
       ],
       "title": "推荐商品",
       "icon": "UI_System_ShopNew_02.png"
     },
     {
+      "id": 112,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/SetterGiftView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Newcomer/StarterOffer.prefab",
           "title": "新手限定礼包",
           "window": "SetterGiftView",
-          "id": 11201
+          "id": 11201,
+          "layout": "Assets/Data/Widgets/Shop/Pages/SetterGiftView.prefab",
+          "view": "UIShopPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/NewPeopleGiftView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Newcomer/ClubGift.prefab",
           "title": "入部礼包",
           "window": "NewPeopleGiftView",
-          "id": 11202
+          "id": 11202,
+          "layout": "Assets/Data/Widgets/Shop/Pages/NewPeopleGiftView.prefab",
+          "view": "UIShopPage"
         }
       ],
       "title": "新人特惠",
       "icon": "UI_System_ShopNew_03.png"
     },
     {
+      "id": 104,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/MonthCardView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/MonthCard/MonthCard.prefab",
           "title": "月卡",
           "window": "MonthCardView",
-          "id": 10401
+          "id": 10401,
+          "layout": "Assets/Data/Widgets/Shop/Pages/MonthCardView.prefab",
+          "view": "UIShopPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/MonthCard/MemoryGift.prefab",
           "title": "追忆礼包",
           "window": "NormalGiftView",
-          "id": 10498
+          "id": 10498,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         }
       ],
       "title": "月卡",
       "icon": "UI_System_ShopNew_07.png"
     },
     {
+      "id": 103,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/DiscountGoods.prefab",
           "title": "特惠商品",
           "window": "DailyTabView",
-          "id": 10302
+          "id": 10302,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Gift.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/GrowthGift.prefab",
           "title": "成长礼包",
           "window": "GiftTabView",
-          "id": 10301
+          "id": 10301,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Gift.prefab",
+          "view": "UIShopPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/LimitedOffer.prefab",
           "title": "限时特惠",
           "window": "NormalGiftView",
-          "id": 10305
+          "id": 10305,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/DiscountGift.prefab",
           "title": "特惠礼包",
           "window": "NormalGiftView",
-          "id": 10310
+          "id": 10310,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/SpecialRecruit.prefab",
           "title": "特别招募",
           "window": "NormalGiftView",
-          "id": 10306
+          "id": 10306,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/RegionalShop.prefab",
           "title": "启程商店（港澳台专属）",
           "window": "NormalGiftView",
-          "id": 10399
+          "id": 10399,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/FriendShop.prefab",
           "title": "社团商店",
           "window": "DailyTabView",
-          "id": 10104
+          "id": 10104,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/LimitedSupport.prefab",
           "title": "限定应援",
           "window": "NormalGiftView",
-          "id": 10303
+          "id": 10303,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/LimitedGift.prefab",
           "title": "限时礼包",
           "window": "NormalGiftView",
-          "id": 10312
+          "id": 10312,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/StreakShop.prefab",
           "title": "连战对决商店",
           "window": "DailyTabView",
-          "id": 10105
+          "id": 10105,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/ChallengeShop.prefab",
           "title": "挑战商店",
           "window": "DailyTabView",
-          "id": 10102
+          "id": 10102,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/SupportShop.prefab",
           "title": "应援商店",
           "window": "DailyTabView",
-          "id": 10802
+          "id": 10802,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/SpecialOffers/SalvageShop.prefab",
           "title": "分解商店",
           "window": "DailyTabView",
-          "id": 10103
+          "id": 10103,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopProductPage"
         }
       ],
       "title": "特惠商品",
       "icon": "UI_System_ShopNew_08.png"
     },
     {
+      "id": 119,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level43Gift.prefab",
           "title": "43级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11915
+          "id": 11915,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level40Gift.prefab",
           "title": "40级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11914
+          "id": 11914,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level37Gift.prefab",
           "title": "37级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11913
+          "id": 11913,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level35Gift.prefab",
           "title": "35级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11912
+          "id": 11912,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level33Gift.prefab",
           "title": "33级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11911
+          "id": 11911,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level30Gift.prefab",
           "title": "30级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11910
+          "id": 11910,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level27Gift.prefab",
           "title": "27级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11909
+          "id": 11909,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level25Gift.prefab",
           "title": "25级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11908
+          "id": 11908,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level23Gift.prefab",
           "title": "23级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11907
+          "id": 11907,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level20Gift.prefab",
           "title": "20级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11906
+          "id": 11906,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level17Gift.prefab",
           "title": "17级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11905
+          "id": 11905,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level15Gift.prefab",
           "title": "15级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11904
+          "id": 11904,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level12Gift.prefab",
           "title": "12级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11903
+          "id": 11903,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level10Gift.prefab",
           "title": "10级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11902
+          "id": 11902,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Growth/Level6Gift.prefab",
           "title": "6级礼包",
           "window": "GrowUpPreferentialGiftView",
-          "id": 11901
+          "id": 11901,
+          "layout": "Assets/Data/Widgets/Shop/Pages/ShopGrowSaleView.prefab",
+          "view": "UIShopProductPage"
         }
       ],
       "title": "成长特惠",
       "icon": "UI_System_ShopNew_09.png"
     },
     {
+      "id": 110,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/WallpaperMallView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Cosmetics/Wallpaper.prefab",
           "title": "背景商店",
           "window": "WallpaperMallView",
-          "id": 11001
+          "id": 11001,
+          "layout": "Assets/Data/Widgets/Shop/Pages/WallpaperMallView.prefab",
+          "view": "UIShopProductPage"
         },
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Cosmetics/AvatarShop.prefab",
           "title": "头像商店",
           "window": "NormalGiftView",
-          "id": 11002
+          "id": 11002,
+          "layout": "Assets/Data/Widgets/Shop/ShopGift/ShopGift.prefab",
+          "view": "UIShopCatalogPage"
         },
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Cosmetics/BannerShop.prefab",
           "title": "横幅商店",
           "window": "DailyTabView",
-          "id": 11003
+          "id": 11003,
+          "layout": "Assets/Data/Widgets/Shop/Pages/Daily.prefab",
+          "view": "UIShopPage"
         }
       ],
       "title": "装饰商店",
       "icon": "UI_System_ShopNew_06.png"
     },
     {
+      "id": 113,
       "pages": [
         {
-          "asset": "Assets/Data/Widgets/Shop/Pages/GrowthFindsView.prefab",
+          "asset": "Assets/Data/Widgets/Shop/Pages/ValueReturn/ValueReturn.prefab",
           "title": "超值返还",
           "window": "GrowthFindsView",
-          "id": 11301
+          "id": 11301,
+          "layout": "Assets/Data/Widgets/Shop/Pages/GrowthFindsView.prefab",
+          "view": "UIShopProductPage"
         }
       ],
       "title": "超值返还",
       "icon": "UI_System_ShopNew_05.png"
     },
     {
+      "id": 105,
       "pages": [
         {
-          "asset": "",
+          "asset": "Assets/Data/Widgets/Shop/Pages/Recharge/Recharge.prefab",
           "title": "钻石充值",
           "window": "RechargeShopView",
-          "id": 10501
+          "id": 10501,
+          "layout": "Assets/Data/Widgets/Shop/ShopRecharge/ShopRecharge.prefab",
+          "view": "UIShopCatalogPage"
         }
       ],
       "title": "充值",

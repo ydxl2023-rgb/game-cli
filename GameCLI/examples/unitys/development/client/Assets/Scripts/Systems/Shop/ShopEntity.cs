@@ -1,10 +1,57 @@
+using Config;
+using System.Linq;
 using Oathx.Entity;
+using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>Local demonstration state for the reusable mall template.</summary>
 [Initialize]
 public partial class ShopEntity : XEntity
 {
+    /// <summary>Serializable business destination independent of its presentation instance.</summary>
+    [System.Serializable]
+    public sealed class Page
+    {
+        [SerializeField]
+        private int key;
+
+        [SerializeField]
+        private string label;
+
+        [SerializeField]
+        private string prefabPath;
+
+        /// <summary>Stable business identifier.</summary>
+        public int id
+        { get { return key; } set { key = value; } }
+
+        /// <summary>Label displayed by the navigation list.</summary>
+        public string title
+        { get { return label; } set { label = value; } }
+
+        /// <summary>Primary section that owns this registered destination.</summary>
+        public int sectionId
+        { get; internal set; }
+
+        /// <summary>Current display order within the owning section.</summary>
+        public int order
+        { get; internal set; }
+
+        /// <summary>Path of the independent page prefab.</summary>
+        public string path
+        { get { return prefabPath; } set { prefabPath = value; } }
+    }
+
+    /// <summary>Ordered group of business destinations.</summary>
+    [System.Serializable]
+    public sealed class Section
+    {
+        public int id;
+        public string title;
+        public Sprite icon;
+        public Page[] pages;
+    }
+
     /// <summary>Catalog supplied by the product or the explicit demo initializer.</summary>
     private List<ShopProduct> products = new List<ShopProduct>();
 
@@ -18,22 +65,24 @@ public partial class ShopEntity : XEntity
     public ShopCategory category
     { get; private set; }
 
-    /// <summary>Selected source navigation indices.</summary>
-    public int sectionIndex
+    /// <summary>Ordered sections available in this shop.</summary>
+    private readonly List<Section> navigation = new List<Section>();
+
+    /// <summary>Registered primary tabs in display order.</summary>
+    public IReadOnlyList<Section> sections
+    { get { return navigation; } }
+
+    /// <summary>Whether the initial product navigation has been registered.</summary>
+    public bool navigationReady
     { get; private set; }
 
-    /// <summary>Selected page within the current section.</summary>
-    public int pageIndex
+    /// <summary>Last successfully presented destination.</summary>
+    public int sectionId
     { get; private set; }
 
-    /// <summary>Record a validated navigation change and release the previous purchase.</summary>
-    public void SetPage(int section, int page)
-    {
-        sectionIndex = section;
-        pageIndex = page;
-
-        CancelPurchase();
-    }
+    /// <summary>Last successfully presented tab within the section.</summary>
+    public int pageId
+    { get; private set; }
 
     /// <summary>Pending product identifier, or zero when no confirmation is open.</summary>
     public int selectedProduct
@@ -54,6 +103,139 @@ public partial class ShopEntity : XEntity
     /// <summary>Most recent local purchase result.</summary>
     public ShopPurchaseResult result
     { get; private set; }
+
+    /// <summary>Install the configured local offers once, preserving purchases on reopen.</summary>
+    public bool LoadCatalog()
+    {
+        if (productCount > 0)
+            return true;
+
+        if (Excel.shopOfferConfig == null || Excel.shopSettingConfig == null
+            || !Excel.shopSettingConfig.TryGetValue(Excel.SHOP_LOCAL_SETTINGS, out var settings))
+            return false;
+
+        var offers = Excel.shopOfferConfig.Values.OrderBy(row => row.NumID).Select(row => new ShopProduct {
+            id = row.NumID,
+            category = (ShopCategory)row.Category,
+            nameId = row.NameTextId,
+            price = row.Price,
+            reward = row.Reward,
+            remaining = row.Stock,
+            icon = row.Icon
+        });
+
+        return InitializeCatalog(offers, settings.StartingBalance);
+    }
+
+    /// <summary>Read the configured items for a tab in display order.</summary>
+    public ShopPageItem[] GetPageItems(int pageId)
+    {
+        if (Excel.shopPageItemConfig == null)
+            return System.Array.Empty<ShopPageItem>();
+
+        return Excel.shopPageItemConfig.Values.Where(row => row.PageId == pageId)
+            .OrderBy(row => row.Sort).ToArray();
+    }
+
+    /// <summary>Register the default navigation sections.</summary>
+    public void InitializeSections(IEnumerable<Section> defaults)
+    {
+        if (!navigationReady)
+        {
+            foreach (var section in defaults)
+                RegisterSection(section);
+
+            navigationReady = true;
+        }
+    }
+
+    /// <summary>Register a section with stable and unique tab identifiers.</summary>
+    public bool RegisterSection(Section section)
+    {
+        if (section == null || section.id <= 0 || navigation.Exists(item => item.id == section.id)
+            || section.pages == null || section.pages.Length == 0)
+            return false;
+
+        var ids = new HashSet<int>();
+        foreach (var page in section.pages)
+        {
+            if (!IsNewPage(page) || !ids.Add(page.id))
+                return false;
+        }
+
+        var registered = new Page[section.pages.Length];
+        for (int index = 0; index < registered.Length; index++)
+            registered[index] = CopyPage(section.pages[index], section.id, index);
+
+        navigation.Add(new Section {
+            id = section.id, title = section.title, icon = section.icon,
+            pages = registered
+        });
+
+        return true;
+    }
+
+    /// <summary>Locate a page by its unique ID across all sections.</summary>
+    public bool FindPage(int id, out int sectionIndex, out int tabIndex)
+    {
+        for (sectionIndex = 0; sectionIndex < navigation.Count; sectionIndex++)
+        {
+            tabIndex = System.Array.FindIndex(navigation[sectionIndex].pages, page => page.id == id);
+            if (tabIndex >= 0)
+                return true;
+        }
+
+        sectionIndex = -1;
+        tabIndex = -1;
+
+        return false;
+    }
+
+    /// <summary>Append a new destination to an existing primary tab.</summary>
+    public bool RegisterPage(int sectionId, Page page)
+    {
+        var section = navigation.Find(item => item.id == sectionId);
+        if (section == null || !IsNewPage(page))
+            return false;
+
+        var destinations = new List<Page>(section.pages) { CopyPage(page, sectionId, section.pages.Length) };
+        section.pages = destinations.ToArray();
+
+        return true;
+    }
+
+    /// <summary>Remove the designated page and any resulting empty group.</summary>
+    public bool RemovePage(int id)
+    {
+        if (!FindPage(id, out int sectionIndex, out int tab))
+            return false;
+
+        var section = navigation[sectionIndex];
+        if (section.pages.Length == 1)
+            return RemoveSection(section.id);
+
+        var destinations = new List<Page>(section.pages);
+        destinations.RemoveAt(tab);
+        for (int index = tab; index < destinations.Count; index++)
+            destinations[index].order = index;
+
+        section.pages = destinations.ToArray();
+
+        return true;
+    }
+
+    /// <summary>Remove a section by its persistent identifier.</summary>
+    public bool RemoveSection(int id)
+    {
+        return navigation.RemoveAll(item => item.id == id) > 0;
+    }
+
+    /// <summary>Remember the destination after its page has been presented.</summary>
+    public void SetPage(int section, int page)
+    {
+        sectionId = section;
+        pageId = page;
+    }
 
     /// <summary>Read detached products for the selected category.</summary>
     /// <returns>A catalog snapshot that cannot mutate purchase state.</returns>
@@ -83,7 +265,7 @@ public partial class ShopEntity : XEntity
     /// <param name="catalog">Product definitions owned by this demonstration.</param>
     /// <param name="balance">Simulated balance in minor currency units.</param>
     /// <returns>True when the complete catalog was accepted.</returns>
-    public bool InitializeDemo(IEnumerable<ShopProduct> catalog, long balance)
+    public bool InitializeCatalog(IEnumerable<ShopProduct> catalog, long balance)
     {
         if (catalog == null || balance < 0)
             return false;
@@ -205,6 +387,19 @@ public partial class ShopEntity : XEntity
 
         return result;
     }
+    /// <summary>Check destination identity before accepting a registration.</summary>
+    private bool IsNewPage(Page page)
+    {
+        return page != null && page.id > 0 && !string.IsNullOrWhiteSpace(page.path)
+            && !FindPage(page.id, out _, out _);
+    }
+
+    /// <summary>Keep entity registrations independent of caller-owned definitions.</summary>
+    private static Page CopyPage(Page source, int sectionId, int order)
+    {
+        return new Page { id = source.id, title = source.title, path = source.path, sectionId = sectionId, order = order };
+    }
+
 }
 
 /// <summary>Supported categories in the first local mall reference.</summary>
@@ -271,3 +466,11 @@ public class ShopProduct
     { get; set; }
 }
 
+/// <summary>Configured availability of a shop offer or milestone.</summary>
+public enum ShopOfferState
+{
+    Available,
+    Purchased,
+    Locked,
+    Claimed
+}
