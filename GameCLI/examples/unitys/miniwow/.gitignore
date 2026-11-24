@@ -1,0 +1,46 @@
+# Unity-generated data (keep Assets, .meta, Packages and ProjectSettings)
+/client/[Ll]ibrary/
+/client/[Tt]emp/
+/client/[Oo]bj/
+/client/[Ll]ogs/
+/client/[Uu]ser[Ss]ettings/
+/client/[Mm]emoryCaptures/
+/client/[Rr]ecordings/
+/client/UnityCLI-Screenshots/
+/client/*.csproj
+/client/*.sln
+/client/*.slnx
+/client/*.unityproj
+/client/*.pidb
+/client/*.booproj
+/client/*.opendb
+/client/*.VC.db
+/[Bb]uild/
+/[Bb]uilds/
+
+# IDE, package build caches and local version-control metadata
+.vs/
+.idea/
+.svn/
+bin/
+obj/
+*.csproj.user
+*.suo
+*.user
+*.userprefs
+*.tmp
+*.bak
+*.log
+__pycache__/
+*.pyc
+
+# Reproducible extraction output and isolated Python dependencies
+/research/python-libs/
+/research/extracted/
+/research/bundle-text/
+/research/tables/
+/research/images/
+
+# Original reference game packages stay local; retain their inventory
+/wxecf0e106809a477d/*
+!/wxecf0e106809a477d/resources.csv

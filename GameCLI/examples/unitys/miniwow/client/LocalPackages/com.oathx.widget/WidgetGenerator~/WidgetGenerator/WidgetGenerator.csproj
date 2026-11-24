@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- 这是一个 Roslyn Source Generator -->
+    <!-- 它通过 Roslyn 编译器在编译时运行 -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.8.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- 编译后自动拷贝 DLL 到 Unity Assets/Plugins 目录 -->
+  <Target Name="CopyToUnityAssets" AfterTargets="Build">
+    <PropertyGroup>
+      <InputDir>$(TargetDir)</InputDir>
+      <!-- 计算 Unity Assets 目录的绝对路径 -->
+      <UnityAssetsPath>$([System.IO.Path]::GetFullPath('$(SolutionDir)..\..\..\Assets\'))</UnityAssetsPath>
+      <TargetDllPath>$(UnityAssetsPath)WidgetGenerator.dll</TargetDllPath>
+      <TargetMetaPath>$(UnityAssetsPath)WidgetGenerator.dll.meta</TargetMetaPath>
+    </PropertyGroup>
+
+    <!-- 确保目标目录存在 -->
+    <MakeDir Directories="$(UnityAssetsPath)" />
+
+    <!-- 拷贝 WidgetGenerator.dll -->
+    <Copy 
+      SourceFiles="$(InputDir)WidgetGenerator.dll" 
+      DestinationFiles="$(TargetDllPath)" 
+      SkipUnchangedFiles="true" />
+
+    <!-- 生成 .meta 文件（如果不存在） -->
+    <WriteLinesToFile 
+      File="$(TargetMetaPath)" 
+      Lines="fileFormatVersion: 2%0Aguid: $([System.Guid]::NewGuid().ToString())%0APluginImporter:%0A  externalObjects: {}%0A  serializedVersion: 2%0A  executionOrder: {}%0A  defineConstraints: []%0A  isPreloaded: 0%0A  isOverridable: 0%0A  isExplicitlyReferenced: 1%0A  validateReferences: 0%0A  platformData:%0A  - first:%0A      Any: %0A    second:%0A      enabled: 0%0A      settings: {}%0A  - first:%0A      Editor: Editor%0A    second:%0A      enabled: 1%0A      settings:%0A        DefaultValueInitialized: true%0A  userData: %0A  assetBundleName: %0A  assetBundleVariant: %0Alabels:%0A  - RoslynAnalyzer"
+      Overwrite="true" />
+
+    <Message Text="=== Copied WidgetGenerator.dll to $(UnityAssetsPath) ===" Importance="high" />
+    <Message Text="=== Generated $(TargetMetaPath) with RoslynAnalyzer label ===" Importance="high" />
+  </Target>
+
+</Project>
