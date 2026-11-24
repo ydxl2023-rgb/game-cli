@@ -1,0 +1,463 @@
+[
+  {
+    "arguments": [
+      "console",
+      "--type",
+      "error",
+      "--count",
+      "20"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "console logs",
+      "data": {
+        "totalCount": 0,
+        "totalEntries": 253,
+        "returnedCount": 0,
+        "type": "error",
+        "search": "",
+        "respondedAtUtc": "2026-11-24T08:49:06.0000991Z",
+        "entries": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIHome",
+      "--vm",
+      "VMHome",
+      "--prefab",
+      "Assets/Data/Widgets/Home/Home.prefab"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHome",
+        "vmName": "VMHome",
+        "prefabPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "dryRun": false,
+        "metadataAdded": false,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/MapVisible/MapBackground",
+      "--component",
+      "AspectRatioFitter",
+      "--property",
+      "m_AspectMode",
+      "--value",
+      "4"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 59202,
+        "objectPath": "Home/SafeArea/MapVisible/MapBackground",
+        "component": "UnityEngine.UI.AspectRatioFitter",
+        "property": "m_AspectMode",
+        "propertyType": "Enum",
+        "oldValue": "None",
+        "newValue": "Envelope Parent"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/MapVisible/MapBackground",
+      "--component",
+      "AspectRatioFitter",
+      "--property",
+      "m_AspectRatio",
+      "--value",
+      "0.5"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 59470,
+        "objectPath": "Home/SafeArea/MapVisible/MapBackground",
+        "component": "UnityEngine.UI.AspectRatioFitter",
+        "property": "m_AspectRatio",
+        "propertyType": "Float",
+        "oldValue": "1",
+        "newValue": "0.5"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/HomeEnvironment.prefab",
+      "--path",
+      "HomeEnvironment/CampBackground",
+      "--component",
+      "AspectRatioFitter",
+      "--property",
+      "m_AspectMode",
+      "--value",
+      "4"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/HomeEnvironment.prefab",
+        "instanceId": 59650,
+        "objectPath": "HomeEnvironment/CampBackground",
+        "component": "UnityEngine.UI.AspectRatioFitter",
+        "property": "m_AspectMode",
+        "propertyType": "Enum",
+        "oldValue": "Envelope Parent",
+        "newValue": "Envelope Parent"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/HomeEnvironment.prefab",
+      "--path",
+      "HomeEnvironment/CampBackground",
+      "--component",
+      "AspectRatioFitter",
+      "--property",
+      "m_AspectRatio",
+      "--value",
+      "0.5"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/HomeEnvironment.prefab",
+        "instanceId": 59672,
+        "objectPath": "HomeEnvironment/CampBackground",
+        "component": "UnityEngine.UI.AspectRatioFitter",
+        "property": "m_AspectRatio",
+        "propertyType": "Float",
+        "oldValue": "0.5",
+        "newValue": "0.5"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "asset",
+      "import",
+      "--src",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\extracted-resources\\assets\\data\\fonts\\fangzhenglanting.ttf",
+      "--dst",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset imported",
+      "data": {
+        "action": "import",
+        "srcPath": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\extracted-resources\\assets\\data\\fonts\\fangzhenglanting.ttf",
+        "dstPath": "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf",
+        "filter": "",
+        "totalMatched": 1,
+        "returnedCount": 1,
+        "respondedAtUtc": "2026-11-24T08:49:07.1592858Z",
+        "assets": [
+          {
+            "guid": "abf46940d0d2f24458e1104e0c89f6b3",
+            "path": "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf",
+            "mainAssetType": "UnityEngine.Font",
+            "isFolder": false
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/CampVisible/Header/Heading",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 59752,
+        "objectPath": "Home/SafeArea/CampVisible/Header/Heading",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/CampVisible/Footer/MapClick/MapLabel",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 60060,
+        "objectPath": "Home/SafeArea/CampVisible/Footer/MapClick/MapLabel",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/MapVisible/MapTitle",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 60238,
+        "objectPath": "Home/SafeArea/MapVisible/MapTitle",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/MapVisible/MapInfo/MapStatus",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 60554,
+        "objectPath": "Home/SafeArea/MapVisible/MapInfo/MapStatus",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/MapVisible/MapInfo/MapHint",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 60796,
+        "objectPath": "Home/SafeArea/MapVisible/MapInfo/MapHint",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "modify",
+      "--asset",
+      "Assets/Data/Widgets/Home/Home.prefab",
+      "--path",
+      "Home/SafeArea/MapVisible/MapInfo/ReturnClick/ReturnLabel",
+      "--component",
+      "Text",
+      "--property",
+      "m_FontData.m_Font",
+      "--value",
+      "Assets/Data/Widgets/Common/Fonts/fangzhenglanting.ttf"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component property modified",
+      "data": {
+        "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+        "instanceId": 61146,
+        "objectPath": "Home/SafeArea/MapVisible/MapInfo/ReturnClick/ReturnLabel",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "propertyType": "ObjectReference",
+        "oldValue": "LegacyRuntime (Font, 670)",
+        "newValue": "fangzhenglanting (Font, 34776)"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "save"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "scene/asset save completed",
+      "data": {
+        "scenesSavedCount": 0,
+        "scenesSkippedCount": 1,
+        "assetsSaved": true,
+        "respondedAtUtc": "2026-11-24T08:49:08.4355729Z",
+        "scenes": [
+          {
+            "name": "App",
+            "path": "Assets/Scenes/App.unity",
+            "wasDirty": false,
+            "saved": false,
+            "skipReason": "not dirty"
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]

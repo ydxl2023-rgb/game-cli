@@ -1,0 +1,520 @@
+{
+  "schemaVersion": "gamecli-prefab-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "prefabId": "MiniwowLaunch",
+  "projectVersion": 3,
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "assetPath": "Assets/Data/Widgets/Launch/Launch.prefab",
+  "baselineSha256": "32b7a7aaa4642691e20b744be5d742910390b2bbdebbd7cf1cf7b4f0a97bff93",
+  "unitySourceRevision": "5667b2ae60f635a0a66505dbbe620fc9",
+  "policy": "studio-prefab/3",
+  "tolerance": 0.0001,
+  "status": "incomplete",
+  "passed": false,
+  "differences": [],
+  "unverified": [
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "Oathx.Core.XLauncher"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_Texture",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_UVRect",
+        "valueType": "Rect"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/1/1/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_Texture",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/1/1/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_UVRect",
+        "valueType": "Rect"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/1/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/1/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/2/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/2/1/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_Texture",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/2/1/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_UVRect",
+        "valueType": "Rect"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/2/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "node": "0:Launch",
+      "code": "script-binding-contract-unavailable",
+      "message": "已检查可读取的 VM/Metadata 静态一致性；源码包不包含产品预期目标映射，不能证明绑定到了设计指定的节点。"
+    },
+    {
+      "node": "0:Launch/0:Artwork",
+      "code": "resource-hash-unavailable",
+      "expected": "b0a44a6a5ed48a38f98a3b3b80d613eb1aef2c7ba0f8ed98e136b5f417bfab34"
+    },
+    {
+      "node": "0:Launch/0:Artwork",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Launch/1:Loading/0:LoadingText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Launch/1:Loading/1:Track",
+      "code": "resource-hash-unavailable",
+      "expected": "1d8feef4a51b24e1b214120563d84acb4f73fae8c4da69283d95029d744534f9"
+    },
+    {
+      "node": "0:Launch/1:Loading/1:Track/0:FillArea/0:Fill",
+      "code": "resource-hash-unavailable",
+      "expected": "743c6496a2557f33e3e02079f77d114102e8fdf6944db08bf822224b9077b8c9"
+    },
+    {
+      "node": "0:Launch/1:Loading/1:Track/0:FillArea/0:Fill",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Launch/1:Loading/2:LoadingPercent",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Launch/2:Update/0:UpdateText",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Launch/2:Update/1:Track",
+      "code": "resource-hash-unavailable",
+      "expected": "1d8feef4a51b24e1b214120563d84acb4f73fae8c4da69283d95029d744534f9"
+    },
+    {
+      "node": "0:Launch/2:Update/1:Track/0:FillArea/0:Fill",
+      "code": "resource-hash-unavailable",
+      "expected": "743c6496a2557f33e3e02079f77d114102e8fdf6944db08bf822224b9077b8c9"
+    },
+    {
+      "node": "0:Launch/2:Update/1:Track/0:FillArea/0:Fill",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Launch/2:Update/2:UpdatePercent",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Launch/1:Loading/3:Tip",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    }
+  ],
+  "bindings": {
+    "policy": "oathx-widget-bindings/1",
+    "status": "passed",
+    "passed": true,
+    "widgets": 0,
+    "fields": 0,
+    "differences": [],
+    "unverified": [],
+    "limitations": [
+      "Static compiled-contract integrity only; intended product target mapping and runtime updates/callbacks are not verified.",
+      "Generated field order follows compiled declaration order; inherited VM contracts are incomplete."
+    ]
+  },
+  "renderOrder": {
+    "status": "passed",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "renderEvidence": [
+    {
+      "id": "root",
+      "name": "Launch",
+      "parentId": null,
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0",
+      "name": "Artwork",
+      "parentId": "root",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.RawImage",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/1",
+      "name": "Loading",
+      "parentId": "root",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/1/0",
+      "name": "LoadingText",
+      "parentId": "root/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/1/1",
+      "name": "Track",
+      "parentId": "root/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/1/1/0",
+      "name": "FillArea",
+      "parentId": "root/1/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/1/1/0/0",
+      "name": "Fill",
+      "parentId": "root/1/1/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.RawImage",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/1/1/0/1",
+      "name": "Handle",
+      "parentId": "root/1/1/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/1/2",
+      "name": "LoadingPercent",
+      "parentId": "root/1",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/1/3",
+      "name": "Tip",
+      "parentId": "root/1",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/2",
+      "name": "Update",
+      "parentId": "root",
+      "siblingIndex": 2,
+      "active": false,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/2/0",
+      "name": "UpdateText",
+      "parentId": "root/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/2/1",
+      "name": "Track",
+      "parentId": "root/2",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/2/1/0",
+      "name": "FillArea",
+      "parentId": "root/2/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/2/1/0/0",
+      "name": "Fill",
+      "parentId": "root/2/1/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.RawImage",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/2/1/0/1",
+      "name": "Handle",
+      "parentId": "root/2/1/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/2/2",
+      "name": "UpdatePercent",
+      "parentId": "root/2",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\eb805c90-3d62-42b3-a0a3-7ef0acf1e60e"
+}

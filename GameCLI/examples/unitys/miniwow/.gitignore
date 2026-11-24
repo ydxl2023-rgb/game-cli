@@ -40,7 +40,37 @@ __pycache__/
 /research/bundle-text/
 /research/tables/
 /research/images/
+/research/resource-catalog/
+/extracted-resources/
+
+# Local recovered code, analysis payloads and tools (keep study reports/scripts)
+/research/code-study/managed/input/
+/research/code-study/managed/decompiled/
+/research/code-study/managed/il/
+/research/code-study/managed/tool/
+/research/code-study/packages/members/
+/research/code-study/packages/decrypted/
+/research/code-study/packages/decoded/
+/research/code-study/packages/tool/
+/research/code-study/packages/wat/
+/research/code-study/metadata-symbols/
+/research/code-study/evidence/
+/research/code-study/code-index.json
+/research/code-study/index.html
 
 # Original reference game packages stay local; retain their inventory
 /wxecf0e106809a477d/*
 !/wxecf0e106809a477d/resources.csv
+
+# Reproducible scene extraction intermediates; native Assets and audit manifests remain tracked
+/tools/main-scene/data/
+/tools/main-scene/source-inventory.txt
+/tools/main-scene/install.request
+/tools/home/install.request
+
+# Local source-recovery output and Studio snapshot backups
+/research/code-study/managed/pdb/
+/tools/home/project-before*.json
+/tools/launch/project-before*.json
+/tools/home/template-source.json
+/tools/launch/template-source.json

@@ -1,0 +1,916 @@
+{
+  "schemaVersion": "gamecli-prefab-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "prefabId": "MiniwowHome",
+  "projectVersion": 4,
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "assetPath": "Assets/Data/Widgets/Home/Home.prefab",
+  "baselineSha256": "a6dd03c80bb3403f95ee323a05b50b573414c080d397fd7a2a0fa40abc634912",
+  "unitySourceRevision": "1f6cb5d0f3b1edeb370e6ad6f50197a5",
+  "policy": "studio-prefab/3",
+  "tolerance": 0.0001,
+  "status": "failed",
+  "passed": false,
+  "differences": [
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.anchorMin[0]",
+      "expected": 0.19230769230769232,
+      "actual": 0
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.anchorMin[1]",
+      "expected": 0.1724137931034483,
+      "actual": 1
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.anchorMax[0]",
+      "expected": 0.9230769230769231,
+      "actual": 0
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.anchorMax[1]",
+      "expected": 0.8275862068965517,
+      "actual": 1
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.anchoredPosition[0]",
+      "expected": 0,
+      "actual": 150
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.anchoredPosition[1]",
+      "expected": 0,
+      "actual": -25
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.sizeDelta[0]",
+      "expected": 0,
+      "actual": 570
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "property": "rect.sizeDelta[1]",
+      "expected": 0,
+      "actual": 95
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/0:MapBackground",
+      "property": "component.UnityEngine.UI.Image",
+      "expected": 1,
+      "actual": 0
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.anchorMin[0]",
+      "expected": 0.06944444444444445,
+      "actual": 0
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.anchorMin[1]",
+      "expected": 0.14814814814814814,
+      "actual": 1
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.anchorMax[0]",
+      "expected": 0.9305555555555556,
+      "actual": 0
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.anchorMax[1]",
+      "expected": 0.8518518518518519,
+      "actual": 1
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.anchoredPosition[0]",
+      "expected": 0,
+      "actual": 50
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.anchoredPosition[1]",
+      "expected": 0,
+      "actual": -20
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.sizeDelta[0]",
+      "expected": 0,
+      "actual": 620
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "property": "rect.sizeDelta[1]",
+      "expected": 0,
+      "actual": 95
+    }
+  ],
+  "unverified": [
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "UnityEngine.Animator"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root",
+        "code": "unsupported-component",
+        "type": "Oathx.Widget.Metadata"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0",
+        "code": "unsupported-component",
+        "type": "HomeSafeArea"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/0/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/0/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/0/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/0/1/4",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_Texture",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.RawImage",
+        "property": "m_UVRect",
+        "valueType": "Rect"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/1",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/2",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Image",
+        "property": "m_Sprite",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "unity-export-diagnostic",
+      "detail": {
+        "nodeId": "root/0/1/3/2/0",
+        "code": "unsupported-property",
+        "component": "UnityEngine.UI.Text",
+        "property": "m_FontData.m_Font",
+        "valueType": "ObjectReference"
+      }
+    },
+    {
+      "code": "animation-evidence-unavailable",
+      "message": "当前 Unity 导出器不提供完整 Animator 曲线证据，禁止判定动画一致。"
+    },
+    {
+      "node": "0:Home",
+      "code": "script-binding-contract-unavailable",
+      "message": "已检查可读取的 VM/Metadata 静态一致性；源码包不包含产品预期目标映射，不能证明绑定到了设计指定的节点。"
+    },
+    {
+      "node": "0:Home",
+      "code": "undeclared-component",
+      "component": "UnityEngine.CanvasGroup"
+    },
+    {
+      "node": "0:Home",
+      "code": "unsupported-design-feature",
+      "message": "该节点包含当前比较适配器尚未覆盖的设计属性。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/0:Header/0:Brand",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/0:Header/1:Heading",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/0:Header/2:Subheading",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/0:Panel",
+      "code": "resource-hash-unavailable",
+      "expected": "1c32d0ce86f214288117bd5006939746c347f5620937c5deeed9998850270b6a"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/1:Section",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/2:Description",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick",
+      "code": "resource-hash-unavailable",
+      "expected": "97fd24a254977713b763f0967564a06e0b96b51eff6b21cd7871878b90006c9a"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/0:MapIcon",
+      "code": "resource-hash-unavailable",
+      "expected": "d716ec3879c2c65f81f0e15a9f70cce058d04e7307e15420ee7d78d1a038c292"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/3:MapClick/1:MapLabel",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/0:CampVisible/1:Footer/4:HomeNote",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/0:MapBackground",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.RawImage"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/0:MapBackground",
+      "code": "undeclared-component",
+      "component": "UnityEngine.UI.AspectRatioFitter"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/1:MapTitlePanel",
+      "code": "resource-hash-unavailable",
+      "expected": "1c32d0ce86f214288117bd5006939746c347f5620937c5deeed9998850270b6a"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/2:MapTitle",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo",
+      "code": "resource-hash-unavailable",
+      "expected": "1c32d0ce86f214288117bd5006939746c347f5620937c5deeed9998850270b6a"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/0:MapStatus",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/1:MapHint",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick",
+      "code": "resource-hash-unavailable",
+      "expected": "97fd24a254977713b763f0967564a06e0b96b51eff6b21cd7871878b90006c9a"
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick",
+      "code": "interaction-contract-unavailable",
+      "expected": {
+        "type": "none"
+      }
+    },
+    {
+      "node": "0:Home/0:SafeArea/1:MapVisible/3:MapInfo/2:ReturnClick/0:ReturnLabel",
+      "code": "font-contract-unavailable",
+      "message": "项目设计尚无可比较的字体资源身份。"
+    }
+  ],
+  "bindings": {
+    "policy": "oathx-widget-bindings/1",
+    "status": "passed",
+    "passed": true,
+    "widgets": 1,
+    "fields": 4,
+    "differences": [],
+    "unverified": [],
+    "limitations": [
+      "Static compiled-contract integrity only; intended product target mapping and runtime updates/callbacks are not verified.",
+      "Generated field order follows compiled declaration order; inherited VM contracts are incomplete."
+    ]
+  },
+  "renderOrder": {
+    "status": "passed",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "renderEvidence": [
+    {
+      "id": "root",
+      "name": "Home",
+      "parentId": null,
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0",
+      "name": "SafeArea",
+      "parentId": "root",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0",
+      "name": "CampVisible",
+      "parentId": "root/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/0",
+      "name": "Header",
+      "parentId": "root/0/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/0/0",
+      "name": "Brand",
+      "parentId": "root/0/0/0",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.9882353,
+            0.9019608,
+            0.7019608,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/0/1",
+      "name": "Heading",
+      "parentId": "root/0/0/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/0/2",
+      "name": "Subheading",
+      "parentId": "root/0/0/0",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.9607843,
+            0.894117653,
+            0.768627465,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1",
+      "name": "Footer",
+      "parentId": "root/0/0",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/0",
+      "name": "Panel",
+      "parentId": "root/0/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/1",
+      "name": "Section",
+      "parentId": "root/0/0/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            0.894117653,
+            0.65882355,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/2",
+      "name": "Description",
+      "parentId": "root/0/0/1",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/3",
+      "name": "MapClick",
+      "parentId": "root/0/0/1",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/3/0",
+      "name": "MapIcon",
+      "parentId": "root/0/0/1/3",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/3/1",
+      "name": "MapLabel",
+      "parentId": "root/0/0/1/3",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/0/1/4",
+      "name": "HomeNote",
+      "parentId": "root/0/0/1",
+      "siblingIndex": 4,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            0.8862745,
+            0.7764706,
+            0.6431373,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1",
+      "name": "MapVisible",
+      "parentId": "root/0",
+      "siblingIndex": 1,
+      "active": false,
+      "graphics": [],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/0",
+      "name": "MapBackground",
+      "parentId": "root/0/1",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.RawImage",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/1",
+      "name": "MapTitlePanel",
+      "parentId": "root/0/1",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/2",
+      "name": "MapTitle",
+      "parentId": "root/0/1",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            0.894117653,
+            0.65882355,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3",
+      "name": "MapInfo",
+      "parentId": "root/0/1",
+      "siblingIndex": 3,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/0",
+      "name": "MapStatus",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            0.894117653,
+            0.65882355,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/1",
+      "name": "MapHint",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 1,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/2",
+      "name": "ReturnClick",
+      "parentId": "root/0/1/3",
+      "siblingIndex": 2,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Image",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": true,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    },
+    {
+      "id": "root/0/1/3/2/0",
+      "name": "ReturnLabel",
+      "parentId": "root/0/1/3/2",
+      "siblingIndex": 0,
+      "active": true,
+      "graphics": [
+        {
+          "type": "UnityEngine.UI.Text",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "raycastTarget": false,
+          "enabled": true
+        }
+      ],
+      "canvases": []
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\9f62613e-c029-4f74-acca-15288421cfb0"
+}

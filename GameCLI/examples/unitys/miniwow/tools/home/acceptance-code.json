@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "system": "Home",
+  "status": "failed",
+  "passed": false,
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "line": 11,
+      "rule": "OX001",
+      "severity": "error",
+      "message": "Use camelCase without prefixes or underscores."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 38,
+      "rule": "OX007",
+      "severity": "error",
+      "message": "Order: fields/properties, constructors, lifecycle overrides, public, protected/internal, private methods."
+    }
+  ],
+  "statistics": {
+    "files": 4,
+    "lines": 275,
+    "blankLines": 49,
+    "commentLines": 36,
+    "members": 29,
+    "documentedMembers": 29,
+    "blankLineRate": 0.1781818181818182,
+    "commentLineRate": 0.13090909090909092,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "e2c6100741572e63686e38ff0344adb10b4029a0adbabeb8bb9da0cf465a4d63"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/HomeSafeArea.cs",
+      "sha256": "3c29efc0dc7a915d6d6b04f6d34b270b93512ffa716727ec63f624f224c3ce7c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "49140ba81ed27ff3a0c89a9916716837194bb819bdd0c7f31b51be4e5be2578f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "293446525617b9a8e0aa7661ae675bbf1dfd5dca26e98600ac8661c03600cf89"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\f3b8cbea-42c3-4289-b6eb-21b195358445"
+}

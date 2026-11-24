@@ -2,24 +2,24 @@ using Oathx.Core;
 using Oathx.Widget;
 using UnityEngine;
 
-/// <summary>Initializes only the local UI infrastructure for the clean project.</summary>
-public sealed class GamePlugin : XPlugin
+/// <summary>Initializes the product UI and its local Home system.</summary>
+public sealed class GamePlugin : XPlugin, UISender
 {
     /// <summary>Initializes the UI resource loader without installing business systems.</summary>
     /// <returns>True when infrastructure is ready.</returns>
     public override bool Install()
     {
-        UISystem.GetSingleton().Startup(new ResourceConfigure { loader = new GameUILoader(), cacher = new UIDefaultCacher() });
+        UISystem.GetSingleton().Startup(new ResourceConfigure(this) { loader = new GameUILoader(), cacher = new UIDefaultCacher() });
 
         return true;
     }
 
-    /// <summary>Finishes the local entry and leaves an empty application.</summary>
+    /// <summary>Starts Home; the system hides Launch only after the scene and widget are ready.</summary>
     /// <returns>True when startup completes.</returns>
     public override bool Startup()
     {
-        XApp.GetSingleton().HideLaunch();
-        Debug.Log("MINIWOW_CLEAN_ENTRY_READY");
+        XApp.GetSingleton().ShowLaunchBackground();
+        Load<HomeSystem>();
 
         return true;
     }
@@ -27,12 +27,34 @@ public sealed class GamePlugin : XPlugin
     /// <summary>Releases the UI infrastructure.</summary>
     public override void Shutdown()
     {
+        UnloadAll();
         UISystem.GetSingleton().Shutdown();
     }
 
     /// <summary>Releases plugin registrations; this baseline registers none.</summary>
     public override void Uninstall()
     {
+    }
+
+    /// <summary>Dispatches typed UI intent events through the existing plugin dispatcher.</summary>
+    /// <param name="request">The request originating from a bound widget.</param>
+    /// <returns>True when the request implements the application event contract.</returns>
+    public bool Send(IUIRequest request)
+    {
+        if (!(request is IEvent message))
+            return false;
+
+        DispatchEvent(message);
+
+        return true;
+    }
+
+    /// <summary>Queues UI intent through the existing application event loop.</summary>
+    /// <param name="request">The request to enqueue.</param>
+    /// <returns>True when the application accepts the event.</returns>
+    public bool Post(IUIRequest request)
+    {
+        return request is IEvent message && XPluginUtility.PostEvent(message);
     }
 }
 

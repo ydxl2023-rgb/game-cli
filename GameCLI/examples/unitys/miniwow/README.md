@@ -1,4 +1,6 @@
-# Miniwow 干净工程
+# Miniwow Unity 工程
+
+> 当前产品进展：已接入 **Launch → Home 场景与主 UI**，统一设计尺寸 **1080×1920**。Home 已替换为原包 `Building_sdc` 的地形、装饰与 6 类初始建筑，支持拖动查看、地图预览与返回；角色/NPC、建筑业务和战斗尚未实现。打开 `client/Assets/Scenes/App.unity` 并运行。项目规范见 [AGENTS.md](AGENTS.md)，最新说明见 [主场景还原记录](tools/main-scene/DELIVERY.md)及[资源用途索引](tools/main-scene/RESOURCE-INDEX.md)，前序记录见 [Home](tools/home/DELIVERY.md)、[Launch](tools/launch/DELIVERY.md)。以下内容记录最初的干净工程基线，不代表当前没有业务页面。
 
 按 development 的组织方式建立，Unity 版本为 2022.3.62f2。
 

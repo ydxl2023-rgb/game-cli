@@ -1,0 +1,214 @@
+{
+  "evidence_id": "ev_0a8d81912c5cc09181fa8df9a2ef32176cf7daa1766246cd516c58cc2fa3263a",
+  "subject": {
+    "name": "hotupdate.dll",
+    "digest": {
+      "sha256": "744389e4e7176fd4244b874bc4da95b0e863b04dc563b24e9c966a3dca77a415"
+    },
+    "local_path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\research\\code-study\\managed\\input\\hotupdate.dll",
+    "format": "pe",
+    "architecture": "x86"
+  },
+  "provider": {
+    "id": "rea-analysis-view",
+    "name": "REA analysis view projection",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis-view",
+  "operation": "inspect_analysis_view",
+  "parameters": {
+    "parent_evidence_id": "ev_7ee0842f10a15e972045b9ca8562ee7c02fee5d7c76c4bfe91e5293fc8b37ef9",
+    "view": {
+      "kind": "summary"
+    }
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "kind": "summary",
+    "view": {
+      "kind": "summary"
+    },
+    "parent_evidence_id": "ev_7ee0842f10a15e972045b9ca8562ee7c02fee5d7c76c4bfe91e5293fc8b37ef9",
+    "parent_operation": "inspect_managed_artifact",
+    "parent_digest": "7ee0842f10a15e972045b9ca8562ee7c02fee5d7c76c4bfe91e5293fc8b37ef9",
+    "view_digest": "122c2403308938768988f72d47c0406a73d4e36dd10721aeceddac86b5bdb438",
+    "artifact": {
+      "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\research\\code-study\\managed\\input\\hotupdate.dll",
+      "sha256": "744389e4e7176fd4244b874bc4da95b0e863b04dc563b24e9c966a3dca77a415"
+    },
+    "coverage": {
+      "status": "complete-within-view",
+      "examined": 4364,
+      "total": 4364,
+      "next_offset": null,
+      "exhausted": true
+    },
+    "limitations": [
+      "Static inspection did not load the assembly, resolve dependencies through a CLR, decompile C#, or execute target code."
+    ],
+    "unknowns": [
+      "Collection counts and pages cover producer-returned rows; metadata completeness remains the original metadata status and coverage, not an absence claim about unreturned rows.",
+      "Metadata tokens are build-local coordinates bound to the recorded artifact SHA-256 and module MVID; this view does not load or execute the assembly."
+    ],
+    "summary": {
+      "artifact": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\research\\code-study\\managed\\input\\hotupdate.dll",
+        "sha256": "744389e4e7176fd4244b874bc4da95b0e863b04dc563b24e9c966a3dca77a415",
+        "byte_length": 4045312,
+        "format": "pe"
+      },
+      "pe": {
+        "machine": 332,
+        "machine_hex": "0x014c",
+        "architecture": "x86",
+        "optional_header": "pe32",
+        "section_count": 3,
+        "characteristics": 8226,
+        "cli": {
+          "header_offset": 520,
+          "header_size": 72,
+          "runtime_version": "2.5",
+          "flags": 1,
+          "flag_names": [
+            "il-only"
+          ],
+          "entry_point": {
+            "kind": "none",
+            "value": null
+          },
+          "metadata_rva": 1812676,
+          "metadata_size": 1850892,
+          "resources_rva": 0,
+          "resources_size": 0,
+          "strong_name_rva": 0,
+          "strong_name_size": 0,
+          "managed_native_header_rva": 0,
+          "managed_native_header_size": 0,
+          "ready_to_run_signature": false
+        }
+      },
+      "classification": {
+        "status": "managed",
+        "container": "pe",
+        "runtime_family": "unity-mono",
+        "implementation": "cil",
+        "managed_architecture": "anycpu",
+        "evidence": [
+          {
+            "code": "cli-header-observed",
+            "detail": "A file-backed PE CLI header and metadata root were admitted.",
+            "file_offset": 520
+          },
+          {
+            "code": "unity-reference-observed",
+            "detail": "The admitted AssemblyRef table contains a UnityEngine reference.",
+            "file_offset": 2879776
+          },
+          {
+            "code": "managed-architecture-derived",
+            "detail": "Managed architecture anycpu is derived from PE machine and CLI flags.",
+            "file_offset": 536
+          }
+        ]
+      },
+      "metadata": {
+        "status": "complete",
+        "version": "v4.0.30319",
+        "stream_names": [
+          "#Blob",
+          "#GUID",
+          "#Strings",
+          "#US",
+          "#~"
+        ],
+        "table_row_counts": {
+          "Module": 1,
+          "TypeRef": 432,
+          "TypeDef": 5604,
+          "Field": 21793,
+          "MethodDef": 22683,
+          "Param": 13575,
+          "InterfaceImpl": 1716,
+          "MemberRef": 7095,
+          "Constant": 4065,
+          "CustomAttribute": 4330,
+          "ClassLayout": 10,
+          "StandAloneSig": 5295,
+          "EventMap": 1,
+          "Event": 1,
+          "PropertyMap": 235,
+          "Property": 804,
+          "MethodSemantics": 871,
+          "MethodImpl": 874,
+          "TypeSpec": 2243,
+          "FieldRVA": 30,
+          "Assembly": 1,
+          "AssemblyRef": 34,
+          "NestedClass": 1365,
+          "GenericParam": 49,
+          "MethodSpec": 2625,
+          "GenericParamConstraint": 26
+        }
+      },
+      "module": {
+        "name": "HotUpdate.dll",
+        "generation": 0,
+        "mvid": "e4680c84-286e-403b-b0d0-861b52dbef4d",
+        "enc_id": null,
+        "enc_base_id": null,
+        "token": "0x00000001",
+        "row_offset": 1805232
+      },
+      "assembly": {
+        "name": "HotUpdate",
+        "version": "0.0.0.0",
+        "culture": null,
+        "flags": 0,
+        "hash_algorithm": 32772,
+        "public_key": {
+          "kind": "none",
+          "byte_length": 0,
+          "sha256": null,
+          "token": null
+        },
+        "token": "0x20000001",
+        "row_offset": 2879748
+      },
+      "target_frameworks": [],
+      "coverage": {
+        "state": "complete",
+        "issues": []
+      },
+      "limitations": [
+        "Static inspection did not load the assembly, resolve dependencies through a CLR, decompile C#, or execute target code."
+      ],
+      "reported_counts": {
+        "references": 34,
+        "resources": 0,
+        "attributes": 4330
+      },
+      "identity_scope": {
+        "token_identity": "build-local",
+        "requires_artifact_sha256": "744389e4e7176fd4244b874bc4da95b0e863b04dc563b24e9c966a3dca77a415",
+        "requires_mvid": "e4680c84-286e-403b-b0d0-861b52dbef4d"
+      }
+    }
+  },
+  "confidence": "derived",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "Static inspection did not load the assembly, resolve dependencies through a CLR, decompile C#, or execute target code."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\research\\code-study\\managed\\input\\hotupdate.dll"
+    }
+  ],
+  "evidence_links": [
+    "ev_7ee0842f10a15e972045b9ca8562ee7c02fee5d7c76c4bfe91e5293fc8b37ef9"
+  ]
+}

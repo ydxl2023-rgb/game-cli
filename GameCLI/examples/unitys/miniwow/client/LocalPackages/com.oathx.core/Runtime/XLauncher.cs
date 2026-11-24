@@ -66,6 +66,14 @@ namespace Oathx.Core
         [SerializeField]
         private RectTransform handle;
 
+        /// <summary>Optional progress fill for the portrait loading panel.</summary>
+        [SerializeField]
+        private RectTransform loadingFill;
+
+        /// <summary>Optional progress indicator for the portrait loading panel.</summary>
+        [SerializeField]
+        private RectTransform loadingHandle;
+
         /// <summary>
         /// Whether progress updates target the download panel.
         /// </summary>
@@ -151,21 +159,35 @@ namespace Oathx.Core
                 // Retain the separate label when an older prefab still supplies one.
                 loadingText.text = loadingPercent ? text : $"{text} ({percent}%)";
                 if (loadingPercent) loadingPercent.text = $"({percent}%)";
+
+                if (loadingFill && loadingHandle)
+                {
+                    ApplyProgress(loadingFill, loadingHandle, progress);
+                }
+
                 return true;
             }
 
             downloadText.text = downloadPercent ? text : $"{text} {percent}%";
             if (downloadPercent) downloadPercent.text = $"{percent}%";
-            // Preserve the authored vertical offsets while stretching horizontally.
-            fill.anchorMin = new Vector2(0f, fill.anchorMin.y);
-            fill.anchorMax = new Vector2(progress, fill.anchorMax.y);
-            fill.offsetMin = new Vector2(0f, fill.offsetMin.y);
-            fill.offsetMax = new Vector2(0f, fill.offsetMax.y);
-            handle.anchorMin = new Vector2(progress, handle.anchorMin.y);
-            handle.anchorMax = new Vector2(progress, handle.anchorMax.y);
-            handle.anchoredPosition = new Vector2(0f, handle.anchoredPosition.y);
+            ApplyProgress(fill, handle, progress);
 
             return true;
+        }
+
+        /// <summary>Applies horizontal progress without changing vertical layout.</summary>
+        /// <param name="progressFill">The authored fill rectangle.</param>
+        /// <param name="progressHandle">The authored progress marker.</param>
+        /// <param name="progress">Normalized progress supplied by the caller.</param>
+        private static void ApplyProgress(RectTransform progressFill, RectTransform progressHandle, float progress)
+        {
+            progressFill.anchorMin = new Vector2(0f, progressFill.anchorMin.y);
+            progressFill.anchorMax = new Vector2(progress, progressFill.anchorMax.y);
+            progressFill.offsetMin = new Vector2(0f, progressFill.offsetMin.y);
+            progressFill.offsetMax = new Vector2(0f, progressFill.offsetMax.y);
+            progressHandle.anchorMin = new Vector2(progress, progressHandle.anchorMin.y);
+            progressHandle.anchorMax = new Vector2(progress, progressHandle.anchorMax.y);
+            progressHandle.anchoredPosition = new Vector2(0f, progressHandle.anchoredPosition.y);
         }
     }
 }

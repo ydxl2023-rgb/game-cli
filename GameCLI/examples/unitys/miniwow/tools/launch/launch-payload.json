@@ -1,0 +1,374 @@
+{
+  "root": "MiniwowLaunch",
+  "design": {
+    "schemaVersion": 1,
+    "rootId": "Canvas",
+    "name": "MiniwowPortraitUI",
+    "width": 1080,
+    "height": 1920,
+    "nodes": [
+      {
+        "id": "MiniwowLaunch",
+        "name": "Launch",
+        "parent": null,
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "templateSourceId": "SvStart",
+        "templateSourceVersion": 7,
+        "fontSize": 20,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "LaunchArtwork",
+        "name": "Artwork",
+        "parent": "MiniwowLaunch",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "image": "b0a44a6a5ed48a38f98a3b3b80d613eb1aef2c7ba0f8ed98e136b5f417bfab34",
+        "imageFit": "cover",
+        "uvRect": {
+          "x": 0,
+          "y": 0.1794871794871795,
+          "width": 1,
+          "height": 0.8205128205128205
+        },
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "Loading",
+        "name": "Loading",
+        "parent": "MiniwowLaunch",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "LoadingText",
+        "name": "LoadingText",
+        "parent": "Loading",
+        "type": "Text",
+        "x": 140,
+        "y": 1590,
+        "width": 800,
+        "height": 54,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "text": "正在准备冒险",
+        "fontSize": 32,
+        "textAlign": "center"
+      },
+      {
+        "id": "LoadingTrack",
+        "name": "Track",
+        "parent": "Loading",
+        "type": "Image",
+        "x": 130,
+        "y": 1660,
+        "width": 820,
+        "height": 54,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "image": "1d8feef4a51b24e1b214120563d84acb4f73fae8c4da69283d95029d744534f9",
+        "imageFit": "100% 100%",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "LoadingArea",
+        "name": "FillArea",
+        "parent": "LoadingTrack",
+        "type": "Container",
+        "x": 31,
+        "y": 9,
+        "width": 758,
+        "height": 34,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "LoadingFill",
+        "name": "Fill",
+        "parent": "LoadingArea",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 758,
+        "height": 34,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "image": "743c6496a2557f33e3e02079f77d114102e8fdf6944db08bf822224b9077b8c9",
+        "imageFit": "100% 100%",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "fontSize": 20,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "LoadingHandle",
+        "name": "Handle",
+        "parent": "LoadingArea",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 34,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "LoadingPercent",
+        "name": "LoadingPercent",
+        "parent": "Loading",
+        "type": "Text",
+        "x": 140,
+        "y": 1735,
+        "width": 800,
+        "height": 44,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "text": "0%",
+        "fontSize": 28,
+        "textAlign": "center"
+      },
+      {
+        "id": "Update",
+        "name": "Update",
+        "parent": "MiniwowLaunch",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": false,
+        "surface": "transparent",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "UpdateText",
+        "name": "UpdateText",
+        "parent": "Update",
+        "type": "Text",
+        "x": 140,
+        "y": 1590,
+        "width": 800,
+        "height": 54,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "text": "正在加载资源",
+        "fontSize": 32,
+        "textAlign": "center"
+      },
+      {
+        "id": "UpdateTrack",
+        "name": "Track",
+        "parent": "Update",
+        "type": "Image",
+        "x": 130,
+        "y": 1660,
+        "width": 820,
+        "height": 54,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "image": "1d8feef4a51b24e1b214120563d84acb4f73fae8c4da69283d95029d744534f9",
+        "imageFit": "100% 100%",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "UpdateArea",
+        "name": "FillArea",
+        "parent": "UpdateTrack",
+        "type": "Container",
+        "x": 31,
+        "y": 9,
+        "width": 758,
+        "height": 34,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "UpdateFill",
+        "name": "Fill",
+        "parent": "UpdateArea",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 758,
+        "height": 34,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "image": "743c6496a2557f33e3e02079f77d114102e8fdf6944db08bf822224b9077b8c9",
+        "imageFit": "100% 100%",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "fontSize": 20,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "UpdateHandle",
+        "name": "Handle",
+        "parent": "UpdateArea",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 34,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 20,
+        "text": ""
+      },
+      {
+        "id": "UpdatePercent",
+        "name": "UpdatePercent",
+        "parent": "Update",
+        "type": "Text",
+        "x": 140,
+        "y": 1735,
+        "width": 800,
+        "height": 44,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "text": "0%",
+        "fontSize": 28,
+        "textAlign": "center"
+      },
+      {
+        "id": "LaunchTip",
+        "name": "Tip",
+        "parent": "Loading",
+        "type": "Text",
+        "x": 120,
+        "y": 1805,
+        "width": 840,
+        "height": 42,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "text": "每一次出发，都是新的冒险",
+        "fontSize": 25,
+        "textAlign": "center"
+      }
+    ],
+    "animations": []
+  },
+  "source": {
+    "templateId": "SvStart",
+    "templateVersion": 7,
+    "adaptation": "1080x1920 portrait; original extracted artwork and separate progress graphics"
+  }
+}

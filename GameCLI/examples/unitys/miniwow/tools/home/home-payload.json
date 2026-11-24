@@ -1,0 +1,556 @@
+{
+  "root": "MiniwowHome",
+  "design": {
+    "schemaVersion": 1,
+    "rootId": "Canvas",
+    "name": "MiniwowPortraitUI",
+    "width": 1080,
+    "height": 1920,
+    "nodes": [
+      {
+        "id": "MiniwowHome",
+        "name": "Home",
+        "parent": null,
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "templateSourceId": "SvHome",
+        "templateSourceVersion": 31,
+        "animationHost": true
+      },
+      {
+        "id": "SafeArea",
+        "name": "SafeArea",
+        "parent": "MiniwowHome",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "CampVisible",
+        "name": "CampVisible",
+        "parent": "SafeArea",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "Header",
+        "name": "Header",
+        "parent": "CampVisible",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 190,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": ""
+      },
+      {
+        "id": "Heading",
+        "name": "Heading",
+        "parent": "Header",
+        "type": "Text",
+        "x": 48,
+        "y": 72,
+        "width": 700,
+        "height": 65,
+        "color": "#FFE4A8",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 44,
+        "text": "冒险营地",
+        "textAlign": "left",
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "verticalAlign": "center",
+        "textOutline": {
+          "color": "#2C1A16FF",
+          "width": 1.5
+        }
+      },
+      {
+        "id": "Footer",
+        "name": "Footer",
+        "parent": "CampVisible",
+        "type": "Container",
+        "x": 60,
+        "y": 1680,
+        "width": 960,
+        "height": 160,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 140
+          },
+          "sizeDelta": {
+            "x": 960,
+            "y": 160
+          }
+        }
+      },
+      {
+        "id": "MapClick",
+        "name": "MapClick",
+        "parent": "Footer",
+        "type": "Button",
+        "x": 240,
+        "y": 0,
+        "width": 480,
+        "height": 130,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "97fd24a254977713b763f0967564a06e0b96b51eff6b21cd7871878b90006c9a",
+        "imageFit": "100% 100%",
+        "action": {
+          "type": "none"
+        }
+      },
+      {
+        "id": "MapIcon",
+        "name": "MapIcon",
+        "parent": "MapClick",
+        "type": "Image",
+        "x": 30,
+        "y": 25,
+        "width": 65,
+        "height": 80,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "d716ec3879c2c65f81f0e15a9f70cce058d04e7307e15420ee7d78d1a038c292",
+        "imageFit": "contain"
+      },
+      {
+        "id": "MapLabel",
+        "name": "MapLabel",
+        "parent": "MapClick",
+        "type": "Text",
+        "x": 110,
+        "y": 20,
+        "width": 330,
+        "height": 90,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 38,
+        "text": "冒险地图",
+        "textAlign": "center",
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "verticalAlign": "center",
+        "textOutline": {
+          "color": "#2C1A16FF",
+          "width": 1.5
+        }
+      },
+      {
+        "id": "MapVisible",
+        "name": "MapVisible",
+        "parent": "SafeArea",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": false,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "MapBackground",
+        "name": "MapBackground",
+        "parent": "MapVisible",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "ef7e05eb94e638da2bd6c2112fe3ca5562762d2bef10d285ef14dd9286dd9b41",
+        "imageFit": "cover",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        }
+      },
+      {
+        "id": "MapTitlePanel",
+        "name": "MapTitlePanel",
+        "parent": "MapVisible",
+        "type": "Image",
+        "x": 60,
+        "y": 100,
+        "width": 960,
+        "height": 150,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "1c32d0ce86f214288117bd5006939746c347f5620937c5deeed9998850270b6a",
+        "imageFit": "100% 100%"
+      },
+      {
+        "id": "MapTitle",
+        "name": "MapTitle",
+        "parent": "MapVisible",
+        "type": "Text",
+        "x": 100,
+        "y": 135,
+        "width": 880,
+        "height": 70,
+        "color": "#FFE4A8",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 52,
+        "text": "冒险地图",
+        "textAlign": "center",
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "verticalAlign": "center",
+        "textOutline": {
+          "color": "#2C1A16FF",
+          "width": 1.5
+        }
+      },
+      {
+        "id": "MapInfo",
+        "name": "MapInfo",
+        "parent": "MapVisible",
+        "type": "Image",
+        "x": 60,
+        "y": 1330,
+        "width": 960,
+        "height": 440,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "1c32d0ce86f214288117bd5006939746c347f5620937c5deeed9998850270b6a",
+        "imageFit": "100% 100%",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 370
+          },
+          "sizeDelta": {
+            "x": 960,
+            "y": 440
+          }
+        }
+      },
+      {
+        "id": "MapStatus",
+        "name": "MapStatus",
+        "parent": "MapInfo",
+        "type": "Text",
+        "x": 60,
+        "y": 40,
+        "width": 840,
+        "height": 60,
+        "color": "#FFE4A8",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 38,
+        "text": "远方的旅途，等待启程",
+        "textAlign": "center",
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "verticalAlign": "center",
+        "textOutline": {
+          "color": "#2C1A16FF",
+          "width": 1.5
+        }
+      },
+      {
+        "id": "MapHint",
+        "name": "MapHint",
+        "parent": "MapInfo",
+        "type": "Text",
+        "x": 60,
+        "y": 125,
+        "width": 840,
+        "height": 75,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 29,
+        "text": "战斗关卡尚未开放",
+        "textAlign": "center",
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "verticalAlign": "center",
+        "textOutline": {
+          "color": "#2C1A16FF",
+          "width": 1.5
+        }
+      },
+      {
+        "id": "ReturnClick",
+        "name": "ReturnClick",
+        "parent": "MapInfo",
+        "type": "Button",
+        "x": 120,
+        "y": 250,
+        "width": 720,
+        "height": 135,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "97fd24a254977713b763f0967564a06e0b96b51eff6b21cd7871878b90006c9a",
+        "imageFit": "100% 100%",
+        "action": {
+          "type": "none"
+        }
+      },
+      {
+        "id": "ReturnLabel",
+        "name": "ReturnLabel",
+        "parent": "ReturnClick",
+        "type": "Text",
+        "x": 50,
+        "y": 20,
+        "width": 620,
+        "height": 95,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 42,
+        "text": "返回营地",
+        "textAlign": "center",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 50,
+            "y": -20
+          },
+          "sizeDelta": {
+            "x": 620,
+            "y": 95
+          }
+        },
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "verticalAlign": "center",
+        "textOutline": {
+          "color": "#2C1A16FF",
+          "width": 1.5
+        }
+      }
+    ],
+    "animations": [
+      {
+        "id": "MiniwowHomeEntrance",
+        "clip": {
+          "name": "HomeOpen",
+          "frameRate": 30,
+          "startTime": 0,
+          "stopTime": 0.6,
+          "loopTime": false,
+          "curves": [
+            {
+              "targetNodeId": "MiniwowHome",
+              "component": "UnityEngine.CanvasGroup",
+              "property": "m_Alpha",
+              "keys": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "inTangent": 0,
+                  "outTangent": 0,
+                  "inWeight": 0.3333333333333333,
+                  "outWeight": 0.3333333333333333,
+                  "weightedMode": 0
+                },
+                {
+                  "time": 0.6,
+                  "value": 1,
+                  "inTangent": 0,
+                  "outTangent": 0,
+                  "inWeight": 0.3333333333333333,
+                  "outWeight": 0.3333333333333333,
+                  "weightedMode": 0
+                }
+              ],
+              "preWrapMode": 8,
+              "postWrapMode": 8
+            }
+          ]
+        },
+        "state": {
+          "name": "Open",
+          "speed": 1,
+          "default": true,
+          "cycleOffset": 0
+        },
+        "source": {
+          "adaptation": "Portrait Home entrance fade; custom product timing"
+        },
+        "hostNodeId": "MiniwowHome"
+      }
+    ]
+  }
+}

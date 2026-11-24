@@ -1,0 +1,703 @@
+{
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "version": 3,
+  "design": {
+    "schemaVersion": 1,
+    "rootId": "Canvas",
+    "name": "MiniwowPortraitUI",
+    "width": 1080,
+    "height": 1920,
+    "animations": [],
+    "nodes": [
+      {
+        "id": "MiniwowLaunch",
+        "parent": null,
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "active": true,
+        "templateSourceId": "SvStart",
+        "templateSourceVersion": 7,
+        "scripts": {
+          "schemaVersion": 1,
+          "files": [
+            {
+              "path": "LocalPackages/com.oathx.core/Runtime/XLauncher.cs",
+              "content": "using UnityEngine;\r\nusing UnityEngine.UI;\r\nusing UnityEngine.EventSystems;\r\n\r\nnamespace Oathx.Core\r\n{\r\n    /// <summary>\r\n    /// Controls the Loading and Update panels in Assets/Data/Widgets/Launch/Launch.\r\n    /// Available before the game plugin and UISystem are initialized.\r\n    /// </summary>\r\n    [DisallowMultipleComponent]\r\n    [RequireComponent(typeof(RectTransform))]\r\n    public class XLauncher : UIBehaviour\r\n    {\r\n        /// <summary>\r\n        /// Root of the regular loading panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private GameObject loading;\r\n\r\n        /// <summary>\r\n        /// Root of the resource download panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private GameObject update;\r\n\r\n        /// <summary>\r\n        /// Status message displayed during regular loading.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text loadingText;\r\n\r\n        /// <summary>\r\n        /// Progress percentage displayed in the loading panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text loadingPercent;\r\n\r\n        /// <summary>\r\n        /// Additional tip displayed in the loading panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text tip;\r\n\r\n        /// <summary>\r\n        /// Status message displayed during resource downloads.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text downloadText;\r\n\r\n        /// <summary>\r\n        /// Progress percentage displayed in the download panel.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Text downloadPercent;\r\n\r\n        /// <summary>\r\n        /// RawImage rectangle stretched to represent download progress.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private RectTransform fill;\r\n\r\n        /// <summary>\r\n        /// Download progress indicator positioned along the handle area.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private RectTransform handle;\r\n\r\n        /// <summary>Optional progress fill for the portrait loading panel.</summary>\r\n        [SerializeField]\r\n        private RectTransform loadingFill;\r\n\r\n        /// <summary>Optional progress indicator for the portrait loading panel.</summary>\r\n        [SerializeField]\r\n        private RectTransform loadingHandle;\r\n\r\n        /// <summary>\r\n        /// Whether progress updates target the download panel.\r\n        /// </summary>\r\n        private bool downloading;\r\n\r\n        /// <summary>\r\n        /// Show the view without resetting its current progress.\r\n        /// </summary>\r\n        public void Show()\r\n        {\r\n            gameObject.SetActive(true);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Hide the view while preserving its current state.\r\n        /// </summary>\r\n        public void Hide()\r\n        {\r\n            gameObject.SetActive(false);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Keep the launch background visible without loading or download overlays.\r\n        /// </summary>\r\n        public void ShowBackground()\r\n        {\r\n            loading.SetActive(false);\r\n            update.SetActive(false);\r\n\r\n            Show();\r\n        }\r\n\r\n        /// <summary>\r\n        /// Display the regular loading panel.\r\n        /// </summary>\r\n        /// <param name=\"message\">Initial status message; progress is reset to zero.</param>\r\n        public void ShowLoading(string message = \"Loading...\")\r\n        {\r\n            downloading = false;\r\n\r\n            loading.SetActive(true);\r\n            update.SetActive(false);\r\n\r\n            UpdateProgress(0f, message);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Display the resource download panel.\r\n        /// </summary>\r\n        /// <param name=\"message\">Initial download message; progress is reset to zero.</param>\r\n        public void ShowUpdate(string message = \"Downloading resources...\")\r\n        {\r\n            downloading = true;\r\n            \r\n            loading.SetActive(false);\r\n            update.SetActive(true);\r\n\r\n            UpdateProgress(0f, message);\r\n        }\r\n\r\n        /// <summary>\r\n        /// Set the additional loading tip.\r\n        /// </summary>\r\n        /// <param name=\"text\">Tip text to display.</param>\r\n        public void SetTip(string text)\r\n        {\r\n            tip.text = text;\r\n        }\r\n\r\n        /// <summary>\r\n        /// Update the active panel. The prefab uses a RawImage fill, not an Image or Slider.\r\n        /// </summary>\r\n        /// <param name=\"progress\">Normalized progress, clamped to zero through one; NaN becomes zero.</param>\r\n        /// <param name=\"text\">Status message for the active panel.</param>\r\n        /// <returns>True when the active panel has been updated.</returns>\r\n        public bool UpdateProgress(float progress, string text)\r\n        {\r\n            progress = float.IsNaN(progress) ? 0f : Mathf.Clamp01(progress);\r\n            int percent = Mathf.RoundToInt(progress * 100f);\r\n            if (!downloading)\r\n            {\r\n                // Current templates combine the message and percentage in DownloadTips.\r\n                // Retain the separate label when an older prefab still supplies one.\r\n                loadingText.text = loadingPercent ? text : $\"{text} ({percent}%)\";\r\n                if (loadingPercent) loadingPercent.text = $\"({percent}%)\";\r\n\r\n                if (loadingFill && loadingHandle)\r\n                {\r\n                    ApplyProgress(loadingFill, loadingHandle, progress);\r\n                }\r\n\r\n                return true;\r\n            }\r\n\r\n            downloadText.text = downloadPercent ? text : $\"{text} {percent}%\";\r\n            if (downloadPercent) downloadPercent.text = $\"{percent}%\";\r\n            ApplyProgress(fill, handle, progress);\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>Applies horizontal progress without changing vertical layout.</summary>\r\n        /// <param name=\"progressFill\">The authored fill rectangle.</param>\r\n        /// <param name=\"progressHandle\">The authored progress marker.</param>\r\n        /// <param name=\"progress\">Normalized progress supplied by the caller.</param>\r\n        private static void ApplyProgress(RectTransform progressFill, RectTransform progressHandle, float progress)\r\n        {\r\n            progressFill.anchorMin = new Vector2(0f, progressFill.anchorMin.y);\r\n            progressFill.anchorMax = new Vector2(progress, progressFill.anchorMax.y);\r\n            progressFill.offsetMin = new Vector2(0f, progressFill.offsetMin.y);\r\n            progressFill.offsetMax = new Vector2(0f, progressFill.offsetMax.y);\r\n            progressHandle.anchorMin = new Vector2(progress, progressHandle.anchorMin.y);\r\n            progressHandle.anchorMax = new Vector2(progress, progressHandle.anchorMax.y);\r\n            progressHandle.anchoredPosition = new Vector2(0f, progressHandle.anchoredPosition.y);\r\n        }\r\n    }\r\n}\r\n",
+              "sha256": "48119dea6e6cabe2cb0a6fc173d660f8a2529ba465ac84cd3d7cefc771dea1fe"
+            },
+            {
+              "path": "LocalPackages/com.oathx.core/Runtime/XApp.cs",
+              "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\nusing Oathx.Bundle.Assets;\r\nusing System.Reflection;\r\nusing UnityEngine.Networking;\r\nusing System;\r\nusing Newtonsoft.Json;\r\nusing Oathx.Core.Sdk;\r\nusing UnityEngine.Rendering.Universal;\r\nusing System.IO;\r\n\r\nnamespace Oathx.Core\r\n{\r\n    [Serializable]\r\n    public class APIVersion\r\n    {\r\n        /// <summary>\r\n        /// version id\r\n        /// </summary>\r\n        public int id\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// current client version\r\n        /// </summary>\r\n        public string version\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// runtime platform\r\n        /// </summary>\r\n        public string platform\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// version create time\r\n        /// </summary>\r\n        public string createTime\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// version update time\r\n        /// </summary>\r\n        public string updateTime\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// client auth url\r\n        /// </summary>\r\n        public string authUrl\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// hotfix cdn list\r\n        /// </summary>\r\n        public string[] cdns\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// client pay url\r\n        /// </summary>\r\n        public string payUrl\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// version status\r\n        /// </summary>\r\n        public int status\r\n        { get; set; }\r\n    }\r\n\r\n    /// <summary>\r\n    /// remote version info\r\n    /// </summary>\r\n    [Serializable]\r\n    public class AppVersion\r\n    {\r\n        /// <summary>\r\n        /// get version is success\r\n        /// </summary>\r\n        public bool success\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// version data\r\n        /// </summary>\r\n        public APIVersion data\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// error message\r\n        /// </summary>\r\n        public string message\r\n        { get; set; }\r\n\r\n        /// <summary>\r\n        /// error code\r\n        /// </summary>\r\n        public int errorCode\r\n        { get; set; }\r\n    }\r\n\r\n    /// <summary>\r\n    /// XApp Main Entry\r\n    /// </summary>\r\n    public class XApp : XMonoSingleton<XApp>\r\n    {\r\n        /// <summary>\r\n        /// The app configure.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private XAppConfigure conf;\r\n\r\n        /// <summary>\r\n        /// Is breaking update\r\n        /// </summary>\r\n        [SerializeField]\r\n        private bool isBreaking;\r\n\r\n        /// <summary>\r\n        /// The auth URL.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private string authUrl;\r\n\r\n        /// <summary>\r\n        /// main camera\r\n        /// </summary>\r\n        [SerializeField]\r\n        private Camera mainCamera;\r\n\r\n        /// <summary>\r\n        /// Launch view assigned from the scene's UI hierarchy.\r\n        /// </summary>\r\n        [SerializeField]\r\n        private XLauncher launcher;\r\n\r\n        /// <summary>Optional desktop startup size; zero preserves automatic resolution selection.</summary>\r\n        [SerializeField]\r\n        private Vector2Int startupResolution;\r\n\r\n        /// <summary>\r\n        /// Hide the launch view when the game UI is ready.\r\n        /// </summary>\r\n        public void HideLaunch()\r\n        {\r\n            if (launcher)\r\n                launcher.Hide();\r\n        }\r\n\r\n        /// <summary>\r\n        /// Keep only the launch background visible behind the game UI.\r\n        /// </summary>\r\n        public void ShowLaunchBackground()\r\n        {\r\n            if (launcher)\r\n                launcher.ShowBackground();\r\n        }\r\n\r\n        /// <summary>\r\n        /// Whether runtime systems have already been shut down.\r\n        /// </summary>\r\n        private bool runtimeShutdown;\r\n\r\n        /// <summary>\r\n        /// Awake is called when the script instance is being loaded\r\n        /// </summary>\r\n        private void Awake()\r\n        {\r\n            instance = this;\r\n\r\n            Application.targetFrameRate = 60;\r\n            GameObject.DontDestroyOnLoad(this);\r\n\r\n            if (mainCamera)\r\n                GameObject.DontDestroyOnLoad(mainCamera);\r\n\r\n#if !UNITY_EDITOR\r\n            // Update to the maximum screen resolution\r\n            UpdateResolution();\r\n#endif\r\n\r\n            Debug.Log(System.IO.Path.GetTempPath());\r\n        }\r\n\r\n        /// <summary>\r\n        /// Get the XAppConfigure ScriptableObject\r\n        /// </summary>\r\n        /// <returns></returns>\r\n        private IEnumerator Start()\r\n        {\r\n            if (!launcher)\r\n            {\r\n                Debug.LogError(\"Assign the Launch component to XApp.launcher.\", this);\r\n                yield break;\r\n            }\r\n\r\n            // show the assigned launch view\r\n            launcher.Show();\r\n            launcher.ShowLoading();\r\n\r\n            // load app configure\r\n            var req = Resources.LoadAsync<XAppConfigure>(typeof(XAppConfigure).Name);\r\n            yield return req;\r\n\r\n            if (req.isDone)\r\n            {\r\n                // init app configure\r\n                conf = req.asset as XAppConfigure;\r\n                if (conf)\r\n                {\r\n                    ClearLocalEntityArchiveIfNeeded();\r\n\r\n                    // init app tracking\r\n                    InitAppTracking();\r\n\r\n                    yield return DoCheckAppVersion();\r\n                }\r\n            }\r\n            else\r\n            {\r\n#if UNITY_EDITOR\r\n                Debug.LogError($\"load app configure failure\");\r\n#endif\r\n            }\r\n\r\n            yield return new WaitForEndOfFrame();\r\n\r\n            // if current no need to break, startup hotfix assemblies\r\n            if (!isBreaking)\r\n            {\r\n                Startup();\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Clears local entity archive files when the app configure requests a development reset.\r\n        /// </summary>\r\n        private void ClearLocalEntityArchiveIfNeeded()\r\n        {\r\n            if (!conf || !conf.clearLocalEntityArchiveOnStartup)\r\n                return;\r\n\r\n            ClearPersistentDataPath();\r\n        }\r\n\r\n        /// <summary>\r\n        /// Deletes local persistent archive files under the app persistent data root.\r\n        /// </summary>\r\n        private void ClearPersistentDataPath()\r\n        {\r\n            string path = Application.persistentDataPath;\r\n            if (string.IsNullOrEmpty(path) || !Directory.Exists(path))\r\n                return;\r\n\r\n            DirectoryInfo directory = new DirectoryInfo(path);\r\n            foreach (FileInfo file in directory.GetFiles())\r\n                file.Delete();\r\n\r\n#if UNITY_EDITOR\r\n            Debug.Log($\"Clear local entity archive path {path}\");\r\n#endif\r\n        }\r\n\r\n        /// <summary>\r\n        /// Update is called once per frame\r\n        /// </summary>\r\n        private void Update()\r\n        {\r\n            XRes.Update();\r\n\r\n            // update plugins\r\n            XPluginManager.GetSingleton().Update(Time.deltaTime);\r\n        }\r\n\r\n        /// <summary>\r\n        /// OnDestroy is called when the MonoBehaviour will be destroyed\r\n        /// </summary>\r\n        private void OnDestroy()\r\n        {\r\n            ShutdownRuntime();\r\n        }\r\n\r\n        /// <summary>\r\n        /// OnApplicationQuit is called before Unity destroys scene objects.\r\n        /// </summary>\r\n        private void OnApplicationQuit()\r\n        {\r\n            ShutdownRuntime();\r\n        }\r\n\r\n        /// <summary>\r\n        /// Shuts down loaded plugins before shared runtime objects are destroyed.\r\n        /// </summary>\r\n        private void ShutdownRuntime()\r\n        {\r\n            if (!runtimeShutdown)\r\n            {\r\n                runtimeShutdown = true;\r\n\r\n                // unload all plugin\r\n                XPluginManager.GetSingleton().UnloadAllPlugin();\r\n\r\n                // close all coroutine\r\n                XCoroutine.StopAll();\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Initialize app tracking system, we can use it to track user behavior, such as page view, click event, etc.\r\n        /// </summary>\r\n        private void InitAppTracking()\r\n        {\r\n            var api = new InternalTrackingAPI(conf);\r\n            XAppTracking.GetSingleton().RegisterAPI(api);\r\n\r\n            // track init tracking succeed event\r\n            XAppTracking.GetSingleton().Login((succeed, message) => {});\r\n        }\r\n\r\n        /// <summary>\r\n        /// Fetch remote version info\r\n        /// </summary>\r\n        /// <returns></returns>\r\n        private IEnumerator DoCheckAppVersion()\r\n        {\r\n            XAppTracking.GetSingleton().Track(TrackingEvent.CheckAppVersion);\r\n\r\n            // convert bundle source\r\n            XBundleSource source = XBundleSource.Local;\r\n            switch (conf.bundleSource)\r\n            {\r\n                case AppBundleSource.Local:\r\n                    source = XBundleSource.Local;\r\n                    break;\r\n\r\n                case AppBundleSource.Bundle:\r\n                    source = XBundleSource.Bundle;\r\n                    break;\r\n            }\r\n\r\n            // initialize hotfix system, we must be initialize it before do update\r\n            XHotfixConfig config = new XHotfixConfig(conf.hotfixDebugEnabled);\r\n\r\n            // bundle 自动释放延迟由 XAppConfigure.bundleAutoReleaseTime 控制（默认 60s）：\r\n            // 传 0 会在每次加载后立刻卸载 bundle 壳，下一波加载又被迫重新 LoadFromFile，\r\n            // 造成高频卸载/重载抖动；壳本身只占少量内存，驻留换取加载平稳。\r\n            XRes.Initialize(source, conf.bundleAutoReleaseTime, config);\r\n\r\n            if (conf.bundleSource == AppBundleSource.Local)\r\n            {\r\n                launcher.UpdateProgress(1.0f,\r\n                    HotfixStatus.HotfixSucceed.ToString());\r\n                yield break;\r\n            }\r\n\r\n            // first, fetch remote version info, we need to do hotfix update base on remote version info\r\n            UnityWebRequest req = UnityWebRequest.Get(conf.VersionURL);\r\n            yield return req.SendWebRequest();\r\n\r\n            if (req.result != UnityWebRequest.Result.Success)\r\n            {\r\n#if UNITY_EDITOR\r\n                Debug.LogError($\"Fetch remote version from {conf.VersionURL} failed {req.error}\");\r\n#endif\r\n            }\r\n            else\r\n            {\r\n                // get remote version info from backup server\r\n                AppVersion appVersion = JsonConvert.DeserializeObject<AppVersion>(req.downloadHandler.text);\r\n                if (appVersion.success)\r\n                {\r\n                    // we need to update server url and pay url\r\n                    conf.UpdateServerURL(appVersion.data.authUrl, appVersion.data.payUrl);\r\n\r\n                    // convert remote version info to hotfix version info\r\n                    if (TryConvertRemoteVersion(appVersion, out var remoteVersion))\r\n                    {\r\n                        XAppTracking.GetSingleton().Track(TrackingEvent.DoUpdate);\r\n                        yield return DoUpdate(remoteVersion);\r\n                    }\r\n                }\r\n                else\r\n                {\r\n                    Debug.LogError(req.downloadHandler.text);\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Try convert remote version info\r\n        /// </summary>\r\n        /// <param name=\"result\"></param>\r\n        /// <param name=\"remoteVersion\"></param>\r\n        /// <returns></returns>\r\n        private bool TryConvertRemoteVersion(AppVersion result, out XHotfixVersion remoteVersion)\r\n        {\r\n            remoteVersion = new XHotfixVersion(result.data.version) {\r\n                payUrl = result.data.payUrl, authUrl = result.data.authUrl, cdns = result.data.cdns, platform = result.data.platform\r\n            };\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// Do hotfix update\r\n        /// </summary>\r\n        /// <returns></returns>\r\n        private IEnumerator DoUpdate(XHotfixVersion remoteVersion)\r\n        {\r\n            // if need to do hotfix update, perform hotfix update, must be set hotfix enable in app configure\r\n            if (conf.hotfix)\r\n            {\r\n                yield return XRes.DoUpdate(remoteVersion, (status, progress, message) => {\r\n                    switch (status)\r\n                    {\r\n\r\n                        // if start to download hotfix bundles\r\n                        case HotfixStatus.HotfixBundles:\r\n                            launcher.ShowUpdate();\r\n                            break;\r\n\r\n                        // if need force update app\r\n                        case HotfixStatus.ForeceUpdate:\r\n                            isBreaking = true;\r\n                            break;\r\n\r\n                        // if hotfix update succeed\r\n                        case HotfixStatus.HotfixSucceed:\r\n                            launcher.ShowLoading();\r\n                            break;\r\n\r\n                        // update download progress\r\n                        case HotfixStatus.DownloadProgress:\r\n                            launcher.UpdateProgress(progress, message);\r\n                            break;\r\n                    }\r\n                });\r\n            }\r\n            else\r\n            {\r\n                launcher.UpdateProgress(1.0f,\r\n                    HotfixStatus.HotfixSucceed.ToString());\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Startup hotfix assemblies\r\n        /// </summary>\r\n        private void Startup()\r\n        {\r\n            XAppTracking.GetSingleton().Track(TrackingEvent.RunAssembly);\r\n\r\n            // run hotfix assemblys\r\n            Assembly[] assemblys = AppDomain.CurrentDomain.GetAssemblies();\r\n            if (assemblys.Length != 0)\r\n            {\r\n                RunHotfixAssemblys(assemblys);\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Run hotfix assemblies\r\n        /// </summary>\r\n        /// <param name=\"appConf\"></param>\r\n        /// <param name=\"assemblys\"></param>\r\n        private void RunHotfixAssemblys(Assembly[] assemblys)\r\n        {\r\n            if (assemblys.Length != 0)\r\n            {\r\n                List<Type> types = new List<Type>();\r\n                foreach (Assembly assembly in assemblys)\r\n                {\r\n                    foreach (string typeName in conf.plugins)\r\n                    {\r\n                        var type = assembly.GetType(typeName);\r\n                        if (type != null)\r\n                            types.Add(type);\r\n                    }\r\n                }\r\n\r\n                bool succeed = false;\r\n\r\n                // load and startup plugins\r\n                foreach (Type type in types)\r\n                {\r\n                    XPlugin plugin = XPluginManager.GetSingleton().LoadPlugin(type);\r\n                    if (plugin != null)\r\n                    {\r\n#if UNITY_EDITOR\r\n                        Debug.Log($\"Plugin {type} startup succeed\");\r\n#endif\r\n                        succeed = true;\r\n\r\n                        plugin.Startup();\r\n                    }\r\n                }\r\n\r\n                if (!succeed)\r\n                {\r\n                    Debug.LogError($\"No plugin startup succeed, please check your app configure\");\r\n                }\r\n            }\r\n        }\r\n\r\n        /// <summary>\r\n        /// Applies the authored desktop size or preserves native mobile orientation.\r\n        /// </summary>\r\n        /// <returns>True when a valid output resolution policy is available.</returns>\r\n        private bool UpdateResolution()\r\n        {\r\n            if (startupResolution.x > 0 && startupResolution.y > 0)\r\n            {\r\n                if (!Application.isMobilePlatform)\r\n                {\r\n                    Screen.SetResolution(startupResolution.x, startupResolution.y, false);\r\n                }\r\n\r\n                return true;\r\n            }\r\n\r\n            int maxHeight = 0;\r\n            int maxWidth = 0;\r\n\r\n            foreach (var resolution in Screen.resolutions)\r\n            {\r\n                if (resolution.width >= maxWidth && resolution.height >= maxHeight)\r\n                {\r\n                    maxWidth = resolution.width;\r\n                    maxHeight = resolution.height;\r\n                }\r\n            }\r\n\r\n            if (maxWidth <= 0 || maxHeight <= 0)\r\n            {\r\n                return false;\r\n            }\r\n\r\n            Screen.SetResolution(maxWidth, maxHeight, true);\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// get app configure\r\n        /// </summary>\r\n        /// <returns></returns>\r\n        public XAppConfigure GetAppConfigure()\r\n        {\r\n            return conf;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"camera\"></param>\r\n        /// <returns></returns>\r\n        public bool AddOverlayCamera(Camera camera)\r\n        {\r\n            if (!mainCamera || !camera)\r\n                return false;\r\n\r\n            UniversalAdditionalCameraData overlayCamera = camera.GetUniversalAdditionalCameraData();\r\n            overlayCamera.renderType = CameraRenderType.Overlay;\r\n\r\n            UniversalAdditionalCameraData baseCamera = mainCamera.GetUniversalAdditionalCameraData();\r\n            baseCamera.cameraStack.Add(camera);\r\n\r\n            return true;\r\n        }\r\n\r\n        /// <summary>\r\n        /// \r\n        /// </summary>\r\n        /// <param name=\"camera\"></param>\r\n        /// <returns></returns>\r\n        public bool RemoveOverlayCamera(Camera camera) \r\n        {\r\n            if (!mainCamera || !camera)\r\n                return false;\r\n\r\n            UniversalAdditionalCameraData mainCameraData = mainCamera.GetUniversalAdditionalCameraData();\r\n            mainCameraData.cameraStack.Remove(camera);\r\n            return true;\r\n        }\r\n    }\r\n}\r\n",
+              "sha256": "4217b1697639ce00e90a1bcf9445a5ffdc9141997ea2e846ce4964842fa74ecd"
+            },
+            {
+              "path": "Assets/Scripts/GamePlugin.cs",
+              "content": "using Oathx.Core;\nusing Oathx.Widget;\nusing UnityEngine;\n\n/// <summary>Initializes only the local UI infrastructure for the clean project.</summary>\npublic sealed class GamePlugin : XPlugin\n{\n    /// <summary>Initializes the UI resource loader without installing business systems.</summary>\n    /// <returns>True when infrastructure is ready.</returns>\n    public override bool Install()\n    {\n        UISystem.GetSingleton().Startup(new ResourceConfigure { loader = new GameUILoader(), cacher = new UIDefaultCacher() });\n\n        return true;\n    }\n\n    /// <summary>Keeps the launch artwork until a product page takes ownership.</summary>\n    /// <returns>True when startup completes.</returns>\n    public override bool Startup()\n    {\n        XApp.GetSingleton().ShowLaunchBackground();\n        Debug.Log(\"MINIWOW_LAUNCH_READY\");\n\n        return true;\n    }\n\n    /// <summary>Releases the UI infrastructure.</summary>\n    public override void Shutdown()\n    {\n        UISystem.GetSingleton().Shutdown();\n    }\n\n    /// <summary>Releases plugin registrations; this baseline registers none.</summary>\n    public override void Uninstall()\n    {\n    }\n}\n\n/// <summary>Loads future widgets through the existing framework resource layer.</summary>\npublic sealed class GameUILoader : UILoader\n{\n    /// <summary>Loads a resource by its compile-time type.</summary>\n    /// <param name=\"path\">Resource path.</param>\n    /// <param name=\"done\">Completion callback.</param>\n    /// <returns>The loading coroutine.</returns>\n    public Coroutine LoadAsync<T>(string path, System.Action<Object> done) where T : Object\n    {\n        return Oathx.Bundle.Assets.XRes.LoadAsync<T>(path, done);\n    }\n\n    /// <summary>Loads a resource by its runtime type.</summary>\n    /// <param name=\"path\">Resource path.</param>\n    /// <param name=\"type\">Resource type.</param>\n    /// <param name=\"done\">Completion callback.</param>\n    /// <returns>The loading coroutine.</returns>\n    public Coroutine LoadAsync(string path, System.Type type, System.Action<Object> done)\n    {\n        return Oathx.Bundle.Assets.XRes.LoadAsync(path, type, done);\n    }\n}\n",
+              "sha256": "4fc5ae775a26840fd3cac599dd81c7349487a0005220deec0fda9ed3ec40c5d6"
+            }
+          ]
+        },
+        "name": "Launch"
+      },
+      {
+        "id": "LaunchArtwork",
+        "parent": "MiniwowLaunch",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "image": "b0a44a6a5ed48a38f98a3b3b80d613eb1aef2c7ba0f8ed98e136b5f417bfab34",
+        "imageFit": "cover",
+        "uvRect": {
+          "x": 0,
+          "y": 0.1794871794871795,
+          "width": 1,
+          "height": 0.8205128205128205
+        },
+        "active": true,
+        "name": "Artwork",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1080,
+            "y": 1920
+          }
+        }
+      },
+      {
+        "id": "Loading",
+        "parent": "MiniwowLaunch",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "active": true,
+        "name": "Loading",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1080,
+            "y": 1920
+          }
+        }
+      },
+      {
+        "id": "LoadingText",
+        "parent": "Loading",
+        "type": "Text",
+        "x": 140,
+        "y": 1590,
+        "width": 800,
+        "height": 54,
+        "color": "#FFFFFF",
+        "text": "正在准备冒险",
+        "fontSize": 32,
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "textAlign": "center",
+        "surface": "transparent",
+        "active": true,
+        "name": "LoadingText",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 140,
+            "y": -1590
+          },
+          "sizeDelta": {
+            "x": 800,
+            "y": 54
+          }
+        }
+      },
+      {
+        "id": "LoadingTrack",
+        "parent": "Loading",
+        "type": "Image",
+        "x": 130,
+        "y": 1660,
+        "width": 820,
+        "height": 54,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "image": "1d8feef4a51b24e1b214120563d84acb4f73fae8c4da69283d95029d744534f9",
+        "imageFit": "100% 100%",
+        "active": true,
+        "name": "Track",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 130,
+            "y": -1660
+          },
+          "sizeDelta": {
+            "x": 820,
+            "y": 54
+          }
+        }
+      },
+      {
+        "id": "LoadingArea",
+        "parent": "LoadingTrack",
+        "type": "Container",
+        "x": 31,
+        "y": 9,
+        "width": 758,
+        "height": 34,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "active": true,
+        "name": "FillArea",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 31,
+            "y": -9
+          },
+          "sizeDelta": {
+            "x": 758,
+            "y": 34
+          }
+        }
+      },
+      {
+        "id": "LoadingFill",
+        "parent": "LoadingArea",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 34,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "image": "743c6496a2557f33e3e02079f77d114102e8fdf6944db08bf822224b9077b8c9",
+        "imageFit": "100% 100%",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "active": true,
+        "name": "Fill"
+      },
+      {
+        "id": "LoadingHandle",
+        "parent": "LoadingArea",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 34,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "active": true,
+        "name": "Handle",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1,
+            "y": 34
+          }
+        }
+      },
+      {
+        "id": "LoadingPercent",
+        "parent": "Loading",
+        "type": "Text",
+        "x": 140,
+        "y": 1735,
+        "width": 800,
+        "height": 44,
+        "color": "#FFFFFF",
+        "text": "0%",
+        "fontSize": 28,
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "textAlign": "center",
+        "surface": "transparent",
+        "active": true,
+        "name": "LoadingPercent",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 140,
+            "y": -1735
+          },
+          "sizeDelta": {
+            "x": 800,
+            "y": 44
+          }
+        }
+      },
+      {
+        "id": "Update",
+        "parent": "MiniwowLaunch",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "active": false,
+        "name": "Update",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1080,
+            "y": 1920
+          }
+        }
+      },
+      {
+        "id": "UpdateText",
+        "parent": "Update",
+        "type": "Text",
+        "x": 140,
+        "y": 1590,
+        "width": 800,
+        "height": 54,
+        "color": "#FFFFFF",
+        "text": "正在加载资源",
+        "fontSize": 32,
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "textAlign": "center",
+        "surface": "transparent",
+        "active": true,
+        "name": "UpdateText",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 140,
+            "y": -1590
+          },
+          "sizeDelta": {
+            "x": 800,
+            "y": 54
+          }
+        }
+      },
+      {
+        "id": "UpdateTrack",
+        "parent": "Update",
+        "type": "Image",
+        "x": 130,
+        "y": 1660,
+        "width": 820,
+        "height": 54,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "image": "1d8feef4a51b24e1b214120563d84acb4f73fae8c4da69283d95029d744534f9",
+        "imageFit": "100% 100%",
+        "active": true,
+        "name": "Track",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 130,
+            "y": -1660
+          },
+          "sizeDelta": {
+            "x": 820,
+            "y": 54
+          }
+        }
+      },
+      {
+        "id": "UpdateArea",
+        "parent": "UpdateTrack",
+        "type": "Container",
+        "x": 31,
+        "y": 9,
+        "width": 758,
+        "height": 34,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "active": true,
+        "name": "FillArea",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 31,
+            "y": -9
+          },
+          "sizeDelta": {
+            "x": 758,
+            "y": 34
+          }
+        }
+      },
+      {
+        "id": "UpdateFill",
+        "parent": "UpdateArea",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 34,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "image": "743c6496a2557f33e3e02079f77d114102e8fdf6944db08bf822224b9077b8c9",
+        "imageFit": "100% 100%",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "active": true,
+        "name": "Fill"
+      },
+      {
+        "id": "UpdateHandle",
+        "parent": "UpdateArea",
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 34,
+        "color": "#FFFFFF",
+        "text": "",
+        "fontSize": 20,
+        "surface": "transparent",
+        "active": true,
+        "name": "Handle",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 1,
+            "y": 34
+          }
+        }
+      },
+      {
+        "id": "UpdatePercent",
+        "parent": "Update",
+        "type": "Text",
+        "x": 140,
+        "y": 1735,
+        "width": 800,
+        "height": 44,
+        "color": "#FFFFFF",
+        "text": "0%",
+        "fontSize": 28,
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "textAlign": "center",
+        "surface": "transparent",
+        "active": true,
+        "name": "UpdatePercent",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 140,
+            "y": -1735
+          },
+          "sizeDelta": {
+            "x": 800,
+            "y": 44
+          }
+        }
+      },
+      {
+        "id": "LaunchTip",
+        "parent": "Loading",
+        "type": "Text",
+        "x": 120,
+        "y": 1805,
+        "width": 840,
+        "height": 42,
+        "color": "#FFFFFF",
+        "text": "每一次出发，都是新的冒险",
+        "fontSize": 25,
+        "fontAsset": "08401fa44c7e73eaca23fac8134d4fcfd3d58aa83e3d9800cba84583b3cc0c03",
+        "textAlign": "center",
+        "surface": "transparent",
+        "active": true,
+        "name": "Tip",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorMax": {
+            "x": 0,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0,
+            "y": 1
+          },
+          "anchoredPosition": {
+            "x": 120,
+            "y": -1805
+          },
+          "sizeDelta": {
+            "x": 840,
+            "y": 42
+          }
+        }
+      }
+    ]
+  }
+}

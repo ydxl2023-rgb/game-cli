@@ -136,6 +136,10 @@ namespace Oathx.Core
         [SerializeField]
         private XLauncher launcher;
 
+        /// <summary>Optional desktop startup size; zero preserves automatic resolution selection.</summary>
+        [SerializeField]
+        private Vector2Int startupResolution;
+
         /// <summary>
         /// Hide the launch view when the game UI is ready.
         /// </summary>
@@ -501,10 +505,21 @@ namespace Oathx.Core
         }
 
         /// <summary>
-        /// Update to the maximum screen resolution
+        /// Applies the authored desktop size or preserves native mobile orientation.
         /// </summary>
-        private void UpdateResolution()
+        /// <returns>True when a valid output resolution policy is available.</returns>
+        private bool UpdateResolution()
         {
+            if (startupResolution.x > 0 && startupResolution.y > 0)
+            {
+                if (!Application.isMobilePlatform)
+                {
+                    Screen.SetResolution(startupResolution.x, startupResolution.y, false);
+                }
+
+                return true;
+            }
+
             int maxHeight = 0;
             int maxWidth = 0;
 
@@ -517,7 +532,14 @@ namespace Oathx.Core
                 }
             }
 
+            if (maxWidth <= 0 || maxHeight <= 0)
+            {
+                return false;
+            }
+
             Screen.SetResolution(maxWidth, maxHeight, true);
+
+            return true;
         }
 
         /// <summary>

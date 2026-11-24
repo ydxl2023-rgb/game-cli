@@ -1,0 +1,112 @@
+{
+  "root": "HomeEnvironment",
+  "design": {
+    "schemaVersion": 1,
+    "rootId": "Canvas",
+    "name": "MiniwowPortraitUI",
+    "width": 1080,
+    "height": 1920,
+    "nodes": [
+      {
+        "id": "HomeEnvironment",
+        "name": "HomeEnvironment",
+        "parent": null,
+        "type": "Container",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 1
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "CampBackground",
+        "name": "CampBackground",
+        "parent": "HomeEnvironment",
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "2a3a8863237e113bf4e559f6c7b97dc545e57aff3c4d7cde89b25471be1ced9b",
+        "imageFit": "cover",
+        "uvRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        }
+      },
+      {
+        "id": "CampHero",
+        "name": "CampHero",
+        "parent": "CampBackground",
+        "type": "Image",
+        "x": 210,
+        "y": 540,
+        "width": 660,
+        "height": 629,
+        "color": "#FFFFFF",
+        "active": true,
+        "surface": "transparent",
+        "fontSize": 32,
+        "text": "",
+        "image": "28a994d2d94bdcfeb0fa201d7e3f5fea67f1488cfe5fde08e99df3f40afc501a",
+        "imageFit": "contain",
+        "rectTransform": {
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.45
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.45
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 660,
+            "y": 629
+          }
+        }
+      }
+    ],
+    "animations": []
+  }
+}
