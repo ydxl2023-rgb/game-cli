@@ -4,6 +4,7 @@ using Oathx.Widget;
 public sealed class UIHomeEntry : UIWidget<VMHomeEntry>
 {
     /// <summary>Binds once during Ref, never during presentation refresh.</summary>
+    /// <returns>Whether entry interaction was bound.</returns>
     protected override bool Bind()
     {
         vm.OpenClick = button => Send(new ReqHomeEntry { entryId = vm.entryId });

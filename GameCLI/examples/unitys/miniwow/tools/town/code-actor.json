@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "system": "Actor",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 2,
+    "lines": 345,
+    "blankLines": 72,
+    "commentLines": 60,
+    "members": 49,
+    "documentedMembers": 49,
+    "blankLineRate": 0.20869565217391303,
+    "commentLineRate": 0.17391304347826086,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "sha256": "60cf7228e559e683b109204b3c781c9319e3b8f952b0d0ddf7aebb7aec7d3211"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorShape.cs",
+      "sha256": "883f1d705c67fa7764dd02bb43733143d7b7098a614b68a702cbff7787ff6461"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\6619d6af-b580-4a47-ad1c-1ade8c49c74d"
+}

@@ -5,6 +5,16 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {analyzeCode,collectCode} from '../server/verify-code.mjs';
 
+test('analyzer stdin preserves UTF-8 source containing Chinese literals and escaped quotes',async()=>{
+ const content='/// <summary>Unicode transport fixture.</summary>\npublic class UnicodeFixture {\n' +
+  '/// <summary>Localized sample.</summary>\nprivate string text = "营地见习生\\\"万\\\"";\n' +
+  '// 中文传输\n'.repeat(4000) + '}';
+ const result=await analyzeCode([{path:'Assets/Scripts/Systems/Probe/UnicodeFixture.cs',content}]);
+ assert.equal(result.statistics.files,1);
+ assert.ok(!result.issues.some(issue=>issue.rule==='CS_PARSE'));
+ assert.ok(result.issues.some(issue=>issue.rule==='OX016'));
+});
+
 test('Roslyn checks declarations without mistaking callback lambdas or strings for code',async()=>{
  const result=await analyzeCode([{path:'Assets/Scripts/Systems/Login/LoginSystem.cs',content:`
 /// <summary>Login controller.</summary>

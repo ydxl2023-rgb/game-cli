@@ -47,24 +47,8 @@ public sealed class UIHome : UIWidget<VMHome>
     [SerializeField]
     private string entryOrder;
 
-    /// <summary>Binds fixed intentions exactly once.</summary>
-    protected override bool Bind()
-    {
-        vm.MapClick = Send<ReqHomeMap>;
-        vm.ReturnClick = Send<ReqHomeCamp>;
-        vm.CloseFeedbackClick = button => {
-            vm.FeedbackVisible = false;
-
-            return true;
-        };
-        vm.SettingsClick = button => Send(new ReqHomeShortcut { route = "Settings" });
-        vm.TaskClick = button => Send(new ReqHomeShortcut { route = "Task" });
-        vm.ChatClick = button => Send(new ReqHomeShortcut { route = "Chat" });
-
-        return true;
-    }
-
     /// <summary>Resets transient page presentation on activation.</summary>
+    /// <returns>Whether the page became active.</returns>
     public override bool Active()
     {
         if (!base.Active())
@@ -77,6 +61,7 @@ public sealed class UIHome : UIWidget<VMHome>
     }
 
     /// <summary>Updates existing bindings without rebinding callbacks or list items.</summary>
+    /// <param name="snapshot">Detached Home state used for presentation.</param>
     public void Invalidate(HomeSnapshot snapshot)
     {
         if (snapshot == null || snapshot.entries == null || entryOrder != string.Join(",", snapshot.entries.Select(entry => entry.id)))
@@ -127,13 +112,9 @@ public sealed class UIHome : UIWidget<VMHome>
         vm.Chat = snapshot.profile.chat;
     }
 
-    /// <summary>Formats the original compact ten-thousand unit convention.</summary>
-    private static string FormatAmount(long amount)
-    {
-        return amount >= 10000 ? (amount / 10000d).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "万" : amount.ToString();
-    }
-
     /// <summary>Switches between the camp and existing map preview.</summary>
+    /// <param name="visible">Whether to show the map instead of the camp.</param>
+    /// <returns>Whether the bound page accepted the change.</returns>
     public bool ShowMap(bool visible)
     {
         if (!vm)
@@ -147,9 +128,37 @@ public sealed class UIHome : UIWidget<VMHome>
     }
 
     /// <summary>Shows explicit feedback without pretending to open an unimplemented system.</summary>
+    /// <param name="text">Configured feedback text.</param>
     public void ShowFeedback(string text)
     {
         vm.FeedbackText = text;
         vm.FeedbackVisible = true;
     }
+
+    /// <summary>Binds fixed intentions exactly once.</summary>
+    /// <returns>Whether fixed button intentions were bound.</returns>
+    protected override bool Bind()
+    {
+        vm.MapClick = Send<ReqHomeMap>;
+        vm.ReturnClick = Send<ReqHomeCamp>;
+        vm.CloseFeedbackClick = button => {
+            vm.FeedbackVisible = false;
+
+            return true;
+        };
+        vm.SettingsClick = button => Send(new ReqHomeShortcut { route = "Settings" });
+        vm.TaskClick = button => Send(new ReqHomeShortcut { route = "Task" });
+        vm.ChatClick = button => Send(new ReqHomeShortcut { route = "Chat" });
+
+        return true;
+    }
+
+    /// <summary>Formats the original compact ten-thousand unit convention.</summary>
+    /// <param name="amount">The resource amount to display.</param>
+    /// <returns>The compact display amount.</returns>
+    private static string FormatAmount(long amount)
+    {
+        return amount >= 10000 ? (amount / 10000d).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "万" : amount.ToString();
+    }
+
 }

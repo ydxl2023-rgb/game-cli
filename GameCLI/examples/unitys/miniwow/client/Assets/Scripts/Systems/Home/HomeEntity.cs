@@ -24,6 +24,8 @@ public sealed class HomeEntity : XEntity
     private HomeSnapshot state;
 
     /// <summary>Initializes once from the exported product workbook; invalid data never falls back.</summary>
+    /// <param name="json">Exported Home configuration payload.</param>
+    /// <returns>Whether configuration has been initialized.</returns>
     public bool Initialize(string json)
     {
         if (state != null)
@@ -55,12 +57,17 @@ public sealed class HomeEntity : XEntity
     }
 
     /// <summary>Reports whether validated configuration has been installed.</summary>
+    /// <returns>Whether valid configuration is installed.</returns>
     public bool IsInitialized()
     {
         return state != null;
     }
 
     /// <summary>Updates local host-provided entry availability without exposing mutable state.</summary>
+    /// <param name="id">Stable entry identifier.</param>
+    /// <param name="visible">Whether the entry is displayed.</param>
+    /// <param name="unlocked">Whether the entry can be requested.</param>
+    /// <returns>Whether the entry exists and was updated.</returns>
     public bool UpdateEntryAvailability(int id, bool visible, bool unlocked)
     {
         var entry = state?.entries.FirstOrDefault(item => item.id == id);
@@ -74,6 +81,11 @@ public sealed class HomeEntity : XEntity
     }
 
     /// <summary>Accepts validated resource values from local gameplay without clamping valid energy overflow.</summary>
+    /// <param name="gold">Nonnegative gold balance.</param>
+    /// <param name="gem">Nonnegative gem balance.</param>
+    /// <param name="energy">Nonnegative available energy.</param>
+    /// <param name="energyLimit">Positive base energy capacity.</param>
+    /// <returns>Whether all supplied values were accepted.</returns>
     public bool UpdateResources(long gold, long gem, int energy, int energyLimit)
     {
         if (state == null || gold < 0 || gem < 0 || energy < 0 || energyLimit <= 0)
@@ -88,6 +100,7 @@ public sealed class HomeEntity : XEntity
     }
 
     /// <summary>Returns an independent snapshot so presentation cannot mutate owned state.</summary>
+    /// <returns>A detached copy of the initialized state.</returns>
     public HomeSnapshot Snapshot()
     {
         if (state == null)
@@ -97,6 +110,9 @@ public sealed class HomeEntity : XEntity
     }
 
     /// <summary>Rechecks visibility and unlock state at click time.</summary>
+    /// <param name="id">Stable entry identifier.</param>
+    /// <param name="route">Allowed destination, or null when rejected.</param>
+    /// <returns>The validated access result.</returns>
     public HomeEntryResult RequestEntry(int id, out string route)
     {
         route = null;

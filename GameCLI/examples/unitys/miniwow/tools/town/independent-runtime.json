@@ -1,0 +1,2779 @@
+[
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.7699566,35.3,2.11997485],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":157.713791,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":150.705032,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":157.713791,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+        "respondedAtUtc": "2026-11-25T02:12:32.9612243Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "gameobject search",
+      "data": {
+        "totalMatched": 9,
+        "returnedCount": 9,
+        "search": "Camera",
+        "respondedAtUtc": "2026-11-25T02:12:33.1588762Z",
+        "objects": [
+          {
+            "name": "MainCameraRoot",
+            "path": "RecoveredBuildingScene/MainCameraRoot",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1158488,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1158490,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": -0.9238795638084412,
+                    "z": 0.0,
+                    "w": 0.3826834261417389
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 225.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": -0.9238795638084412,
+                    "z": 0.0,
+                    "w": 0.3826834261417389
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 225.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 1.000000238418579,
+                    "y": 1.0,
+                    "z": 1.000000238418579
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, -0.92388, 0.00000, 0.38268)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, 0.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "MainCameraHandle",
+            "path": "RecoveredBuildingScene/MainCameraRoot/MainCameraHandle",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1160708,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1160710,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 16.001117706298828,
+                    "y": 0.0,
+                    "z": 71.73762512207031
+                  },
+                  "localRotation": {
+                    "x": 0.30070576071739197,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.9537169933319092
+                  },
+                  "localEulerAngles": {
+                    "x": 34.999996185302734,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": -62.04066467285156,
+                    "y": 0.0,
+                    "z": -39.41167449951172
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.30071, 0.00000, 0.00000, 0.95372)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(16.00, 0.00, 71.74)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Main Camera",
+            "path": "RecoveredBuildingScene/MainCameraRoot/MainCameraHandle/Main Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1156936,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156938,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -145.89999389648438
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 22.468698501586914,
+                    "y": 83.6847915649414,
+                    "z": 45.09770202636719
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, -145.90)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              },
+              {
+                "type": "Camera",
+                "fullName": "UnityEngine.Camera",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156942,
+                "enabled": true,
+                "hasEnabled": true,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_ClearFlags",
+                    "displayName": "Clear Flags",
+                    "type": "Enum",
+                    "value": "Solid Color",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BackGroundColor",
+                    "displayName": "Back Ground Color",
+                    "type": "Color",
+                    "value": "RGBA(0.075, 0.075, 0.075, 0.000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_projectionMatrixMode",
+                    "displayName": "Projection Matrix Mode",
+                    "type": "Integer",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_GateFitMode",
+                    "displayName": "Gate Fit Mode",
+                    "type": "Integer",
+                    "value": "2",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FOVAxisMode",
+                    "displayName": "FOV Axis Mode",
+                    "type": "Integer",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Iso",
+                    "displayName": "Iso",
+                    "type": "Integer",
+                    "value": "200",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ShutterSpeed",
+                    "displayName": "Shutter Speed",
+                    "type": "Float",
+                    "value": "0.00499999989",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Aperture",
+                    "displayName": "Aperture",
+                    "type": "Float",
+                    "value": "16",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FocusDistance",
+                    "displayName": "Focus Distance",
+                    "type": "Float",
+                    "value": "10",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FocalLength",
+                    "displayName": "Focal Length",
+                    "type": "Float",
+                    "value": "50",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BladeCount",
+                    "displayName": "Blade Count",
+                    "type": "Integer",
+                    "value": "5",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Curvature",
+                    "displayName": "Curvature",
+                    "type": "Vector2",
+                    "value": "(2.00, 11.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BarrelClipping",
+                    "displayName": "Barrel Clipping",
+                    "type": "Float",
+                    "value": "0.25",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Anamorphism",
+                    "displayName": "Anamorphism",
+                    "type": "Float",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_SensorSize",
+                    "displayName": "Sensor Size",
+                    "type": "Vector2",
+                    "value": "(36.00, 24.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LensShift",
+                    "displayName": "Lens Shift",
+                    "type": "Vector2",
+                    "value": "(0.00, 0.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_NormalizedViewPortRect",
+                    "displayName": "Normalized View Port Rect",
+                    "type": "Rect",
+                    "value": "(x:0.00, y:0.00, width:1.00, height:1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "near clip plane",
+                    "displayName": "Near clip plane",
+                    "type": "Float",
+                    "value": "0.300000012",
+                    "editable": true
+                  },
+                  {
+                    "path": "far clip plane",
+                    "displayName": "Far clip plane",
+                    "type": "Float",
+                    "value": "200",
+                    "editable": true
+                  },
+                  {
+                    "path": "field of view",
+                    "displayName": "Field of view",
+                    "type": "Float",
+                    "value": "25",
+                    "editable": true
+                  },
+                  {
+                    "path": "orthographic",
+                    "displayName": "Orthographic",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "orthographic size",
+                    "displayName": "Orthographic size",
+                    "type": "Float",
+                    "value": "5",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Depth",
+                    "displayName": "Depth",
+                    "type": "Float",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_CullingMask",
+                    "displayName": "Culling Mask",
+                    "type": "LayerMask",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_RenderingPath",
+                    "displayName": "Rendering Path",
+                    "type": "Enum",
+                    "value": "Use Graphics Settings",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetTexture",
+                    "displayName": "Target Texture",
+                    "type": "ObjectReference",
+                    "value": "null",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetDisplay",
+                    "displayName": "Target Display",
+                    "type": "Integer",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetEye",
+                    "displayName": "Target Eye",
+                    "type": "Integer",
+                    "value": "3",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_HDR",
+                    "displayName": "HDR",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_AllowMSAA",
+                    "displayName": "Allow MSAA",
+                    "type": "Boolean",
+                    "value": "true",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_AllowDynamicResolution",
+                    "displayName": "Allow Dynamic Resolution",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ForceIntoRT",
+                    "displayName": "Force Into RT",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_OcclusionCulling",
+                    "displayName": "Occlusion Culling",
+                    "type": "Boolean",
+                    "value": "true",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_StereoConvergence",
+                    "displayName": "Stereo Convergence",
+                    "type": "Float",
+                    "value": "10",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_StereoSeparation",
+                    "displayName": "Stereo Separation",
+                    "type": "Float",
+                    "value": "0.0219999999",
+                    "editable": true
+                  }
+                ]
+              },
+              {
+                "type": "HomeSceneCamera",
+                "fullName": "HomeSceneCamera",
+                "assembly": "Assembly-CSharp",
+                "instanceId": 1156940,
+                "enabled": true,
+                "hasEnabled": true,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "sceneCamera",
+                    "displayName": "Scene Camera",
+                    "type": "ObjectReference",
+                    "value": "Main Camera (Camera, 1156942)",
+                    "editable": true
+                  },
+                  {
+                    "path": "cameraHandle",
+                    "displayName": "Camera Handle",
+                    "type": "ObjectReference",
+                    "value": "MainCameraHandle (Transform, 1160710)",
+                    "editable": true
+                  },
+                  {
+                    "path": "movementRadius",
+                    "displayName": "Movement Radius",
+                    "type": "Float",
+                    "value": "45",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Camera",
+            "path": "RecoveredBuildingScene/bahe/Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1156304,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156306,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -53.599998474121094
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": -100.0,
+                    "z": -53.599998474121094
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, -53.60)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Camera",
+            "path": "RecoveredBuildingScene/Mine/Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1158172,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1158174,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -53.599998474121094
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": -150.0,
+                    "z": -53.599998474121094
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, -53.60)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Camera",
+            "path": "RecoveredBuildingScene/Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1158000,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": false,
+            "activeInHierarchy": false,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1158002,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": -29.0,
+                    "y": 628.0,
+                    "z": -32.0
+                  },
+                  "localRotation": {
+                    "x": 0.7071068286895752,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.7071068286895752
+                  },
+                  "localEulerAngles": {
+                    "x": 90.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": -29.0,
+                    "y": 628.0,
+                    "z": -32.0
+                  },
+                  "rotation": {
+                    "x": 0.7071068286895752,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.7071068286895752
+                  },
+                  "eulerAngles": {
+                    "x": 90.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 1.0,
+                    "y": 1.000000238418579,
+                    "z": 1.000000238418579
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.70711, 0.00000, 0.00000, 0.70711)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(-29.00, 628.00, -32.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "MainCameraRoot (1)",
+            "path": "RecoveredBuildingScene/MainCameraRoot (1)",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1160366,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": false,
+            "activeInHierarchy": false,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1160368,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": -61.349998474121094,
+                    "y": -17.200000762939453,
+                    "z": -51.099998474121094
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": -0.9238795638084412,
+                    "z": 0.0,
+                    "w": 0.3826834261417389
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 225.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": -61.349998474121094,
+                    "y": -17.200000762939453,
+                    "z": -51.099998474121094
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": -0.9238795638084412,
+                    "z": 0.0,
+                    "w": 0.3826834261417389
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 225.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 1.000000238418579,
+                    "y": 1.0,
+                    "z": 1.000000238418579
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, -0.92388, 0.00000, 0.38268)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(-61.35, -17.20, -51.10)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "MainCameraHandle",
+            "path": "RecoveredBuildingScene/MainCameraRoot (1)/MainCameraHandle",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1157380,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": false,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1157382,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.30070576071739197,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.9537169933319092
+                  },
+                  "localEulerAngles": {
+                    "x": 34.999996185302734,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": -61.349998474121094,
+                    "y": -17.200000762939453,
+                    "z": -51.099998474121094
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.30071, 0.00000, 0.00000, 0.95372)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, 0.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Main Camera",
+            "path": "RecoveredBuildingScene/MainCameraRoot (1)/MainCameraHandle/Main Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1157136,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": false,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1157138,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 16.84000015258789,
+                    "y": -1.4900000095367432,
+                    "z": -147.10000610351562
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 12.551078796386719,
+                    "y": 65.95256042480469,
+                    "z": 46.61644744873047
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(16.84, -1.49, -147.10)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "search",
+      "Camera",
+      "--count",
+      "10"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.7699566,35.3,2.11997485],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":178.511734,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":171.502975,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":178.511734,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+        "respondedAtUtc": "2026-11-25T02:12:53.7695457Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "ClickEntry",
+        "resolvedMember": "ClickEntry",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":74.8194}}",
+        "respondedAtUtc": "2026-11-25T02:12:53.9720179Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "ClickEntry",
+      "--args-json",
+      "[401]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "gameobject search",
+      "data": {
+        "totalMatched": 2,
+        "returnedCount": 2,
+        "search": "Main Camera",
+        "respondedAtUtc": "2026-11-25T02:12:54.1470384Z",
+        "objects": [
+          {
+            "name": "Main Camera",
+            "path": "RecoveredBuildingScene/MainCameraRoot/MainCameraHandle/Main Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1156936,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156938,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -145.89999389648438
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 22.468698501586914,
+                    "y": 83.6847915649414,
+                    "z": 45.09770202636719
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, -145.90)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              },
+              {
+                "type": "Camera",
+                "fullName": "UnityEngine.Camera",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156942,
+                "enabled": true,
+                "hasEnabled": true,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_ClearFlags",
+                    "displayName": "Clear Flags",
+                    "type": "Enum",
+                    "value": "Solid Color",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BackGroundColor",
+                    "displayName": "Back Ground Color",
+                    "type": "Color",
+                    "value": "RGBA(0.075, 0.075, 0.075, 0.000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_projectionMatrixMode",
+                    "displayName": "Projection Matrix Mode",
+                    "type": "Integer",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_GateFitMode",
+                    "displayName": "Gate Fit Mode",
+                    "type": "Integer",
+                    "value": "2",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FOVAxisMode",
+                    "displayName": "FOV Axis Mode",
+                    "type": "Integer",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Iso",
+                    "displayName": "Iso",
+                    "type": "Integer",
+                    "value": "200",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ShutterSpeed",
+                    "displayName": "Shutter Speed",
+                    "type": "Float",
+                    "value": "0.00499999989",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Aperture",
+                    "displayName": "Aperture",
+                    "type": "Float",
+                    "value": "16",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FocusDistance",
+                    "displayName": "Focus Distance",
+                    "type": "Float",
+                    "value": "10",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FocalLength",
+                    "displayName": "Focal Length",
+                    "type": "Float",
+                    "value": "50",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BladeCount",
+                    "displayName": "Blade Count",
+                    "type": "Integer",
+                    "value": "5",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Curvature",
+                    "displayName": "Curvature",
+                    "type": "Vector2",
+                    "value": "(2.00, 11.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BarrelClipping",
+                    "displayName": "Barrel Clipping",
+                    "type": "Float",
+                    "value": "0.25",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Anamorphism",
+                    "displayName": "Anamorphism",
+                    "type": "Float",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_SensorSize",
+                    "displayName": "Sensor Size",
+                    "type": "Vector2",
+                    "value": "(36.00, 24.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LensShift",
+                    "displayName": "Lens Shift",
+                    "type": "Vector2",
+                    "value": "(0.00, 0.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_NormalizedViewPortRect",
+                    "displayName": "Normalized View Port Rect",
+                    "type": "Rect",
+                    "value": "(x:0.00, y:0.00, width:1.00, height:1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "near clip plane",
+                    "displayName": "Near clip plane",
+                    "type": "Float",
+                    "value": "0.300000012",
+                    "editable": true
+                  },
+                  {
+                    "path": "far clip plane",
+                    "displayName": "Far clip plane",
+                    "type": "Float",
+                    "value": "200",
+                    "editable": true
+                  },
+                  {
+                    "path": "field of view",
+                    "displayName": "Field of view",
+                    "type": "Float",
+                    "value": "25",
+                    "editable": true
+                  },
+                  {
+                    "path": "orthographic",
+                    "displayName": "Orthographic",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "orthographic size",
+                    "displayName": "Orthographic size",
+                    "type": "Float",
+                    "value": "5",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Depth",
+                    "displayName": "Depth",
+                    "type": "Float",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_CullingMask",
+                    "displayName": "Culling Mask",
+                    "type": "LayerMask",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_RenderingPath",
+                    "displayName": "Rendering Path",
+                    "type": "Enum",
+                    "value": "Use Graphics Settings",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetTexture",
+                    "displayName": "Target Texture",
+                    "type": "ObjectReference",
+                    "value": "null",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetDisplay",
+                    "displayName": "Target Display",
+                    "type": "Integer",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetEye",
+                    "displayName": "Target Eye",
+                    "type": "Integer",
+                    "value": "3",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_HDR",
+                    "displayName": "HDR",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_AllowMSAA",
+                    "displayName": "Allow MSAA",
+                    "type": "Boolean",
+                    "value": "true",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_AllowDynamicResolution",
+                    "displayName": "Allow Dynamic Resolution",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ForceIntoRT",
+                    "displayName": "Force Into RT",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_OcclusionCulling",
+                    "displayName": "Occlusion Culling",
+                    "type": "Boolean",
+                    "value": "true",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_StereoConvergence",
+                    "displayName": "Stereo Convergence",
+                    "type": "Float",
+                    "value": "10",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_StereoSeparation",
+                    "displayName": "Stereo Separation",
+                    "type": "Float",
+                    "value": "0.0219999999",
+                    "editable": true
+                  }
+                ]
+              },
+              {
+                "type": "HomeSceneCamera",
+                "fullName": "HomeSceneCamera",
+                "assembly": "Assembly-CSharp",
+                "instanceId": 1156940,
+                "enabled": false,
+                "hasEnabled": true,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "sceneCamera",
+                    "displayName": "Scene Camera",
+                    "type": "ObjectReference",
+                    "value": "Main Camera (Camera, 1156942)",
+                    "editable": true
+                  },
+                  {
+                    "path": "cameraHandle",
+                    "displayName": "Camera Handle",
+                    "type": "ObjectReference",
+                    "value": "MainCameraHandle (Transform, 1160710)",
+                    "editable": true
+                  },
+                  {
+                    "path": "movementRadius",
+                    "displayName": "Movement Radius",
+                    "type": "Float",
+                    "value": "45",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Main Camera",
+            "path": "RecoveredBuildingScene/MainCameraRoot (1)/MainCameraHandle/Main Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1157136,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": false,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1157138,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 16.84000015258789,
+                    "y": -1.4900000095367432,
+                    "z": -147.10000610351562
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 12.551078796386719,
+                    "y": 65.95256042480469,
+                    "z": 46.61644744873047
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(16.84, -1.49, -147.10)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "search",
+      "Main Camera",
+      "--count",
+      "10"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Gesture",
+        "resolvedMember": "Gesture",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"began\":false,\"accepted\":false,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.7699566,35.3,2.11997485],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":179.062332,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":172.053574,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":179.062332,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}",
+        "respondedAtUtc": "2026-11-25T02:12:54.3158542Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Gesture",
+      "--args-json",
+      "[\"building\",false]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":75.67817}}",
+        "respondedAtUtc": "2026-11-25T02:12:54.4821817Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ReturnClick\"]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "gameobject search",
+      "data": {
+        "totalMatched": 2,
+        "returnedCount": 2,
+        "search": "Main Camera",
+        "respondedAtUtc": "2026-11-25T02:12:54.6791048Z",
+        "objects": [
+          {
+            "name": "Main Camera",
+            "path": "RecoveredBuildingScene/MainCameraRoot/MainCameraHandle/Main Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1156936,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": true,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156938,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -145.89999389648438
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 22.468698501586914,
+                    "y": 83.6847915649414,
+                    "z": 45.09770202636719
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(0.00, 0.00, -145.90)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              },
+              {
+                "type": "Camera",
+                "fullName": "UnityEngine.Camera",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1156942,
+                "enabled": true,
+                "hasEnabled": true,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_ClearFlags",
+                    "displayName": "Clear Flags",
+                    "type": "Enum",
+                    "value": "Solid Color",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BackGroundColor",
+                    "displayName": "Back Ground Color",
+                    "type": "Color",
+                    "value": "RGBA(0.075, 0.075, 0.075, 0.000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_projectionMatrixMode",
+                    "displayName": "Projection Matrix Mode",
+                    "type": "Integer",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_GateFitMode",
+                    "displayName": "Gate Fit Mode",
+                    "type": "Integer",
+                    "value": "2",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FOVAxisMode",
+                    "displayName": "FOV Axis Mode",
+                    "type": "Integer",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Iso",
+                    "displayName": "Iso",
+                    "type": "Integer",
+                    "value": "200",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ShutterSpeed",
+                    "displayName": "Shutter Speed",
+                    "type": "Float",
+                    "value": "0.00499999989",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Aperture",
+                    "displayName": "Aperture",
+                    "type": "Float",
+                    "value": "16",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FocusDistance",
+                    "displayName": "Focus Distance",
+                    "type": "Float",
+                    "value": "10",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_FocalLength",
+                    "displayName": "Focal Length",
+                    "type": "Float",
+                    "value": "50",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BladeCount",
+                    "displayName": "Blade Count",
+                    "type": "Integer",
+                    "value": "5",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Curvature",
+                    "displayName": "Curvature",
+                    "type": "Vector2",
+                    "value": "(2.00, 11.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_BarrelClipping",
+                    "displayName": "Barrel Clipping",
+                    "type": "Float",
+                    "value": "0.25",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Anamorphism",
+                    "displayName": "Anamorphism",
+                    "type": "Float",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_SensorSize",
+                    "displayName": "Sensor Size",
+                    "type": "Vector2",
+                    "value": "(36.00, 24.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LensShift",
+                    "displayName": "Lens Shift",
+                    "type": "Vector2",
+                    "value": "(0.00, 0.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_NormalizedViewPortRect",
+                    "displayName": "Normalized View Port Rect",
+                    "type": "Rect",
+                    "value": "(x:0.00, y:0.00, width:1.00, height:1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "near clip plane",
+                    "displayName": "Near clip plane",
+                    "type": "Float",
+                    "value": "0.300000012",
+                    "editable": true
+                  },
+                  {
+                    "path": "far clip plane",
+                    "displayName": "Far clip plane",
+                    "type": "Float",
+                    "value": "200",
+                    "editable": true
+                  },
+                  {
+                    "path": "field of view",
+                    "displayName": "Field of view",
+                    "type": "Float",
+                    "value": "25",
+                    "editable": true
+                  },
+                  {
+                    "path": "orthographic",
+                    "displayName": "Orthographic",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "orthographic size",
+                    "displayName": "Orthographic size",
+                    "type": "Float",
+                    "value": "5",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_Depth",
+                    "displayName": "Depth",
+                    "type": "Float",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_CullingMask",
+                    "displayName": "Culling Mask",
+                    "type": "LayerMask",
+                    "value": "1",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_RenderingPath",
+                    "displayName": "Rendering Path",
+                    "type": "Enum",
+                    "value": "Use Graphics Settings",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetTexture",
+                    "displayName": "Target Texture",
+                    "type": "ObjectReference",
+                    "value": "null",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetDisplay",
+                    "displayName": "Target Display",
+                    "type": "Integer",
+                    "value": "0",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_TargetEye",
+                    "displayName": "Target Eye",
+                    "type": "Integer",
+                    "value": "3",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_HDR",
+                    "displayName": "HDR",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_AllowMSAA",
+                    "displayName": "Allow MSAA",
+                    "type": "Boolean",
+                    "value": "true",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_AllowDynamicResolution",
+                    "displayName": "Allow Dynamic Resolution",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ForceIntoRT",
+                    "displayName": "Force Into RT",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_OcclusionCulling",
+                    "displayName": "Occlusion Culling",
+                    "type": "Boolean",
+                    "value": "true",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_StereoConvergence",
+                    "displayName": "Stereo Convergence",
+                    "type": "Float",
+                    "value": "10",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_StereoSeparation",
+                    "displayName": "Stereo Separation",
+                    "type": "Float",
+                    "value": "0.0219999999",
+                    "editable": true
+                  }
+                ]
+              },
+              {
+                "type": "HomeSceneCamera",
+                "fullName": "HomeSceneCamera",
+                "assembly": "Assembly-CSharp",
+                "instanceId": 1156940,
+                "enabled": true,
+                "hasEnabled": true,
+                "transform": {
+                  "localPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                  },
+                  "eulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "lossyScale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "sceneCamera",
+                    "displayName": "Scene Camera",
+                    "type": "ObjectReference",
+                    "value": "Main Camera (Camera, 1156942)",
+                    "editable": true
+                  },
+                  {
+                    "path": "cameraHandle",
+                    "displayName": "Camera Handle",
+                    "type": "ObjectReference",
+                    "value": "MainCameraHandle (Transform, 1160710)",
+                    "editable": true
+                  },
+                  {
+                    "path": "movementRadius",
+                    "displayName": "Movement Radius",
+                    "type": "Float",
+                    "value": "45",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Main Camera",
+            "path": "RecoveredBuildingScene/MainCameraRoot (1)/MainCameraHandle/Main Camera",
+            "sceneName": "Home",
+            "scenePath": "Assets/Scenes/Home.unity",
+            "instanceId": 1157136,
+            "tag": "Untagged",
+            "layer": 0,
+            "activeSelf": true,
+            "activeInHierarchy": false,
+            "components": [
+              {
+                "type": "Transform",
+                "fullName": "UnityEngine.Transform",
+                "assembly": "UnityEngine.CoreModule",
+                "instanceId": 1157138,
+                "enabled": false,
+                "hasEnabled": false,
+                "transform": {
+                  "localPosition": {
+                    "x": 16.84000015258789,
+                    "y": -1.4900000095367432,
+                    "z": -147.10000610351562
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                  },
+                  "localEulerAngles": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "localScale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                  },
+                  "position": {
+                    "x": 12.551078796386719,
+                    "y": 65.95256042480469,
+                    "z": 46.61644744873047
+                  },
+                  "rotation": {
+                    "x": 0.11507511138916016,
+                    "y": -0.8811196684837341,
+                    "z": 0.27781590819358826,
+                    "w": 0.36497169733047485
+                  },
+                  "eulerAngles": {
+                    "x": 34.99999237060547,
+                    "y": 225.0,
+                    "z": 1.0422652394481702E-06
+                  },
+                  "lossyScale": {
+                    "x": 1.0000004768371582,
+                    "y": 1.0000001192092896,
+                    "z": 1.0000004768371582
+                  }
+                },
+                "properties": [
+                  {
+                    "path": "m_LocalRotation",
+                    "displayName": "Local Rotation",
+                    "type": "Quaternion",
+                    "value": "(0.00000, 0.00000, 0.00000, 1.00000)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalPosition",
+                    "displayName": "Local Position",
+                    "type": "Vector3",
+                    "value": "(16.84, -1.49, -147.10)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_LocalScale",
+                    "displayName": "Local Scale",
+                    "type": "Vector3",
+                    "value": "(1.00, 1.00, 1.00)",
+                    "editable": true
+                  },
+                  {
+                    "path": "m_ConstrainProportionsScale",
+                    "displayName": "Constrain Proportions Scale",
+                    "type": "Boolean",
+                    "value": "false",
+                    "editable": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "search",
+      "Main Camera",
+      "--count",
+      "10"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\Town\\accepted.png",
+        "projectRelativePath": "Library/Town/accepted.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\Town",
+        "fileName": "accepted.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 534123,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-25T02:12:55.079181Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "screenshot",
+      "--output",
+      "Library/Town/accepted.png"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "console logs",
+      "data": {
+        "totalCount": 0,
+        "totalEntries": 1,
+        "returnedCount": 0,
+        "type": "error",
+        "search": "",
+        "respondedAtUtc": "2026-11-25T02:12:55.2730415Z",
+        "entries": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "console",
+      "--type",
+      "error",
+      "--count",
+      "10"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Gesture",
+        "resolvedMember": "Gesture",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"began\":true,\"accepted\":true,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Moving\",\"arrivals\":1,\"position\":[-29.7699566,35.3,2.11997485],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":203.983521,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.0,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":203.983521,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}",
+        "respondedAtUtc": "2026-11-25T02:13:19.2340332Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Gesture",
+      "--args-json",
+      "[\"building\",false]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Moving\",\"arrivals\":1,\"position\":[-27.873148,35.3,1.05333555],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":204.663544,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.6800446,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":204.663544,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+        "respondedAtUtc": "2026-11-25T02:13:19.9222319Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Waiting\",\"arrivals\":2,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":208.980865,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.94997263,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":208.980865,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+        "respondedAtUtc": "2026-11-25T02:13:24.2346811Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Gesture",
+        "resolvedMember": "Gesture",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"began\":true,\"accepted\":true,\"point\":[378.577972,899.4842],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Returning\",\"arrivals\":2,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":209.148376,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.0,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":209.148376,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}",
+        "respondedAtUtc": "2026-11-25T02:13:24.4012092Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Gesture",
+      "--args-json",
+      "[\"visitor\",false]"
+    ]
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"home\":true,\"phase\":\"Idle\",\"arrivals\":2,\"position\":[-29.7647514,35.3,2.11704874],\"skeletons\":[{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":213.497742,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.31673527,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":213.497742,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+        "respondedAtUtc": "2026-11-25T02:13:28.7571463Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTownProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  }
+]

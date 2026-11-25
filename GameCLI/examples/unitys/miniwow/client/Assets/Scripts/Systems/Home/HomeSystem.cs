@@ -4,14 +4,10 @@ using Oathx.Entity;
 using Oathx.Bundle.Assets;
 using Oathx.Widget;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-/// <summary>Loads the camp scene and hands presentation ownership over from Launch.</summary>
+/// <summary>Owns the Home page and waits for TownSystem before handing over from Launch.</summary>
 public sealed class HomeSystem : XEventModule
 {
-    /// <summary>Scene included in the product build settings.</summary>
-    private const string scenePath = "Assets/Scenes/Home.unity";
-
     /// <summary>Invalidates asynchronous callbacks when this system is deactivated.</summary>
     private int generation;
 
@@ -36,6 +32,7 @@ public sealed class HomeSystem : XEventModule
         Subscribe<ReqHomeCamp>(request => ShowMap(false));
         Subscribe<ReqHomeEntry>(HandleEntry);
         Subscribe<ReqHomeShortcut>(HandleShortcut);
+        Subscribe<TownReadyChanged>(HandleTownReady);
 
         if (!XEntityManager.GetSingleton().TryGetEntity(nameof(HomeEntity), out _))
             XEntityManager.GetSingleton().CreateEntity<HomeEntity>();
@@ -48,7 +45,7 @@ public sealed class HomeSystem : XEventModule
         return true;
     }
 
-    /// <summary>Invalidates pending work, closes the page and unloads the owned scene.</summary>
+    /// <summary>Invalidates pending work and closes only the owned Home page.</summary>
     public override void OnDetive()
     {
         generation++;
@@ -62,6 +59,8 @@ public sealed class HomeSystem : XEventModule
 
         UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
 
+        XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown()?.SetInputEnabled(false);
+
         RequestTransition();
     }
 
@@ -73,10 +72,15 @@ public sealed class HomeSystem : XEventModule
         if (!IsActive() || !UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget))
             return false;
 
-        return widget.ShowMap(visible);
+        bool changed = widget.ShowMap(visible);
+        if (changed)
+            XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown()?.SetInputEnabled(!visible);
+
+        return changed;
     }
 
     /// <summary>Refreshes the active page from a detached entity snapshot.</summary>
+    /// <returns>Whether a live initialized page was refreshed.</returns>
     public bool Refresh()
     {
         if (!requestedActive || !UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget))
@@ -91,9 +95,13 @@ public sealed class HomeSystem : XEventModule
     }
 
     /// <summary>Rechecks current entry access before dispatching its destination.</summary>
+    /// <param name="request">The configured entry intention.</param>
     private void HandleEntry(ReqHomeEntry request)
     {
         var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
+        if (!entity)
+            return;
+
         HomeEntryResult result = entity.RequestEntry(request.entryId, out string route);
         if (result == HomeEntryResult.Allowed)
         {
@@ -116,6 +124,7 @@ public sealed class HomeSystem : XEventModule
     }
 
     /// <summary>Routes fixed shortcuts through the same explicit destination contract.</summary>
+    /// <param name="request">The fixed shortcut intention.</param>
     private void HandleShortcut(ReqHomeShortcut request)
     {
         if (request.route != "Settings" && request.route != "Task" && request.route != "Chat")
@@ -125,11 +134,37 @@ public sealed class HomeSystem : XEventModule
             entryId = 0,
             route = request.route
         });
+        var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
+        if (!entity)
+            return;
+
         if (UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget))
-            widget.ShowFeedback(XEntityManager.GetSingleton().QueryEntity<HomeEntity>().Snapshot().texts["home.pending"]);
+            widget.ShowFeedback(entity.Snapshot().texts["home.pending"]);
     }
 
-    /// <summary>Serializes scene loading and unloading instead of overlapping asynchronous operations.</summary>
+    /// <summary>Invalidates the page when town ownership changes.</summary>
+    /// <param name="message">The town readiness notification.</param>
+    private void HandleTownReady(TownReadyChanged message)
+    {
+        if (!requestedActive)
+            return;
+
+        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+        if (town == null || !town.IsReady())
+        {
+            generation++;
+
+            System.Type[] widgets = new System.Type[] {
+                typeof(UIHome)
+            };
+
+            UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
+        }
+
+        RequestTransition();
+    }
+
+    /// <summary>Serializes asynchronous Home configuration and page opening.</summary>
     private void RequestTransition()
     {
         if (transitioning)
@@ -140,7 +175,7 @@ public sealed class HomeSystem : XEventModule
         XCoroutine.Run(Reconcile());
     }
 
-    /// <summary>Converges scene and page state to the latest lifecycle request.</summary>
+    /// <summary>Converges the Home page to the latest lifecycle request.</summary>
     /// <returns>The serialized transition sequence.</returns>
     private IEnumerator Reconcile()
     {
@@ -149,36 +184,32 @@ public sealed class HomeSystem : XEventModule
             while (true)
             {
                 int requestGeneration = generation;
-                Scene scene = SceneManager.GetSceneByPath(scenePath);
-
                 if (!requestedActive)
-                {
-                    if (scene.isLoaded)
-                        yield return SceneManager.UnloadSceneAsync(scene);
-
-                    if (requestGeneration != generation)
-                        continue;
-
                     yield break;
-                }
 
-                if (!scene.isLoaded)
+                var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+                float townDeadline = Time.realtimeSinceStartup + 30f;
+                while (requestGeneration == generation && (town == null || !town.IsReady()) && Time.realtimeSinceStartup < townDeadline)
                 {
-                    yield return SceneManager.LoadSceneAsync(scenePath, LoadSceneMode.Additive);
-                    scene = SceneManager.GetSceneByPath(scenePath);
+                    yield return null;
+                    town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
                 }
 
                 if (requestGeneration != generation)
                     continue;
 
-                if (!scene.isLoaded)
+                if (town == null || !town.IsReady())
                 {
-                    Debug.LogError("MINIWOW_HOME_SCENE_LOAD_FAILED");
+                    Debug.LogError("MINIWOW_HOME_TOWN_NOT_READY");
 
                     yield break;
                 }
 
-                if (!XEntityManager.GetSingleton().QueryEntity<HomeEntity>().IsInitialized())
+                var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
+                if (!entity)
+                    yield break;
+
+                if (!entity.IsInitialized())
                 {
                     TextAsset configuration = null;
 
@@ -193,10 +224,8 @@ public sealed class HomeSystem : XEventModule
                         yield break;
                     }
 
-                    XEntityManager.GetSingleton().QueryEntity<HomeEntity>().Initialize(configuration.text);
+                    entity.Initialize(configuration.text);
                 }
-
-                SceneManager.SetActiveScene(scene);
 
                 bool completed = false;
                 bool ready = false;
@@ -212,8 +241,11 @@ public sealed class HomeSystem : XEventModule
                     UISystem.GetSingleton().OpenWidget<UIHome>(widget => {
                         completed = true;
 
-                        if (requestGeneration == generation && requestedActive && widget)
-                            ready = widget.ShowMap(false);
+                        if (widget)
+                        {
+                            if (requestGeneration == generation && requestedActive && town.IsReady())
+                                ready = widget.ShowMap(false);
+                        }
                     });
                 }
 
@@ -245,6 +277,7 @@ public sealed class HomeSystem : XEventModule
                 }
 
                 XApp.GetSingleton().HideLaunch();
+                town.SetInputEnabled(true);
                 Debug.Log("MINIWOW_HOME_READY");
 
                 yield break;

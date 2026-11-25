@@ -1,4 +1,4 @@
----
+﻿---
 name: development-rules
 description: GameCLI Unity C# 开发强制规范。编写、修改或审查本仓库的 Unity 组件和业务系统，以及创建系统 skill 时使用，落实字段、序列化、UGUI 绑定、英文注释和返回值约定。
 ---
@@ -65,6 +65,17 @@ private Text loadingText;
 /// </summary>
 private bool downloading;
 ```
+
+## 场景配置引用
+
+- 业务代码中的场景查找、加载及切换必须通过场景配置表取得路径；使用导表生成的稳定别名查询，例如 `Config.Excel.propSceneById(Config.Excel.SCENE_HOME).Path`。
+- 禁止把 `Assets/Scenes/...` 写成业务字符串或 `const` 替代查表。先建立产品 `propScene.xlsx` 并导表，在依赖系统启动前完成配置加载；缺表、缺条目或空路径明确失败，不使用硬编码后备路径。
+
+## 动画名称常量
+
+- 手写 C# 中的动画名称必须定义为 `const string`，禁止在字段默认值、动画查找、播放调用或资源制作代码中直接散落字符串字面量。
+- 同类动画名集中放在使用类声明之前的命名常量类型中，例如在 `ActorShape` 之前声明 `ActorAnimationNames`；运行时代码、编辑器制作代码及相关验证复用这些常量。
+- 常量遵循字段命名规范并添加英文 XML 注释。需要序列化的动画映射仍可保留，默认名称引用常量；不要通过修改第三方代码或手写场景 YAML 落实此规则。
 
 ## VM 绑定字段格式
 

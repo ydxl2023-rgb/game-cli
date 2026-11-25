@@ -5,6 +5,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 // Syntax-only rules: no Unity assemblies are loaded and source files are never modified.
+Console.InputEncoding = new System.Text.UTF8Encoding(false, true);
+Console.OutputEncoding = new System.Text.UTF8Encoding(false);
 var input = JsonSerializer.Deserialize<Input>(Console.In.ReadToEnd(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
     ?? throw new ArgumentException("Expected source input.");
 var issues = new List<Issue>();

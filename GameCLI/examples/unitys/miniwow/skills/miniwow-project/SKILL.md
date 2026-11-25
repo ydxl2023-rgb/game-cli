@@ -1,4 +1,4 @@
----
+﻿---
 name: miniwow-project
 description: 在 GameCLI 的 miniwow 项目中开展小骑士冲冲冲机制学习、资源台账维护、系统设计和获授权的 Unity DEMO 开发。维护本项目的证据、目录和产品适配约定，不替代 Oathx 共享框架规范。
 ---
@@ -18,6 +18,10 @@ Miniwow 统一采用 **1080×1920 竖屏**设计分辨率。Studio 项目画布�
 Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型；查阅 [主场景还原记录](../../tools/main-scene/DELIVERY.md)与[资源用途索引](../../tools/main-scene/RESOURCE-INDEX.md)。`HomeEnvironmentCanvas` 为已禁用的历史背景，不要重新启用遮住 3D 场景。初始模型不代表建筑业务已解锁；NPC、粒子、导航及原 UberShader 尚未恢复。更新场景采用 `MiniwowMainSceneSetup` 原生资产流程，UI 继续走正式 UGUI CLI。
 
 MainPage 主界面现使用 `client/Assets/Data/Widgets/Home/UIHome.prefab`（旧 Home.prefab 已保留 GUID 改名）。开发入口为 [MainPage 实现记录](../../tools/home-ui/IMPLEMENTATION.md)：配置源 `config/Home.xlsx`，制作脚本 `tools/home-ui/build_uihome.py`，正式 UGUI 导入后执行 `bind-uihome.ps1`；旧 `tools/home/bind-home.ps1` 已停用。HomeEntity 管理本地状态，HomeSystem 管理场景与路由；未接入业务必须保留明确反馈，不能将入口事件当作系统已实现。
+
+Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/README.md)。**场景生命周期现归 TownSystem，HomeSystem 只管理主 UI 与路由并等待 Town 就绪**，取代上段历史场景归属。TownScene 持有序列化场景引用；TownEntity 管理 ActorEntity 集合并统一推进逻辑；ActorEntity 保存身份、位置、路线与阶段，ActorShape 继承 XActionStateMachine，每个角色拥有独立表现状态机，单向读取实体并驱动 Transform 和 Spine，隐藏或重建显示不得重置实体。旅店与铁匠恢复 idle 表现；访客使用 hero_20025。首版点击旅店店员走向入口，点击到达的访客返回；不代表建筑已业务解锁或消费成功。Spine Runtime 属第三方代码，不纳入自有代码格式化。
+
+建筑业务继续采用用户确认的集合式 BuildingEntity：内部持有实际建筑状态，实例 ID 与配置 ID 分离，对外提供快照和校验操作，不暴露可变集合、不保存场景 GameObject。Town 只消费业务结果；本轮尚未实现该实体及升级经济。
 
 最近提出的“探索 → 行动力消耗 → 旅店恢复 → 制造补给 → 再探索”是首个闭环建议，不是已经批准的完整功能清单。不要自行扩展为全部养成、商业化或在线服务开发。
 

@@ -1,0 +1,2007 @@
+{
+  "version": "Package version: spine-unity-4.2-2024-07-16.unitypackage\nThis Spine-Unity runtime works with data exported from Spine Editor version: 4.2.xx\n",
+  "source": "G:/Works/v2/client/captain_tsubasa_client/Assets/Plugins/Spine",
+  "officialCompatibility": "https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.2/spine-unity/README.md",
+  "files": [
+    {
+      "path": "Runtime/spine-csharp/Animation.cs",
+      "sha256": "dba68b8f1f415d5d251dc5585acfdd4e3b87c780d71700a2d422299f191589da"
+    },
+    {
+      "path": "Runtime/spine-csharp/Animation.cs.meta",
+      "sha256": "1d03e3a55a9e423813833b081c332ad5e8d2e05b1893499e925e299909ab1401"
+    },
+    {
+      "path": "Runtime/spine-csharp/AnimationState.cs",
+      "sha256": "2d107905ccbb333b7324bb831765d39dcec8e074660d5456f26dc58466df2647"
+    },
+    {
+      "path": "Runtime/spine-csharp/AnimationState.cs.meta",
+      "sha256": "05927e6fb7573a46eff6999c8a1742181c6053889ff81d57aeb404277b5e767b"
+    },
+    {
+      "path": "Runtime/spine-csharp/AnimationStateData.cs",
+      "sha256": "c8491586d7e675ce28d585b63939e5ced75e7d4fdd0e89553c72470b0e483a3e"
+    },
+    {
+      "path": "Runtime/spine-csharp/AnimationStateData.cs.meta",
+      "sha256": "d47cec17bbe44d3c8513d85dcdbf999fbee1d30c9c3c2bfb582966b4ea5e9309"
+    },
+    {
+      "path": "Runtime/spine-csharp/Atlas.cs",
+      "sha256": "62028a4192b40a045aaead7bc71d6740b6efef35b1fc083ccca0977fbec8b8cf"
+    },
+    {
+      "path": "Runtime/spine-csharp/Atlas.cs.meta",
+      "sha256": "0571cbe5ce2269182932b6823aa31e7c2e902a06142747b715070719d1c3b308"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/AtlasAttachmentLoader.cs",
+      "sha256": "398412272d73a5841393aec8397940fa711fb9fdc0646302b9eacd77acbf69b7"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/AtlasAttachmentLoader.cs.meta",
+      "sha256": "879cad48d8b8b8ffcecbb86a25e73f28fc68d13c08af42571ed919cd43ea7c64"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/Attachment.cs",
+      "sha256": "581b6c1467dce39475143e4fdca2aa76f287590967421ef51b511168f99fd276"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/Attachment.cs.meta",
+      "sha256": "c37e74e732125da8ea698f4656ce93c826ce231a5ae8c2b90717e97c15c2bb1a"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/AttachmentLoader.cs",
+      "sha256": "aab813dc3498751a44e65d410ea9ce2b4ebf8103842e4dcf10de420497f7628c"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/AttachmentLoader.cs.meta",
+      "sha256": "c19bd007d5e97505139625f70fb7e5f024bd0ac1de325b3163b78911733f85ff"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/AttachmentType.cs",
+      "sha256": "04ea5f4d817d98a336c8f9e4793b759c4a4a22d0155a4a19a6ebc31287012811"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/AttachmentType.cs.meta",
+      "sha256": "26af808a86155b2fd7cb7568a038731fbd7dce541cf3e46d1af4e0c8b7273ea9"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/BoundingBoxAttachment.cs",
+      "sha256": "401e0333a58252fdf545bcbf97439b3c6656d9a390735fa7499b092dd6a8423f"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/BoundingBoxAttachment.cs.meta",
+      "sha256": "9e080ea4afd52ae3b716e306c92a222f931d5366fb020f6b33c44e59b18363e6"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/ClippingAttachment.cs",
+      "sha256": "e38ec5a61bdf8330afa65ebe662a2170b1138bbbc62a676d3013efbc60ac1a6f"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/ClippingAttachment.cs.meta",
+      "sha256": "ba20a54df05e6f8153daf5b912b999b60c46844461557c7161b0d6b3f52b8ac5"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/IHasTextureRegion.cs",
+      "sha256": "41f316831b6418cef9bca144bd9c2573f26b9ae424054fc795dea4874a45e6d7"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/IHasTextureRegion.cs.meta",
+      "sha256": "5b38fb722cee8f71e89b9ac0f423dbb1dcc0c8aafd155350deb766dea61b89e4"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/MeshAttachment.cs",
+      "sha256": "ad526f915d66402a02b21fd15490d5e7d7bcbd4f80ca4587f3a8c9cf201b12ef"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/MeshAttachment.cs.meta",
+      "sha256": "0ab5f9f36141cbbbb7cdda296241eead1c9821128f33912a7409df7cfabb99cb"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/PathAttachment.cs",
+      "sha256": "998178abac2076c4e7bb96ec88fa83997520c798f654531bd0d809971d7a9506"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/PathAttachment.cs.meta",
+      "sha256": "73aa8ec853ddebe780305ca61a7b11f5a6f48116345de5eddc15649f6fc7f9fc"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/PointAttachment.cs",
+      "sha256": "e9ac841ac1564451dde76f29f9b5da863ec38933e2c5fea31d16d8d9e095ccdf"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/PointAttachment.cs.meta",
+      "sha256": "15517dabc164607d18d9c610baf0c4216ce28189e79b5bbd9cc06cd8fbdb35c2"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/RegionAttachment.cs",
+      "sha256": "ea0acd7c862a28873cc67366e3a67934c8810b6dafabe16a1fdeb4b55ece310b"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/RegionAttachment.cs.meta",
+      "sha256": "340c026df49a63700a7b339ea59f8023776a98c9de9fbb82d6a5ecac8f3b1f46"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/Sequence.cs",
+      "sha256": "32c41a91c07e6c4dfd462444097396f0ceba46434de56836bac2c09aa0a5669b"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/Sequence.cs.meta",
+      "sha256": "3b4eeed6b61f1629ef69acda37e35979917c5828b2c449ff0272e7a3aeaeedfc"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/VertexAttachment.cs",
+      "sha256": "b5020eacd1b0ffdff7a52f2416176e2fa12e3662f06216219ce1a1346660cc63"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments/VertexAttachment.cs.meta",
+      "sha256": "dd9a17e9a2f23cf47ba08803e890f775ba4ef7f98a6179cdd6aa78d34322608c"
+    },
+    {
+      "path": "Runtime/spine-csharp/Attachments.meta",
+      "sha256": "b5cbf8fc63e7d1f5703c263db22cb0b4abdb812c16401eeb16f37249c52d062d"
+    },
+    {
+      "path": "Runtime/spine-csharp/BlendMode.cs",
+      "sha256": "5755c1b1646f2d931592b6fdf8dc69d1b0eab0863ca85930a6e7a1f8babfe59b"
+    },
+    {
+      "path": "Runtime/spine-csharp/BlendMode.cs.meta",
+      "sha256": "ff2a06ab9d9488143146a6cf568269daa17a67718f702d9e65609e41c66ce7fb"
+    },
+    {
+      "path": "Runtime/spine-csharp/Bone.cs",
+      "sha256": "249b6c5118076abb8e4e55915225e76895b11fd80cb75e4b120bef27660a2c5f"
+    },
+    {
+      "path": "Runtime/spine-csharp/Bone.cs.meta",
+      "sha256": "14a01e9075b12aa7919c5c86b9c2db3cd5e60c3476267495e72087501f3c455f"
+    },
+    {
+      "path": "Runtime/spine-csharp/BoneData.cs",
+      "sha256": "5560436b56084bc67aa42f3751aad3944cf77131aacd243711bc2e463049d1df"
+    },
+    {
+      "path": "Runtime/spine-csharp/BoneData.cs.meta",
+      "sha256": "55d70a0f629b1e8cf69fa71069bfaea4829e21ffead071a13fd536e53f0adc02"
+    },
+    {
+      "path": "Runtime/spine-csharp/ConstraintData.cs",
+      "sha256": "1e214d61f556e88da3dfa3dea03517c6b10f8ef66cc2c5fca45af7e13bd6d7da"
+    },
+    {
+      "path": "Runtime/spine-csharp/ConstraintData.cs.meta",
+      "sha256": "88fe96d3c5654dd1d7bd937742940298680270470736157740a4f1c23eaeacbe"
+    },
+    {
+      "path": "Runtime/spine-csharp/Event.cs",
+      "sha256": "4167bc8560d3cf670927f882cfafb2770be68aa387c27f6f864f5473647b7545"
+    },
+    {
+      "path": "Runtime/spine-csharp/Event.cs.meta",
+      "sha256": "db2a2ca4e3f2b7a546ce0aeeab54342653a0175f052dc959e6cb5dcb96b5a279"
+    },
+    {
+      "path": "Runtime/spine-csharp/EventData.cs",
+      "sha256": "78e86b62c5e40e99fddaba4e0d5dd255d65f5b643ea24d839f6f8d1b97d8bf2e"
+    },
+    {
+      "path": "Runtime/spine-csharp/EventData.cs.meta",
+      "sha256": "bd4dd9736ad0c22db7b2d4c08ae222fdaa7aa40a2ddf7260cf3b4671ede54dd3"
+    },
+    {
+      "path": "Runtime/spine-csharp/ExposedList.cs",
+      "sha256": "002e031e82bb01a97d27ca7f13670483cd54cf92f7d6de9bd8c66204aa561e77"
+    },
+    {
+      "path": "Runtime/spine-csharp/ExposedList.cs.meta",
+      "sha256": "19a63911b840743919c19ba08ded4bd0f087d130e123b0c8e92be3847132cfcf"
+    },
+    {
+      "path": "Runtime/spine-csharp/IkConstraint.cs",
+      "sha256": "7ec025f48519295b11f6af8c064a27be2dc3d73d2f94b00c3d18115ce3cc171e"
+    },
+    {
+      "path": "Runtime/spine-csharp/IkConstraint.cs.meta",
+      "sha256": "76b3d0e509d3443cb2a1810eccd98afad97163071f7d23a438c93c0ac9bfa29a"
+    },
+    {
+      "path": "Runtime/spine-csharp/IkConstraintData.cs",
+      "sha256": "5c617270926343e28224223d5be92d0244efc54956086e8297f2db3d750836c3"
+    },
+    {
+      "path": "Runtime/spine-csharp/IkConstraintData.cs.meta",
+      "sha256": "57a921f8c50ec652bcdfcdef47e78b64d129d62116076980cfd86a9e2379150e"
+    },
+    {
+      "path": "Runtime/spine-csharp/IUpdatable.cs",
+      "sha256": "446f7e125cd67bfefe21647f8cea46686d093c9531faefb68932e739ab5c0fc1"
+    },
+    {
+      "path": "Runtime/spine-csharp/IUpdatable.cs.meta",
+      "sha256": "1e81d1ebfb1ce9e83ec0a90bcc0c738813f5890f38b456cacba77cb9535677c9"
+    },
+    {
+      "path": "Runtime/spine-csharp/Json.cs",
+      "sha256": "384d6dac3e3d4c6a410fb3b8e46a7d2411a4d4189af8acfeea0cb33a78316d98"
+    },
+    {
+      "path": "Runtime/spine-csharp/Json.cs.meta",
+      "sha256": "a4d8a43fb11629926cbdd56ada3a2ed83f620d834d7228ab0c626983377f8586"
+    },
+    {
+      "path": "Runtime/spine-csharp/MathUtils.cs",
+      "sha256": "f2e59388d6dbf5eac0083a911274e805cde420902b70bbffabc10a25c36b1556"
+    },
+    {
+      "path": "Runtime/spine-csharp/MathUtils.cs.meta",
+      "sha256": "62b168df70feb8dc5caec9cd6ad1bea5dadb71a7fb56834b520a5061d3a048b8"
+    },
+    {
+      "path": "Runtime/spine-csharp/package.json",
+      "sha256": "7ce37af66b311701ff9fd15b911008f2fea9da72d33ecdf9b42405acf4f4a6bb"
+    },
+    {
+      "path": "Runtime/spine-csharp/package.json.meta",
+      "sha256": "0bd53b06205ab0c0d4357edd5a57763d1d23f71137d0dfc7370c4c5ef16f7793"
+    },
+    {
+      "path": "Runtime/spine-csharp/PathConstraint.cs",
+      "sha256": "8214a122b8d31e02005822f4d12a8f5a16a6c55a6b6d7aa1bed10001b1447ff0"
+    },
+    {
+      "path": "Runtime/spine-csharp/PathConstraint.cs.meta",
+      "sha256": "c9f4467b97da0ca8ede58ff884fa55364d74f52fef15e93f9336b164fe50fa8a"
+    },
+    {
+      "path": "Runtime/spine-csharp/PathConstraintData.cs",
+      "sha256": "34ad452a384bd8b4fdc40da43df49844d084c0061f6c291c520be6c099382a7f"
+    },
+    {
+      "path": "Runtime/spine-csharp/PathConstraintData.cs.meta",
+      "sha256": "f2ad803e595592e44a76339ecabeb8dbedb8790f3a73d3031472fc9d275c7d75"
+    },
+    {
+      "path": "Runtime/spine-csharp/PhysicsConstraint.cs",
+      "sha256": "afdb5827b997288166db6e2a82d0cba6073311367ca61f6fcaaddc57d75df40e"
+    },
+    {
+      "path": "Runtime/spine-csharp/PhysicsConstraint.cs.meta",
+      "sha256": "c9033e099a5fa26bcdeada0a55f13c5e285becb09e733e6bbdd6b4e2cee53186"
+    },
+    {
+      "path": "Runtime/spine-csharp/PhysicsConstraintData.cs",
+      "sha256": "483d14ada23c48fce029cf2d53a6cc562f1c846c83d18b0d38eace88685d3f7a"
+    },
+    {
+      "path": "Runtime/spine-csharp/PhysicsConstraintData.cs.meta",
+      "sha256": "75f5944e8aa8df0b9f489e41b70c378f304918e460550a82535275cc523972b1"
+    },
+    {
+      "path": "Runtime/spine-csharp/Skeleton.cs",
+      "sha256": "30525799ffbec43ff045915b9345f4a9d47c6b83194983fc4232a0dac546568c"
+    },
+    {
+      "path": "Runtime/spine-csharp/Skeleton.cs.meta",
+      "sha256": "1efceb0a3030f3aee82908048f58e86c4917317152faef2eae3a0266a36a9173"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonBinary.cs",
+      "sha256": "1d66402ad0dc7ab0f5c5c520c8f0a46309bd9adb4c410d5900790dc62c5e252d"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonBinary.cs.meta",
+      "sha256": "b30ab6988ce288fc8cb1cd6363939aaaea82ac292d6e6a5a564a8d95952b752e"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonBounds.cs",
+      "sha256": "3907f20b6a75c928990d777e283931b70b38392285aba1eb80c41ade6f6a33ca"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonBounds.cs.meta",
+      "sha256": "29ed4f9a697e4d457c50839cf1598c3bbe1c2f521c406ff5e4052479171da401"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonClipping.cs",
+      "sha256": "03fef7442a69d37d5048cc235de5467e40e8e1c422184156be379ae3d647dd6b"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonClipping.cs.meta",
+      "sha256": "94f5a3e95330466acd3b9ac603f681d0eba21c04f58615b22ed910a572ce3775"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonData.cs",
+      "sha256": "638a3ff3ace5a3265526da5c50b1fce616baf5efc34b0c9c688d5b9ccb4c1856"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonData.cs.meta",
+      "sha256": "2f9ef5eefbcb2481a88926c0df5f6bf8633317d6e4cd8dc2fdc1e7f639348fc2"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonJson.cs",
+      "sha256": "25970ab70d5e9500fb83b5579b6640c0c06938687ef61b3fd2dac6d7a516861b"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonJson.cs.meta",
+      "sha256": "6a62bfb6dc28fdf3d632e0778383d527600ce9ad7662db2c96f04e637be7e24a"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonLoader.cs",
+      "sha256": "f29e23110d63ce3749fce4ce4e4f3bb0642a2516bc81a468492342f2a03e1548"
+    },
+    {
+      "path": "Runtime/spine-csharp/SkeletonLoader.cs.meta",
+      "sha256": "914e44319efe02a4ed03a1af249b82ed46e15af33c1c08c1e241d201deaf6e14"
+    },
+    {
+      "path": "Runtime/spine-csharp/Skin.cs",
+      "sha256": "b427d145a132d2db3556f4936945b3b7ff3c22f773eacb572da908059e331348"
+    },
+    {
+      "path": "Runtime/spine-csharp/Skin.cs.meta",
+      "sha256": "c91f37db15cd28e34d992ce2e2ab833b20c568cb1857549e6c2bee8286ee3165"
+    },
+    {
+      "path": "Runtime/spine-csharp/Slot.cs",
+      "sha256": "aff532b2e7f00d0e96aa315c8d5c7a313a8c0b288a382ead08f06870144c383c"
+    },
+    {
+      "path": "Runtime/spine-csharp/Slot.cs.meta",
+      "sha256": "99044e27a27504c88ebfb2d47fc9dffe1b1319bdb982f3eaad8655684463b3e9"
+    },
+    {
+      "path": "Runtime/spine-csharp/SlotData.cs",
+      "sha256": "f492338708ac6223c86665914b0720bbc87d9c62b186b286c784e72aaf147d57"
+    },
+    {
+      "path": "Runtime/spine-csharp/SlotData.cs.meta",
+      "sha256": "df68afbdef041302ed6cb2c11d1dcb39deab5a9622a3c416df10c6faa0bc1a77"
+    },
+    {
+      "path": "Runtime/spine-csharp/spine-csharp.asmdef",
+      "sha256": "e67300f8f0f0dc4552b03e13f1cb15d2522525bc0e4959778946a3c1da07f53b"
+    },
+    {
+      "path": "Runtime/spine-csharp/spine-csharp.asmdef.meta",
+      "sha256": "a836d2a5aafa05eef0f5baafa0ed592bd7dfaa6b36b0bbc11291bef2b2e34b1c"
+    },
+    {
+      "path": "Runtime/spine-csharp/TextureRegion.cs",
+      "sha256": "c08500219fc3a3a3da12013bb54f6841a53f6cbb3a4e7aaaf60896f689d32181"
+    },
+    {
+      "path": "Runtime/spine-csharp/TextureRegion.cs.meta",
+      "sha256": "b02fbd06c035c3e10d3ac49e77ce8b8217bc4e007fe856174b98017f2185d753"
+    },
+    {
+      "path": "Runtime/spine-csharp/TransformConstraint.cs",
+      "sha256": "a67a072b2107a171301939e912237761ce1d16116f85f05b83d3071164ea83b5"
+    },
+    {
+      "path": "Runtime/spine-csharp/TransformConstraint.cs.meta",
+      "sha256": "4f21e3b3fb1a2b213115513497a84b947ac053806e8e8c684eb505f2fc6f6327"
+    },
+    {
+      "path": "Runtime/spine-csharp/TransformConstraintData.cs",
+      "sha256": "10f350b4a9e440e33fcd5535468c9b3dab1fc8eb01297ee838b016242bc47ef7"
+    },
+    {
+      "path": "Runtime/spine-csharp/TransformConstraintData.cs.meta",
+      "sha256": "a1b9ea206fa3308cda9434a1280f9561857dac5c79892038f9a74ec2900ebb7c"
+    },
+    {
+      "path": "Runtime/spine-csharp/Triangulator.cs",
+      "sha256": "c1fb3e7f2e6bca051523eff53bbbe43d491f58fbbf36b26a1489ecb849b926d8"
+    },
+    {
+      "path": "Runtime/spine-csharp/Triangulator.cs.meta",
+      "sha256": "8bde36de1df4239f19a21c87207c698669433b197c091a2de14423b5c4884fb4"
+    },
+    {
+      "path": "Runtime/spine-csharp.meta",
+      "sha256": "b662c49bb5b4f9dade9a49cbdb514ffc16aa6015d30a9d39049cd88e3168e1ac"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/AnimationReferenceAsset.cs",
+      "sha256": "d50daf7178ce12b1ee088e9d4d02360d9a1bb60040dafca7ace61707ded174e4"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/AnimationReferenceAsset.cs.meta",
+      "sha256": "124217c3fa210d7433bef8671ba9167619f19878b82200f7e4c69af7b86ca696"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/AtlasAssetBase.cs",
+      "sha256": "857a6e19e758c629ac9093409ab56ed707a60d14467d563e6f594043784f0649"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/AtlasAssetBase.cs.meta",
+      "sha256": "fd119c6879896971ee0c73056c271647f388b632fecf03cac6018d5ad840269d"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/BlendModeMaterials.cs",
+      "sha256": "9b58170850a14412fda5cdb0475d920655d6c8b3762d4935c58c1fc3536a281f"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/BlendModeMaterials.cs.meta",
+      "sha256": "a10df0cbaef2dda877a642b2d92fd56f935959c8f437f89869619936c023e760"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/EventDataReferenceAsset.cs",
+      "sha256": "8db54252d7c02c1263685b41fd621699e00a75e06408bffdc27c9ac64fa012ed"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/EventDataReferenceAsset.cs.meta",
+      "sha256": "8a7c40f3d63fd984ce6ee29380062069aa8d635eb3203d908aab1b205295e8e0"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/OnDemandTextureLoader.cs",
+      "sha256": "2159be370bb0726dc7439fa4414359545bb9f03cd4ebb0583770e3fea8216b35"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/OnDemandTextureLoader.cs.meta",
+      "sha256": "757186223e10d9be27c11797f88dd2c61ba4c13262413fe239d55deea4ffaff7"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/RegionlessAttachmentLoader.cs",
+      "sha256": "c2fff98e806f73811434ca1dd54bb0af582e0f68040650e16194da9c28a990dc"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/RegionlessAttachmentLoader.cs.meta",
+      "sha256": "3b16406657a05792c7cc08bf2523cca3c875eb685b9873879705e641c94a2c4f"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SkeletonDataAsset.cs",
+      "sha256": "d3775f8c8bfd1edeee637f996a6841a7f334bbcf871da5e45faa2f68e1f8a5fb"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SkeletonDataAsset.cs.meta",
+      "sha256": "e05c07c17d482a0b749f4d10163ca23b857d7d8841ed25004a290a3e4f723464"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SkeletonDataCompatibility.cs",
+      "sha256": "2e15bb67058debfd62b7f07f1b12fac035b61ec317f76298cca9f7d3e3cf22e7"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SkeletonDataCompatibility.cs.meta",
+      "sha256": "2c28feb6c9cbcc7c912b54232f271b0c2ff49c164aa48ca2e7febf5824b668cb"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SkeletonDataModifierAsset.cs",
+      "sha256": "585eaf6bdd4b0e5b16a2c9edca7ea9772dc6d86961baf37c0d7a9d892b4d74a8"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SkeletonDataModifierAsset.cs.meta",
+      "sha256": "8fc2b24fd03c2ef52eef2570e186ee1a11765f89604b1ef1f2a6af0f80b58262"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SpineAtlasAsset.cs",
+      "sha256": "0de7e2349a388593696b53ced89dec4859e7e3de8cf6df7ee74b8074ba74ef9d"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SpineAtlasAsset.cs.meta",
+      "sha256": "1061d9fd4dc8302ee46a09ac133716556b8d5f34fd2d90f2716be8fadd358540"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SpineSpriteAtlasAsset.cs",
+      "sha256": "ec5c9b6da578862c733685b4e1ad56d38ab7ab6bcf036a589d4fc8913c2dd715"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types/SpineSpriteAtlasAsset.cs.meta",
+      "sha256": "d49945e0a4116aae853fe1a9406a2e67a7a4658c63b2d7c7c7b8a4d42dff4b3b"
+    },
+    {
+      "path": "Runtime/spine-unity/Asset Types.meta",
+      "sha256": "21ac59863719acdcb32a44302c269f92b9f5e9a309c3121c6ec4f189a1da3b01"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/EditorSkeletonPlayer.cs",
+      "sha256": "b7aba661cdbf8f4ad87c7fdbb814bf19425cf099f39040c31a44327e8a042e75"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/EditorSkeletonPlayer.cs.meta",
+      "sha256": "54eb56240f5d18dc8a08e71f6b95f19c608de0b6005d3438a9a4125a547ce5de"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoneFollower.cs",
+      "sha256": "2a8de21c35887620738674196f08c74802dde6b73ab9eb3b0ce333da604c83bd"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoneFollower.cs.meta",
+      "sha256": "9a7e1f6570a40799e377027541520a95ac2722b0926c29dbf9dbc16046f829c8"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoneFollowerGraphic.cs",
+      "sha256": "2133ed02dd207591757edecc5280b59f7897c6364ed1752e9bfbe33bfd5cb7c3"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoneFollowerGraphic.cs.meta",
+      "sha256": "f60a645c1fa176f71eb960722f93cc407b9bc5347dc89271f3a3fd2731a86226"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoundingBoxFollower.cs",
+      "sha256": "ad6ab1f451c9704edbf050ec223355f4ef8f8f6949590c8591d4748094576a42"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoundingBoxFollower.cs.meta",
+      "sha256": "fbac2a7afae214ea340da10e8445ba2443fc0b71352a19210051033b493f0f5c"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoundingBoxFollowerGraphic.cs",
+      "sha256": "fc9ff75bf67dfbc055eeb4277150641a29ef7340ce48fcf848cc836bfc6f5c4f"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/BoundingBoxFollowerGraphic.cs.meta",
+      "sha256": "68de6935558b9de2379e0d9b6dfbb92ecc2f8389d8a6cee80030d85347f91357"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/PointFollower.cs",
+      "sha256": "d25eaadb90396f41130435e12aa164953ae38ecac9e0a6facaa6059f98a0d14e"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following/PointFollower.cs.meta",
+      "sha256": "357b8296ad3838e7673ef1b8927cdefbae23dbe81c9e2568f951578c9c51dd65"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Following.meta",
+      "sha256": "b61038a8a9a880808368e0fea3d4d2cba42c8787451824cad2b2a098ff71ceaa"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Internal/SkeletonSubmeshGraphic.cs",
+      "sha256": "cf23f1a1c2af5bee414b3036d4a45cc87d049dcc57e527b1cc70677dbb9f1f3c"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Internal/SkeletonSubmeshGraphic.cs.meta",
+      "sha256": "a09191812b43641d4fcae289bc0342ef3fb3f13b7a722ff4124ebdc279315759"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/Internal.meta",
+      "sha256": "dbf6bc460a6e3c26b787d25ad7a91cd6e157a64bdcf725640315d045bab1b68d"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion/SkeletonMecanimRootMotion.cs",
+      "sha256": "521e5f784e73ea91d89d8e539c5fbdbffabb22b6c01b376294981fdd8fe2bf98"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion/SkeletonMecanimRootMotion.cs.meta",
+      "sha256": "5a52ea77e92c2e15381d241f0638beda90a0d3f94d7eb488296a1ece63145a58"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion/SkeletonRootMotion.cs",
+      "sha256": "6362b652cb735e29ed872f963c475ba22f21e0b41f9279101be6703c3406dbb6"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion/SkeletonRootMotion.cs.meta",
+      "sha256": "e69cff655aa9562877e753f1e414084a8c421dcb730ea2f4fa7de04568469cd3"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion/SkeletonRootMotionBase.cs",
+      "sha256": "a5be12d04fc810efac313e2e4b468c0f2caa06fcb4fce56edba48b3aba947670"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion/SkeletonRootMotionBase.cs.meta",
+      "sha256": "4ca8146d5401e779c2827a3df8e5d879836c9576ea2a3ef30f85d312978ce451"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/RootMotion.meta",
+      "sha256": "43179bdf5513ec61b4481ead7a70c7ae354166a91bd2653938524588de203b9d"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonAnimation.cs",
+      "sha256": "3f7e52d1ae2243f7182fd3c2d4469893f48d33adb71e24c38b928b7e1821c6a1"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonAnimation.cs.meta",
+      "sha256": "262b9e9f02b8bd8438011ef27ba2a3b89cd231220dede90069ade691c1188a17"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonGraphic.cs",
+      "sha256": "a9c8528db36362a46ac383e1ae3ff9037de81a3ef2f397da53380a1bfbf9c965"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonGraphic.cs.meta",
+      "sha256": "5e122441a646a198f4a946fbd30d080d4fbb95e1e008dd7e526ab368ee6cceda"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonMecanim.cs",
+      "sha256": "fbfa098717d9f1c831adfbaf05054c5a97480247451780c209fbcab91583ec89"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonMecanim.cs.meta",
+      "sha256": "a1e149b1876fa43d2384f4f3a016a6ea9b6b8af30853ec6b323d93e8a7c1b375"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderer.cs",
+      "sha256": "9b1dad6cd494c0fc2ffd98c91fa92e8f2e4ca6d2bbb844f012391b1bbd5c91bf"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderer.cs.meta",
+      "sha256": "ad73fd79be9836dda925ef1277db2d8128996a113874cc864f470e3076fea971"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRendererCustomMaterials/SkeletonGraphicCustomMaterials.cs",
+      "sha256": "d973ea2b22f2ea405ab3bd35bf7b58795da0804a00441eaad4a908f21dc0be66"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRendererCustomMaterials/SkeletonGraphicCustomMaterials.cs.meta",
+      "sha256": "886af1da52eb00e63d785cb0321ed6450c98aacc6a59cd563e8905865ab7b77c"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRendererCustomMaterials/SkeletonRendererCustomMaterials.cs",
+      "sha256": "f1618b2fed9e0aa7e0b36503685e7d63c05b7d04c4a9eae781c1fea8a38186e2"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRendererCustomMaterials/SkeletonRendererCustomMaterials.cs.meta",
+      "sha256": "533aefafbdba2a1cecb71d84a4802e673899766c97766266b4ceb2c64ef497c6"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRendererCustomMaterials.meta",
+      "sha256": "ad000a5a20e7c12f4ec16140b83f45580fef28725d82c9848ba4f3d7f2fcd184"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderSeparator/SkeletonPartsRenderer.cs",
+      "sha256": "2ec63d1900cda17896ba2c2608dfc5eeccf0fe15228eb504065b7a91b99faccf"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderSeparator/SkeletonPartsRenderer.cs.meta",
+      "sha256": "135fb5c95f24fc90c024165d2aa23c118c032468cfbb490e841b9313da883135"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderSeparator/SkeletonRenderSeparator.cs",
+      "sha256": "a0bd5bc12116030ba62eba14abdc355042d491cdffe317b38fe77d2c61b83182"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderSeparator/SkeletonRenderSeparator.cs.meta",
+      "sha256": "a70a2d52fe1d89d9a2a334dcf162c32b8a7d6386961609fb67be9df569b4a2c6"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonRenderSeparator.meta",
+      "sha256": "ddb1cb902c37c3f852730b6aa901fbc328a403579de3d47dae78211a303089b6"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/ActivateBasedOnFlipDirection.cs",
+      "sha256": "53d155f7af801b6998f560c1acd86f665e0019670c4d0bb553cf506a22584d7c"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/ActivateBasedOnFlipDirection.cs.meta",
+      "sha256": "f3634cb11faee00d0fec0ae34680e41ec1b31f89b61db94d3fd21709b33b8f96"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody.cs",
+      "sha256": "eb67095ec82ba3d53bd174daf50b27882512c446e07fd048dc4c474853d08db1"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody.cs.meta",
+      "sha256": "756d8f1cdc72ef02a95b6b4626bb540c4453f47e7e6d5af323511dea46a95620"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody2D.cs",
+      "sha256": "0c5de73b9543264c1f504835b1577ee7a8f14a0003232caffde7234d75ac2b55"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody2D.cs.meta",
+      "sha256": "80ac88ad5d38426539d6bdb3462f5b7a49636240f89b7cd84d70617eb13e92fd"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/FollowSkeletonUtilityRootRotation.cs",
+      "sha256": "52289e82a7d70b4af690f639179c96047ac47509b8e47ce58dc689c5984dea97"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/FollowSkeletonUtilityRootRotation.cs.meta",
+      "sha256": "f77dd5cb33b77b34908f8aed945debd175d5c180fc783078696943b162b35e8d"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtility.cs",
+      "sha256": "8e8369dbf58f17ddb39bdddb3dd1d94de4eeb0422643ccc7bd4899335ae7501c"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtility.cs.meta",
+      "sha256": "c7015dedf27f615bf823f3f9c8ce843fea3a43b5bad766e26448ffbca8a0f446"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtilityBone.cs",
+      "sha256": "300dafba0ae336d7f8d07846415d0885e629480c2fe6f7149e787f99d86d2edb"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtilityBone.cs.meta",
+      "sha256": "ed35052e1e97acd44753aa719c41094028caab98e5170c92427c95068432a563"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtilityConstraint.cs",
+      "sha256": "e2723ff795aa720917fd37e6581b68f0bcb958969e9975e5329f8ee1f676d24d"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility/SkeletonUtilityConstraint.cs.meta",
+      "sha256": "935fff2d75a887db5efef522621e53a42e6d6ef69c0815cc73e9573e8a806baf"
+    },
+    {
+      "path": "Runtime/spine-unity/Components/SkeletonUtility.meta",
+      "sha256": "e8cbd07b62ec5ce4b522c811c4dc6804f7b16b875d47b4a531d6cf58f116d191"
+    },
+    {
+      "path": "Runtime/spine-unity/Components.meta",
+      "sha256": "2ee77fa3bc45af45aedb53047a4f23de88a54d79799bd4991867210d8e6df61a"
+    },
+    {
+      "path": "Runtime/spine-unity/ISkeletonAnimation.cs",
+      "sha256": "3aebe1b8ea4c90b195eaf8ba547c5b973ddcd12210d722b45a60c91b87ee48eb"
+    },
+    {
+      "path": "Runtime/spine-unity/ISkeletonAnimation.cs.meta",
+      "sha256": "a8dad6c9ad735566524a8ff560cf47edf4e675f99d7f83f2a78801f4c6f09970"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicAdditive-CanvasGroup.mat",
+      "sha256": "7f3c3051825766e2ff07460b7e351be647adbdf59fbba2bd6452262970460b01"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicAdditive-CanvasGroup.mat.meta",
+      "sha256": "09a1d9a3f6ec6293c10aacab5fa10002444f97fe449c7bf4f0c6b94ea6852a71"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicDefault-CanvasGroup.mat",
+      "sha256": "570b31a9cea03e3e8d78a864328b9edcd86c038221550011dd64d0880f8d5d99"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicDefault-CanvasGroup.mat.meta",
+      "sha256": "9b57d7357add60aecda4b65690f410638c6504418400b363761d14b96ca0b8e3"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicDefaultGrayscale-CanvasGroup.mat",
+      "sha256": "1c2d77b9143340ce6f8297ef31c2df2afc859dcbe1b40e06fe43bea195a76c5c"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicDefaultGrayscale-CanvasGroup.mat.meta",
+      "sha256": "8ea48c48e77caa6216a6a8ba44309e21856175dfad065ec10b7f9a87f130c11a"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicDefaultOutline-CanvasGroup.mat",
+      "sha256": "9375233d75cf78ed4c859448c9b0ffd2506c49c325ae2586fb829acee3661407"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicDefaultOutline-CanvasGroup.mat.meta",
+      "sha256": "97fd8f692f52ad6456e041eb94c2f9d6710a5b8f1985c5ed4984200201f9820e"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicFill-CanvasGroup.mat",
+      "sha256": "80a3c87d3ec8f2fa373aace7890b6ac6f3a829b995e8af0107e94ca06ab57fb0"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicFill-CanvasGroup.mat.meta",
+      "sha256": "38127c20798211acd2b5da8a87e3e15f41ed99b8d0f68bb065b22bdc7cf95f32"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicMultiply-CanvasGroup.mat",
+      "sha256": "e2144663ae4f798d37dfb09961c6c1f9b511b3dffd6687ad8d2d62acca88ce49"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicMultiply-CanvasGroup.mat.meta",
+      "sha256": "77583817df7eb51dc7d2ba2faf7ca5519f2a727da06ff2fc52b1fc888775a6f0"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicScreen-CanvasGroup.mat",
+      "sha256": "2a072cec2ace926734cd9813a52b4864b1ec1b6d06071484d27d8c0fb2741d05"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicScreen-CanvasGroup.mat.meta",
+      "sha256": "4156ae734bf2ba3d0e8f9f3a5e5c979c9a2243f3fcbc00ada5324e57ce2479ac"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlack-CanvasGroup.mat",
+      "sha256": "66cf5eaa4bb12167bd88eb8f76bca5e7dd9a7131e52f8a61b792055303e89bbe"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlack-CanvasGroup.mat.meta",
+      "sha256": "9f26986f9b452738d7e9b2ae8a0690f07040e2cd558fc8613f6515cf2b7a66ef"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackAdditive-CanvasGroup.mat",
+      "sha256": "9d35e7a007cb1bb0d49bf5043e94521c6e5722544f7f650d0738deb2c58b9819"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackAdditive-CanvasGroup.mat.meta",
+      "sha256": "872c334b3164b951f588c3b28db07ee985ce60ff22fb56a9b07021104a8bbb17"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackMultiply-CanvasGroup.mat",
+      "sha256": "fcb646d9677ec0427e54a206b57f7f7ff9ae6fb79e21b16687117b02443552b5"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackMultiply-CanvasGroup.mat.meta",
+      "sha256": "d82838eacaa39d62f5739bfbc6fa4283f6f8055dbe087e3ded30abdae0338e38"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackOutline-CanvasGroup.mat",
+      "sha256": "c654c1036ffdc6bfdbaf473cda3dfc111a0437a6b0c6ef7f276a0393ec797bee"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackOutline-CanvasGroup.mat.meta",
+      "sha256": "81d9e66910f2fbdfc6a20ae984707fac75847ed5afe2192ffce2a1b6a35ea2b2"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackScreen-CanvasGroup.mat",
+      "sha256": "c6bca7b2d4b18ef9ca3a0bff3ef4ab27456924000aa36ca26f885d9c4d02b456"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible/SkeletonGraphicTintBlackScreen-CanvasGroup.mat.meta",
+      "sha256": "8be07913deb9e28627bd9c5ef380fdc3ba8bdfde4b23b06fe67c3be2042e6264"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/CanvasGroupCompatible.meta",
+      "sha256": "c4fc259890e92ecebd531245667a5e03905f8d10d2ddd8e880c06c0596113dfd"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicAdditive.mat",
+      "sha256": "d6e8c54dcb0f8cf9eb38df2a30c57f9281129a60679223f5c774a17d23b7d419"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicAdditive.mat.meta",
+      "sha256": "d19f2098b933e0cc38571e77dfc4b3e7fa42ff7ce35125c8ffc3247c80c2b9e0"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicDefault.mat",
+      "sha256": "a50b674cd3f55601f78b1de0c57e498e27b1ff03f9c890728381bcdfe0694d31"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicDefault.mat.meta",
+      "sha256": "76615319e7ca790fe853416d1deb26f6d07c4ebf563c3f6221dfce7121f17ae4"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicDefaultGrayscale.mat",
+      "sha256": "b93ef4332562e20a125ad20d6ad6bb073335d0b420400bdbd27df1bbe9a65910"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicDefaultGrayscale.mat.meta",
+      "sha256": "ab3f05e652e9f87f91cc8c7bbe8f9f114a4a48ad0c3f7d2289109e460372e076"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicDefaultOutline.mat",
+      "sha256": "a45e561fdab4a669e60eede8d6b52be8e92f7aaa8cf06814490a179e4335684d"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicDefaultOutline.mat.meta",
+      "sha256": "b2f58088a241797d0d6347e1f27a500bf54644052239104ff3b1648eae02dd7f"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicFill.mat",
+      "sha256": "d3dd36374417b5adb458c75ec78444049c1165348a13b5915f968068588a4a88"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicFill.mat.meta",
+      "sha256": "05b445523b54120978399a741b20895d2c1f9d0b208a602681f2b3924c3ee37b"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicMultiply.mat",
+      "sha256": "e6b0a0e03b9f6ef90924b1f82911a7ddd95426e76c81b1042d7664493ebad2f3"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicMultiply.mat.meta",
+      "sha256": "3a715a8981b69996d6f3dcb1cc7d31b2c5baa681c3d78df0b3c14396c14602f8"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicScreen.mat",
+      "sha256": "ec07464492a36c57b7b41688548410c2db320baaec9f470b2870bec65e55a172"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicScreen.mat.meta",
+      "sha256": "a53ded41d58bac3b41431bd342f01bd5f1b09fba91c6e7ad4d70c25bc1db8e8d"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlack.mat",
+      "sha256": "632a3dd51e73c9a9cfa77af131da5e6e41da3c975c57cfa42d7b03e2e0e7eab7"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlack.mat.meta",
+      "sha256": "2a791f1f2566e8e0566e64df62a1a69aa24f989b077925d9e0581c7553a2d1f7"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackAdditive.mat",
+      "sha256": "fe4cf013ba91e7c6df1dad48687d5970c8b468754d2811b5aa064b7f7dd77b29"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackAdditive.mat.meta",
+      "sha256": "760c619ea020f0186aa94b5edca3ac63a60aa7b7577ba51079a3233c60b71648"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackMultiply.mat",
+      "sha256": "07ceed259f81afcba6b4ccf652d1a0213c48c39ecf7665aca873f0a07cb88853"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackMultiply.mat.meta",
+      "sha256": "5b5d46864f22e6d787aa4bb3836d1a3a1724feae080de72beb93f55290e1c866"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackOutline.mat",
+      "sha256": "931d34825e2be42360cf44d052e629105c7b4071e7de8832ba9fae43010e0c63"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackOutline.mat.meta",
+      "sha256": "3cdcc83716d7e609342c7b3ec52d3d995bd5e6a75f311677ed40b3e914093031"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackScreen.mat",
+      "sha256": "4e02e062fa5e8f14ff87ecbd687b7669e6e10e6f4314858aaa23e85bf852b146"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture/SkeletonGraphicTintBlackScreen.mat.meta",
+      "sha256": "df88e6f9f066660faf6ef24cfa862d93f92c004b59193c3fe5a9ed5bc199f789"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-PMATexture.meta",
+      "sha256": "1c8a6693917b55159730bfb8f855fe482571d92d05494db0ecebbbf4c501a2ce"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicAdditive-CanvasGroupStraight.mat",
+      "sha256": "971b3c32558cde62dda759a448ceb21c9a39b41f1390aa8ebf206762ec57e322"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicAdditive-CanvasGroupStraight.mat.meta",
+      "sha256": "6c7ac34704d3d54a61055c949bc1e0d1fe6e55b66adaed6ecd0d742fb3eeae8b"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicDefault-CanvasGroupStraight.mat",
+      "sha256": "45ab344a24489b88e844b06c60887b597395b7bfeb346c275c5611499e1d60f5"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicDefault-CanvasGroupStraight.mat.meta",
+      "sha256": "f1a49b26e490a42ad526573a77631e48fa4639593167d283df2b04a43e777581"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicDefaultGrayscale-CanvasGroupStraight.mat",
+      "sha256": "da7d65364177cc377484b2f5f97c66dc5410b8e1c970e2f193a2bb8623630bf2"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicDefaultGrayscale-CanvasGroupStraight.mat.meta",
+      "sha256": "0301a6995d8f0ec4c048fcdc5ceac00f072146d20ce521bf20078ba64be32b8e"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicDefaultOutline-CanvasGroupStraight.mat",
+      "sha256": "382c80d8fa901904e19a5af340242d6bd1cd735b7394ba59f335231f3de047ab"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicDefaultOutline-CanvasGroupStraight.mat.meta",
+      "sha256": "6cbd8d19cf683feb8d2cd1e74cd9a9a3c7c17899fbb591478ec2f101a35a95dd"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicFill-CanvasGroupStraight.mat",
+      "sha256": "40ef8fb6e0d246cfdeba1e26842528e0a118ef287feeb54c369c6dbb3301a8ea"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicFill-CanvasGroupStraight.mat.meta",
+      "sha256": "9e9ce702bd3e45dfd06381286a6d92e8d999f6488aeebdfbbed1c32b7721b3b8"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicMultiply-CanvasGroupStraight.mat",
+      "sha256": "b4be9f6c40c32243367f0cdb8621f2485fdbece5b8da80da9c36034ea8413524"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicMultiply-CanvasGroupStraight.mat.meta",
+      "sha256": "21b82ac2c2160a547e53afd563a648dae9a82fd93db38bf6220065440966bd10"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicScreen-CanvasGroupStraight.mat",
+      "sha256": "db4129a2ad2aa4803fb8aff4d893b357f6b95f287ae4323a8f27722829e4c363"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicScreen-CanvasGroupStraight.mat.meta",
+      "sha256": "9b16af73cceaaab9a030d1043ee642e54f2fce8e85827a163a1f7274910668d6"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlack-CanvasGroupStraight.mat",
+      "sha256": "b818465316546a819c210b11d99927203edbe55800b5d79eb932974804d2b1d0"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlack-CanvasGroupStraight.mat.meta",
+      "sha256": "39c6af3b8e6909371b6da25a786929944d10bad753315392065926c48800aee1"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackAdditive-CanvasGroupStraight.mat",
+      "sha256": "3334c4ae6c5fbab8da2076a6d4bb24d0d71e2f3e86329d224a5adefa86803d56"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackAdditive-CanvasGroupStraight.mat.meta",
+      "sha256": "d65c2baa72d382774980e58aed554a887f00a523c731503485ca063ae3fa0681"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackMultiply-CanvasGroupStraight.mat",
+      "sha256": "a2fd31f0cac07ee58950a6dfcab307c0845e9f18fd9a4cc39e1f9d5194281d4a"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackMultiply-CanvasGroupStraight.mat.meta",
+      "sha256": "d2551fe78813b90f0bfdb1d9cde6aa70edf12288b245eb1cbc6f2c710b8d5ad8"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackOutline-CanvasGroupStraight.mat",
+      "sha256": "bab2458b6c85220bbeddb54861985b1e5c9aa52bf494f152daba528d8f4c77b0"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackOutline-CanvasGroupStraight.mat.meta",
+      "sha256": "94b685a7dea634ed388322130bbe62befcead7a0a5753819d9f463c8e17c1354"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackScreen-CanvasGroupStraight.mat",
+      "sha256": "dea4029e1918afadcdcff1815022717357c034498ee7ae19d87d7d0ac9ab4847"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible/SkeletonGraphicTintBlackScreen-CanvasGroupStraight.mat.meta",
+      "sha256": "f3a949c9d32d49d2e5e9523ccb5141ac2eff713251a6fc552ef829344d44d7d5"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/CanvasGroupCompatible.meta",
+      "sha256": "377c9fbe81c98d86d7a740ee5454b789a183ca9b941145da1391e2502fbe9b07"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicAdditive-Straight.mat",
+      "sha256": "d58f2dee007ff5ad6fed0a20109bac8a6f4df915c88c9f2aee8363b4ac960cd2"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicAdditive-Straight.mat.meta",
+      "sha256": "157995dda39551012706a2a65aefd4b4757f22f6d7965e3bd7f93046aaa5bb8c"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicDefault-Straight.mat",
+      "sha256": "95ba4d970ed577824171358e631bdb953a8d145e5d46a3d74e80086550d2e5f4"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicDefault-Straight.mat.meta",
+      "sha256": "2eb654c3ae679c40ef4c8a69def2fb90d80c12809d47f1dc08ee42950e818345"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicDefaultGrayscale-Straight.mat",
+      "sha256": "aa4928f3737f5972151d8380fe50a319671f8cd08f14ce39c911ad2032229fa8"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicDefaultGrayscale-Straight.mat.meta",
+      "sha256": "8c07283164cb9d9a7790f2918b62fee2bb2c5c151819eb48a9bf17fd4ea7d16b"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicDefaultOutline-Straight.mat",
+      "sha256": "0e79786d236cd93747f37d9a1b50f9ac7d1af10a2ab3340bfb3a07ba8d138dfc"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicDefaultOutline-Straight.mat.meta",
+      "sha256": "ada830b425c0a974ed764a9214d3823e53499fa9bec869281cda900a196c0951"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicFill-Straight.mat",
+      "sha256": "f44244906165cfca08bae2d5303380126877beb26217d9932c8e0ba81d8a5cee"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicFill-Straight.mat.meta",
+      "sha256": "65666329b525991157ca9f27a04742d8f5eec589be2fd70b12f2a64a2e16cbad"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicMultiply-Straight.mat",
+      "sha256": "e01081ff6fc07073adfb32166de880ca107fbe6025c0c04d35eb60aa68bf8455"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicMultiply-Straight.mat.meta",
+      "sha256": "d7e57abffa29d032321341e536157052aa8d74840c9f49da75c74b5c574934ef"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicScreen-Straight.mat",
+      "sha256": "d62581f699f40f1fd71ac87051cc6976b9a68fdd446636b671072d2579e51d39"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicScreen-Straight.mat.meta",
+      "sha256": "9c0c98ccb3f402700566a18973ec973f38330164285ec20711226a601a772066"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlack-Straight.mat",
+      "sha256": "7e2988697ff66db7576de9671d95b6579e746a59638559cc88e2f8d3ef02fea4"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlack-Straight.mat.meta",
+      "sha256": "268073ccafc877eb70c3b82d2062de56692e1d25790d32d275705151633fde58"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackAdditive-Straight.mat",
+      "sha256": "3a6ec5ea72092bc2074c3e1c5ae22b765c6d2eed3393e03f5d59e736f72cc06e"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackAdditive-Straight.mat.meta",
+      "sha256": "b55d332e3981ef85f47c54f17523419a826e238d1f08d3f09b5f720d270e63a9"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackMultiply-Straight.mat",
+      "sha256": "ceb4b18ca627993963b103b42603bff7d448eadeab48d3f358001340e955db01"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackMultiply-Straight.mat.meta",
+      "sha256": "5fd6082a2c53b6b308441e8f6e052582398cfa2055b10d4d8e8977d7a7f710ea"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackOutline-Straight.mat",
+      "sha256": "5aba1ee58f7d3c7005d3a7572c24a3ee952017b6343dcbdba78d9e6ed70b5001"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackOutline-Straight.mat.meta",
+      "sha256": "a79df144a63408e37c27cf8735238e3a72d9259fdbbb49f88db235da9f260023"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackScreen-Straight.mat",
+      "sha256": "4369d3b262f5c5a31763143efe458ca24f187e2e2e342c630cb9bdbfb8510a0d"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture/SkeletonGraphicTintBlackScreen-Straight.mat.meta",
+      "sha256": "331e2d4ad3d775126a219148a213bcede4f312304761d3a43950ac67066383a8"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials/SkeletonGraphic-StaightAlphaTexture.meta",
+      "sha256": "648c5c93848130ea529d55ccc871d02753172ccb5668ba49fcb5d21ea8eb4d06"
+    },
+    {
+      "path": "Runtime/spine-unity/Materials.meta",
+      "sha256": "59ef21401460bceca952bb8c2098ea2f3f38ae2014dc55c91ec8cfd95a1c06da"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/DoubleBuffered.cs",
+      "sha256": "65a4adb444db045ab6428f6ed4a27b024b623b86934a8bd653ae6a41455a3a0f"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/DoubleBuffered.cs.meta",
+      "sha256": "ab460a66a793b1ca918df2fd4cc5f5e26f352d7641a7ad5db6a7929bc8e5feec"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/MeshGenerator.cs",
+      "sha256": "819679e97b663752372d83bf30a109ed300540ff3b7f8a55be7edac211b02da1"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/MeshGenerator.cs.meta",
+      "sha256": "020a140f3667ee29014d9726ce2ab33e469c0775ada6c6e1f63acbdb07ea09ea"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/MeshRendererBuffers.cs",
+      "sha256": "6692a54ee447b818184dc98d01236448b2638fe799a1de5f72038610d1e8538c"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/MeshRendererBuffers.cs.meta",
+      "sha256": "da3877e84c5eadd22c37729f66a8fcef3b9f8702474479fc89ff9917e00f4cae"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/SkeletonRendererInstruction.cs",
+      "sha256": "56661c6983d06944948aa1be166b8be9c5dede24e264c60a0218cc4daf68246c"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/SkeletonRendererInstruction.cs.meta",
+      "sha256": "c286d83ed37552c05c6e4c6d61cf685daf4c4e872430820672966f6f003b3e0b"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/SpineMesh.cs",
+      "sha256": "591994ba94db1a8742b60aa984afd83189b7cb66377e95b1badf44d84ed6f29c"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation/SpineMesh.cs.meta",
+      "sha256": "76242bf60c59af8e2dc2ec3f09d7a947406b5b3321d73a777fd2234f9994c30e"
+    },
+    {
+      "path": "Runtime/spine-unity/Mesh Generation.meta",
+      "sha256": "10715c46285420842b645fa46de45dd9a79c97e9a003f2c844eb887087a828f8"
+    },
+    {
+      "path": "Runtime/spine-unity/Modules/TK2D/SpriteCollectionAttachmentLoader.cs",
+      "sha256": "66741f3582579e4b3879a000ed65c21c2d5facfbfc72b168e4a67a696961c364"
+    },
+    {
+      "path": "Runtime/spine-unity/Modules/TK2D/SpriteCollectionAttachmentLoader.cs.meta",
+      "sha256": "1650e0bc85ac75bed90f81c619d0675dd5e5cf0cbf073b7de2ed6a2c67e5c97f"
+    },
+    {
+      "path": "Runtime/spine-unity/Modules/TK2D.meta",
+      "sha256": "fc0b0401901034bd312a74913801446223bd7a05528671e3ee19dac7f1324c5b"
+    },
+    {
+      "path": "Runtime/spine-unity/Modules.meta",
+      "sha256": "f7cb8ae9beb42f88e9fa2e5100865778c064cfdcbb2f5a57bb66488da7f06cb6"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Additive.shader",
+      "sha256": "3bd0f3d074604bcc21a0ceddb156280eb5319e51300f56bf68dca128d7642652"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Additive.shader.meta",
+      "sha256": "8922bda66c1465315b3868aa693754d20b39cb28178a23852579318fcb1920f0"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Multiply.shader",
+      "sha256": "a7b4bd96f31cd928ce8fb5ed7f8f069b2682997ce69dc8b5b0ccc805d9b53a83"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Multiply.shader.meta",
+      "sha256": "f954db980abf940f277b3e38f0ff8ce5195c28b572c3cd6bfa903dd6fb87426c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Screen.shader",
+      "sha256": "6f7ff112c16775b1cc941ee0c24567bba171c903dd563cf4a3f6fe48e9322d72"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Screen.shader.meta",
+      "sha256": "b9a7b499569b755af18305cc7ec4d01e8d761849aa556f0c47a5604220b4d868"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/BlendModes.meta",
+      "sha256": "2f1eeae71d30281fd193d9ecafd482dff2a4aedbe23a022611968f9bdb36d5d1"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-BlendModes-NormalPass.cginc",
+      "sha256": "2b03c01a6548bc8a4422986e7b011fc9473c76207252738cc203e83f00886f3d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-BlendModes-NormalPass.cginc.meta",
+      "sha256": "c93f5bfbb228ceb5b8965de56f25c85a2c84efb62aacf44bb4763edf5200dcdd"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-BlendModes-ShadowCasterPass.cginc",
+      "sha256": "15901cc7d2310d9559911f363e12540b555dc84d6a27656ed5869172ada4896c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-BlendModes-ShadowCasterPass.cginc.meta",
+      "sha256": "56f6e3c01e0107ff1df20d3c50cbc2d64905b05c4bc63bfe2089c37aa4a3bb52"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Common.cginc",
+      "sha256": "6d7a655ceeef504d8cd2c3129844ab19ee5ca7a00f488c1d378699dfaca82c78"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Common.cginc.meta",
+      "sha256": "67c0f3bee6816e7404a37b64937838073040b3db522ab248204e8c35c8f5af52"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-DepthOnlyPass.cginc",
+      "sha256": "7f67bc5380a5210be3d727fd93c168376501b1e716b8b457add8a9ed49747793"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-DepthOnlyPass.cginc.meta",
+      "sha256": "5c584356d8f2e3ba852f13e456fa6e25c46571b20fefb7adc9786d207e4324d5"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Outline-Common.cginc",
+      "sha256": "514a20fdb4b4e218169e0b1890ed9e4ceae867abbab556e84fff60c530b3362a"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Outline-Common.cginc.meta",
+      "sha256": "f5e320975b123124b8873b4b3d0ff8e7cb491711bb1ef45c33e98ebf4c6f2921"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Skeleton-Lit-Common-Shadow.cginc",
+      "sha256": "580660a59e6a514efa642a3daac781707a525b8fce84621c95704387e3381514"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Skeleton-Lit-Common-Shadow.cginc.meta",
+      "sha256": "1b07356d415bc5db08b9e8b78564926a654276ba0d62f650bc989fa9169725db"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Skeleton-Lit-Common.cginc",
+      "sha256": "5d0c664960611637f47814f6bbeed1b0f5f18381eeb7870e5a118802dbc7d70d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Skeleton-Lit-Common.cginc.meta",
+      "sha256": "1c7b7fda0c25096fe53dcd3a37f639b1beac3102ed38cbeaa4a71157c373effa"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Skeleton-Tint-Common.cginc",
+      "sha256": "c50d81abbc1b4ae8709aa37398f1a4b4fb1f758efbd5e9a70f3c1684584e9f51"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes/Spine-Skeleton-Tint-Common.cginc.meta",
+      "sha256": "3debb65e40bf05395bad5ce9144d9ce4a87175d506b03e38b5ec087ffc2d4393"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/CGIncludes.meta",
+      "sha256": "4c8479d2236c17b1c6d85d8bce4643e5d2974bb0774e8bf9963e45f4777b866c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes/Spine-Skeleton-PMA-Additive-Outline.shader",
+      "sha256": "bb98c18181da94f6b5c0de773dcaa1924c72adf2dcb510833aa13323eeea5f2b"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes/Spine-Skeleton-PMA-Additive-Outline.shader.meta",
+      "sha256": "cf4d322455ded6735ce9348f356003285e17f368d047aea0ccf73dd268b680ca"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes/Spine-Skeleton-PMA-Multiply-Outline.shader",
+      "sha256": "b23d2903276ae842e51c6578d228b286bde9ff1f68824b9cda5589fa5e095945"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes/Spine-Skeleton-PMA-Multiply-Outline.shader.meta",
+      "sha256": "b1f5cc3943ee6cdbe8c3077090aa9b1a50f86eb7208b9a3b8e2ac758c602ae4c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes/Spine-Skeleton-PMA-Screen-Outline.shader",
+      "sha256": "7e7d6cd466ea5a1eb0449eadd4af005144e7787d280ee5c3f6414fe9e7dd92d7"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes/Spine-Skeleton-PMA-Screen-Outline.shader.meta",
+      "sha256": "d4b4c68dac0f383be0229ab574c87c485ceff1e2016c00463c971977cf45119d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/BlendModes.meta",
+      "sha256": "3035f20028c3f0c064abfb783e85095ae0c07028625bb798517a63f0a2e406e3"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/CGIncludes/Spine-Outline-Pass.cginc",
+      "sha256": "7a7d448ccdcc660a2cb55a321015c63139c8ffa308d47e1bb1e569234c5d538e"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/CGIncludes/Spine-Outline-Pass.cginc.meta",
+      "sha256": "6d965f19a1128abe76c9a9488f7173eb935974b7d96ec38b8ca2e4277f2d4989"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/CGIncludes.meta",
+      "sha256": "bb2b8c79ce7196a992e2d834f92623c8a575a04e974e90362cdf2db156c50c75"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/SkeletonGraphic/Spine-SkeletonGraphic-Outline.shader",
+      "sha256": "f581812494fabc9dc0699f5316fcdbb07a56341f2da3c65eee1db6ab63b2a97b"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/SkeletonGraphic/Spine-SkeletonGraphic-Outline.shader.meta",
+      "sha256": "fb3a7748b2a25c5e800e09e590af3a0c94c847054d76573b10eeba061fdb763d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/SkeletonGraphic/Spine-SkeletonGraphic-TintBlack-Outline.shader",
+      "sha256": "bf4c25eabff437de010990ec34a0b036b898eec470d92f5714a6b20751524b78"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/SkeletonGraphic/Spine-SkeletonGraphic-TintBlack-Outline.shader.meta",
+      "sha256": "6c290d87590b9917067c1063ab7a47ac54bdf17105f67bfdedc2490fef3850c0"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/SkeletonGraphic.meta",
+      "sha256": "f166d8debcc0d92a8b4699babbb9329f4bd0870601572b130333425e96438b70"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Fill-Outline.shader",
+      "sha256": "45bad6ef8c80ed9ae62fa74d25c999393d7a4993adfcb9dbdc08efa0201e33f4"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Fill-Outline.shader.meta",
+      "sha256": "0d64837dc5e8afd3d47f2a87a9e04731ee6abbd49157196be9aad8b2acd585e5"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Lit-Outline.shader",
+      "sha256": "48e56d2925a0a3987eb73876f54d61203dc589f80370f3f9518f6755ee2d6a13"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Lit-Outline.shader.meta",
+      "sha256": "4ef9b98c5b285f57e52c40329bc23697afaab13c4dbaf26156ff797141d49dcd"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Lit-ZWrite-Outline.shader",
+      "sha256": "c5dc418d3a1866a8f16285cccb526db2c87a1ecfa0ba735ea19c1d25a1e410b9"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Lit-ZWrite-Outline.shader.meta",
+      "sha256": "dd0b36586a59a9aba049b22b368798d5db044f1d9cdfc72ce41f1b7e6ab743ba"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Outline.shader",
+      "sha256": "645b59b3dbb546806382e4fa496a396b2d89270272efaa1b647ba98fe2ac2b87"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Outline.shader.meta",
+      "sha256": "7adaaacc6d8897ec675ff7a31bc797df4b5e4d82f843aa612dd699ce4652ec44"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-OutlineOnly-ZWrite.shader",
+      "sha256": "8ba191979915eb701cbf129873888324db5d7c80cb03fb96ea675ab478d2734c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-OutlineOnly-ZWrite.shader.meta",
+      "sha256": "d918b8e5deeaa944c29d338a1cb76dd644520558810283cecf4e9e01652a9151"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Tint-Outline.shader",
+      "sha256": "c7e326dd126d57a424a37f649c5c9b5017dfdc7bcce99c5840490e49fde5fd08"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-Tint-Outline.shader.meta",
+      "sha256": "67374e9621e57d377c786bfc472ba559af4b581929af871c5cd5a3b1240ced9c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-TintBlack-Outline.shader",
+      "sha256": "6f9d8ffc13f51a90b5cb53701f96a7fa0e642c64d307e37e1a51c24638d3eeed"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Skeleton-TintBlack-Outline.shader.meta",
+      "sha256": "8c400221cde0b4d6463ede57452148cd2fbf61d940ed85ad96c8ef0c80577cd6"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Special-Skeleton-Grayscale-Outline.shader",
+      "sha256": "712a2b05951e68933d3d03acb90234eff5ba10c6509d5cda2c038e6db27cb206"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Spine-Special-Skeleton-Grayscale-Outline.shader.meta",
+      "sha256": "809b218716c8e623c4828c31e0a9162fd9f02f1af0bcd3bd58869b0f48df09a5"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite/SpritesPixelLit-Outline.shader",
+      "sha256": "55ed07ac12231eb19f6e9256aa8f1deadff4c43cc76865a056ea8071e2c1e538"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite/SpritesPixelLit-Outline.shader.meta",
+      "sha256": "2d2e5a29d5cf01852b586a21dfda680f4ee0da6099ffb8f02d71149bda82bdbd"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite/SpritesUnlit-Outline.shader",
+      "sha256": "474cd238fbea291aafa26df2aedb6e2ddffcc4b1ffeb95ef1c41930cc4716bfd"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite/SpritesUnlit-Outline.shader.meta",
+      "sha256": "ba28ee02732e78df8c29ba6b772c0b035eb13c51f32ed4e36cb424e0759b6dab"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite/SpritesVertexLit-Outline.shader",
+      "sha256": "5e415cab7198660e9bea9eeabc025b61a0549a73a6caf19dfdb7de9a9eed2045"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite/SpritesVertexLit-Outline.shader.meta",
+      "sha256": "36c7ecdb0aae2e116c899826b1d37b41baad75e5e789634c86a71ada7d786720"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline/Sprite.meta",
+      "sha256": "6bb701fc0e9abd6b9247b7a24c9e8374944e92c39229e9874ea400f90f393489"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Outline.meta",
+      "sha256": "c3af8763e80c0f71237679bee8d21755755607d15852c602f209019f6759b008"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/CGIncludes/Spine-SkeletonGraphic-NormalPass.cginc",
+      "sha256": "c512582b646b984d066e00d60ca859defceab155bac287e9c0cc700177c5ce91"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/CGIncludes/Spine-SkeletonGraphic-NormalPass.cginc.meta",
+      "sha256": "3da496f2bff959a920cf58d29251073f5ab2ee6077978e43ec3d1373c97d6387"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/CGIncludes/Spine-SkeletonGraphic-TintBlack-NormalPass.cginc",
+      "sha256": "9780fc6aeab5555f4773d3b92b6bbf6944a189e3116450085f8330fdbfcb071d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/CGIncludes/Spine-SkeletonGraphic-TintBlack-NormalPass.cginc.meta",
+      "sha256": "75092f65cacfe403b73c5e543332ec5139b39eb274918142dde24cebd58e7881"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/CGIncludes.meta",
+      "sha256": "fa1dce6145a75596ee3621fb513017df2814a3ae1c70995b310dd5b25b55411b"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Additive.shader",
+      "sha256": "94bbf7695f6e301c9f3335cfb555de10229bdb64c71a4e30cc0c5f023c6810f5"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Additive.shader.meta",
+      "sha256": "2da2e9dbd1f4f7df173218797e3cfa98a63d3eca5015cb42676ec4eeb08b31d2"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Fill.shader",
+      "sha256": "663362e255b1b68ba763a055fbb3a188cd00818c3652bef4ab8db21824f3cbdc"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Fill.shader.meta",
+      "sha256": "477ad76127db5a8ffd06a628e1e0495b6cb950c89a81ead378a7fb632bd69f0e"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Grayscale.shader",
+      "sha256": "ac951f7446a900df96225ac9fd28075f9f70585d4c9f39a9fabe6270a7e66b01"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Grayscale.shader.meta",
+      "sha256": "41a92b32c09311c20bcc1ca007d995ad482cc84e6b791a7beb83c0a3ab739a57"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Multiply.shader",
+      "sha256": "fcd9608750b57f81a1521fff2a3722189e69749205519d08b35a700e89fea44a"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Multiply.shader.meta",
+      "sha256": "5fd0b497e92c019f5dac62eac4d0cadcfa4777816e3df06062fa247d6d2047fa"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Screen.shader",
+      "sha256": "28d702f500c83bbd61c55654f1e4e8c6a44ac8efcfacb5fcdc2fa446607adb99"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic-Screen.shader.meta",
+      "sha256": "920b48fb52d7becd48bfa159de12371b6d5aedd488a135661552f173eec1018e"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic.shader",
+      "sha256": "8656f1a30cb270e18cabd6eb9687e57992074ed76f6b846a42dd702c70fa3b19"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/Spine-SkeletonGraphic.shader.meta",
+      "sha256": "b88e7d8c60c17b446a3be109f249c906711ad03b131509bd68368c5cf27b0f25"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack-Additive.shader",
+      "sha256": "5e9738036abcb5774e3cf2a4b886c28ea8cbec878aeaab2fc469091a240d7741"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack-Additive.shader.meta",
+      "sha256": "673c039e2132a03a2511b7e06f162ff6d4c41e59cc937c7c3af44f4c638ac167"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack-Multiply.shader",
+      "sha256": "92230737d6d0ce1ee2f5f47319464e550eb50890f775395a21faa757ef0f3114"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack-Multiply.shader.meta",
+      "sha256": "ebf7789aecf9fac0ab9637b01cb9bebd913e30dc86e1d902cc65992404e7de51"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack-Screen.shader",
+      "sha256": "400d3b214b2a4c1e56d029ea5aee2a44d3155cf096a2dee111f92a4fd4437b13"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack-Screen.shader.meta",
+      "sha256": "b1740f82f4f4343890e23af20aad15054248d7b0533ff82a25a2ddd54f7547ab"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack.shader",
+      "sha256": "e417d6a4ffe68610d6a3acba63adf611e2ab5206bebc1de777f920964450b326"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack/Spine-SkeletonGraphic-TintBlack.shader.meta",
+      "sha256": "d521d24982ba822c5563ec7d4273e86945340c59c221abf968b26c64b6b11b74"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic/TintBlack.meta",
+      "sha256": "ca789ef97237d358e31c427dd9b3e21adef161dde7d27d30a54fbc1eef4bbe16"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/SkeletonGraphic.meta",
+      "sha256": "06c709a9a63f5494fef1a3f592d0c430497b0a4a20ce6815f2cc0de0bffa49f3"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Fill.shader",
+      "sha256": "6eb25d456d63f3b32e6d486888b39ebc0ec52ba2e2da00ab6ac6f020ef9f1811"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Fill.shader.meta",
+      "sha256": "edc5e8cee3f90d40c225958c8eb34aee7568ac5b84a425410703546e0ff13809"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Lit-ZWrite.shader",
+      "sha256": "c4e7fc85754f4576ec9fbfb1aff1ac6b812e7c0db5340d312b8f3db97cb15890"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Lit-ZWrite.shader.meta",
+      "sha256": "7818cbe80ce2e196c607466e314f965e26b886b2ae89987414c59ad3c32a1e22"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Lit.shader",
+      "sha256": "de67293c3b1cbf68bd44ebd9748a9b0ca1973051b4d545fb8b49ef96a7edeba8"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Lit.shader.meta",
+      "sha256": "c77eb5663faf1a8c9b9ebfa84b38dba5bf5e74c6f628a66670b3c3db91135522"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Tint.shader",
+      "sha256": "e0758d77d4745a7a2a04199e09f821b8e23f4e9d34d4cf1121f74840a0d50a99"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-Tint.shader.meta",
+      "sha256": "a088d76ff0ad876aa164f23a37549dcd861110159a32e660746d07e875dd2ec8"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-TintBlack.shader",
+      "sha256": "1f9c4cfca8fb9c35ddd5636c89604bc7b45b18edff143144cc55aacfdf230ab8"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton-TintBlack.shader.meta",
+      "sha256": "17ffb5aa5dae43542f8507fa823ddbadf424873136c9abf34a073805d4d3a54f"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton.shader",
+      "sha256": "1e90d970afa0f30cb18bc1496140ab3cefcabed96301f32454e3f16ee32d2ee9"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Skeleton.shader.meta",
+      "sha256": "00d982b8f2403368c5e9add2c27462733afbd4488d78b6ebf27b2aa3c2ba081e"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Special-Skeleton-Grayscale.shader",
+      "sha256": "230dc7ace8b23dd90c998367dd7a29c8f2c46b1289a84d95a827c8b0df1a6982"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Spine-Special-Skeleton-Grayscale.shader.meta",
+      "sha256": "16344d657fc13d748329fc80f092f63de12b9788052af506456088f48ff646cc"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CameraDepthNormalsTexture.shader",
+      "sha256": "2a47b438678f4e6c0d775bac677a2d935292f309fe7bb4d7e95be1c351aa487c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CameraDepthNormalsTexture.shader.meta",
+      "sha256": "af9bc808e0c14c08c8420d6bf0a7268fccba0f666ecc2b786d4e5278caa873ad"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CameraDepthTexture.shader",
+      "sha256": "6d166b50c10e4bf7b6532142da27b9cc7e4edcd66820e9456f51e2432fec420a"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CameraDepthTexture.shader.meta",
+      "sha256": "373440a3792ab91d444db0d1277b609dd2e8bab01da28586e223de74a141153c"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CameraNormalsTexture.shader",
+      "sha256": "1c0aaea404c7d39ea3a65c9787dd766f5e4fc0fd1761b52fe6a01a6929f38cfb"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CameraNormalsTexture.shader.meta",
+      "sha256": "4ddd6ac7505ca54718eca815bf824b507579e26dd0b4e549eac0344c7d39a53d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/ShaderMaths.cginc",
+      "sha256": "3f9760aa4645ae2b62e1b6696118d7e8bd3b8218bc96d5b8dfa4e217652d5a42"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/ShaderMaths.cginc.meta",
+      "sha256": "089e0b16946dcaf8b38fb52bb18f479dc2f7c015e3c91c05a6af62c80fd4a3ac"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/ShaderShared.cginc",
+      "sha256": "3767f83b901e37c910594c6bbf01f2125d60999b522149342d589ba55962136a"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/ShaderShared.cginc.meta",
+      "sha256": "e35a7634c7b52dab37a2eb31b9c9c6f2aacdba20729026f74bb92ac5285a2382"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteLighting.cginc",
+      "sha256": "b54a70cc4edf0fb00769a17b33f38ff75cf1dfb6faed4e75fc73b88ccc5019a3"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteLighting.cginc.meta",
+      "sha256": "d844e194167b4461da33d1d520c178482d8b11d2c0c5b7a9ea454e88870a8f78"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpritePixelLighting.cginc",
+      "sha256": "91fba53208e0e35d8b34d0df8aea697d5d3b8f7737a715655258873f2b856e17"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpritePixelLighting.cginc.meta",
+      "sha256": "2900cf0fce386689dd14a1410814823c457e30f335dfd13529047f4b51aa26b2"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteShadows.cginc",
+      "sha256": "9f8be32dc2632662dea5b9434d44354ed430bfd6a341df88208f769f49f78359"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteShadows.cginc.meta",
+      "sha256": "c0ac9863fc3eac0c26b390457eb582dd741f1937488f1297b6a88753a912e30e"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteSpecular.cginc",
+      "sha256": "2ba344b243bec8bf665f58cb84722d2c3da7d2f539ae21753d7f371086fc40bd"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteSpecular.cginc.meta",
+      "sha256": "d0a6d431403a6e83d24545d12d0c5db4d55945e16e32843ab83a37813f8bc3a0"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteUnlit.cginc",
+      "sha256": "15b6af98de7e161727de88bc573a9e6a482d74e697425d002c479a0e57313d3f"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteUnlit.cginc.meta",
+      "sha256": "00e30347242cfc869a8c1e6a5fecf4027b6bd5109bb275ad4c66aaedefd8d6df"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteVertexLighting.cginc",
+      "sha256": "69427bb989f77fd3bc7fd17afad86409249117cde047cf4e8ad381fc3315bf00"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes/SpriteVertexLighting.cginc.meta",
+      "sha256": "c29f6cd43e31cc6197cab418466754bd10a7b7f16ffd9e616dfe51ed8b7bedd1"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/CGIncludes.meta",
+      "sha256": "2ab43d18490d93b256df8844214b41eb636294db5d07c0a1c5c64688472327cd"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/README.md",
+      "sha256": "498188851b8583290cd83377c711fa8d5cab829c846a601f8d2d8c84a12ad9fa"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/README.md.meta",
+      "sha256": "54e2913cac2edddaa032aa19ea019ad7c7b264135d93500564d3c2dac884a89b"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpriteDepthNormalsTexture.shader",
+      "sha256": "4d453f11e9a580a4dd727af1dfcfdb441f01808eb990948c417df52e6bf2bfd4"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpriteDepthNormalsTexture.shader.meta",
+      "sha256": "9f5cdac87818b7a350655d501ea6c7363c33d159e0279b8f542123dcb15d7551"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpritesPixelLit.shader",
+      "sha256": "540d1bc8272ef1de89e250dba05dd8e0acec6077252ad368c0356715d61a2969"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpritesPixelLit.shader.meta",
+      "sha256": "98d221bcf707d7ed6a9accdb1e8cccae2010ad8d40ee459da40d1e3d264101c4"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpritesUnlit.shader",
+      "sha256": "7f3f886529d74552a3a50abe5296c31b656011bf429c890f9c6b78a1d3e1000d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpritesUnlit.shader.meta",
+      "sha256": "e8a27c21ea5be334eda7c40c637bc58539d36af6a482529bc101f9149d699024"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpritesVertexLit.shader",
+      "sha256": "d51de03abd2e2832f0d9bf6a6e863de47f215be60178f6eace07e1389809acf7"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite/SpritesVertexLit.shader.meta",
+      "sha256": "bca3bb928d900bcfe03e69567d344e5dfa2989448ec23a4b6d483e9a2de43969"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Sprite.meta",
+      "sha256": "8fdb23da642552994bd5c58ee03c872a60920121165686b5d1d3a1786c07762d"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility/Hidden-Spine-Bones.shader",
+      "sha256": "6f375aec8971cda3c6b73b88b915e7717b3dbdeca6f1f2548d7f90656d3581a1"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility/Hidden-Spine-Bones.shader.meta",
+      "sha256": "8eb427b4e96fb20714a21dd9e8b1892dd7b635764a0f868833b7ce5ed1246773"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility/HiddenPass.mat",
+      "sha256": "091db3f5f5f77c6263805cc9a5299e4ac415c690d9eab13daa8a6d96e6fd0ac2"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility/HiddenPass.mat.meta",
+      "sha256": "8f19ade471af15316ed0e23afdb67c24b96d3869f7e78a3dcd2ef6f141e3f7b9"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility/HiddenPass.shader",
+      "sha256": "205a19ba22bf2af6d5e9a438b223dcbfe489b6839e4acfcf52bde8f24ba89854"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility/HiddenPass.shader.meta",
+      "sha256": "e23027d8d8e8ecaa8e7323b439be7826b7fde15f93482640a77153bb8dc0ca5a"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders/Utility.meta",
+      "sha256": "09b1850c663e343f64b1ae2d7bedb686cbf33a68114681edc89d29b24a200598"
+    },
+    {
+      "path": "Runtime/spine-unity/Shaders.meta",
+      "sha256": "e541235e8c22cb57a7163d8c2696cf2f29c11fa77d53073f6b280ad21299a129"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/BlendModeMaterialsAsset.cs",
+      "sha256": "ea49ae8a139bf5757d5ac18af91694ce8e512c105585cd1634e5dead13add66e"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/BlendModeMaterialsAsset.cs.meta",
+      "sha256": "8848680e3e34f28ad1e661faf9838c023c7ee22f1f7e65e3eaad6dd3ca0239c7"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/Default BlendModeMaterials.asset",
+      "sha256": "b676dff9eea70e9bb34be98125a726432bc8e876d1f21f02c0aa6dd158e19fb5"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/Default BlendModeMaterials.asset.meta",
+      "sha256": "e11ccf112775679cb6b4baadf9898d3347a07e44193e3822932389e9232b8fb8"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonPMAAdditive.mat",
+      "sha256": "44e24098c8650b12f015b9636a5eeb5ffb177d9622e0b4d6d56b9b0ba671c465"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonPMAAdditive.mat.meta",
+      "sha256": "a46c00e33a00855f3bc6d2a132014f9e63d9037dc307298653f40f2dd8e6ef2d"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonPMAMultiply.mat",
+      "sha256": "93fb2199efbd9c66367145083556c285a69573b3bdd9d26f3b902a7e935705b1"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonPMAMultiply.mat.meta",
+      "sha256": "83fccbb193c1a3a40310b1984f3f0a6b7f93ef647398e80e61a3f660428485ea"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonPMAScreen.mat",
+      "sha256": "95378a21df0a936418128189d738a628a11c1d21607538d7080e9d8214eea787"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonPMAScreen.mat.meta",
+      "sha256": "88f2ceb3e5e0965db3b8e5ea5a8259ce0b859053c852dd44a1894f723473afd5"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonStraightAdditive.mat",
+      "sha256": "a434a42de718e5deafe5f916ef5e99949269ecdabbbea21735e760152348f45b"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonStraightAdditive.mat.meta",
+      "sha256": "cac135c10e10608f68f333159cbe1653628f31c9941747008a2f802c87448b9b"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonStraightMultiply.mat",
+      "sha256": "4177274f3cb45bae0653842da7f2d925d44348e78e279b5d203dbcfe12bd9ba0"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonStraightMultiply.mat.meta",
+      "sha256": "786274b4c3567a3415798cb1b9a678c4685d83683e663d781dce8ee96dbe4210"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonStraightScreen.mat",
+      "sha256": "f6c57a620557a1e461ede66e10c212fa754b0f60517883e825eff2345b93b907"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials/SkeletonStraightScreen.mat.meta",
+      "sha256": "7068fd11259ea7064fdc3c509319350c1a3321ca8f7c6435a4aec869ea723f58"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets/BlendModeMaterials.meta",
+      "sha256": "6f4075bc599235f0183366e2eba60383daa90a41b672809c4e4f8b39098cd8f5"
+    },
+    {
+      "path": "Runtime/spine-unity/SkeletonDataModifierAssets.meta",
+      "sha256": "6ca6cfc20c52771e9d672aca5c682f9f037e2551c555b05d9cd8d06e7a89b3ef"
+    },
+    {
+      "path": "Runtime/spine-unity/SpineAttributes.cs",
+      "sha256": "e83fe02046b36b60d107fd22af9eff0ad47eb96839095200aa0b7b3b6382794d"
+    },
+    {
+      "path": "Runtime/spine-unity/SpineAttributes.cs.meta",
+      "sha256": "a64fe75d1cefaa75706f0193e5e6fc04c0f60c6429bf06dc6f273e034097cc27"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/AtlasUtilities.cs",
+      "sha256": "b5096a3dd64faef51267da7bbd29665efe7f343887493289295650fa733eb6bd"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/AtlasUtilities.cs.meta",
+      "sha256": "0582a30191bb8e3dcd3a01388ee6942e0fcdd9133c15ed9b25f327ec18162cdc"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/AttachmentCloneExtensions.cs",
+      "sha256": "b97d18c2399f1f9de2304763961b66591adad75b91b8d23378b086cf33ce7ce8"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/AttachmentCloneExtensions.cs.meta",
+      "sha256": "3562a97f85d5a6f8e85f13f91ce3bf60b737ec716c55146235d3fe8ab04b8bdb"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/AttachmentRegionExtensions.cs",
+      "sha256": "6172570f941d58561f5ed850d8f5babc106714deccb3c2ca804458704188eab4"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/AttachmentRegionExtensions.cs.meta",
+      "sha256": "d32d789206d1fc724f0d4f8e96dcd66ddff9429dab79ff4a57262e53e56d0c54"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/BuildUtilities.cs",
+      "sha256": "12bfdb1b391555a8fadffa24d726220dcf46897700f3ee1202ecb983d4890d85"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/BuildUtilities.cs.meta",
+      "sha256": "9a822ba2d65370ee2f8260577b1419698b9a0f649d74488b812e8cf71a40205f"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/MaterialChecks.cs",
+      "sha256": "d86e6bafa9ff6f325101abc2f0391eb06418594a1b8e58f20cd32171fa7ce9c5"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/MaterialChecks.cs.meta",
+      "sha256": "8657ccc4b9b79dcfec3f89106b1c9ad85215b25c49366d6f132439a68235afa1"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/MathUtilities.cs",
+      "sha256": "c6e5121a8f1930b54a353978a565d8f5c932e864eb796859f8e12521a57f4225"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/MathUtilities.cs.meta",
+      "sha256": "e5fa932828bf23f50f1671ca20734df1711f404c3966c426aa527eecb2fcd135"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/SettingsTriState.cs",
+      "sha256": "3ca3e924129826c75e0f6e0eeac5e4262c9b3b84a513d8c3232e50484b7c1a5e"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/SettingsTriState.cs.meta",
+      "sha256": "b7c54d18b4aeb6bd0b9ae03d1c1eec38efd388729bd6d49926dfeb46be0b9470"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/SkeletonExtensions.cs",
+      "sha256": "d352d9a4f472bc26ff62dadad310ee4db833e41e2f2007328a80caa20b3c723c"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/SkeletonExtensions.cs.meta",
+      "sha256": "022260e4de1ded72c55071659ede7f22602ac524ba0cde65aa4e72891ecff6b0"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/TimelineExtensions.cs",
+      "sha256": "fc26511aee24b597abdfd732bd115473dbfd44c577ae5534167346492a9940d1"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/TimelineExtensions.cs.meta",
+      "sha256": "3beefdad64b259082f15eab8b94055842013f5b64f3df44a573884317cbf85cf"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimation.cs",
+      "sha256": "40d560395a4cdecd6f4650d52877cad04f45b348afdb502ed1dba7ada36307bc"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimation.cs.meta",
+      "sha256": "9f6b57844bd3177f81f5c168191965671ed1a1c8217d16420ba60204a2c9e78d"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimationComplete.cs",
+      "sha256": "00886cd9a945bdc25b4a2d8f21a6134d4e1d66a628fb31be7af59801a3431940"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimationComplete.cs.meta",
+      "sha256": "0cde87067ffde890c80bf6142d21b8c04a00dad000342215e6344f0e124d7efe"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimationEnd.cs",
+      "sha256": "f5ccb13a019d55b7078f74f8afc4355db71bff32953fd9ec006bdb8c440bb3f7"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineAnimationEnd.cs.meta",
+      "sha256": "79c8ff7fab44acc4e1983b6d94745928323b2c16f5b7d6eb67871656543aab37"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineEvent.cs",
+      "sha256": "773b9963235ff6455884f48e5e7567d8c768e6e7905b4f274ea3feb927f7c049"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineEvent.cs.meta",
+      "sha256": "0c073687e955cf8dabbe11a360d45ed449186310fdabc2a0a1330c6f90044fec"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineTrackEntryEnd.cs",
+      "sha256": "6afd6bee7942e980b80a10ea8c63874063cd086fefdb3d6cbe9c5381dcc41600"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineTrackEntryEnd.cs.meta",
+      "sha256": "043a623dd6e7e9be329bae8b3d83ce85658bd9efd7cb1c4ba3299bbf1acc96eb"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility/YieldInstructions.meta",
+      "sha256": "ef2dd719b8e01cc18c6dbbe135b3f3266a00fc73154e8e9bf02be333e7bc8ec8"
+    },
+    {
+      "path": "Runtime/spine-unity/Utility.meta",
+      "sha256": "a9158eb7bd883871af78d1127111c48fbbbf2568b35eba73ea725a77426a9a20"
+    },
+    {
+      "path": "Runtime/spine-unity.asmdef",
+      "sha256": "4e28142fcdade207d19d23e8097710c2aafd470078bb43a5459c0b842a804b2b"
+    },
+    {
+      "path": "Runtime/spine-unity.asmdef.meta",
+      "sha256": "178e14e7b1d399f493bf1a530dbd06b5453678d9ed35dac2e6c31b18e2867cee"
+    },
+    {
+      "path": "Runtime/spine-unity.meta",
+      "sha256": "957e2c7f255478496ac0f81c5ad0b8dd6f5e2fe83670a38762ced88ca9630596"
+    },
+    {
+      "path": "Runtime.meta",
+      "sha256": "63b41e9409e1c8d53caefd38b3d829b28507f4b1cacdf668132601f8fee99226"
+    },
+    {
+      "path": "version.txt",
+      "sha256": "7870e84e7bdb885c34e2c9a11302e872445fdf8884fbc0a04bec96752346274f"
+    },
+    {
+      "path": "version.txt.meta",
+      "sha256": "843b1a0969b6757abd7aa6acec88021aabf9378ae96a07b717e9653b38a3dadc"
+    }
+  ]
+}

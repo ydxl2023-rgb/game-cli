@@ -1,10 +1,17 @@
+﻿using System.Collections;
+using Newtonsoft.Json;
+using Oathx.Bundle.Assets;
 using Oathx.Core;
+using Oathx.Entity;
 using Oathx.Widget;
 using UnityEngine;
 
 /// <summary>Initializes the product UI and its local Home system.</summary>
 public sealed class GamePlugin : XPlugin
 {
+    /// <summary>Invalidates pending configuration loading when the plugin shuts down.</summary>
+    private int startupGeneration;
+
     /// <summary>Initializes the UI resource loader without installing business systems.</summary>
     /// <returns>True when infrastructure is ready.</returns>
     public override bool Install()
@@ -27,7 +34,8 @@ public sealed class GamePlugin : XPlugin
     {
         XApp.GetSingleton().ShowLaunchBackground();
 
-        Load<HomeSystem>();
+        startupGeneration++;
+        XCoroutine.Run(StartConfiguredSystems(startupGeneration));
 
         return true;
     }
@@ -35,6 +43,8 @@ public sealed class GamePlugin : XPlugin
     /// <summary>Releases the UI infrastructure.</summary>
     public override void Shutdown()
     {
+        startupGeneration++;
+
         UnloadAll();
 
         UISystem.GetSingleton().Shutdown();
@@ -44,6 +54,58 @@ public sealed class GamePlugin : XPlugin
     public override void Uninstall()
     {
     }
+
+    /// <summary>Advances registered logical entities independently of scene rendering.</summary>
+    /// <param name="elapsed">Elapsed application frame time.</param>
+    public override void Update(float elapsed)
+    {
+        base.Update(elapsed);
+
+        XEntityManager.GetSingleton().Update(elapsed);
+    }
+
+    /// <summary>Returns the town module when installed, including during lifecycle transitions.</summary>
+    /// <returns>The installed town module, or null while it is absent.</returns>
+    public TownSystem GetTown()
+    {
+        return modules.TryGetValue(nameof(TownSystem), out var module) ? module as TownSystem : null;
+    }
+
+    /// <summary>Loads generated scene configuration before starting dependent systems.</summary>
+    /// <param name="generation">The owning startup request.</param>
+    /// <returns>The asynchronous configuration initialization.</returns>
+    private IEnumerator StartConfiguredSystems(int generation)
+    {
+        TextAsset asset = null;
+        yield return XRes.LoadAsync<TextAsset>("Assets/Data/Jsons/Excels/SceneConfig.bytes", loaded => asset = loaded as TextAsset);
+        if (generation != startupGeneration)
+            yield break;
+
+        Config.SceneConfig table = null;
+        try
+        {
+            if (asset)
+                table = JsonConvert.DeserializeObject<Config.SceneConfig>(asset.text);
+        }
+        catch (JsonException exception)
+        {
+            Debug.LogException(exception);
+        }
+
+        if (table == null || table.data == null || !table.data.TryGetValue(Config.Excel.SCENE_APP, out var app) || !table.data.TryGetValue(Config.Excel.SCENE_HOME, out var home) || !app || !home || string.IsNullOrWhiteSpace(app.Path) || string.IsNullOrWhiteSpace(home.Path) || app.Path == home.Path)
+        {
+            Debug.LogError("MINIWOW_SCENE_CONFIG_INVALID");
+
+            yield break;
+        }
+
+        // Match the framework's generated read-only table registration contract.
+        typeof(Config.Excel).GetField(nameof(Config.Excel.sceneConfig)).SetValue(null, table.data);
+
+        Load<TownSystem>();
+        Load<HomeSystem>();
+    }
+
 }
 
 /// <summary>Loads future widgets through the existing framework resource layer.</summary>

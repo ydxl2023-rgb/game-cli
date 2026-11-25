@@ -1,0 +1,750 @@
+{
+  "skeletons": [
+    {
+      "name": "hero_20025",
+      "version": "4.2.43",
+      "width": 83.02588,
+      "height": 121.865631,
+      "animations": [
+        "attack",
+        "battle_idle",
+        "collect",
+        "death",
+        "evade",
+        "fishing_1",
+        "fishing_2",
+        "fishing_3",
+        "hit",
+        "idle",
+        "jump",
+        "mining",
+        "run",
+        "runaway",
+        "skill",
+        "walk"
+      ]
+    },
+    {
+      "name": "npc_forgingtable_2",
+      "version": "4.2.36",
+      "width": 640.0,
+      "height": 640.0,
+      "animations": [
+        "idle"
+      ]
+    },
+    {
+      "name": "npc_hotel",
+      "version": "4.2.36",
+      "width": 64.5,
+      "height": 112.771942,
+      "animations": [
+        "idle"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "name": "NPC_hotel",
+      "position": [
+        -19.259,
+        35.02,
+        -5.891
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "name": "NPC_priest_2",
+      "position": [
+        -26.61,
+        35.18,
+        -2.2
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "name": "NPC_mage",
+      "position": [
+        -36.326,
+        35.05,
+        11.267
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "name": "NPC_vendor",
+      "position": [
+        -28.58,
+        35.3,
+        23.16
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        -2.12380028,
+        2.1238,
+        2.1238
+      ]
+    },
+    {
+      "name": "NPC_tailor",
+      "position": [
+        -10.64,
+        35.04,
+        31.74
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        -1.7270031,
+        1.72700346,
+        1.72700334
+      ]
+    },
+    {
+      "name": "NPC_brother_2",
+      "position": [
+        -17.41,
+        35.61,
+        17.76
+      ],
+      "rotation": [
+        34.9999924,
+        225.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.00000024
+      ]
+    },
+    {
+      "name": "NPC_auction_2",
+      "position": [
+        -7.61,
+        35.16,
+        8.43
+      ],
+      "rotation": [
+        325.0,
+        37.12724,
+        -8.338121E-06
+      ],
+      "scale": [
+        -2.05325913,
+        2.05325913,
+        2.05325913
+      ]
+    },
+    {
+      "name": "NPC_forgingtable_2",
+      "position": [
+        1.98,
+        35.24,
+        26.99
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        -2.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "name": "NPC_diningcar_2",
+      "position": [
+        -1.52,
+        35.309,
+        36.85
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        -2.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "name": "NPC_doghouse",
+      "position": [
+        -27.511,
+        35.091,
+        38.021
+      ],
+      "rotation": [
+        325.0,
+        44.9999962,
+        0.0
+      ],
+      "scale": [
+        -1.73484015,
+        1.73483992,
+        1.73484015
+      ]
+    },
+    {
+      "name": "GetWaterPoint",
+      "position": [
+        -20.41,
+        35.3,
+        14.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "GetWaterPoint2",
+      "position": [
+        -14.34,
+        35.3,
+        12.65
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "FirstHeroPoint",
+      "position": [
+        -29.77,
+        35.3,
+        2.12
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "AuctionPoint",
+      "position": [
+        -9.38,
+        35.3,
+        9.21
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "WeaponStore_60002",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "WeaponStore_initial",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "RoadPoint",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "InHealingPoint",
+      "position": [
+        -27.46,
+        35.3,
+        -5.86
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "TavernPoint",
+      "position": [
+        17.22,
+        35.3,
+        -9.62
+      ],
+      "rotation": [
+        0.0,
+        45.0399971,
+        0.0
+      ],
+      "scale": [
+        0.99999994,
+        1.0,
+        0.99999994
+      ]
+    },
+    {
+      "name": "RestPoint",
+      "position": [
+        -19.59,
+        35.3,
+        -5.33
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Point_60016",
+      "position": [
+        -9.52,
+        35.3,
+        29.89
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "TaxPoint1",
+      "position": [
+        -14.86,
+        35.3,
+        11.44
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "AuctionHousePoint",
+      "position": [
+        -10.68,
+        35.3,
+        10.47
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "GotoRoundPoints",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "RecruitPoint",
+      "position": [
+        21.08,
+        35.3,
+        2.97
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "RestWaitPoint",
+      "position": [
+        -20.08,
+        35.3,
+        -4.33
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "ExplorePoint",
+      "position": [
+        -41.97,
+        35.3,
+        6.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Point_60002",
+      "position": [
+        -2.06,
+        35.3,
+        26.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "RebirthPoints",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "HealingPoint",
+      "position": [
+        -26.78,
+        35.3,
+        -1.6
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "TaxPoint2",
+      "position": [
+        -19.79,
+        35.3,
+        16.78
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "GatherPoint1",
+      "position": [
+        -29.46,
+        35.3,
+        4.01
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "GatherPoint2",
+      "position": [
+        -23.71,
+        35.3,
+        4.940002
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "GatherPoint3",
+      "position": [
+        -27.9899979,
+        35.3,
+        9.320002
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "TransferPoint",
+      "position": [
+        -30.78,
+        35.3,
+        7.68
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "GraveyardPoint",
+      "position": [
+        -28.79,
+        35.3,
+        20.94
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "HealingWaitPoint",
+      "position": [
+        -26.96,
+        35.3,
+        -0.87
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "BattlePoint",
+      "position": [
+        -36.99,
+        35.3,
+        5.94
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Point_60003",
+      "position": [
+        -4.01,
+        35.3,
+        34.31
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "VerifyEntity",
+        "resolvedMember": "VerifyEntity",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-25T03:01:08.9597325Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "method": "VerifyEntity"
+  },
+  {
+    "response": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTownProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":44.71799,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":52.8112373,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":52.8112373,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+        "respondedAtUtc": "2026-11-25T03:01:09.2656696Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "method": "Snapshot"
+  }
+]

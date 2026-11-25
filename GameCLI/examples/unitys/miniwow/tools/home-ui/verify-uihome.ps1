@@ -7,6 +7,7 @@ function Call([string]$method,[string]$arguments='[]') {
  $raw=& $cli --project $project --format json call --invoke-type MiniwowHomeProbe --invoke-member $method --args-json $arguments
  $response=($raw -join "`n")|ConvertFrom-Json
  if(!$response.ok){throw ($raw -join "`n")}
+ Start-Sleep -Milliseconds 150
  $value=$response.data.returnSummary
  $results.Add(@{method=$method;arguments=$arguments;value=$value})
  $results|ConvertTo-Json -Depth 30|Set-Content "$PSScriptRoot/runtime-evidence.json" -Encoding utf8

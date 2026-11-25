@@ -25,6 +25,30 @@ public sealed class HomeSceneCamera : MonoBehaviour
     /// <summary>Whether a pointer gesture started outside the UI.</summary>
     private bool dragging;
 
+    /// <summary>Moves the presentation camera using two screen-space points.</summary>
+    /// <param name="from">Previous pointer position.</param>
+    /// <param name="to">Current pointer position.</param>
+    /// <returns>True when both points intersect the town plane.</returns>
+    public bool Pan(Vector2 from, Vector2 to)
+    {
+        if (!sceneCamera || !cameraHandle)
+            return false;
+
+        Plane plane = new Plane(Vector3.up, new Vector3(0f, 35.17353f, 0f));
+        Ray first = sceneCamera.ScreenPointToRay(from);
+        Ray second = sceneCamera.ScreenPointToRay(to);
+        if (!plane.Raycast(first, out float firstDistance) || !plane.Raycast(second, out float secondDistance))
+            return false;
+
+        Vector3 delta = first.GetPoint(firstDistance) - second.GetPoint(secondDistance);
+        Vector3 offset = cameraHandle.position + delta - origin;
+        offset.y = 0f;
+
+        cameraHandle.position = origin + Vector3.ClampMagnitude(offset, movementRadius);
+
+        return true;
+    }
+
     /// <summary>Captures the serialized camera setup after scene activation.</summary>
     private void Awake()
     {
@@ -75,30 +99,6 @@ public sealed class HomeSceneCamera : MonoBehaviour
     private void OnDisable()
     {
         dragging = false;
-    }
-
-    /// <summary>Moves the presentation camera using two screen-space points.</summary>
-    /// <param name="from">Previous pointer position.</param>
-    /// <param name="to">Current pointer position.</param>
-    /// <returns>True when both points intersect the town plane.</returns>
-    public bool Pan(Vector2 from, Vector2 to)
-    {
-        if (!sceneCamera || !cameraHandle)
-            return false;
-
-        Plane plane = new Plane(Vector3.up, new Vector3(0f, 35.17353f, 0f));
-        Ray first = sceneCamera.ScreenPointToRay(from);
-        Ray second = sceneCamera.ScreenPointToRay(to);
-        if (!plane.Raycast(first, out float firstDistance) || !plane.Raycast(second, out float secondDistance))
-            return false;
-
-        Vector3 delta = first.GetPoint(firstDistance) - second.GetPoint(secondDistance);
-        Vector3 offset = cameraHandle.position + delta - origin;
-        offset.y = 0f;
-
-        cameraHandle.position = origin + Vector3.ClampMagnitude(offset, movementRadius);
-
-        return true;
     }
 
     /// <summary>Begins a gesture only when its initial pointer is outside UI controls.</summary>
