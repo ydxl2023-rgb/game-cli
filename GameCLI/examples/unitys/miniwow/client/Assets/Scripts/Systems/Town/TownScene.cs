@@ -1,10 +1,42 @@
-﻿using UnityEngine;
+using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 /// <summary>Owns serialized scene references and routes pointer intent to TownSystem.</summary>
 public sealed class TownScene : MonoBehaviour
 {
+    /// <summary>Authored playable actor instance identity.</summary>
+    [SerializeField]
+    private int playerId;
+
+    /// <summary>Fixed-position joystick presentation.</summary>
+    [SerializeField]
+    private ActorJoystick joystick;
+
+    /// <summary>Original recovered town navigation data.</summary>
+    [SerializeField]
+    private NavMeshData navigationData;
+
+    /// <summary>Native movement proxy kept separate from the player's Shape.</summary>
+    [SerializeField]
+    private NavMeshAgent playerNavigation;
+
+    /// <summary>Owned registration removed only when the scene is destroyed.</summary>
+    private NavMeshDataInstance navigationInstance;
+
+    /// <summary>Player data read by camera presentation, never modified by it.</summary>
+    private ActorEntity player;
+
+    /// <summary>Validated configuration for input projection and camera smoothing.</summary>
+    private Config.Actor playerConfig;
+
+    /// <summary>Camera offset established once when binding the player.</summary>
+    private Vector3 cameraOffset;
+
+    /// <summary>Whether an accepted gesture owns the joystick.</summary>
+    private bool gestureActive;
+
     /// <summary>Camera used for scene raycasts.</summary>
     [SerializeField]
     private Camera sceneCamera;
@@ -74,6 +106,16 @@ public sealed class TownScene : MonoBehaviour
             }
         }
 
+        player = entity.FindActor(playerId);
+        playerConfig = Config.Excel.propActorById(Config.Excel.ACTOR_TOWN_PLAYER);
+        if (!player || !ActorConfiguration.Valid(playerConfig) || !joystick || !joystick.Initialize(playerConfig.JoystickRadius, playerConfig.JoystickSourceWidth) || !sceneCamera.transform.parent)
+        {
+            Release();
+
+            return false;
+        }
+
+        cameraOffset = sceneCamera.transform.parent.position - player.position;
         owner = system;
         SetInputEnabled(false);
 
@@ -87,9 +129,47 @@ public sealed class TownScene : MonoBehaviour
         if (actors == null)
             return null;
 
+        if (!navigationInstance.valid)
+        {
+            if (!navigationData)
+                return null;
+
+            navigationInstance = NavMesh.AddNavMeshData(navigationData);
+        }
+
+        var config = Config.Excel.propActorById(Config.Excel.ACTOR_TOWN_PLAYER);
+        if (!ActorConfiguration.Valid(config) || !playerNavigation)
+            return null;
+
         var definitions = new ActorSpawn[actors.Length];
         for (int index = 0; index < actors.Length; index++)
-            definitions[index] = actors[index]?.CreateDefinition();
+        {
+            ActorSpawn spawn = actors[index]?.CreateDefinition();
+            if (spawn != null && spawn.actorId == playerId)
+            {
+                var origin = new Vector3(config.SpawnX, config.SpawnY, config.SpawnZ);
+                var filter = new NavMeshQueryFilter {
+                    agentTypeID = config.AgentTypeId,
+                    areaMask = NavMesh.AllAreas
+                };
+                if (!NavMesh.SamplePosition(origin, out NavMeshHit hit, 2f, filter))
+                    return null;
+
+                playerNavigation.updatePosition = false;
+                playerNavigation.updateRotation = false;
+                playerNavigation.updateUpAxis = false;
+                playerNavigation.enabled = true;
+                if (!playerNavigation.Warp(hit.position))
+                    return null;
+
+                spawn.configId = config.ID;
+                spawn.moveSpeed = config.MoveSpeed;
+                spawn.route = new[] { hit.position };
+                spawn.movement = new TownNavigation(playerNavigation);
+            }
+
+            definitions[index] = spawn;
+        }
 
         return definitions;
     }
@@ -106,6 +186,9 @@ public sealed class TownScene : MonoBehaviour
     {
         SetInputEnabled(false);
         owner = null;
+        player = null;
+        if (playerNavigation)
+            playerNavigation.enabled = false;
         if (actors != null)
         {
             foreach (TownActorBinding binding in actors)
@@ -119,9 +202,16 @@ public sealed class TownScene : MonoBehaviour
     /// <returns>Whether the gesture was accepted.</returns>
     public bool BeginPointer(Vector2 position, int id)
     {
+        if (gestureActive)
+            return false;
+
         pressed = inputEnabled && owner != null && owner.IsReady() && sceneCamera.pixelRect.Contains(position) && !IsBlocked(position);
         pressPosition = position;
         pointerId = id;
+
+        gestureActive = pressed;
+        if (gestureActive)
+            joystick.Begin(position);
 
         return pressed;
     }
@@ -130,6 +220,21 @@ public sealed class TownScene : MonoBehaviour
     /// <param name="position">Current screen position.</param>
     public void MovePointer(Vector2 position)
     {
+        if (!gestureActive)
+            return;
+
+        if (!inputEnabled)
+        {
+            CancelPointer();
+
+            return;
+        }
+
+        Vector2 intent = joystick.Move(position);
+        Vector3 forward = Vector3.ProjectOnPlane(sceneCamera.transform.forward, Vector3.up).normalized;
+        Vector3 right = Vector3.ProjectOnPlane(sceneCamera.transform.right, Vector3.up).normalized;
+        owner.SetPlayerInput(forward * intent.y + right * (intent.x * playerConfig.HorizontalScale));
+
         float threshold = clickThreshold * Screen.width / 1080f;
         if ((position - pressPosition).sqrMagnitude > threshold * threshold)
             pressed = false;
@@ -141,9 +246,12 @@ public sealed class TownScene : MonoBehaviour
     /// <returns>Whether an interaction was accepted by the system.</returns>
     public bool EndPointer(Vector2 position, int id)
     {
+        if (id != pointerId)
+            return false;
+
         MovePointer(position);
         bool accepted = pressed && inputEnabled && id == pointerId && owner != null && owner.IsReady();
-        pressed = false;
+        CancelPointer();
         if (!accepted || !sceneCamera.pixelRect.Contains(position) || IsBlocked(position))
             return false;
 
@@ -163,11 +271,40 @@ public sealed class TownScene : MonoBehaviour
     /// <param name="value">Whether scene gestures are enabled.</param>
     public void SetInputEnabled(bool value)
     {
+        CancelPointer();
         inputEnabled = value;
-        pressed = false;
+
+        if (joystick)
+            joystick.SetVisible(value);
 
         if (cameraControls)
-            cameraControls.enabled = value;
+            cameraControls.enabled = false;
+    }
+
+    /// <summary>Stops logical input and releases the captured pointer.</summary>
+    public void CancelPointer()
+    {
+        pressed = false;
+        gestureActive = false;
+        if (owner != null)
+            owner.SetPlayerInput(Vector3.zero);
+
+        if (joystick)
+            joystick.ResetInput();
+    }
+
+    /// <summary>Returns the authored playable actor identity.</summary>
+    /// <returns>The player instance identifier.</returns>
+    public int GetPlayerId()
+    {
+        return playerId;
+    }
+
+    /// <summary>Reports whether this scene accepts new movement intent.</summary>
+    /// <returns>Whether interaction is enabled.</returns>
+    public bool AcceptsInput()
+    {
+        return inputEnabled && isActiveAndEnabled;
     }
 
     /// <summary>Samples one pointer and rejects multitouch or canceled gestures.</summary>
@@ -180,16 +317,21 @@ public sealed class TownScene : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             if (Input.touchCount > 1 || touch.phase == TouchPhase.Canceled)
-                pressed = false;
+                CancelPointer();
+            else if (gestureActive && touch.fingerId != pointerId)
+                CancelPointer();
             else if (touch.phase == TouchPhase.Began)
                 BeginPointer(touch.position, touch.fingerId);
-            else if (touch.phase == TouchPhase.Moved)
+            else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
                 MovePointer(touch.position);
             else if (touch.phase == TouchPhase.Ended)
                 EndPointer(touch.position, touch.fingerId);
 
             return;
         }
+
+        if (gestureActive && pointerId >= 0)
+            CancelPointer();
 
         if (Input.GetMouseButtonDown(0))
             BeginPointer(Input.mousePosition, -1);
@@ -206,7 +348,33 @@ public sealed class TownScene : MonoBehaviour
     private void OnApplicationFocus(bool focused)
     {
         if (!focused)
-            pressed = false;
+            CancelPointer();
+    }
+
+    /// <summary>Tracks logical position even when the player's Shape is hidden.</summary>
+    private void LateUpdate()
+    {
+        if (!player || player.phase == ActorPhase.Stopped || !sceneCamera || playerConfig == null)
+            return;
+
+        Transform handle = sceneCamera.transform.parent;
+        handle.position = Vector3.Lerp(handle.position, player.position + cameraOffset, 1f - Mathf.Exp(-playerConfig.FollowRate * Time.deltaTime));
+        joystick.Follow(player.position, sceneCamera);
+    }
+
+    /// <summary>Cancels captured movement when the application is suspended.</summary>
+    /// <param name="paused">Whether the application is suspended.</param>
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused)
+            CancelPointer();
+    }
+
+    /// <summary>Removes only this scene's owned navigation registration.</summary>
+    private void OnDestroy()
+    {
+        if (navigationInstance.valid)
+            navigationInstance.Remove();
     }
 
     /// <summary>Releases references if the scene is externally disabled.</summary>

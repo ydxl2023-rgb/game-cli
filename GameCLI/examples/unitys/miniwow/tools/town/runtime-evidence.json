@@ -1,322 +1,332 @@
 [
   {
-    "arguments": "[1080,1920]",
     "method": "MiniwowHomeProbe.SetResolution",
+    "arguments": "[1080,1920]",
     "result": ""
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart",
+    "arguments": "[]",
     "result": ""
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":false,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.053493,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.053493,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.053493,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.107327409,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.107327409,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.107327409,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.107327409,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.542143941,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.542143941,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.542143941,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.RejectInvalidIds",
+    "arguments": "[]",
     "result": "True"
   },
   {
+    "method": "MiniwowTownProbe.Gesture",
     "arguments": "[\"building\",true]",
-    "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":false,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.8596269,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.8596269,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.8596269,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+    "result": "{\"began\":true,\"accepted\":false,\"point\":[133.517136,845.978638],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.404464662,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.404464662,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.404464662,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.404464662,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
   },
   {
+    "method": "MiniwowTownProbe.Gesture",
     "arguments": "[\"building\",false]",
-    "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":true,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.04349554,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.04349554,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.04349554,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+    "result": "{\"began\":true,\"accepted\":true,\"point\":[133.5169,845.978638],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.572781563,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.572781563,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.572781563,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.572781563,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.8428116,35.3,1.59861135],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.3132052,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.37591112,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.37591112,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.8802681,35.3,1.61967278],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.89176923,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.301021129,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.89176923,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.89176923,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Gesture",
     "arguments": "[\"building\",false]",
+    "result": "{\"began\":true,\"accepted\":false,\"point\":[133.517136,845.978638],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.4632168,35.3,1.3851521],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.04128969,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.4505416,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.04128969,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.04128969,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.0419331,35.3,1.148248],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.19232988,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.6015818,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.19232988,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.19232988,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-27.1670971,35.3,0.656298637],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.505976,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.9152281,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.505976,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.505976,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-26.182457,35.3,0.102601178],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.85899115,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.26824331,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.85899115,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.85899115,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-25.3796654,35.3,-0.496003538],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.172609,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.58186078,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.172609,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.172609,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-24.58936,35.3,-1.12791669],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.48882246,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.898074,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.48882246,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.48882246,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-23.7896538,35.3,-1.76734114],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.8087945,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.21804619,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.8087945,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.8087945,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-23.0416317,35.3,-2.3654418],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.108088,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.51733971,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.108088,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.108088,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-22.2550774,35.3,-2.99435115],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.422799,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.8320508,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.422799,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.422799,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Waiting\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.740033,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1171397,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.740033,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.740033,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
     "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":false,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.3760185,35.3,1.33611715],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.4805603,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.54326618,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.54326618,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-27.9073963,35.3,1.07259524],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.648570657,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.71127653,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.71127653,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-26.4198875,35.3,0.236117288],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.1818738,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.24457955,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.24457955,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-25.5469818,35.3,-0.362221628],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.51367033,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.57637548,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.57637548,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-24.7535229,35.3,-0.996653855],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.831144,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.89384913,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.89384913,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-24.0042439,35.3,-1.59575748],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.130939,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.19364381,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.19364381,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-23.2156258,35.3,-2.22631836],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.44647574,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.50918055,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.50918055,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-22.3809376,35.3,-2.893714],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.78044438,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.84314919,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.84314919,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Waiting\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0831689,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.176768,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.176768,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
     "arguments": "[\"visitor\",false]",
-    "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":true,\"point\":[378.577972,899.4842],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.2989579,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.39255667,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.39255667,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+    "result": "{\"began\":true,\"accepted\":true,\"point\":[324.089172,862.543457],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.922295,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.299401879,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.922295,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.922295,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-22.3001041,35.3,-2.95834684],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.198254287,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.60905933,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.60905933,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-23.0949955,35.3,-2.32277036],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.5163006,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.92710638,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.92710638,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-22.2230034,35.3,-3.01999164],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.10795,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.167126715,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.10795,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.10795,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-23.9237633,35.3,-1.66010916],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.847900152,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.258706,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.258706,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-23.0140343,35.3,-2.38750648],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.42444944,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.483626217,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.42444944,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.42444944,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-24.7586422,35.3,-0.9925598],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.18194568,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.59275246,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.59275246,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-23.8457317,35.3,-1.72250342],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.7572217,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.8163975,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.7572217,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.7572217,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-25.6339588,35.3,-0.2926795],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.53216946,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.942977,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.942977,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-24.5961037,35.3,-1.12251985],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.05745649,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.11663282,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.05745649,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.05745649,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-26.5228558,35.3,0.2940191],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.86608171,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.27688837,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.27688837,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-25.4278316,35.3,-0.4574914],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.390241,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.44941723,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.390241,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.390241,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-27.4033813,35.3,0.7891695],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.18176866,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.592576,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.592576,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-26.1965256,35.3,0.11051324],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.68963051,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.74880767,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.68963051,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.68963051,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-28.8467426,35.3,1.60082161],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.6992445,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.110053,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.110053,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-27.1252,35.3,0.632738352],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.022579,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.08175659,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.022579,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.022579,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-29.727293,35.3,2.0959847],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":3.01494074,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.42575,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.42575,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-28.0089569,35.3,1.12970555],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.339425,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.39860249,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.339425,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.339425,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.314146072,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.760513,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.760513,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-28.9418182,35.3,1.65428638],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.673876,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.73305416,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.673876,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.673876,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
-    "arguments": "[401]",
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.9895463,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0157539,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.9895463,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.9895463,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
     "method": "MiniwowHomeProbe.ClickEntry",
-    "result": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":12.8224163}}"
+    "arguments": "[401]",
+    "result": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":11.8977976}}"
   },
   {
-    "arguments": "[\"building\",false]",
     "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":false,\"accepted\":false,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.676219165,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":8.122585,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":8.122585,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+    "arguments": "[\"building\",false]",
+    "result": "{\"began\":false,\"accepted\":false,\"point\":[133.5169,845.978638],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.289783,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.315989941,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.289783,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.289783,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
   },
   {
-    "arguments": "[\"ReturnClick\"]",
     "method": "MiniwowHomeProbe.Click",
-    "result": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":13.4307194}}"
+    "arguments": "[\"ReturnClick\"]",
+    "result": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":12.3718214}}"
   },
   {
-    "arguments": "[\"building\",false]",
     "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":true,\"point\":[190.1026,883.015],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.02718961,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":8.47355652,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":8.47355652,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+    "arguments": "[\"building\",false]",
+    "result": "{\"began\":true,\"accepted\":true,\"point\":[133.517258,845.978638],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.59291172,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.619118452,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.59291172,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.59291172,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
   },
   {
-    "arguments": "[false]",
     "method": "MiniwowTownProbe.SetActive",
+    "arguments": "[false]",
     "result": ""
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
     "result": "{\"ready\":false,\"sceneLoaded\":false,\"activeScene\":\"Assets/Scenes/App.unity\",\"contexts\":0,\"visitors\":0,\"actors\":0,\"shapes\":0,\"home\":false,\"phase\":\"Absent\",\"arrivals\":-1,\"position\":null,\"skeletons\":[]}"
   },
   {
-    "arguments": "[true]",
     "method": "MiniwowTownProbe.SetActive",
+    "arguments": "[true]",
     "result": ""
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1271188,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1271188,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1271188,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.141868412,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.141868412,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.141868412,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.141868412,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart",
+    "arguments": "[]",
     "result": ""
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198301,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198301,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198301,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198317,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198317,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198317,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1198317,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.ReplaceModule",
+    "arguments": "[]",
     "result": ""
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.115249209,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.115249209,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.115249209,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1112556,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1112556,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1112556,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1112556,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowHomeProbe.SetResolution",
     "arguments": "[1080,2400]",
-    "method": "MiniwowHomeProbe.SetResolution",
     "result": ""
   },
   {
+    "method": "MiniwowTownProbe.Gesture",
     "arguments": "[\"building\",false]",
+    "result": "{\"began\":true,\"accepted\":true,\"point\":[31.8962173,1057.47327],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4456862,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4456862,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4456862,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4456862,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-29.3489552,35.3,1.88323283],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.5966388,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.13325,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.5966388,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.5966388,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.4654846,35.3,1.38642669],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.913381338,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.4499927,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.913381338,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.913381338,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-27.5816116,35.3,0.889396548],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.23026657,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.766878,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.23026657,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.23026657,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-26.7448673,35.3,0.418866],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.53025651,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.06686783,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.53025651,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.53025651,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-25.87866,35.3,-0.0970208943],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.84585607,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.38246739,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.84585607,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.84585607,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-25.0905762,35.3,-0.727155149],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.16117883,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.69779,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.16117883,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.16117883,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-24.24884,35.3,-1.40018535],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.49796724,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.034578,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.49796724,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.49796724,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-23.45919,35.3,-2.03157],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.81391644,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.35052729,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.81391644,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.81391644,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-22.7097683,35.3,-2.63079119],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.11377072,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.65038157,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.11377072,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.11377072,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-21.923151,35.3,-3.25975037],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.42850685,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.96511769,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.42850685,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.42850685,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Waiting\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.74640751,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.249946609,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.74640751,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.74640751,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
     "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":true,\"point\":[102.628288,1103.7688],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4498321,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4498321,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.4498321,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-29.3083153,35.3,1.86037874],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.1503392,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.6153558,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.6153558,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-28.3363171,35.3,1.31378949],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.498821676,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.963838339,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.963838339,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-27.45088,35.3,0.8158802],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.8162679,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.28128433,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.28128433,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-26.33612,35.3,0.189012215],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.21593189,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.68094838,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":1.68094838,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-25.4637871,35.3,-0.428742349],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.55098355,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.016,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.016,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-24.54562,35.3,-1.16288948],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.91835523,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.38337159,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.38337159,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-23.72043,35.3,-1.822692],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.24852514,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.713542,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":2.713542,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-22.8813553,35.3,-2.49359274],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.584248,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.049265,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.049265,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Moving\",\"arrivals\":0,\"position\":[-22.0131683,35.3,-3.187773],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.93162,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.39663672,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.39663672,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
-    "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Waiting\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.2159202,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.730492,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.730492,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
     "arguments": "[\"visitor\",false]",
-    "method": "MiniwowTownProbe.Gesture",
-    "result": "{\"began\":true,\"accepted\":true,\"point\":[338.222382,1124.35522],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.5326083,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.04718,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.04718,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
+    "result": "{\"began\":true,\"accepted\":true,\"point\":[270.111877,1078.179],\"state\":{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-21.759,35.3,-3.39099979],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.89544177,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.398981333,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.89544177,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":3.89544177,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}}"
   },
   {
-    "arguments": "[]",
     "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-22.1742783,35.3,-3.058953],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.1488337,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.21333933,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.21333933,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
-  },
-  {
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-22.9684029,35.3,-2.42399],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.46657297,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.531078,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.531078,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-22.13181,35.3,-3.09291172],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.04460669,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.1319554,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.04460669,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.04460669,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-23.80571,35.3,-1.75450337],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.801587939,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.866093,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.866093,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-22.929,35.3,-2.45549488],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.363574,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.450922549,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.363574,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.363574,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-24.5935116,35.3,-1.12459469],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.11679769,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.1813035,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.1813035,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-23.7166214,35.3,-1.82573354],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.67871,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":0.766059,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.67871,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":4.67871,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-25.4253922,35.3,-0.459442049],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.44964409,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.514151,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.514151,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-24.5470352,35.3,-1.1617552],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.010968,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.09831774,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.010968,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.010968,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-26.2898445,35.3,0.1629903],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.78346825,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.847975,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.847975,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-25.3382359,35.3,-0.529131055],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.327537,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.41488647,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.327537,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.327537,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-27.6881847,35.3,0.9493239],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.28480148,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.34930754,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.34930754,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-26.1503487,35.3,0.08454671],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.646221,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":1.73357,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.646221,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.646221,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-28.5664978,35.3,1.44322872],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.59969449,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.664201,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.664201,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-27.0350056,35.3,0.5820181],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.963388,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.050737,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.963388,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":5.963388,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-29.4977722,35.3,1.96691608],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.933575,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.99808264,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.99808264,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-27.9199924,35.3,1.07967675],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.2806735,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.368023,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.2806735,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.2806735,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
+    "method": "MiniwowTownProbe.Snapshot",
     "arguments": "[]",
-    "method": "MiniwowTownProbe.Snapshot",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":3,\"shapes\":3,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.2340886,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.332043,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.332043,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-28.7509575,35.3,1.54695654],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.57859135,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.66594076,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.57859135,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.57859135,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
   },
   {
-    "arguments": "[1080,1920]",
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Returning\",\"arrivals\":1,\"position\":[-29.63593,35.3,2.0446074],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.89587164,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"walk\",\"trackTime\":2.98322177,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.89587164,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":6.89587164,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
+    "method": "MiniwowTownProbe.Snapshot",
+    "arguments": "[]",
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":1,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.21220636,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.265585,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.21220636,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":7.21220636,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}"
+  },
+  {
     "method": "MiniwowHomeProbe.SetResolution",
+    "arguments": "[1080,1920]",
     "result": ""
   }
 ]

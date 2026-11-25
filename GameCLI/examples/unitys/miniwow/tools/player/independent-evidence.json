@@ -1,0 +1,333 @@
+{
+  "VerifyActorMachine": {
+    "ok": true,
+    "status": "completed",
+    "message": "reflection call completed",
+    "data": {
+      "invokeType": "MiniwowTownProbe",
+      "invokeMember": "VerifyActorMachine",
+      "resolvedMember": "VerifyActorMachine",
+      "returnIsVoid": false,
+      "returnType": "System.Boolean",
+      "returnSummary": "True",
+      "respondedAtUtc": "2026-11-25T04:06:59.824041Z"
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "VerifyEntity": {
+    "ok": true,
+    "status": "completed",
+    "message": "reflection call completed",
+    "data": {
+      "invokeType": "MiniwowTownProbe",
+      "invokeMember": "VerifyEntity",
+      "resolvedMember": "VerifyEntity",
+      "returnIsVoid": false,
+      "returnType": "System.Boolean",
+      "returnSummary": "True",
+      "respondedAtUtc": "2026-11-25T04:07:00.1811385Z"
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "Snapshot": {
+    "ok": true,
+    "status": "completed",
+    "message": "reflection call completed",
+    "data": {
+      "invokeType": "MiniwowTownProbe",
+      "invokeMember": "Snapshot",
+      "resolvedMember": "Snapshot",
+      "returnIsVoid": false,
+      "returnType": "System.String",
+      "returnSummary": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":14.8677044,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":14.8677044,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":14.8677044,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":14.8677044,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "respondedAtUtc": "2026-11-25T04:07:00.3305614Z"
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "console": {
+    "ok": true,
+    "status": "completed",
+    "message": "console logs",
+    "data": {
+      "totalCount": 0,
+      "totalEntries": 0,
+      "returnedCount": 0,
+      "type": "error",
+      "search": "",
+      "respondedAtUtc": "2026-11-25T04:07:00.4906545Z",
+      "entries": []
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "playerRun": [
+    {
+      "result": "",
+      "method": "MiniwowHomeProbe.SetResolution",
+      "arguments": "[1080,1920]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106308393,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106308393,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106308393,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106308393,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifySlope",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyCancellation",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyRules",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-25.0,35.17353,-1.0],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.81675595,\"shapeActive\":true,\"camera\":[20.9596329,83.68479,44.9596672],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[false]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.8428059,35.17353,0.15719758],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.1656213,\"shapeActive\":true,\"camera\":[21.855854,83.68479,45.85588],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-22.7816315,35.17353,1.21837175],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.332368731,\"shapeActive\":true,\"camera\":[22.9099312,83.68479,46.9099579],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "Library/Player/native-preview.png",
+      "method": "MiniwowPlayerProbe.RenderPreview",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-20.1523323,35.17353,3.84767652],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.745524,\"shapeActive\":true,\"camera\":[25.5474434,83.68479,49.54748],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Stop",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyStopped",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1083668,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1083668,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1083668,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1083668,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-25.0,35.17353,-1.0],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.2576722,\"shapeActive\":false,\"camera\":[20.95963,83.68479,44.95967],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[true]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-22.9804649,35.17353,1.01953673],\"phase\":\"Moving\",\"animation\":\"idle\",\"trackTime\":0.2576722,\"shapeActive\":false,\"camera\":[22.7120018,83.68479,46.71203],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Stop",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyStopped",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.101657,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.101657,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.101657,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.101657,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-25.0,35.17353,-1.0],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.250922024,\"shapeActive\":true,\"camera\":[20.95963,83.68479,44.95967],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[false]"
+    },
+    {
+      "result": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":0.7798095,\"animationTime\":0.6966845}}",
+      "method": "MiniwowHomeProbe.ClickEntry",
+      "arguments": "[401]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.936655,35.17353,0.06334617],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.1310703,\"shapeActive\":true,\"camera\":[22.0100842,83.68479,46.01011],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.936655,35.17353,0.06334617],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.5309087,\"shapeActive\":true,\"camera\":[22.0229778,83.68479,46.0230141],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":1.8668}}",
+      "method": "MiniwowHomeProbe.Click",
+      "arguments": "[\"ReturnClick\"]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106513396,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106513396,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106513396,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.106513396,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowHomeProbe.SetResolution",
+      "arguments": "[1080,2400]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-25.0,35.17353,-1.0],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.4412541,\"shapeActive\":true,\"camera\":[20.95963,83.68479,44.95967],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[false]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.9421234,35.17353,0.0578745157],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.153865188,\"shapeActive\":true,\"camera\":[21.759943,83.68479,45.7599564],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.0008678,35.17353,0.999132],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.3017695,\"shapeActive\":true,\"camera\":[22.69024,83.68479,46.69027],\"navigationVertices\":4492}",
+      "method": "MiniwowPlayerProbe.Stop",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyStopped",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowHomeProbe.SetResolution",
+      "arguments": "[1080,1920]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1082063,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1082063,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1082063,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1082063,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "Library/Player/native-preview.png",
+      "method": "MiniwowPlayerProbe.RenderPreview",
+      "arguments": "[]"
+    }
+  ],
+  "sourceHashes": [
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorConfiguration.cs",
+      "Hash": "F16DC0C4D7BCA937AA8C037526492651FD23BA63C9A9B58D03BC1EF9284AB979"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorEntity.cs",
+      "Hash": "2C4216C6E88D96A4825769AAA2BB3F32399CE1EC93CFBE3AF8F8FF3495E73EF7"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorJoystick.cs",
+      "Hash": "1439285AADCFD0EA32C7C3954EE4D546EA2EEA8E89B22CDCE7E4A0A0484A460F"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorShape.cs",
+      "Hash": "5B9DC962299192A81C915841B627B8AD4A570A599D00D9282469FDFEE85CE4CA"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownEntity.cs",
+      "Hash": "674CDEC627CB2369307A5A97D4B77C1A3C0D48619AB7ED72A427EA4754097F24"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownNavigation.cs",
+      "Hash": "C5B628221447E424829700FE4A925B6B5A3728309F6B5A26E24C19901285A609"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownScene.cs",
+      "Hash": "DF26A4FC82BA56BF3CFC4884A540B98771D5279CA708423AF60D6A1258E9A2DB"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownSystem.cs",
+      "Hash": "7D0CC5D88A6FA9C6BC82479241C841A2E4F91C7A414677373568C1A2B3F8F7A8"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\GamePlugin.cs",
+      "Hash": "A3071BF365595054779B9B14208BED6AB412984E198F91217814DA15FCB7B4CC"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Editor\\MiniwowPlayerSetup.cs",
+      "Hash": "AEEF5E6121EA999443085A903F898E725812D7C6E71F2F6BCC3FD4701D294C4E"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Editor\\MiniwowPlayerProbe.cs",
+      "Hash": "6B68FBDBD285652A17F308A819ECC78DE83591A3D2B2D1A08A748D0A6EE01F09"
+    }
+  ],
+  "codeReportReview": [
+    {
+      "file": "code-actor.json",
+      "status": "passed",
+      "hashesMatch": true,
+      "independentlyExecuted": false
+    },
+    {
+      "file": "code-town.json",
+      "status": "passed",
+      "hashesMatch": true,
+      "independentlyExecuted": false
+    }
+  ],
+  "assetHashes": [
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\config\\propActor.xlsx",
+      "Hash": "76416E16D072CA79B03D86D948C78CC30EE667A2B79B4E634107533B12DCDB55"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Data\\Jsons\\Excels\\ActorConfig.bytes",
+      "Hash": "A8592E95EC3420108B7900EA86CA63911EE0921244B5A191FC2CA6717CACD724"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scenes\\Home.unity",
+      "Hash": "F629BE5A9E2023D1046C7EDB9B353EFAE2E2E080AD5555023D14A0D8C37C5EFE"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Data\\Widgets\\Actor\\UIActorJoystick.prefab",
+      "Hash": "989ADC8B5346A085E403AAA8CB425E0F22DDDD2D9BA696E16E57FC877C4318C4"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Data\\Scenes\\Town\\TownNavigation.asset",
+      "Hash": "DF9FCCBAE1D566AD14032E66190556E5E00FB4DE5CFBD2628CCBA171149FF23F"
+    }
+  ]
+}

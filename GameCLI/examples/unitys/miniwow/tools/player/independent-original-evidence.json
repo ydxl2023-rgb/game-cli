@@ -1,0 +1,328 @@
+{
+  "scope": "Original joystick and navigation correction",
+  "playerRun": [
+    {
+      "result": "",
+      "method": "MiniwowHomeProbe.SetResolution",
+      "arguments": "[1080,1920]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0973065048,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0973065048,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0973065048,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0973065048,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifySlope",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyCancellation",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyRules",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.8550547,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[false]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-22.8620052,35.1613922,15.1579952],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.1505411,\"shapeActive\":true,\"camera\":[22.85136,83.68479,60.8714066],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-21.7911053,35.1613922,16.2288952],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.318816483,\"shapeActive\":true,\"camera\":[23.9139843,83.68479,61.93402],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "Library/Player/native-preview.png",
+      "method": "MiniwowPlayerProbe.RenderPreview",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-18.38548,35.1613922,19.6345215],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.8539585,\"shapeActive\":true,\"camera\":[27.32259,83.68479,65.34263],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Stop",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyStopped",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1367958,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1367958,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1367958,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1367958,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.303900182,\"shapeActive\":false,\"camera\":[22.064682,83.68479,60.0847168],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[true]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-21.6955242,35.1613922,16.3244781],\"phase\":\"Moving\",\"animation\":\"idle\",\"trackTime\":0.303900182,\"shapeActive\":false,\"camera\":[24.0077667,83.68479,62.027813],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Stop",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyStopped",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1034673,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1034673,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1034673,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1034673,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.2723322,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[false]"
+    },
+    {
+      "result": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":0.999053359,\"animationTime\":0.9821289}}",
+      "method": "MiniwowHomeProbe.ClickEntry",
+      "arguments": "[401]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-21.8901825,35.1613922,16.1298161],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.149390191,\"shapeActive\":true,\"camera\":[24.0723114,83.68479,62.09235],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-21.8901825,35.1613922,16.1298161],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.5304972,\"shapeActive\":true,\"camera\":[24.0816917,83.68479,62.10173],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":2.17462015}}",
+      "method": "MiniwowHomeProbe.Click",
+      "arguments": "[\"ReturnClick\"]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1193519,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1193519,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1193519,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1193519,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowHomeProbe.SetResolution",
+      "arguments": "[1080,2400]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.4527034,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Begin",
+      "arguments": "[false]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-22.8542,35.1613922,15.1657982],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.148896009,\"shapeActive\":true,\"camera\":[22.86018,83.68479,60.88022],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"id\":4,\"config\":10001,\"position\":[-21.7838268,35.1613922,16.2361717],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.317089,\"shapeActive\":true,\"camera\":[23.9218979,83.68479,61.9419327],\"navigationVertices\":1973}",
+      "method": "MiniwowPlayerProbe.Stop",
+      "arguments": "[]"
+    },
+    {
+      "result": "True",
+      "method": "MiniwowPlayerProbe.VerifyStopped",
+      "arguments": "[]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowHomeProbe.SetResolution",
+      "arguments": "[1080,1920]"
+    },
+    {
+      "result": "",
+      "method": "MiniwowTownProbe.RapidRestart",
+      "arguments": "[]"
+    },
+    {
+      "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1362588,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1362588,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1362588,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1362588,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
+      "method": "MiniwowTownProbe.Snapshot",
+      "arguments": "[]"
+    },
+    {
+      "result": "Library/Player/native-preview.png",
+      "method": "MiniwowPlayerProbe.RenderPreview",
+      "arguments": "[]"
+    }
+  ],
+  "CompareCoverage": {
+    "ok": true,
+    "status": "completed",
+    "message": "reflection call completed",
+    "data": {
+      "invokeType": "MiniwowOriginalPlayerProbe",
+      "invokeMember": "CompareCoverage",
+      "resolvedMember": "CompareCoverage",
+      "returnIsVoid": false,
+      "returnType": "System.String",
+      "returnSummary": "{\r\n  \"originalCount\": 872,\r\n  \"rebakedCount\": 729,\r\n  \"previouslyBlocked\": [\r\n    [\r\n      -50.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -50.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      -49.99701,\r\n      35.1613922,\r\n      -0.0498206019\r\n    ],\r\n    [\r\n      -50.0,\r\n      35.1613922,\r\n      2.0\r\n    ],\r\n    [\r\n      -50.0,\r\n      35.1613922,\r\n      4.0\r\n    ],\r\n    [\r\n      -50.0,\r\n      35.1613922,\r\n      6.0\r\n    ],\r\n    [\r\n      -50.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.174614,\r\n      -6.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.1613922,\r\n      0.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.1613922,\r\n      2.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.1613922,\r\n      4.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.1613922,\r\n      6.0\r\n    ],\r\n    [\r\n      -48.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      -12.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      -45.8333359,\r\n      35.1613922,\r\n      0.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      2.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      4.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      6.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      10.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -46.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -44.0,\r\n      35.1613922,\r\n      -12.0\r\n    ],\r\n    [\r\n      -43.8144379,\r\n      35.1613922,\r\n      -10.0053015\r\n    ],\r\n    [\r\n      -44.0,\r\n      35.1613922,\r\n      2.0\r\n    ],\r\n    [\r\n      -44.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -42.1103439,\r\n      35.1613922,\r\n      -9.990805\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      2.0\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      16.0\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      32.0\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -42.0,\r\n      35.1613922,\r\n      36.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      2.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      10.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      16.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      30.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      32.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -40.0,\r\n      35.1613922,\r\n      36.0\r\n    ],\r\n    [\r\n      -38.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -38.0,\r\n      35.1613922,\r\n      -18.0\r\n    ],\r\n    [\r\n      -38.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -38.0,\r\n      35.1613922,\r\n      30.0\r\n    ],\r\n    [\r\n      -38.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -38.0,\r\n      35.1613922,\r\n      36.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      -12.1666679\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -36.0,\r\n      35.1613922,\r\n      32.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      -14.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      -4.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      30.0\r\n    ],\r\n    [\r\n      -34.0,\r\n      35.1613922,\r\n      32.0\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      -24.0\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -31.9653854,\r\n      35.1613922,\r\n      -4.0269227\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -32.0,\r\n      35.1613922,\r\n      30.0\r\n    ],\r\n    [\r\n      -30.0050449,\r\n      35.1613922,\r\n      -26.04708\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      -18.0\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      -16.0\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -30.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -27.9166679,\r\n      35.1613922,\r\n      -29.9166679\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      -28.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      -18.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      -12.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      16.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -28.0,\r\n      35.1613922,\r\n      36.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      -22.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      -18.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      -14.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      -12.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      16.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -26.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      -14.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      16.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -24.0,\r\n      35.1613922,\r\n      28.0\r\n    ],\r\n    [\r\n      -22.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -22.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -22.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -22.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -22.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -22.0,\r\n      35.1613922,\r\n      28.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      -26.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      -24.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      -18.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -20.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      -28.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      -26.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      -18.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      -18.0,\r\n      35.1613922,\r\n      24.0\r\n    ],\r\n    [\r\n      -16.0,\r\n      35.1613922,\r\n      -28.0\r\n    ],\r\n    [\r\n      -16.0,\r\n      35.1613922,\r\n      -20.0\r\n    ],\r\n    [\r\n      -16.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -16.0960789,\r\n      35.1613922,\r\n      15.9176464\r\n    ],\r\n    [\r\n      -16.0,\r\n      35.1613922,\r\n      28.0\r\n    ],\r\n    [\r\n      -13.999999,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      -14.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      -14.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -14.0,\r\n      35.1613922,\r\n      28.0\r\n    ],\r\n    [\r\n      -14.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -14.0,\r\n      35.1613922,\r\n      36.0\r\n    ],\r\n    [\r\n      -12.0,\r\n      35.1613922,\r\n      -24.0\r\n    ],\r\n    [\r\n      -12.0,\r\n      35.1613922,\r\n      -14.0\r\n    ],\r\n    [\r\n      -12.0,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      -12.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      -8.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -8.0,\r\n      35.1613922,\r\n      -4.0\r\n    ],\r\n    [\r\n      -6.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      -6.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -6.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      -4.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      10.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      -4.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      -2.0,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      -2.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      -2.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      -2.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      -2.0,\r\n      35.1613922,\r\n      0.0\r\n    ],\r\n    [\r\n      0.0,\r\n      35.1613922,\r\n      -30.0\r\n    ],\r\n    [\r\n      -0.04955551,\r\n      35.1613922,\r\n      -12.0021086\r\n    ],\r\n    [\r\n      -0.1345077,\r\n      35.1613922,\r\n      -10.005724\r\n    ],\r\n    [\r\n      0.0,\r\n      35.1613922,\r\n      -4.0\r\n    ],\r\n    [\r\n      0.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      0.0,\r\n      35.1613922,\r\n      6.00000048\r\n    ],\r\n    [\r\n      0.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      0.0,\r\n      35.1613922,\r\n      10.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      -12.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      -10.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      -6.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      -4.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      -2.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      8.0\r\n    ],\r\n    [\r\n      2.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      4.0,\r\n      35.1613922,\r\n      -30.0\r\n    ],\r\n    [\r\n      4.0,\r\n      35.1613922,\r\n      -8.0\r\n    ],\r\n    [\r\n      4.0,\r\n      35.1613922,\r\n      0.0\r\n    ],\r\n    [\r\n      4.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      4.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      6.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      6.0,\r\n      35.1613922,\r\n      26.0\r\n    ],\r\n    [\r\n      6.0,\r\n      35.1613922,\r\n      30.0\r\n    ],\r\n    [\r\n      8.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      8.0,\r\n      35.1613922,\r\n      16.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      12.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      14.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      18.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      20.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      22.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      34.0\r\n    ],\r\n    [\r\n      10.0,\r\n      35.1613922,\r\n      36.0\r\n    ]\r\n  ]\r\n}",
+      "respondedAtUtc": "2026-11-25T04:49:49.9240327Z"
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "VerifyWallSlide": {
+    "ok": true,
+    "status": "completed",
+    "message": "reflection call completed",
+    "data": {
+      "invokeType": "MiniwowOriginalPlayerProbe",
+      "invokeMember": "VerifyWallSlide",
+      "resolvedMember": "VerifyWallSlide",
+      "returnIsVoid": false,
+      "returnType": "System.String",
+      "returnSummary": "{\r\n  \"passed\": true,\r\n  \"examples\": [\r\n    {\r\n      \"start\": [\r\n        44.71015,\r\n        35.24472,\r\n        87.1875\r\n      ],\r\n      \"rayStop\": [\r\n        44.71767,\r\n        35.24472,\r\n        87.5409851\r\n      ],\r\n      \"nativeResult\": [\r\n        44.4014053,\r\n        35.24472,\r\n        87.871\r\n      ],\r\n      \"slide\": 0.457093954\r\n    },\r\n    {\r\n      \"start\": [\r\n        42.5361176,\r\n        35.24472,\r\n        87.7506561\r\n      ],\r\n      \"rayStop\": [\r\n        42.2586174,\r\n        35.2260437,\r\n        87.53158\r\n      ],\r\n      \"nativeResult\": [\r\n        42.2052078,\r\n        35.2126923,\r\n        87.07761\r\n      ],\r\n      \"slide\": 0.457102865\r\n    },\r\n    {\r\n      \"start\": [\r\n        24.7431545,\r\n        35.21165,\r\n        105.441887\r\n      ],\r\n      \"rayStop\": [\r\n        25.06354,\r\n        35.22786,\r\n        105.5914\r\n      ],\r\n      \"nativeResult\": [\r\n        25.2197533,\r\n        35.23762,\r\n        106.020988\r\n      ],\r\n      \"slide\": 0.457109243\r\n    },\r\n    {\r\n      \"start\": [\r\n        21.7398911,\r\n        35.23967,\r\n        110.406563\r\n      ],\r\n      \"rayStop\": [\r\n        21.7398911,\r\n        35.24472,\r\n        110.760117\r\n      ],\r\n      \"nativeResult\": [\r\n        21.4166641,\r\n        35.24472,\r\n        111.083344\r\n      ],\r\n      \"slide\": 0.4571119\r\n    },\r\n    {\r\n      \"start\": [\r\n        7.638934,\r\n        35.20691,\r\n        113.530075\r\n      ],\r\n      \"rayStop\": [\r\n        7.2861414,\r\n        35.2063675,\r\n        113.553284\r\n      ],\r\n      \"nativeResult\": [\r\n        6.942399,\r\n        35.2042427,\r\n        113.251984\r\n      ],\r\n      \"slide\": 0.457100153\r\n    },\r\n    {\r\n      \"start\": [\r\n        23.4766216,\r\n        35.1631775,\r\n        98.98528\r\n      ],\r\n      \"rayStop\": [\r\n        23.7444038,\r\n        35.1613922,\r\n        99.2161255\r\n      ],\r\n      \"nativeResult\": [\r\n        23.7781715,\r\n        35.1613922,\r\n        99.672\r\n      ],\r\n      \"slide\": 0.4571205\r\n    },\r\n    {\r\n      \"start\": [\r\n        -1.28094625,\r\n        35.1613922,\r\n        105.707588\r\n      ],\r\n      \"rayStop\": [\r\n        -1.6337688,\r\n        35.1613922,\r\n        105.73027\r\n      ],\r\n      \"nativeResult\": [\r\n        -1.97706437,\r\n        35.1613922,\r\n        105.428444\r\n      ],\r\n      \"slide\": 0.457111657\r\n    },\r\n    {\r\n      \"start\": [\r\n        22.9621124,\r\n        35.23967,\r\n        109.184341\r\n      ],\r\n      \"rayStop\": [\r\n        22.9621124,\r\n        35.24472,\r\n        109.537895\r\n      ],\r\n      \"nativeResult\": [\r\n        22.63889,\r\n        35.24472,\r\n        109.861115\r\n      ],\r\n      \"slide\": 0.457103819\r\n    },\r\n    {\r\n      \"start\": [\r\n        24.0246811,\r\n        35.1613922,\r\n        89.14596\r\n      ],\r\n      \"rayStop\": [\r\n        24.2359886,\r\n        35.1613922,\r\n        89.42942\r\n      ],\r\n      \"nativeResult\": [\r\n        24.1700249,\r\n        35.1613922,\r\n        89.88173\r\n      ],\r\n      \"slide\": 0.457093328\r\n    },\r\n    {\r\n      \"start\": [\r\n        25.71645,\r\n        34.24472,\r\n        100.339333\r\n      ],\r\n      \"rayStop\": [\r\n        25.4539719,\r\n        34.24472,\r\n        100.102463\r\n      ],\r\n      \"nativeResult\": [\r\n        25.430563,\r\n        34.24472,\r\n        99.6459656\r\n      ],\r\n      \"slide\": 0.457097\r\n    },\r\n    {\r\n      \"start\": [\r\n        33.2121124,\r\n        34.24472,\r\n        98.76767\r\n      ],\r\n      \"rayStop\": [\r\n        33.2121124,\r\n        34.24472,\r\n        99.12122\r\n      ],\r\n      \"nativeResult\": [\r\n        32.88889,\r\n        34.24472,\r\n        99.44445\r\n      ],\r\n      \"slide\": 0.4571092\r\n    },\r\n    {\r\n      \"start\": [\r\n        38.46211,\r\n        34.24472,\r\n        93.51768\r\n      ],\r\n      \"rayStop\": [\r\n        38.46211,\r\n        34.24472,\r\n        93.87123\r\n      ],\r\n      \"nativeResult\": [\r\n        38.1388855,\r\n        34.24472,\r\n        94.19445\r\n      ],\r\n      \"slide\": 0.457103819\r\n    }\r\n  ]\r\n}",
+      "respondedAtUtc": "2026-11-25T04:49:50.1029103Z"
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "finalSnapshot": {
+    "ok": true,
+    "status": "completed",
+    "message": "reflection call completed",
+    "data": {
+      "invokeType": "MiniwowPlayerProbe",
+      "invokeMember": "Snapshot",
+      "resolvedMember": "Snapshot",
+      "returnIsVoid": false,
+      "returnType": "System.String",
+      "returnSummary": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":18.0861835,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
+      "respondedAtUtc": "2026-11-25T04:49:50.27121Z"
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "console": {
+    "ok": true,
+    "status": "completed",
+    "message": "console logs",
+    "data": {
+      "totalCount": 0,
+      "totalEntries": 2,
+      "returnedCount": 0,
+      "type": "error",
+      "search": "",
+      "respondedAtUtc": "2026-11-25T04:49:50.4323968Z",
+      "entries": []
+    },
+    "error": {
+      "code": "",
+      "message": ""
+    }
+  },
+  "sourceHashes": [
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorConfiguration.cs",
+      "Hash": "E2A92BD6626D3FD935EAB003A8CCA72247F0FC8C70FE493C1D36FBD536BA9C3E"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorEntity.cs",
+      "Hash": "4CE8623936FFCB1E14424600D9B19C5E2FB35EDE368851B80798D5517206A769"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorJoystick.cs",
+      "Hash": "2E3F91CFBADB86F6D803AECC272744D836410352FE750AAC4ACEE214030F27DA"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Actor\\ActorShape.cs",
+      "Hash": "5B9DC962299192A81C915841B627B8AD4A570A599D00D9282469FDFEE85CE4CA"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownEntity.cs",
+      "Hash": "674CDEC627CB2369307A5A97D4B77C1A3C0D48619AB7ED72A427EA4754097F24"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownNavigation.cs",
+      "Hash": "1F123F9F3C6116914A1437A7D08F52642BAAED1E798D9DB4CA2F4A522E8AF54A"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownScene.cs",
+      "Hash": "A6AC760C07B0932F9A16C7AA2D15DE46739A1860DE3A86C5521F5E685695E8B2"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scripts\\Systems\\Town\\TownSystem.cs",
+      "Hash": "7D0CC5D88A6FA9C6BC82479241C841A2E4F91C7A414677373568C1A2B3F8F7A8"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Editor\\MiniwowOriginalNavigation.cs",
+      "Hash": "9F61F3EF554FB8CE3CBF64A800E2B20B1459FC3502F7F47E598AB009946C51F5"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Editor\\MiniwowOriginalPlayerProbe.cs",
+      "Hash": "1CCB1D1526B120E11E335B9C37E3F22E0211F24FC879F8AD411B81C1A2C0D97A"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Editor\\MiniwowPlayerSetup.cs",
+      "Hash": "372851F6ADCE65624E0CA5C06C0D1FF48A1A5F21C985440B1609A6FB4CA2D0CB"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Data\\Scenes\\Town\\OriginalTownNavigation.asset",
+      "Hash": "F61E5AD53DF66B7C3942C49B40165CADFE3A76B8A55ED1D6E65CDEA80028B0B3"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Data\\Widgets\\Actor\\UIActorJoystick.prefab",
+      "Hash": "36265D29CEEF5C5D01E93C61684B0FE87468E0DEF61C55FE23CD4E0571D8F0AB"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Assets\\Scenes\\Home.unity",
+      "Hash": "B5AB42870BEEEC0D8CD43A4CCD46DFC6E42C5821284A52176309F390A2FAFE8F"
+    },
+    {
+      "Path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\config\\propActor.xlsx",
+      "Hash": "3C20F2074B82D7073A6BD372EFE6A634EFACBDB335E8577EA53C8982CFEA917D"
+    }
+  ],
+  "codeReportReview": [
+    {
+      "file": "code-actor.json",
+      "passed": true,
+      "issues": 0,
+      "hashesMatch": true
+    },
+    {
+      "file": "code-town.json",
+      "passed": true,
+      "issues": 0,
+      "hashesMatch": true
+    }
+  ]
+}

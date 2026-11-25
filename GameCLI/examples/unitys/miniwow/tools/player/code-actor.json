@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "system": "Actor",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [],
+  "statistics": {
+    "files": 4,
+    "lines": 538,
+    "blankLines": 107,
+    "commentLines": 100,
+    "members": 72,
+    "documentedMembers": 72,
+    "blankLineRate": 0.19888475836431227,
+    "commentLineRate": 0.18587360594795538,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorConfiguration.cs",
+      "sha256": "e2a92bd6626d3fd935eab003a8cca72247f0fc8c70fe493c1d36fbd536ba9c3e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "sha256": "4ce8623936ffcb1e14424600d9b19c5e2fb35ede368851b80798d5517206a769"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorJoystick.cs",
+      "sha256": "8a51c413eb3ae6ebaada699d12fbb91232aa5aa0df95ba2a08a3acdae2f32b89"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorShape.cs",
+      "sha256": "5b9dc962299192a81c915841b627b8ad4a570a599d00d9282469fdfee85ce4ca"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\e12caaa6-2762-4190-a401-954b6df2b922"
+}

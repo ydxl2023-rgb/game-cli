@@ -20,6 +20,17 @@ public enum ActorPhase
     Stopped
 }
 
+/// <summary>Resolves movement against a world boundary without retaining a presentation object.</summary>
+public interface IActorMovement
+{
+    /// <summary>Returns a reachable logical destination.</summary>
+    /// <param name="origin">Current authoritative position.</param>
+    /// <param name="target">Requested destination.</param>
+    /// <param name="result">Reachable destination when successful.</param>
+    /// <returns>Whether navigation resolved the movement.</returns>
+    bool TryMove(Vector3 origin, Vector3 target, out Vector3 result);
+}
+
 /// <summary>Detached initialization data copied from scene authoring or product configuration.</summary>
 public sealed class ActorSpawn
 {
@@ -39,6 +50,10 @@ public sealed class ActorSpawn
     public float moveSpeed
     { get; set; }
 
+    /// <summary>Optional manual movement resolver; null retains authored route behavior.</summary>
+    public IActorMovement movement
+    { get; set; }
+
     /// <summary>World-space route values with no retained Transform references.</summary>
     public Vector3[] route
     { get; set; }
@@ -47,6 +62,12 @@ public sealed class ActorSpawn
 /// <summary>Owns actor identity, position and movement rules without a scene or Spine dependency.</summary>
 public sealed class ActorEntity : XEntity
 {
+    /// <summary>Boundary adapter for manually controlled actors.</summary>
+    private IActorMovement movement;
+
+    /// <summary>Normalized analog movement intent independent of presentation.</summary>
+    private Vector3 input;
+
     /// <summary>Private route copy that cannot be modified by the authoring layer.</summary>
     private Vector3[] route;
 
@@ -92,12 +113,34 @@ public sealed class ActorEntity : XEntity
     /// <param name="elapsed">Nonnegative elapsed simulation time in seconds.</param>
     public override void Update(float elapsed)
     {
-        if (!initialized || (phase != ActorPhase.Moving && phase != ActorPhase.Returning) || !Finite(elapsed) || elapsed <= 0f)
+        if (!initialized || phase == ActorPhase.Stopped || (movement == null && phase != ActorPhase.Moving && phase != ActorPhase.Returning) || !Finite(elapsed) || elapsed <= 0f)
             return;
 
         float remaining = moveSpeed * elapsed;
         if (!Finite(remaining))
             return;
+
+        if (movement != null)
+        {
+            if (input == Vector3.zero)
+                return;
+
+            Vector3 target = position + input * remaining;
+            if (movement.TryMove(position, target, out Vector3 result) && Finite(result.x) && Finite(result.y) && Finite(result.z) && Vector3.ProjectOnPlane(result - position, Vector3.up).magnitude <= remaining + 0.01f)
+            {
+                Vector3 delta = result - position;
+                position = result;
+                phase = input != Vector3.zero ? ActorPhase.Moving : ActorPhase.Idle;
+                if (phase == ActorPhase.Moving)
+                    direction = input.normalized;
+            }
+            else
+            {
+                phase = ActorPhase.Idle;
+            }
+
+            return;
+        }
 
         bool outbound = phase == ActorPhase.Moving;
         while (waypoint >= 0 && waypoint < route.Length)
@@ -129,6 +172,8 @@ public sealed class ActorEntity : XEntity
     {
         phase = ActorPhase.Stopped;
         route = null;
+        movement = null;
+        input = Vector3.zero;
 
         base.Destroy();
     }
@@ -158,10 +203,27 @@ public sealed class ActorEntity : XEntity
         configId = spawn.configId;
         destinationId = spawn.destinationId;
         moveSpeed = spawn.moveSpeed;
+        movement = spawn.movement;
         route = (Vector3[])spawn.route.Clone();
         position = route[0];
         phase = ActorPhase.Idle;
         initialized = true;
+
+        return true;
+    }
+
+    /// <summary>Accepts finite horizontal analog intent for a live manually controlled actor.</summary>
+    /// <param name="value">World-space movement direction and strength.</param>
+    /// <returns>Whether the input was accepted.</returns>
+    public bool SetMoveInput(Vector3 value)
+    {
+        if (!initialized || phase == ActorPhase.Stopped || movement == null || !Finite(value.x) || !Finite(value.y) || !Finite(value.z) || !Finite(value.sqrMagnitude))
+            return false;
+
+        value.y = 0f;
+        input = Vector3.ClampMagnitude(value, 1f);
+        if (input == Vector3.zero)
+            phase = ActorPhase.Idle;
 
         return true;
     }
@@ -171,7 +233,7 @@ public sealed class ActorEntity : XEntity
     /// <returns>Whether outbound movement started.</returns>
     public bool Visit(int buildingId)
     {
-        if (!initialized || phase != ActorPhase.Idle || route.Length < 2 || buildingId <= 0 || buildingId != destinationId)
+        if (!initialized || movement != null || phase != ActorPhase.Idle || route.Length < 2 || buildingId <= 0 || buildingId != destinationId)
             return false;
 
         phase = ActorPhase.Moving;

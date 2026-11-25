@@ -21,7 +21,7 @@ function Wait-State([string]$phase) {
 Invoke-Probe SetResolution '[1080,1920]' MiniwowHomeProbe | Out-Null
 Invoke-Probe RapidRestart | Out-Null
 $initial = Wait-State Idle
-if ($initial.contexts -ne 1 -or $initial.visitors -ne 1 -or $initial.skeletons.Count -ne 3) { throw 'Invalid scene cardinality' }
+if ($initial.contexts -ne 1 -or $initial.visitors -ne 1 -or $initial.skeletons.Count -ne 4) { throw 'Invalid scene cardinality' }
 if (@($initial.skeletons | Where-Object { !$_.valid -or $_.vertices -le 0 }).Count) { throw 'Skeleton initialization failed' }
 if ((Invoke-Probe RejectInvalidIds) -ne 'True') { throw 'Invalid IDs were accepted' }
 $drag = Invoke-Probe Gesture '["building",true]' | ConvertFrom-Json

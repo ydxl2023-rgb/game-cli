@@ -1,4 +1,4 @@
-﻿---
+---
 name: miniwow-project
 description: 在 GameCLI 的 miniwow 项目中开展小骑士冲冲冲机制学习、资源台账维护、系统设计和获授权的 Unity DEMO 开发。维护本项目的证据、目录和产品适配约定，不替代 Oathx 共享框架规范。
 ---
@@ -20,6 +20,8 @@ Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型�
 MainPage 主界面现使用 `client/Assets/Data/Widgets/Home/UIHome.prefab`（旧 Home.prefab 已保留 GUID 改名）。开发入口为 [MainPage 实现记录](../../tools/home-ui/IMPLEMENTATION.md)：配置源 `config/Home.xlsx`，制作脚本 `tools/home-ui/build_uihome.py`，正式 UGUI 导入后执行 `bind-uihome.ps1`；旧 `tools/home/bind-home.ps1` 已停用。HomeEntity 管理本地状态，HomeSystem 管理场景与路由；未接入业务必须保留明确反馈，不能将入口事件当作系统已实现。
 
 Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/README.md)。**场景生命周期现归 TownSystem，HomeSystem 只管理主 UI 与路由并等待 Town 就绪**，取代上段历史场景归属。TownScene 持有序列化场景引用；TownEntity 管理 ActorEntity 集合并统一推进逻辑；ActorEntity 保存身份、位置、路线与阶段，ActorShape 继承 XActionStateMachine，每个角色拥有独立表现状态机，单向读取实体并驱动 Transform 和 Spine，隐藏或重建显示不得重置实体。旅店与铁匠恢复 idle 表现；访客使用 hero_20025。首版点击旅店店员走向入口，点击到达的访客返回；不代表建筑已业务解锁或消费成功。Spine Runtime 属第三方代码，不纳入自有代码格式化。
+
+可控玩家首版已接入，见 [玩家实现与验收](../../tools/player/README.md)。玩家实例 4 使用原作 role_01，与访客和店员分离；通过固定摇杆、ActorEntity 与静态 NavMesh 约束移动，ActorShape 状态机播放 idle/run，镜头跟随实体。参数源为 propActor.xlsx，导航已恢复原包 30 瓦片并逐项校验字节/哈希，使用原生 NavMeshAgent.Move；禁止再次以可见模型重烘焙替代原数据；未实现水域、战斗或玩家建筑消费。
 
 建筑业务继续采用用户确认的集合式 BuildingEntity：内部持有实际建筑状态，实例 ID 与配置 ID 分离，对外提供快照和校验操作，不暴露可变集合、不保存场景 GameObject。Town 只消费业务结果；本轮尚未实现该实体及升级经济。
 
@@ -68,6 +70,7 @@ Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/R
 以下是项目应用共享规范的要点，详细规则以当前共享 Skill 为准：
 
 - **Entity** 拥有业务状态、校验、规则、条件计算与事务；**System** 编排流程和通知；**UIWidget** 接收用户意图及刷新、维护 **VM** 的展示绑定。System 不读取或缓存 VM。
+- 产品业务系统统一继承 `Assets/Scripts/Systems/RuntimeSystem.cs`，由它继承 XEventModule；HomeSystem、TownSystem 已采用此结构。基类沿用 development 的 LoadSystem/UnloadSystem 调度接口，帧末回调不代表场景或 UI 异步就绪，TownReadyChanged 等业务就绪通知必须保留。GamePlugin 仍负责初始装配，不为使用基类而重复加载系统。
 - 手写系统代码按 `<System>/<System>System.cs`、`<System>Entity.cs`、其他逻辑、`VM/`、`UI/` 组织。按用户约定，Home 的非业务通用组件（HomeSafeArea、HomeSceneCamera 等）放在 `Home/Common/`。GamePlugin 只承担插件生命周期与依赖装配，UISender 使用独立 GameUISender 类实现，不由 GamePlugin 直接实现；GameUISender 与 GameUILoader 均放在 GamePlugin.cs 中，独立职责不要求拆分文件。不要照搬原作 Proxy 单例或 FairyGUI 结构。
 - 数值、配方、开放条件、奖励和可配置展示先建立本产品 Excel 源表与稳定 ID，再导表并接入。固定文案遵循共享多语言规则；不要直接修改 development 的业务数据作为本产品实现，也不以运行时硬编码掩盖缺表。
 - 复杂构造与对象初始化器使用多行排版，每个成员赋值独占一行。配置对象先用有意义的局部变量构造，再传给 Startup 等方法；不要把嵌套构造、多项初始化与方法调用挤在同一行。
@@ -86,3 +89,5 @@ Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/R
 交付说明实际改动、验证结果及缺口，区分“导出成功”“编译成功”“运行验证”“模板验收”。原有基线文档里的历史通过记录不能代替本次验证。
 
 沿用 `.gitignore`：Unity Library/Temp/Logs/Obj、构建产物、局部工具及大体积研究输出不提交；保留正式 Assets/.meta、Packages、ProjectSettings、产品配置源文件、研究文档和复现脚本。Git 提交/推送、数据库模板发布以用户当次授权为准。
+
+玩家摇杆按用户确认固定于主界面底部；只在按下时检查 UI 阻挡，已捕获手势经过其他 UI 不取消，松手归中。页面主动关闭输入、失焦及暂停仍取消。

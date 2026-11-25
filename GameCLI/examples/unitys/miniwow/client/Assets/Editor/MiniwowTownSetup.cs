@@ -32,7 +32,13 @@ public static class MiniwowTownSetup
 
         try
         {
-            if (action == "install")
+            if (action == "app")
+                EditorSceneManager.OpenScene(JsonConvert.DeserializeObject<Config.SceneConfig>(File.ReadAllText("Assets/Data/Jsons/Excels/SceneConfig.bytes")).data[Config.Excel.SCENE_APP].Path);
+            else if (action == "original-navigation")
+                MiniwowOriginalNavigation.Import();
+            else if (action == "player")
+                MiniwowPlayerSetup.Install();
+            else if (action == "install")
                 Install();
             else
                 Inspect();
@@ -236,7 +242,7 @@ public static class MiniwowTownSetup
     /// <summary>Creates native atlas, material and skeleton assets without changing recovered input.</summary>
     /// <param name="name">Recovered resource directory name.</param>
     /// <returns>The imported skeleton data asset.</returns>
-    private static SkeletonDataAsset ImportSkeleton(string name)
+    public static SkeletonDataAsset ImportSkeleton(string name)
     {
         string directory = "Assets/Data/Scenes/Town/Spine/" + name;
         string texturePath = directory + "/" + name + ".png";

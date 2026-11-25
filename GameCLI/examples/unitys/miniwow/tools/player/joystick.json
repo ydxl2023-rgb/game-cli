@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIActorJoystick",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIActorJoystick",
+      "name": "UIActorJoystick",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "Stick",
+          "name": "Stick",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 321,
+            "height": 321
+          },
+          "children": [
+            {
+              "id": "Base",
+              "name": "Base",
+              "element": "Image",
+              "rect": {
+                "x": 31.5,
+                "y": 31.5,
+                "width": 256.8,
+                "height": 256.8
+              },
+              "children": []
+            },
+            {
+              "id": "Knob",
+              "name": "Knob",
+              "element": "Image",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 321,
+                "height": 321
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Direction",
+          "name": "Direction",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 55.5,
+            "height": 300
+          },
+          "children": [
+            {
+              "id": "DirectionImage",
+              "name": "DirectionImage",
+              "element": "Image",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 55.5,
+                "height": 34.5
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

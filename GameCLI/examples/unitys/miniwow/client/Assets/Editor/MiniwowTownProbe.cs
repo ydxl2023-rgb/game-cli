@@ -113,7 +113,7 @@ public static class MiniwowTownProbe
         Require(replacement.Bind(actor) && replacement.transform.position == position, "Replacement shape");
         UnityEngine.Object.DestroyImmediate(replacement.gameObject);
         Require(actor.position == position && actor.arrivals == 1 && actor.phase == ActorPhase.Waiting, "Shape destruction cannot destroy data");
-        Require(((TownEntity)entity).actorCount == 3, "All NPCs have entities");
+        Require(((TownEntity)entity).actorCount == 4, "All NPCs have entities");
 
         return true;
     }

@@ -53,3 +53,5 @@ C# 中保留了反编译器提示：HotUpdate 有 4,860 条 `Unknown result type
 未获得服务端源码、完整原始工程、全部插件/分包；未运行原作验证机制；未验证代码可重新编译；未将任何系统发布为 GameCLI 模板；未改动 Unity 工程。后续应在已证实的客户端流程基础上设计自己的数据契约和系统，再用独立测试验证所写逻辑。
 
 最终文件校验见 `evidence/final-validation.json`：Unity 的 Assets、Packages、ProjectSettings 共 102 个文件与研究开始哈希一致，191 个原始输入文件未变；6,183 个索引内 C#/JS 文件哈希全部一致。研究产物及局部工具已设置忽略规则，文档与复现脚本保留为可版本管理文件；本次没有提交或推送。
+
+主城可控玩家、浮动摇杆及移动/建筑触发研究见 [PLAYER-CONTROL-STUDY.md](PLAYER-CONTROL-STUDY.md)（2026-11-25，静态证据；未改客户端）。

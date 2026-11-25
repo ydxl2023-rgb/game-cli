@@ -13,7 +13,7 @@ public sealed class TownReadyChanged : IEvent
 }
 
 /// <summary>Owns the town scene lifecycle and coordinates scene interaction.</summary>
-public sealed class TownSystem : XEventModule
+public sealed class TownSystem : RuntimeSystem
 {
     /// <summary>Serializes ownership transfer between old and newly loaded module instances.</summary>
     private static bool sceneOperationInProgress;
@@ -114,6 +114,20 @@ public sealed class TownSystem : XEventModule
             return false;
 
         return actor.Return();
+    }
+
+    /// <summary>Routes player intent to its authoritative entity and honors presentation gates.</summary>
+    /// <param name="direction">World-space analog intent; zero always releases movement.</param>
+    /// <returns>Whether the actor accepted the input.</returns>
+    public bool SetPlayerInput(Vector3 direction)
+    {
+        if (!context || (!IsReady() && direction != Vector3.zero) || (!context.AcceptsInput() && direction != Vector3.zero))
+            return false;
+
+        var entity = GetTownEntity();
+        var actor = entity ? entity.FindActor(context.GetPlayerId()) : null;
+
+        return actor && actor.SetMoveInput(direction);
     }
 
     /// <summary>Enables scene gestures only while the camp presentation is visible.</summary>

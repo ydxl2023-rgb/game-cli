@@ -10,6 +10,9 @@ public static class ActorAnimationNames
 
     /// <summary>Locomotion actor animation.</summary>
     public const string walk = "walk";
+
+    /// <summary>Original player locomotion animation.</summary>
+    public const string run = "run";
 }
 
 /// <summary>Projects an actor entity into a Transform and Spine animation without mutating its data.</summary>

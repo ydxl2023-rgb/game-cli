@@ -6,7 +6,7 @@ using Oathx.Widget;
 using UnityEngine;
 
 /// <summary>Owns the Home page and waits for TownSystem before handing over from Launch.</summary>
-public sealed class HomeSystem : XEventModule
+public sealed class HomeSystem : RuntimeSystem
 {
     /// <summary>Invalidates asynchronous callbacks when this system is deactivated.</summary>
     private int generation;

@@ -102,6 +102,31 @@ public sealed class GamePlugin : XPlugin
         // Match the framework's generated read-only table registration contract.
         typeof(Config.Excel).GetField(nameof(Config.Excel.sceneConfig)).SetValue(null, table.data);
 
+        TextAsset actorAsset = null;
+        yield return XRes.LoadAsync<TextAsset>("Assets/Data/Jsons/Excels/ActorConfig.bytes", loaded => actorAsset = loaded as TextAsset);
+        if (generation != startupGeneration)
+            yield break;
+
+        Config.ActorConfig actorTable = null;
+        try
+        {
+            if (actorAsset)
+                actorTable = JsonConvert.DeserializeObject<Config.ActorConfig>(actorAsset.text);
+        }
+        catch (JsonException exception)
+        {
+            Debug.LogException(exception);
+        }
+
+        if (actorTable?.data == null || !actorTable.data.TryGetValue(Config.Excel.ACTOR_TOWN_PLAYER, out var player) || !ActorConfiguration.Valid(player))
+        {
+            Debug.LogError("MINIWOW_ACTOR_CONFIG_INVALID");
+
+            yield break;
+        }
+
+        typeof(Config.Excel).GetField(nameof(Config.Excel.actorConfig)).SetValue(null, actorTable.data);
+
         Load<TownSystem>();
         Load<HomeSystem>();
     }
