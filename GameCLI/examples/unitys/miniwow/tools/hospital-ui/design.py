@@ -9,6 +9,11 @@ OUT = Path(__file__).resolve().parent
 records = json.loads((OUT/'resource-index.json').read_text(encoding='utf-8'))['resources']
 sources = {r['name']:r for r in records if r['png']}
 
+for name in ['small_zuanshi','small_time']:
+    path=f'extracted-resources/fairygui/CommonIcon/{name}.png'
+    meta=json.loads((ROOT/path).with_suffix('.json').read_text(encoding='utf8'))
+    sources[name]=dict(name=name,png=path,sourceAssetID=meta['id'])
+
 
 def node(name, kind, x, y, w, h, children=None):
     return dict(id=name,name=name,element=kind,rect=dict(x=x,y=y,width=w,height=h),children=children or [])
@@ -16,8 +21,9 @@ def node(name, kind, x, y, w, h, children=None):
 
 def label(name,x,y,w,h,size=32):
     n = node(name,'Text',x,y,w,h)
-    static = {'CloseLabel':30210,'ClaimLabel':30124,'MaterialTitle':30221,'ProductTitle':30222,'RepairLabel':30203,
-              'ForgeTitle':30224,'HotelTitle':30225,'AuctionTitle':30226}
+    static = {'CloseLabel':30210,'ClaimLabel':30124,'MaterialTitle':30406,'ProductTitle':30407,'RepairLabel':30203,
+              'ForgeTitle':30224,'HotelTitle':30225,'AuctionTitle':30226,'NpcTitle':30201,
+              'UpgradeHint':30401,'AutoLabel':30402,'EmptyText':30403,'CraftHint':30404}
     common = json.loads((ROOT/'client/Assets/Data/Jsons/Excels/CommonTextConfig.bytes').read_text())['data']
     language = json.loads((ROOT/'client/Assets/Data/Jsons/Excels/LanguageConfig.bytes').read_text())['data']
     content = language[common[str(static[name])]['Context']] if name in static else ''
@@ -35,34 +41,57 @@ def write(name,children,bindings):
     assets = []
     for resource,targets in bindings.items():
         source = sources[resource]
-        shared = 'Common/Icons' if 'CommonIcon' in source['png'] else 'Home/Hospital'
+        shared = 'Common/Icons' if 'CommonIcon' in source['png'] else 'Hospital/Resources'
         assets.append(dict(id=resource,file='../../'+source['png'].replace('\\','/'),
                            path=f'Assets/Data/Widgets/{shared}/{resource}.png',usedBy=targets))
     (OUT/(name+'.json')).write_text(json.dumps(design,ensure_ascii=False,indent=2),encoding='utf-8')
     (OUT/(name+'.materials.json')).write_text(json.dumps(dict(schemaVersion='1',uiName=name,assets=assets),indent=2),encoding='utf-8')
 
 
+def text(name,x,y,w,h,size=28,color='#725939'):
+    n=label(name,x,y,w,h,size)
+    n['text'].update(color=color)
+    return n
+
 write('UIHomeHospital',[
     node('PageBackground','Image',0,0,1080,1920),
     node('Room','Container',0,0,1080,650,[node('RoomSpine','Container',0,0,1080,650),
-        node('Patient','Container',680,470,170,190),node('ProductionTarget','Container',535,395,10,10)]),
-    label('Gold',30,40,500,70),label('Treatment',30,545,630,90,28),
-    node('Header','Image',0,650,1080,90,[label('Title',20,650,480,90,42),label('Revenue',520,650,530,90,28)]),
-    node('BonusPanel','Image',30,770,1020,140,[label('Bonus',40,785,1000,110,32)]),
-    node('ProductPanel','Image',30,940,1020,320,[label('ProductTitle',60,950,220,55),
-        node('ProductIcon','Image',80,1015,180,180),label('ProductName',310,985,680,70,36),
-        label('ProductStock',310,1060,680,55),label('Detail',300,1120,710,120,29)]),
-    node('MaterialPanel','Image',0,1330,1080,250,[label('MaterialTitle',40,1290,230,65),
-        node('CraftClick','Button',75,1360,200,190,[node('MaterialIcon','Image',90,1365,170,165)]),
-        label('MaterialStock',320,1360,700,75),label('Feedback',300,1440,720,110,29)]),
-    node('FlyingMaterial','Image',90,1365,100,100),
-    label('TaskText',40,1610,1000,95,31),
-    node('ClaimVisible','Container',680,1720,340,80,[button('ClaimClick','ClaimLabel',680,1720,340,80)]),
-    node('Footer','Image',0,1820,1080,100,[button('CloseClick','CloseLabel',30,1830,320,75)])
+        node('Priest','Container',440,260,200,220),node('CounterSpine','Container',0,0,1080,650),
+        node('Patient','Container',680,470,170,190),node('ProductionTarget','Container',535,395,10,10),
+        text('NpcTitle',450,245,180,35,25,'#41B335')]),
+    node('GoldIcon','Image',25,145,45,45),label('Gold',72,142,130,48,27),
+    node('GemIcon','Image',235,145,42,42),label('Gem',280,142,130,48,27),
+    label('Treatment',250,535,580,50,24),
+    node('Header','Image',0,650,1080,80,[label('Title',15,660,300,55,36),
+        node('RevenueIcon','Image',690,667,48,48),label('Revenue',742,664,145,50,28),
+        node('UpgradeClick','Button',900,658,155,65)]),
+    node('BonusPanel','Image',125,780,830,175,[
+        node('PriceIcon','Image',145,790,55,55),label('PriceBonus',205,792,150,50,27),
+        node('TimeIcon','Image',430,790,55,55),label('TimeBonus',490,792,140,50,27),
+        node('CapacityIcon','Image',715,790,55,55),label('CapacityBonus',775,792,120,50,27),
+        text('UpgradeHint',155,880,735,45,25)]),
+    node('ProductPanel','Image',120,960,835,290,[
+        node('ProductTab','Image',115,950,115,55),text('ProductTitle',120,957,105,40,25,'#FFF2D5'),
+        node('AutoCraftClick','Button',770,975,42,42),text('AutoLabel',815,975,135,42,22),
+        node('EmptyVisible','Container',220,1075,635,75,[text('EmptyText',230,1085,615,55,27)]),
+        node('ProductsVisible','Container',150,1030,765,190,[node('ProductIcon','Image',170,1040,125,140),
+            label('ProductName',325,1020,560,55,29),label('ProductStock',325,1080,560,45,25),
+            label('Detail',315,1125,585,80,22)])]),
+    node('MaterialPanel','Image',0,1535,1080,125,[
+        node('MaterialTab','Image',120,1510,125,55),text('MaterialTitle',125,1517,115,40,23,'#FFF2D5'),
+        node('CraftClick','Button',465,1545,150,115,[node('MaterialIcon','Image',482,1545,110,90),
+            label('MaterialStock',492,1620,95,35,23)])]),
+    node('FlyingMaterial','Image',482,1545,90,90),
+    text('CraftHint',200,1685,680,45,25),
+    label('Feedback',170,1715,740,40,23),
+    node('Footer','Image',0,1755,1080,165,[node('CloseClick','Button',20,1780,110,95),
+        label('TaskText',160,1775,730,50,24),
+        node('ClaimVisible','Container',725,1840,300,65,[button('ClaimClick','ClaimLabel',725,1840,300,65)])])
 ], {'common_bg_18':['PageBackground'],'shop_bg_1':['Header'],'common_bg_8_0':['BonusPanel'],
     'common_bg_11':['ProductPanel'],'cons_bg_6':['MaterialPanel'],'hub_bg_7':['Footer'],
-    'cons_bg_7':['CraftClick','ClaimClick','CloseClick'],'HpMaterial_1':['MaterialIcon','FlyingMaterial'],
-    'HpItem_1':['ProductIcon']})
+    'cons_bg_7':['ClaimClick'],'HpMaterial_1':['MaterialIcon','FlyingMaterial'],'HpItem_1':['ProductIcon'],
+    'common_button_7':['CloseClick'],'shop_button_8':['UpgradeClick'],'common_title_16':['ProductTab','MaterialTab'],
+    'big_gold':['GoldIcon','RevenueIcon','PriceIcon'],'small_zuanshi':['GemIcon'],'small_time':['TimeIcon']})
 write('UIHomeHospitalEntry',[
     node('EntryVisible','Container',410,700,260,180,[
         node('RepairVisible','Container',410,700,260,180,[node('RepairClick','Button',410,700,260,180,[
@@ -96,7 +125,7 @@ for source in sources.values():
     imports.append(dict(sourceAssetID=source['sourceAssetID'],source=source['png'],
                         destination=str(dst.relative_to(ROOT/'client')),sha256=hashlib.sha256(src.read_bytes()).hexdigest()))
 name = 'e_ui_bg_priest_1'
-destination = ROOT/'client/Assets/Data/Widgets/Home/Hospital/Spine'
+destination = ROOT/'client/Assets/Data/Widgets/Hospital/Resources/Spine'
 destination.mkdir(parents=True,exist_ok=True)
 for suffix in ['.atlas.txt','.skel.bytes','.png']:
     src = ROOT/f'extracted-resources/assets/data/spines/{name}/{name}{suffix}'
@@ -106,3 +135,27 @@ for suffix in ['.atlas.txt','.skel.bytes','.png']:
                         sha256=hashlib.sha256(src.read_bytes()).hexdigest()))
 (OUT/'imports.json').write_text(json.dumps(imports,ensure_ascii=False,indent=2),encoding='utf-8')
 print('Prepared hospital page, world entry and original Spine dependencies.')
+
+priest = ROOT/'extracted-resources/assets/data/spines/npc_priest_2'
+target = ROOT/'client/Assets/Data/Widgets/Hospital/Resources/Priest'
+target.mkdir(parents=True,exist_ok=True)
+for name in ['npc_priest_2.skel.bytes','npc_priest.atlas.txt','npc_priest.png']:
+    shutil.copyfile(priest/name,target/name)
+
+atlas = target/'npc_priest.atlas.txt'
+atlas.write_text(atlas.read_text(encoding='utf8').replace('NPC_priest.png','npc_priest.png'),encoding='utf8')
+
+for entry in json.loads((OUT/'UIHomeHospital.materials.json').read_text())['assets']:
+    original=(OUT/entry['file']).resolve()
+    imports.append(dict(source=str(original.relative_to(ROOT)),destination=entry['path'],
+        sourceAssetID=sources[entry['id']]['sourceAssetID'],uses=entry['usedBy'],
+        sha256=hashlib.sha256(original.read_bytes()).hexdigest()))
+for name in ['npc_priest_2.skel.bytes','npc_priest.atlas.txt','npc_priest.png']:
+    original=priest/name
+    imported=target/name
+    imports.append(dict(source=str(original.relative_to(ROOT)),destination=str(imported.relative_to(ROOT/'client')),
+        sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
+        importedSha256=hashlib.sha256(imported.read_bytes()).hexdigest(),
+        conversion='Atlas page NPC_priest.png normalized to imported texture name npc_priest.png' if name.endswith('.txt') else 'Original bytes',
+        uses=['Hospital independent priest Spine']))
+(OUT/'imports.json').write_text(json.dumps(imports,ensure_ascii=False,indent=2),encoding='utf8')

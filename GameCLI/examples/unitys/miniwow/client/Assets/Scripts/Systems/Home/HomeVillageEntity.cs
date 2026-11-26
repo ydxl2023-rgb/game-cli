@@ -67,6 +67,10 @@ public sealed class HomeVillageSave
     public long purchases
     { get; set; }
 
+    /// <summary>Committed purchase quantities by original shop offer ID.</summary>
+    public Dictionary<int, long> shopPurchases
+    { get; set; } = new Dictionary<int, long>();
+
     /// <summary>Cumulative production batches.</summary>
     public long crafts
     { get; set; }
@@ -190,13 +194,7 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
                     return false;
                 break;
             case HomeVillageAction.Purchase:
-                if (Count(configuration.GoldID) < configuration.PurchasePrice)
-                    return false;
-
-                next.items[configuration.GoldID] -= configuration.PurchasePrice;
-                Add(next, configuration.MaterialID, 1);
-                next.purchases++;
-                break;
+                throw new InvalidOperationException("Purchases require the trading system's explicit confirmation.");
             case HomeVillageAction.Craft:
                 if (buildings.Level(configuration.BuildingID) == 0
                     || Count(service.materialId) < configuration.MaterialCost)
@@ -225,6 +223,46 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
         var next = Snapshot();
         next.recruitmentAcknowledged = true;
         Commit(next);
+    }
+
+    /// <summary>Reads committed offer usage, including the original onboarding purchase.</summary>
+    /// <param name="offer">Original configured offer.</param>
+    /// <returns>Total purchased packs.</returns>
+    public long Purchased(Config.ShopGoods offer)
+    {
+        if (state.shopPurchases.TryGetValue(offer.ID, out long count))
+            return count;
+
+        return offer.ItemID == configuration.MaterialID ? state.purchases : 0;
+    }
+
+    /// <summary>Commits price, delivered items and offer usage in the same existing save.</summary>
+    /// <param name="offer">Validated configured offer.</param>
+    /// <param name="quantity">Requested pack count.</param>
+    /// <returns>The atomic transaction result.</returns>
+    public ShopPurchaseResult Purchase(Config.ShopGoods offer, int quantity)
+    {
+        if (quantity <= 0)
+            return ShopPurchaseResult.InvalidQuantity;
+
+        long purchased = Purchased(offer);
+        if (quantity > offer.Limit - purchased)
+            return ShopPurchaseResult.SoldOut;
+
+        long cost = checked((long)offer.Price * quantity);
+        if (Count(offer.CurrencyID) < cost)
+            return ShopPurchaseResult.NoGold;
+
+        var next = Snapshot();
+        next.items[offer.CurrencyID] -= cost;
+        Add(next, offer.ItemID, checked((long)offer.Amount * quantity));
+        next.shopPurchases[offer.ID] = checked(purchased + quantity);
+        if (offer.ItemID == configuration.MaterialID)
+            next.purchases = checked(next.purchases + quantity);
+
+        Commit(next);
+
+        return ShopPurchaseResult.Success;
     }
 
     /// <summary>Consumes medicine only after the logical actor actually reaches the hospital.</summary>

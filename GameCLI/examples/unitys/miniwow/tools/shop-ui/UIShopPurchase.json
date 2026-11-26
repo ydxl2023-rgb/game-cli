@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIShopPurchase",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIShopPurchase",
+      "name": "UIShopPurchase",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "Shade",
+          "name": "Shade",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": []
+        },
+        {
+          "id": "Panel",
+          "name": "Panel",
+          "element": "Image",
+          "rect": {
+            "x": 75,
+            "y": 490,
+            "width": 930,
+            "height": 980
+          },
+          "children": []
+        },
+        {
+          "id": "Icon",
+          "name": "Icon",
+          "element": "Image",
+          "rect": {
+            "x": 120,
+            "y": 565,
+            "width": 170,
+            "height": 170
+          },
+          "children": []
+        },
+        {
+          "id": "Name",
+          "name": "Name",
+          "element": "Text",
+          "rect": {
+            "x": 315,
+            "y": 535,
+            "width": 600,
+            "height": 80
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 42,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Description",
+          "name": "Description",
+          "element": "Text",
+          "rect": {
+            "x": 315,
+            "y": 625,
+            "width": 600,
+            "height": 130
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 28,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Stock",
+          "name": "Stock",
+          "element": "Text",
+          "rect": {
+            "x": 120,
+            "y": 780,
+            "width": 400,
+            "height": 60
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Owned",
+          "name": "Owned",
+          "element": "Text",
+          "rect": {
+            "x": 550,
+            "y": 780,
+            "width": 400,
+            "height": 60
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "QuantityLabel",
+          "name": "QuantityLabel",
+          "element": "Text",
+          "rect": {
+            "x": 240,
+            "y": 860,
+            "width": 600,
+            "height": 65
+          },
+          "children": [],
+          "text": {
+            "content": "购买数量",
+            "fontSize": 32,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "MinusClick",
+          "name": "MinusClick",
+          "element": "Button",
+          "rect": {
+            "x": 210,
+            "y": 950,
+            "width": 130,
+            "height": 90
+          },
+          "children": [
+            {
+              "id": "MinusLabel",
+              "name": "MinusLabel",
+              "element": "Text",
+              "rect": {
+                "x": 210,
+                "y": 950,
+                "width": 130,
+                "height": 90
+              },
+              "children": [],
+              "text": {
+                "content": "−",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "Quantity",
+          "name": "Quantity",
+          "element": "Text",
+          "rect": {
+            "x": 350,
+            "y": 950,
+            "width": 380,
+            "height": 90
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 40,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "PlusClick",
+          "name": "PlusClick",
+          "element": "Button",
+          "rect": {
+            "x": 740,
+            "y": 950,
+            "width": 130,
+            "height": 90
+          },
+          "children": [
+            {
+              "id": "PlusLabel",
+              "name": "PlusLabel",
+              "element": "Text",
+              "rect": {
+                "x": 740,
+                "y": 950,
+                "width": 130,
+                "height": 90
+              },
+              "children": [],
+              "text": {
+                "content": "+",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "Total",
+          "name": "Total",
+          "element": "Text",
+          "rect": {
+            "x": 170,
+            "y": 1070,
+            "width": 740,
+            "height": 80
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 36,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Feedback",
+          "name": "Feedback",
+          "element": "Text",
+          "rect": {
+            "x": 120,
+            "y": 1160,
+            "width": 840,
+            "height": 90
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "ConfirmClick",
+          "name": "ConfirmClick",
+          "element": "Button",
+          "rect": {
+            "x": 340,
+            "y": 1270,
+            "width": 400,
+            "height": 90
+          },
+          "children": [
+            {
+              "id": "ConfirmLabel",
+              "name": "ConfirmLabel",
+              "element": "Text",
+              "rect": {
+                "x": 340,
+                "y": 1270,
+                "width": 400,
+                "height": 90
+              },
+              "children": [],
+              "text": {
+                "content": "确认购买",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "CancelClick",
+          "name": "CancelClick",
+          "element": "Button",
+          "rect": {
+            "x": 360,
+            "y": 1400,
+            "width": 360,
+            "height": 70
+          },
+          "children": [
+            {
+              "id": "CancelLabel",
+              "name": "CancelLabel",
+              "element": "Text",
+              "rect": {
+                "x": 360,
+                "y": 1400,
+                "width": 360,
+                "height": 70
+              },
+              "children": [],
+              "text": {
+                "content": "取消",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

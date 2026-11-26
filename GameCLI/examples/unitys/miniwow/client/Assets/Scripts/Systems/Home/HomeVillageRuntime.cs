@@ -41,14 +41,6 @@ public sealed class HomeVillageRuntime
         var village = home.village;
         scene.ShowVillage(home.opening, village);
         MoveToHospital(home.FindActor(scene.GetPlayerId()), elapsed);
-        var tasks = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-        var task = tasks.GetTrackedTask();
-        if (village.recovery == HeroRecoveryPhase.Idle
-            && Config.Excel.villageTaskConfig.TryGetValue(task.configuration.ID, out var step)
-            && (HomeVillageAction)step.Action == HomeVillageAction.Heal
-            && village.Execute(step.ID, tasks))
-            XPluginUtility.PostEvent(new HomeVillageChanged());
-
         if (village.recovery == HeroRecoveryPhase.Traveling)
         {
             var actor = home.FindActor(village.configuration.ActorID);
@@ -66,17 +58,10 @@ public sealed class HomeVillageRuntime
                 traveling = true;
             }
 
-            if (actor.phase == ActorPhase.Waiting && village.BeginHealing())
-                XPluginUtility.PostEvent(new HomeVillageChanged());
+            if (actor.phase == ActorPhase.Waiting)
+                XPluginUtility.FireEvent(new HospitalPatientArrived());
         }
 
-        if (village.recovery == HeroRecoveryPhase.Healing)
-        {
-            if (village.remainingSeconds <= 0 && village.CompleteHealing())
-                XPluginUtility.PostEvent(new HomeVillageChanged());
-            else
-                XPluginUtility.PostEvent(new HomeVillageTreatmentProgress());
-        }
     }
 
     /// <summary>Requests a real player route on the recovered navigation mesh.</summary>
@@ -102,7 +87,6 @@ public sealed class HomeVillageRuntime
             var task = Config.Excel.taskConfig[step.ID];
 
             var observation = new TaskProgressReported {
-                taskId = task.ID,
                 condition = task.TaskConditionType,
                 param1 = task.Param1,
                 value = village.Progress((HomeVillageAction)step.Action)

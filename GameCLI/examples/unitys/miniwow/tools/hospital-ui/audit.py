@@ -10,8 +10,8 @@ sys.path.insert(0,str(ROOT/'tools/opening'))
 from audit_original_ui import package
 
 groups = [('building',['BuildingOpBubble','BuildingEntranceBubble']),
-          ('consumable',['ConsumableShopPage','ShopScene','Material','Consumable']),
-          ('common',['BuildingPanel'])]
+          ('consumable',['ConsumableShopPage','ShopScene','Material','Consumable','Addition','AutoCraftButton']),
+          ('common',['BuildingPanel','BackButton','UpgradeButton','GoldLabel'])]
 layout = [package(ROOT/f'extracted-resources/assets/data/ui/atlas/{name}/{name}_fui.bytes',names)
           for name,names in groups]
 (OUT/'original-ui-audit.json').write_text(json.dumps(layout,ensure_ascii=False,indent=2),encoding='utf-8')

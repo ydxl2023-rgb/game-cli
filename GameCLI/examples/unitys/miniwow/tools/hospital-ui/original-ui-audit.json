@@ -648,6 +648,79 @@
     "components": [
       {
         "type": 3,
+        "id": "nl42h",
+        "name": "Addition",
+        "sourcePath": "/Components/",
+        "file": null,
+        "exported": false,
+        "width": 126,
+        "height": 48,
+        "extension": 11,
+        "children": [
+          {
+            "type": 4,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n12_nl42",
+            "name": "n12",
+            "x": 0,
+            "y": 0,
+            "size": [
+              48,
+              48
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n17_nl42",
+            "name": "title",
+            "x": 57,
+            "y": 10,
+            "size": [
+              69,
+              32
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 0,
+            "sourceId": "o4kcbk34d5",
+            "packageId": "g1d8o2bx",
+            "id": "n18_nl42",
+            "name": "n18",
+            "x": 21,
+            "y": 48,
+            "alpha": 1.0,
+            "rotation": -90.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 0,
+            "sourceId": "q4ovbk34ay",
+            "packageId": "g1d8o2bx",
+            "id": "n19_nl42",
+            "name": "n19",
+            "x": 26,
+            "y": 25,
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          }
+        ]
+      },
+      {
+        "type": 3,
         "id": "nl42i",
         "name": "Consumable",
         "sourcePath": "/Components/",
@@ -937,6 +1010,62 @@
             "size": [
               554,
               72
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "id": "ob3zo",
+        "name": "AutoCraftButton",
+        "sourcePath": "/Components/",
+        "file": null,
+        "exported": false,
+        "width": 127,
+        "height": 38,
+        "extension": 12,
+        "children": [
+          {
+            "type": 0,
+            "sourceId": "qbe3bk345t",
+            "packageId": "g1d8o2bx",
+            "id": "n52_ob3z",
+            "name": "n52",
+            "x": 0,
+            "y": 2,
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 0,
+            "sourceId": "q2mybk340e",
+            "packageId": "g1d8o2bx",
+            "id": "n53_ob3z",
+            "name": "n53",
+            "x": 4,
+            "y": 0,
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n54_ob3z",
+            "name": "n54",
+            "x": 43,
+            "y": 4,
+            "size": [
+              84,
+              29
             ],
             "alpha": 1.0,
             "rotation": 0.0,
@@ -1579,6 +1708,160 @@
     "source": "extracted-resources\\assets\\data\\ui\\atlas\\common\\common_fui.bytes",
     "sha256": "0224d5e27c5834aa0f0c72c6d5aeb031e75a800137bfc93734bae16229838202",
     "components": [
+      {
+        "type": 3,
+        "id": "ws012n",
+        "name": "GoldLabel",
+        "sourcePath": "/Components/BuildingPanel/",
+        "file": null,
+        "exported": false,
+        "width": 142,
+        "height": 48,
+        "extension": 11,
+        "children": [
+          {
+            "type": 0,
+            "sourceId": "fr4hbk34ci",
+            "packageId": null,
+            "id": "n8_kzmr",
+            "name": "n8",
+            "x": 24,
+            "y": 7,
+            "size": [
+              118,
+              36
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "hub_bg_2"
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n9_kzmr",
+            "name": "title",
+            "x": 54,
+            "y": 7,
+            "size": [
+              86,
+              36
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 4,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n10_kzmr",
+            "name": "icon",
+            "x": 0,
+            "y": 0,
+            "size": [
+              48,
+              48
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "id": "ws012p",
+        "name": "UpgradeButton",
+        "sourcePath": "/Components/BuildingPanel/",
+        "file": null,
+        "exported": false,
+        "width": 159,
+        "height": 83,
+        "extension": 12,
+        "pivot": [
+          0.5,
+          0.5,
+          false
+        ],
+        "children": [
+          {
+            "type": 0,
+            "sourceId": "ichk1geiuw2",
+            "packageId": null,
+            "id": "n11_kzmr",
+            "name": "n0",
+            "x": 0,
+            "y": 0,
+            "size": [
+              159,
+              83
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "shop_button_8"
+          },
+          {
+            "type": 3,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n13_gbgy",
+            "name": "effect",
+            "x": 79,
+            "y": 41,
+            "size": [
+              0,
+              0
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": false
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "id": "kjuqbk33x2",
+        "name": "BackButton",
+        "sourcePath": "/Button/",
+        "file": null,
+        "exported": true,
+        "width": 116,
+        "height": 96,
+        "extension": 12,
+        "pivot": [
+          0.5,
+          0.5,
+          false
+        ],
+        "children": [
+          {
+            "type": 0,
+            "sourceId": "zfoibk342t",
+            "packageId": null,
+            "id": "n1_nve5",
+            "name": "n1",
+            "x": 0,
+            "y": 0,
+            "size": [
+              116,
+              96
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "common_button_7"
+          }
+        ]
+      },
       {
         "type": 3,
         "id": "nl422z",

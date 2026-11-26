@@ -91,18 +91,199 @@
     "sha256": "b1024f224ea66e05acc79ae22efe6d078ccd249650f781ac914ebbc9a6cae9d3"
   },
   {
+    "sourceAssetID": "a0260d6a9bd5e1ba2a513dc4c352f6af331e3db361d4002c0b4d24346c25aa2b",
+    "source": "extracted-resources/fairygui/CommonIcon/small_zuanshi.png",
+    "destination": "Assets\\Data\\Widgets\\Common\\Icons\\small_zuanshi.png",
+    "sha256": "8037bfa565140332f37aa01e9741bf353dccb902fee635588dd4a1764f0813df"
+  },
+  {
+    "sourceAssetID": "a14d3222b69460d971cca5c4ba2db1571a1ead5444c5b98978ad3894bf49d3fd",
+    "source": "extracted-resources/fairygui/CommonIcon/small_time.png",
+    "destination": "Assets\\Data\\Widgets\\Common\\Icons\\small_time.png",
+    "sha256": "ef326bd71649d12ad0982eac0f56c6c823e54fdaf2490b1525c7baa7f0344d0d"
+  },
+  {
     "source": "extracted-resources\\assets\\data\\spines\\e_ui_bg_priest_1\\e_ui_bg_priest_1.atlas.txt",
-    "destination": "Assets\\Data\\Widgets\\Home\\Hospital\\Spine\\e_ui_bg_priest_1.atlas.txt",
+    "destination": "Assets\\Data\\Widgets\\Hospital\\Resources\\Spine\\e_ui_bg_priest_1.atlas.txt",
     "sha256": "00f3a8136b3b41826f7c40c76301adc833071c355233665b533e207ff59367ec"
   },
   {
     "source": "extracted-resources\\assets\\data\\spines\\e_ui_bg_priest_1\\e_ui_bg_priest_1.skel.bytes",
-    "destination": "Assets\\Data\\Widgets\\Home\\Hospital\\Spine\\e_ui_bg_priest_1.skel.bytes",
+    "destination": "Assets\\Data\\Widgets\\Hospital\\Resources\\Spine\\e_ui_bg_priest_1.skel.bytes",
     "sha256": "ef51cb66eb4e662c28f2285607cbe53af9a5eb86fb33f46385fa6701d67040f8"
   },
   {
     "source": "extracted-resources\\assets\\data\\spines\\e_ui_bg_priest_1\\e_ui_bg_priest_1.png",
-    "destination": "Assets\\Data\\Widgets\\Home\\Hospital\\Spine\\e_ui_bg_priest_1.png",
+    "destination": "Assets\\Data\\Widgets\\Hospital\\Resources\\Spine\\e_ui_bg_priest_1.png",
     "sha256": "eaec1e4ad000037d9ad07e8eeaa800e6021b5a7d350be5fccd725e7d3faca50a"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\common_bg_18.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/common_bg_18.png",
+    "sourceAssetID": "61d6a60ad9113acf11c30b9ac02b3413aba248e13c0d127d9b8ab46656be99de",
+    "uses": [
+      "PageBackground"
+    ],
+    "sha256": "ad68a365237192b95cd602033f5bd8693f4f57f152f0ee6725ba99dd438e7144"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\shop_bg_1.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/shop_bg_1.png",
+    "sourceAssetID": "f0b9d50515deff869af9bc39e64397569ec488d7718f6c187f9fd4e17b437b97",
+    "uses": [
+      "Header"
+    ],
+    "sha256": "9d19c5f2f390cc88ed878cfb1a6cfa414017d91ed0b64578117ed886bf068b69"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\common_bg_8_0.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/common_bg_8_0.png",
+    "sourceAssetID": "fdabc799cb72b93b772dd70939ca72220b663c6eaed355e46154b3831485d259",
+    "uses": [
+      "BonusPanel"
+    ],
+    "sha256": "6ceaadfc027277f18f7f81307dc9c4b4bf086502f15910d40440b34e564a66a1"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\common_bg_11.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/common_bg_11.png",
+    "sourceAssetID": "240bbc46da902e20c8da888ad861b5842fb1d15bc641cf1a28d96d1fde90b506",
+    "uses": [
+      "ProductPanel"
+    ],
+    "sha256": "a5e99be93f4a144836426e84aa7845e67c28922bd0a37a303d3a06d0d70c71be"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Consumable\\Images\\cons_bg_6.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/cons_bg_6.png",
+    "sourceAssetID": "8ca5bfb6f79273fd7b174c349acca6ac37d24f2ce76abc7f75591375e3ceb1f5",
+    "uses": [
+      "MaterialPanel"
+    ],
+    "sha256": "9607f63df09e58e0de078b9cdbb3bea4ec889ac045cfe9a1d62787d339860e47"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\hub_bg_7.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/hub_bg_7.png",
+    "sourceAssetID": "cb4ddf90ca7942772d4014298dca2a54791b4078cea73ea6f3ab9ca7f50559ca",
+    "uses": [
+      "Footer"
+    ],
+    "sha256": "2b8bb3c8c58a8c40558465ac1f0465146088cc413de9580a18d2312d15275343"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Consumable\\Images\\cons_bg_7.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/cons_bg_7.png",
+    "sourceAssetID": "1daeb4f9b364736f8e0ae0329af50a1f04a53bbc427dfa9cf3ad659de31312ba",
+    "uses": [
+      "ClaimClick"
+    ],
+    "sha256": "666a9a61e14f9ebce02dde69931f9626f148d71a75df2b315ec811cee84c2862"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\CommonIcon\\HpMaterial_1.png",
+    "destination": "Assets/Data/Widgets/Common/Icons/HpMaterial_1.png",
+    "sourceAssetID": "c658c9fd44f21b40a3dd762ec55e68b5071b23560e379455400da2697c6aec52",
+    "uses": [
+      "MaterialIcon",
+      "FlyingMaterial"
+    ],
+    "sha256": "87271758396c0137a4f9dc191f8dd58f54e40382dbe5aa10cd3daa925c03ca67"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\CommonIcon\\HpItem_1.png",
+    "destination": "Assets/Data/Widgets/Common/Icons/HpItem_1.png",
+    "sourceAssetID": "b6c532ab717f42d27880b983d2f5ca974a338c9f3e4eff85391e6e44fb8e2c26",
+    "uses": [
+      "ProductIcon"
+    ],
+    "sha256": "887a8933d17814149a2de1917f54e441833ef5ad4f7dd64bb7bf76a7492803cc"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\common_button_7.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/common_button_7.png",
+    "sourceAssetID": "246a21ea35746e6a839da5cc4a53dbb0b110096be673927f28c212fce9df66f9",
+    "uses": [
+      "CloseClick"
+    ],
+    "sha256": "bb1c9b5e6a62b62ede3f3c12c365a0d94d9d7e4b87f9e34a5b1364c42441cfb9"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\shop_button_8.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/shop_button_8.png",
+    "sourceAssetID": "85e67a64b3ef4a910065fe3d734767a72ffbfd43dcae335d6657a155a64db622",
+    "uses": [
+      "UpgradeClick"
+    ],
+    "sha256": "2bb885086f9657b664fb72f06f2fde552bff0b7541c024b2cdaf9fda5f692484"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\Common\\images\\common_title_16.png",
+    "destination": "Assets/Data/Widgets/Hospital/Resources/common_title_16.png",
+    "sourceAssetID": "ea9143bbd81d93e1bbc61e2ea6a8acb26e48d6a023e3c9de683f89df68ab1b5b",
+    "uses": [
+      "ProductTab",
+      "MaterialTab"
+    ],
+    "sha256": "d6c412d2b2b6fd9c7111f75db499285a7a1fabe5ad9b2b24eff738d8029cffa9"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\CommonIcon\\big_gold.png",
+    "destination": "Assets/Data/Widgets/Common/Icons/big_gold.png",
+    "sourceAssetID": "c4106613877772217efaf8271fb006656b3f3ef3b06fd9b20526b7f33f0cd149",
+    "uses": [
+      "GoldIcon",
+      "RevenueIcon",
+      "PriceIcon"
+    ],
+    "sha256": "ca5fe7cdd64bd039d9ab45f317d079ec112e206f8e286fcd0f02fed24529fb8f"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\CommonIcon\\small_zuanshi.png",
+    "destination": "Assets/Data/Widgets/Common/Icons/small_zuanshi.png",
+    "sourceAssetID": "a0260d6a9bd5e1ba2a513dc4c352f6af331e3db361d4002c0b4d24346c25aa2b",
+    "uses": [
+      "GemIcon"
+    ],
+    "sha256": "8037bfa565140332f37aa01e9741bf353dccb902fee635588dd4a1764f0813df"
+  },
+  {
+    "source": "extracted-resources\\fairygui\\CommonIcon\\small_time.png",
+    "destination": "Assets/Data/Widgets/Common/Icons/small_time.png",
+    "sourceAssetID": "a14d3222b69460d971cca5c4ba2db1571a1ead5444c5b98978ad3894bf49d3fd",
+    "uses": [
+      "TimeIcon"
+    ],
+    "sha256": "ef326bd71649d12ad0982eac0f56c6c823e54fdaf2490b1525c7baa7f0344d0d"
+  },
+  {
+    "source": "extracted-resources\\assets\\data\\spines\\npc_priest_2\\npc_priest_2.skel.bytes",
+    "destination": "Assets\\Data\\Widgets\\Hospital\\Resources\\Priest\\npc_priest_2.skel.bytes",
+    "sha256": "c5be180454cbf3501d5326190bc61f5ac4da2a2d5278cdfbaa7f14c398ef7433",
+    "importedSha256": "c5be180454cbf3501d5326190bc61f5ac4da2a2d5278cdfbaa7f14c398ef7433",
+    "conversion": "Original bytes",
+    "uses": [
+      "Hospital independent priest Spine"
+    ]
+  },
+  {
+    "source": "extracted-resources\\assets\\data\\spines\\npc_priest_2\\npc_priest.atlas.txt",
+    "destination": "Assets\\Data\\Widgets\\Hospital\\Resources\\Priest\\npc_priest.atlas.txt",
+    "sha256": "9baa76677c754d3d13c9ef4c3d8bc1f8537367d436f98e0ba8f633990e8592b4",
+    "importedSha256": "db89b1080fbc69715db5403d3f8002e6392ee35bdc6de7a3f14c109c9da5cbd1",
+    "conversion": "Atlas page NPC_priest.png normalized to imported texture name npc_priest.png",
+    "uses": [
+      "Hospital independent priest Spine"
+    ]
+  },
+  {
+    "source": "extracted-resources\\assets\\data\\spines\\npc_priest_2\\npc_priest.png",
+    "destination": "Assets\\Data\\Widgets\\Hospital\\Resources\\Priest\\npc_priest.png",
+    "sha256": "5d31fd6a470148850371f88e9391e0391560918c84a9106388b43ca5d7d7e3a4",
+    "importedSha256": "5d31fd6a470148850371f88e9391e0391560918c84a9106388b43ca5d7d7e3a4",
+    "conversion": "Original bytes",
+    "uses": [
+      "Hospital independent priest Spine"
+    ]
   }
 ]

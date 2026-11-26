@@ -8,6 +8,13 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>Original room animation names.</summary>
+public static class HospitalRoomAnimations
+{
+    /// <summary>Foreground counter animation from the original room prefab.</summary>
+    public const string counter = "idle2";
+}
+
 /// <summary>Binds native references after formal hospital UGUI generation.</summary>
 [InitializeOnLoad]
 public static class MiniwowHospitalSetup
@@ -16,7 +23,7 @@ public static class MiniwowHospitalSetup
     private const string toolsPath = "../tools/hospital-ui/";
 
     /// <summary>Hospital-specific Spine asset directory.</summary>
-    private const string spinePath = "Assets/Data/Widgets/Home/Hospital/Spine/";
+    private const string spinePath = "Assets/Data/Widgets/Hospital/Resources/Spine/";
 
     /// <summary>Original hospital interior skeleton name.</summary>
     private const string spineName = "e_ui_bg_priest_1";
@@ -35,6 +42,7 @@ public static class MiniwowHospitalSetup
             || EditorApplication.isPlayingOrWillChangePlaymode)
             return;
 
+        bool pageOnly = File.ReadAllText(request).Trim() == "page";
         File.Delete(request);
         try
         {
@@ -62,7 +70,7 @@ public static class MiniwowHospitalSetup
         var rows = JArray.Parse(File.ReadAllText(toolsPath + "slice-borders.json"));
         foreach (JObject row in rows)
         {
-            string path = "Assets/Data/Widgets/Home/Hospital/" + (string)row["name"] + ".png";
+            string path = "Assets/Data/Widgets/Hospital/Resources/" + (string)row["name"] + ".png";
             var importer = (TextureImporter)AssetImporter.GetAtPath(path);
             var border = row["border"];
             importer.spriteBorder = new Vector4((float)border[0], (float)border[1],
@@ -116,7 +124,7 @@ public static class MiniwowHospitalSetup
     /// <param name="skeleton">Imported original interior.</param>
     private static void BindPage(SkeletonDataAsset skeleton)
     {
-        const string path = "Assets/Data/Widgets/Home/UIHomeHospital.prefab";
+        const string path = "Assets/Data/Widgets/Hospital/UIHomeHospital.prefab";
         var root = PrefabUtility.LoadPrefabContents(path);
         try
         {
@@ -132,6 +140,34 @@ public static class MiniwowHospitalSetup
                 nodes["Room"].gameObject.AddComponent<RectMask2D>();
 
             AddSkeleton(nodes["RoomSpine"], skeleton, new Vector2(1080f, 650f));
+            var room = (RectTransform)nodes["RoomSpine"];
+            room.localScale *= 1.2f;
+            var center = new Vector2(540f, -325f);
+            room.anchoredPosition = center + (room.anchoredPosition - center) * 1.2f + Vector2.down * 50f;
+
+            AddSkeleton(nodes["CounterSpine"], skeleton, new Vector2(1080f, 650f));
+            var counter = nodes["CounterSpine"].GetComponent<SkeletonGraphic>();
+            counter.startingAnimation = HospitalRoomAnimations.counter;
+            counter.AnimationState.SetAnimation(0, HospitalRoomAnimations.counter, true);
+            nodes["CounterSpine"].localScale = nodes["RoomSpine"].localScale;
+            ((RectTransform)nodes["CounterSpine"]).anchoredPosition =
+                ((RectTransform)nodes["RoomSpine"]).anchoredPosition;
+            AddSkeleton(nodes["Priest"], ImportPriest(), new Vector2(200f, 220f));
+            var priest = (RectTransform)nodes["Priest"];
+            float roomScale = nodes["RoomSpine"].localScale.x;
+            priest.localScale = Vector3.one * roomScale * (0.9f / 0.641f);
+            priest.anchoredPosition = ((RectTransform)nodes["RoomSpine"]).anchoredPosition
+                + new Vector2(-0.056f, 0.559f) * (roomScale * 10000f / 0.641f);
+            nodes["UpgradeClick"].GetComponent<Button>().interactable = false;
+            nodes["AutoCraftClick"].GetComponent<Button>().interactable = false;
+            nodes["AutoCraftClick"].GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f);
+            nodes["CapacityIcon"].GetComponent<Image>().enabled = false;
+            nodes["CraftClick"].GetComponent<Image>().color = Color.clear;
+            nodes["Title"].GetComponent<Text>().color = new Color(1f, 0.83f, 0.15f);
+            nodes["Gem"].GetComponent<Text>().color = Color.white;
+            foreach (string name in new[] { "PriceBonus", "TimeBonus", "CapacityBonus" })
+                nodes[name].GetComponent<Text>().color = new Color(0.18f, 0.4f, 0.12f);
+
             var hero = AssetDatabase.LoadAssetAtPath<SkeletonDataAsset>(
                 "Assets/Data/Scenes/Town/Spine/hero_20025/Skeleton.asset");
             AddSkeleton(nodes["Patient"], hero, new Vector2(110f, 125f));
@@ -141,6 +177,45 @@ public static class MiniwowHospitalSetup
         {
             PrefabUtility.UnloadPrefabContents(root);
         }
+    }
+
+    /// <summary>Imports the separate original priest referenced by the room prefab.</summary>
+    /// <returns>The persistent priest skeleton.</returns>
+    private static SkeletonDataAsset ImportPriest()
+    {
+        const string path = "Assets/Data/Widgets/Hospital/Resources/Priest/";
+        var texture = (TextureImporter)AssetImporter.GetAtPath(path + "npc_priest.png");
+        texture.textureType = TextureImporterType.Default;
+        texture.mipmapEnabled = false;
+        texture.textureCompression = TextureImporterCompression.Uncompressed;
+        texture.SaveAndReimport();
+        var material = AssetDatabase.LoadAssetAtPath<Material>(path + "Priest.mat");
+        if (!material)
+        {
+            material = new Material(Shader.Find("Spine/SkeletonGraphic"));
+            AssetDatabase.CreateAsset(material, path + "Priest.mat");
+        }
+
+        material.mainTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(path + "npc_priest.png");
+        EditorUtility.SetDirty(material);
+        var atlas = AssetDatabase.LoadAssetAtPath<SpineAtlasAsset>(path + "Atlas.asset");
+        if (!atlas)
+        {
+            atlas = SpineAtlasAsset.CreateRuntimeInstance(
+                AssetDatabase.LoadAssetAtPath<TextAsset>(path + "npc_priest.atlas.txt"), new[] { material }, true);
+            AssetDatabase.CreateAsset(atlas, path + "Atlas.asset");
+        }
+
+        var skeleton = AssetDatabase.LoadAssetAtPath<SkeletonDataAsset>(path + "Skeleton.asset");
+        if (!skeleton)
+        {
+            skeleton = SkeletonDataAsset.CreateRuntimeInstance(
+                AssetDatabase.LoadAssetAtPath<TextAsset>(path + "npc_priest_2.skel.bytes"), atlas, true);
+            skeleton.scale = 1f;
+            AssetDatabase.CreateAsset(skeleton, path + "Skeleton.asset");
+        }
+
+        return skeleton;
     }
 
     /// <summary>Binds the world entry controls without changing its full-stretch root.</summary>

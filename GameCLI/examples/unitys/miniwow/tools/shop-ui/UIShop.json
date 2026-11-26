@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIShop",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIShop",
+      "name": "UIShop",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "Background",
+          "name": "Background",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": []
+        },
+        {
+          "id": "Room",
+          "name": "Room",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 650
+          },
+          "children": [
+            {
+              "id": "RoomSpine",
+              "name": "RoomSpine",
+              "element": "Container",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1080,
+                "height": 650
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Gold",
+          "name": "Gold",
+          "element": "Text",
+          "rect": {
+            "x": 25,
+            "y": 50,
+            "width": 550,
+            "height": 70
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 34,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Header",
+          "name": "Header",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 650,
+            "width": 1080,
+            "height": 95
+          },
+          "children": [
+            {
+              "id": "Title",
+              "name": "Title",
+              "element": "Text",
+              "rect": {
+                "x": 20,
+                "y": 650,
+                "width": 1040,
+                "height": 95
+              },
+              "children": [],
+              "text": {
+                "content": "交易行",
+                "fontSize": 42,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "TierLabel",
+          "name": "TierLabel",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 765,
+            "width": 500,
+            "height": 70
+          },
+          "children": [],
+          "text": {
+            "content": "10级材料",
+            "fontSize": 32,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "EquipmentLabel",
+          "name": "EquipmentLabel",
+          "element": "Text",
+          "rect": {
+            "x": 530,
+            "y": 765,
+            "width": 520,
+            "height": 70
+          },
+          "children": [],
+          "text": {
+            "content": "装备交易尚未开放",
+            "fontSize": 28,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Offers",
+          "name": "Offers",
+          "element": "Container",
+          "rect": {
+            "x": 30,
+            "y": 855,
+            "width": 1020,
+            "height": 710
+          },
+          "children": [
+            {
+              "id": "Viewport",
+              "name": "Viewport",
+              "element": "Container",
+              "rect": {
+                "x": 30,
+                "y": 855,
+                "width": 1020,
+                "height": 710
+              },
+              "children": [
+                {
+                  "id": "Content",
+                  "name": "Content",
+                  "element": "Container",
+                  "rect": {
+                    "x": 30,
+                    "y": 855,
+                    "width": 1020,
+                    "height": 710
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Feedback",
+          "name": "Feedback",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 1575,
+            "width": 1020,
+            "height": 65
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "TaskText",
+          "name": "TaskText",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 1650,
+            "width": 1020,
+            "height": 90
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "ClaimVisible",
+          "name": "ClaimVisible",
+          "element": "Container",
+          "rect": {
+            "x": 700,
+            "y": 1750,
+            "width": 330,
+            "height": 75
+          },
+          "children": [
+            {
+              "id": "ClaimClick",
+              "name": "ClaimClick",
+              "element": "Button",
+              "rect": {
+                "x": 700,
+                "y": 1750,
+                "width": 330,
+                "height": 75
+              },
+              "children": [
+                {
+                  "id": "ClaimLabel",
+                  "name": "ClaimLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 700,
+                    "y": 1750,
+                    "width": 330,
+                    "height": 75
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "领取奖励",
+                    "fontSize": 30,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Footer",
+          "name": "Footer",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 1820,
+            "width": 1080,
+            "height": 100
+          },
+          "children": [
+            {
+              "id": "CloseClick",
+              "name": "CloseClick",
+              "element": "Button",
+              "rect": {
+                "x": 25,
+                "y": 1830,
+                "width": 330,
+                "height": 75
+              },
+              "children": [
+                {
+                  "id": "CloseLabel",
+                  "name": "CloseLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 25,
+                    "y": 1830,
+                    "width": 330,
+                    "height": 75
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "返回村庄",
+                    "fontSize": 30,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

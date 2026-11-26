@@ -132,8 +132,7 @@ public sealed class UIHomeOpening : UIWidget<VMHomeOpening>
     public void InvalidateVillage(HomeVillageEntity village, TaskEntity task)
     {
         villageVisible = Config.Excel.villageTaskConfig.TryGetValue(task.configuration.ID, out var step);
-        if (villageVisible && (HomeVillageAction)step.Action != HomeVillageAction.Recruit
-            && (HomeVillageAction)step.Action != HomeVillageAction.Purchase)
+        if (villageVisible && (HomeVillageAction)step.Action != HomeVillageAction.Recruit)
         {
             villageVisible = false;
             vm.DialogueVisible = false;

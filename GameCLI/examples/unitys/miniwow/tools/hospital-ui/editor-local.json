@@ -159,16 +159,31 @@
       "description": "复核业务系统 generation/requestedActive 等重复生命周期字段"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "file": "Assets/Editor/MiniwowTaskGuideSetup.cs",
+      "line": 54,
+      "rule": "OX015",
+      "severity": "review",
+      "message": "Review runtime UI lookup; fixed UI references must be serialized."
+    },
+    {
+      "file": "Assets/Editor/MiniwowTaskGuideSetup.cs",
+      "line": 59,
+      "rule": "OX015",
+      "severity": "review",
+      "message": "Review runtime UI lookup; fixed UI references must be serialized."
+    }
+  ],
   "statistics": {
-    "files": 2,
-    "lines": 611,
-    "blankLines": 58,
-    "commentLines": 45,
-    "members": 27,
-    "documentedMembers": 27,
-    "blankLineRate": 0.09492635024549918,
-    "commentLineRate": 0.07364975450081833,
+    "files": 6,
+    "lines": 1335,
+    "blankLines": 130,
+    "commentLines": 93,
+    "members": 60,
+    "documentedMembers": 60,
+    "blankLineRate": 0.09737827715355805,
+    "commentLineRate": 0.0696629213483146,
     "documentedMemberRate": 1
   },
   "passed": true

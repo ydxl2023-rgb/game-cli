@@ -552,6 +552,141 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext11120 = 1267141660;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-322012-Context-116-2-0
+        /// 美味小鱼
+        /// </summary>
+        public const int LGCommonTextContext11620 = 862793766;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-322013-Context-117-2-0
+        /// 常见的食材，可以在简单难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext11720 = 950238674;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-322022-Context-118-2-0
+        /// 铜锭
+        /// </summary>
+        public const int LGCommonTextContext11820 = 514722471;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-322023-Context-119-2-0
+        /// 打造10级装备的基础材料，由最基础的金属矿石熔炼而成，广泛分布于新手区域矿山，质地柔软易加工，是初学者制作各类基础物品的必备之物。
+        /// </summary>
+        public const int LGCommonTextContext11920 = 191521539;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30301-Context-120-2-0
+        /// 交易行
+        /// </summary>
+        public const int LGCommonTextContext12020 = 3901722;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30303-Context-122-2-0
+        /// 装备交易尚未开放
+        /// </summary>
+        public const int LGCommonTextContext12220 = 1371441110;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30305-Context-124-2-0
+        /// 剩余 {0}
+        /// </summary>
+        public const int LGCommonTextContext12420 = 2043833474;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30306-Context-125-2-0
+        /// 已拥有 {0}
+        /// </summary>
+        public const int LGCommonTextContext12520 = 855294276;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30307-Context-126-2-0
+        /// 购买
+        /// </summary>
+        public const int LGCommonTextContext12620 = 207247974;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30308-Context-127-2-0
+        /// 取消
+        /// </summary>
+        public const int LGCommonTextContext12720 = 725532604;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30310-Context-129-2-0
+        /// 购买数量
+        /// </summary>
+        public const int LGCommonTextContext12920 = 1050112299;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30311-Context-130-2-0
+        /// 总价 {0} 金币
+        /// </summary>
+        public const int LGCommonTextContext13020 = 1563026106;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30312-Context-131-2-0
+        /// 金币不足
+        /// </summary>
+        public const int LGCommonTextContext13120 = 1362014188;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30313-Context-132-2-0
+        /// 商品余量不足
+        /// </summary>
+        public const int LGCommonTextContext13220 = 1938679106;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30314-Context-133-2-0
+        /// 请先完成医院修复任务
+        /// </summary>
+        public const int LGCommonTextContext13320 = 636418328;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30315-Context-134-2-0
+        /// 购买成功
+        /// </summary>
+        public const int LGCommonTextContext13420 = 235622962;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30316-Context-135-2-0
+        /// 请选择商品
+        /// </summary>
+        public const int LGCommonTextContext13520 = 1576572276;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30317-Context-136-2-0
+        /// 数量超出可购买范围
+        /// </summary>
+        public const int LGCommonTextContext13620 = 622195466;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30322-Context-141-2-0
+        /// 确认购买
+        /// </summary>
+        public const int LGCommonTextContext14120 = 537071148;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30323-Context-142-2-0
+        /// 10级材料
+        /// </summary>
+        public const int LGCommonTextContext14220 = 1044217234;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30401-Context-143-2-0
+        /// 提升等级可增加经营收益
+        /// </summary>
+        public const int LGCommonTextContext14320 = 124942124;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30402-Context-144-2-0
+        /// 自动生产
+        /// </summary>
+        public const int LGCommonTextContext14420 = 1906809348;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30403-Context-145-2-0
+        /// 没有商品了，请尽快制作
+        /// </summary>
+        public const int LGCommonTextContext14520 = 533929052;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30404-Context-146-2-0
+        /// 点击材料即可开始生产
+        /// </summary>
+        public const int LGCommonTextContext14620 = 1916956604;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30405-Context-147-2-0
+        /// {0}级 医院
+        /// </summary>
+        public const int LGCommonTextContext14720 = 1583417380;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30406-Context-148-2-0
+        /// 原材料
+        /// </summary>
+        public const int LGCommonTextContext14820 = 1469979132;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30407-Context-149-2-0
+        /// 成品
+        /// </summary>
+        public const int LGCommonTextContext14920 = 1802730868;
+        /// <summary>
         /// LG-SceneConfig-Scene-10001-Name-3-2-0
         /// 登录
         /// </summary>

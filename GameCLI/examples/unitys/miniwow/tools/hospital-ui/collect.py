@@ -96,7 +96,14 @@ def collect():
         [30218,'TEXT_HOSPITAL_NEXT_LEVEL','下一等级需公会等级 {0}'],
         [30219,'TEXT_HOSPITAL_TASK','任务：{0}'], [30220,'TEXT_HOSPITAL_REVENUE','医院收入 {0}'],
         [30221,'TEXT_HOSPITAL_MATERIAL_TITLE','材料'], [30222,'TEXT_HOSPITAL_PRODUCT_TITLE','药剂'],
-        [30223,'TEXT_HOSPITAL_GOLD','金币 {0}']
+        [30223,'TEXT_HOSPITAL_GOLD','金币 {0}'],
+        [30401,'TEXT_HOSPITAL_UPGRADE_HINT','提升等级可增加经营收益'],
+        [30402,'TEXT_HOSPITAL_AUTO_CRAFT','自动生产'],
+        [30403,'TEXT_HOSPITAL_EMPTY','没有商品了，请尽快制作'],
+        [30404,'TEXT_HOSPITAL_CRAFT_HINT','点击材料即可开始生产'],
+        [30405,'TEXT_HOSPITAL_LEVEL_LABEL','{0}级 医院'],
+        [30406,'TEXT_HOSPITAL_RAW_MATERIAL','原材料'],
+        [30407,'TEXT_HOSPITAL_FINISHED_PRODUCT','成品']
     ]
     for item in items:
         name = '金币' if item['Id']==70001 else item['Name']

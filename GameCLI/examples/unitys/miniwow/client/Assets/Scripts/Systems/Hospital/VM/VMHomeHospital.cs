@@ -19,10 +19,6 @@ public partial class VMHomeHospital : VM
     [Binding(typeof(SyncText))]
     string title;
 
-    /// <summary>Presentation binding for bonus.</summary>
-    [Binding(typeof(SyncText))]
-    string bonus;
-
     /// <summary>Presentation binding for productName.</summary>
     [Binding(typeof(SyncText))]
     string productName;
@@ -70,5 +66,29 @@ public partial class VMHomeHospital : VM
     /// <summary>Presentation binding for materialIcon.</summary>
     [Binding(typeof(SyncSprite))]
     string materialIcon;
+
+    /// <summary>Presentation binding for gem.</summary>
+    [Binding(typeof(SyncText))]
+    string gem;
+
+    /// <summary>Presentation binding for priceBonus.</summary>
+    [Binding(typeof(SyncText))]
+    string priceBonus;
+
+    /// <summary>Presentation binding for timeBonus.</summary>
+    [Binding(typeof(SyncText))]
+    string timeBonus;
+
+    /// <summary>Presentation binding for capacityBonus.</summary>
+    [Binding(typeof(SyncText))]
+    string capacityBonus;
+
+    /// <summary>Presentation binding for productsVisible.</summary>
+    [Binding(typeof(SyncVisible))]
+    bool productsVisible;
+
+    /// <summary>Presentation binding for emptyVisible.</summary>
+    [Binding(typeof(SyncVisible))]
+    bool emptyVisible;
 
 }

@@ -157,6 +157,42 @@ namespace Config
         public const int TEXT_FORGE_NPC = 30224;
         public const int TEXT_HOTEL_NPC = 30225;
         public const int TEXT_AUCTION_NPC = 30226;
+        public const int TEXT_TRADE_ITEM_77001 = 322002;
+        public const int TEXT_TRADE_DESC_77001 = 322003;
+        public const int TEXT_TRADE_ITEM_77011 = 322012;
+        public const int TEXT_TRADE_DESC_77011 = 322013;
+        public const int TEXT_TRADE_ITEM_76001 = 322022;
+        public const int TEXT_TRADE_DESC_76001 = 322023;
+        public const int TEXT_TRADE_TITLE = 30301;
+        public const int TEXT_TRADE_MATERIALS = 30302;
+        public const int TEXT_TRADE_EQUIPMENT_PENDING = 30303;
+        public const int TEXT_TRADE_GOLD = 30304;
+        public const int TEXT_TRADE_REMAINING = 30305;
+        public const int TEXT_TRADE_OWNED = 30306;
+        public const int TEXT_TRADE_BUY = 30307;
+        public const int TEXT_TRADE_CANCEL = 30308;
+        public const int TEXT_TRADE_BACK = 30309;
+        public const int TEXT_TRADE_QUANTITY = 30310;
+        public const int TEXT_TRADE_TOTAL = 30311;
+        public const int TEXT_TRADE_NO_GOLD = 30312;
+        public const int TEXT_TRADE_SOLD_OUT = 30313;
+        public const int TEXT_TRADE_LOCKED = 30314;
+        public const int TEXT_TRADE_SUCCESS = 30315;
+        public const int TEXT_TRADE_NO_SELECTION = 30316;
+        public const int TEXT_TRADE_INVALID_QUANTITY = 30317;
+        public const int TEXT_TRADE_TASK = 30318;
+        public const int TEXT_TRADE_CLAIM = 30319;
+        public const int TEXT_TRADE_MINUS = 30320;
+        public const int TEXT_TRADE_PLUS = 30321;
+        public const int TEXT_TRADE_CONFIRM = 30322;
+        public const int TEXT_TRADE_TIER = 30323;
+        public const int TEXT_HOSPITAL_UPGRADE_HINT = 30401;
+        public const int TEXT_HOSPITAL_AUTO_CRAFT = 30402;
+        public const int TEXT_HOSPITAL_EMPTY = 30403;
+        public const int TEXT_HOSPITAL_CRAFT_HINT = 30404;
+        public const int TEXT_HOSPITAL_LEVEL_LABEL = 30405;
+        public const int TEXT_HOSPITAL_RAW_MATERIAL = 30406;
+        public const int TEXT_HOSPITAL_FINISHED_PRODUCT = 30407;
         /// <summary>
         /// config CommonTextConfig table
         /// </summary>

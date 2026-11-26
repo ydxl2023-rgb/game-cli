@@ -83,6 +83,7 @@ public sealed class MasterSystem : RuntimeSystem
     private void OnLoginSucceed(LoginSucceed message)
     {
         RequestActivation(TaskConfigurationIds.system, null);
+        RequestActivation(10006, null);
         RequestActivation(Config.Excel.SYS_HOME, null);
     }
 
@@ -97,13 +98,7 @@ public sealed class MasterSystem : RuntimeSystem
     /// <param name="message">The return request and retry feedback.</param>
     private void OnReturnToLogin(ReturnToLogin message)
     {
-        if (message.failed)
-        {
-            UnloadSystemById(TaskConfigurationIds.system);
-            UnloadSystemById(Config.Excel.SYS_HOME);
-        }
-        else
-            Unload();
+        Unload();
 
         OpenLogin(message.failed);
     }

@@ -126,7 +126,14 @@ public sealed class TaskPresentationAction : ITaskAction
     /// <summary>Publishes the action handle to the presentation owner.</summary>
     public void Start()
     {
-        XPluginUtility.FireEvent(new TaskPresentationRequested { action = this });
+        var request = new TaskPresentationRequested { action = this };
+        XPluginUtility.FireEvent(request);
+        if (!request.accepted && status == TaskActionStatus.Running)
+        {
+            status = TaskActionStatus.Failed;
+
+            throw new InvalidOperationException("No task presentation handler accepted: " + operation);
+        }
     }
 
     /// <summary>Waits for the consumer rather than inferring completion from elapsed time.</summary>

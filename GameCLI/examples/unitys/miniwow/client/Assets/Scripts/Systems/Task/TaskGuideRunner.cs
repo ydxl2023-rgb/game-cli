@@ -181,7 +181,10 @@ public sealed class TaskGuideRunner
         engine.Register(name, ExpressionFunctionKind.Command, ExpressionValueKind.Void, arguments =>
         {
             var parameter = arguments.count == 0 ? default : arguments[0];
-            SelectAction(new TaskPresentationAction(operation, parameter));
+            ITaskAction presentation = operation == TaskPresentation.GuideFinger
+                ? new TaskFingerAction(parameter.AsString())
+                : new TaskPresentationAction(operation, parameter);
+            SelectAction(presentation);
 
             return default;
         }, parameters);

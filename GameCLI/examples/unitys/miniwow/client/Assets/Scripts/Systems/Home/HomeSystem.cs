@@ -10,6 +10,10 @@ public sealed class HomeReady : IEvent { }
 /// <summary>Owns the Home page and its scene runtime.</summary>
 public sealed class HomeSystem : RuntimeSystem
 {
+    /// <summary>Facility pages currently owning scene input.</summary>
+    private readonly System.Collections.Generic.HashSet<int> facilityPages =
+        new System.Collections.Generic.HashSet<int>();
+
     /// <summary>Owned initialization operation canceled when Home is deactivated.</summary>
     private Coroutine initialization;
 
@@ -26,13 +30,11 @@ public sealed class HomeSystem : RuntimeSystem
         Subscribe<ReqHomeVillageAction>(OnVillageAction);
         Subscribe<HomeVillageChanged>(OnVillageChanged);
         Subscribe<HomeVillageTreatmentProgress>(OnVillageTreatmentProgress);
-        Subscribe<ReqHomeHospitalVisit>(OnHospitalVisit);
         Subscribe<ReqHomeResidentVisit>(OnResidentVisit);
-        Subscribe<HomeHospitalArrived>(OnHospitalArrived);
-        Subscribe<ReqHomeHospitalRepair>(OnHospitalRepair);
-        Subscribe<ReqHomeHospitalCraft>(OnHospitalCraft);
-        Subscribe<ReqHomeHospitalClose>(OnHospitalClose);
-        Subscribe<ReqHomeHospitalClaim>(OnHospitalClaim);
+        Subscribe<HomeFacilityPresentationChanged>(OnFacilityPresentationChanged);
+        Subscribe<HospitalNavigationRequested>(OnHospitalNavigation);
+        Subscribe<HomeSessionRequested>(OnSessionRequested);
+        Subscribe<HospitalRepairPresentationRequested>(OnHospitalRepairPresentation);
         Subscribe<ReqHomeMap>(OnHomeMap);
         Subscribe<ReqHomeCamp>(OnHomeCamp);
         Subscribe<ReqHomeEntry>(OnHomeEntry);
@@ -170,6 +172,8 @@ public sealed class HomeSystem : RuntimeSystem
     /// <summary>Cancels initialization and releases the Home page and scene runtime.</summary>
     private void UninstallHome()
     {
+        XPluginUtility.FireEvent(new HomeSessionClosing());
+        facilityPages.Clear();
         XPluginUtility.FireEvent(new TaskRewardsRegistered { receiver = null });
         if (initialization != null)
         {
@@ -180,8 +184,7 @@ public sealed class HomeSystem : RuntimeSystem
         System.Type[] widgets = new System.Type[] {
             typeof(UIHome),
             typeof(UIHomeOpening),
-            typeof(UIHomeHospitalEntry),
-            typeof(UIHomeHospital)
+            typeof(UIHomeHospitalEntry)
         };
 
         UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
@@ -260,6 +263,13 @@ public sealed class HomeSystem : RuntimeSystem
     /// <param name="message">The resident entrance intention.</param>
     private void OnResidentVisit(ReqHomeResidentVisit message)
     {
+        if (message.buildingId == 60019)
+        {
+            OpenShop();
+
+            return;
+        }
+
         var ui = UISystem.GetSingleton();
         if (ui.TryGetWidget<UIHome>(out var home))
             home.ShowFeedback(Config.Excel.TEXT_HOME_PENDING);
@@ -324,13 +334,27 @@ public sealed class HomeSystem : RuntimeSystem
                 || (HomeVillageAction)step.Action == HomeVillageAction.Craft
                 || (HomeVillageAction)step.Action == HomeVillageAction.Heal))
         {
-            OnHospitalVisit(new ReqHomeHospitalVisit());
+            XPluginUtility.FireEvent(new ReqHomeHospitalVisit());
+
+            return;
+        }
+        else if (Config.Excel.villageTaskConfig.TryGetValue(task.configuration.ID, out var purchase)
+            && (HomeVillageAction)purchase.Action == HomeVillageAction.Purchase)
+        {
+            OpenShop();
 
             return;
         }
         else if (village.Execute(task.configuration.ID, tasks))
         {
             HomeVillageRuntime.ReportProgress(village);
+        }
+        else if (!Config.Excel.villageTaskConfig.ContainsKey(task.configuration.ID)
+            && task.configuration.GuideID != 0)
+        {
+            XPluginUtility.FireEvent(new TaskGuideRequested { taskId = task.configuration.ID });
+
+            return;
         }
         else
         {
@@ -364,8 +388,6 @@ public sealed class HomeSystem : RuntimeSystem
         if (UISystem.GetSingleton().TryGetWidget<UIHomeOpening>(out var overlay))
             overlay.ShowTreatmentProgress(entity.village);
 
-        if (UISystem.GetSingleton().TryGetWidget<UIHomeHospital>(out var hospital))
-            hospital.ShowTreatment(entity.village);
     }
 
     /// <summary>Updates economic HUD values and the active village interaction.</summary>
@@ -388,8 +410,6 @@ public sealed class HomeSystem : RuntimeSystem
         if (ui.TryGetWidget<UIHomeHospitalEntry>(out var entry))
             entry.Invalidate(entity.village, tasks);
 
-        if (ui.TryGetWidget<UIHomeHospital>(out var hospital))
-            hospital.Invalidate(entity.village, tasks.GetTrackedTask());
     }
 
     /// <summary>Updates transient countdown text without resetting scene input.</summary>
@@ -435,9 +455,8 @@ public sealed class HomeSystem : RuntimeSystem
         var runtime = GetRuntime();
         bool villagePanel = opening.phase == HomeOpeningPhase.AwaitRecruit
             && Config.Excel.villageTaskConfig.TryGetValue(task.configuration.ID, out var step)
-            && ((HomeVillageAction)step.Action == HomeVillageAction.Recruit
-                || (HomeVillageAction)step.Action == HomeVillageAction.Purchase);
-        villagePanel |= ui.TryGetWidget<UIHomeHospital>(out _);
+            && (HomeVillageAction)step.Action == HomeVillageAction.Recruit;
+        villagePanel |= facilityPages.Count > 0;
         runtime.SetInputEnabled(!villagePanel && (opening.fetchingWater || opening.canOperate
             || opening.phase == HomeOpeningPhase.AwaitRecruit));
         RefreshVillage();
@@ -455,112 +474,52 @@ public sealed class HomeSystem : RuntimeSystem
         }
     }
 
-    /// <summary>Starts navigation only when the hospital feature is available.</summary>
-    /// <param name="message">Hospital interaction intention.</param>
-    private void OnHospitalVisit(ReqHomeHospitalVisit message)
-    {
-        var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
-        var tasks = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-        if (!entity.village.buildings.IsAvailable(entity.village.configuration.BuildingID, tasks))
-            return;
 
+    /// <summary>Activates the configured trading system and delivers its opening intention.</summary>
+    private void OpenShop()
+    {
+        XPluginUtility.FireEvent(new SystemActive { id = 10005, complete = new ShopOpenRequested() });
+    }
+
+    /// <summary>Answers late facility installation using actual scene and UI readiness.</summary>
+    /// <param name="message">The facility session query.</param>
+    private void OnSessionRequested(HomeSessionRequested message)
+    {
+        if (IsReady())
+            XPluginUtility.FireEvent(new HomeSessionAvailable());
+    }
+
+    /// <summary>Combines facility presentation ownership with the current opening phase.</summary>
+    /// <param name="message">A facility page opening or closing.</param>
+    private void OnFacilityPresentationChanged(HomeFacilityPresentationChanged message)
+    {
+        if (message.visible)
+            facilityPages.Add(message.systemId);
+        else
+            facilityPages.Remove(message.systemId);
+
+        RefreshOpening();
+    }
+
+    /// <summary>Executes only scene navigation on behalf of the hospital.</summary>
+    /// <param name="message">An accepted hospital visit.</param>
+    private void OnHospitalNavigation(HospitalNavigationRequested message)
+    {
         var runtime = GetRuntime();
         runtime.NavigateHospital();
     }
 
-    /// <summary>Chooses construction or the shop after actual player arrival.</summary>
-    /// <param name="message">Navigation completion.</param>
-    private void OnHospitalArrived(HomeHospitalArrived message)
+    /// <summary>Plays scene-owned construction feedback requested by the hospital.</summary>
+    /// <param name="message">The hospital's current affordability result.</param>
+    private void OnHospitalRepairPresentation(HospitalRepairPresentationRequested message)
     {
-        var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
-        var village = entity.village;
-        int id = village.configuration.BuildingID;
         var ui = UISystem.GetSingleton();
-        if (village.buildings.Level(id) > 0)
-        {
-            var runtime = GetRuntime();
-            runtime.SetInputEnabled(false);
-            ui.OpenWidget<UIHomeHospital>(OnHospitalOpened);
-
-            return;
-        }
-
         if (ui.TryGetWidget<UIHomeHospitalEntry>(out var entry))
         {
-            foreach (var cost in village.buildings.GetRepairCosts(id))
-            {
-                if (village.Count(cost.ItemID) < cost.Amount)
-                {
-                    entry.ShowMissingGold();
-
-                    return;
-                }
-            }
-
-            entry.PlayRepair(id);
+            if (message.affordable)
+                entry.PlayRepair(message.buildingId);
+            else
+                entry.ShowMissingGold();
         }
     }
-
-    /// <summary>Commits construction after presentation while rechecking current state.</summary>
-    /// <param name="message">Completed cost-flight intention.</param>
-    private void OnHospitalRepair(ReqHomeHospitalRepair message)
-    {
-        var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
-        var tasks = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-        if (entity.village.Execute(HomeVillageAction.Repair, tasks))
-            OnVillageChanged(new HomeVillageChanged());
-    }
-
-    /// <summary>Initializes the production page from actual village data.</summary>
-    /// <param name="widget">Initialized hospital page.</param>
-    private void OnHospitalOpened(UIHomeHospital widget)
-    {
-        if (widget)
-        {
-            var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
-            var tasks = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-            widget.Invalidate(entity.village, tasks.GetTrackedTask());
-        }
-    }
-
-    /// <summary>Commits a recipe before playing the original success animation.</summary>
-    /// <param name="message">Material click intention.</param>
-    private void OnHospitalCraft(ReqHomeHospitalCraft message)
-    {
-        var entity = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
-        var tasks = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-        if (!UISystem.GetSingleton().TryGetWidget<UIHomeHospital>(out var widget))
-            return;
-
-        if (!entity.village.Execute(HomeVillageAction.Craft, tasks))
-        {
-            widget.ShowMissingMaterial();
-
-            return;
-        }
-
-        OnVillageChanged(new HomeVillageChanged());
-        widget.PlayProduction(entity.village.configuration.BuildingID);
-    }
-
-    /// <summary>Closes only the hospital presentation and restores current Home input.</summary>
-    /// <param name="message">Return intention.</param>
-    private void OnHospitalClose(ReqHomeHospitalClose message)
-    {
-        System.Type[] widgets = new System.Type[] { typeof(UIHomeHospital) };
-
-        UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
-        RefreshOpening();
-    }
-
-    /// <summary>Claims an already completed task without triggering a business operation.</summary>
-    /// <param name="message">Reward intention.</param>
-    private void OnHospitalClaim(ReqHomeHospitalClaim message)
-    {
-        var tasks = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-        var task = tasks.GetTrackedTask();
-        if (task.status == TaskStatus.Completed)
-            XPluginUtility.FireEvent(new TaskClaimRequested { taskId = task.configuration.ID });
-    }
-
 }

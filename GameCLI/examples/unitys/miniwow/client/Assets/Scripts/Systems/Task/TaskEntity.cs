@@ -90,7 +90,7 @@ public sealed class TaskEntity : XEntity
             throw new ArgumentOutOfRangeException(nameof(observation.value));
 
         if (status != TaskStatus.Active
-            || observation.taskId != configuration.ID
+            || (observation.taskId != 0 && observation.taskId != configuration.ID)
             || observation.condition != configuration.TaskConditionType
             || !Matches(observation))
             return false;

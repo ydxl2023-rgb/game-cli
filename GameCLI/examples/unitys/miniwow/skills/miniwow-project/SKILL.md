@@ -112,3 +112,7 @@ Home 后续实现必须遵循：OnActive 订阅后 return InstallHome()；OnDeti
 ## 任务系统首版
 
 TaskSystem按已确认的TaskCollectionEntity/TaskEntity/ITaskAction职责实现，详见 [开发记录](../../tools/task-system/README.md)。新增数字系统ID10004和TaskSetting.InitialChapterID配置。TaskEntity没有ITaskCommand；引导完成不等于任务完成。后续已接入开场首段、Home任务栏及本地任务收据存档，见 [开场实现](../../tools/opening/README.md)。Home 村庄本地经济已接入奖励接收方和持久收据；完整任务页和通用引导表现仍待接入，不能把测试回调当作产品玩法。后续五项 60004→60101→60102→60103→60104 的结构、原作证据、本地规则和验收见 [五任务实现](../../tools/opening/FIVE-TASKS.md)。
+
+## 商店与医院业务归属
+
+ShopSystem 与 HospitalSystem 是独立 RuntimeSystem，Home 只承担 NPC 入口、导航及场景表现。禁止把购买确认、医院页面或治疗时钟重新塞回 HomeSystem。共享库存与原子消费暂由既有 HomeVillageEntity 保存；后续拆分须保留原子提交与旧存档兼容。实现范围、原作证据、资源台账及重建流程见 [商店与医院记录](../../tools/shop-ui/README.md)。

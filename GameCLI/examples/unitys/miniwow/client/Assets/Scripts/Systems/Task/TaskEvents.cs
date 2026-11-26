@@ -1,9 +1,9 @@
 using Oathx.Core;
 
-/// <summary>Reports an absolute gameplay observation for one issued task.</summary>
+/// <summary>Reports an absolute gameplay observation matched by configured condition parameters.</summary>
 public sealed class TaskProgressReported : IEvent
 {
-    /// <summary>Issued task ID.</summary>
+    /// <summary>Optional task scope; zero matches every issued task with the same condition parameters.</summary>
     public int taskId
     { get; set; }
 
@@ -47,7 +47,7 @@ public sealed class TaskChapterRequested : IEvent
 /// <summary>Requests a reward claim for a completed task.</summary>
 public sealed class TaskClaimRequested : IEvent
 {
-    /// <summary>Issued task ID.</summary>
+    /// <summary>Explicit issued task ID whose reward is requested.</summary>
     public int taskId
     { get; set; }
 }
@@ -83,7 +83,7 @@ public sealed class TaskRewardsRegistered : IEvent
 /// <summary>Requests presentation for an active task.</summary>
 public sealed class TaskGuideRequested : IEvent
 {
-    /// <summary>Issued task ID.</summary>
+    /// <summary>Optional task scope; zero matches every issued task with the same condition parameters.</summary>
     public int taskId
     { get; set; }
 }
@@ -101,6 +101,10 @@ public sealed class TaskGuideRetryRequested : IEvent
 /// <summary>Requests an external presentation action; completion belongs to its consumer.</summary>
 public sealed class TaskPresentationRequested : IEvent
 {
+    /// <summary>Set by the action owner when it accepts responsibility for completion and cancellation.</summary>
+    public bool accepted
+    { get; set; }
+
     /// <summary>The action handle to complete or reject.</summary>
     public TaskPresentationAction action
     { get; set; }

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIShopOffer",
+  "referenceResolution": {
+    "width": 1020,
+    "height": 220
+  },
+  "nodes": [
+    {
+      "id": "UIShopOffer",
+      "name": "UIShopOffer",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 220
+      },
+      "children": [
+        {
+          "id": "Card",
+          "name": "Card",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1020,
+            "height": 220
+          },
+          "children": []
+        },
+        {
+          "id": "Icon",
+          "name": "Icon",
+          "element": "Image",
+          "rect": {
+            "x": 30,
+            "y": 35,
+            "width": 150,
+            "height": 150
+          },
+          "children": []
+        },
+        {
+          "id": "Name",
+          "name": "Name",
+          "element": "Text",
+          "rect": {
+            "x": 200,
+            "y": 10,
+            "width": 450,
+            "height": 65
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 36,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Stock",
+          "name": "Stock",
+          "element": "Text",
+          "rect": {
+            "x": 200,
+            "y": 85,
+            "width": 450,
+            "height": 50
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 28,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Owned",
+          "name": "Owned",
+          "element": "Text",
+          "rect": {
+            "x": 200,
+            "y": 145,
+            "width": 450,
+            "height": 50
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 28,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "SelectClick",
+          "name": "SelectClick",
+          "element": "Button",
+          "rect": {
+            "x": 690,
+            "y": 65,
+            "width": 290,
+            "height": 100
+          },
+          "children": [
+            {
+              "id": "Currency",
+              "name": "Currency",
+              "element": "Image",
+              "rect": {
+                "x": 710,
+                "y": 85,
+                "width": 60,
+                "height": 60
+              },
+              "children": []
+            },
+            {
+              "id": "Price",
+              "name": "Price",
+              "element": "Text",
+              "rect": {
+                "x": 775,
+                "y": 75,
+                "width": 190,
+                "height": 80
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 32,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

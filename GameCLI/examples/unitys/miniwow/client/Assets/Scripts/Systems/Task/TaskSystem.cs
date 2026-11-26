@@ -137,18 +137,24 @@ public sealed class TaskSystem : RuntimeSystem
     private void OnProgress(TaskProgressReported message)
     {
         var collection = XEntityManager.GetSingleton().QueryEntity<TaskCollectionEntity>();
-        var task = collection.GetTask(message.taskId);
-        if (!task.Apply(message))
-            return;
-
-        if (task.status == TaskStatus.Completed && guidedTaskId == message.taskId)
+        bool changed = false;
+        foreach (var task in collection.GetTasks())
         {
-            guides.Cancel();
-            guidedTaskId = 0;
+            if (!task.Apply(message))
+                continue;
+
+            changed = true;
+            if (task.status == TaskStatus.Completed && guidedTaskId == task.configuration.ID)
+            {
+                guides.Cancel();
+                guidedTaskId = 0;
+            }
+
+            XPluginUtility.PostEvent(new TaskChanged { taskId = task.configuration.ID });
         }
 
-        collection.Save();
-        XPluginUtility.PostEvent(new TaskChanged { taskId = message.taskId });
+        if (changed)
+            collection.Save();
     }
 
     /// <summary>Runs the entity-owned reward transaction and reports its actual outcome.</summary>
