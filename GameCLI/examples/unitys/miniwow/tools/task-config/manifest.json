@@ -1,0 +1,282 @@
+{
+  "sources": {
+    "tbtask": "7d53a8e02a33ef2cc97bee2ab2cb8a26ba5208edf107d114531f5b108624a4a7",
+    "tbchaptertask": "bc4ff281eb2d22572e273b187bc342a8b8bb6dc8686e644716f4ff3a19946102",
+    "tbtaskunlock": "854be923146684f3c236b6c81cf574ec4ea13f4d244fbd97361e44c932f2b9eb",
+    "tbguidetask": "5c87361943f9ba492b45424995180b6d088758d601e1af0c0700d44f87ede5c4"
+  },
+  "sheets": [
+    {
+      "name": "Task",
+      "columns": [
+        [
+          "ID",
+          "int"
+        ],
+        [
+          "NumID",
+          "int"
+        ],
+        [
+          "Name",
+          "string"
+        ],
+        [
+          "Description",
+          "string"
+        ],
+        [
+          "Icon",
+          "string"
+        ],
+        [
+          "TaskConditionType",
+          "enum"
+        ],
+        [
+          "SourceConditionType",
+          "int"
+        ],
+        [
+          "TaskConditionShape",
+          "enum"
+        ],
+        [
+          "Param1",
+          "int"
+        ],
+        [
+          "Param2",
+          "int"
+        ],
+        [
+          "Param3",
+          "int"
+        ],
+        [
+          "ConditionItems",
+          "List<int:Id,long:Num>"
+        ],
+        [
+          "FinishValue",
+          "int"
+        ],
+        [
+          "ShowTips",
+          "bool"
+        ],
+        [
+          "GuideID",
+          "int"
+        ],
+        [
+          "Rewards",
+          "List<int:Id,long:Num>"
+        ],
+        [
+          "QuestValue",
+          "int"
+        ],
+        [
+          "TaskBuildingType",
+          "enum"
+        ],
+        [
+          "SourceBuildingType",
+          "int"
+        ],
+        [
+          "NPCTalkID",
+          "int"
+        ],
+        [
+          "Priority",
+          "int"
+        ],
+        [
+          "TipsDelayTime",
+          "int"
+        ],
+        [
+          "GuideConversationDelayTime",
+          "int"
+        ],
+        [
+          "GuideConversationID",
+          "int"
+        ]
+      ],
+      "rows": 1397
+    },
+    {
+      "name": "TaskChapter",
+      "columns": [
+        [
+          "ID",
+          "int"
+        ],
+        [
+          "NumID",
+          "int"
+        ],
+        [
+          "TaskIDs",
+          "List<int>"
+        ]
+      ],
+      "rows": 114
+    },
+    {
+      "name": "TaskUnlock",
+      "columns": [
+        [
+          "ID",
+          "int"
+        ],
+        [
+          "NumID",
+          "int"
+        ],
+        [
+          "TaskID",
+          "int"
+        ],
+        [
+          "TaskCategory",
+          "enum"
+        ],
+        [
+          "SourceTaskType",
+          "int"
+        ],
+        [
+          "Conditions",
+          "List<int:Type,int:Value>"
+        ],
+        [
+          "TriggerRewards",
+          "List<int:Id,long:Num>"
+        ]
+      ],
+      "rows": 6
+    },
+    {
+      "name": "TaskGuide",
+      "columns": [
+        [
+          "ID",
+          "int"
+        ],
+        [
+          "NumID",
+          "int"
+        ],
+        [
+          "GroupID",
+          "int"
+        ],
+        [
+          "TaskGuideType",
+          "enum"
+        ],
+        [
+          "SourceGuideType",
+          "int"
+        ],
+        [
+          "NeedSave",
+          "bool"
+        ],
+        [
+          "ConditionExpression",
+          "string"
+        ],
+        [
+          "ActionExpression",
+          "string"
+        ],
+        [
+          "NextID",
+          "int"
+        ],
+        [
+          "FailureNextID",
+          "int"
+        ]
+      ],
+      "rows": 1594
+    }
+  ],
+  "signatures": {
+    "Navigate": [
+      "Number"
+    ],
+    "CloseUI": [
+      "String"
+    ],
+    "OpenUI": [
+      "String"
+    ],
+    "Wait": [
+      "Number"
+    ],
+    "GuideFinger": [
+      "String"
+    ],
+    "ShowMain": [],
+    "Tips": [
+      "Number"
+    ],
+    "SelectExploreArea": [
+      "Number"
+    ],
+    "ShowDialogue": [
+      "Number"
+    ]
+  },
+  "tipId": 20001,
+  "tipAlias": "TEXT_TASK_GUIDE_ASSIST",
+  "note": "Source enum numbers preserved separately; action expressions are checked using com.oathx.expression.",
+  "unlockConditionTypes": [
+    {
+      "value": 14,
+      "name": "ManorLevel"
+    },
+    {
+      "value": 6,
+      "name": "ChapterTask"
+    },
+    {
+      "value": 13,
+      "name": "ServerDay"
+    },
+    {
+      "value": 1,
+      "name": "MapId"
+    }
+  ],
+  "conditionPolicy": "Explicit boolean Evaluate expression; false skips this action attempt, not failure.",
+  "actionFormat": "Command(argument, ...)",
+  "navigationTargets": {
+    "60002": "WeaponStore_60002/Collider",
+    "60003": "AccessoriesStore_60003/Collider",
+    "60004": "Horn_60004/Collider",
+    "60005": "Graveyard_60005/Collider",
+    "60007": "Entrance_60007/Collider",
+    "60008": "Money_60008/Collider",
+    "60011": "Task_60011/Collider",
+    "60012": "Task2_60012/Collider",
+    "60013": "Manor_60013/Collider",
+    "60014": "Bless_60014/Collider",
+    "60015": "Explore_60015/Collider",
+    "60016": "Armor_60016/Collider",
+    "60017": "Hotel_60017/Collider",
+    "60018": "Hospital_60018/Collider",
+    "60019": "AuctionHouse_60019/Collider",
+    "60020": "Tax_60020/Collider",
+    "60021": "Bro_60021/Collider"
+  },
+  "chapterIdPolicy": "Numeric ID; no TASK_CHAPTER constants. Existing NumID column retained.",
+  "taskIdPolicy": "Numeric ID; no TASK_ constants. Existing NumID column retained.",
+  "idPolicy": "All task sheets use numeric IDs; string IDs require explicit authorization except language tables."
+}

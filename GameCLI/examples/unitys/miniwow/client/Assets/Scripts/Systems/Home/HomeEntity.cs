@@ -4,6 +4,87 @@ using System.Linq;
 using Newtonsoft.Json;
 using Oathx.Entity;
 
+/// <summary>Fixed shortcut destinations available on the Home page.</summary>
+public enum HomeShortcut
+{
+    /// <summary>Opens the settings destination.</summary>
+    Settings,
+
+    /// <summary>Opens the task destination.</summary>
+    Task,
+
+    /// <summary>Opens the chat destination.</summary>
+    Chat
+}
+
+/// <summary>Typed destinations authored in the Home entry configuration.</summary>
+[JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+public enum HomeEntryRoute
+{
+    /// <summary>No destination was accepted.</summary>
+    None,
+
+    /// <summary>The Shop destination.</summary>
+    Shop,
+
+    /// <summary>The SevenDayLogin destination.</summary>
+    SevenDayLogin,
+
+    /// <summary>The OpeningSprint destination.</summary>
+    OpeningSprint,
+
+    /// <summary>The FirstPurchase destination.</summary>
+    FirstPurchase,
+
+    /// <summary>The GrowthTrial destination.</summary>
+    GrowthTrial,
+
+    /// <summary>The Market destination.</summary>
+    Market,
+
+    /// <summary>The Task destination.</summary>
+    Task,
+
+    /// <summary>The Backpack destination.</summary>
+    Backpack,
+
+    /// <summary>The Mail destination.</summary>
+    Mail,
+
+    /// <summary>The Rank destination.</summary>
+    Rank,
+
+    /// <summary>The Community destination.</summary>
+    Community,
+
+    /// <summary>The Notice destination.</summary>
+    Notice,
+
+    /// <summary>The Survey destination.</summary>
+    Survey,
+
+    /// <summary>The MapPreview destination.</summary>
+    MapPreview,
+
+    /// <summary>The Heroes destination.</summary>
+    Heroes,
+
+    /// <summary>The Mansion destination.</summary>
+    Mansion,
+
+    /// <summary>The PlayMode destination.</summary>
+    PlayMode,
+
+    /// <summary>The Guild destination.</summary>
+    Guild,
+
+    /// <summary>The World destination.</summary>
+    World,
+
+    /// <summary>The Recruit destination.</summary>
+    Recruit,
+}
+
 /// <summary>Result of checking a Home entry against the current local state.</summary>
 public enum HomeEntryResult
 {
@@ -17,11 +98,35 @@ public enum HomeEntryResult
     Allowed
 }
 
-/// <summary>Owns local Home state, validates configuration and rechecks entry access.</summary>
+/// <summary>Owns Home configuration, entry rules and logical actors.</summary>
+[Initialize(InstallType.Startup, true)]
 public sealed class HomeEntity : XEntity
 {
     /// <summary>Validated product configuration and local presentation state.</summary>
     private HomeSnapshot state;
+
+    /// <summary>Actors keyed by stable instance identity, with no scene object references.</summary>
+    private readonly Dictionary<int, ActorEntity> actors = new Dictionary<int, ActorEntity>();
+
+    /// <summary>Number of actors currently owned by this town.</summary>
+    public int actorCount
+    { get { return actors.Count; } }
+
+    /// <summary>Advances actors whether or not their shapes are visible or enabled.</summary>
+    /// <param name="elapsed">Elapsed simulation time from the framework clock.</param>
+    public override void Update(float elapsed)
+    {
+        foreach (ActorEntity actor in actors.Values)
+            actor.Update(elapsed);
+    }
+
+    /// <summary>Destroys owned actors before releasing framework components.</summary>
+    public override void Destroy()
+    {
+        ClearActors();
+
+        base.Destroy();
+    }
 
     /// <summary>Initializes once from the exported product workbook; invalid data never falls back.</summary>
     /// <param name="json">Exported Home configuration payload.</param>
@@ -36,19 +141,23 @@ public sealed class HomeEntity : XEntity
             candidate.entries == null || candidate.texts == null || candidate.entries.Length == 0)
             throw new ArgumentException("Incomplete Home configuration.");
 
-        foreach (string key in new[] { "home.pending", "home.locked", "home.invalid" })
-            if (!candidate.texts.TryGetValue(key, out string text) || string.IsNullOrWhiteSpace(text))
-                throw new ArgumentException("Missing Home feedback text: " + key);
-
         var ids = new HashSet<int>();
         foreach (var entry in candidate.entries)
         {
-            if (!ids.Add(entry.id) || string.IsNullOrEmpty(entry.route) ||
-                !candidate.texts.ContainsKey(entry.labelId) || (!Enum.TryParse<HomeEntryGroup>(entry.group, out var group) || !Enum.IsDefined(typeof(HomeEntryGroup), group) || entry.group != group.ToString()))
+            if (!ids.Add(entry.id)
+                || entry.route == HomeEntryRoute.None
+                || !Enum.IsDefined(typeof(HomeEntryRoute), entry.route)
+                || !candidate.texts.ContainsKey(entry.labelId)
+                    || (!Enum.TryParse<HomeEntryGroup>(entry.group, out var group)
+                    || !Enum.IsDefined(typeof(HomeEntryGroup), group)
+                    || entry.group != group.ToString()))
                 throw new ArgumentException("Invalid Home entry configuration: " + entry.id);
         }
 
-        if (candidate.profile.gold < 0 || candidate.profile.gem < 0 || candidate.profile.energy < 0 || candidate.profile.energyLimit <= 0)
+        if (candidate.profile.gold < 0
+            || candidate.profile.gem < 0
+            || candidate.profile.energy < 0
+            || candidate.profile.energyLimit <= 0)
             throw new ArgumentException("Invalid Home resource values.");
 
         state = candidate;
@@ -70,7 +179,7 @@ public sealed class HomeEntity : XEntity
     /// <returns>Whether the entry exists and was updated.</returns>
     public bool UpdateEntryAvailability(int id, bool visible, bool unlocked)
     {
-        var entry = state?.entries.FirstOrDefault(item => item.id == id);
+        var entry = state.entries.FirstOrDefault(item => item.id == id);
         if (entry == null)
             return false;
 
@@ -88,7 +197,7 @@ public sealed class HomeEntity : XEntity
     /// <returns>Whether all supplied values were accepted.</returns>
     public bool UpdateResources(long gold, long gem, int energy, int energyLimit)
     {
-        if (state == null || gold < 0 || gem < 0 || energy < 0 || energyLimit <= 0)
+        if (gold < 0 || gem < 0 || energy < 0 || energyLimit <= 0)
             return false;
 
         state.profile.gold = gold;
@@ -111,13 +220,13 @@ public sealed class HomeEntity : XEntity
 
     /// <summary>Rechecks visibility and unlock state at click time.</summary>
     /// <param name="id">Stable entry identifier.</param>
-    /// <param name="route">Allowed destination, or null when rejected.</param>
+    /// <param name="route">Allowed destination, or None when rejected.</param>
     /// <returns>The validated access result.</returns>
-    public HomeEntryResult RequestEntry(int id, out string route)
+    public HomeEntryResult RequestEntry(int id, out HomeEntryRoute route)
     {
-        route = null;
+        route = HomeEntryRoute.None;
 
-        var entry = state?.entries.FirstOrDefault(item => item.id == id);
+        var entry = state.entries.FirstOrDefault(item => item.id == id);
         if (entry == null || !entry.visible)
             return HomeEntryResult.Invalid;
 
@@ -127,6 +236,53 @@ public sealed class HomeEntity : XEntity
         route = entry.route;
 
         return HomeEntryResult.Allowed;
+    }
+
+    /// <summary>Atomically installs validated actor data into an empty town.</summary>
+    /// <param name="spawns">Detached actor definitions supplied by scene authoring.</param>
+    /// <returns>Whether every definition was valid and installed.</returns>
+    public bool InitializeActors(ActorSpawn[] spawns)
+    {
+        if (actors.Count != 0 || spawns == null || spawns.Length == 0)
+            return false;
+
+        var candidates = new Dictionary<int, ActorEntity>();
+        foreach (ActorSpawn spawn in spawns)
+        {
+            var actor = new ActorEntity();
+            if (!actor.Initialize(spawn) || candidates.ContainsKey(actor.actorId))
+            {
+                actor.Destroy();
+                foreach (ActorEntity candidate in candidates.Values)
+                    candidate.Destroy();
+
+                return false;
+            }
+
+            candidates.Add(actor.actorId, actor);
+        }
+
+        foreach (var candidate in candidates)
+            actors.Add(candidate.Key, candidate.Value);
+
+        return true;
+    }
+
+    /// <summary>Returns one logical actor without exposing the mutable collection.</summary>
+    /// <param name="actorId">Stable actor instance identifier.</param>
+    /// <returns>The actor, or null when absent.</returns>
+    public ActorEntity FindActor(int actorId)
+    {
+        return actors.TryGetValue(actorId, out var actor) ? actor : null;
+    }
+
+    /// <summary>Releases all owned actor data and invalidates detached references.</summary>
+    public void ClearActors()
+    {
+        foreach (ActorEntity actor in actors.Values)
+            actor.Destroy();
+
+        actors.Clear();
     }
 }
 
@@ -201,7 +357,7 @@ public sealed class HomeEntryData
     { get; set; }
 
     /// <summary>Requested destination contract, not proof of installation.</summary>
-    public string route
+    public HomeEntryRoute route
     { get; set; }
 }
 

@@ -1,3 +1,65 @@
+# 登录到 Home 的加载交接（2026-11-25）
+
+Master 收到 LoginSucceed 后只启动 Home，保留 Login。HomeSystem.OnActive 启动 OpenHome 协程，协程创建 HomeRuntime。HomeRuntime 在 Load 内加载 Home.json、主场景和 Actor，进入 Ready 后 Home 打开 UIHome；页面刷新完毕发送 HomeReady，Master 才卸载 Login。失败时清理 Home 并恢复原 Login 的重试状态。
+
+## 以下为目录、实体与 Runtime 历史记录
+
+# Home 场景组件目录（2026-11-25）
+
+当前目录：Assets/Scripts/Systems/Home/Scene/HomeScene.cs、HomeNavigation.cs。原 TownScene、TownNavigation 已更名并从 Home/Common 迁移；类名、构造函数、运行时代码与编辑器引用全部同步。AssetDatabase.MoveAsset 保留两个脚本 GUID，未重建 Home 场景或修改原始导航资源。Home/Common 保留原通用组件。
+
+本轮验证：两个脚本 GUID 与迁移前完全相同；Unity 编译、项目代码/架构检查、登录返回与场景重开、玩家固定摇杆/导航/镜头及竖屏适配均通过。原始 GUID 记录 scene-migration-guids.json；运行证据见 ../login/runtime-evidence.json 和 ../player/runtime-evidence.json。
+
+## 以下为实体及 Runtime 迁移历史记录
+
+# HomeEntity 统一主场景数据（2026-11-25）
+
+TownEntity.cs 及 meta 已通过 AssetDatabase 删除。HomeEntity 持有 Home 配置/状态及私有 Actor 字典，由框架 Startup 安装并开启每帧更新。HomeRuntime、TownScene、ActorShape 和编辑器探针统一使用 HomeEntity。
+
+InitializeActors 只初始化角色集合；FindActor 按实例ID查询；ClearActors 停止并释放全部 Actor，不清理 Home 配置、资源和入口状态；Destroy 先 ClearActors 再调用基类。单个 ActorEntity 与 ActorShape 的数据/表现分离保持不变。MiniwowTownProbe.VerifyEntity 已添加角色清理后 HomeSnapshot 完整保留的回归断言。
+
+## 以下为 Runtime 与实体迁移历史记录
+
+# GameRuntime 公共基类（2026-11-25）
+
+当前继承链：HomeRuntime → GameRuntime → XActionStateMachine。已删除 IGameRuntime 接口。RuntimeManager 的字典与泛型约束直接使用 GameRuntime，无接口转换。
+
+沿用 development/Fight/FightRuntime.InitStateMachine、Awake、Update 及 OnLoad/OnReady 各阶段 Enter/Update/Leave 虚方法的结构；GameRuntime 注册 Load、Ready、Unload、Stopped，统一 Startup/Shutdown/IsReady/IsStopped。派生类可覆盖 InitStateMachine 并在 base 调用后追加专属状态。HomeRuntime 仅覆盖 Startup 配置验证、OnLoadEnter、OnReadyEnter、OnUnloadEnter，原导航和NPC逻辑保持在 Home 内。
+
+产品差异：参考工程由 Start 自动进入 Load；本项目由 RuntimeManager.CreateRuntime 在验证流程中调用 Startup，便于失败回滚。场景卸载异步，因此保留 Unload/Stopped；不照搬 FightEntity、Fight/Over 阶段和战斗就绪标记到 Home。未来 FightRuntime 继承 GameRuntime 扩展自己的战斗状态与实体绑定。
+
+HomeSystem 同步移除了旧 ready/generation/transitioning 和 Reconcile：OnActive 启动 OpenHome 协程，OnDetive 取消该协程并关闭页面；UISystem.CloseWidget 会移除 loadingMap 请求，过期加载结果由框架过滤。IsReady 直接查询活动状态、Runtime 和页面，不缓存第二份就绪状态。
+
+## 以下为管理器及迁移历史记录
+
+# RuntimeManager 与 Home 状态机（2026-11-25）
+
+当前实现：HomeSystem → RuntimeManager → HomeRuntime : XActionStateMachine, IGameRuntime。参考 development/Fight/FightManager 的单例、类型化创建和组件所有权，以及 FightRuntime 的状态机注册与每帧推进；本项目共用 RuntimeManager，按具体 Runtime 类型索引，不复制战斗实体或战斗阶段。
+
+状态为 Loading → Ready → Unloading → Stopped。HomeRuntime.Awake 注册状态；Startup 验证并保留配置场景路径；状态进入回调加载或释放场景，Update 推进 UpdateMachine。未开始加载时启动失败，Shutdown 保持 Stopped。卸载中的场景操作不能被销毁组件打断，因此管理器等待 IsStopped 后销毁 GameObject。HomeSystem 不保存 Runtime 字段；GamePlugin 在实体服务关闭前清理管理器。
+
+共享接口：CreateRuntime<T>()、QueryRuntime<T>()、DestroyRuntime<T>()、Shutdown()，T 必须继承 XActionStateMachine 并实现 IGameRuntime。未来 FightRuntime 可复用，当前没有战斗空壳。每类型一个活动实例；退出中的旧实例只用于完成清理，不再被 Query 查询到。
+
+verify-runtime.ps1 验证失败配置清理、同类型创建复用、DontDestroyOnLoad 所有权、退出后无残留组件，证据 manager-evidence.json。模块替换探针必须等待 HomeSystem 从系统管理器移除，不能拿 Runtime 的注册消失作为系统卸载完成。
+
+本轮验证已完成：Unity 编译、项目级 verify code（包含 RuntimeManager）与 verify architecture 通过；verify-runtime、verify-session、verify-player、verify-town 均通过。配置无效在进入 Loading 前抛出，失败对象从 Stopped 完成销毁；独立复核发现的卸载等待问题已修复并增加负向用例。
+
+## 以下为上一次迁移及历史记录
+
+# Home 场景运行类迁移（2026-11-25）
+
+当前结构为 HomeSystem → HomeRuntime（普通类），TownSystem 已删除，不再注册或通过 Master 单独激活。FunctionSystem 仅有 Master、Login、Home。HomeSystem 自己启动、等待和释放场景运行类，地图显隐直接控制其输入。TownEntity 使用 Startup 安装，只持有角色数据；ActorEntity/ActorShape 分离保持不变。
+
+代码位置：Home/HomeRuntime.cs、Home/TownEntity.cs、Home/Common/TownScene.cs、Home/Common/TownNavigation.cs。通过 AssetDatabase.MoveAsset 迁移，原脚本 GUID 保留，不改 Home 场景资源引用。旧的 TownReadinessRequested、TownReadyChanged、HomeCampVisibilityChanged 已移除。
+
+参考 development/Fight/FightSystem、FightRuntime、FightManager 的 System/Runtime 职责分离；本项目不需要多战局管理，也不套用战斗阶段状态机，所以选用 Home 持有的普通运行类。运行类在 Home 活跃期间驻留，返回登录则释放。
+
+验证：verify-session.ps1、verify-player.ps1 检查登录及移动生命周期；verify-town.ps1 现在对 Home 执行停用/重开/替换。NPC 点击探针 FrameGesture 临时将目标放入镜头中心，经真实 BeginPointer/EndPointer 后还原镜头，避免把玩家镜头外的建筑作为屏内点击；它不是玩家走到建筑附近的端到端用例。
+
+本轮结果：Unity 编译、Home 代码检查和架构检查通过；登录流程、玩家回归、NPC 往返和 Spine、地图输入关闭、移动中停用、快速重开、Home 实例替换、1080×2400 适配均通过。证据为 home-code-verification.json、home-architecture-verification.json、runtime-evidence.json，以及 ../login/runtime-evidence.json、../player/runtime-evidence.json。独立只读复核确认生产代码无旧系统或旧协调事件引用。旧 NPC 点击用例首次失败（屏外坐标），修正探针取景前提后重跑通过，未修改生产镜头或导航数据。
+
+## 以下为迁移前的历史实现记录
+
 ﻿# TownSystem 第一阶段
 
 日期：2026-11-25。目标工程：`../../client`。Studio 项目 `p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3`，Unity identity `83c29c9f-21c1-4597-9691-6707ca146fa7`。

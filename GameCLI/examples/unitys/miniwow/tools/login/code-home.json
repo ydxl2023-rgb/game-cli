@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "system": "Home",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/1",
+  "issues": [
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 161,
+      "rule": "OX016",
+      "severity": "review",
+      "message": "Review text ownership: fixed UI text belongs in propCommonText; dynamic content/logs need classification."
+    }
+  ],
+  "statistics": {
+    "files": 8,
+    "lines": 1020,
+    "blankLines": 213,
+    "commentLines": 165,
+    "members": 125,
+    "documentedMembers": 125,
+    "blankLineRate": 0.2088235294117647,
+    "commentLineRate": 0.16176470588235295,
+    "documentedMemberRate": 1
+  },
+  "excluded": [],
+  "reviewRequired": [
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 161,
+      "rule": "OX016",
+      "severity": "review",
+      "message": "Review text ownership: fixed UI text belongs in propCommonText; dynamic content/logs need classification."
+    }
+  ],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSafeArea.cs",
+      "sha256": "05b271f8d6537f4d8cae44fc59a1294e9a7214dba0715c897cf623c89c1311e4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSceneCamera.cs",
+      "sha256": "56889b346985c01b945863dc943c05e27a2331594fb3471d515971dc359f2a4b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "34cb3763b8f1d40b61404ddb6f4b86687ac120d7f4c3df8ec9e9b57731cb4dae"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "59dd3b11e1cda188562cb610c04d6ac2c1c5b600b38e7180223b9e7c2ccefb23"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "86d625aba159fe1ea7036104ab0c7997bf193461b36628fa1957d4f665c08dc9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeEntry.cs",
+      "sha256": "64d3148d98a1fa15a61a51dea7342d363ed5f418d29db26beddd89b00de23028"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "d55e1d6b6ea0782526063ec24b783a499fd0d4e67ea4e0d0b85adebaddfde693"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeEntry.cs",
+      "sha256": "71c47985b237a925b1f0747354afe8af105df416e589d1bd67a89c9133b778e8"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\f998de9e-7b0b-41ad-a8a1-ac99b97904f0"
+}

@@ -1,4 +1,4 @@
-﻿---
+---
 name: development-rules
 description: GameCLI Unity C# 开发强制规范。编写、修改或审查本仓库的 Unity 组件和业务系统，以及创建系统 skill 时使用，落实字段、序列化、UGUI 绑定、英文注释和返回值约定。
 ---
@@ -8,6 +8,20 @@ description: GameCLI Unity C# 开发强制规范。编写、修改或审查本�
 这些规则来自用户明确确认的工程约定。开始 Unity C# 工作前必须读取，提交结果前必须逐项核对。后续系统 skill 必须引用本规范；独立 agent 同样遵守。用户后续明确修改规则时同步更新本文件，避免保留相互矛盾的要求。
 
 ## 先参考工程，再编写代码
+
+- 本次对话确认的要求、适用范围、工具覆盖及历史方案替代关系集中在 [已确认约定台账](../references/development/CONFIRMED-CONVENTIONS.md)。新增约束必须同时更新对应 Skill、检查实现/测试或明确的人工验证项，不重复复制整份台账。
+
+## 事件、启动封装与业务标识
+
+- 应用事件统一使用 `XPluginUtility.FireEvent`（立即派发）或 `XPluginUtility.PostEvent`（排队派发），禁止在业务代码和 UISender 中直接调用 dispatcher.DispatchEvent。统一入口不意味着改变时序；已有同步交接不能机械改成排队。GameUISender 是 GamePlugin.cs 内独立适配类，Send/Post 分别使用上述入口，不注入无用途的 dispatcher。
+- 有初始化事务的系统采用成对私有方法 `bool Install<业务名>()` / `void Uninstall<业务名>()`。例如 OnActive 订阅后直接 `return InstallHome();`，OnDetive 取消订阅后调用 `UninstallHome();`。禁止用无业务后缀的 Install/Uninstall 隐藏父类方法；真正的 override 保持框架契约。没有安装事务的纯订阅系统不为形式增加空方法。
+- Install 的 bool 表示当前同步步骤是否接受/完成；若内部启动异步操作，不表示资源就绪。实际就绪沿用 Runtime 状态及确认的系统事件。取消协程、关闭所属 UI、释放 Runtime 集中在配对卸载方法，不能只改命名却遗漏清理。
+- 固定业务目的地使用枚举，配置读取、实体结果和事件载荷保持同一类型。配置文件可保存枚举名称，在读取边界转换；不能在分派时使用字符串白名单、ToString 或字符串常量代替枚举。动态协议文本不机械枚举化；展示文案另走语言表。
+- 自动检查对应 OX024–OX030，实际识别范围及人工边界见 [规则说明](../../../clis/code-verify/RULES.md)。不能为了消除 review 隐藏变量名、移动文件或增加无用途包装。
+
+- 每次 Unity 实现或重构前必须读取 [development 源码学习入口](../references/development/README.md) 与任务对应章节，执行其中的源码漂移检查，并阅读实际参考方法及目标包重载。记录沿用机制和必要产品差异；不得在已有配置/系统/UI/资源机制之外自行另写一套。文档过期先更新结论，再刷新哈希基线。全量索引不是全量逐行审计。
+
+- 涉及 GamePlugin 的职责、启动顺序或命名时，读取 [GamePlugin 参考标准](../core/references/game-plugin-standard.md)，再核对目标工程及其框架实现。参考工程事实、用户已确认约束、待实施改进建议必须区分，不能把任一当前实现整体当作已批准模板。
 
 - 先阅读目标模块和相邻实现，遵循现有目录、命名、组件生命周期与调用方式。不要用个人偏好替换工程风格。
 - 以用户最新确认的规则为准：本次已确认采用私有字段，不再采用公开自动属性、公开 getter 或显式字段加公开属性的形式来暴露 UI 引用。
@@ -43,6 +57,9 @@ description: GameCLI Unity C# 开发强制规范。编写、修改或审查本�
 - 迁移通过 Unity AssetDatabase/UnityCLI 保留 `.meta` GUID；同步维护 SKILL 路径、源码包清单及工具引用，不手改自动生成代码，不改变 VM 字段顺序或 Metadata 绑定。
 
 ## 字段与序列化
+
+- 业务系统之间禁止直接引用具体系统类型，包括字段、属性、局部变量、参数、泛型加载/查询、类型转换和实例/静态方法调用。不得以“使用时查询”或辅助方法包装绕过隔离；跨系统通过约定事件通信，系统装配和加载卸载由统一管理层负责。
+- 交付同时执行 `gamecli verify code --project <ID> --system <目录名>` 和 `gamecli verify architecture --project <ID>`。前者检查编码风格，后者检查系统依赖；编译或运行通过不能替代架构检查。架构检查的静态覆盖限制必须随报告保留。
 
 - 手写 C# 每条声明只允许定义一个变量。字段和局部变量即使类型相同也要分别声明、各占一行，禁止用逗号合并。
 - Unity 生命周期方法、嵌套序列化类型及其每个字段都必须有英文 XML `<summary>` 注释。每组字段声明与下一组注释之间留一个空行。
@@ -202,6 +219,10 @@ UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
 
 ## 空行与逻辑分组
 
+- 手写 C# 代码行最多 120 列（包含缩进，Tab 按 4 列制表位计算），由规则表 `maxCodeLineLength` 和 OX019 检测。超长复合条件按 `||` / `&&` 分项换行，运算符放在续行开头；保留括号、短路顺序与逻辑。长参数列表和调用链按参数/调用步骤换行，不为缩短行宽改变业务逻辑。纯注释、行尾注释和多行字符串正文不计入代码行宽。
+
+- 多行对象、集合或数组初始化的局部声明作为独立准备块，与同一语句块中前后相邻语句之间空一行；块首/块尾无需额外空行。注册同步器、构造 ResourceConfigure、调用 Startup 分属独立步骤。普通连续单行声明或赋值仍保持紧凑。
+
 - 成员注释前必须与上一组成员声明保留一个空行，禁止字段声明后紧接下一成员的 `/// <summary>`。此规则适用于所有字段、属性、构造函数和方法，不仅限于 VM；类的第一个成员无需在开括号后额外插入空行。注释、特性和其对应声明属于同一组，组内保持紧凑。
 
 - 获取 VM 或实体后立即单独检查有效性，再读取属性或调用方法。支持框架布尔转换的对象统一使用 `if (!vm)`、`if (!entity)`，bool 方法中返回 `false`；不要把 VM 检查藏在获取 Widget 的复合条件中，也不要链式调用 `QueryEntity<T>().Member`。
@@ -229,7 +250,7 @@ return true;
 ## 固定文案与多语言
 
 - 预制中的固定标题、按钮名、说明文字直接保存在 Text 等文本组件上，不为静态显示创建 Entity 属性、VM Binding 或 System 转发赋值。VM 只承载实际动态显示数据和交互；禁止按节点路径生成 label 加数字的占位属性。未接业务的倒计时和活动占位保留空文本，不把源工程 FID 或测试数值当成产品数据。
-- 业务代码需要选择、格式化的固定文案，以及需要多语言的文本源，统一维护在 `examples/unitys/development/config/propCommonText.xlsx`，包括按钮、标题、提示、状态名称和带参数的完整句式；业务代码不再硬编码这些显示文本，也不另建系统专用文案表。
+- 业务代码需要选择、格式化的固定文案，以及需要多语言的文本源，统一维护在目标产品的 `config/propCommonText.xlsx`（development 自身的源表位于 `examples/unitys/development/config/propCommonText.xlsx`），包括按钮、标题、提示、状态名称和带参数的完整句式；业务代码不再硬编码这些显示文本，也不另建系统专用文案表。
 - 静态预制文案需要多语言时，由 UI 文本本地化组件按配置 ID 读取，不能因此添加 Entity → System → VM 中转。本地化组件未接入时明确标注尚不支持语言切换；已有源表条目可以保留作为本地化资料。
 - 每条表内文案使用唯一且稳定的 `ID` 别名和 `NumID`。代码引用导表生成的 `Config.Excel` 别名常量，通过 `CommonText.Get(id, args)` 查询，不手写数字 ID，不直接依赖自动语言表的行号别名。
 - `Context` 维护源文案；导表自动提取到 `propLanguage.xlsx`。不要将生成的语言表作为新增固定文案的源表，也不要手改生成的 C# 或 bytes 文件。
@@ -248,6 +269,9 @@ return true;
 
 ## 验证与完成条件
 
+- 代码交付执行 `gamecli verify code --project <ID>`，默认覆盖 Assets/Scripts 手写代码，不能只检查系统目录而遗漏 GamePlugin。`--system` 用于局部复查，仍检查共享 GamePlugin/RuntimeSystem；项目生成目录与报告中的排除项必须人工核对。
+- 检测规则配置位于 [rules.json](../../../clis/code-verify/rules.json)，规则流程与覆盖边界见 [RULES.md](../../../clis/code-verify/RULES.md)。每次检查加载规则表并记录版本、哈希；新增反复出现的违规必须补充检测实现及正反例测试，不能仅追加文字约定。配置损坏或缺失时检查必须失败。
+
 - 检查字段是否保持私有 camelCase（VM 绑定字段允许省略 private）、VM 的 Binding 是否独占一行、序列化是否使用普通 `[SerializeField]`、是否遗漏英文注释、是否存在中文默认参数或固定 UI 路径搜索。
 - 代码或签名修改后执行 Unity 编译并检查 Console。引用变更后核对字段非空且指向正确对象；涉及显示和进度逻辑时验证实际 UI 行为。
 - 注释或简单文案修改按影响范围验证，不机械重复完整运行测试。
@@ -256,3 +280,31 @@ return true;
 ## 列表能力优先复用
 
 新增列表前必须检查当前包的 SyncGroup、SyncScrollRect、FancyView 与 FancyGridScrollView 的实际绑定、模板和生命周期实现。固定异构条目组可用 SyncGroup 配合显隐；统一模板动态/虚拟列表优先用现有列表组件。只有具体、已验证的能力缺口才允许扩展，不按系统复制列表创建、销毁和绑定机制。SyncGroup 按直接子节点顺序绑定，不支持任意长度增删；必须保证顺序与数量，避免重复 Ref。
+
+### OX020 参数判空
+
+后续操作已能明确报告失败时，删除仅用于抛出 ArgumentNullException 的重复参数检查。必需参数由正常操作暴露错误。不要用提前返回、默认值或跳过操作掩盖调用方错误。检测器对参数与 null 比较后直接 return 或抛出 ArgumentNullException 的分支提示 review，包括 || 组合。可选输入、配置读取失败、正常生命周期状态等分支应能说明具体行为。构造时需要拒绝无效依赖、外部 API 明确约定异常类型等情形按契约复核。
+
+### OX021 系统激活
+
+RuntimeSystem.Active 统一处理重复激活。业务 OnActive 负责初始化，禁止再用 IsActive 或随激活和停用翻转的字段提前返回。检测覆盖直接继承 RuntimeSystem 的系统和方法顶层的简单判断。异步请求版本必须能指出具体的旧回调、替代请求和结果消费位置。
+
+### OX022 事件订阅
+
+Subscribe 的事件参数必须直接传入具名回调方法，命名为 On 加 PascalCase 动作或事件名，例如 Subscribe<EnterLocalGame>(OnEnterGame)。禁止订阅时使用 lambda、匿名委托和 Handle 前缀。检测器检查单参数 Subscribe 调用的语法和名称。
+
+### OX023 分开实体查询与使用
+
+调用管理器的 QueryEntity<T>() 后先用有意义的局部变量接收结果，下一句再操作实体。直接访问查询结果的成员、使用条件访问或将查询内联为方法实参均报错。
+
+## 异步状态的依据
+
+增加 generation、requestVersion 或 ready 字段前，先检查框架的取消和就绪契约。UISystem 已用 loadingMap 请求身份阻止关闭后的旧页面加载回调，业务页面不得重复维护同一取消计数。就绪信息可从当前 Widget/VM 取得时直接查询。场景 AsyncOperation 不可取消，跨场景加载与卸载的失效检查按具体调用链保留并说明。
+
+## Master 常驻与事件调度
+
+Master 由启动配置安装并常驻，监听登录成功、返回登录、系统激活及系统关闭事件。登录与返回仅切换业务系统，保持 Master 实例。业务事件通过配置 ID 表达目标，由 Master 管理边界解析类型并调用 dispatcher。参考 development 的 pending 用于延后激活和取消等待请求，禁止为此建立玩家登录阶段机或在 GamePlugin 再维护一套系统组合流程。Master 仅在插件退出时释放，业务开关事件不得关闭常驻 Master。InstallOnStartup 只决定启动时是否自动 Load，不限制业务系统后续卸载。
+
+## 配置装配与系统自治
+
+Launch 完成后由 GamePlugin 读取配置，InstallOnStartup 非 0 的系统自动 Load。系统的初始化、事件订阅、资源加载及释放由自身 Install/OnActive/OnDetive/Uninstall 负责。管理器按事件装卸系统，不替其他系统处理内部事务；不得重复手动加载已由启动配置装配的系统。

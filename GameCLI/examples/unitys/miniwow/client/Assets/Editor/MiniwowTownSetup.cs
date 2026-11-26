@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -38,6 +38,16 @@ public static class MiniwowTownSetup
                 MiniwowOriginalNavigation.Import();
             else if (action == "player")
                 MiniwowPlayerSetup.Install();
+            else if (action == "login")
+                MiniwowLoginSetup.Bind();
+            else if (action == "home-runtime")
+                MigrateHomeRuntime();
+            else if (action == "merge-home-entity")
+                AssetDatabase.DeleteAsset("Assets/Scripts/Systems/Home/TownEntity.cs");
+            else if (action == "legacy-text")
+                MiniwowLoginSetup.EnableLegacyText();
+            else if (action == "config-source")
+                File.WriteAllText("../tools/login/config-source.json", MiniwowSessionProbe.ConfigureSource());
             else if (action == "install")
                 Install();
             else
@@ -48,6 +58,23 @@ public static class MiniwowTownSetup
             File.WriteAllText("../tools/town/setup-error.txt", exception.ToString());
             Debug.LogException(exception);
         }
+    }
+
+    /// <summary>Moves scene execution into Home while preserving serialized script identities.</summary>
+    private static void MigrateHomeRuntime()
+    {
+        const string source = "Assets/Scripts/Systems/Town/";
+        const string destination = "Assets/Scripts/Systems/Home/";
+        string[] files = { "TownSystem.cs", "TownEntity.cs", "TownScene.cs", "TownNavigation.cs" };
+        string[] targets = { "HomeRuntime.cs", "TownEntity.cs", "Common/TownScene.cs", "Common/TownNavigation.cs" };
+        for (int index = 0; index < files.Length; index++)
+        {
+            string error = AssetDatabase.MoveAsset(source + files[index], destination + targets[index]);
+            if (!string.IsNullOrEmpty(error))
+                throw new InvalidOperationException(error);
+        }
+
+        AssetDatabase.SaveAssets();
     }
 
     /// <summary>Imports skeletons and records authored town anchors without guessing coordinates.</summary>
@@ -115,7 +142,7 @@ public static class MiniwowTownSetup
         InstallResident(forge, "npc_forgingtable_2");
 
         var rootObject = new GameObject("TownRuntime");
-        TownScene town = rootObject.AddComponent<TownScene>();
+        HomeScene town = rootObject.AddComponent<HomeScene>();
         var visitorObject = new GameObject("TownVisitor");
         visitorObject.transform.SetParent(rootObject.transform, false);
         var visual = new GameObject("OriginalHeroVisual");

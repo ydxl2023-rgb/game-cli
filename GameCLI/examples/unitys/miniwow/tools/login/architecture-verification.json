@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "gamecli-architecture-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "policy": "oathx-architecture/1",
+  "issues": [],
+  "statistics": {
+    "files": 29,
+    "systems": 4
+  },
+  "status": "passed",
+  "passed": true,
+  "excluded": [],
+  "limitations": [
+    "Source-symbol analysis without Unity assemblies; compilation and runtime behavior require separate verification.",
+    "All handwritten Assets/Scripts sources supply context; Systems/<module> defines the enforced ownership boundary. Composition outside Systems is outside this rule.",
+    "Generated code, interface indirection and arbitrary reflection/dynamic dispatch are not fully covered. Only active default preprocessor branches are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Config/client/ActorConfig.cs",
+      "sha256": "27c5ff82faf247850a7eb3437709afd69365ec8ed58e61b851ccdbd82bb8fd76"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/FunctionSystemConfig.cs",
+      "sha256": "fcd41ef99fcc1fadaba9bf3053bcbba3d46853689091d7020f9b913cda9bbbce"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/SceneConfig.cs",
+      "sha256": "b0f343696a89edc906436ec8353647f18fb1369fbcb337d9d68cb7059e10bfe3"
+    },
+    {
+      "path": "Assets/Scripts/Config/common/Excel.cs",
+      "sha256": "862d05bcfb5199a595900103f6857ec47e22ca8b2aa7ac15b7b40b346662deed"
+    },
+    {
+      "path": "Assets/Scripts/GamePlugin.cs",
+      "sha256": "67337b8dd94cabc8ed7454dfa7d0bcf938c52f2e676ae1512fd922d7b4e24410"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorConfiguration.cs",
+      "sha256": "e2a92bd6626d3fd935eab003a8cca72247f0fc8c70fe493c1d36fbd536ba9c3e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "sha256": "4ce8623936ffcb1e14424600d9b19c5e2fb35ede368851b80798d5517206a769"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorJoystick.cs",
+      "sha256": "8a51c413eb3ae6ebaada699d12fbb91232aa5aa0df95ba2a08a3acdae2f32b89"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorShape.cs",
+      "sha256": "5b9dc962299192a81c915841b627b8ad4a570a599d00d9282469fdfee85ce4ca"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIRequestEvent.cs",
+      "sha256": "74a88539ab4e6821990aad94c3cd08cf2f87dafcf1e7f30d43670e51fec6a3ce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSafeArea.cs",
+      "sha256": "05b271f8d6537f4d8cae44fc59a1294e9a7214dba0715c897cf623c89c1311e4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSceneCamera.cs",
+      "sha256": "56889b346985c01b945863dc943c05e27a2331594fb3471d515971dc359f2a4b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "34cb3763b8f1d40b61404ddb6f4b86687ac120d7f4c3df8ec9e9b57731cb4dae"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "59dd3b11e1cda188562cb610c04d6ac2c1c5b600b38e7180223b9e7c2ccefb23"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "86d625aba159fe1ea7036104ab0c7997bf193461b36628fa1957d4f665c08dc9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeEntry.cs",
+      "sha256": "64d3148d98a1fa15a61a51dea7342d363ed5f418d29db26beddd89b00de23028"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "d55e1d6b6ea0782526063ec24b783a499fd0d4e67ea4e0d0b85adebaddfde693"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeEntry.cs",
+      "sha256": "71c47985b237a925b1f0747354afe8af105df416e589d1bd67a89c9133b778e8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "sha256": "ab027a3df16cc70f6e9f696ad2f99a6560537e071bec588daa6610d3feac5e37"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "sha256": "89ca194628e3e824a0ab57826179ff695c966b9d865781cbe0aae60171f6190b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "sha256": "03ac2a4fe493e17a808ea936de2b400d4c06f0fc5e6be039ad284e8b9de415b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "sha256": "e8ac61be8b3077a918934892bcea390533ca750043fcb6840cce36859af7c4de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "sha256": "bcf4a656dadf0997e5b288157ea7824189ba14cd1c5f56a54085ecc17afbcf02"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterSystem.cs",
+      "sha256": "6aa571d260eca2bcd55803b8a1f1ba8ce7d28e841b230aa872b007ab7ea312fb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "sha256": "b1c86daababb883d09f553314de4fb8570031d1a8d91d691e89467ef51509fc1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Town/TownEntity.cs",
+      "sha256": "674cdec627cb2369307a5a97d4b77c1a3c0d48619ab7ed72a427ea4754097f24"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Town/TownNavigation.cs",
+      "sha256": "1f123f9f3c6116914a1437a7d08f52642baaed1e798d9db4ca2f4a522e8af54a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Town/TownScene.cs",
+      "sha256": "bb1ecd6e2f3595854893b5bb257d4a3b4fe6b21d950584359fd25a6371f120d8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Town/TownSystem.cs",
+      "sha256": "23a5e7d58c04df51dc65393787cd7476cb0b593bb34b07fded447f2cd9cad331"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\2d99896b-2930-4cc5-afdd-012e7183f1c5"
+}

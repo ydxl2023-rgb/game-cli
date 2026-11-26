@@ -1,182 +1,182 @@
 [
   {
-    "arguments": "[1080,1920]",
     "result": "",
+    "arguments": "[1080,1920]",
     "method": "MiniwowHomeProbe.SetResolution"
   },
   {
-    "arguments": "[]",
     "result": "",
+    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart"
   },
   {
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.14615,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.14615,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.14615,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.14615,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "arguments": "[]",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0976979,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0976979,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0976979,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0976979,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "method": "MiniwowTownProbe.Snapshot"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifyPointerCapture"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifySlope"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifyCancellation"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifyRules"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":1.18363059,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
     "arguments": "[false]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":1.10811245,\"shapeActive\":true,\"camera\":[22.0646763,83.68479,60.08472],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Begin"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.8456421,35.1613922,15.1743593],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.1436204,\"shapeActive\":true,\"camera\":[22.8677444,83.68479,60.88777],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.57277,35.1613922,15.4472332],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.19013232,\"shapeActive\":true,\"camera\":[23.134325,83.68479,61.1543732],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Snapshot"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-21.7827549,35.1613922,16.2372456],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.3106368,\"shapeActive\":true,\"camera\":[23.9215641,83.68479,61.9416046],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-21.5044041,35.1613922,16.5155983],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.358009636,\"shapeActive\":true,\"camera\":[24.19984,83.68479,62.21989],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Snapshot"
   },
   {
-    "arguments": "[]",
     "result": "Library/Player/native-preview.png",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.RenderPreview"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-19.0127068,35.1613922,19.0072937],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.745907843,\"shapeActive\":true,\"camera\":[26.6998215,83.68479,64.71986],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-18.92874,35.1613922,19.0912647],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.762736261,\"shapeActive\":true,\"camera\":[26.7808762,83.68479,64.80091],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Stop"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifyStopped"
   },
   {
-    "arguments": "[]",
     "result": "",
+    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart"
   },
   {
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0913469046,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0913469046,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0913469046,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0913469046,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "arguments": "[]",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.122290507,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.122290507,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.122290507,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.122290507,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "method": "MiniwowTownProbe.Snapshot"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.2578436,\"shapeActive\":false,\"camera\":[22.064682,83.68479,60.0847168],\"navigationVertices\":1973}",
     "arguments": "[true]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.305552125,\"shapeActive\":false,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Begin"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-21.36077,35.1613922,16.659235],\"phase\":\"Moving\",\"animation\":\"idle\",\"trackTime\":0.2578436,\"shapeActive\":false,\"camera\":[24.343235,83.68479,62.3632736],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-21.7931118,35.1613922,16.2268848],\"phase\":\"Moving\",\"animation\":\"idle\",\"trackTime\":0.305552125,\"shapeActive\":false,\"camera\":[23.9102974,83.68479,61.93033],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Stop"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifyStopped"
   },
   {
-    "arguments": "[]",
     "result": "",
+    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart"
   },
   {
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0909431,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0909431,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0909431,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0909431,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "arguments": "[]",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.13748309,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.13748309,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.13748309,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.13748309,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "method": "MiniwowTownProbe.Snapshot"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.256927967,\"shapeActive\":true,\"camera\":[22.064682,83.68479,60.0847168],\"navigationVertices\":1973}",
     "arguments": "[false]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.349991858,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Begin"
   },
   {
+    "result": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":0.792316258,\"animationTime\":0.7066426}}",
     "arguments": "[401]",
-    "result": "{\"feedback\":null,\"feedbackVisible\":false,\"gold\":\"1.9万\",\"energy\":\"48/20\",\"entries\":[{\"id\":101,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":102,\"visible\":true,\"locked\":false,\"position\":[132.0,0.0]},{\"id\":103,\"visible\":true,\"locked\":false,\"position\":[264.0,0.0]},{\"id\":104,\"visible\":false,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":105,\"visible\":true,\"locked\":false,\"position\":[0.0,-142.0]},{\"id\":201,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":202,\"visible\":true,\"locked\":false,\"position\":[0.0,-112.0]},{\"id\":203,\"visible\":true,\"locked\":false,\"position\":[0.0,-224.0]},{\"id\":204,\"visible\":true,\"locked\":false,\"position\":[0.0,-336.0]},{\"id\":205,\"visible\":false,\"locked\":false,\"position\":[0.0,-448.0]},{\"id\":301,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":302,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":303,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":401,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":402,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]},{\"id\":403,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":404,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":405,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":406,\"visible\":true,\"locked\":true,\"position\":[0.0,0.0]},{\"id\":501,\"visible\":true,\"locked\":false,\"position\":[0.0,0.0]}],\"missingFonts\":0,\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":false,\"mapVisible\":true,\"launchVisible\":false,\"animationAlpha\":0.9491211,\"animationTime\":0.8634026}}",
     "method": "MiniwowHomeProbe.ClickEntry"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.84406,35.1613922,15.1759367],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.154850513,\"shapeActive\":true,\"camera\":[23.1223412,83.68479,61.14238],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.8377457,35.1613922,15.1822529],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.2422101,\"shapeActive\":true,\"camera\":[23.1334438,83.68479,61.15348],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Snapshot"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.84406,35.1613922,15.1759367],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.5550694,\"shapeActive\":true,\"camera\":[23.1278172,83.68479,61.14787],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.8377457,35.1613922,15.1822529],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.727297962,\"shapeActive\":true,\"camera\":[23.1341343,83.68479,61.1541824],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Snapshot"
   },
   {
+    "result": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":1.97230685}}",
     "arguments": "[\"ReturnClick\"]",
-    "result": "{\"target\":\"ReturnClick\",\"point\":[540.0,165.0],\"state\":{\"resolution\":[1080,1920],\"activeScene\":\"Assets/Scenes/Home.unity\",\"homeSceneLoaded\":true,\"homeInstances\":1,\"homeActive\":true,\"campVisible\":true,\"mapVisible\":false,\"launchVisible\":false,\"animationAlpha\":1.0,\"animationTime\":2.50017262}}",
     "method": "MiniwowHomeProbe.Click"
   },
   {
-    "arguments": "[]",
     "result": "",
+    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart"
   },
   {
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.098637,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.098637,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.098637,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.098637,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "arguments": "[]",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0958784,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0958784,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0958784,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.0958784,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "method": "MiniwowTownProbe.Snapshot"
   },
   {
-    "arguments": "[1080,2400]",
     "result": "",
+    "arguments": "[1080,2400]",
     "method": "MiniwowHomeProbe.SetResolution"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.582374454,\"shapeActive\":true,\"camera\":[22.064682,83.68479,60.0847168],\"navigationVertices\":1973}",
     "arguments": "[false]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-23.90721,35.1613922,14.11279],\"phase\":\"Idle\",\"animation\":\"idle\",\"trackTime\":0.479958922,\"shapeActive\":true,\"camera\":[22.0646782,83.68479,60.0847168],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Begin"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.4214611,35.1613922,15.5985365],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.2173117,\"shapeActive\":true,\"camera\":[23.2851639,83.68479,61.3052063],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-22.8513641,35.1613922,15.1686354],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.15161851,\"shapeActive\":true,\"camera\":[22.8635979,83.68479,60.88363],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Snapshot"
   },
   {
+    "result": "{\"id\":4,\"config\":10001,\"position\":[-21.258337,35.1613922,16.7616615],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.400078863,\"shapeActive\":true,\"camera\":[24.4455471,83.68479,62.4655838],\"navigationVertices\":1973}",
     "arguments": "[]",
-    "result": "{\"id\":4,\"config\":10001,\"position\":[-21.5868816,35.1613922,16.4331169],\"phase\":\"Moving\",\"animation\":\"run\",\"trackTime\":0.3503128,\"shapeActive\":true,\"camera\":[24.1164627,83.68479,62.1364861],\"navigationVertices\":1973}",
     "method": "MiniwowPlayerProbe.Stop"
   },
   {
-    "arguments": "[]",
     "result": "True",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.VerifyStopped"
   },
   {
-    "arguments": "[1080,1920]",
     "result": "",
+    "arguments": "[1080,1920]",
     "method": "MiniwowHomeProbe.SetResolution"
   },
   {
-    "arguments": "[]",
     "result": "",
+    "arguments": "[]",
     "method": "MiniwowTownProbe.RapidRestart"
   },
   {
+    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1312137,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1312137,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1312137,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.1312137,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "arguments": "[]",
-    "result": "{\"ready\":true,\"sceneLoaded\":true,\"activeScene\":\"Assets/Scenes/Home.unity\",\"contexts\":1,\"visitors\":1,\"actors\":4,\"shapes\":4,\"home\":true,\"phase\":\"Idle\",\"arrivals\":0,\"position\":[-29.77,35.3,2.12],\"skeletons\":[{\"name\":\"OriginalPlayerVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.196098208,\"vertices\":641,\"texture\":\"role_01\"},{\"name\":\"OriginalHeroVisual\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.196098208,\"vertices\":244,\"texture\":\"hero_20025\"},{\"name\":\"NPC_forgingtable_2\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.196098208,\"vertices\":8,\"texture\":\"NPC_forgingtable_2\"},{\"name\":\"NPC_hotel\",\"valid\":true,\"animation\":\"idle\",\"trackTime\":0.196098208,\"vertices\":261,\"texture\":\"NPC_hotel\"}]}",
     "method": "MiniwowTownProbe.Snapshot"
   },
   {
-    "arguments": "[]",
     "result": "Library/Player/native-preview.png",
+    "arguments": "[]",
     "method": "MiniwowPlayerProbe.RenderPreview"
   }
 ]

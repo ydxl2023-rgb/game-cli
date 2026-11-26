@@ -14,6 +14,47 @@ using UnityEngine.UI;
 /// <summary>Editor-only observations and raycast interactions for the Home delivery.</summary>
 public static class MiniwowHomeProbe
 {
+    /// <summary>Verifies feedback is read from generated language data rather than the Home snapshot.</summary>
+    /// <returns>The three displayed localized messages.</returns>
+    public static string VerifyFeedbackLanguage()
+    {
+        UISystem.GetSingleton().TryGetWidget<UIHome>(out var widget);
+        var results = new[] { HomeEntryResult.Locked, HomeEntryResult.Invalid, HomeEntryResult.Allowed };
+        var ids = new[] { Config.Excel.TEXT_HOME_LOCKED, Config.Excel.TEXT_HOME_INVALID, Config.Excel.TEXT_HOME_PENDING };
+        var messages = new List<string>();
+        for (int index = 0; index < results.Length; index++)
+        {
+            var entry = Config.Excel.propCommonTextById(ids[index]);
+            int languageId = int.Parse(entry.Context);
+            string expected = Config.Excel.propLanguageById(languageId);
+            widget.ShowFeedback(results[index]);
+            if (widget.vm.FeedbackText != expected || !widget.vm.FeedbackVisible)
+                throw new InvalidOperationException("Home feedback did not resolve its language entry.");
+
+            messages.Add(widget.vm.FeedbackText);
+        }
+
+        var pending = Config.Excel.propCommonTextById(Config.Excel.TEXT_HOME_PENDING);
+        int pendingId = int.Parse(pending.Context);
+        var language = (IDictionary<int, string>)Config.Excel.languageConfig;
+        string original = language[pendingId];
+        try
+        {
+            language[pendingId] = "Language lookup probe";
+            widget.ShowFeedback(Config.Excel.TEXT_HOME_PENDING);
+            if (widget.vm.FeedbackText != language[pendingId])
+                throw new InvalidOperationException("Home feedback retained a separate text copy.");
+        }
+        finally
+        {
+            language[pendingId] = original;
+            widget.ShowFeedback(Config.Excel.TEXT_HOME_PENDING);
+            widget.vm.FeedbackVisible = false;
+        }
+
+        return JsonConvert.SerializeObject(messages);
+    }
+
     /// <summary>Reports actual runtime state without changing it.</summary>
     /// <returns>A serialized runtime observation.</returns>
     public static string Snapshot()

@@ -46,7 +46,7 @@ public static class MiniwowPlayerProbe
     /// <returns>Initial observation.</returns>
     public static string Begin(bool hideShape)
     {
-        TownScene scene = UnityEngine.Object.FindObjectOfType<TownScene>();
+        HomeScene scene = UnityEngine.Object.FindObjectOfType<HomeScene>();
         before = Player().position;
         cameraBefore = UnityEngine.Object.FindObjectsOfType<Camera>().Single(item => item.GetComponent<HomeSceneCamera>()).transform.position;
         var point = new Vector2(Screen.width * 0.32f, Screen.height * 0.36f);
@@ -67,7 +67,7 @@ public static class MiniwowPlayerProbe
         Require(Vector3.Distance(before, actor.position) > 0.1f, "Entity moved");
         Require(Vector3.Distance(cameraBefore, camera.transform.position) > 0.1f, "Camera followed logical player");
         string result = Snapshot();
-        UnityEngine.Object.FindObjectOfType<TownScene>().CancelPointer();
+        UnityEngine.Object.FindObjectOfType<HomeScene>().CancelPointer();
         Shape().gameObject.SetActive(true);
         Require(Shape().Bind(actor), "Shape restored without resetting player");
         stopped = actor.position;
@@ -96,7 +96,7 @@ public static class MiniwowPlayerProbe
             configId = config.ID,
             moveSpeed = config.MoveSpeed,
             route = new[] { Player().position },
-            movement = new TownNavigation(CreateAgent(Player().position, config.AgentTypeId, config.AgentHeight))
+            movement = new HomeNavigation(CreateAgent(Player().position, config.AgentTypeId, config.AgentHeight))
         };
         var actor = new ActorEntity();
         var other = new ActorEntity();
@@ -133,7 +133,7 @@ public static class MiniwowPlayerProbe
         actor.Destroy();
         Require(!actor.SetMoveInput(Vector3.right), "Released actor rejects input");
         other.Destroy();
-        TownSystem town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+        HomeRuntime town = MiniwowTownProbe.GetRuntime();
         town.SetInputEnabled(false);
         Require(!town.SetPlayerInput(Vector3.right), "System rejects hidden-page movement");
         town.SetInputEnabled(true);
@@ -145,7 +145,7 @@ public static class MiniwowPlayerProbe
     /// <returns>Whether UI hover preserves capture while release still stops movement.</returns>
     public static bool VerifyPointerCapture()
     {
-        TownScene scene = UnityEngine.Object.FindObjectOfType<TownScene>();
+        HomeScene scene = UnityEngine.Object.FindObjectOfType<HomeScene>();
         ActorJoystick joystick = UnityEngine.Object.FindObjectOfType<ActorJoystick>();
         RectTransform stick = (RectTransform)joystick.transform.Find("Stick");
         RectTransform knob = (RectTransform)stick.Find("Knob");
@@ -171,7 +171,7 @@ public static class MiniwowPlayerProbe
     /// <returns>Whether cancellation leaves no retained movement.</returns>
     public static bool VerifyCancellation()
     {
-        TownScene scene = UnityEngine.Object.FindObjectOfType<TownScene>();
+        HomeScene scene = UnityEngine.Object.FindObjectOfType<HomeScene>();
         var point = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
         Require(scene.BeginPointer(point, 12), "Touch gesture acquired");
         Require(!scene.BeginPointer(point, 13), "Second pointer cannot replace owner");
@@ -224,7 +224,7 @@ public static class MiniwowPlayerProbe
                 configId = Config.Excel.ACTOR_TOWN_PLAYER,
                 moveSpeed = 1f,
                 route = new[] { start.position },
-                movement = new TownNavigation(CreateAgent(start.position, settings.agentTypeID, settings.agentHeight))
+                movement = new HomeNavigation(CreateAgent(start.position, settings.agentTypeID, settings.agentHeight))
             };
             Require(actor.Initialize(spawn) && actor.SetMoveInput(Vector3.forward), "Slope actor initialized");
             for (int index = 0; index < 10; index++)
@@ -342,9 +342,9 @@ public static class MiniwowPlayerProbe
     /// <returns>The live player entity.</returns>
     private static ActorEntity Player()
     {
-        XEntityManager.GetSingleton().TryGetEntity(nameof(TownEntity), out var entity);
+        XEntityManager.GetSingleton().TryGetEntity(nameof(HomeEntity), out var entity);
 
-        return ((TownEntity)entity).FindActor(4);
+        return ((HomeEntity)entity).FindActor(4);
     }
 
     /// <summary>Finds the authored player view for editor-only verification.</summary>

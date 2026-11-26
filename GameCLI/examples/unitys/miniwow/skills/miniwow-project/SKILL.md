@@ -13,17 +13,17 @@ Miniwow 统一采用 **1080×1920 竖屏**设计分辨率。Studio 项目画布�
 
 项目根目录是本 Skill 向上两级的 `miniwow/`。目标是学习《小骑士冲冲冲》的机制和设计技巧，以 GameCLI/Oathx 实现自己的可玩 DEMO，再从实际实现中提炼可复用系统模板。
 
-`client/` 从干净 Unity 基线建立，现已按用户授权接入 Launch 与 Home；从 `App.unity` 启动后加法加载 `Home.unity`。研究、资源恢复、文档和规范任务仍只操作相应研究目录。明确的客户端开发任务授权其指定范围，不要求用户重复确认。未明确的产品规则记录为待定；先推进不依赖这些规则的工作。
+`client/` 从干净 Unity 基线建立，现已按用户授权接入 Launch 与 Home；从 `App.unity` 启动后显示本地 Login，点击开始后由 Master 协调加法加载 `Home.unity`。研究、资源恢复、文档和规范任务仍只操作相应研究目录。明确的客户端开发任务授权其指定范围，不要求用户重复确认。未明确的产品规则记录为待定；先推进不依赖这些规则的工作。
 
-Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型；查阅 [主场景还原记录](../../tools/main-scene/DELIVERY.md)与[资源用途索引](../../tools/main-scene/RESOURCE-INDEX.md)。`HomeEnvironmentCanvas` 为已禁用的历史背景，不要重新启用遮住 3D 场景。初始模型不代表建筑业务已解锁；NPC、粒子、导航及原 UberShader 尚未恢复。更新场景采用 `MiniwowMainSceneSetup` 原生资产流程，UI 继续走正式 UGUI CLI。
+Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型；查阅 [主场景还原记录](../../tools/main-scene/DELIVERY.md)与[资源用途索引](../../tools/main-scene/RESOURCE-INDEX.md)。`HomeEnvironmentCanvas` 为已禁用的历史背景，不要重新启用遮住 3D 场景。初始模型不代表建筑业务已解锁；NPC Spine 与原导航已接入，具体范围见后文；完整粒子和原 UberShader 还原以实际资源验收为准。更新场景采用 `MiniwowMainSceneSetup` 原生资产流程，UI 继续走正式 UGUI CLI。
 
-MainPage 主界面现使用 `client/Assets/Data/Widgets/Home/UIHome.prefab`（旧 Home.prefab 已保留 GUID 改名）。开发入口为 [MainPage 实现记录](../../tools/home-ui/IMPLEMENTATION.md)：配置源 `config/Home.xlsx`，制作脚本 `tools/home-ui/build_uihome.py`，正式 UGUI 导入后执行 `bind-uihome.ps1`；旧 `tools/home/bind-home.ps1` 已停用。HomeEntity 管理本地状态，HomeSystem 管理场景与路由；未接入业务必须保留明确反馈，不能将入口事件当作系统已实现。
+MainPage 主界面现使用 `client/Assets/Data/Widgets/Home/UIHome.prefab`（旧 Home.prefab 已保留 GUID 改名）。开发入口为 [MainPage 实现记录](../../tools/home-ui/IMPLEMENTATION.md)：配置源 `config/Home.xlsx`，制作脚本 `tools/home-ui/build_uihome.py`，正式 UGUI 导入后执行 `bind-uihome.ps1`；旧 `tools/home/bind-home.ps1` 已停用。HomeEntity 管理本地状态，HomeSystem 编排 HomeRuntime 生命周期与类型化入口事件；未接入业务必须保留明确反馈，不能将入口事件当作系统已实现。
 
-Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/README.md)。**场景生命周期现归 TownSystem，HomeSystem 只管理主 UI 与路由并等待 Town 就绪**，取代上段历史场景归属。TownScene 持有序列化场景引用；TownEntity 管理 ActorEntity 集合并统一推进逻辑；ActorEntity 保存身份、位置、路线与阶段，ActorShape 继承 XActionStateMachine，每个角色拥有独立表现状态机，单向读取实体并驱动 Transform 和 Spine，隐藏或重建显示不得重置实体。旅店与铁匠恢复 idle 表现；访客使用 hero_20025。首版点击旅店店员走向入口，点击到达的访客返回；不代表建筑已业务解锁或消费成功。Spine Runtime 属第三方代码，不纳入自有代码格式化。
+Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/README.md)。**场景与主 UI 统一归 HomeSystem，状态机组件 HomeRuntime 负责场景运行，不注册为玩法系统**，HomeScene 持有序列化场景引用；HomeEntity 管理 ActorEntity 集合并统一推进逻辑；ActorEntity 保存身份、位置、路线与阶段，ActorShape 继承 XActionStateMachine，每个角色拥有独立表现状态机，单向读取实体并驱动 Transform 和 Spine，隐藏或重建显示不得重置实体。旅店与铁匠恢复 idle 表现；访客使用 hero_20025。首版点击旅店店员走向入口，点击到达的访客返回；不代表建筑已业务解锁或消费成功。Spine Runtime 属第三方代码，不纳入自有代码格式化。
 
 可控玩家首版已接入，见 [玩家实现与验收](../../tools/player/README.md)。玩家实例 4 使用原作 role_01，与访客和店员分离；通过固定摇杆、ActorEntity 与静态 NavMesh 约束移动，ActorShape 状态机播放 idle/run，镜头跟随实体。参数源为 propActor.xlsx，导航已恢复原包 30 瓦片并逐项校验字节/哈希，使用原生 NavMeshAgent.Move；禁止再次以可见模型重烘焙替代原数据；未实现水域、战斗或玩家建筑消费。
 
-建筑业务继续采用用户确认的集合式 BuildingEntity：内部持有实际建筑状态，实例 ID 与配置 ID 分离，对外提供快照和校验操作，不暴露可变集合、不保存场景 GameObject。Town 只消费业务结果；本轮尚未实现该实体及升级经济。
+建筑业务继续采用用户确认的集合式 BuildingEntity：内部持有实际建筑状态，实例 ID 与配置 ID 分离，对外提供快照和校验操作，不暴露可变集合、不保存场景 GameObject。Home 场景只消费业务结果；本轮尚未实现该实体及升级经济。
 
 最近提出的“探索 → 行动力消耗 → 旅店恢复 → 制造补给 → 再探索”是首个闭环建议，不是已经批准的完整功能清单。不要自行扩展为全部养成、商业化或在线服务开发。
 
@@ -37,10 +37,17 @@ Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/R
 |`research/`|机制证据、资源目录、反编译代码和学习文档；不作为 Unity 编译目录|
 |`tools/`|提取、索引、台账与验证工具；复用既有脚本，避免重复实现|
 
+## 配置 ID 约定
+
+配置表默认使用数字 ID，禁止自行添加 TASK_10104、TASK_GUIDE_1000001 等字符串 ID/别名常量。语言表可使用字符串 ID；其他配置表仅在用户明确要求时使用。数字 ID 是稳定配置键，不是数组下标；引用与顺序按原数据保留。
+
 ## 按任务读取资料
+
+- **每次 Unity 实现或重构前必读**：[development 源码学习入口](../../../../../skills/oathx/references/development/README.md) 和对应章节；配置/插件任务必读 CONFIGURATION.md。运行 index_sources.py 检查参考源码漂移，核对实际方法，再记录本次沿用机制与产品差异。不能仅凭记忆、旧源码包或索引类名编写代码。
 
 - **理解机制或代码**：先读 [代码研究入口](../../research/code-study/README.md)，再选 [玩法证据](../../research/code-study/GAMEPLAY-STUDY.md) 或 [架构证据](../../research/code-study/ARCHITECTURE-STUDY.md)。需要更早的文本规则时查看 [MECHANICS.md](../../research/MECHANICS.md)。
 - **定位资源及用途**：读 [资源提取记录](../../research/RESOURCE-EXTRACTION.md)；使用 `tools/find_resource.py`、资源目录和映射清单。维护数据库时读 [资源数据库说明](../../tools/RESOURCE-DATABASE.md)。
+- **分析原作配置或设计战斗/成长配置**：先读 [原作配置专题](../../research/config-study/README.md)，通过全表目录、字段字典及本地 SQLite 查询。研究解码表不等于策划 Excel或服务端规则；CostValue 的累计阈值、条件表与服务器开放状态、规则/表现分离及未解析引用均须核对，再建立产品自己的源表。
 - **编写或审查 Unity C#**：必须读取并遵循 [共享开发规范](../../../../../skills/oathx/development-rules/SKILL.md)，再通过 [Oathx 索引](../../../../../skills/oathx/SKILL.md) 选择实际涉及的模块。
 - **制作产品系统或模板**：再读 [系统开发流程](../../../../../skills/oathx/system-development/SKILL.md) 和所选系统的开发 Skill；用 GameCLI 读取模板当前版本、源码和配置，不以历史示例代替当前标准。
 - **Unity CLI 操作**：读取当前环境的 `unity-cli` Skill 并确认工具可用。直接任务以明确的 miniwow 路径为目标；涉及 UI Studio 项目时必须先验证其 Unity 绑定，不能把 development 当作写入目标。
@@ -70,7 +77,7 @@ Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/R
 以下是项目应用共享规范的要点，详细规则以当前共享 Skill 为准：
 
 - **Entity** 拥有业务状态、校验、规则、条件计算与事务；**System** 编排流程和通知；**UIWidget** 接收用户意图及刷新、维护 **VM** 的展示绑定。System 不读取或缓存 VM。
-- 产品业务系统统一继承 `Assets/Scripts/Systems/RuntimeSystem.cs`，由它继承 XEventModule；HomeSystem、TownSystem 已采用此结构。基类沿用 development 的 LoadSystem/UnloadSystem 调度接口，帧末回调不代表场景或 UI 异步就绪，TownReadyChanged 等业务就绪通知必须保留。GamePlugin 仍负责初始装配，不为使用基类而重复加载系统。
+- 产品业务系统统一继承 `Assets/Scripts/Systems/RuntimeSystem.cs`，由它继承 XEventModule；HomeSystem 已采用此结构，HomeRuntime 不继承系统基类。基类沿用 development 的 LoadSystem/UnloadSystem 调度接口，帧末回调不代表场景或 UI 异步就绪，HomeSystem 查询 RuntimeManager 中 HomeRuntime 的真实就绪状态。GamePlugin 仍负责初始装配，不为使用基类而重复加载系统。
 - 手写系统代码按 `<System>/<System>System.cs`、`<System>Entity.cs`、其他逻辑、`VM/`、`UI/` 组织。按用户约定，Home 的非业务通用组件（HomeSafeArea、HomeSceneCamera 等）放在 `Home/Common/`。GamePlugin 只承担插件生命周期与依赖装配，UISender 使用独立 GameUISender 类实现，不由 GamePlugin 直接实现；GameUISender 与 GameUILoader 均放在 GamePlugin.cs 中，独立职责不要求拆分文件。不要照搬原作 Proxy 单例或 FairyGUI 结构。
 - 数值、配方、开放条件、奖励和可配置展示先建立本产品 Excel 源表与稳定 ID，再导表并接入。固定文案遵循共享多语言规则；不要直接修改 development 的业务数据作为本产品实现，也不以运行时硬编码掩盖缺表。
 - 复杂构造与对象初始化器使用多行排版，每个成员赋值独占一行。配置对象先用有意义的局部变量构造，再传给 Startup 等方法；不要把嵌套构造、多项初始化与方法调用挤在同一行。
@@ -91,3 +98,13 @@ Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/R
 沿用 `.gitignore`：Unity Library/Temp/Logs/Obj、构建产物、局部工具及大体积研究输出不提交；保留正式 Assets/.meta、Packages、ProjectSettings、产品配置源文件、研究文档和复现脚本。Git 提交/推送、数据库模板发布以用户当次授权为准。
 
 玩家摇杆按用户确认固定于主界面底部；只在按下时检查 UI 阻挡，已捕获手势经过其他 UI 不取消，松手归中。页面主动关闭输入、失焦及暂停仍取消。
+
+## 当前架构与规则追踪
+
+本次整理的内容、实际验证及尚存人工检查项见 [规范整理验收记录](references/conventions-audit-2026-11-25.md)。
+
+修改 Login/Master/Home、Runtime、Actor、路由、语言表或场景输入前，必读 [当前运行时约定](references/runtime-conventions.md)。该文档集中维护启动顺序、资源所有权、退出清理、目录、事件时序及废止方案，避免在本 Skill 末尾累积互相冲突的历史补丁。
+
+全部用户要求的落点、自动检查编号与人工边界见 [已确认约定台账](../../../../../skills/oathx/references/development/CONFIRMED-CONVENTIONS.md)。其中 P/A/R 项包含本产品决定，不机械推广为其他项目的模板规则。
+
+Home 后续实现必须遵循：OnActive 订阅后 return InstallHome()；OnDetive 取消订阅后 UninstallHome()。其他有安装事务的系统使用各自业务名称的私有方法；纯订阅系统不强加空安装方法。业务安装/卸载使用带业务名称的私有方法，不隐藏父类 Install/Uninstall。应用事件统一 XPluginUtility，具体 FireEvent/PostEvent 依据时序选择。固定快捷入口与配置入口分别使用 HomeShortcut/HomeEntryRoute；反馈使用公共语言表生成 ID。

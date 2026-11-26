@@ -9,6 +9,10 @@ description: 独立 agent 参考 SvHome 基础大厅模板开发 Home 的玩家�
 
 页面和子窗口的业务请求事件统一定义在 `UIHome.cs`。Widget 通过事件提交用户操作，System 调用 Widget 的 `Invalidate` 刷新实体数据。
 
+有场景初始化的产品使用 InstallHome/UninstallHome 配对：OnActive 订阅后 return InstallHome()，OnDetive 取消订阅后 UninstallHome()；协程由安装方法持有并在卸载中取消，真实资源就绪不能由安装返回值代替。固定入口路由在配置、Entity 和事件之间使用枚举，反馈文案读取公共语言表。应用事件统一 XPluginUtility，Fire/Post 保留明确时序。
+
+miniwow 的 HomeRuntime/GameRuntime/RuntimeManager、HomeEntity 角色集合及登录交接属于产品确认方案，见 [项目当前运行时约定](../../../../../examples/unitys/miniwow/skills/miniwow-project/references/runtime-conventions.md)。不强迫其他大厅模板安装同样场景玩法。
+
 ## 默认范围
 
 读取数据库 SvHome 的实际版本、scripts、configurations 和生产资料。未提出设计变更时保留所选版本的布局、独立图片、入口和行为；不依赖原 SV 工程重新提取。模板是产品开发范式，不把其静态夏季背景或示例数值强加给产品。

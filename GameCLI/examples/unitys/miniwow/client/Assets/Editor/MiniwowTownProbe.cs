@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Newtonsoft.Json;
 using Oathx.Core;
@@ -12,13 +12,23 @@ using UnityEngine.SceneManagement;
 /// <summary>Editor-only observations and real pointer-path checks for Town acceptance.</summary>
 public static class MiniwowTownProbe
 {
+    /// <summary>Queries Home ownership for editor-only scene diagnostics.</summary>
+    /// <returns>The current scene runtime, or null when Home is unloaded.</returns>
+    public static HomeRuntime GetRuntime()
+    {
+        var plugin = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>();
+        var home = plugin.QuerySystem<HomeSystem>();
+
+        return home?.GetRuntime();
+    }
+
     /// <summary>Observes lifecycle, movement and original skeleton state.</summary>
     /// <returns>Serialized runtime evidence.</returns>
     public static string Snapshot()
     {
-        XEntityManager.GetSingleton().TryGetEntity(nameof(TownEntity), out var entity);
-        ActorEntity npc = (entity as TownEntity)?.FindActor(1);
-        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+        XEntityManager.GetSingleton().TryGetEntity(nameof(HomeEntity), out var entity);
+        ActorEntity npc = (entity as HomeEntity)?.FindActor(1);
+        var town = MiniwowTownProbe.GetRuntime();
         UISystem.GetSingleton().TryGetWidget<UIHome>(out var home);
         SkeletonAnimation[] skeletons = UnityEngine.Object.FindObjectsOfType<SkeletonAnimation>();
 
@@ -26,9 +36,9 @@ public static class MiniwowTownProbe
             ready = town != null && town.IsReady(),
             sceneLoaded = SceneManager.GetSceneByPath("Assets/Scenes/Home.unity").isLoaded,
             activeScene = SceneManager.GetActiveScene().path,
-            contexts = UnityEngine.Object.FindObjectsOfType<TownScene>().Length,
+            contexts = UnityEngine.Object.FindObjectsOfType<HomeScene>().Length,
             visitors = npc ? 1 : 0,
-            actors = (entity as TownEntity)?.actorCount ?? 0,
+            actors = (entity as HomeEntity)?.actorCount ?? 0,
             shapes = UnityEngine.Object.FindObjectsOfType<ActorShape>().Length,
             home = home && home.gameObject.activeInHierarchy,
             phase = npc ? npc.phase.ToString() : "Absent",
@@ -75,8 +85,16 @@ public static class MiniwowTownProbe
         actor.Destroy();
         actor.Update(1f);
         Require(!actor.Visit(60017) && actor.phase == ActorPhase.Stopped, "Released actor");
-        var town = new TownEntity();
-        Require(!town.Initialize(new[] { spawn, spawn }) && town.actorCount == 0, "Atomic duplicate rejection");
+        var town = new HomeEntity();
+        town.Initialize(System.IO.File.ReadAllText("Assets/Data/Config/Home.json"));
+        string presentation = JsonConvert.SerializeObject(town.Snapshot());
+        Require(!town.InitializeActors(new[] { spawn, spawn }) && town.actorCount == 0, "Atomic duplicate rejection");
+        Require(town.InitializeActors(new[] { spawn }), "Home owns the actor collection");
+        ActorEntity owned = town.FindActor(spawn.actorId);
+        town.ClearActors();
+        Require(town.actorCount == 0 && owned.phase == ActorPhase.Stopped, "Home releases owned actors");
+        Require(town.IsInitialized() && JsonConvert.SerializeObject(town.Snapshot()) == presentation,
+            "Scene teardown preserves Home configuration and presentation data");
         town.Destroy();
 
         return true;
@@ -86,8 +104,8 @@ public static class MiniwowTownProbe
     /// <returns>The starting logical position.</returns>
     public static string HideMovingShape()
     {
-        XEntityManager.GetSingleton().TryGetEntity(nameof(TownEntity), out var entity);
-        ActorEntity actor = ((TownEntity)entity).FindActor(1);
+        XEntityManager.GetSingleton().TryGetEntity(nameof(HomeEntity), out var entity);
+        ActorEntity actor = ((HomeEntity)entity).FindActor(1);
         Require(actor.Visit(60017), "Start hidden actor");
         ActorShape shape = UnityEngine.Object.FindObjectsOfType<ActorShape>().Single(item => item.name == "TownVisitor");
         shape.gameObject.SetActive(false);
@@ -99,8 +117,8 @@ public static class MiniwowTownProbe
     /// <returns>Whether hidden simulation and view replacement preserved data.</returns>
     public static bool VerifyShapeSeparation()
     {
-        XEntityManager.GetSingleton().TryGetEntity(nameof(TownEntity), out var entity);
-        ActorEntity actor = ((TownEntity)entity).FindActor(1);
+        XEntityManager.GetSingleton().TryGetEntity(nameof(HomeEntity), out var entity);
+        ActorEntity actor = ((HomeEntity)entity).FindActor(1);
         Require(actor.phase == ActorPhase.Waiting && actor.arrivals == 1, "Hidden actor completed simulation");
         ActorShape shape = Resources.FindObjectsOfTypeAll<ActorShape>().Single(item => item.name == "TownVisitor" && item.gameObject.scene.isLoaded);
         Vector3 position = actor.position;
@@ -113,7 +131,7 @@ public static class MiniwowTownProbe
         Require(replacement.Bind(actor) && replacement.transform.position == position, "Replacement shape");
         UnityEngine.Object.DestroyImmediate(replacement.gameObject);
         Require(actor.position == position && actor.arrivals == 1 && actor.phase == ActorPhase.Waiting, "Shape destruction cannot destroy data");
-        Require(((TownEntity)entity).actorCount == 4, "All NPCs have entities");
+        Require(((HomeEntity)entity).actorCount == 4, "All NPCs have entities");
 
         return true;
     }
@@ -178,7 +196,7 @@ public static class MiniwowTownProbe
     /// <returns>The accepted result and actual projected screen point.</returns>
     public static string Gesture(string target, bool drag)
     {
-        TownScene scene = UnityEngine.Object.FindObjectOfType<TownScene>();
+        HomeScene scene = UnityEngine.Object.FindObjectOfType<HomeScene>();
         var data = new SerializedObject(scene);
         Camera camera = (Camera)data.FindProperty("sceneCamera").objectReferenceValue;
         Collider collider = (Collider)data.FindProperty(target == "building" ? "buildingCollider" : "visitorCollider").objectReferenceValue;
@@ -197,11 +215,37 @@ public static class MiniwowTownProbe
         });
     }
 
+    /// <summary>Frames an NPC target for interaction tests independent of the player's camera position.</summary>
+    /// <param name="target">The building or visitor to bring into the viewport.</param>
+    /// <param name="drag">Whether to exercise drag rejection.</param>
+    /// <returns>The real pointer-path result from the framed camera.</returns>
+    public static string FrameGesture(string target, bool drag)
+    {
+        HomeScene scene = UnityEngine.Object.FindObjectOfType<HomeScene>();
+        var data = new SerializedObject(scene);
+        Camera camera = (Camera)data.FindProperty("sceneCamera").objectReferenceValue;
+        string field = target == "building" ? "buildingCollider" : "visitorCollider";
+        Collider collider = (Collider)data.FindProperty(field).objectReferenceValue;
+        Vector3 previous = camera.transform.position;
+        Vector3 point = camera.WorldToScreenPoint(collider.bounds.center);
+        Vector3 center = camera.ScreenToWorldPoint(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, point.z));
+        try
+        {
+            camera.transform.position += collider.bounds.center - center;
+
+            return Gesture(target, drag);
+        }
+        finally
+        {
+            camera.transform.position = previous;
+        }
+    }
+
     /// <summary>Requests lifecycle changes through the actual framework module.</summary>
     /// <param name="active">Whether the town should be active.</param>
     public static void SetActive(bool active)
     {
-        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().QuerySystem<HomeSystem>();
         if (active)
             town.Active();
         else
@@ -211,7 +255,7 @@ public static class MiniwowTownProbe
     /// <summary>Exercises conflicting lifecycle requests while scene operations are in flight.</summary>
     public static void RapidRestart()
     {
-        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().QuerySystem<HomeSystem>();
 
         town.Detive();
         town.Active();
@@ -229,7 +273,7 @@ public static class MiniwowTownProbe
     /// <returns>Whether invalid interactions were rejected.</returns>
     public static bool RejectInvalidIds()
     {
-        var town = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>().GetTown();
+        var town = MiniwowTownProbe.GetRuntime();
 
         return !town.VisitBuilding(-1) && !town.ReturnNpc(-1);
     }
@@ -240,10 +284,10 @@ public static class MiniwowTownProbe
     {
         var plugin = XPluginManager.GetSingleton().QueryPlugin<GamePlugin>();
 
-        plugin.Unload<TownSystem>();
-        while (plugin.GetTown() != null)
+        plugin.Unload<HomeSystem>();
+        while (plugin.QuerySystem<HomeSystem>() != null)
             yield return null;
 
-        plugin.Load<TownSystem>();
+        plugin.Load<HomeSystem>();
     }
 }

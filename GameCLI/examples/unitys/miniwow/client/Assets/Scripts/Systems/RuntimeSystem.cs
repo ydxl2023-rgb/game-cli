@@ -5,6 +5,34 @@ using UnityEngine;
 /// <summary>Provides shared module loading and unloading for product runtime systems.</summary>
 public abstract class RuntimeSystem : XEventModule
 {
+    /// <summary>Activates once and releases partial work if activation fails.</summary>
+    /// <returns>Whether the system is active.</returns>
+    public sealed override bool Active()
+    {
+        if (IsActive())
+            return true;
+
+        bool succeeded = false;
+        try
+        {
+            succeeded = base.Active();
+
+            return succeeded;
+        }
+        finally
+        {
+            if (!succeeded)
+                Detive();
+        }
+    }
+
+    /// <summary>Reports readiness separately from module installation.</summary>
+    /// <returns>Whether this module is ready for its dependents.</returns>
+    public virtual bool IsReady()
+    {
+        return IsActive();
+    }
+
     /// <summary>Loads and activates a module through the owning dispatcher.</summary>
     /// <param name="type">Module type to load.</param>
     /// <param name="complete">Called at frame end; does not indicate scene or UI readiness.</param>
@@ -28,8 +56,7 @@ public abstract class RuntimeSystem : XEventModule
     private IEnumerator DoLoadAsync(System.Type type, System.Action complete)
     {
         var module = dispatcher.Load(type);
-        if (module != null && !module.IsActive())
-            module.Active();
+        module.Active();
 
         yield return new WaitForEndOfFrame();
 

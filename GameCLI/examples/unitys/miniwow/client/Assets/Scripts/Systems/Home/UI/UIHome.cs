@@ -4,6 +4,7 @@ using System.Linq;
 using Oathx.Core;
 using Oathx.Widget;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>Requests the existing map preview.</summary>
 public sealed class ReqHomeMap : UIRequestEvent { }
@@ -22,20 +23,28 @@ public sealed class ReqHomeEntry : UIRequestEvent
 /// <summary>Requests a non-list Home shortcut.</summary>
 public sealed class ReqHomeShortcut : UIRequestEvent
 {
-    /// <summary>Shortcut route key.</summary>
-    public string route
+    /// <summary>Typed shortcut destination.</summary>
+    public HomeShortcut route
+    { get; set; }
+}
+
+/// <summary>Announces a fixed shortcut destination without converting it to a text key.</summary>
+public sealed class HomeShortcutRequested : IEvent
+{
+    /// <summary>The requested shortcut destination.</summary>
+    public HomeShortcut route
     { get; set; }
 }
 
 /// <summary>Announces an allowed destination intention, without claiming it opened.</summary>
 public sealed class HomeEntryRequested : IEvent
 {
-    /// <summary>Configured entry identifier; zero for a fixed shortcut.</summary>
+    /// <summary>Configured entry identifier.</summary>
     public int entryId
     { get; set; }
 
-    /// <summary>Product destination key.</summary>
-    public string route
+    /// <summary>Typed product destination.</summary>
+    public HomeEntryRoute route
     { get; set; }
 }
 
@@ -64,8 +73,11 @@ public sealed class UIHome : UIWidget<VMHome>
     /// <param name="snapshot">Detached Home state used for presentation.</param>
     public void Invalidate(HomeSnapshot snapshot)
     {
-        if (snapshot == null || snapshot.entries == null || entryOrder != string.Join(",", snapshot.entries.Select(entry => entry.id)))
-            throw new InvalidOperationException("Home configuration IDs differ from the authored prefab; regenerate and bind UIHome.");
+        if (snapshot == null
+            || snapshot.entries == null
+            || entryOrder != string.Join(",", snapshot.entries.Select(entry => entry.id)))
+            throw new InvalidOperationException(
+                "Home configuration IDs differ from the authored prefab; regenerate and bind UIHome.");
 
         if (vm.Entries == null)
         {
@@ -128,11 +140,29 @@ public sealed class UIHome : UIWidget<VMHome>
     }
 
     /// <summary>Shows explicit feedback without pretending to open an unimplemented system.</summary>
-    /// <param name="text">Configured feedback text.</param>
-    public void ShowFeedback(string text)
+    /// <param name="textId">Stable CommonText configuration identifier.</param>
+    public void ShowFeedback(int textId)
     {
-        vm.FeedbackText = text;
+        vm.FeedbackText = CommonText.Get(textId);
         vm.FeedbackVisible = true;
+    }
+
+    /// <summary>Maps an entry result to a localized presentation message.</summary>
+    /// <param name="result">The entry access result supplied by Home.</param>
+    public void ShowFeedback(HomeEntryResult result)
+    {
+        switch (result)
+        {
+            case HomeEntryResult.Locked:
+                ShowFeedback(Config.Excel.TEXT_HOME_LOCKED);
+                break;
+            case HomeEntryResult.Invalid:
+                ShowFeedback(Config.Excel.TEXT_HOME_INVALID);
+                break;
+            default:
+                ShowFeedback(Config.Excel.TEXT_HOME_PENDING);
+                break;
+        }
     }
 
     /// <summary>Binds fixed intentions exactly once.</summary>
@@ -146,11 +176,35 @@ public sealed class UIHome : UIWidget<VMHome>
 
             return true;
         };
-        vm.SettingsClick = button => Send(new ReqHomeShortcut { route = "Settings" });
-        vm.TaskClick = button => Send(new ReqHomeShortcut { route = "Task" });
-        vm.ChatClick = button => Send(new ReqHomeShortcut { route = "Chat" });
+        vm.SettingsClick = OnSettingsClick;
+        vm.TaskClick = OnTaskClick;
+        vm.ChatClick = OnChatClick;
 
         return true;
+    }
+
+    /// <summary>Submits the settings shortcut.</summary>
+    /// <param name="button">The clicked settings button.</param>
+    /// <returns>Whether the request was sent.</returns>
+    private bool OnSettingsClick(Button button)
+    {
+        return Send(new ReqHomeShortcut { route = HomeShortcut.Settings });
+    }
+
+    /// <summary>Submits the task shortcut.</summary>
+    /// <param name="button">The clicked task button.</param>
+    /// <returns>Whether the request was sent.</returns>
+    private bool OnTaskClick(Button button)
+    {
+        return Send(new ReqHomeShortcut { route = HomeShortcut.Task });
+    }
+
+    /// <summary>Submits the chat shortcut.</summary>
+    /// <param name="button">The clicked chat button.</param>
+    /// <returns>Whether the request was sent.</returns>
+    private bool OnChatClick(Button button)
+    {
+        return Send(new ReqHomeShortcut { route = HomeShortcut.Chat });
     }
 
     /// <summary>Formats the original compact ten-thousand unit convention.</summary>
@@ -158,7 +212,9 @@ public sealed class UIHome : UIWidget<VMHome>
     /// <returns>The compact display amount.</returns>
     private static string FormatAmount(long amount)
     {
-        return amount >= 10000 ? (amount / 10000d).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "万" : amount.ToString();
+        return amount >= 10000
+            ? (amount / 10000d).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "万"
+            : amount.ToString();
     }
 
 }

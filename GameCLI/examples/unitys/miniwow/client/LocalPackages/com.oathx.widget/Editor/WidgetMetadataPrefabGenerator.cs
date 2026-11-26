@@ -312,11 +312,6 @@ namespace Oathx.Widget.Editor
         /// <returns>匹配的已知类型；未匹配时返回 null</returns>
         private static Type ResolveKnownType(string typeName)
         {
-            if (string.Equals(typeName, typeof(SyncTextMeshPro).Name, StringComparison.Ordinal))
-            {
-                return typeof(SyncTextMeshPro);
-            }
-
             if (string.Equals(typeName, typeof(SyncSizeDelta).Name, StringComparison.Ordinal))
             {
                 return typeof(SyncSizeDelta);

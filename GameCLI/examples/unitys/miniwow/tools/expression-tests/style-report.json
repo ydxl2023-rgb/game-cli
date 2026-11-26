@@ -1,0 +1,173 @@
+{
+  "policy": "oathx-code/9",
+  "policySha256": "440a4b74b9193bd746a992a35a7a3a4413111fd95c7d709d553824b253d21634",
+  "rules": [
+    {
+      "id": "CS_PARSE",
+      "severity": "error",
+      "description": "C# \u8bed\u6cd5\u5fc5\u987b\u53ef\u89e3\u6790"
+    },
+    {
+      "id": "OX001",
+      "severity": "error",
+      "description": "\u547d\u540d\uff1acamelCase / PascalCase"
+    },
+    {
+      "id": "OX002",
+      "severity": "error",
+      "description": "\u7981\u6b62\u8868\u8fbe\u5f0f\u4f53"
+    },
+    {
+      "id": "OX003",
+      "severity": "error",
+      "description": "SerializeField \u79c1\u6709\u5b57\u6bb5"
+    },
+    {
+      "id": "OX004",
+      "severity": "error",
+      "description": "Binding \u72ec\u5360\u4e00\u884c"
+    },
+    {
+      "id": "OX005",
+      "severity": "error",
+      "description": "\u82f1\u6587 XML summary"
+    },
+    {
+      "id": "OX006",
+      "severity": "error",
+      "description": "\u53c2\u6570\u4e0e\u8fd4\u56de\u503c\u6ce8\u91ca"
+    },
+    {
+      "id": "OX007",
+      "severity": "error",
+      "description": "\u6210\u5458\u58f0\u660e\u987a\u5e8f"
+    },
+    {
+      "id": "OX008",
+      "severity": "error",
+      "description": "\u6210\u5458\u6ce8\u91ca\u524d\u7a7a\u884c"
+    },
+    {
+      "id": "OX009",
+      "severity": "error",
+      "description": "VM / UI \u76ee\u5f55"
+    },
+    {
+      "id": "OX010",
+      "severity": "error",
+      "description": "\u5904\u7406\u4e0e return \u5206\u7ec4"
+    },
+    {
+      "id": "OX011",
+      "severity": "error",
+      "description": "\u9ed8\u8ba4\u53c2\u6570\u7981\u6b62\u4e2d\u6587"
+    },
+    {
+      "id": "OX012",
+      "severity": "error",
+      "description": "OpenWidget \u663e\u5f0f\u56de\u8c03"
+    },
+    {
+      "id": "OX013",
+      "severity": "error",
+      "description": "CloseWidget \u5c40\u90e8 widgets \u6570\u7ec4"
+    },
+    {
+      "id": "OX014",
+      "severity": "error",
+      "description": "\u6301\u4e45\u5316\u952e\u751f\u6210"
+    },
+    {
+      "id": "OX015",
+      "severity": "review",
+      "description": "\u8fd0\u884c\u65f6 UI \u67e5\u627e\u4eba\u5de5\u590d\u6838"
+    },
+    {
+      "id": "OX016",
+      "severity": "review",
+      "description": "\u4e2d\u6587\u6587\u6848\u5f52\u5c5e\u4eba\u5de5\u590d\u6838"
+    },
+    {
+      "id": "OX017",
+      "severity": "review",
+      "description": "\u672a\u6fc0\u6d3b\u9884\u5904\u7406\u5206\u652f\u4eba\u5de5\u590d\u6838"
+    },
+    {
+      "id": "OX018",
+      "severity": "error",
+      "description": "\u591a\u884c\u5bf9\u8c61\u6216\u6570\u7ec4\u521d\u59cb\u5316\u5c40\u90e8\u58f0\u660e\u524d\u540e\u7a7a\u884c"
+    },
+    {
+      "id": "OX019",
+      "severity": "error",
+      "description": "\u4ee3\u7801\u884c\u4e0d\u5f97\u8d85\u8fc7\u914d\u7f6e\u5217\u5bbd\uff1b\u957f\u6761\u4ef6\u3001\u53c2\u6570\u548c\u8c03\u7528\u94fe\u6362\u884c"
+    },
+    {
+      "id": "OX020",
+      "severity": "review",
+      "description": "\u590d\u6838\u65b9\u6cd5\u53c2\u6570\u5224\u7a7a\u540e\u76f4\u63a5\u8fd4\u56de\u6216\u629b\u51fa ArgumentNullException \u7684\u5206\u652f\uff0c\u5305\u62ec || \u6761\u4ef6\uff1b\u4ec5\u4fdd\u7559\u6709\u5b9e\u9645\u8bed\u4e49\u7684\u5224\u7a7a"
+    },
+    {
+      "id": "OX021",
+      "severity": "error",
+      "description": "OnActive \u7981\u6b62\u4ee5 IsActive \u6216\u968f\u751f\u547d\u5468\u671f\u7ffb\u8f6c\u7684\u5b57\u6bb5\u91cd\u590d\u62e6\u622a\u6fc0\u6d3b"
+    },
+    {
+      "id": "OX022",
+      "severity": "error",
+      "description": "Subscribe \u4e8b\u4ef6\u56de\u8c03\u5fc5\u987b\u76f4\u63a5\u4f20\u5165 On \u52a0 PascalCase \u540d\u79f0\u7684\u65b9\u6cd5\u7ec4\uff0c\u7981\u6b62\u533f\u540d\u56de\u8c03"
+    },
+    {
+      "id": "OX023",
+      "severity": "error",
+      "description": "QueryEntity<T>() \u7ed3\u679c\u5148\u8d4b\u7ed9\u5c40\u90e8\u53d8\u91cf\uff0c\u518d\u8bbf\u95ee\u6210\u5458\u6216\u4f20\u7ed9\u5176\u4ed6\u65b9\u6cd5"
+    },
+    {
+      "id": "OX024",
+      "severity": "error",
+      "description": "\u5e94\u7528\u4e8b\u4ef6\u7edf\u4e00\u4f7f\u7528 XPluginUtility\uff0c\u7981\u6b62\u76f4\u63a5 DispatchEvent"
+    },
+    {
+      "id": "OX025",
+      "severity": "review",
+      "description": "\u56fa\u5b9a\u4e1a\u52a1 route \u7684\u5b57\u7b26\u4e32\u6bd4\u8f83\u5e94\u6539\u4e3a\u679a\u4e3e\uff0c\u534f\u8bae\u6587\u672c\u7531\u4eba\u5de5\u5206\u7c7b"
+    },
+    {
+      "id": "OX026",
+      "severity": "error",
+      "description": "\u7cfb\u7edf\u542f\u52a8\u5c01\u88c5\u5230\u5e26\u4e1a\u52a1\u540d\u7684\u5b89\u88c5\u65b9\u6cd5\uff0c\u7981\u6b62\u76f4\u63a5\u8fd0\u884c\u534f\u7a0b\u6216\u9690\u85cf Install/Uninstall"
+    },
+    {
+      "id": "OX027",
+      "severity": "error",
+      "description": "\u573a\u666f\u8d44\u4ea7\u8def\u5f84\u5fc5\u987b\u8bfb\u53d6\u914d\u7f6e\u8868\uff0c\u4e0d\u5728\u4e1a\u52a1\u4ee3\u7801\u786c\u7f16\u7801"
+    },
+    {
+      "id": "OX028",
+      "severity": "review",
+      "description": "\u52a8\u753b\u540d\u4f7f\u7528\u7c7b\u524d\u5e38\u91cf\u7c7b\u578b\uff0c\u590d\u6838 SetAnimation/FindAnimation \u5b57\u9762\u91cf"
+    },
+    {
+      "id": "OX029",
+      "severity": "error",
+      "description": "\u6bcf\u6761\u5b57\u6bb5\u6216\u5c40\u90e8\u53d8\u91cf\u58f0\u660e\u53ea\u5141\u8bb8\u4e00\u4e2a\u53d8\u91cf"
+    },
+    {
+      "id": "OX030",
+      "severity": "review",
+      "description": "\u590d\u6838\u4e1a\u52a1\u7cfb\u7edf generation/requestedActive \u7b49\u91cd\u590d\u751f\u547d\u5468\u671f\u5b57\u6bb5"
+    }
+  ],
+  "issues": [],
+  "statistics": {
+    "files": 7,
+    "lines": 1324,
+    "blankLines": 192,
+    "commentLines": 276,
+    "members": 150,
+    "documentedMembers": 150,
+    "blankLineRate": 0.14501510574018128,
+    "commentLineRate": 0.2084592145015106,
+    "documentedMemberRate": 1
+  }
+}

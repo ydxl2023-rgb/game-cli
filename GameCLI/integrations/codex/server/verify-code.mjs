@@ -17,13 +17,13 @@ function execute(args,input=''){
   child.stdin.end(input);
  });
 }
-export async function analyzeCode(files){
+export async function analyzeCode(files,mode){
  await execute(['build',tool,'--configuration','Release','--verbosity','quiet']);
- return JSON.parse(await execute([resolve(tool,'..','bin','Release','net8.0','CodeVerify.dll')],JSON.stringify({files})));
+ return JSON.parse(await execute([resolve(tool,'..','bin','Release','net8.0','CodeVerify.dll')],JSON.stringify({files,mode})));
 }
-export async function collectCode(projectPath,system){
- if(!/^[A-Za-z][A-Za-z0-9]*$/.test(system??''))throw Error('System must be a single class-style directory name.');
- const project=await realpath(projectPath),root=join(project,'Assets','Scripts','Systems',system),files=[],excluded=[];
+export async function collectCode(projectPath,system,all=false){
+ if(!all&&!/^[A-Za-z][A-Za-z0-9]*$/.test(system??''))throw Error('System must be a single class-style directory name.');
+ const project=await realpath(projectPath),root=all?join(project,'Assets','Scripts'):join(project,'Assets','Scripts','Systems',system),files=[],excluded=[];
  async function walk(directory){
   const actual=await realpath(directory),rel=relative(project,actual);
   if(rel.startsWith('..')||isAbsolute(rel))throw Error('Source path escapes the bound Unity project.');
@@ -41,18 +41,34 @@ export async function collectCode(projectPath,system){
  if(!files.length)throw Error('No handwritten C# sources found for this system.');
  return {files,excluded};
 }
+export async function collectStyleCode(projectPath,system){
+ const collected=await collectCode(projectPath,system,!system);
+ if(!system){
+  // Generated Excel code uses generator-owned names and documentation.
+  const generated=collected.files.filter(f=>f.path.startsWith('Assets/Scripts/Config/'));
+  collected.files=collected.files.filter(f=>!generated.includes(f));
+  collected.excluded.push(...generated.map(f=>f.path));
+ }else{
+  // A system-only check still includes the common lifecycle/composition infrastructure.
+  const common=await collectCode(projectPath,undefined,true);
+  for(const file of common.files.filter(f=>['Assets/Scripts/GamePlugin.cs','Assets/Scripts/Systems/RuntimeSystem.cs'].includes(f.path)))
+   if(!collected.files.some(f=>f.path===file.path))collected.files.push(file);
+ }
+ if(!collected.files.length)throw Error('No handwritten C# sources remain in the requested scope.');
+ return collected;
+}
 export async function verifyCode({projectId,system,output},workspaces){
  const binding=await workspaces.unityBindings.requireBinding(projectId);
- const {files,excluded}=await collectCode(binding.path,system);
+ const {files,excluded}=await collectStyleCode(binding.path,system);
  const result=await analyzeCode(files);
  const errors=result.issues.filter(i=>i.severity==='error');
  const incomplete=errors.some(i=>i.rule==='CS_PARSE');
- const report={schemaVersion:'gamecli-code-verification/1',projectId,unityProjectId:binding.unityProjectId,system,
+ const report={schemaVersion:'gamecli-code-verification/1',projectId,unityProjectId:binding.unityProjectId,system:system??null,scope:system?'system-and-shared':'project-handwritten',
   status:incomplete?'incomplete':errors.length?'failed':'passed',passed:!errors.length,...result,excluded,
   reviewRequired:result.issues.filter(i=>i.severity==='review'),
-  limitations:['Syntax checks only; Unity compilation and business behavior are not verified.','Comment meaning, functional blank-line grouping, VM/entity null guards and framework lifecycle ownership require review.','Only active default preprocessor branches and direct base-class declarations are analyzed.'],
+  limitations:['Syntax checks only; Unity compilation and business behavior are not verified.','Multiline initialized local boundaries, member spacing and return spacing are checked; other functional grouping, comment meaning, VM/entity null guards and framework lifecycle ownership require review.','Assets/Scripts/Config is the generated Excel directory and is excluded from project style checks; inspect excluded paths.','Only active default preprocessor branches and direct base-class declarations are analyzed.'],
   sources:files.map(f=>({path:f.path,sha256:createHash('sha256').update(f.content).digest('hex')}))};
- const current=await collectCode(binding.path,system);
+ const current=await collectStyleCode(binding.path,system);
  if(JSON.stringify(current)!==JSON.stringify({files,excluded}))throw Error('Source changed during verification; rerun.');
  const finalBinding=await workspaces.unityBindings.requireBinding(projectId);
  if(finalBinding.path!==binding.path||finalBinding.unityProjectId!==binding.unityProjectId)throw Error('Unity binding changed during verification.');

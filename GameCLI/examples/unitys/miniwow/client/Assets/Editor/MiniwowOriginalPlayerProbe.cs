@@ -72,7 +72,7 @@ public static class MiniwowOriginalPlayerProbe
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         root.transform.position = new Vector3(config.SpawnX, config.SpawnY, config.SpawnZ);
         root.SetActive(true);
-        var adapter = new TownNavigation(agent);
+        var adapter = new HomeNavigation(agent);
         var examples = new List<object>();
         try
         {

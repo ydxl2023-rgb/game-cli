@@ -32,7 +32,7 @@ public static class MiniwowPlayerSetup
 
         EditorSceneManager.SetActiveScene(scene);
         GameObject recovered = scene.GetRootGameObjects().Single(item => item.name == "RecoveredBuildingScene");
-        TownScene town = scene.GetRootGameObjects().Select(item => item.GetComponent<TownScene>()).Single(item => item);
+        HomeScene town = scene.GetRootGameObjects().Select(item => item.GetComponent<HomeScene>()).Single(item => item);
         Camera camera = recovered.GetComponentInChildren<Camera>(true);
         var spawn = new Vector3(config.SpawnX, config.SpawnY, config.SpawnZ);
         NavMeshData data = MiniwowOriginalNavigation.Import();

@@ -2,6 +2,8 @@
 
 Before writing, modifying, or reviewing Unity C# code in this directory, read and follow [the development-rules skill](skills/oathx/development-rules/SKILL.md). These are required project conventions confirmed by the user.
 
+Before Unity implementation or refactoring, also read [the development source study](skills/oathx/references/development/README.md) and its relevant chapters. Run its source drift check, inspect the actual reference methods and target framework overloads, and record the reference mechanism plus any necessary product differences. Do not invent a replacement mechanism where the reference already provides one. Update stale conclusions before refreshing the source baseline. An inventory is not evidence of full source review.
+
 For com.oathx.* framework work, start with [the Oathx skill index](skills/oathx/SKILL.md) and read the relevant module skill. Keep all skills for this framework under skills/oathx, with one system per directory. New system skills must link to the shared development-rules skill and require agents to follow it.
 
 For product development based on the Launch, Login, Loading, Master or Notice standard templates, read [the independent system development workflow](skills/oathx/system-development/SKILL.md) and the specific module skill. Templates are reference patterns, not mandatory product behavior. Their historical GameCLI examples are optional references; do not copy business dependencies or install unrelated systems by default.

@@ -11,12 +11,21 @@ foreach ($path in @($inputDirectory, $outputDirectory)) {
 }
 Copy-Item -LiteralPath "$root/config/propScene.xlsx" -Destination "$inputDirectory/propScene.xlsx" -Force
 Copy-Item -LiteralPath "$root/config/propActor.xlsx" -Destination "$inputDirectory/propActor.xlsx" -Force
-$exporter = [IO.Path]::GetFullPath("$root/../development/config/bin/Debug/net8.0/e2cs.exe")
+Copy-Item -LiteralPath "$root/config/propFunctionSystem.xlsx" -Destination "$inputDirectory/propFunctionSystem.xlsx" -Force
+Copy-Item -LiteralPath "$root/config/propCommonText.xlsx" -Destination "$inputDirectory/propCommonText.xlsx" -Force
+Copy-Item -LiteralPath "$root/config/propTask.xlsx" -Destination "$inputDirectory/propTask.xlsx" -Force
+$exporter = [IO.Path]::GetFullPath("$root/config/bin/Debug/net8.0/e2cs.exe")
+& dotnet build "$root/tools/e2cs/e2cs.csproj" --nologo -v quiet
+if ($LASTEXITCODE -ne 0) { throw 'Failed to build the project-local e2cs exporter.' }
 & $exporter -i $inputDirectory -o $outputDirectory -f Config
 if ($LASTEXITCODE -ne 0) { throw 'Scene export failed.' }
+& python -X utf8 "$root/tools/task-config/verify.py" --output $outputDirectory
+if ($LASTEXITCODE -ne 0) { throw 'Task configuration verification failed; generated files were not installed.' }
+& dotnet run --project "$root/tools/task-config/ExpressionValidation/ExpressionValidation.csproj" -- $root $outputDirectory
+if ($LASTEXITCODE -ne 0) { throw 'Task expression validation failed; generated files were not installed.' }
 $table = Get-Content -Raw "$outputDirectory/json/SceneConfig.bytes" | ConvertFrom-Json
 if (!$table.data.'10001'.Path -or !$table.data.'10002'.Path) { throw 'Required scene entries are missing.' }
-foreach ($file in @('client/SceneConfig.cs', 'client/ActorConfig.cs', 'common/Excel.cs')) {
+foreach ($file in @('client/SceneConfig.cs', 'client/ActorConfig.cs', 'client/FunctionSystemConfig.cs', 'client/CommonTextConfig.cs', 'client/TaskConfig.cs', 'client/TaskChapterConfig.cs', 'client/TaskUnlockConfig.cs', 'client/TaskGuideConfig.cs', 'client/ExcelEnumDefine.cs', 'language/LanguageConfig.cs', 'common/Excel.cs')) {
     $target = "$root/client/Assets/Scripts/Config/$file"
     New-Item -ItemType Directory -Force -Path (Split-Path $target) | Out-Null
     Copy-Item -LiteralPath "$outputDirectory/csharp/$file" -Destination $target -Force
@@ -27,3 +36,10 @@ Copy-Item -LiteralPath "$outputDirectory/json/SceneConfig.bytes" -Destination "$
 Write-Output 'Exported propScene.xlsx through e2cs.'
 
 Copy-Item -LiteralPath "$outputDirectory/json/ActorConfig.bytes" -Destination "$destination/ActorConfig.bytes" -Force
+Copy-Item -LiteralPath "$outputDirectory/json/FunctionSystemConfig.bytes" -Destination "$destination/FunctionSystemConfig.bytes" -Force
+Copy-Item -LiteralPath "$outputDirectory/json/CommonTextConfig.bytes" -Destination "$destination/CommonTextConfig.bytes" -Force
+Copy-Item -LiteralPath "$outputDirectory/json/LanguageConfig.bytes" -Destination "$destination/LanguageConfig.bytes" -Force
+Copy-Item -LiteralPath "$inputDirectory/propLanguage.xlsx" -Destination "$root/config/propLanguage.xlsx" -Force
+foreach ($name in @('Task', 'TaskChapter', 'TaskUnlock', 'TaskGuide')) {
+    Copy-Item -LiteralPath "$outputDirectory/json/${name}Config.bytes" -Destination "$destination/${name}Config.bytes" -Force
+}

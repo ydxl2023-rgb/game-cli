@@ -40,4 +40,6 @@ description: 独立 agent 参考 MasterSystem 纯代码模板，为产品开发�
 
 ## 实体职责约定
 
-MasterEntity 管理玩家属性与其操作，MasterSystem 只负责启动、保存调度、系统切换和事件。使用已有实体属性框架，不为重构替换存档格式或改变初始数据。
+存在实际玩家属性/存档需求时，MasterEntity 管理相应数据；没有此需求不创建空实体或平行会话状态机。MasterSystem 负责约定事件和系统调度，不缓存或直接操作具体业务系统实例。沿用已有实体属性框架，不为重构替换存档格式或改变初始数据。
+
+miniwow 的 Master 启动常驻，监听登录成功、HomeReady、返回登录、系统激活/关闭；普通业务切换不销毁 Master。Login 保留到 Home 场景和 UI 真正就绪，不能把帧末回调当完成。具体当前流程见 [产品约定](../../../../../examples/unitys/miniwow/skills/miniwow-project/references/runtime-conventions.md)，不将该产品的 HomeReady 强加给其他产品。

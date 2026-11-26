@@ -11,7 +11,17 @@ public static class ActorConfiguration
         if (!value || string.IsNullOrWhiteSpace(value.Model))
             return false;
 
-        float[] numbers = { value.MoveSpeed, value.JoystickRadius, value.HorizontalScale, value.FollowRate, value.ModelScale, value.AgentRadius, value.AgentHeight, value.JoystickSourceWidth };
+        float[] numbers = {
+            value.MoveSpeed,
+            value.JoystickRadius,
+            value.HorizontalScale,
+            value.FollowRate,
+            value.ModelScale,
+            value.AgentRadius,
+            value.AgentHeight,
+            value.JoystickSourceWidth
+        };
+
         foreach (float number in numbers)
         {
             if (float.IsNaN(number) || float.IsInfinity(number) || number <= 0f)

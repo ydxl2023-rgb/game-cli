@@ -1,5 +1,7 @@
 # PostgreSQL 资源台账
 
+开发工作另存于独立表 `miniwow_resources.development_tasks`，见 [开发任务查询与维护](development-tasks/README.md)。此表不是原作游戏任务表，也不修改资源记录。
+
 复用 `integrations/codex/server/database.mjs` 的数据库与 SSH 配置，不将凭证复制到 miniwow。
 
 ```powershell

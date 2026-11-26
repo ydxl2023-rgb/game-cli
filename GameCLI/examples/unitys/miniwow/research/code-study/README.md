@@ -22,6 +22,8 @@ C# 中保留了反编译器提示：HotUpdate 有 4,860 条 `Unknown result type
 
 ## 推荐阅读顺序
 
+配置专题已新增 [原作配置数据分析](../config-study/README.md)：166张表的解码、字段字典、战斗/技能/成长/系统引用案例及待解释项；完整数据在本地 JSON/SQLite，不能将客户端配置等同服务端完整规则。
+
 1. 打开 [本地代码索引](index.html)，按类名或路径搜索。完整文件哈希与位置见 [code-index.json](code-index.json)。分类只是路径提示。
 2. 阅读 [机制学习](GAMEPLAY-STUDY.md)，从探索、恢复、生产和战报播放理解业务闭环。每个结论附对应文件/方法/行号。
 3. 阅读 [架构学习与 GameCLI 映射](ARCHITECTURE-STUDY.md)，理解启动、网络、Proxy 状态、UI、配置、生命周期；映射建议属于今后的自主设计，不是已经改好的模板。

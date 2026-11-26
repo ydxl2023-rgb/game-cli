@@ -1,4 +1,4 @@
-﻿using Oathx.Core;
+using Oathx.Core;
 using Spine.Unity;
 using UnityEngine;
 
@@ -34,7 +34,7 @@ public class ActorShape : XActionStateMachine
     [SerializeField]
     private string idleAnimation = ActorAnimationNames.idle;
 
-    /// <summary>The bound logical actor, owned by TownEntity rather than this shape.</summary>
+    /// <summary>The bound logical actor, owned by HomeEntity rather than this shape.</summary>
     private ActorEntity actor;
 
     /// <summary>Whether this shape has registered its presentation states.</summary>
@@ -49,7 +49,10 @@ public class ActorShape : XActionStateMachine
             return false;
 
         animationView.Initialize(false);
-        if (animationView.Skeleton == null || animationView.Skeleton.Data.FindAnimation(idleAnimation) == null || (!string.IsNullOrEmpty(walkAnimation) && animationView.Skeleton.Data.FindAnimation(walkAnimation) == null))
+        if (animationView.Skeleton == null
+            || animationView.Skeleton.Data.FindAnimation(idleAnimation) == null
+            || (!string.IsNullOrEmpty(walkAnimation)
+            && animationView.Skeleton.Data.FindAnimation(walkAnimation) == null))
             return false;
 
         if (!statesRegistered)

@@ -1,0 +1,772 @@
+[
+  {
+    "method": "MiniwowHomeProbe.SetResolution",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:47.1504657Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[1080,1920]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Ready\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-705086,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:47.5702175Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.VerifyDuplicateActivation",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "VerifyDuplicateActivation",
+        "resolvedMember": "VerifyDuplicateActivation",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-25T11:31:47.7433219Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.InspectFonts",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "InspectFonts",
+        "resolvedMember": "InspectFonts",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "[{\"type\":\"Image\",\"name\":\"Background\",\"font\":null,\"content\":null,\"hasStart\":false},{\"type\":\"Image\",\"name\":\"EnterClick\",\"font\":null,\"content\":null,\"hasStart\":false},{\"type\":\"Text\",\"name\":\"LoadingLabel\",\"font\":\"fangzhenglanting\",\"content\":\"正在准备营地…\",\"hasStart\":true},{\"type\":\"Text\",\"name\":\"FailedLabel\",\"font\":\"fangzhenglanting\",\"content\":\"进入失败，请点击开始游戏重试\",\"hasStart\":true},{\"type\":\"Image\",\"name\":\"Logo\",\"font\":null,\"content\":null,\"hasStart\":false},{\"type\":\"Image\",\"name\":\"AgeRating\",\"font\":null,\"content\":null,\"hasStart\":false},{\"type\":\"Image\",\"name\":\"Notice\",\"font\":null,\"content\":null,\"hasStart\":false},{\"type\":\"Text\",\"name\":\"NoticeCaption\",\"font\":\"fangzhenglanting\",\"content\":\"公告\",\"hasStart\":true},{\"type\":\"Image\",\"name\":\"Legal\",\"font\":null,\"content\":null,\"hasStart\":false}]",
+        "respondedAtUtc": "2026-11-25T11:31:47.9142907Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.RenderPreview",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "RenderPreview",
+        "resolvedMember": "RenderPreview",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "Library/Login/native-preview.png",
+        "respondedAtUtc": "2026-11-25T11:31:48.2372517Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.SetInvalidConfiguration",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "SetInvalidConfiguration",
+        "resolvedMember": "SetInvalidConfiguration",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:48.4212985Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[true]"
+  },
+  {
+    "method": "MiniwowSessionProbe.ClickStart",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "ClickStart",
+        "resolvedMember": "ClickStart",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Entering\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-705086,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:48.6319274Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Failed\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-705086,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":true}",
+        "respondedAtUtc": "2026-11-25T11:31:48.8132682Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.RenderPreview",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "RenderPreview",
+        "resolvedMember": "RenderPreview",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "Library/Login/native-preview.png",
+        "respondedAtUtc": "2026-11-25T11:31:49.1529635Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.SetInvalidConfiguration",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "SetInvalidConfiguration",
+        "resolvedMember": "SetInvalidConfiguration",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:49.5373544Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[false]"
+  },
+  {
+    "method": "MiniwowSessionProbe.BeginHomeTransitionCheck",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "BeginHomeTransitionCheck",
+        "resolvedMember": "BeginHomeTransitionCheck",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:49.7176359Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.ClickStart",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "ClickStart",
+        "resolvedMember": "ClickStart",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Entering\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-705086,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:49.8934956Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Entering\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-705086,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:50.0818986Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Town\",\"loginPhase\":\"Entering\",\"loginOpen\":false,\"loginInstances\":0,\"loginInstance\":0,\"homeOpen\":true,\"townReady\":true,\"input\":true,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:50.4427189Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.VerifyHomeTransition",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "VerifyHomeTransition",
+        "resolvedMember": "VerifyHomeTransition",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"frames\":316,\"loginInstance\":-705086,\"gap\":false,\"complete\":true}",
+        "respondedAtUtc": "2026-11-25T11:31:50.6632836Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.VerifyDuplicateActivation",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "VerifyDuplicateActivation",
+        "resolvedMember": "VerifyDuplicateActivation",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-25T11:31:50.9468559Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Return",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Return",
+        "resolvedMember": "Return",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-25T11:31:51.1383691Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Ready\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-707018,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:51.3164102Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.CancelEntering",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "CancelEntering",
+        "resolvedMember": "CancelEntering",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-25T11:31:51.484332Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[false]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Ready\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-707150,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:51.8074256Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Ready\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-707150,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:52.4831033Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.CancelEntering",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "CancelEntering",
+        "resolvedMember": "CancelEntering",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-25T11:31:52.6460261Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[true]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Ready\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-707380,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:52.8097142Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowHomeProbe.SetResolution",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:52.9735772Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[1080,2400]"
+  },
+  {
+    "method": "MiniwowSessionProbe.RenderPreview",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "RenderPreview",
+        "resolvedMember": "RenderPreview",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "Library/Login/native-preview.png",
+        "respondedAtUtc": "2026-11-25T11:31:53.2081762Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.ClickStart",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "ClickStart",
+        "resolvedMember": "ClickStart",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Entering\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-707380,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:53.3748035Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Town\",\"loginPhase\":\"Entering\",\"loginOpen\":false,\"loginInstances\":0,\"loginInstance\":0,\"homeOpen\":true,\"townReady\":true,\"input\":true,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:53.5549169Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.StopMaster",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "StopMaster",
+        "resolvedMember": "StopMaster",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:53.7219649Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[false]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Stopped\",\"loginPhase\":\"Entering\",\"loginOpen\":false,\"loginInstances\":0,\"loginInstance\":0,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:53.965728Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Stopped\",\"loginPhase\":\"Entering\",\"loginOpen\":false,\"loginInstances\":0,\"loginInstance\":0,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:54.695002Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.StopMaster",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "StopMaster",
+        "resolvedMember": "StopMaster",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:54.8609101Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[true]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Ready\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-709306,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":true,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:55.0178758Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowHomeProbe.SetResolution",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-25T11:31:55.1866466Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[1080,1920]"
+  },
+  {
+    "method": "MiniwowSessionProbe.ClickStart",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "ClickStart",
+        "resolvedMember": "ClickStart",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Login\",\"loginPhase\":\"Entering\",\"loginOpen\":true,\"loginInstances\":1,\"loginInstance\":-709306,\"homeOpen\":false,\"townReady\":false,\"input\":false,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:55.3615952Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  },
+  {
+    "method": "MiniwowSessionProbe.Snapshot",
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowSessionProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Town\",\"loginPhase\":\"Entering\",\"loginOpen\":false,\"loginInstances\":0,\"loginInstance\":0,\"homeOpen\":true,\"townReady\":true,\"input\":true,\"launchVisible\":false,\"startVisible\":false,\"failureVisible\":false}",
+        "respondedAtUtc": "2026-11-25T11:31:55.5340337Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": "[]"
+  }
+]

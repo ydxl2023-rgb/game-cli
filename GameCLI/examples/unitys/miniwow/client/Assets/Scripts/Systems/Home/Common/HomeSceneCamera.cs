@@ -90,7 +90,10 @@ public sealed class HomeSceneCamera : MonoBehaviour
 
         if (!EventSystem.current || !EventSystem.current.IsPointerOverGameObject())
         {
-            float distance = Mathf.Clamp(-sceneCamera.transform.localPosition.z - Input.mouseScrollDelta.y * 5f, 100f, 180f);
+            float distance = Mathf.Clamp(
+                -sceneCamera.transform.localPosition.z - Input.mouseScrollDelta.y * 5f,
+                100f,
+                180f);
             sceneCamera.transform.localPosition = new Vector3(0f, 0f, -distance);
         }
     }

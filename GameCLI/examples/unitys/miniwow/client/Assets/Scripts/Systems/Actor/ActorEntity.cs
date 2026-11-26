@@ -113,7 +113,13 @@ public sealed class ActorEntity : XEntity
     /// <param name="elapsed">Nonnegative elapsed simulation time in seconds.</param>
     public override void Update(float elapsed)
     {
-        if (!initialized || phase == ActorPhase.Stopped || (movement == null && phase != ActorPhase.Moving && phase != ActorPhase.Returning) || !Finite(elapsed) || elapsed <= 0f)
+        if (!initialized
+            || phase == ActorPhase.Stopped
+            || (movement == null
+            && phase != ActorPhase.Moving
+            && phase != ActorPhase.Returning)
+            || !Finite(elapsed)
+            || elapsed <= 0f)
             return;
 
         float remaining = moveSpeed * elapsed;
@@ -126,13 +132,15 @@ public sealed class ActorEntity : XEntity
                 return;
 
             Vector3 target = position + input * remaining;
-            if (movement.TryMove(position, target, out Vector3 result) && Finite(result.x) && Finite(result.y) && Finite(result.z) && Vector3.ProjectOnPlane(result - position, Vector3.up).magnitude <= remaining + 0.01f)
+            if (movement.TryMove(position, target, out Vector3 result)
+                && Finite(result.x)
+                && Finite(result.y)
+                && Finite(result.z)
+                && Vector3.ProjectOnPlane(result - position, Vector3.up).magnitude <= remaining + 0.01f)
             {
-                Vector3 delta = result - position;
                 position = result;
-                phase = input != Vector3.zero ? ActorPhase.Moving : ActorPhase.Idle;
-                if (phase == ActorPhase.Moving)
-                    direction = input.normalized;
+                phase = ActorPhase.Moving;
+                direction = input.normalized;
             }
             else
             {
@@ -183,7 +191,15 @@ public sealed class ActorEntity : XEntity
     /// <returns>Whether this actor was initialized without invalid or partial state.</returns>
     public bool Initialize(ActorSpawn spawn)
     {
-        if (initialized || spawn == null || spawn.actorId <= 0 || spawn.configId <= 0 || spawn.destinationId < 0 || !Finite(spawn.moveSpeed) || spawn.moveSpeed <= 0f || spawn.route == null || spawn.route.Length == 0)
+        if (initialized
+            || spawn == null
+            || spawn.actorId <= 0
+            || spawn.configId <= 0
+            || spawn.destinationId < 0
+            || !Finite(spawn.moveSpeed)
+            || spawn.moveSpeed <= 0f
+            || spawn.route == null
+            || spawn.route.Length == 0)
             return false;
 
         foreach (Vector3 point in spawn.route)
@@ -217,7 +233,13 @@ public sealed class ActorEntity : XEntity
     /// <returns>Whether the input was accepted.</returns>
     public bool SetMoveInput(Vector3 value)
     {
-        if (!initialized || phase == ActorPhase.Stopped || movement == null || !Finite(value.x) || !Finite(value.y) || !Finite(value.z) || !Finite(value.sqrMagnitude))
+        if (!initialized
+            || phase == ActorPhase.Stopped
+            || movement == null
+            || !Finite(value.x)
+            || !Finite(value.y)
+            || !Finite(value.z)
+            || !Finite(value.sqrMagnitude))
             return false;
 
         value.y = 0f;
@@ -233,7 +255,12 @@ public sealed class ActorEntity : XEntity
     /// <returns>Whether outbound movement started.</returns>
     public bool Visit(int buildingId)
     {
-        if (!initialized || movement != null || phase != ActorPhase.Idle || route.Length < 2 || buildingId <= 0 || buildingId != destinationId)
+        if (!initialized
+            || movement != null
+            || phase != ActorPhase.Idle
+            || route.Length < 2
+            || buildingId <= 0
+            || buildingId != destinationId)
             return false;
 
         phase = ActorPhase.Moving;

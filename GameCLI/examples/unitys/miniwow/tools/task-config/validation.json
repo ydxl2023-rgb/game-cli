@@ -1,0 +1,55 @@
+{
+  "counts": {
+    "Task": 1397,
+    "TaskChapter": 114,
+    "TaskUnlock": 6,
+    "TaskGuide": 1594
+  },
+  "sourceFieldRoundTrip": "passed except actions verified by expression runner",
+  "enumValuesUnique": true,
+  "retiredTipLanguageKeys": [],
+  "existingNonTipLanguagePreserved": true,
+  "unresolvedInternalReferences": [
+    {
+      "owner": 10003,
+      "field": "GuideID",
+      "target": "TaskGuide",
+      "id": 3000001
+    },
+    {
+      "owner": 10008,
+      "field": "GuideID",
+      "target": "TaskGuide",
+      "id": 4000001
+    },
+    {
+      "owner": 10014,
+      "field": "GuideID",
+      "target": "TaskGuide",
+      "id": 4000001
+    },
+    {
+      "owner": 10020,
+      "field": "GuideID",
+      "target": "TaskGuide",
+      "id": 4000001
+    },
+    {
+      "owner": 1028007,
+      "field": "NextID",
+      "target": "TaskGuide",
+      "id": 1028008
+    }
+  ],
+  "outputHashes": {
+    "ActorConfig.bytes": "8015c60333747e756471af0278c029c1a365cde12d3412f1439e0d5086df2bfe",
+    "CommonTextConfig.bytes": "2a71d01317cf300b782925a0d5f01dd0d85d67db6d0220df477504e61069b0a1",
+    "FunctionSystemConfig.bytes": "8088da85ff451c7a17a653111e05850ea6dec56fa0cf15eb146b0a6bd38586d9",
+    "LanguageConfig.bytes": "ee28fdeea4a33ad94e20b066a5a2758f10679c66445806505f0db91498e0daac",
+    "SceneConfig.bytes": "ace7c94e06ba789e16e386fd98dbe0ee971e28eb1ca3abfc9f2b3ea1a817f978",
+    "TaskChapterConfig.bytes": "e7b79d20c9f0e010c0eb70d1f670de946cf86f5ac82a0f322c4b16c55c2aa5a4",
+    "TaskConfig.bytes": "34b911d224c0390c51f83c05e17897fd39799f0a1f192decc56b75125c59f0eb",
+    "TaskGuideConfig.bytes": "a01165d15be6370c730b96d8b3e963ee0152c284ee175e6ca4f23ddbd8e0835f",
+    "TaskUnlockConfig.bytes": "289f6946100baf280f025ac7a8f0025594307f834360dc8fcce367d25c4c441d"
+  }
+}

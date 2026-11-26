@@ -1,0 +1,214 @@
+[
+  {
+    "arguments": [
+      "asset",
+      "refresh"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset database refreshed",
+      "data": {
+        "action": "refresh",
+        "srcPath": "",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 0,
+        "returnedCount": 0,
+        "respondedAtUtc": "2026-11-25T09:55:39.8492328Z",
+        "assets": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "compile",
+      "--wait"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "script compilation requested",
+      "data": {
+        "waited": true,
+        "isCompiling": false,
+        "respondedAtUtc": "2026-11-25T09:55:43.4621704Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "ugui",
+      "UILogin",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\login/login.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\login/materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Login/UILogin.prefab",
+      "--dry-run",
+      "--no-scene-replace"
+    ],
+    "result": {
+      "ok": true,
+      "status": "validated",
+      "message": "ugui dry-run passed",
+      "data": {
+        "uiName": "UILogin",
+        "jsonFile": "../tools/login/login.json",
+        "assetManifestPath": "../tools/login/materials.json",
+        "prefabPath": "Assets/Data/Widgets/Login/UILogin.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Login/LoginAssets",
+        "dryRun": true,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 14,
+        "assetsCopied": 0,
+        "spritesReferenced": 0,
+        "issues": [],
+        "message": "ugui dry-run passed",
+        "respondedAtUtc": "2026-11-25T09:55:44.3463081Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "ugui",
+      "UILogin",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\login/login.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\login/materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Login/UILogin.prefab",
+      "--no-scene-replace"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "Created prefab Assets/Data/Widgets/Login/UILogin.prefab from ../tools/login/login.json (14 node(s), 6 asset(s)).",
+      "data": {
+        "uiName": "UILogin",
+        "jsonFile": "../tools/login/login.json",
+        "assetManifestPath": "../tools/login/materials.json",
+        "prefabPath": "Assets/Data/Widgets/Login/UILogin.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Login/LoginAssets",
+        "dryRun": false,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 14,
+        "assetsCopied": 6,
+        "spritesReferenced": 18,
+        "issues": [],
+        "message": "Created prefab Assets/Data/Widgets/Login/UILogin.prefab from ../tools/login/login.json (14 node(s), 6 asset(s)).",
+        "respondedAtUtc": "2026-11-25T09:55:45.0354627Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Login/UILogin.prefab",
+      "--path",
+      "UILogin",
+      "--component",
+      "UILogin"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Login/UILogin.prefab",
+        "instanceId": 486036,
+        "objectPath": "UILogin",
+        "requestedComponent": "UILogin",
+        "resolvedComponent": "UILogin",
+        "componentInstanceId": -170634,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-25T09:55:45.2427359Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UILogin",
+      "--vm",
+      "VMLogin",
+      "--prefab",
+      "Assets/Data/Widgets/Login/UILogin.prefab",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UILogin",
+        "vmName": "VMLogin",
+        "prefabPath": "Assets/Data/Widgets/Login/UILogin.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UILogin",
+      "--vm",
+      "VMLogin",
+      "--prefab",
+      "Assets/Data/Widgets/Login/UILogin.prefab"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UILogin",
+        "vmName": "VMLogin",
+        "prefabPath": "Assets/Data/Widgets/Login/UILogin.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 4,
+        "boundTargetCount": 4,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]

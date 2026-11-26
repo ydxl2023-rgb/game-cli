@@ -1,0 +1,1188 @@
+{
+  "schemaVersion": 1,
+  "project": "miniwow",
+  "createdOn": "2026-11-26",
+  "scope": "开发任务规划；并非游戏内任务表，未授权自动实施全部任务。",
+  "conventions": [
+    "skills/miniwow-project/SKILL.md",
+    "skills/miniwow-project/references/runtime-conventions.md"
+  ],
+  "tasks": [
+    {
+      "id": "MW-001",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 10,
+      "title": "校准现有入口与运行时基线",
+      "dependsOn": [],
+      "originalTaskIds": [],
+      "scope": "核对现有 Login/Master/Home、Actor、配置导表与规范检查，记录可复用能力和缺口。",
+      "acceptance": [
+        "从App进入Home及返回登录实测通过",
+        "HomeRuntime释放后无残留角色与输入",
+        "形成现有代码与新增职责对照，已存在功能不重复开发"
+      ],
+      "openQuestions": [
+        "历史验收不代表当前版本通过"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-002",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 20,
+      "title": "确定新手初始状态与本地规则边界",
+      "dependsOn": [
+        "MW-001"
+      ],
+      "originalTaskIds": [
+        60001,
+        60101
+      ],
+      "scope": "明确新账号资产、初始建筑、英雄、任务和开场标记的来源；制定DEMO状态契约。",
+      "acceptance": [
+        "每个初始字段标注原作证据或本项目设计",
+        "退伍金和初始金币来源单独核对",
+        "明确本地或联网权威来源，形成可执行初始化样例"
+      ],
+      "openQuestions": [
+        "原作服务端初始快照未取得；本地规则属于项目设计"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-003",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 30,
+      "title": "建立章节、任务、引导配置源表",
+      "dependsOn": [
+        "MW-002"
+      ],
+      "originalTaskIds": [],
+      "scope": "以研究索引建立产品Excel、生成ID和导表链；保留章节数组顺序、条件参数、奖励、导航分支和语言引用。",
+      "acceptance": [
+        "第一章18项顺序与证据一致",
+        "检查任务/奖励/引导目标引用及分支终止",
+        "导表重复执行结果稳定且不修改development配置"
+      ],
+      "openQuestions": [
+        "先接入首章，完整114章索引作为后续内容依据"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-004",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 40,
+      "title": "实现任务状态与领奖事务",
+      "dependsOn": [
+        "MW-003"
+      ],
+      "originalTaskIds": [],
+      "scope": "实体管理章节、进度、进行中/待领奖/已领取状态与奖励事务；系统仅编排事件。",
+      "acceptance": [
+        "行为事件只更新匹配任务条件",
+        "重复领取不重复发奖，领取和奖励状态一致",
+        "待领奖优先与数组顺序查询可验证"
+      ],
+      "openQuestions": [
+        "不直接复制原作Proxy；具体模块按系统开发规范设计"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-005",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 50,
+      "title": "实现存档与任务恢复",
+      "dependsOn": [
+        "MW-004"
+      ],
+      "originalTaskIds": [],
+      "scope": "存储已确认权威状态；从任务、建筑和英雄状态恢复，区分演出临时对象与持久数据。",
+      "acceptance": [
+        "重启保持任务进度和已领奖状态",
+        "领奖后重启不重复发放",
+        "旧存档迁移和损坏处理有明确策略"
+      ],
+      "openQuestions": [
+        "存储实现随002的权威方案确定"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-006",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 60,
+      "title": "实现任务栏和章节任务页",
+      "dependsOn": [
+        "MW-004"
+      ],
+      "originalTaskIds": [],
+      "scope": "扩展UIHome任务栏及任务页，展示描述、进度、领奖和导航意图。",
+      "acceptance": [
+        "进行中点击发导航事件，待领奖点击发领取意图",
+        "待领奖项优先显示且没有下一段剧情抢播",
+        "文案来自语言表，1080x1920布局与安全区验收"
+      ],
+      "openQuestions": [
+        "不把发送入口事件当成功能已完成"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-007",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 70,
+      "title": "实现场景目标和交互气泡",
+      "dependsOn": [
+        "MW-001",
+        "MW-003"
+      ],
+      "originalTaskIds": [],
+      "scope": "HomeRuntime解析稳定目标ID；统一到达、点击、工作进度、取消与气泡表现，数据和显示分离。",
+      "acceptance": [
+        "移动到水井及三个建筑目标无卡点",
+        "UI遮挡不打断已捕获摇杆手势",
+        "离开Home时目标订阅和进度表现释放"
+      ],
+      "openQuestions": [
+        "沿用原导航，不根据可见模型重烘焙"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-008",
+      "milestone": "M0",
+      "priority": "P0",
+      "sortOrder": 80,
+      "title": "实现任务导航与引导节点执行",
+      "dependsOn": [
+        "MW-006",
+        "MW-007"
+      ],
+      "originalTaskIds": [],
+      "scope": "按任务JumpType执行产品化引导节点，支持成功/失败后继、组完成、可中断导航和手指提示。",
+      "acceptance": [
+        "第一章非零JumpType均可到达对应目标或页面",
+        "成功/失败后继按配置走，重复启动与取消语义明确",
+        "引导结束不直接当作任务完成"
+      ],
+      "openQuestions": [
+        "不把tbguide拼接成当前开场；节点类型按首章实际使用实现"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-009",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 90,
+      "title": "接入开场剧情与首次进入分支",
+      "dependsOn": [
+        "MW-005"
+      ],
+      "originalTaskIds": [],
+      "scope": "校验开场视频资源和引用；接入播放、确认跳过、结束标记及Home交接。",
+      "acceptance": [
+        "首次播放，完成或确认跳过均进入Home",
+        "取消跳过继续播放",
+        "老存档不重放，播放期间退出可恢复且无残留"
+      ],
+      "openQuestions": [
+        "需要核验startVideo.mp4是否完整恢复；组队战斗重连不属于首版"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-010",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 100,
+      "title": "制作火灾村庄与剧情阶段表现",
+      "dependsOn": [
+        "MW-005",
+        "MW-007"
+      ],
+      "originalTaskIds": [
+        60001,
+        60002,
+        60003,
+        60004,
+        60101
+      ],
+      "scope": "依据当前任务恢复火焰、倒塌、修复外观、NPC显示与主UI引导模式。",
+      "acceptance": [
+        "五个任务入口分别有场景状态快照",
+        "重进恢复正确表现，不重新扣资源或发英雄",
+        "视觉恢复与建筑业务等级分离"
+      ],
+      "openQuestions": [
+        "原特效、材质和NPC依赖须核验台账，缺失要记录"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-011",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 110,
+      "title": "实现取水和交易行救火",
+      "dependsOn": [
+        "MW-008",
+        "MW-010"
+      ],
+      "originalTaskIds": [
+        60001
+      ],
+      "scope": "固定摇杆指引到水井；携水表现10；交易行交互消耗及喷水演出；对话和任务领奖提示。",
+      "acceptance": [
+        "取水后携带显示10，交易行按10播放救火",
+        "完成后商人及建筑外观正确",
+        "任务完成进入待领奖，领取后推进下一段"
+      ],
+      "openQuestions": [
+        "水的业务库存归属按002确定，原作已确认的是演出数量"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-012",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 120,
+      "title": "实现旅店与医院连续救火",
+      "dependsOn": [
+        "MW-011"
+      ],
+      "originalTaskIds": [
+        60002
+      ],
+      "scope": "再次取水10，依次旅店用5、医院用5，串联老板对话与目标导航。",
+      "acceptance": [
+        "旅店后剩余显示5，医院后清空",
+        "无法跳过既定交互而错误完成任务",
+        "医院最终呈倒塌状态，重进阶段正确"
+      ],
+      "openQuestions": [
+        "脚本动画与持久事务边界由005/010定义"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-013",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 130,
+      "title": "实现清理横梁和救援",
+      "dependsOn": [
+        "MW-012"
+      ],
+      "originalTaskIds": [
+        60003
+      ],
+      "scope": "实现清理3秒、救援1秒两段工作与烟尘；接入完成及自动领取。",
+      "acceptance": [
+        "两段进度和操作顺序正确",
+        "完成自动领取60003而非要求手动领奖",
+        "中途退出后按存档策略恢复，无重复结算"
+      ],
+      "openQuestions": [
+        "原作FinishTalk由场景动作请求完成，不能仅凭对话结束达标"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-014",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 140,
+      "title": "实现英雄接收与加伦招募",
+      "dependsOn": [
+        "MW-013",
+        "MW-004"
+      ],
+      "originalTaskIds": [
+        60004
+      ],
+      "scope": "建立英雄拥有状态与显示引用；临时受伤加伦125、招募交互及英雄获得页。",
+      "acceptance": [
+        "加伦只获得一次，临时模型成功后移除",
+        "获得页关闭推进60004领取",
+        "20/100只用于原作开场演出，不覆盖英雄成长属性"
+      ],
+      "openQuestions": [
+        "英雄实体职责与Actor实体关联先明确，不复制跨系统实例引用"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-015",
+      "milestone": "M1",
+      "priority": "P0",
+      "sortOrder": 150,
+      "title": "验收登录至加伦招募体验",
+      "dependsOn": [
+        "MW-009",
+        "MW-014"
+      ],
+      "originalTaskIds": [
+        60001,
+        60002,
+        60003,
+        60004
+      ],
+      "scope": "执行新账号与每个中断点恢复测试，录制救援闭环并保留规范/编译/运行证据。",
+      "acceptance": [
+        "完整流程无需调试器改状态即可完成",
+        "每步退出重进不重复奖励且能继续",
+        "提交截图、录屏、状态快照和问题清单"
+      ],
+      "openQuestions": [
+        "这是待执行验收任务，不能沿用历史通过记录"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-016",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 160,
+      "title": "实现建筑集合与医院修复",
+      "dependsOn": [
+        "MW-014",
+        "MW-003"
+      ],
+      "originalTaskIds": [
+        60101
+      ],
+      "scope": "BuildingEntity集合持有建筑实例/配置ID和业务等级；配置化费用、条件、升级事务及场景刷新。",
+      "acceptance": [
+        "修复医院60018到等级1且费用只扣一次",
+        "不足资源显示语言表反馈且不改变等级",
+        "剧情火灾解除与医院正式修复分别验证"
+      ],
+      "openQuestions": [
+        "退伍金来源在002解决；不能硬编码赠送金币绕过问题"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-017",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 170,
+      "title": "接入功能开放和入口显示条件",
+      "dependsOn": [
+        "MW-016"
+      ],
+      "originalTaskIds": [
+        60004,
+        60101,
+        60217,
+        60329,
+        60756
+      ],
+      "scope": "读取任务及其他条件形成开放状态，UI独立控制显示和可操作；未实现业务保持明确反馈。",
+      "acceptance": [
+        "医院/旅店/探索等条件有可追溯计算结果",
+        "不将某任务关联直接当所有功能已实现",
+        "恢复存档后开放状态一致"
+      ],
+      "openQuestions": [
+        "原作服务端开放通知缺失，产品计算策略要标明"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-018",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 180,
+      "title": "实现商店原料购买与库存",
+      "dependsOn": [
+        "MW-016"
+      ],
+      "originalTaskIds": [
+        60102,
+        60108
+      ],
+      "scope": "配置化商品、价格、库存和购买结果；覆盖宁神花77001与小鱼77011。",
+      "acceptance": [
+        "购买后物品和货币变更一致",
+        "目标为1的购买条件正确累计",
+        "任务奖励原料50由领奖事务发放，不在购买里额外赠送"
+      ],
+      "openQuestions": [
+        "价格和初始资产须来自已核对配置或明确项目方案"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-019",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 190,
+      "title": "实现医院药剂生产",
+      "dependsOn": [
+        "MW-018"
+      ],
+      "originalTaskIds": [
+        60103
+      ],
+      "scope": "药剂77101配方、原料消耗、产出及容量/耗时采用产品配置；接入生产任务事件。",
+      "acceptance": [
+        "材料不足不能生产",
+        "生产完成正确累计一次并增加产物",
+        "中断恢复不丢失或重复产出"
+      ],
+      "openQuestions": [
+        "生产时长/容量消费代码需补核，不能凭任务文案猜测"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-020",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 200,
+      "title": "实现英雄治疗与探索行为",
+      "dependsOn": [
+        "MW-019",
+        "MW-014"
+      ],
+      "originalTaskIds": [
+        60104,
+        60105
+      ],
+      "scope": "通过Actor数据与状态机表现英雄前往医院、消费药剂、恢复并出发探索；衔接任务条件。",
+      "acceptance": [
+        "玩家可观察加伦治疗和前往探索",
+        "消费一次匹配UseCostItem/60018",
+        "AdventureEventTimes参数4的事件语义有证据或明确本地定义"
+      ],
+      "openQuestions": [
+        "原作服务端计数时机未知，需核对消费代码并记录差异"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-021",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 210,
+      "title": "实现兄弟对话与两名免费英雄",
+      "dependsOn": [
+        "MW-020"
+      ],
+      "originalTaskIds": [
+        60106,
+        60112,
+        60113,
+        60114
+      ],
+      "scope": "对话获得残破狮鹫哨，场景吹哨，按章节顺序接收129、133。",
+      "acceptance": [
+        "顺序为60106→60112→60113→60114→60107",
+        "哨子与英雄奖励不重复",
+        "新增英雄加入正确数据集合和场景表现"
+      ],
+      "openQuestions": [
+        "免费接收与后续随机招募是不同路径"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-022",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 220,
+      "title": "实现旅店修复、食物和恢复",
+      "dependsOn": [
+        "MW-021",
+        "MW-018",
+        "MW-016"
+      ],
+      "originalTaskIds": [
+        60107,
+        60108,
+        60109,
+        60110
+      ],
+      "scope": "修复60017、购买小鱼、生产炸鱼77111、英雄消费；复用已验证交易和生产规则。",
+      "acceptance": [
+        "四个任务顺序可玩并正确领奖",
+        "旅店消费匹配UseCostItem/60017",
+        "恢复行为可见且库存、进度与存档一致"
+      ],
+      "openQuestions": [
+        "食物恢复数值与计数时机需补核，不能照搬药剂参数"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-023",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 230,
+      "title": "定义首战规则与战斗结果接口",
+      "dependsOn": [
+        "MW-003",
+        "MW-002"
+      ],
+      "originalTaskIds": [
+        60111
+      ],
+      "scope": "研究关卡101001队伍、敌人、战报消费和奖励；确定DEMO本地规则或服务结果适配。",
+      "acceptance": [
+        "输出输入/结果/表现契约及关卡证据",
+        "未恢复伤害和掉落公式显式列出",
+        "本地算法标为项目设计，不伪装原服务器实现"
+      ],
+      "openQuestions": [
+        "已有证据是战报驱动表现，原服务端规则未取得"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-024",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 240,
+      "title": "实现首次关卡与返回主城",
+      "dependsOn": [
+        "MW-022",
+        "MW-023"
+      ],
+      "originalTaskIds": [
+        60111
+      ],
+      "scope": "实现FightRuntime资源/表现生命周期、入场、结果、返回Home和任务达标；保持系统事件解耦。",
+      "acceptance": [
+        "胜利使PassedBattleId101001达标，失败不误完成",
+        "完成任务领取400金币且只发一次",
+        "战斗退出释放Runtime，Home角色与UI恢复"
+      ],
+      "openQuestions": [
+        "FightRuntime继承现有GameRuntime；不扩展为全战斗模式"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-025",
+      "milestone": "M2",
+      "priority": "P1",
+      "sortOrder": 250,
+      "title": "验收第一章经营与战斗闭环",
+      "dependsOn": [
+        "MW-017",
+        "MW-024",
+        "MW-015"
+      ],
+      "originalTaskIds": [],
+      "scope": "从新账号连续完成18步，覆盖生产、消费、探索、战斗及任务恢复。",
+      "acceptance": [
+        "无需编辑存档完成首章并进入下一章",
+        "货币/材料/英雄/任务结算可对账",
+        "编译、代码检查、运行录像与中断恢复证据完整"
+      ],
+      "openQuestions": [
+        "后续实现任务完成后再验收"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-026",
+      "milestone": "M3",
+      "priority": "P2",
+      "sortOrder": 260,
+      "title": "实现第二章收入和常规招募",
+      "dependsOn": [
+        "MW-025"
+      ],
+      "originalTaskIds": [
+        60212,
+        60217,
+        60218,
+        60219,
+        60220
+      ],
+      "scope": "医院收入领取、狮鹫哨、一次常规招募、旧山道集结；补查常规招募规则。",
+      "acceptance": [
+        "五项按章节顺序完成",
+        "免费接收与招募次数分开统计",
+        "集结101002不被误当通关101002"
+      ],
+      "openQuestions": [
+        "招募概率/保底和收入公式需补证或定义本地规则"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-027",
+      "milestone": "M3",
+      "priority": "P2",
+      "sortOrder": 270,
+      "title": "实现第三章村庄升级与旧山道通关",
+      "dependsOn": [
+        "MW-026"
+      ],
+      "originalTaskIds": [
+        60321,
+        60325,
+        60327,
+        60329
+      ],
+      "scope": "村庄等级2、累计招募3、关卡101002、通关奖励及铁匠开放。",
+      "acceptance": [
+        "升级成本与等级只在业务实体变更",
+        "累计招募目标3不是要求额外招募3次",
+        "通关领奖与装备系统入口条件一致"
+      ],
+      "openQuestions": [
+        "等级条件与累计统计由配置和消费证据确认"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-028",
+      "milestone": "M3",
+      "priority": "P2",
+      "sortOrder": 280,
+      "title": "实现第四章副本、税金与装备交易",
+      "dependsOn": [
+        "MW-027"
+      ],
+      "originalTaskIds": [
+        60432,
+        60330,
+        60431,
+        60434,
+        60435
+      ],
+      "scope": "任意副本、税金、材料、法杖与火枪制造交易，建立英雄装备关联。",
+      "acceptance": [
+        "集结/副本结算/税金领取分别计数",
+        "110004和110003装备目标按任务参数验证",
+        "交易时货币、库存与英雄装备同步且可恢复"
+      ],
+      "openQuestions": [
+        "需进一步研究装备、税率、随机副本，任务不代表公式已知"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-029",
+      "milestone": "M3",
+      "priority": "P2",
+      "sortOrder": 290,
+      "title": "实现第五至六章阵容扩展",
+      "dependsOn": [
+        "MW-028"
+      ],
+      "originalTaskIds": [
+        60437,
+        60540,
+        60543,
+        60651,
+        60644,
+        60753,
+        60754,
+        60755,
+        60756
+      ],
+      "scope": "扩展6/7名英雄装备覆盖、村庄3级、招募累计及101003/101004推进。",
+      "acceptance": [
+        "九项按两个章节各自数组顺序执行",
+        "60754目标7与文案新上阵1的口径核对",
+        "英雄数量、装备人数和关卡完成互不混用"
+      ],
+      "openQuestions": [
+        "累计计数服务端语义未实机确认"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-030",
+      "milestone": "M4",
+      "priority": "P2",
+      "sortOrder": 300,
+      "title": "拆解第七至114章后续内容",
+      "dependsOn": [
+        "MW-029"
+      ],
+      "originalTaskIds": [],
+      "scope": "以完整754位置索引按系统首次引入和既有机制复用拆分内容批次，补充细任务而非自动生成754个开发工单。",
+      "acceptance": [
+        "每章任务位置均归属内容批次",
+        "新增机制与纯配置内容分别列出",
+        "每个后续批次有证据、依赖与验收范围"
+      ],
+      "openQuestions": [
+        "当前只规划拆解任务，不宣称已详细设计所有后期系统"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    },
+    {
+      "id": "MW-031",
+      "milestone": "M3",
+      "priority": "P2",
+      "sortOrder": 310,
+      "title": "验收前六章与跨模式恢复",
+      "dependsOn": [
+        "MW-029"
+      ],
+      "originalTaskIds": [],
+      "scope": "回归主城经营、招募、制造、战斗、奖励和退出恢复，查找循环断点。",
+      "acceptance": [
+        "新存档可连续完成前六章",
+        "关键交互和领奖前后退出无重复结算",
+        "保留缺陷清单及可复现步骤，未通过不得标完成"
+      ],
+      "openQuestions": [
+        "不扩大到商业化和在线服务验收"
+      ],
+      "evidence": [
+        {
+          "path": "research/config-study/PLAYER-JOURNEY.md",
+          "kind": "静态代码与配置研究"
+        },
+        {
+          "path": "research/config-study/CHAPTER-EXPERIENCE.md",
+          "kind": "章节顺序与任务参数"
+        }
+      ],
+      "deliverables": [
+        "实现或研究记录、配置/资源引用清单",
+        "逐项验收结果及证据路径"
+      ],
+      "initialStatus": "planned"
+    }
+  ]
+}

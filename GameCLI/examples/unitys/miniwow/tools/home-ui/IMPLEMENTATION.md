@@ -62,3 +62,18 @@
 - 独立 agent 完成静态审查，初始化安全与预制 ID 契约问题已修复；运行结果是主 agent 自测，不冒称独立运行验收或完整原作复刻。
 
 未提交、推送 Git，未发布标准模板。
+
+
+## 反馈文案语言表接入（2026-11-25）
+
+三条反馈使用 config/propCommonText.xlsx 的稳定ID，经 e2cs 生成 LanguageConfig，由 CommonText.Get 在 UI 层读取。HomeSystem 只传 HomeEntryResult 或 TEXT_HOME_PENDING；删除旧字符串key和 HomeEntity 中对应文本校验。语言源、生成代码/bytes、Home JSON及本地配置包已同步。Unity编译、代码/架构检查、登录回归通过；MiniwowHomeProbe.VerifyFeedbackLanguage 验证三种实际显示，并临时替换语言表值确认未读取HomeSnapshot副本，随后还原。证据 feedback-language-evidence.json。
+
+## 快捷入口枚举（2026-11-25）
+
+Settings、Task、Chat 使用 HomeShortcut，UI 命名回调发送 ReqHomeShortcut，HomeSystem 转发 HomeShortcutRequested。删除字符串白名单，保留语言表中的未接入提示；本次未新增三个业务系统。Unity 编译通过，三个实际按钮点击证据见 shortcut-enum-evidence.json。
+
+Home 启动封装：OnActive 订阅事件后直接 return InstallHome()，由 bool InstallHome() 启动并持有 OpenHome 协程；OnDetive 取消订阅后调用 UninstallHome()，集中取消协程、关闭页面并释放 Runtime。参考 development/Fight/FightSystem.OnActive 将生命周期与业务入口分离；Home 按用户要求在激活时启动，仍由原协程创建 Runtime、等待 Ready、打开 UI。取消及 HomeReady 交接机制保持原实现。
+
+事件入口统一：参照 development/GamePlugin.Send 与 Post，GameUISender 通过 XPluginUtility.FireEvent/PostEvent 发送。HomeReady、Master 失败与完成事件原为同步派发，改用 FireEvent 保持时序；已有 PostEvent 保持排队。删除 GameUISender 的 dispatcher 字段及构造注入。
+
+配置入口枚举：HomeEntryRoute 覆盖现有 20 个目的地，HomeEntryData 读取配置时经 StringEnumConverter 转换；RequestEntry、HomeEntryRequested 使用同一类型，地图分支比较 HomeEntryRoute.MapPreview。源表及 JSON 名称保持兼容；无效名称解析失败，None/未定义值在配置校验拒绝。沿用现有 JSON 加载与事件机制，不新增路由管理器。

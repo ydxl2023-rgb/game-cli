@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UILogin",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UILogin",
+      "name": "UILogin",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "Background",
+          "name": "Background",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": []
+        },
+        {
+          "id": "EntryPanel",
+          "name": "EntryPanel",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": [
+            {
+              "id": "EnterVisible",
+              "name": "EnterVisible",
+              "element": "Container",
+              "rect": {
+                "x": 180,
+                "y": 1604,
+                "width": 720,
+                "height": 108
+              },
+              "children": [
+                {
+                  "id": "EnterClick",
+                  "name": "EnterClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 180,
+                    "y": 1604,
+                    "width": 720,
+                    "height": 108
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "LoadingVisible",
+              "name": "LoadingVisible",
+              "element": "Container",
+              "rect": {
+                "x": 140,
+                "y": 1590,
+                "width": 800,
+                "height": 145
+              },
+              "children": [
+                {
+                  "id": "LoadingLabel",
+                  "name": "LoadingLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 140,
+                    "y": 1590,
+                    "width": 800,
+                    "height": 145
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "正在准备营地…",
+                    "fontSize": 38,
+                    "alignment": "center",
+                    "color": "#FFF3CC"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "FailedVisible",
+              "name": "FailedVisible",
+              "element": "Container",
+              "rect": {
+                "x": 100,
+                "y": 1510,
+                "width": 880,
+                "height": 130
+              },
+              "children": [
+                {
+                  "id": "FailedLabel",
+                  "name": "FailedLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 100,
+                    "y": 1510,
+                    "width": 880,
+                    "height": 130
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "进入失败，请点击开始游戏重试",
+                    "fontSize": 38,
+                    "alignment": "center",
+                    "color": "#FFF3CC"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Logo",
+              "name": "Logo",
+              "element": "Image",
+              "rect": {
+                "x": 270,
+                "y": 130,
+                "width": 540,
+                "height": 313
+              },
+              "children": []
+            },
+            {
+              "id": "AgeRating",
+              "name": "AgeRating",
+              "element": "Image",
+              "rect": {
+                "x": 20,
+                "y": 114,
+                "width": 86,
+                "height": 113
+              },
+              "children": []
+            },
+            {
+              "id": "Notice",
+              "name": "Notice",
+              "element": "Image",
+              "rect": {
+                "x": 954,
+                "y": 206,
+                "width": 94,
+                "height": 92
+              },
+              "children": [
+                {
+                  "id": "NoticeCaption",
+                  "name": "NoticeCaption",
+                  "element": "Text",
+                  "rect": {
+                    "x": 954,
+                    "y": 290,
+                    "width": 94,
+                    "height": 28
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "公告",
+                    "fontSize": 20,
+                    "alignment": "center",
+                    "color": "#E9D9AF"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Legal",
+              "name": "Legal",
+              "element": "Image",
+              "rect": {
+                "x": 180,
+                "y": 1718,
+                "width": 720,
+                "height": 192
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
