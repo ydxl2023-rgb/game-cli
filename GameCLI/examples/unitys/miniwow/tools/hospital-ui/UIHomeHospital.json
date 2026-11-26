@@ -1,0 +1,507 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIHomeHospital",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIHomeHospital",
+      "name": "UIHomeHospital",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "PageBackground",
+          "name": "PageBackground",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": []
+        },
+        {
+          "id": "Room",
+          "name": "Room",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 650
+          },
+          "children": [
+            {
+              "id": "RoomSpine",
+              "name": "RoomSpine",
+              "element": "Container",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1080,
+                "height": 650
+              },
+              "children": []
+            },
+            {
+              "id": "Patient",
+              "name": "Patient",
+              "element": "Container",
+              "rect": {
+                "x": 680,
+                "y": 470,
+                "width": 170,
+                "height": 190
+              },
+              "children": []
+            },
+            {
+              "id": "ProductionTarget",
+              "name": "ProductionTarget",
+              "element": "Container",
+              "rect": {
+                "x": 535,
+                "y": 395,
+                "width": 10,
+                "height": 10
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Gold",
+          "name": "Gold",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 40,
+            "width": 500,
+            "height": 70
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 32,
+            "alignment": "center",
+            "color": "#F7E7C4"
+          }
+        },
+        {
+          "id": "Treatment",
+          "name": "Treatment",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 545,
+            "width": 630,
+            "height": 90
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 28,
+            "alignment": "center",
+            "color": "#F7E7C4"
+          }
+        },
+        {
+          "id": "Header",
+          "name": "Header",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 650,
+            "width": 1080,
+            "height": 90
+          },
+          "children": [
+            {
+              "id": "Title",
+              "name": "Title",
+              "element": "Text",
+              "rect": {
+                "x": 20,
+                "y": 650,
+                "width": 480,
+                "height": 90
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 42,
+                "alignment": "center",
+                "color": "#F7E7C4"
+              }
+            },
+            {
+              "id": "Revenue",
+              "name": "Revenue",
+              "element": "Text",
+              "rect": {
+                "x": 520,
+                "y": 650,
+                "width": 530,
+                "height": 90
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 28,
+                "alignment": "center",
+                "color": "#F7E7C4"
+              }
+            }
+          ]
+        },
+        {
+          "id": "BonusPanel",
+          "name": "BonusPanel",
+          "element": "Image",
+          "rect": {
+            "x": 30,
+            "y": 770,
+            "width": 1020,
+            "height": 140
+          },
+          "children": [
+            {
+              "id": "Bonus",
+              "name": "Bonus",
+              "element": "Text",
+              "rect": {
+                "x": 40,
+                "y": 785,
+                "width": 1000,
+                "height": 110
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 32,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ProductPanel",
+          "name": "ProductPanel",
+          "element": "Image",
+          "rect": {
+            "x": 30,
+            "y": 940,
+            "width": 1020,
+            "height": 320
+          },
+          "children": [
+            {
+              "id": "ProductTitle",
+              "name": "ProductTitle",
+              "element": "Text",
+              "rect": {
+                "x": 60,
+                "y": 950,
+                "width": 220,
+                "height": 55
+              },
+              "children": [],
+              "text": {
+                "content": "药剂",
+                "fontSize": 32,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            },
+            {
+              "id": "ProductIcon",
+              "name": "ProductIcon",
+              "element": "Image",
+              "rect": {
+                "x": 80,
+                "y": 1015,
+                "width": 180,
+                "height": 180
+              },
+              "children": []
+            },
+            {
+              "id": "ProductName",
+              "name": "ProductName",
+              "element": "Text",
+              "rect": {
+                "x": 310,
+                "y": 985,
+                "width": 680,
+                "height": 70
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 36,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            },
+            {
+              "id": "ProductStock",
+              "name": "ProductStock",
+              "element": "Text",
+              "rect": {
+                "x": 310,
+                "y": 1060,
+                "width": 680,
+                "height": 55
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 32,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            },
+            {
+              "id": "Detail",
+              "name": "Detail",
+              "element": "Text",
+              "rect": {
+                "x": 300,
+                "y": 1120,
+                "width": 710,
+                "height": 120
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 29,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            }
+          ]
+        },
+        {
+          "id": "MaterialPanel",
+          "name": "MaterialPanel",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 1330,
+            "width": 1080,
+            "height": 250
+          },
+          "children": [
+            {
+              "id": "MaterialTitle",
+              "name": "MaterialTitle",
+              "element": "Text",
+              "rect": {
+                "x": 40,
+                "y": 1290,
+                "width": 230,
+                "height": 65
+              },
+              "children": [],
+              "text": {
+                "content": "材料",
+                "fontSize": 32,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            },
+            {
+              "id": "CraftClick",
+              "name": "CraftClick",
+              "element": "Button",
+              "rect": {
+                "x": 75,
+                "y": 1360,
+                "width": 200,
+                "height": 190
+              },
+              "children": [
+                {
+                  "id": "MaterialIcon",
+                  "name": "MaterialIcon",
+                  "element": "Image",
+                  "rect": {
+                    "x": 90,
+                    "y": 1365,
+                    "width": 170,
+                    "height": 165
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "MaterialStock",
+              "name": "MaterialStock",
+              "element": "Text",
+              "rect": {
+                "x": 320,
+                "y": 1360,
+                "width": 700,
+                "height": 75
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 32,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            },
+            {
+              "id": "Feedback",
+              "name": "Feedback",
+              "element": "Text",
+              "rect": {
+                "x": 300,
+                "y": 1440,
+                "width": 720,
+                "height": 110
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 29,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            }
+          ]
+        },
+        {
+          "id": "FlyingMaterial",
+          "name": "FlyingMaterial",
+          "element": "Image",
+          "rect": {
+            "x": 90,
+            "y": 1365,
+            "width": 100,
+            "height": 100
+          },
+          "children": []
+        },
+        {
+          "id": "TaskText",
+          "name": "TaskText",
+          "element": "Text",
+          "rect": {
+            "x": 40,
+            "y": 1610,
+            "width": 1000,
+            "height": 95
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 31,
+            "alignment": "center",
+            "color": "#392B20"
+          }
+        },
+        {
+          "id": "ClaimVisible",
+          "name": "ClaimVisible",
+          "element": "Container",
+          "rect": {
+            "x": 680,
+            "y": 1720,
+            "width": 340,
+            "height": 80
+          },
+          "children": [
+            {
+              "id": "ClaimClick",
+              "name": "ClaimClick",
+              "element": "Button",
+              "rect": {
+                "x": 680,
+                "y": 1720,
+                "width": 340,
+                "height": 80
+              },
+              "children": [
+                {
+                  "id": "ClaimLabel",
+                  "name": "ClaimLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 680,
+                    "y": 1720,
+                    "width": 340,
+                    "height": 80
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "领取奖励",
+                    "fontSize": 32,
+                    "alignment": "center",
+                    "color": "#392B20"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Footer",
+          "name": "Footer",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 1820,
+            "width": 1080,
+            "height": 100
+          },
+          "children": [
+            {
+              "id": "CloseClick",
+              "name": "CloseClick",
+              "element": "Button",
+              "rect": {
+                "x": 30,
+                "y": 1830,
+                "width": 320,
+                "height": 75
+              },
+              "children": [
+                {
+                  "id": "CloseLabel",
+                  "name": "CloseLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 30,
+                    "y": 1830,
+                    "width": 320,
+                    "height": 75
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "返回村庄",
+                    "fontSize": 32,
+                    "alignment": "center",
+                    "color": "#392B20"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

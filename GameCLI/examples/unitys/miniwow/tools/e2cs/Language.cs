@@ -414,7 +414,9 @@ public const int {2} = {3};
             StringBuilder sb = new StringBuilder();
             foreach(var c in consts)
             {
-                var line = string.Format(alias, c.Value.desc, c.Value.text, c.Key, c.Value.hash);
+                var description = System.Security.SecurityElement.Escape(c.Value.desc).Replace("\r", "").Replace("\n", "\n/// ");
+                var text = System.Security.SecurityElement.Escape(c.Value.text).Replace("\r", "").Replace("\n", "\n/// ");
+                var line = string.Format(alias, description, text, c.Key, c.Value.hash);
                 if (index != 0)
                     sb.Append('\t');
 

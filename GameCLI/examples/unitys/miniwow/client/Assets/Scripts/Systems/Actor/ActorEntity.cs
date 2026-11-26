@@ -175,6 +175,25 @@ public sealed class ActorEntity : XEntity
             arrivals++;
     }
 
+    /// <summary>Follows a complete native navigation path without modifying the presentation directly.</summary>
+    /// <param name="corners">Reachable world-space corners beginning at the current logical position.</param>
+    /// <returns>Whether this live NPC accepted a nonempty finite path.</returns>
+    public bool FollowRoute(Vector3[] corners)
+    {
+        if (!initialized || phase == ActorPhase.Stopped || movement != null || corners.Length == 0)
+            return false;
+
+        foreach (Vector3 point in corners)
+            if (!Finite(point.x) || !Finite(point.y) || !Finite(point.z))
+                return false;
+
+        route = (Vector3[])corners.Clone();
+        waypoint = 0;
+        phase = ActorPhase.Moving;
+
+        return true;
+    }
+
     /// <summary>Stops released logical actors even if a detached shape still references them.</summary>
     public override void Destroy()
     {

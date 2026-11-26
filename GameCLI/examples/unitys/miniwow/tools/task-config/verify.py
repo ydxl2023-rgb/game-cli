@@ -50,6 +50,9 @@ def pairs(values):
 
 
 tables = {name: output(name) for name in ['Task','TaskChapter','TaskUnlock','TaskGuide']}
+settings = output('TaskSetting')
+assert len(settings) == 1 and settings['1']['ID'] == 1
+assert str(settings['1']['InitialChapterID']) in tables['TaskChapter']
 for name in tables:
     generated_code = (args.output / 'csharp/client' / (name + 'Config.cs')).read_text(encoding='utf-8-sig')
     assert not re.search(r'public const int TASK_', generated_code), name + ': use numeric IDs, not aliases'
@@ -115,7 +118,7 @@ old_language = ROOT / 'client/Assets/Data/Jsons/Excels/LanguageConfig.bytes'
 if old_language.exists():
     for key,value in read(old_language)['data'].items():
         if languages.get(key) != value:
-            assert value in tips and key not in languages, ('Existing language changed',key)
+            assert key not in languages and value in languages.values(), ('Existing language changed',key)
             retired_language.append(key)
 
 missing = []

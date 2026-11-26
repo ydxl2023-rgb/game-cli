@@ -13,6 +13,9 @@ public static class MiniwowPlayerProbe
     /// <summary>Captured player position before a live movement interval.</summary>
     private static Vector3 before;
 
+    /// <summary>Simulation time at the beginning of a measured drag.</summary>
+    private static float measurementStart;
+
     /// <summary>Captured camera position before a live movement interval.</summary>
     private static Vector3 cameraBefore;
 
@@ -48,6 +51,7 @@ public static class MiniwowPlayerProbe
     {
         HomeScene scene = UnityEngine.Object.FindObjectOfType<HomeScene>();
         before = Player().position;
+        measurementStart = Time.time;
         cameraBefore = UnityEngine.Object.FindObjectsOfType<Camera>().Single(item => item.GetComponent<HomeSceneCamera>()).transform.position;
         var point = new Vector2(Screen.width * 0.32f, Screen.height * 0.36f);
         Require(scene.BeginPointer(point, -1), "Gesture accepted outside UI");
@@ -56,6 +60,33 @@ public static class MiniwowPlayerProbe
             Shape().gameObject.SetActive(false);
 
         return Snapshot();
+    }
+
+    /// <summary>Drives live navigation for entrance acceptance without teleporting the actor.</summary>
+    /// <param name="x">World horizontal intent.</param>
+    /// <param name="z">World depth intent.</param>
+    /// <returns>Whether the active runtime accepted input.</returns>
+    public static bool MoveWorld(float x, float z)
+    {
+        var runtime = UnityEngine.Object.FindObjectOfType<HomeRuntime>();
+
+        return runtime.SetPlayerInput(new Vector3(x, 0f, z));
+    }
+
+    /// <summary>Reports actual horizontal travel speed before ending a live drag.</summary>
+    /// <returns>Measured movement and configured maximum.</returns>
+    public static string MeasureSpeed()
+    {
+        var actor = Player();
+        float elapsed = Time.time - measurementStart;
+        float distance = Vector3.ProjectOnPlane(actor.position - before, Vector3.up).magnitude;
+
+        return JsonConvert.SerializeObject(new {
+            elapsed = elapsed,
+            distance = distance,
+            unitsPerSecond = distance / elapsed,
+            configured = actor.moveSpeed
+        });
     }
 
     /// <summary>Checks sustained movement and camera following, then cancels the gesture.</summary>

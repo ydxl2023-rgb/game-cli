@@ -1,0 +1,488 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIHomeOpening",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIHomeOpening",
+      "name": "UIHomeOpening",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "ObjectiveVisible",
+          "name": "ObjectiveVisible",
+          "element": "Image",
+          "rect": {
+            "x": 45,
+            "y": 350,
+            "width": 990,
+            "height": 160
+          },
+          "children": [
+            {
+              "id": "Objective",
+              "name": "Objective",
+              "element": "Text",
+              "rect": {
+                "x": 75,
+                "y": 365,
+                "width": 930,
+                "height": 90
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 34,
+                "alignment": "center",
+                "color": "#F4E6C7"
+              }
+            },
+            {
+              "id": "WaterCount",
+              "name": "WaterCount",
+              "element": "Text",
+              "rect": {
+                "x": 160,
+                "y": 455,
+                "width": 760,
+                "height": 40
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 34,
+                "alignment": "center",
+                "color": "#F4E6C7"
+              }
+            },
+            {
+              "id": "WaterIcon",
+              "name": "WaterIcon",
+              "element": "Image",
+              "rect": {
+                "x": 90,
+                "y": 445,
+                "width": 60,
+                "height": 60
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "RescueVisible",
+          "name": "RescueVisible",
+          "element": "Container",
+          "rect": {
+            "x": 380,
+            "y": 1280,
+            "width": 320,
+            "height": 100
+          },
+          "children": [
+            {
+              "id": "RescueClick",
+              "name": "RescueClick",
+              "element": "Button",
+              "rect": {
+                "x": 380,
+                "y": 1280,
+                "width": 320,
+                "height": 90
+              },
+              "children": [
+                {
+                  "id": "RescueLabel",
+                  "name": "RescueLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 380,
+                    "y": 1280,
+                    "width": 320,
+                    "height": 90
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 34,
+                    "alignment": "center",
+                    "color": "#F4E6C7"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ClaimVisible",
+          "name": "ClaimVisible",
+          "element": "Container",
+          "rect": {
+            "x": 260,
+            "y": 1280,
+            "width": 560,
+            "height": 100
+          },
+          "children": [
+            {
+              "id": "ClaimClick",
+              "name": "ClaimClick",
+              "element": "Button",
+              "rect": {
+                "x": 260,
+                "y": 1280,
+                "width": 560,
+                "height": 90
+              },
+              "children": [
+                {
+                  "id": "ClaimLabel",
+                  "name": "ClaimLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 260,
+                    "y": 1280,
+                    "width": 560,
+                    "height": 90
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 34,
+                    "alignment": "center",
+                    "color": "#F4E6C7"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DialogueVisible",
+          "name": "DialogueVisible",
+          "element": "Image",
+          "rect": {
+            "x": 35,
+            "y": 1190,
+            "width": 1010,
+            "height": 480
+          },
+          "children": [
+            {
+              "id": "Portrait",
+              "name": "Portrait",
+              "element": "Image",
+              "rect": {
+                "x": 65,
+                "y": 1160,
+                "width": 210,
+                "height": 230
+              },
+              "children": []
+            },
+            {
+              "id": "Speaker",
+              "name": "Speaker",
+              "element": "Text",
+              "rect": {
+                "x": 290,
+                "y": 1220,
+                "width": 600,
+                "height": 70
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 34,
+                "alignment": "center",
+                "color": "#F4E6C7"
+              }
+            },
+            {
+              "id": "Dialogue",
+              "name": "Dialogue",
+              "element": "Text",
+              "rect": {
+                "x": 95,
+                "y": 1320,
+                "width": 890,
+                "height": 210
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 34,
+                "alignment": "center",
+                "color": "#F4E6C7"
+              }
+            },
+            {
+              "id": "ContinueClick",
+              "name": "ContinueClick",
+              "element": "Button",
+              "rect": {
+                "x": 680,
+                "y": 1550,
+                "width": 320,
+                "height": 90
+              },
+              "children": [
+                {
+                  "id": "ContinueLabel",
+                  "name": "ContinueLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 680,
+                    "y": 1550,
+                    "width": 320,
+                    "height": 90
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 34,
+                    "alignment": "center",
+                    "color": "#F4E6C7"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "MovieVisible",
+          "name": "MovieVisible",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": [
+            {
+              "id": "VideoScreen",
+              "name": "VideoScreen",
+              "element": "Image",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1080,
+                "height": 1920
+              },
+              "children": []
+            },
+            {
+              "id": "SkipClick",
+              "name": "SkipClick",
+              "element": "Button",
+              "rect": {
+                "x": 730,
+                "y": 75,
+                "width": 290,
+                "height": 80
+              },
+              "children": [
+                {
+                  "id": "SkipLabel",
+                  "name": "SkipLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 730,
+                    "y": 75,
+                    "width": 290,
+                    "height": 80
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 34,
+                    "alignment": "center",
+                    "color": "#F4E6C7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ErrorVisible",
+              "name": "ErrorVisible",
+              "element": "Image",
+              "rect": {
+                "x": 140,
+                "y": 750,
+                "width": 800,
+                "height": 350
+              },
+              "children": [
+                {
+                  "id": "ErrorText",
+                  "name": "ErrorText",
+                  "element": "Text",
+                  "rect": {
+                    "x": 170,
+                    "y": 780,
+                    "width": 740,
+                    "height": 140
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 34,
+                    "alignment": "center",
+                    "color": "#F4E6C7"
+                  }
+                },
+                {
+                  "id": "RetryClick",
+                  "name": "RetryClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 380,
+                    "y": 970,
+                    "width": 320,
+                    "height": 90
+                  },
+                  "children": [
+                    {
+                      "id": "RetryLabel",
+                      "name": "RetryLabel",
+                      "element": "Text",
+                      "rect": {
+                        "x": 380,
+                        "y": 970,
+                        "width": 320,
+                        "height": 90
+                      },
+                      "children": [],
+                      "text": {
+                        "content": "",
+                        "fontSize": 34,
+                        "alignment": "center",
+                        "color": "#F4E6C7"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ConfirmVisible",
+          "name": "ConfirmVisible",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": [
+            {
+              "id": "ConfirmPanel",
+              "name": "ConfirmPanel",
+              "element": "Image",
+              "rect": {
+                "x": 100,
+                "y": 680,
+                "width": 880,
+                "height": 500
+              },
+              "children": [
+                {
+                  "id": "ConfirmText",
+                  "name": "ConfirmText",
+                  "element": "Text",
+                  "rect": {
+                    "x": 150,
+                    "y": 750,
+                    "width": 780,
+                    "height": 150
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 34,
+                    "alignment": "center",
+                    "color": "#F4E6C7"
+                  }
+                },
+                {
+                  "id": "ConfirmClick",
+                  "name": "ConfirmClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 150,
+                    "y": 1000,
+                    "width": 320,
+                    "height": 90
+                  },
+                  "children": [
+                    {
+                      "id": "ConfirmLabel",
+                      "name": "ConfirmLabel",
+                      "element": "Text",
+                      "rect": {
+                        "x": 150,
+                        "y": 1000,
+                        "width": 320,
+                        "height": 90
+                      },
+                      "children": [],
+                      "text": {
+                        "content": "",
+                        "fontSize": 34,
+                        "alignment": "center",
+                        "color": "#F4E6C7"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "CancelClick",
+                  "name": "CancelClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 600,
+                    "y": 1000,
+                    "width": 320,
+                    "height": 90
+                  },
+                  "children": [
+                    {
+                      "id": "CancelLabel",
+                      "name": "CancelLabel",
+                      "element": "Text",
+                      "rect": {
+                        "x": 600,
+                        "y": 1000,
+                        "width": 320,
+                        "height": 90
+                      },
+                      "children": [],
+                      "text": {
+                        "content": "",
+                        "fontSize": 34,
+                        "alignment": "center",
+                        "color": "#F4E6C7"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

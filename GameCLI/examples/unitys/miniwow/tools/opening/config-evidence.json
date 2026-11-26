@@ -1,0 +1,72 @@
+{
+  "source": "GuideStoryController.Story1/Story2/Story3; Building_sdc guide and collider anchors; tbconversation 3042/3043/3053",
+  "tasks": [
+    60001,
+    60002,
+    60003
+  ],
+  "next": 60004,
+  "water": 10,
+  "adaptations": [
+    "InteractionRadius=1.2 is local arrival tolerance",
+    "Native fire presentation reuses the recovered orange sprite sheet"
+  ],
+  "columns": [
+    [
+      "ID",
+      "int"
+    ],
+    [
+      "TaskID",
+      "int"
+    ],
+    [
+      "NextTaskID",
+      "int"
+    ],
+    [
+      "WaterItemID",
+      "int"
+    ],
+    [
+      "WaterAmount",
+      "int"
+    ],
+    [
+      "WaterX",
+      "float"
+    ],
+    [
+      "WaterY",
+      "float"
+    ],
+    [
+      "WaterZ",
+      "float"
+    ],
+    [
+      "WaterSizeX",
+      "float"
+    ],
+    [
+      "WaterSizeY",
+      "float"
+    ],
+    [
+      "WaterSizeZ",
+      "float"
+    ],
+    [
+      "InteractionRadius",
+      "float"
+    ],
+    [
+      "IntroDialogueID",
+      "int"
+    ],
+    [
+      "VideoPath",
+      "string"
+    ]
+  ]
+}

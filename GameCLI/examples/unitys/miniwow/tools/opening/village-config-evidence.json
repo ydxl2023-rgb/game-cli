@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "tasks": [
+    60004,
+    60101,
+    60102,
+    60103,
+    60104
+  ],
+  "verified": [
+    "repair 280",
+    "herb purchase 30",
+    "service price 50, not craft price",
+    "treatment duration 5-1=4",
+    "first hospital tier recovery 100 percent",
+    "task order, prerequisites and localized fields"
+  ],
+  "offlineAdaptations": [
+    "Starting player gold is inherited from existing Home configuration, not a proven retirement grant.",
+    "Normalized starting health 20/100 adapts Story4 presentation; it is not original combat HP.",
+    "One herb to one potion, instant production: explicit local recipe; missing server rules.",
+    "Hero starting gold adopts tbglobal.HeroInitialGold; normal server initialization is unproven.",
+    "UseCostItem is reported after treatment completion locally; original server counting time is unavailable."
+  ],
+  "sourceSha256": {
+    "tbbuildinglevel": "ec5cb0bb267735e70f6b992f4e8be1d0237a81f87c64840a7e3ffb20846a5a12",
+    "tbshop": "b7a59d1a0a4639a77e092eddbea5647ee8e2f3a53c2fedd3ba6d9cb7476c29bf",
+    "tbitem": "23f16c6cf10d4aab341180a641de1807ace6a64a4045ede20e2cc6ef41d7ebbd",
+    "tbglobal": "2f5c4cecdce81447ee7fc25b226f02be0e5c4054e3fa76f156337d9aae570368",
+    "tbtask": "7d53a8e02a33ef2cc97bee2ab2cb8a26ba5208edf107d114531f5b108624a4a7",
+    "tbhero": "37e0dec20ec43b788fc117e5e6d994685743940a63582b6e42b9c9778d5388db"
+  }
+}

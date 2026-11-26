@@ -1,0 +1,165 @@
+[
+  {
+    "arguments": [
+      "run",
+      "play"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T06:11:53.5709585Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:11:57.0450791Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:11:57.2262511Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:11:59.5667741Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"NextTask\",\"water\":0,\"task\":60002,\"first\":\"Claimed\",\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":0,\"buttons\":[]}",
+        "respondedAtUtc": "2026-11-26T06:12:02.8801448Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "screenshot",
+      "Library/OpeningQA"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA\\GameView_20261126_141203_063.png",
+        "projectRelativePath": "Library/OpeningQA/GameView_20261126_141203_063.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA",
+        "fileName": "GameView_20261126_141203_063.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 531312,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-26T06:12:03.2296701Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]

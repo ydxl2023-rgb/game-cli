@@ -8,6 +8,12 @@ using UnityEngine.SceneManagement;
 /// <summary>Owns the town scene lifecycle and coordinates scene interaction.</summary>
 public sealed class HomeRuntime : GameRuntime
 {
+    /// <summary>Scene execution for the configured opening rescue.</summary>
+    private HomeOpeningRuntime opening;
+
+    /// <summary>Scene execution for persistent hero recovery.</summary>
+    private HomeVillageRuntime village;
+
     /// <summary>Serializes ownership transfer between old and newly loaded module instances.</summary>
     private static bool sceneOperationInProgress;
 
@@ -90,13 +96,41 @@ public sealed class HomeRuntime : GameRuntime
         var entity = GetHomeEntity();
         var actor = entity.FindActor(context.GetPlayerId());
 
+        if (direction != Vector3.zero)
+        {
+            opening.CancelMovement();
+            village.CancelNavigation();
+        }
+
         return actor && actor.SetMoveInput(direction);
+    }
+
+    /// <summary>Starts hospital navigation using the existing player movement adapter.</summary>
+    public void NavigateHospital()
+    {
+        village.NavigateHospital();
+    }
+
+    /// <summary>Connects the world entry to this runtime's authored scene references.</summary>
+    /// <param name="widget">Initialized entry widget.</param>
+    public void BindHospitalEntry(UIHomeHospitalEntry widget)
+    {
+        widget.BindScene(context);
+    }
+
+    /// <summary>Starts the requested auction interaction.</summary>
+    public void Rescue()
+    {
+        opening.Rescue();
     }
 
     /// <summary>Enables scene gestures only while the camp presentation is visible.</summary>
     /// <param name="enabled">Whether the Home presentation permits scene input.</param>
     public void SetInputEnabled(bool enabled)
     {
+        if (IsReady() && !enabled)
+            village.CancelNavigation();
+
         if (context)
             context.SetInputEnabled(enabled && IsReady());
     }
@@ -110,7 +144,17 @@ public sealed class HomeRuntime : GameRuntime
     /// <summary>Reports that the authored scene and actors are available.</summary>
     protected override void OnReadyEnter()
     {
+        opening = new HomeOpeningRuntime(context);
+        village = new HomeVillageRuntime(context);
         Debug.Log("MINIWOW_TOWN_READY");
+    }
+
+    /// <summary>Advances opening execution while the scene is ready.</summary>
+    /// <param name="deltaTime">Elapsed simulation seconds.</param>
+    protected override void OnReadyUpdate(float deltaTime)
+    {
+        opening.Tick(deltaTime);
+        village.Tick(deltaTime);
     }
 
     /// <summary>Stops gestures immediately before asynchronous scene release.</summary>

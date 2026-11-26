@@ -108,6 +108,14 @@ public sealed class HomeEntity : XEntity
     /// <summary>Actors keyed by stable instance identity, with no scene object references.</summary>
     private readonly Dictionary<int, ActorEntity> actors = new Dictionary<int, ActorEntity>();
 
+    /// <summary>Opening rescue data owned independently of its scene presentation.</summary>
+    public HomeOpening opening
+    { get; private set; }
+
+    /// <summary>Persistent village economy and recovery transactions.</summary>
+    public HomeVillageEntity village
+    { get; private set; }
+
     /// <summary>Number of actors currently owned by this town.</summary>
     public int actorCount
     { get { return actors.Count; } }
@@ -124,6 +132,8 @@ public sealed class HomeEntity : XEntity
     public override void Destroy()
     {
         ClearActors();
+        if (village != null)
+            village.Destroy();
 
         base.Destroy();
     }
@@ -161,6 +171,8 @@ public sealed class HomeEntity : XEntity
             throw new ArgumentException("Invalid Home resource values.");
 
         state = candidate;
+        opening = new HomeOpening(Config.Excel.homeOpeningConfig[1]);
+        village = new HomeVillageEntity(state.profile.gold);
 
         return true;
     }

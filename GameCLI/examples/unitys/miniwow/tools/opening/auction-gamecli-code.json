@@ -1,0 +1,462 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "system": null,
+  "scope": "project-handwritten",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/9",
+  "policySha256": "440a4b74b9193bd746a992a35a7a3a4413111fd95c7d709d553824b253d21634",
+  "rules": [
+    {
+      "id": "CS_PARSE",
+      "severity": "error",
+      "description": "C# 语法必须可解析"
+    },
+    {
+      "id": "OX001",
+      "severity": "error",
+      "description": "命名：camelCase / PascalCase"
+    },
+    {
+      "id": "OX002",
+      "severity": "error",
+      "description": "禁止表达式体"
+    },
+    {
+      "id": "OX003",
+      "severity": "error",
+      "description": "SerializeField 私有字段"
+    },
+    {
+      "id": "OX004",
+      "severity": "error",
+      "description": "Binding 独占一行"
+    },
+    {
+      "id": "OX005",
+      "severity": "error",
+      "description": "英文 XML summary"
+    },
+    {
+      "id": "OX006",
+      "severity": "error",
+      "description": "参数与返回值注释"
+    },
+    {
+      "id": "OX007",
+      "severity": "error",
+      "description": "成员声明顺序"
+    },
+    {
+      "id": "OX008",
+      "severity": "error",
+      "description": "成员注释前空行"
+    },
+    {
+      "id": "OX009",
+      "severity": "error",
+      "description": "VM / UI 目录"
+    },
+    {
+      "id": "OX010",
+      "severity": "error",
+      "description": "处理与 return 分组"
+    },
+    {
+      "id": "OX011",
+      "severity": "error",
+      "description": "默认参数禁止中文"
+    },
+    {
+      "id": "OX012",
+      "severity": "error",
+      "description": "OpenWidget 显式回调"
+    },
+    {
+      "id": "OX013",
+      "severity": "error",
+      "description": "CloseWidget 局部 widgets 数组"
+    },
+    {
+      "id": "OX014",
+      "severity": "error",
+      "description": "持久化键生成"
+    },
+    {
+      "id": "OX015",
+      "severity": "review",
+      "description": "运行时 UI 查找人工复核"
+    },
+    {
+      "id": "OX016",
+      "severity": "review",
+      "description": "中文文案归属人工复核"
+    },
+    {
+      "id": "OX017",
+      "severity": "review",
+      "description": "未激活预处理分支人工复核"
+    },
+    {
+      "id": "OX018",
+      "severity": "error",
+      "description": "多行对象或数组初始化局部声明前后空行"
+    },
+    {
+      "id": "OX019",
+      "severity": "error",
+      "description": "代码行不得超过配置列宽；长条件、参数和调用链换行"
+    },
+    {
+      "id": "OX020",
+      "severity": "review",
+      "description": "复核方法参数判空后直接返回或抛出 ArgumentNullException 的分支，包括 || 条件；仅保留有实际语义的判空"
+    },
+    {
+      "id": "OX021",
+      "severity": "error",
+      "description": "OnActive 禁止以 IsActive 或随生命周期翻转的字段重复拦截激活"
+    },
+    {
+      "id": "OX022",
+      "severity": "error",
+      "description": "Subscribe 事件回调必须直接传入 On 加 PascalCase 名称的方法组，禁止匿名回调"
+    },
+    {
+      "id": "OX023",
+      "severity": "error",
+      "description": "QueryEntity<T>() 结果先赋给局部变量，再访问成员或传给其他方法"
+    },
+    {
+      "id": "OX024",
+      "severity": "error",
+      "description": "应用事件统一使用 XPluginUtility，禁止直接 DispatchEvent"
+    },
+    {
+      "id": "OX025",
+      "severity": "review",
+      "description": "固定业务 route 的字符串比较应改为枚举，协议文本由人工分类"
+    },
+    {
+      "id": "OX026",
+      "severity": "error",
+      "description": "系统启动封装到带业务名的安装方法，禁止直接运行协程或隐藏 Install/Uninstall"
+    },
+    {
+      "id": "OX027",
+      "severity": "error",
+      "description": "场景资产路径必须读取配置表，不在业务代码硬编码"
+    },
+    {
+      "id": "OX028",
+      "severity": "review",
+      "description": "动画名使用类前常量类型，复核 SetAnimation/FindAnimation 字面量"
+    },
+    {
+      "id": "OX029",
+      "severity": "error",
+      "description": "每条字段或局部变量声明只允许一个变量"
+    },
+    {
+      "id": "OX030",
+      "severity": "review",
+      "description": "复核业务系统 generation/requestedActive 等重复生命周期字段"
+    }
+  ],
+  "issues": [
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 353,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "line": 194,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "line": 251,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "line": 100,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 238,
+      "rule": "OX016",
+      "severity": "review",
+      "message": "Review text ownership: fixed UI text belongs in propCommonText; dynamic content/logs need classification."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "line": 125,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    }
+  ],
+  "statistics": {
+    "files": 39,
+    "lines": 5672,
+    "blankLines": 1023,
+    "commentLines": 1035,
+    "members": 713,
+    "documentedMembers": 713,
+    "blankLineRate": 0.18035966149506347,
+    "commentLineRate": 0.182475317348378,
+    "documentedMemberRate": 1
+  },
+  "excluded": [
+    "Assets/Scripts/Config/client/ActorConfig.cs",
+    "Assets/Scripts/Config/client/CommonTextConfig.cs",
+    "Assets/Scripts/Config/client/ExcelEnumDefine.cs",
+    "Assets/Scripts/Config/client/FunctionSystemConfig.cs",
+    "Assets/Scripts/Config/client/HomeOpeningConfig.cs",
+    "Assets/Scripts/Config/client/OpeningDialogueConfig.cs",
+    "Assets/Scripts/Config/client/SceneConfig.cs",
+    "Assets/Scripts/Config/client/TaskChapterConfig.cs",
+    "Assets/Scripts/Config/client/TaskConfig.cs",
+    "Assets/Scripts/Config/client/TaskGuideConfig.cs",
+    "Assets/Scripts/Config/client/TaskSettingConfig.cs",
+    "Assets/Scripts/Config/client/TaskUnlockConfig.cs",
+    "Assets/Scripts/Config/common/Excel.cs",
+    "Assets/Scripts/Config/language/LanguageConfig.cs"
+  ],
+  "reviewRequired": [
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 353,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "line": 194,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "line": 251,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "line": 100,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 238,
+      "rule": "OX016",
+      "severity": "review",
+      "message": "Review text ownership: fixed UI text belongs in propCommonText; dynamic content/logs need classification."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "line": 125,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    }
+  ],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Multiline initialized local boundaries, member spacing and return spacing are checked; other functional grouping, comment meaning, VM/entity null guards and framework lifecycle ownership require review.",
+    "Assets/Scripts/Config is the generated Excel directory and is excluded from project style checks; inspect excluded paths.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/GamePlugin.cs",
+      "sha256": "4bf8271297e3f09205af25e468d654111ffbdd281d7e1b6d2f6151af96cda41b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorConfiguration.cs",
+      "sha256": "f2e9232d43438a37592d1293c32631b9f1e60a21de2c6b8bc831d967b1b47f57"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "sha256": "d50af77d845369556cd00b86515a5ca21b42a91326ee8bd29a859939ad48b72f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorJoystick.cs",
+      "sha256": "8a51c413eb3ae6ebaada699d12fbb91232aa5aa0df95ba2a08a3acdae2f32b89"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorShape.cs",
+      "sha256": "ddd48d001fe38b1fceff3cfff1cbb0d421f080bb51868aab45b87eb7f539492a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIRequestEvent.cs",
+      "sha256": "74a88539ab4e6821990aad94c3cd08cf2f87dafcf1e7f30d43670e51fec6a3ce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/Utility/CommonText.cs",
+      "sha256": "862cdf420a7c6b5d7bb7e6d6b86eef14547a34d11a38c5dfc92f82105e512c2d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/Utility/StorageKey.cs",
+      "sha256": "4d9d3992809fda276444804306a4ae44eb8afd59dbc12fd96a243d1c23120bd9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/GameRuntime.cs",
+      "sha256": "1c688c42e973266a81eb8d3726ade391e79af30668d231119d3e49297790c58f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSafeArea.cs",
+      "sha256": "05b271f8d6537f4d8cae44fc59a1294e9a7214dba0715c897cf623c89c1311e4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSceneCamera.cs",
+      "sha256": "5e11c849331ae4f52c93ef85d37d4888d4bd3821ec02ca274ac7537043d8521b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "a6d68ea816e31791f8d3ad62cff651148fdaef2248e318f98cc12a891b9c013a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeOpening.cs",
+      "sha256": "fbe6a14ed9b790fcde25b7bb23e734f7a616ee33aca7b4c2e580b564aafda933"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeOpeningRuntime.cs",
+      "sha256": "e08ce72290a94f4ee9dd732e15f414e27e5bad289e9e287641760fd6db7cb7e8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeRuntime.cs",
+      "sha256": "ee54544dd8a73adadcce4a8543483c449be9fef9b8a3b940fa6169510f864c12"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "16f7aaba7caec3c60e885c249dc95dad272796ace6f49bfa705259e161dedfad"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeNavigation.cs",
+      "sha256": "766ed61de727d23f4c0045756f848cdcba3a2e1881983c5dc6102b6d0e05b546"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeOpeningScene.cs",
+      "sha256": "98a45a5c5f3aa80d5b95f2f86b7966c5307cfcc7aa1bf3c884e64d91e018c94f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "sha256": "0b00bd9df416712a41e05e559661a503ad2e52f4ee91046e5fc89c52811c3fe9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "37a192c0201713ef8b3372b72b0e08e84f7c4e95a8c307908ffff36e13670dd2"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeEntry.cs",
+      "sha256": "64d3148d98a1fa15a61a51dea7342d363ed5f418d29db26beddd89b00de23028"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeOpening.cs",
+      "sha256": "105804834c0a5ff585d308f08c4f77dc048881e0af8b50f4f8e3479878454d6b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "d55e1d6b6ea0782526063ec24b783a499fd0d4e67ea4e0d0b85adebaddfde693"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeEntry.cs",
+      "sha256": "71c47985b237a925b1f0747354afe8af105df416e589d1bd67a89c9133b778e8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeOpening.cs",
+      "sha256": "d6c349e49f44fd513da34a88daa224c79c07d2160e82f8b38d790017f312128b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "sha256": "c2621d468a9f3915211967a604f021f118236f4954c1e0b7dd705df6eeb9411e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "sha256": "4089cc759d900a3fcfbe96a75f3e91e071b169c2c5ae99170fb21d069204cae5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "sha256": "03ac2a4fe493e17a808ea936de2b400d4c06f0fc5e6be039ad284e8b9de415b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "sha256": "e8ac61be8b3077a918934892bcea390533ca750043fcb6840cce36859af7c4de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "sha256": "64544dda5193e3bd2e86b0d88001bea069e63bdac44162097f97afeea5aae44c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterSystem.cs",
+      "sha256": "9fd933103a813afb4eaa1b0fdc6159bc0f58b28697da1c7f755c7781c134066a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeManager.cs",
+      "sha256": "49809a3d622fe11e5e67a94b246cda29c2399efd3f1082256f853f9a89396a09"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "sha256": "0dc6418182430c87dbbf37dbc94a15f6a83317c8b4a0e3b181dd5db2cf4f11c9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/ITaskAction.cs",
+      "sha256": "a61cb6e34d689378be427f97308414e3162c84e30225a44948b3b068157d4070"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskCollectionEntity.cs",
+      "sha256": "a8532ca9e4b259c1f4ae4b03df0441089b954e79d378e1a76da86f1cad8195e4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "sha256": "6b5e5a56dab3b344bc1cea1d5fbc240e1da7fbdf698f61e27ed636451ae1a17c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskEvents.cs",
+      "sha256": "dad7c02cd78a4ad3fa523dad767127bc4e3b08bf6ff2a2f19dc215b88ecb25d5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskGuideRunner.cs",
+      "sha256": "e7814ecc2e867b188f8527ddbf7cd0e7c4a7331929718dadade15f556fa905ce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskSystem.cs",
+      "sha256": "353ef0644af8e257b34314f71310a5e14fae02b74436cbc457e790b6682b6fb7"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\b6ab2fb5-fac2-4c14-ae93-9ada96c3d33c"
+}

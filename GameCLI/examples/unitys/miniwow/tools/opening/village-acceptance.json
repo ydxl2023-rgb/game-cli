@@ -1,0 +1,64 @@
+{
+  "sourceSha256": {
+    "HomeVillageEntity": "991AB40CE962E75A7AC349A80484AA3F3BA1CE0FA132A5F699E14DA292035FCA",
+    "HeroEntity": "EDB6274C023C7733DA322C437AC12E82719EDAB426D0C4B7BD25D57A7A0C3E14",
+    "BuildingEntity": "CB663861031360EAD3AE99B07ADD6CDD934A8E782EB379B9E8EE24A187AC001E",
+    "HomeVillageRuntime": "1B31D6A1859E057A66F5D55B49C65D17C7FBCC9EE2A267A19E1C508BA2D85678"
+  },
+  "tasks": [
+    {
+      "id": 60004,
+      "status": "Claimed",
+      "progress": 1
+    },
+    {
+      "id": 60101,
+      "status": "Claimed",
+      "progress": 1
+    },
+    {
+      "id": 60102,
+      "status": "Claimed",
+      "progress": 1
+    },
+    {
+      "id": 60103,
+      "status": "Claimed",
+      "progress": 1
+    },
+    {
+      "id": 60104,
+      "status": "Claimed",
+      "progress": 1
+    }
+  ],
+  "runtimeConsoleErrors": 0,
+  "rules": {
+    "insufficientRepair": true,
+    "insufficientPurchase": true,
+    "missingMaterial": true,
+    "duplicateRewards": true,
+    "stableEntityIdentity": true,
+    "rewardReceiptRecovery": true,
+    "snapshotIsolation": true,
+    "validProduction": true,
+    "emptyRouteRejected": true,
+    "invalidRouteRejected": true,
+    "logicalArrival": true,
+    "destroyedActorRejected": true,
+    "destroyedActorRemainsStopped": true
+  },
+  "gamecliArchitecture": "passed",
+  "gamecliCode": "passed",
+  "independentActorReview": "Static review fixes verified; runtime checks executed separately",
+  "editorErrors": 0,
+  "restoredPlayerTask": 60104,
+  "status": "passed",
+  "scopeLimitations": [
+    "60105 exploration not implemented",
+    "Original full-page business UI not replicated",
+    "Offline recipe and initial attributes explicitly documented"
+  ],
+  "nextTask": 60105,
+  "date": "2026-11-26"
+}

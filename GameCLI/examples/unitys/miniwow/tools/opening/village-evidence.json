@@ -1,0 +1,2346 @@
+[
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:41:40.568496Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:41:47.0887069Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:41:47.5037317Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:41:49.8393564Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "PrepareReplay",
+        "resolvedMember": "PrepareReplay",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:41:52.7265806Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "PrepareReplay",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:41:52.9144764Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:41:54.1456514Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:00.5275116Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:00.8605837Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:03.2852169Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60004,\"tasks\":[{\"id\":60004,\"status\":\"Active\",\"progress\":0},{\"id\":60101,\"status\":\"Active\",\"progress\":0},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":19000},\"buildings\":{},\"receipts\":[],\"heroId\":0,\"healthPercent\":0,\"heroGold\":0,\"recruitmentAcknowledged\":false,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":false,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"石盾加伦（战士）\"},{\"name\":\"WaterCount\",\"text\":\"金币 19000　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"石盾加伦（战士）\"},{\"name\":\"Dialogue\",\"text\":\"咳……我还活着。这条命是你从火里抢回来的。给我一把剑，我会为斯坦恩村而战。\"},{\"name\":\"ContinueLabel\",\"text\":\"招募加伦\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:05.6393785Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Capture",
+        "resolvedMember": "Capture",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:05.8158814Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Capture",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:06.3098249Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60004,\"tasks\":[{\"id\":60004,\"status\":\"Completed\",\"progress\":1},{\"id\":60101,\"status\":\"Active\",\"progress\":0},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":19000},\"buildings\":{},\"receipts\":[],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":false,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":false,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"石盾加伦（战士）\"},{\"name\":\"WaterCount\",\"text\":\"金币 19000　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"石盾加伦（战士）\"},{\"name\":\"Dialogue\",\"text\":\"已招募石盾加伦\\n加伦已加入村庄，接下来修复医院为他疗伤。\"},{\"name\":\"ContinueLabel\",\"text\":\"确认获得\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:06.6833949Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:42:06.8376381Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:42:08.0137088Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:14.3047617Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:14.6278627Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:16.9577711Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60004,\"tasks\":[{\"id\":60004,\"status\":\"Completed\",\"progress\":1},{\"id\":60101,\"status\":\"Active\",\"progress\":0},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":19000},\"buildings\":{},\"receipts\":[],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":false,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":false,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"石盾加伦（战士）\"},{\"name\":\"WaterCount\",\"text\":\"金币 19000　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"石盾加伦（战士）\"},{\"name\":\"Dialogue\",\"text\":\"已招募石盾加伦\\n加伦已加入村庄，接下来修复医院为他疗伤。\"},{\"name\":\"ContinueLabel\",\"text\":\"确认获得\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:19.1380246Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:19.396201Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60101,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Active\",\"progress\":0},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":19000},\"buildings\":{},\"receipts\":[],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":false,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"修复医院\"},{\"name\":\"WaterCount\",\"text\":\"金币 19000　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"修复医院\"},{\"name\":\"Dialogue\",\"text\":\"火是灭了……可病床、药柜和治疗台都毁了。如果不马上修好医院，这些伤员撑不过今晚....\\n修复费用：280 金币\"},{\"name\":\"ContinueLabel\",\"text\":\"修复医院\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:19.7601149Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:19.9385647Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60101,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Completed\",\"progress\":1},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18720},\"buildings\":{\"60018\":1},\"receipts\":[],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"修复医院\"},{\"name\":\"WaterCount\",\"text\":\"金币 18720　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"修复医院\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:20.3264783Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Capture",
+        "resolvedMember": "Capture",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:20.4937017Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Capture",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:42:20.9605292Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:42:22.323268Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:28.7523815Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:29.6483853Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:31.9167027Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60101,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Completed\",\"progress\":1},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18720},\"buildings\":{\"60018\":1},\"receipts\":[],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"修复医院\"},{\"name\":\"WaterCount\",\"text\":\"金币 18720　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"修复医院\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:34.2389048Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:34.4172643Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60102,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Active\",\"progress\":0},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18740},\"buildings\":{\"60018\":1},\"receipts\":[60101],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":0,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"交易行 · 宁神花\"},{\"name\":\"WaterCount\",\"text\":\"金币 18740　宁神花 0　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"交易行 · 宁神花\"},{\"name\":\"Dialogue\",\"text\":\"购买 1 份宁神花：30 金币\\n用于在医院生产微效药剂。\"},{\"name\":\"ContinueLabel\",\"text\":\"购买宁神花\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:34.758708Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:34.9115889Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60102,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Completed\",\"progress\":1},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18710,\"77001\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"交易行 · 宁神花\"},{\"name\":\"WaterCount\",\"text\":\"金币 18710　宁神花 1　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"交易行 · 宁神花\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:35.2787118Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:42:35.4356457Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:42:36.8086005Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:42.8367377Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:43.1566896Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:45.4925562Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60102,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Completed\",\"progress\":1},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18710,\"77001\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"交易行 · 宁神花\"},{\"name\":\"WaterCount\",\"text\":\"金币 18710　宁神花 1　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"交易行 · 宁神花\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:47.8448394Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:48.0124594Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60103,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Active\",\"progress\":0},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18720,\"77001\":51},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":0,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"医院 · 药剂生产\"},{\"name\":\"WaterCount\",\"text\":\"金币 18720　宁神花 51　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"医院 · 药剂生产\"},{\"name\":\"Dialogue\",\"text\":\"消耗 1 份宁神花，生产 1 份微效药剂。\"},{\"name\":\"ContinueLabel\",\"text\":\"生产微效药剂\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:48.3872452Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Capture",
+        "resolvedMember": "Capture",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:48.5396272Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Capture",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:49.0167229Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60103,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Completed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18720,\"77001\":50,\"77101\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"医院 · 药剂生产\"},{\"name\":\"WaterCount\",\"text\":\"金币 18720　宁神花 50　微效药剂 1\"},{\"name\":\"Speaker\",\"text\":\"医院 · 药剂生产\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:42:49.3977622Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:42:49.5695973Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:42:51.5580205Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:57.5958651Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:42:57.9704062Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:00.4162342Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60103,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Completed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18720,\"77001\":50,\"77101\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":0,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-29.77,35.3,2.12]},\"texts\":[{\"name\":\"Objective\",\"text\":\"医院 · 药剂生产\"},{\"name\":\"WaterCount\",\"text\":\"金币 18720　宁神花 50　微效药剂 1\"},{\"name\":\"Speaker\",\"text\":\"医院 · 药剂生产\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:02.7399844Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:02.9079682Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":1,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Moving\",\"position\":[-28.9754448,35.1613922,1.582657]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 1\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"加伦正在前往医院。抵达后使用 1 份微效药剂疗伤。\\n加伦生命 20%　治疗剩余 0.0 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"前往医院中\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:03.2671627Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":1,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Moving\",\"position\":[-28.2686749,35.1613922,1.10468256]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 1\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"加伦正在前往医院。抵达后使用 1 份微效药剂疗伤。\\n加伦生命 20%　治疗剩余 0.0 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"前往医院中\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:03.5248928Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":1,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Moving\",\"position\":[-27.60594,35.1613922,0.6564857]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 1\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"加伦正在前往医院。抵达后使用 1 份微效药剂疗伤。\\n加伦生命 20%　治疗剩余 0.0 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"前往医院中\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:03.7730737Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":1},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":20,\"heroGold\":500000,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":1,\"healingEndTicks\":0,\"hospitalRevenue\":0,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Moving\",\"position\":[-26.9424114,35.1613922,0.207753971]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 1\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"加伦正在前往医院。抵达后使用 1 份微效药剂疗伤。\\n加伦生命 20%　治疗剩余 0.0 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"前往医院中\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:04.0286201Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Active\",\"progress\":0}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":0},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":20,\"heroGold\":499950,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":2,\"healingEndTicks\":639312757881366030,\"hospitalRevenue\":50,\"questValue\":0},\"remaining\":3.84681249,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Waiting\",\"position\":[-26.65,35.1613922,0.01]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"加伦正在前往医院。抵达后使用 1 份微效药剂疗伤。\\n加伦生命 20%　治疗剩余 3.8 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"正在疗伤\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:04.2907925Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "Return",
+        "resolvedMember": "Return",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:04.4669621Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "Return",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "CleanupSnapshot",
+        "resolvedMember": "CleanupSnapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"movies\":0,\"overlays\":0,\"scenes\":0,\"runtimes\":0,\"textures\":0}",
+        "respondedAtUtc": "2026-11-26T07:43:05.0687699Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "CleanupSnapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:43:05.2299786Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:43:06.4109031Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:12.3488351Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:12.7255577Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:15.1227093Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Completed\",\"progress\":1}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":0},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":100,\"heroGold\":499950,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":3,\"healingEndTicks\":639312757881366030,\"hospitalRevenue\":50,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-26.65,35.1613922,0.01]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\\n加伦生命 100%　治疗剩余 0.0 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:17.4476726Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Capture",
+        "resolvedMember": "Capture",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:17.6081018Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Capture",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:18.0842798Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60105,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Claimed\",\"progress\":1}],\"save\":{\"items\":{\"70001\":18740,\"77001\":50,\"77101\":0},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103,60104],\"heroId\":125,\"healthPercent\":100,\"heroGold\":499950,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":3,\"healingEndTicks\":639312757881366030,\"hospitalRevenue\":50,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-26.65,35.1613922,0.01]},\"texts\":[],\"buttons\":[]}",
+        "respondedAtUtc": "2026-11-26T07:43:18.4471433Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:43:18.5962936Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:43:19.9481188Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:25.7752515Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:26.1417565Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:29.1409519Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60105,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Claimed\",\"progress\":1}],\"save\":{\"items\":{\"70001\":18740,\"77001\":50,\"77101\":0},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103,60104],\"heroId\":125,\"healthPercent\":100,\"heroGold\":499950,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":3,\"healingEndTicks\":639312757881366030,\"hospitalRevenue\":50,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-26.65,35.1613922,0.01]},\"texts\":[],\"buttons\":[]}",
+        "respondedAtUtc": "2026-11-26T07:43:31.461576Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "ValidateRules",
+        "resolvedMember": "ValidateRules",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\r\n  \"insufficientRepair\": true,\r\n  \"insufficientPurchase\": true,\r\n  \"missingMaterial\": true,\r\n  \"duplicateRewards\": true,\r\n  \"stableEntityIdentity\": true,\r\n  \"rewardReceiptRecovery\": true,\r\n  \"snapshotIsolation\": true,\r\n  \"validProduction\": true,\r\n  \"emptyRouteRejected\": true,\r\n  \"invalidRouteRejected\": true,\r\n  \"logicalArrival\": true,\r\n  \"destroyedActorRejected\": true,\r\n  \"destroyedActorRemainsStopped\": true\r\n}",
+        "respondedAtUtc": "2026-11-26T07:43:31.6418214Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "ValidateRules",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "RepeatClaims",
+        "resolvedMember": "RepeatClaims",
+        "returnIsVoid": false,
+        "returnType": "System.Boolean",
+        "returnSummary": "True",
+        "respondedAtUtc": "2026-11-26T07:43:31.8041624Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "RepeatClaims",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "console logs",
+      "data": {
+        "totalCount": 0,
+        "totalEntries": 0,
+        "returnedCount": 0,
+        "type": "error",
+        "search": "",
+        "respondedAtUtc": "2026-11-26T07:43:31.9680124Z",
+        "entries": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "console",
+      "--type",
+      "error",
+      "--count",
+      "100"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "RestoreCheckpoint",
+        "resolvedMember": "RestoreCheckpoint",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:32.115909Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "RestoreCheckpoint",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:43:32.2677083Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "stop"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:43:33.4261131Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:39.4359248Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:39.7979484Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:43:42.2098486Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowVillageProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"task\":60104,\"tasks\":[{\"id\":60004,\"status\":\"Claimed\",\"progress\":1},{\"id\":60101,\"status\":\"Claimed\",\"progress\":1},{\"id\":60102,\"status\":\"Claimed\",\"progress\":1},{\"id\":60103,\"status\":\"Claimed\",\"progress\":1},{\"id\":60104,\"status\":\"Completed\",\"progress\":1}],\"save\":{\"items\":{\"70001\":18730,\"77001\":50,\"77101\":0},\"buildings\":{\"60018\":1},\"receipts\":[60101,60102,60103],\"heroId\":125,\"healthPercent\":100,\"heroGold\":499950,\"recruitmentAcknowledged\":true,\"purchases\":1,\"crafts\":1,\"recovery\":3,\"healingEndTicks\":639312751665767565,\"hospitalRevenue\":50,\"questValue\":0},\"remaining\":0.0,\"built\":true,\"actor\":{\"id\":1,\"config\":125,\"phase\":\"Idle\",\"position\":[-26.65,35.1613922,0.01]},\"texts\":[{\"name\":\"Objective\",\"text\":\"加伦疗伤\"},{\"name\":\"WaterCount\",\"text\":\"金币 18730　宁神花 50　微效药剂 0\"},{\"name\":\"Speaker\",\"text\":\"加伦疗伤\"},{\"name\":\"Dialogue\",\"text\":\"操作完成 · 点击领取任务奖励\\n加伦生命 100%　治疗剩余 0.0 秒\"},{\"name\":\"ContinueLabel\",\"text\":\"领取奖励\"}],\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:43:44.5378424Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowVillageProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  }
+]

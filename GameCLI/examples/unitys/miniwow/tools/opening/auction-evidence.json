@@ -1,0 +1,915 @@
+[
+  {
+    "arguments": [
+      "run",
+      "play"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:13:49.2043382Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:13:54.00682Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:13:54.3582329Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "ResetLocalSave",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "ResetLocalSave",
+        "resolvedMember": "ResetLocalSave",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:13:56.6678918Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:13:56.8986137Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Movie\",\"water\":0,\"task\":60001,\"first\":\"Active\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":true,\"restoredModel\":false,\"merchantVisible\":false,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":2.875,\"playing\":true,\"prepared\":true,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":true,\"musicClip\":\"start_game\",\"fire\":4,\"buttons\":[\"SkipClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:00.2169659Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"SkipClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:00.3996645Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ConfirmClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:00.5407189Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Introduction\",\"water\":0,\"task\":60001,\"first\":\"Active\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":true,\"restoredModel\":false,\"merchantVisible\":false,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":4,\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:00.7150937Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "screenshot",
+      "Library/OpeningQA"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA\\GameView_20261126_151400_880.png",
+        "projectRelativePath": "Library/OpeningQA/GameView_20261126_151400_880.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA",
+        "fileName": "GameView_20261126_151400_880.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 470730,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-26T07:14:01.0402823Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:01.2020643Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"FetchWater\",\"water\":0,\"task\":60001,\"first\":\"Active\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":true,\"restoredModel\":false,\"merchantVisible\":false,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":4,\"buttons\":[]}",
+        "respondedAtUtc": "2026-11-26T07:14:01.3709973Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "WalkToWater",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "WalkToWater",
+        "resolvedMember": "WalkToWater",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:01.5378225Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"CarryWater\",\"water\":10,\"task\":60001,\"first\":\"Active\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 10/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":true,\"restoredModel\":false,\"merchantVisible\":false,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":false,\"wellCollected\":true,\"position\":[-20.6138153,35.1613922,14.3925533],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":4,\"buttons\":[\"RescueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:03.8667804Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "screenshot",
+      "Library/OpeningQA"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA\\GameView_20261126_151404_048.png",
+        "projectRelativePath": "Library/OpeningQA/GameView_20261126_151404_048.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA",
+        "fileName": "GameView_20261126_151404_048.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 490128,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-26T07:14:04.2141808Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"RescueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:04.3781666Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "screenshot",
+      "Library/OpeningQA"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA\\GameView_20261126_151406_055.png",
+        "projectRelativePath": "Library/OpeningQA/GameView_20261126_151406_055.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA",
+        "fileName": "GameView_20261126_151406_055.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 533581,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-26T07:14:06.2009683Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Thanks\",\"water\":0,\"task\":60001,\"first\":\"Completed\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":false,\"restoredModel\":true,\"merchantVisible\":true,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-10.4652767,35.1613922,9.545251],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":3,\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:09.5297023Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "screenshot",
+      "Library/OpeningQA"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA\\GameView_20261126_151409_716.png",
+        "projectRelativePath": "Library/OpeningQA/GameView_20261126_151409_716.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA",
+        "fileName": "GameView_20261126_151409_716.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 452690,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-26T07:14:09.8902685Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "run",
+      "stop"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:14:10.054897Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "run",
+      "play"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:14:12.3480696Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:17.1226854Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:17.464067Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:19.8259661Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Thanks\",\"water\":0,\"task\":60001,\"first\":\"Completed\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":false,\"restoredModel\":true,\"merchantVisible\":true,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":3,\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:23.1518629Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Capture",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Capture",
+        "resolvedMember": "Capture",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:23.3157663Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:23.4693346Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Claim\",\"water\":0,\"task\":60001,\"first\":\"Completed\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":false,\"restoredModel\":true,\"merchantVisible\":true,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":3,\"buttons\":[\"ClaimClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:23.6354592Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ClaimClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:14:23.7872005Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"FetchSecondWater\",\"water\":0,\"task\":60002,\"first\":\"Claimed\",\"second\":\"Active\",\"third\":\"Active\",\"hospitalCleared\":false,\"hospitalInitial\":false,\"clearingSmoke\":false,\"countdown\":\"救火的水 0/10\",\"hotelDamaged\":true,\"hotelRescued\":false,\"hotelOwnerVisible\":false,\"hospitalDamaged\":true,\"hospitalRescued\":false,\"damagedModel\":false,\"restoredModel\":true,\"merchantVisible\":true,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":true,\"wellCollected\":false,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":3,\"buttons\":[\"RescueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:14:23.9440923Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "screenshot",
+      "Library/OpeningQA"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "game view screenshot captured",
+      "data": {
+        "path": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA\\GameView_20261126_151424_108.png",
+        "projectRelativePath": "Library/OpeningQA/GameView_20261126_151424_108.png",
+        "directory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\OpeningQA",
+        "fileName": "GameView_20261126_151424_108.png",
+        "width": 512,
+        "height": 857,
+        "bytes": 508846,
+        "superSize": 1,
+        "captureMethod": "GameView.EditorWindow",
+        "respondedAtUtc": "2026-11-26T07:14:24.3172809Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "console",
+      "--type",
+      "error",
+      "--count",
+      "100"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "console logs",
+      "data": {
+        "totalCount": 0,
+        "totalEntries": 0,
+        "returnedCount": 0,
+        "type": "error",
+        "search": "",
+        "respondedAtUtc": "2026-11-26T07:14:24.4804098Z",
+        "entries": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "run",
+      "stop"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T07:14:24.6500239Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]

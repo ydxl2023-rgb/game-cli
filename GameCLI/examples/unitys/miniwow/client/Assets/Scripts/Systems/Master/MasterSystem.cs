@@ -82,6 +82,7 @@ public sealed class MasterSystem : RuntimeSystem
     /// <param name="message">The login success notification.</param>
     private void OnLoginSucceed(LoginSucceed message)
     {
+        RequestActivation(TaskConfigurationIds.system, null);
         RequestActivation(Config.Excel.SYS_HOME, null);
     }
 
@@ -97,7 +98,10 @@ public sealed class MasterSystem : RuntimeSystem
     private void OnReturnToLogin(ReturnToLogin message)
     {
         if (message.failed)
+        {
+            UnloadSystemById(TaskConfigurationIds.system);
             UnloadSystemById(Config.Excel.SYS_HOME);
+        }
         else
             Unload();
 

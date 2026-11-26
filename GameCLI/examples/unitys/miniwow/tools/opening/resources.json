@@ -1,0 +1,28 @@
+[
+  {
+    "source": "videos/startVideo_a4476169985aaf668ab78b7e6f711507.mp4",
+    "destination": "Assets/Data/Widgets/Home/Opening/startVideo.mp4",
+    "use": "Original opening movie",
+    "sha256": "ffa12ccb5e7eb43102348b8a86c7ea236a323d6d94418aeb4565b94dc007be13"
+  },
+  {
+    "source": "assets/data/effects/textures/ef_tex_fire_sequence_4x4_05.png",
+    "destination": "Assets/Data/Scenes/Home/Opening/fire.png",
+    "use": "Recovered fire texture for native particle adaptation",
+    "sha256": "9513dce5c797d0fc3bf80e27172750bb866c72828c882657d4bb9999d7e55042"
+  },
+  {
+    "source": "fairygui/CharacterIcon/NPC/Conversation_auction.png",
+    "destination": "Assets/Data/Widgets/Common/Icons/Conversation_auction.png",
+    "use": "Merchant portrait",
+    "sha256": "b16287a8bf3f70920602e97a3a403a4f0b510d1017f23c2db2e1e0c7a32c4e40"
+  },
+  {
+    "source": "extracted-resources\\assets\\data\\audios\\music\\start_game.0.m4a",
+    "destination": "client\\Assets\\Data\\Widgets\\Home\\Opening\\start_game.wav",
+    "use": "Separate original opening music; video has zero audio tracks",
+    "conversion": "ffmpeg m4a to PCM wav, no content editing",
+    "sourceSha256": "2b2c39d0601cee55c1b8aa736ba96f0c37c03beeba21afe4511a4208017b66dd",
+    "sha256": "628f93e75ad21fa21aadcf2a0b0527a7f91ef82fe18a371ae3cc82ad4aa268cf"
+  }
+]

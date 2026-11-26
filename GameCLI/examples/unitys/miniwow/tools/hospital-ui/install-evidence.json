@@ -1,0 +1,336 @@
+[
+  {
+    "result": {
+      "ok": true,
+      "status": "validated",
+      "message": "ugui dry-run passed",
+      "data": {
+        "uiName": "UIHomeHospitalEntry",
+        "jsonFile": "../tools/hospital-ui/UIHomeHospitalEntry.json",
+        "assetManifestPath": "../tools/hospital-ui/UIHomeHospitalEntry.materials.json",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Home/Hospital",
+        "dryRun": true,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 21,
+        "assetsCopied": 0,
+        "spritesReferenced": 0,
+        "issues": [],
+        "message": "ugui dry-run passed",
+        "respondedAtUtc": "2026-11-26T09:52:25.9243035Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "ugui",
+      "UIHomeHospitalEntry",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospitalEntry.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospitalEntry.materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+      "--dry-run",
+      "--no-scene-replace"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "Created prefab Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab from ../tools/hospital-ui/UIHomeHospitalEntry.json (21 node(s), 3 asset(s)).",
+      "data": {
+        "uiName": "UIHomeHospitalEntry",
+        "jsonFile": "../tools/hospital-ui/UIHomeHospitalEntry.json",
+        "assetManifestPath": "../tools/hospital-ui/UIHomeHospitalEntry.materials.json",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Home/Hospital",
+        "dryRun": false,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 21,
+        "assetsCopied": 3,
+        "spritesReferenced": 16,
+        "issues": [],
+        "message": "Created prefab Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab from ../tools/hospital-ui/UIHomeHospitalEntry.json (21 node(s), 3 asset(s)).",
+        "respondedAtUtc": "2026-11-26T09:52:27.2789578Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "ugui",
+      "UIHomeHospitalEntry",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospitalEntry.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospitalEntry.materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+      "--no-scene-replace"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+        "instanceId": 2176402,
+        "objectPath": "UIHomeHospitalEntry",
+        "requestedComponent": "UIHomeHospitalEntry",
+        "resolvedComponent": "UIHomeHospitalEntry",
+        "componentInstanceId": -1574286,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-26T09:52:27.5133569Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+      "--path",
+      "UIHomeHospitalEntry",
+      "--component",
+      "UIHomeHospitalEntry"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeHospitalEntry",
+        "vmName": "VMHomeHospitalEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 11,
+        "boundTargetCount": 11,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "widget-metadata",
+      "UIHomeHospitalEntry",
+      "--vm",
+      "VMHomeHospitalEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+      "--dry-run"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeHospitalEntry",
+        "vmName": "VMHomeHospitalEntry",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 11,
+        "boundTargetCount": 11,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "widget-metadata",
+      "UIHomeHospitalEntry",
+      "--vm",
+      "VMHomeHospitalEntry",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospitalEntry.prefab"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "validated",
+      "message": "ugui dry-run passed",
+      "data": {
+        "uiName": "UIHomeHospital",
+        "jsonFile": "../tools/hospital-ui/UIHomeHospital.json",
+        "assetManifestPath": "../tools/hospital-ui/UIHomeHospital.materials.json",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Home/Hospital",
+        "dryRun": true,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 33,
+        "assetsCopied": 0,
+        "spritesReferenced": 0,
+        "issues": [],
+        "message": "ugui dry-run passed",
+        "respondedAtUtc": "2026-11-26T09:52:29.2667582Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "ugui",
+      "UIHomeHospital",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospital.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospital.materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+      "--dry-run",
+      "--no-scene-replace"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "Created prefab Assets/Data/Widgets/Home/UIHomeHospital.prefab from ../tools/hospital-ui/UIHomeHospital.json (33 node(s), 9 asset(s)).",
+      "data": {
+        "uiName": "UIHomeHospital",
+        "jsonFile": "../tools/hospital-ui/UIHomeHospital.json",
+        "assetManifestPath": "../tools/hospital-ui/UIHomeHospital.materials.json",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Home/Hospital",
+        "dryRun": false,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 33,
+        "assetsCopied": 9,
+        "spritesReferenced": 39,
+        "issues": [],
+        "message": "Created prefab Assets/Data/Widgets/Home/UIHomeHospital.prefab from ../tools/hospital-ui/UIHomeHospital.json (33 node(s), 9 asset(s)).",
+        "respondedAtUtc": "2026-11-26T09:52:30.0947724Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "ugui",
+      "UIHomeHospital",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospital.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\hospital-ui/UIHomeHospital.materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+      "--no-scene-replace"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+        "instanceId": 2177172,
+        "objectPath": "UIHomeHospital",
+        "requestedComponent": "UIHomeHospital",
+        "resolvedComponent": "UIHomeHospital",
+        "componentInstanceId": -1575448,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-26T09:52:30.5722994Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+      "--path",
+      "UIHomeHospital",
+      "--component",
+      "UIHomeHospital"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeHospital",
+        "vmName": "VMHomeHospital",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 17,
+        "boundTargetCount": 17,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "widget-metadata",
+      "UIHomeHospital",
+      "--vm",
+      "VMHomeHospital",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+      "--dry-run"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeHospital",
+        "vmName": "VMHomeHospital",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeHospital.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 17,
+        "boundTargetCount": 17,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "widget-metadata",
+      "UIHomeHospital",
+      "--vm",
+      "VMHomeHospital",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeHospital.prefab"
+    ]
+  }
+]

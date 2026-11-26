@@ -1,0 +1,138 @@
+[
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T07:09:09.4262195Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "run",
+      "play"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:09:14.0338679Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:09:14.3916857Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T07:09:16.6836676Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"ClearDebris\",\"water\":0,\"task\":60003,\"first\":\"Claimed\",\"second\":\"Claimed\",\"hotelDamaged\":false,\"hotelRescued\":true,\"hotelOwnerVisible\":true,\"hospitalDamaged\":false,\"hospitalRescued\":true,\"damagedModel\":false,\"restoredModel\":true,\"merchantVisible\":true,\"merchantEntity\":true,\"merchantAnimation\":\"idle\",\"wellAvailable\":false,\"wellCollected\":true,\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":0,\"buttons\":[\"RescueClick\"]}",
+        "respondedAtUtc": "2026-11-26T07:09:19.0143885Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ]
+  }
+]

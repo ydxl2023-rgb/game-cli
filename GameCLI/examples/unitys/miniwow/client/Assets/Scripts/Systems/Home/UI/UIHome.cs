@@ -52,6 +52,14 @@ public sealed class HomeEntryRequested : IEvent
 [Config("Assets/Data/Widgets/Home/UIHome.prefab", WidgetLayer.center, cacheWidget: false)]
 public sealed class UIHome : UIWidget<VMHome>
 {
+    /// <summary>Normal HUD hidden during the opening rescue.</summary>
+    [SerializeField]
+    private GameObject[] openingHidden;
+
+    /// <summary>Existing task control revealed after the priest introduction.</summary>
+    [SerializeField]
+    private GameObject taskControl;
+
     /// <summary>Ordered configuration IDs authored with this prefab; prevents silent art/intent mismatches.</summary>
     [SerializeField]
     private string entryOrder;
@@ -67,6 +75,20 @@ public sealed class UIHome : UIWidget<VMHome>
         vm.FeedbackVisible = false;
 
         return true;
+    }
+
+    /// <summary>Displays the authoritative selected task and opening HUD visibility.</summary>
+    /// <param name="opening">The opening progress.</param>
+    /// <param name="task">The currently tracked task.</param>
+    public void InvalidateOpening(HomeOpening opening, TaskEntity task)
+    {
+        foreach (GameObject item in openingHidden)
+            item.SetActive(opening.phase == HomeOpeningPhase.AwaitRecruit);
+
+        taskControl.SetActive(opening.phase >= HomeOpeningPhase.FetchWater);
+        vm.TaskProgress = string.Format(CommonText.Get(Config.Excel.TEXT_OPENING_TASK), task.configuration.ID,
+            Config.Excel.propLanguageById(int.Parse(task.configuration.Description)),
+            task.progress, task.configuration.FinishValue);
     }
 
     /// <summary>Updates existing bindings without rebinding callbacks or list items.</summary>

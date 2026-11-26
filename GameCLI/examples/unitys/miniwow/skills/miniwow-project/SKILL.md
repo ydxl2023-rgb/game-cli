@@ -19,11 +19,11 @@ Home 当前环境来自 `Building_sdc` 静态场景和 6 个初始建筑模型�
 
 MainPage 主界面现使用 `client/Assets/Data/Widgets/Home/UIHome.prefab`（旧 Home.prefab 已保留 GUID 改名）。开发入口为 [MainPage 实现记录](../../tools/home-ui/IMPLEMENTATION.md)：配置源 `config/Home.xlsx`，制作脚本 `tools/home-ui/build_uihome.py`，正式 UGUI 导入后执行 `bind-uihome.ps1`；旧 `tools/home/bind-home.ps1` 已停用。HomeEntity 管理本地状态，HomeSystem 编排 HomeRuntime 生命周期与类型化入口事件；未接入业务必须保留明确反馈，不能将入口事件当作系统已实现。
 
-Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/README.md)。**场景与主 UI 统一归 HomeSystem，状态机组件 HomeRuntime 负责场景运行，不注册为玩法系统**，HomeScene 持有序列化场景引用；HomeEntity 管理 ActorEntity 集合并统一推进逻辑；ActorEntity 保存身份、位置、路线与阶段，ActorShape 继承 XActionStateMachine，每个角色拥有独立表现状态机，单向读取实体并驱动 Transform 和 Spine，隐藏或重建显示不得重置实体。旅店与铁匠恢复 idle 表现；访客使用 hero_20025。首版点击旅店店员走向入口，点击到达的访客返回；不代表建筑已业务解锁或消费成功。Spine Runtime 属第三方代码，不纳入自有代码格式化。
+Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/README.md)。**场景与主 UI 统一归 HomeSystem，状态机组件 HomeRuntime 负责场景运行，不注册为玩法系统**，HomeScene 持有序列化场景引用；HomeEntity 管理 ActorEntity 集合并统一推进逻辑；ActorEntity 保存身份、位置、路线与阶段，ActorShape 继承 XActionStateMachine，每个角色拥有独立表现状态机，单向读取实体并驱动 Transform 和 Spine，隐藏或重建显示不得重置实体。旅店与铁匠恢复 idle 表现；访客使用 hero_20025。首版点击旅店店员走向入口，点击到达的访客返回；不代表建筑已业务解锁或消费成功。该首版旅店往返点击现已停用，Actor 1 由后续加伦招募和真实医院治疗流程接管，见五任务实现。Spine Runtime 属第三方代码，不纳入自有代码格式化。
 
 可控玩家首版已接入，见 [玩家实现与验收](../../tools/player/README.md)。玩家实例 4 使用原作 role_01，与访客和店员分离；通过固定摇杆、ActorEntity 与静态 NavMesh 约束移动，ActorShape 状态机播放 idle/run，镜头跟随实体。参数源为 propActor.xlsx，导航已恢复原包 30 瓦片并逐项校验字节/哈希，使用原生 NavMeshAgent.Move；禁止再次以可见模型重烘焙替代原数据；未实现水域、战斗或玩家建筑消费。
 
-建筑业务继续采用用户确认的集合式 BuildingEntity：内部持有实际建筑状态，实例 ID 与配置 ID 分离，对外提供快照和校验操作，不暴露可变集合、不保存场景 GameObject。Home 场景只消费业务结果；本轮尚未实现该实体及升级经济。
+建筑业务继续采用用户确认的集合式 BuildingEntity：内部持有实际建筑状态，实例 ID 与配置 ID 分离，对外提供快照和校验操作，不暴露可变集合、不保存场景 GameObject。Home 场景只消费业务结果；医院首级修复与集合实体已接入，见 [五任务实现](../../tools/opening/FIVE-TASKS.md)；其他建筑及通用升级仍未实现。
 
 最近提出的“探索 → 行动力消耗 → 旅店恢复 → 制造补给 → 再探索”是首个闭环建议，不是已经批准的完整功能清单。不要自行扩展为全部养成、商业化或在线服务开发。
 
@@ -108,3 +108,7 @@ Town 第一阶段已接入，见 [Town 开发与验收记录](../../tools/town/R
 全部用户要求的落点、自动检查编号与人工边界见 [已确认约定台账](../../../../../skills/oathx/references/development/CONFIRMED-CONVENTIONS.md)。其中 P/A/R 项包含本产品决定，不机械推广为其他项目的模板规则。
 
 Home 后续实现必须遵循：OnActive 订阅后 return InstallHome()；OnDetive 取消订阅后 UninstallHome()。其他有安装事务的系统使用各自业务名称的私有方法；纯订阅系统不强加空安装方法。业务安装/卸载使用带业务名称的私有方法，不隐藏父类 Install/Uninstall。应用事件统一 XPluginUtility，具体 FireEvent/PostEvent 依据时序选择。固定快捷入口与配置入口分别使用 HomeShortcut/HomeEntryRoute；反馈使用公共语言表生成 ID。
+
+## 任务系统首版
+
+TaskSystem按已确认的TaskCollectionEntity/TaskEntity/ITaskAction职责实现，详见 [开发记录](../../tools/task-system/README.md)。新增数字系统ID10004和TaskSetting.InitialChapterID配置。TaskEntity没有ITaskCommand；引导完成不等于任务完成。后续已接入开场首段、Home任务栏及本地任务收据存档，见 [开场实现](../../tools/opening/README.md)。Home 村庄本地经济已接入奖励接收方和持久收据；完整任务页和通用引导表现仍待接入，不能把测试回调当作产品玩法。后续五项 60004→60101→60102→60103→60104 的结构、原作证据、本地规则和验收见 [五任务实现](../../tools/opening/FIVE-TASKS.md)。

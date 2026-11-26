@@ -1,0 +1,175 @@
+{
+  "localOnly": true,
+  "policy": "oathx-code/9",
+  "policySha256": "440a4b74b9193bd746a992a35a7a3a4413111fd95c7d709d553824b253d21634",
+  "rules": [
+    {
+      "id": "CS_PARSE",
+      "severity": "error",
+      "description": "C# 语法必须可解析"
+    },
+    {
+      "id": "OX001",
+      "severity": "error",
+      "description": "命名：camelCase / PascalCase"
+    },
+    {
+      "id": "OX002",
+      "severity": "error",
+      "description": "禁止表达式体"
+    },
+    {
+      "id": "OX003",
+      "severity": "error",
+      "description": "SerializeField 私有字段"
+    },
+    {
+      "id": "OX004",
+      "severity": "error",
+      "description": "Binding 独占一行"
+    },
+    {
+      "id": "OX005",
+      "severity": "error",
+      "description": "英文 XML summary"
+    },
+    {
+      "id": "OX006",
+      "severity": "error",
+      "description": "参数与返回值注释"
+    },
+    {
+      "id": "OX007",
+      "severity": "error",
+      "description": "成员声明顺序"
+    },
+    {
+      "id": "OX008",
+      "severity": "error",
+      "description": "成员注释前空行"
+    },
+    {
+      "id": "OX009",
+      "severity": "error",
+      "description": "VM / UI 目录"
+    },
+    {
+      "id": "OX010",
+      "severity": "error",
+      "description": "处理与 return 分组"
+    },
+    {
+      "id": "OX011",
+      "severity": "error",
+      "description": "默认参数禁止中文"
+    },
+    {
+      "id": "OX012",
+      "severity": "error",
+      "description": "OpenWidget 显式回调"
+    },
+    {
+      "id": "OX013",
+      "severity": "error",
+      "description": "CloseWidget 局部 widgets 数组"
+    },
+    {
+      "id": "OX014",
+      "severity": "error",
+      "description": "持久化键生成"
+    },
+    {
+      "id": "OX015",
+      "severity": "review",
+      "description": "运行时 UI 查找人工复核"
+    },
+    {
+      "id": "OX016",
+      "severity": "review",
+      "description": "中文文案归属人工复核"
+    },
+    {
+      "id": "OX017",
+      "severity": "review",
+      "description": "未激活预处理分支人工复核"
+    },
+    {
+      "id": "OX018",
+      "severity": "error",
+      "description": "多行对象或数组初始化局部声明前后空行"
+    },
+    {
+      "id": "OX019",
+      "severity": "error",
+      "description": "代码行不得超过配置列宽；长条件、参数和调用链换行"
+    },
+    {
+      "id": "OX020",
+      "severity": "review",
+      "description": "复核方法参数判空后直接返回或抛出 ArgumentNullException 的分支，包括 || 条件；仅保留有实际语义的判空"
+    },
+    {
+      "id": "OX021",
+      "severity": "error",
+      "description": "OnActive 禁止以 IsActive 或随生命周期翻转的字段重复拦截激活"
+    },
+    {
+      "id": "OX022",
+      "severity": "error",
+      "description": "Subscribe 事件回调必须直接传入 On 加 PascalCase 名称的方法组，禁止匿名回调"
+    },
+    {
+      "id": "OX023",
+      "severity": "error",
+      "description": "QueryEntity<T>() 结果先赋给局部变量，再访问成员或传给其他方法"
+    },
+    {
+      "id": "OX024",
+      "severity": "error",
+      "description": "应用事件统一使用 XPluginUtility，禁止直接 DispatchEvent"
+    },
+    {
+      "id": "OX025",
+      "severity": "review",
+      "description": "固定业务 route 的字符串比较应改为枚举，协议文本由人工分类"
+    },
+    {
+      "id": "OX026",
+      "severity": "error",
+      "description": "系统启动封装到带业务名的安装方法，禁止直接运行协程或隐藏 Install/Uninstall"
+    },
+    {
+      "id": "OX027",
+      "severity": "error",
+      "description": "场景资产路径必须读取配置表，不在业务代码硬编码"
+    },
+    {
+      "id": "OX028",
+      "severity": "review",
+      "description": "动画名使用类前常量类型，复核 SetAnimation/FindAnimation 字面量"
+    },
+    {
+      "id": "OX029",
+      "severity": "error",
+      "description": "每条字段或局部变量声明只允许一个变量"
+    },
+    {
+      "id": "OX030",
+      "severity": "review",
+      "description": "复核业务系统 generation/requestedActive 等重复生命周期字段"
+    }
+  ],
+  "issues": [],
+  "statistics": {
+    "files": 2,
+    "lines": 611,
+    "blankLines": 58,
+    "commentLines": 45,
+    "members": 27,
+    "documentedMembers": 27,
+    "blankLineRate": 0.09492635024549918,
+    "commentLineRate": 0.07364975450081833,
+    "documentedMemberRate": 1
+  },
+  "passed": true
+}

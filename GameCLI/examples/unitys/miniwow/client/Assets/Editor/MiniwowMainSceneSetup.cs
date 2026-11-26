@@ -25,41 +25,20 @@ public static class MiniwowMainSceneSetup
         EditorApplication.update += Poll;
     }
 
-    /// <summary>Processes one authorized installation while the editor is idle.</summary>
-    private static void Poll()
+    /// <summary>Imports selected neutral dependencies without rebuilding the Home scene.</summary>
+    /// <param name="data">The audited export manifest.</param>
+    /// <param name="sourceDirectory">The neutral input directory.</param>
+    /// <param name="assetDirectory">The native asset destination.</param>
+    /// <param name="meshes">Imported meshes indexed by source identity.</param>
+    /// <param name="materials">Imported materials indexed by source identity.</param>
+    public static void ImportAssets(JObject data, string sourceDirectory, string assetDirectory,
+        out Dictionary<string, Mesh> meshes, out Dictionary<string, Material> materials)
     {
-        string request = sourceDirectory + "/install.request";
-        if (!File.Exists(request) || EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlayingOrWillChangePlaymode)
-            return;
-
-        File.Delete(request);
-
-        try
-        {
-            Build();
-        }
-        catch (Exception exception)
-        {
-            File.WriteAllText(sourceDirectory + "/install-result.json", new JObject {
-                ["ok"] = false,
-                ["error"] = exception.ToString()
-            }.ToString());
-            Debug.LogException(exception);
-        }
-    }
-
-    /// <summary>Creates typed meshes, materials and a scene without importing original scripts.</summary>
-    private static void Build()
-    {
-        string identity = File.ReadAllText("ProjectSettings/GameCLIProject.json");
-        if (!identity.Contains("83c29c9f-21c1-4597-9691-6707ca146fa7") || !identity.Contains("p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3"))
-            throw new InvalidOperationException("Unexpected project identity.");
-
-        JObject data = JObject.Parse(File.ReadAllText(sourceDirectory + "/scene.json"));
         Directory.CreateDirectory(assetDirectory);
 
         foreach (JObject texture in data["textures"])
-            File.Copy(sourceDirectory + "/" + (string)texture["file"], assetDirectory + "/" + (string)texture["id"] + ".png", true);
+            File.Copy(sourceDirectory + "/" + (string)texture["file"],
+                assetDirectory + "/" + (string)texture["id"] + ".png", true);
 
         AssetDatabase.Refresh();
 
@@ -78,15 +57,17 @@ public static class MiniwowMainSceneSetup
             importer.SaveAndReimport();
         }
 
-        Dictionary<string, Mesh> meshes = new Dictionary<string, Mesh>();
+        meshes = new Dictionary<string, Mesh>();
         foreach (JObject entry in data["meshes"])
         {
             string id = (string)entry["id"];
             JObject raw = JObject.Parse(File.ReadAllText(sourceDirectory + "/" + (string)entry["file"]));
+
             Mesh mesh = new Mesh {
                 name = (string)raw["name"],
                 indexFormat = IndexFormat.UInt32
             };
+
             mesh.vertices = Vectors3(raw["vertices"]);
             Vector3[] normals = Vectors3(raw["normals"]);
             if (normals.Length == mesh.vertexCount)
@@ -97,7 +78,9 @@ public static class MiniwowMainSceneSetup
 
             float[] colors = raw["colors"].ToObject<float[]>();
             if (colors.Length == mesh.vertexCount * 4)
-                mesh.colors = Enumerable.Range(0, mesh.vertexCount).Select(index => new Color(colors[index * 4], colors[index * 4 + 1], colors[index * 4 + 2], colors[index * 4 + 3])).ToArray();
+                mesh.colors = Enumerable.Range(0, mesh.vertexCount)
+                    .Select(index => new Color(colors[index * 4], colors[index * 4 + 1],
+                        colors[index * 4 + 2], colors[index * 4 + 3])).ToArray();
             else
                 mesh.colors = Enumerable.Repeat(Color.white, mesh.vertexCount).ToArray();
 
@@ -128,7 +111,7 @@ public static class MiniwowMainSceneSetup
         if (!shader)
             throw new InvalidOperationException("Scene presentation shader is not compiled.");
 
-        Dictionary<string, Material> materials = new Dictionary<string, Material>();
+        materials = new Dictionary<string, Material>();
         foreach (JObject entry in data["materials"])
         {
             string id = (string)entry["id"];
@@ -142,7 +125,8 @@ public static class MiniwowMainSceneSetup
             material.name = (string)entry["name"];
 
             string texture = (string)entry["texture"];
-            material.mainTexture = string.IsNullOrEmpty(texture) ? null : AssetDatabase.LoadAssetAtPath<Texture2D>(assetDirectory + "/" + texture + ".png");
+            material.mainTexture = string.IsNullOrEmpty(texture)
+                ? null : AssetDatabase.LoadAssetAtPath<Texture2D>(assetDirectory + "/" + texture + ".png");
             material.mainTextureScale = Vector2Value(entry["scale"]);
             material.mainTextureOffset = Vector2Value(entry["offset"]);
             material.color = ColorValue(entry["colors"]["_Color"], Color.white);
@@ -168,7 +152,45 @@ public static class MiniwowMainSceneSetup
             materials.Add(id, material);
         }
 
-        string scenePath = "Assets/Scenes/Home.unity";
+    }
+
+    /// <summary>Processes one authorized installation while the editor is idle.</summary>
+    private static void Poll()
+    {
+        string request = sourceDirectory + "/install.request";
+        if (!File.Exists(request) || EditorApplication.isCompiling
+            || EditorApplication.isUpdating || EditorApplication.isPlayingOrWillChangePlaymode)
+            return;
+
+        File.Delete(request);
+
+        try
+        {
+            Build();
+        }
+        catch (Exception exception)
+        {
+            File.WriteAllText(sourceDirectory + "/install-result.json", new JObject {
+                ["ok"] = false,
+                ["error"] = exception.ToString()
+            }.ToString());
+            Debug.LogException(exception);
+        }
+    }
+
+    /// <summary>Creates typed meshes, materials and a scene without importing original scripts.</summary>
+    private static void Build()
+    {
+        string identity = File.ReadAllText("ProjectSettings/GameCLIProject.json");
+        if (!identity.Contains("83c29c9f-21c1-4597-9691-6707ca146fa7")
+            || !identity.Contains("p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3"))
+            throw new InvalidOperationException("Unexpected project identity.");
+
+        JObject data = JObject.Parse(File.ReadAllText(sourceDirectory + "/scene.json"));
+        ImportAssets(data, sourceDirectory, assetDirectory, out var meshes, out var materials);
+
+        var scenes = JObject.Parse(File.ReadAllText("Assets/Data/Jsons/Excels/SceneConfig.bytes"));
+        string scenePath = (string)scenes["data"]["10002"]["Path"];
         Scene prior = EditorSceneManager.GetActiveScene();
         Scene scene = SceneManager.GetSceneByPath(scenePath);
         bool opened = !scene.isLoaded;
@@ -195,7 +217,9 @@ public static class MiniwowMainSceneSetup
             string parent = (string)node["parent"];
             target.transform.SetParent(parent == "0" ? recovered.transform : objects[parent].transform, false);
             target.transform.localPosition = Vector3Value(node["position"]);
-            target.transform.localRotation = new Quaternion((float)node["rotation"]["x"], (float)node["rotation"]["y"], (float)node["rotation"]["z"], (float)node["rotation"]["w"]);
+            target.transform.localRotation = new Quaternion(
+                (float)node["rotation"]["x"], (float)node["rotation"]["y"],
+                (float)node["rotation"]["z"], (float)node["rotation"]["w"]);
             target.transform.localScale = Vector3Value(node["scale"]);
             target.layer = 0;
             target.SetActive((bool)node["active"]);
@@ -206,7 +230,8 @@ public static class MiniwowMainSceneSetup
             if (!string.IsNullOrEmpty(meshId) || !string.IsNullOrEmpty(builtin))
             {
                 MeshFilter filter = target.AddComponent<MeshFilter>();
-                filter.sharedMesh = !string.IsNullOrEmpty(meshId) ? meshes[meshId] : Resources.GetBuiltinResource<Mesh>(builtin + ".fbx");
+                filter.sharedMesh = !string.IsNullOrEmpty(meshId)
+                    ? meshes[meshId] : Resources.GetBuiltinResource<Mesh>(builtin + ".fbx");
 
                 MeshRenderer renderer = target.AddComponent<MeshRenderer>();
                 renderer.sharedMaterials = node["materials"].Select(id => materials[(string)id]).ToArray();
@@ -258,36 +283,50 @@ public static class MiniwowMainSceneSetup
     }
 
     /// <summary>Reads a source vector without changing coordinate handedness.</summary>
+    /// <param name="value">The exported source values.</param>
+    /// <returns>The native Unity value.</returns>
     private static Vector3 Vector3Value(JToken value)
     {
         return new Vector3((float)value["x"], (float)value["y"], (float)value["z"]);
     }
 
     /// <summary>Reads a source texture scale or offset.</summary>
+    /// <param name="value">The exported source values.</param>
+    /// <returns>The native Unity value.</returns>
     private static Vector2 Vector2Value(JToken value)
     {
         return new Vector2((float)value["x"], (float)value["y"]);
     }
 
     /// <summary>Reads source tint values.</summary>
+    /// <param name="value">The exported source values.</param>
+    /// <param name="fallback">The default color when no tint is authored.</param>
+    /// <returns>The native Unity value.</returns>
     private static Color ColorValue(JToken value, Color fallback)
     {
-        return value == null ? fallback : new Color((float)value["r"], (float)value["g"], (float)value["b"], (float)value["a"]);
+        return value == null
+            ? fallback : new Color((float)value["r"], (float)value["g"], (float)value["b"], (float)value["a"]);
     }
 
     /// <summary>Expands flattened mesh vertices or normals.</summary>
+    /// <param name="value">The exported source values.</param>
+    /// <returns>The native Unity value.</returns>
     private static Vector3[] Vectors3(JToken value)
     {
         float[] values = value.ToObject<float[]>();
 
-        return Enumerable.Range(0, values.Length / 3).Select(index => new Vector3(values[index * 3], values[index * 3 + 1], values[index * 3 + 2])).ToArray();
+        return Enumerable.Range(0, values.Length / 3)
+            .Select(index => new Vector3(values[index * 3], values[index * 3 + 1], values[index * 3 + 2])).ToArray();
     }
 
     /// <summary>Expands flattened texture coordinates.</summary>
+    /// <param name="value">The exported source values.</param>
+    /// <returns>The native Unity value.</returns>
     private static Vector2[] Vectors2(JToken value)
     {
         float[] values = value.ToObject<float[]>();
 
-        return Enumerable.Range(0, values.Length / 2).Select(index => new Vector2(values[index * 2], values[index * 2 + 1])).ToArray();
+        return Enumerable.Range(0, values.Length / 2)
+            .Select(index => new Vector2(values[index * 2], values[index * 2 + 1])).ToArray();
     }
 }

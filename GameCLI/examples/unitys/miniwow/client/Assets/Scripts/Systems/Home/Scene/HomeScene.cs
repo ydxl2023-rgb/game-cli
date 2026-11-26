@@ -6,6 +6,30 @@ using System.Collections.Generic;
 /// <summary>Owns serialized scene references and routes pointer intent to HomeRuntime.</summary>
 public sealed class HomeScene : MonoBehaviour
 {
+    /// <summary>Authored opening effects and objective marker.</summary>
+    [SerializeField]
+    private HomeOpeningScene openingScene;
+
+    /// <summary>Original hospital interaction anchor.</summary>
+    [SerializeField]
+    private Transform hospitalAnchor;
+
+    /// <summary>Original building tips point used by its NPC title.</summary>
+    [SerializeField]
+    private Transform hospitalTitleAnchor;
+
+    /// <summary>Original hospital pointer collider.</summary>
+    [SerializeField]
+    private Collider hospitalCollider;
+
+    /// <summary>Recovered hospital ground selection effect.</summary>
+    [SerializeField]
+    private GameObject hospitalSelection;
+
+    /// <summary>Original entrance selections for the other restored residents.</summary>
+    [SerializeField]
+    private HomeNpcSelection[] npcSelections;
+
     /// <summary>Authored playable actor instance identity.</summary>
     [SerializeField]
     private int playerId;
@@ -127,7 +151,11 @@ public sealed class HomeScene : MonoBehaviour
             return false;
         }
 
-        cameraOffset = sceneCamera.transform.parent.position - player.position;
+        Vector3 focus = player.position + Vector3.up * 3f;
+        Vector3 forward = sceneCamera.transform.forward;
+        Vector3 handlePosition = focus - forward * (focus.y / forward.y);
+        cameraOffset = handlePosition - player.position;
+        sceneCamera.transform.parent.position = handlePosition;
         owner = system;
         SetInputEnabled(false);
 
@@ -154,6 +182,8 @@ public sealed class HomeScene : MonoBehaviour
             return null;
 
         var definitions = new ActorSpawn[actors.Length];
+        var home = Oathx.Entity.XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
+        var village = home.village;
         for (int index = 0; index < actors.Length; index++)
         {
             ActorSpawn spawn = actors[index]?.CreateDefinition();
@@ -182,10 +212,95 @@ public sealed class HomeScene : MonoBehaviour
                 spawn.movement = new HomeNavigation(playerNavigation);
             }
 
+            if (spawn.actorId == village.configuration.ActorID)
+            {
+                spawn.configId = village.configuration.HeroID;
+                if (village.recovery >= HeroRecoveryPhase.Healing)
+                {
+                    var target = new Vector3(village.configuration.HospitalX,
+                        village.configuration.HospitalY, village.configuration.HospitalZ);
+
+                    var filter = new NavMeshQueryFilter {
+                        agentTypeID = config.AgentTypeId,
+                        areaMask = NavMesh.AllAreas
+                    };
+
+                    if (!NavMesh.SamplePosition(target, out var hospital, 3f, filter))
+                        throw new System.InvalidOperationException(
+                            "Hospital actor spawn is outside original navigation.");
+
+                    spawn.route = new[] { hospital.position };
+                }
+            }
+
             definitions[index] = spawn;
         }
 
         return definitions;
+    }
+
+    /// <summary>Calculates a complete route using the original navigation data.</summary>
+    /// <param name="target">The recovered interaction point.</param>
+    /// <returns>Native corners, or an empty array if unreachable.</returns>
+    public Vector3[] CalculateRoute(Vector3 target)
+    {
+        var path = new NavMeshPath();
+        if (!playerNavigation.CalculatePath(target, path) || path.status != NavMeshPathStatus.PathComplete)
+            return System.Array.Empty<Vector3>();
+
+        return path.corners;
+    }
+
+    /// <summary>Resolves an NPC route against the same original navigation used by the player.</summary>
+    /// <param name="origin">Authoritative NPC position.</param>
+    /// <param name="target">Configured hospital destination.</param>
+    /// <returns>A complete path, or an empty array when the route is unavailable.</returns>
+    public Vector3[] CalculateActorRoute(Vector3 origin, Vector3 target)
+    {
+        var filter = new NavMeshQueryFilter {
+            agentTypeID = playerNavigation.agentTypeID,
+            areaMask = playerNavigation.areaMask
+        };
+
+        var path = new NavMeshPath();
+        if (!NavMesh.SamplePosition(origin, out var start, 3f, filter)
+            || !NavMesh.SamplePosition(target, out var end, 3f, filter)
+            || !NavMesh.CalculatePath(start.position, end.position, filter, path)
+            || path.status != NavMeshPathStatus.PathComplete)
+            return System.Array.Empty<Vector3>();
+
+        return path.corners;
+    }
+
+    /// <summary>Projects committed village state and disables the superseded prototype visitor interaction.</summary>
+    /// <param name="opening">Original rescue presentation phase.</param>
+    /// <param name="village">Committed building and hero state.</param>
+    public void ShowVillage(HomeOpening opening, HomeVillageEntity village)
+    {
+        openingScene.ShowVillage(opening, village);
+        buildingCollider.enabled = false;
+        visitorCollider.enabled = false;
+    }
+
+    /// <summary>Projects opening progress into serialized scene presentation.</summary>
+    /// <param name="opening">The entity-owned rescue progress.</param>
+    public void ShowOpening(HomeOpening opening)
+    {
+        openingScene.Invalidate(opening);
+    }
+
+    /// <summary>Displays the active water stream from the current player.</summary>
+    /// <param name="active">Whether water is being applied.</param>
+    public void ShowRescue(bool active)
+    {
+        openingScene.ShowRescue(active, player.position);
+    }
+
+    /// <summary>Displays the owned debris dust only while clearing is actually executing.</summary>
+    /// <param name="active">Whether the player is clearing the hospital beam.</param>
+    public void ShowClearing(bool active)
+    {
+        openingScene.ShowClearing(active);
     }
 
     /// <summary>Returns the authored visitor instance identity.</summary>
@@ -274,6 +389,13 @@ public sealed class HomeScene : MonoBehaviour
             return false;
 
         Ray ray = sceneCamera.ScreenPointToRay(position);
+        if (hospitalCollider.Raycast(ray, out _, sceneCamera.farClipPlane))
+        {
+            Oathx.Core.XPluginUtility.PostEvent(new ReqHomeHospitalVisit());
+
+            return true;
+        }
+
         bool hitBuilding = buildingCollider.Raycast(ray, out RaycastHit buildingHit, sceneCamera.farClipPlane);
         bool hitVisitor = visitorCollider.Raycast(ray, out RaycastHit visitorHit, sceneCamera.farClipPlane);
         if (hitVisitor && (!hitBuilding || visitorHit.distance < buildingHit.distance))
@@ -285,12 +407,100 @@ public sealed class HomeScene : MonoBehaviour
         return false;
     }
 
+    /// <summary>Routes the player to the entrance separately from the visiting hero's resting point.</summary>
+    /// <returns>Navigation corners to the authored hospital entrance.</returns>
+    public Vector3[] CalculateHospitalRoute()
+    {
+        return CalculateRoute(hospitalCollider.transform.position);
+    }
+
+    /// <summary>Tests the player's original agent radius against the original entrance collider.</summary>
+    /// <returns>Whether the player overlaps the hospital interaction area.</returns>
+    public bool IsPlayerAtHospital()
+    {
+        Vector3 closest = hospitalCollider.ClosestPoint(player.position);
+
+        return (closest - player.position).sqrMagnitude <= playerConfig.AgentRadius * playerConfig.AgentRadius;
+    }
+
+    /// <summary>Shows the world-space selection only while this entrance is usable.</summary>
+    /// <param name="visible">Whether to display the original selection effect.</param>
+    public void ShowHospitalSelection(bool visible)
+    {
+        if (hospitalSelection.activeSelf != visible)
+            hospitalSelection.SetActive(visible);
+    }
+
+    /// <summary>Projects the authored hospital bubble anchor.</summary>
+    /// <returns>The screen position including camera depth.</returns>
+    public Vector3 GetHospitalScreenPoint()
+    {
+        return sceneCamera.WorldToScreenPoint(hospitalAnchor.position);
+    }
+
+    /// <summary>Projects the original NPC title offset independently of the enter button.</summary>
+    /// <returns>The screen position of the original title mount.</returns>
+    public Vector3 GetHospitalTitleScreenPoint()
+    {
+        return sceneCamera.WorldToScreenPoint(hospitalTitleAnchor.position + Vector3.down * 0.5f);
+    }
+
+    /// <summary>Projects a restored resident's original title mount.</summary>
+    /// <param name="index">Resident index in the authored scene bindings.</param>
+    /// <returns>The screen position including camera depth.</returns>
+    public Vector3 GetNpcTitleScreenPoint(int index)
+    {
+        return sceneCamera.WorldToScreenPoint(npcSelections[index].GetTitlePosition());
+    }
+
+    /// <summary>Applies scene interaction and resident visibility to a title.</summary>
+    /// <param name="index">Resident index in the authored scene bindings.</param>
+    /// <returns>Whether the resident title may be shown.</returns>
+    public bool IsNpcTitleVisible(int index)
+    {
+        return inputEnabled && npcSelections[index].IsVisible();
+    }
+
+    /// <summary>Projects an original building entrance button independently of its title.</summary>
+    /// <param name="buildingId">Original building configuration identity.</param>
+    /// <returns>The screen position including camera depth.</returns>
+    public Vector3 GetNpcEntryScreenPoint(int buildingId)
+    {
+        var resident = GetResident(buildingId);
+
+        return sceneCamera.WorldToScreenPoint(resident.GetEntryPosition());
+    }
+
+    /// <summary>Shows entrances only while the visible resident is within interaction range.</summary>
+    /// <param name="buildingId">Original building configuration identity.</param>
+    /// <returns>Whether the entrance accepts a visit.</returns>
+    public bool IsNpcEntryVisible(int buildingId)
+    {
+        var resident = GetResident(buildingId);
+
+        return inputEnabled && resident.IsVisible()
+            && resident.IsNearby(player.position, playerConfig.AgentRadius, playerConfig.AgentHeight);
+    }
+
+    /// <summary>Projects the logical player position for item flights.</summary>
+    /// <returns>The screen position including camera depth.</returns>
+    public Vector3 GetPlayerScreenPoint()
+    {
+        return sceneCamera.WorldToScreenPoint(player.position);
+    }
+
     /// <summary>Stops both camera and interaction gestures behind full-page presentation.</summary>
     /// <param name="value">Whether scene gestures are enabled.</param>
     public void SetInputEnabled(bool value)
     {
         CancelPointer();
         inputEnabled = value;
+
+        if (!value)
+        {
+            foreach (var selection in npcSelections)
+                selection.Hide();
+        }
 
         if (joystick)
             joystick.SetVisible(value);
@@ -381,6 +591,8 @@ public sealed class HomeScene : MonoBehaviour
             player.position + cameraOffset,
             1f - Mathf.Exp(-playerConfig.FollowRate * Time.deltaTime));
         joystick.Follow(player.position, sceneCamera);
+        foreach (var selection in npcSelections)
+            selection.Refresh(player.position, playerConfig.AgentRadius, playerConfig.AgentHeight, inputEnabled);
     }
 
     /// <summary>Cancels captured movement when the application is suspended.</summary>
@@ -402,6 +614,20 @@ public sealed class HomeScene : MonoBehaviour
     private void OnDisable()
     {
         Release();
+    }
+
+    /// <summary>Finds the authored resident by its stable building identity.</summary>
+    /// <param name="buildingId">Original building configuration identity.</param>
+    /// <returns>The required scene binding.</returns>
+    private HomeNpcSelection GetResident(int buildingId)
+    {
+        foreach (var resident in npcSelections)
+        {
+            if (resident.Matches(buildingId))
+                return resident;
+        }
+
+        throw new System.InvalidOperationException("Missing resident binding: " + buildingId);
     }
 
     /// <summary>Tests current graphic raycasts instead of relying on stale pointer hover state.</summary>
@@ -488,4 +714,7 @@ public sealed class TownActorBinding
         if (shape)
             shape.Unbind();
     }
+
+
+
 }

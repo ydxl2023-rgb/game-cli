@@ -6,6 +6,10 @@ sys.path.insert(0,str(ROOT/'research/python-libs'))
 import UnityPy
 from UnityPy.helpers.MeshHelper import MeshHandler
 OUT=Path(__file__).parent
+variant=sys.argv[sys.argv.index('--variant')+1] if '--variant' in sys.argv else None
+auction_only='--auction' in sys.argv or variant is not None
+if auction_only:
+ OUT=OUT/(variant or 'auction'); OUT.mkdir(exist_ok=True)
 DATA=OUT/'data'; DATA.mkdir(exist_ok=True)
 source=ROOT/'wxecf0e106809a477d/game-cache/StreamingAssets'
 env=UnityPy.Environment();origins={}
@@ -78,7 +82,7 @@ def mesh(o):
   path=f'data/{k}.mesh.json';(OUT/path).write_text(json.dumps(val,separators=(',',':')),'utf8');meshes[k]=dict(id=k,name=val['name'],file=path,vertices=len(val['vertices'])//3,submeshes=len(val['submeshes']));receipt(o,'Mesh',path)
  return k
 nodes=[]
-trs={o.path_id:o for o in scene.objects.values() if o.type.name=='Transform'}
+trs={} if auction_only else {o.path_id:o for o in scene.objects.values() if o.type.name=='Transform'}
 for tid,o in trs.items():
  d=tree(o);go=resolve(scene,d['m_GameObject']);g=tree(go)
  node=dict(id=str(tid),sourceGameObjectId=str(go.path_id),name=g['m_Name'],active=g['m_IsActive'],layer=g['m_Layer'],parent=str(d['m_Father']['m_PathID']),position=d['m_LocalPosition'],rotation=d['m_LocalRotation'],scale=d['m_LocalScale'])
@@ -98,7 +102,11 @@ for tid,o in trs.items():
  node['omittedComponents']=[kind for kind in components if kind not in ['Transform','MeshFilter','MeshRenderer','Camera','Light']]
  nodes.append(node)
 # Original runtime attaches InitialModelPath to each empty Model anchor before unlock.
-building_configs=json.loads((OUT/'building-config.json').read_text('utf8'))
+building_configs=json.loads((Path(__file__).parent/'building-config.json').read_text('utf8'))
+if auction_only:
+ building_id,model_path={'hotel':(60017,'Hotel/Hotel_initial_1'),'hospital-burned':(60018,'priest/priest_initial_1'),'hospital-rescued':(60018,'priest/priest_initial_2'),'hospital-cleared':(60018,'priest/priest_initial_3'),'hospital-built':(60018,'priest/priest')}.get(variant,(60019,'auction/auction_initial_1'))
+ building_configs=[dict(next(c for c in building_configs if c['id']==building_id),initialModelPath=model_path)]
+ nodes=[dict(id='root',name='BuildingRoot',parent='none'),dict(id='building',name='Building_'+str(building_id),parent='root'),dict(id='0',name='Model',parent='building')]
 container={}
 for f in list(files.values()):
  for o in f.objects.values():
@@ -132,7 +140,8 @@ for config in building_configs:
   nodes.append(node)
   for child in d['m_Children']:append_transform(resolve(o.assets_file,child),node['id'])
  append_transform(transform,anchor['id'],True)
- dynamic.append(dict(buildingId=config['id'],name=config['name'],sourcePrefab=path,parent=anchor['id'],state='initial / locked appearance; no gameplay state implied'))
+ dynamic.append(dict(buildingId=config['id'],name=config['name'],sourcePrefab=path,parent=anchor['id'],state=('original guide model: '+variant if variant else 'burned auction before story 1 rescue') if auction_only else 'initial / locked appearance; no gameplay state implied'))
+if auction_only:nodes=nodes[3:]
 payload=dict(schemaVersion=1,sourceScene='Building_sdc',nodes=nodes,dynamicBuildings=dynamic,meshes=list(meshes.values()),materials=list(materials.values()),textures=list(textures.values()),issues=issues)
 (OUT/'scene.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2),'utf8')
 (OUT/'asset-manifest.json').write_text(json.dumps(receipts,ensure_ascii=False,indent=2),'utf8')

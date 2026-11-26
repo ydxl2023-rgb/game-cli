@@ -100,6 +100,7 @@ public static class MiniwowPlayerSetup
         RectTransform knob = (RectTransform)stick.Find("Knob");
         stick.anchorMin = stick.anchorMax = new Vector2(0.5f, 0f);
         stick.pivot = new Vector2(0.5f, 0.5f);
+        stick.localScale = Vector3.one * 0.8f;
         // Original MainPage pivot (359,1219) in 720x1560, scaled by width and anchored to the bottom.
         stick.anchoredPosition = new Vector2(-1.5f, 511.5f);
         foreach (RectTransform child in stick)

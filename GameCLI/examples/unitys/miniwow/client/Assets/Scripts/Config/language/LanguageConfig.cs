@@ -62,6 +62,496 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext620 = 1431276171;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-30001-Context-7-2-0
+        /// 跳过剧情
+        /// </summary>
+        public const int LGCommonTextContext720 = 491674763;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30002-Context-8-2-0
+        /// 是否确认跳过剧情？
+        /// </summary>
+        public const int LGCommonTextContext820 = 242289651;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30003-Context-9-2-0
+        /// 继续
+        /// </summary>
+        public const int LGCommonTextContext920 = 986178619;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30004-Context-10-2-0
+        /// 继续观看
+        /// </summary>
+        public const int LGCommonTextContext1020 = 649505390;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30005-Context-11-2-0
+        /// 前往水井取水，救出被困村民
+        /// </summary>
+        public const int LGCommonTextContext1120 = 716605408;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30006-Context-12-2-0
+        /// 前往交易行，使用 {0} 份水救火
+        /// </summary>
+        public const int LGCommonTextContext1220 = 1219785518;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30007-Context-13-2-0
+        /// 正在救火…
+        /// </summary>
+        public const int LGCommonTextContext1320 = 2062299876;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30008-Context-14-2-0
+        /// 任务完成 · 点击领取
+        /// </summary>
+        public const int LGCommonTextContext1420 = 1564523158;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30009-Context-15-2-0
+        /// 任务 {0} · {1}
+        /// </summary>
+        public const int LGCommonTextContext1520 = 1472544008;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30010-Context-16-2-0
+        /// 救火的水 {0}/{1}
+        /// </summary>
+        public const int LGCommonTextContext1620 = 86867223;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30011-Context-17-2-0
+        /// 救火
+        /// </summary>
+        public const int LGCommonTextContext1720 = 2052942569;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30012-Context-18-2-0
+        /// 剧情视频加载失败，请重试或跳过
+        /// </summary>
+        public const int LGCommonTextContext1820 = 1219562855;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30013-Context-19-2-0
+        /// 重试
+        /// </summary>
+        public const int LGCommonTextContext1920 = 1199433285;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30014-Context-20-2-0
+        /// 牧师
+        /// </summary>
+        public const int LGCommonTextContext2020 = 431670586;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30015-Context-21-2-0
+        /// 商人
+        /// </summary>
+        public const int LGCommonTextContext2120 = 108111572;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30016-Context-22-2-0
+        /// 火还没灭！村子到处都有人被困。先去水井打水救他们出来！
+        /// </summary>
+        public const int LGCommonTextContext2220 = 1201651642;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30017-Context-23-2-0
+        /// 货架还在，账册也没烧完。等我好好整理一下，英雄们带回来的东西就有地方卖了。
+        /// </summary>
+        public const int LGCommonTextContext2320 = 1555936888;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30018-Context-24-2-0
+        /// 任务 {0} · {1} ({2}/{3})
+        /// </summary>
+        public const int LGCommonTextContext2420 = 1562945626;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30019-Context-25-2-0
+        /// 旅店老板
+        /// </summary>
+        public const int LGCommonTextContext2520 = 2060188468;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30020-Context-26-2-0
+        /// 十分感谢你，这边剩下的就交给我吧，修整一下旅店就能恢复给大家做饭了。
+        /// 你先去隔壁看看，那边也需要帮忙。
+        /// </summary>
+        public const int LGCommonTextContext2620 = 842283609;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30021-Context-27-2-0
+        /// 前往旅店，使用 {0} 份水救火
+        /// </summary>
+        public const int LGCommonTextContext2720 = 1151424531;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30022-Context-28-2-0
+        /// 前往医院，使用 {0} 份水救火
+        /// </summary>
+        public const int LGCommonTextContext2820 = 1358272729;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30023-Context-29-2-0
+        /// 取水
+        /// </summary>
+        public const int LGCommonTextContext2920 = 177970127;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30024-Context-30-2-0
+        /// 清理
+        /// </summary>
+        public const int LGCommonTextContext3020 = 802931334;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30025-Context-31-2-0
+        /// 救人
+        /// </summary>
+        public const int LGCommonTextContext3120 = 1188089424;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30026-Context-32-2-0
+        /// 点击清理倒塌的横梁
+        /// </summary>
+        public const int LGCommonTextContext3220 = 12258670;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30027-Context-33-2-0
+        /// 点击救出困住的人
+        /// </summary>
+        public const int LGCommonTextContext3320 = 909053292;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30028-Context-34-2-0
+        /// 剩余 {0:0.0} 秒
+        /// </summary>
+        public const int LGCommonTextContext3420 = 1786167478;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30029-Context-35-2-0
+        /// 救援完成，正在领取任务
+        /// </summary>
+        public const int LGCommonTextContext3520 = 2033717024;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30101-Context-36-2-0
+        /// 石盾加伦（战士）
+        /// </summary>
+        public const int LGCommonTextContext3620 = 999511386;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30102-Context-37-2-0
+        /// 咳……我还活着。这条命是你从火里抢回来的。给我一把剑，我会为斯坦恩村而战。
+        /// </summary>
+        public const int LGCommonTextContext3720 = 1784081962;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30103-Context-38-2-0
+        /// 招募加伦
+        /// </summary>
+        public const int LGCommonTextContext3820 = 1691363286;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30104-Context-39-2-0
+        /// 修复医院
+        /// </summary>
+        public const int LGCommonTextContext3920 = 1526948022;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30105-Context-40-2-0
+        /// 火是灭了……可病床、药柜和治疗台都毁了。如果不马上修好医院，这些伤员撑不过今晚....
+        /// 修复费用：{0} 金币
+        /// </summary>
+        public const int LGCommonTextContext4020 = 556728399;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30107-Context-42-2-0
+        /// 交易行 · 宁神花
+        /// </summary>
+        public const int LGCommonTextContext4220 = 1355902083;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30108-Context-43-2-0
+        /// 购买 1 份宁神花：{0} 金币
+        /// 用于在医院生产微效药剂。
+        /// </summary>
+        public const int LGCommonTextContext4320 = 372696163;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30109-Context-44-2-0
+        /// 购买宁神花
+        /// </summary>
+        public const int LGCommonTextContext4420 = 578341175;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30110-Context-45-2-0
+        /// 医院 · 药剂生产
+        /// </summary>
+        public const int LGCommonTextContext4520 = 1830544114;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30111-Context-46-2-0
+        /// 消耗 {0} 份宁神花，生产 {1} 份微效药剂。
+        /// </summary>
+        public const int LGCommonTextContext4620 = 187166646;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30112-Context-47-2-0
+        /// 生产微效药剂
+        /// </summary>
+        public const int LGCommonTextContext4720 = 1864794166;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30113-Context-48-2-0
+        /// 加伦疗伤
+        /// </summary>
+        public const int LGCommonTextContext4820 = 1358161906;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30114-Context-49-2-0
+        /// 加伦正在前往医院。抵达后使用 1 份微效药剂疗伤。
+        /// </summary>
+        public const int LGCommonTextContext4920 = 2104276066;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30115-Context-50-2-0
+        /// 前往医院
+        /// </summary>
+        public const int LGCommonTextContext5020 = 1722245789;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30116-Context-51-2-0
+        /// 金币 {0}　宁神花 {1}　微效药剂 {2}
+        /// </summary>
+        public const int LGCommonTextContext5120 = 1124903249;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30117-Context-52-2-0
+        /// 已招募石盾加伦
+        /// 加伦已加入村庄，接下来修复医院为他疗伤。
+        /// </summary>
+        public const int LGCommonTextContext5220 = 1737902673;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30118-Context-53-2-0
+        /// 加伦生命 {0}%　治疗剩余 {1:0.0} 秒
+        /// </summary>
+        public const int LGCommonTextContext5320 = 352359909;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30119-Context-54-2-0
+        /// 条件不足，请检查金币、材料和前置任务。
+        /// </summary>
+        public const int LGCommonTextContext5420 = 499880637;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30120-Context-55-2-0
+        /// 加伦已完成治疗，任务完成后点击领取。
+        /// </summary>
+        public const int LGCommonTextContext5520 = 1635707390;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30121-Context-56-2-0
+        /// 操作完成 · 点击领取任务奖励
+        /// </summary>
+        public const int LGCommonTextContext5620 = 2068645570;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30122-Context-57-2-0
+        /// 确认获得
+        /// </summary>
+        public const int LGCommonTextContext5720 = 2045506490;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30123-Context-58-2-0
+        /// 后续任务：{0}
+        /// </summary>
+        public const int LGCommonTextContext5820 = 307852366;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30124-Context-59-2-0
+        /// 领取奖励
+        /// </summary>
+        public const int LGCommonTextContext5920 = 1079753566;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30125-Context-60-2-0
+        /// 正在疗伤
+        /// </summary>
+        public const int LGCommonTextContext6020 = 1310097651;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30126-Context-61-2-0
+        /// 前往医院中
+        /// </summary>
+        public const int LGCommonTextContext6120 = 1338134531;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30201-Context-62-2-0
+        /// 医院
+        /// </summary>
+        public const int LGCommonTextContext6220 = 898224172;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-240002-Context-64-2-0
+        /// 金币
+        /// </summary>
+        public const int LGCommonTextContext6420 = 865851244;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-240003-Context-65-2-0
+        /// 英雄们常用的货币
+        /// </summary>
+        public const int LGCommonTextContext6520 = 1333702558;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254002-Context-66-2-0
+        /// 宁神花
+        /// </summary>
+        public const int LGCommonTextContext6620 = 1918913023;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254003-Context-67-2-0
+        /// 常见的草药，可以在简单难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext6720 = 1484770569;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254004-Context-68-2-0
+        /// 银叶草
+        /// </summary>
+        public const int LGCommonTextContext6820 = 800943675;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254005-Context-69-2-0
+        /// 优质的草药，可以在中等难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext6920 = 869966689;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254006-Context-70-2-0
+        /// 皇血草
+        /// </summary>
+        public const int LGCommonTextContext7020 = 704738280;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254007-Context-71-2-0
+        /// 稀有的草药，可以在困难难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext7120 = 945431138;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254008-Context-72-2-0
+        /// 哀伤苔
+        /// </summary>
+        public const int LGCommonTextContext7220 = 36499836;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254009-Context-73-2-0
+        /// 珍贵的草药，可以在噩梦难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext7320 = 1664542146;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254010-Context-74-2-0
+        /// 冰盖草
+        /// </summary>
+        public const int LGCommonTextContext7420 = 1348180185;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254011-Context-75-2-0
+        /// 传说的草药，可以在地狱难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext7520 = 1371904535;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254012-Context-76-2-0
+        /// 曦光草
+        /// </summary>
+        public const int LGCommonTextContext7620 = 546803677;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254202-Context-78-2-0
+        /// 微效药剂
+        /// </summary>
+        public const int LGCommonTextContext7820 = 735181770;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254203-Context-79-2-0
+        /// 恢复英雄生命
+        /// </summary>
+        public const int LGCommonTextContext7920 = 665483044;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254204-Context-80-2-0
+        /// 次级药剂
+        /// </summary>
+        public const int LGCommonTextContext8020 = 1421093603;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254206-Context-82-2-0
+        /// 普通药剂
+        /// </summary>
+        public const int LGCommonTextContext8220 = 1613597983;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254208-Context-84-2-0
+        /// 强效药剂
+        /// </summary>
+        public const int LGCommonTextContext8420 = 1084681227;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254210-Context-86-2-0
+        /// 超强药剂
+        /// </summary>
+        public const int LGCommonTextContext8620 = 1800264990;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254212-Context-88-2-0
+        /// 特效药剂
+        /// </summary>
+        public const int LGCommonTextContext8820 = 859608450;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30203-Context-90-2-0
+        /// 修复
+        /// </summary>
+        public const int LGCommonTextContext9020 = 757645431;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30204-Context-91-2-0
+        /// 进入
+        /// </summary>
+        public const int LGCommonTextContext9120 = 928544323;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30205-Context-92-2-0
+        /// Lv.{0} 医院
+        /// </summary>
+        public const int LGCommonTextContext9220 = 1930984407;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30206-Context-93-2-0
+        /// 收益 +{0}%    耗时 −{1}秒    容量 {2}人
+        /// </summary>
+        public const int LGCommonTextContext9320 = 1116575571;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30207-Context-94-2-0
+        /// 恢复生命 {0}%    使用时间 {1}秒
+        /// 英雄消费价格 {2} 金币
+        /// </summary>
+        public const int LGCommonTextContext9420 = 1686576007;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30208-Context-95-2-0
+        /// 库存 {0}
+        /// </summary>
+        public const int LGCommonTextContext9520 = 634669387;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30209-Context-96-2-0
+        /// 原料 {0} · 点击生产
+        /// </summary>
+        public const int LGCommonTextContext9620 = 1264826663;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30210-Context-97-2-0
+        /// 返回村庄
+        /// </summary>
+        public const int LGCommonTextContext9720 = 1892663962;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30211-Context-98-2-0
+        /// 暂无英雄疗伤
+        /// </summary>
+        public const int LGCommonTextContext9820 = 93904366;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30212-Context-99-2-0
+        /// 加伦  生命 {0}%  治疗剩余 {1:0.0}秒
+        /// </summary>
+        public const int LGCommonTextContext9920 = 307268466;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30213-Context-100-2-0
+        /// 加伦正在前往医院
+        /// </summary>
+        public const int LGCommonTextContext10020 = 1289128564;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30214-Context-101-2-0
+        /// 加伦已恢复生命
+        /// </summary>
+        public const int LGCommonTextContext10120 = 1748747770;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30215-Context-102-2-0
+        /// 宁神花不足，请前往交易行购买
+        /// </summary>
+        public const int LGCommonTextContext10220 = 565098052;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30216-Context-103-2-0
+        /// 金币不足，无法修复医院
+        /// </summary>
+        public const int LGCommonTextContext10320 = 514966334;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30217-Context-104-2-0
+        /// 生产中 {0:0.0}秒
+        /// </summary>
+        public const int LGCommonTextContext10420 = 446695092;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30218-Context-105-2-0
+        /// 下一等级需公会等级 {0}
+        /// </summary>
+        public const int LGCommonTextContext10520 = 642993866;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30219-Context-106-2-0
+        /// 任务：{0}
+        /// </summary>
+        public const int LGCommonTextContext10620 = 239300916;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30220-Context-107-2-0
+        /// 医院收入 {0}
+        /// </summary>
+        public const int LGCommonTextContext10720 = 1058470479;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30221-Context-108-2-0
+        /// 材料
+        /// </summary>
+        public const int LGCommonTextContext10820 = 110218249;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30222-Context-109-2-0
+        /// 药剂
+        /// </summary>
+        public const int LGCommonTextContext10920 = 1565581519;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30223-Context-110-2-0
+        /// 金币 {0}
+        /// </summary>
+        public const int LGCommonTextContext11020 = 1598924330;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30224-Context-111-2-0
+        /// 铁匠
+        /// </summary>
+        public const int LGCommonTextContext11120 = 1267141660;
+        /// <summary>
         /// LG-SceneConfig-Scene-10001-Name-3-2-0
         /// 登录
         /// </summary>
@@ -1566,16 +2056,6 @@ namespace Config
         /// 使用退伍金修复医院
         /// </summary>
         public const int LGTaskDescription41030 = 2112746739;
-        /// <summary>
-        /// LG-TaskConfig-Task-60102-Description-411-3-0
-        /// 购买宁神花
-        /// </summary>
-        public const int LGTaskDescription41130 = 308137609;
-        /// <summary>
-        /// LG-TaskConfig-Task-60103-Description-412-3-0
-        /// 生产微效药剂
-        /// </summary>
-        public const int LGTaskDescription41230 = 2014790479;
         /// <summary>
         /// LG-TaskConfig-Task-60104-Description-413-3-0
         /// 等待加伦疗伤

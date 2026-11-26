@@ -1,0 +1,568 @@
+[
+  {
+    "package": "Consumable",
+    "packageId": "11ubzqaa",
+    "version": 7,
+    "source": "extracted-resources\\assets\\data\\ui\\atlas\\consumable\\consumable_fui.bytes",
+    "sha256": "4ce52d6174ebe09a754fd14cd8fdd4763c3df2b0a0934d61d75a73be61621106",
+    "components": [
+      {
+        "type": 3,
+        "id": "nl42i",
+        "name": "Consumable",
+        "sourcePath": "/Components/",
+        "file": null,
+        "exported": false,
+        "width": 123,
+        "height": 176,
+        "extension": 12,
+        "children": [
+          {
+            "type": 0,
+            "sourceId": "kafbbk34cg",
+            "packageId": "g1d8o2bx",
+            "id": "n30_nl42",
+            "name": "n30",
+            "x": 8,
+            "y": 10,
+            "size": [
+              108,
+              108
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 4,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n31_nl42",
+            "name": "icon",
+            "x": -4,
+            "y": 0,
+            "size": [
+              131,
+              133
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": false
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n32_nl42",
+            "name": "title",
+            "x": 10,
+            "y": 85,
+            "size": [
+              103,
+              34
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 0,
+            "sourceId": "q2mybk3400",
+            "packageId": "g1d8o2bx",
+            "id": "n33_nl42",
+            "name": "n33",
+            "x": 12,
+            "y": 133,
+            "size": [
+              129,
+              37
+            ],
+            "scale": [
+              0.800000011920929,
+              0.800000011920929
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n35_nl42",
+            "name": "price",
+            "x": 36,
+            "y": 131,
+            "size": [
+              76,
+              33
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 0,
+            "sourceId": "iefhbk33w3",
+            "packageId": "p5rgfp2d",
+            "id": "n34_nl42",
+            "name": "n34",
+            "x": 0,
+            "y": 128,
+            "scale": [
+              0.800000011920929,
+              0.800000011920929
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 0,
+            "sourceId": "bwitbk343d",
+            "packageId": "g1d8o2bx",
+            "id": "n36_nl42",
+            "name": "n36",
+            "x": 54,
+            "y": 179,
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "id": "nl42k",
+        "name": "Material",
+        "sourcePath": "/Components/",
+        "file": null,
+        "exported": false,
+        "width": 108,
+        "height": 111,
+        "extension": 12,
+        "children": [
+          {
+            "type": 4,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n46_nl42",
+            "name": "icon",
+            "x": 0,
+            "y": 0,
+            "size": [
+              108,
+              111
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": false
+          },
+          {
+            "type": 0,
+            "sourceId": "z4req",
+            "packageId": null,
+            "id": "n47_nl42",
+            "name": "n47",
+            "x": 23,
+            "y": 71,
+            "size": [
+              62,
+              28
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              false
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "cons_bg_7"
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n48_nl42",
+            "name": "title",
+            "x": 21,
+            "y": 68,
+            "size": [
+              69,
+              33
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              false
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 9,
+            "sourceId": "z4res",
+            "packageId": null,
+            "id": "n50_z4re",
+            "name": "bubble",
+            "x": 0,
+            "y": -65,
+            "size": [
+              108,
+              62
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "BubbleLabel"
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "id": "nl42l",
+        "name": "ShopScene",
+        "sourcePath": "/Components/",
+        "file": null,
+        "exported": false,
+        "width": 720,
+        "height": 590,
+        "extension": 0,
+        "children": [
+          {
+            "type": 3,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n4_nl42",
+            "name": "npcPoint",
+            "x": 360,
+            "y": 420,
+            "size": [
+              0,
+              0
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n3_nl42",
+            "name": "npcName",
+            "x": 311,
+            "y": 191,
+            "size": [
+              92,
+              32
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              false
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 3,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n9_nl42",
+            "name": "heroArea",
+            "x": 83,
+            "y": 440,
+            "size": [
+              554,
+              72
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          }
+        ]
+      }
+    ],
+    "limits": "Base authored properties only. Relations, controller gears, transitions and viewport adaptation are not applied."
+  },
+  {
+    "package": "Common",
+    "packageId": "g1d8o2bx",
+    "version": 7,
+    "source": "extracted-resources\\assets\\data\\ui\\atlas\\common\\common_fui.bytes",
+    "sha256": "0224d5e27c5834aa0f0c72c6d5aeb031e75a800137bfc93734bae16229838202",
+    "components": [
+      {
+        "type": 3,
+        "id": "nl422z",
+        "name": "BuildingPanel",
+        "sourcePath": "/Components/BuildingPanel/",
+        "file": null,
+        "exported": true,
+        "width": 720,
+        "height": 1123,
+        "extension": 0,
+        "children": [
+          {
+            "type": 0,
+            "sourceId": "ws012l",
+            "packageId": null,
+            "id": "n0_kzmr",
+            "name": "n0",
+            "x": 0,
+            "y": 85,
+            "size": [
+              720,
+              65
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "shop_bg_1"
+          },
+          {
+            "type": 0,
+            "sourceId": "f9yhbk3431",
+            "packageId": null,
+            "id": "n43_myuk",
+            "name": "n43",
+            "x": 0,
+            "y": 149,
+            "size": [
+              720,
+              835
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "common_bg_18"
+          },
+          {
+            "type": 0,
+            "sourceId": "f7wjbk342b",
+            "packageId": null,
+            "id": "n44_f7wj",
+            "name": "n44",
+            "x": 0,
+            "y": 150,
+            "size": [
+              720,
+              835
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "goldshop_bg_10"
+          },
+          {
+            "type": 0,
+            "sourceId": "flsg1geiuwc",
+            "packageId": null,
+            "id": "n42_myuk",
+            "name": "n42",
+            "x": 0,
+            "y": 984,
+            "size": [
+              720,
+              139
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "hub_bg_7"
+          },
+          {
+            "type": 0,
+            "sourceId": "ichk1geiuw1",
+            "packageId": null,
+            "id": "n38_ichk",
+            "name": "n38",
+            "x": 0,
+            "y": 89,
+            "size": [
+              296,
+              63
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "common_title_27"
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n39_ichk",
+            "name": "title",
+            "x": 16,
+            "y": 90,
+            "size": [
+              188,
+              49
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 9,
+            "sourceId": "ws012n",
+            "packageId": null,
+            "id": "n8_kzmr",
+            "name": "goldLabel",
+            "x": 403,
+            "y": 94,
+            "size": [
+              142,
+              48
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "GoldLabel"
+          },
+          {
+            "type": 9,
+            "sourceId": "ws012p",
+            "packageId": null,
+            "id": "n11_kzmr",
+            "name": "upgradeBtn",
+            "x": 555,
+            "y": 77,
+            "size": [
+              159,
+              83
+            ],
+            "scale": [
+              0.800000011920929,
+              0.800000011920929
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "UpgradeButton"
+          },
+          {
+            "type": 6,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n34_kzmr",
+            "name": "conditionTxt",
+            "x": 309,
+            "y": 102,
+            "size": [
+              278,
+              32
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true
+          },
+          {
+            "type": 9,
+            "sourceId": "ws012r",
+            "packageId": null,
+            "id": "n36_kzmr",
+            "name": "goBtn",
+            "x": 605,
+            "y": 89,
+            "size": [
+              90,
+              56
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "GoButton"
+          },
+          {
+            "type": 9,
+            "sourceId": "kjuqbk33x2",
+            "packageId": null,
+            "id": "n28_kzmr",
+            "name": "backBtn",
+            "x": 1,
+            "y": 1003,
+            "size": [
+              116,
+              96
+            ],
+            "scale": [
+              0.75,
+              0.75
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "BackButton"
+          },
+          {
+            "type": 3,
+            "sourceId": null,
+            "packageId": null,
+            "id": "n37_gbgy",
+            "name": "upgradeEffect",
+            "x": 0,
+            "y": 111,
+            "size": [
+              0,
+              0
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": false
+          },
+          {
+            "type": 9,
+            "sourceId": "ichk1geiuw4",
+            "packageId": null,
+            "id": "n40_ichk",
+            "name": "taskCom",
+            "x": 22,
+            "y": 0,
+            "size": [
+              367,
+              70
+            ],
+            "alpha": 1.0,
+            "rotation": 0.0,
+            "visible": true,
+            "touchable": true,
+            "sourceName": "TaskCom"
+          }
+        ]
+      }
+    ],
+    "limits": "Base authored properties only. Relations, controller gears, transitions and viewport adaptation are not applied."
+  }
+]

@@ -1,6 +1,6 @@
 # 任务配置转换与导表
 
-2026-11-26。仅建立产品配置源表、生成类和数据，不实现 TaskSystem、TaskCollectionEntity、TaskEntity 或 ITaskAction。
+2026-11-26。本文维护配置转换契约。TaskSystem首版实现与边界见 [TaskSystem开发记录](../task-system/README.md)。
 
 ## 源表与输出
 
@@ -12,6 +12,7 @@
 |TaskChapter|114|tbchaptertask|TaskChapterConfig.cs / TaskChapterConfig.bytes|
 |TaskUnlock|6|tbtaskunlock|TaskUnlockConfig.cs / TaskUnlockConfig.bytes|
 |TaskGuide|1594|tbguidetask|TaskGuideConfig.cs / TaskGuideConfig.bytes|
+|TaskSetting|1|本地产品初始章节设置|TaskSettingConfig.cs / TaskSettingConfig.bytes|
 
 客户端生成类在 `client/Assets/Scripts/Config/client`；数据在 `client/Assets/Data/Jsons/Excels`；语言沿用现有 LanguageConfig。表由生成的 Excel 静态字段和 GamePlugin 原有反射配置读取机制识别，不新增配置加载器。
 
@@ -100,7 +101,7 @@ manifest.json记录注册契约及原数据哈希。ExpressionValidation直接�
 
 已验证1594条件、1594动作、1523参数，缓存合计321条（1条条件与320条动作）；4类动作错误及5类条件错误样例均被拒绝。动态条件测试中hp=80不执行、hp=150执行，编译计数不增加。详情见 expression-validation.json。参数校验会通过无副作用测试回调检查所有动作，即使条件false也检查动作配置；真实执行的条件门控单独用测试验证。这里不表示Navigate/OpenUI等业务适配已经实现。
 
-本次通过UnityCLI asset delete删除旧TaskGuideParamConfig.cs与.bytes及其meta；今后导表不再生成或复制这些文件。输入Excel只剩Task、TaskChapter、TaskUnlock、TaskGuide四张表。
+本次通过UnityCLI asset delete删除旧TaskGuideParamConfig.cs与.bytes及其meta；今后导表不再生成或复制这些文件。输入Excel包含Task、TaskChapter、TaskUnlock、TaskGuide和新增产品TaskSetting五张表。
 
 ## 本地导表工具的必要修正
 
@@ -117,7 +118,7 @@ manifest.json记录注册契约及原数据哈希。ExpressionValidation直接�
 - 生成枚举值无重复，ShowTips和NeedSave与源值逐条一致；仅废止参数表的提示语言键迁入公共文本，其余旧语言条目未变化。
 - UnityCLI compile --wait结束，错误日志0；Unity自动生成新增资产meta。
 - GameCLI代码与架构检查通过。生成配置目录被代码风格检查排除；其正确性依据导表、逐字段核对和Unity编译，不能用风格检查代替。
-- 未执行任务系统运行或战斗验收，本轮尚无此类业务实现。
+- 配置原始验收不等于玩法验收。TaskSystem本轮运行检查另见开发记录，战斗与场景任务尚未接入。
 
 原始数据存在5处未解析内部引用，原样保留：任务10003的GuideID=3000001；任务10008、10014、10020的GuideID=4000001；引导1028007的NextID=1028008。它们不在已核实的第一章任务导航链中。详见 validation.json；后续派发涉及这些行时必须明确解决，不能静默换成别的目标。
 

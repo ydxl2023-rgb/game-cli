@@ -9,6 +9,38 @@ const temporary = path.join(root, 'client/Library/TaskConfigAuthor');
 const require = createRequire(path.join(temporary, 'author.cjs'));
 const {Workbook, SpreadsheetFile, FileBlob} = await import(pathToFileURL(require.resolve('@oai/artifact-tool')));
 
+if (process.argv.includes('--install-task-system')) {
+    const functionPath = path.join(root, 'config/propFunctionSystem.xlsx');
+    const functions = await SpreadsheetFile.importXlsx(await FileBlob.load(functionPath));
+    const functionSheet = functions.worksheets.getItem('FunctionSystem');
+    const rows = functionSheet.getRange('A1:E30').values;
+    let row = rows.findIndex(values => values[2] === 'TaskSystem');
+    if (row < 0) row = rows.findIndex((values, index) => index >= 3 && !values[0]);
+    if (row < 3) throw new Error('No function row available');
+    functionSheet.getRange(`A${row + 1}:E${row + 1}`).values = [[10004, 10004, 'TaskSystem', 0, 1]];
+    await (await SpreadsheetFile.exportXlsx(functions)).save(functionPath);
+    const file = path.join(root, 'config/propTask.xlsx');
+    const current = await SpreadsheetFile.importXlsx(await FileBlob.load(file));
+    let setting;
+    try { setting = current.worksheets.getItem('TaskSetting'); } catch {}
+    if (!setting) {
+        setting = current.worksheets.add('TaskSetting');
+        setting.getRange('A1:B4').values = [
+            ['ID', 'InitialChapterID'], ['ID', 'InitialChapterID'], ['int', 'int'], [1, 1]
+        ];
+        setting.getRange('A:B').format.columnWidth = 25;
+        setting.getRange('A1:B3').format.fill = '#DCE6F1';
+    }
+    await (await SpreadsheetFile.exportXlsx(current)).save(file);
+    const manifestPath = path.join(root, 'tools/task-config/manifest.json');
+    const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
+    if (!manifest.sheets.some(sheet => sheet.name === 'TaskSetting'))
+        manifest.sheets.push({name:'TaskSetting', columns:[['ID','int'],['InitialChapterID','int']],rows:1});
+    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+    console.log('Installed TaskSystem configuration and explicit initial chapter setting.');
+    process.exit(0);
+}
+
 const navigationTargets = {};
 const commandName = name => ({Navigation: 'Navigate', Conversation: 'ShowDialogue'}[name] ?? name);
 function callExpression(name, args) {
@@ -189,6 +221,7 @@ function expression(row) {
     });
     return callExpression(row.Action, argumentsText.map(value => JSON.parse(value)));
 }
+add('TaskSetting', fields('ID InitialChapterID', ['int','int']), [[1, 1]]);
 const guideSheet = add('TaskGuide', fields('ID NumID GroupID TaskGuideType SourceGuideType NeedSave ConditionExpression ActionExpression NextID FailureNextID',
     ['int','int','int','enum','int','bool','string','string','int','int']),
     sources.tbguidetask.map(row => [row.ID, row.ID, row.GroupID, row.GuideType.name,

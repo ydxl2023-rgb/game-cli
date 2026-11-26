@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIHomeHospitalEntry",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIHomeHospitalEntry",
+      "name": "UIHomeHospitalEntry",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "EntryVisible",
+          "name": "EntryVisible",
+          "element": "Container",
+          "rect": {
+            "x": 410,
+            "y": 700,
+            "width": 260,
+            "height": 180
+          },
+          "children": [
+            {
+              "id": "RepairVisible",
+              "name": "RepairVisible",
+              "element": "Container",
+              "rect": {
+                "x": 410,
+                "y": 700,
+                "width": 260,
+                "height": 180
+              },
+              "children": [
+                {
+                  "id": "RepairClick",
+                  "name": "RepairClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 410,
+                    "y": 700,
+                    "width": 260,
+                    "height": 180
+                  },
+                  "children": [
+                    {
+                      "id": "RepairLabel",
+                      "name": "RepairLabel",
+                      "element": "Text",
+                      "rect": {
+                        "x": 440,
+                        "y": 707,
+                        "width": 200,
+                        "height": 65
+                      },
+                      "children": [],
+                      "text": {
+                        "content": "修复",
+                        "fontSize": 38,
+                        "alignment": "center",
+                        "color": "#392B20"
+                      }
+                    },
+                    {
+                      "id": "Currency",
+                      "name": "Currency",
+                      "element": "Image",
+                      "rect": {
+                        "x": 450,
+                        "y": 780,
+                        "width": 60,
+                        "height": 60
+                      },
+                      "children": []
+                    },
+                    {
+                      "id": "Cost",
+                      "name": "Cost",
+                      "element": "Text",
+                      "rect": {
+                        "x": 515,
+                        "y": 780,
+                        "width": 105,
+                        "height": 60
+                      },
+                      "children": [],
+                      "text": {
+                        "content": "",
+                        "fontSize": 34,
+                        "alignment": "center",
+                        "color": "#392B20"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "BuiltVisible",
+              "name": "BuiltVisible",
+              "element": "Container",
+              "rect": {
+                "x": 492,
+                "y": 688,
+                "width": 96,
+                "height": 102
+              },
+              "children": [
+                {
+                  "id": "EnterClick",
+                  "name": "EnterClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 492,
+                    "y": 688,
+                    "width": 96,
+                    "height": 102
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "Feedback",
+              "name": "Feedback",
+              "element": "Text",
+              "rect": {
+                "x": 240,
+                "y": 900,
+                "width": 600,
+                "height": 100
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#392B20"
+              }
+            }
+          ]
+        },
+        {
+          "id": "Coin",
+          "name": "Coin",
+          "element": "Image",
+          "rect": {
+            "x": 500,
+            "y": 900,
+            "width": 65,
+            "height": 65
+          },
+          "children": []
+        },
+        {
+          "id": "BuildingName",
+          "name": "BuildingName",
+          "element": "Text",
+          "rect": {
+            "x": 455,
+            "y": 835,
+            "width": 170,
+            "height": 38
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 26,
+            "alignment": "center",
+            "color": "#392B20"
+          }
+        },
+        {
+          "id": "ForgeTitle",
+          "name": "ForgeTitle",
+          "element": "Text",
+          "rect": {
+            "x": 455,
+            "y": 835,
+            "width": 170,
+            "height": 38
+          },
+          "children": [],
+          "text": {
+            "content": "铁匠",
+            "fontSize": 26,
+            "alignment": "center",
+            "color": "#392B20"
+          }
+        },
+        {
+          "id": "HotelTitle",
+          "name": "HotelTitle",
+          "element": "Text",
+          "rect": {
+            "x": 455,
+            "y": 835,
+            "width": 170,
+            "height": 38
+          },
+          "children": [],
+          "text": {
+            "content": "旅店老板",
+            "fontSize": 26,
+            "alignment": "center",
+            "color": "#392B20"
+          }
+        },
+        {
+          "id": "AuctionTitle",
+          "name": "AuctionTitle",
+          "element": "Text",
+          "rect": {
+            "x": 455,
+            "y": 835,
+            "width": 170,
+            "height": 38
+          },
+          "children": [],
+          "text": {
+            "content": "商人",
+            "fontSize": 26,
+            "alignment": "center",
+            "color": "#392B20"
+          }
+        },
+        {
+          "id": "MerchantEntry",
+          "name": "MerchantEntry",
+          "element": "Container",
+          "rect": {
+            "x": 492,
+            "y": 688,
+            "width": 96,
+            "height": 102
+          },
+          "children": [
+            {
+              "id": "MerchantClick",
+              "name": "MerchantClick",
+              "element": "Button",
+              "rect": {
+                "x": 492,
+                "y": 688,
+                "width": 96,
+                "height": 102
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "ForgeEntry",
+          "name": "ForgeEntry",
+          "element": "Container",
+          "rect": {
+            "x": 492,
+            "y": 688,
+            "width": 96,
+            "height": 102
+          },
+          "children": [
+            {
+              "id": "ForgeClick",
+              "name": "ForgeClick",
+              "element": "Button",
+              "rect": {
+                "x": 492,
+                "y": 688,
+                "width": 96,
+                "height": 102
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "HotelEntry",
+          "name": "HotelEntry",
+          "element": "Container",
+          "rect": {
+            "x": 492,
+            "y": 688,
+            "width": 96,
+            "height": 102
+          },
+          "children": [
+            {
+              "id": "HotelClick",
+              "name": "HotelClick",
+              "element": "Button",
+              "rect": {
+                "x": 492,
+                "y": 688,
+                "width": 96,
+                "height": 102
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+[
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset database refreshed",
+      "data": {
+        "action": "refresh",
+        "srcPath": "",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 0,
+        "returnedCount": 0,
+        "respondedAtUtc": "2026-11-26T06:06:41.4513245Z",
+        "assets": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "asset",
+      "refresh"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "script compilation requested",
+      "data": {
+        "waited": true,
+        "isCompiling": false,
+        "respondedAtUtc": "2026-11-26T06:06:47.4584388Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "compile",
+      "--wait"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "validated",
+      "message": "ugui dry-run passed",
+      "data": {
+        "uiName": "UIHomeOpening",
+        "jsonFile": "../tools/opening/ui.json",
+        "assetManifestPath": "../tools/opening/materials.json",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Common/Icons",
+        "dryRun": true,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 32,
+        "assetsCopied": 0,
+        "spritesReferenced": 0,
+        "issues": [],
+        "message": "ugui dry-run passed",
+        "respondedAtUtc": "2026-11-26T06:06:48.2458189Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "ugui",
+      "UIHomeOpening",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\opening/ui.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\opening/materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+      "--dry-run",
+      "--no-scene-replace"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "Created prefab Assets/Data/Widgets/Home/UIHomeOpening.prefab from ../tools/opening/ui.json (32 node(s), 4 asset(s)).",
+      "data": {
+        "uiName": "UIHomeOpening",
+        "jsonFile": "../tools/opening/ui.json",
+        "assetManifestPath": "../tools/opening/materials.json",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Common/Icons",
+        "dryRun": false,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 32,
+        "assetsCopied": 4,
+        "spritesReferenced": 19,
+        "issues": [],
+        "message": "Created prefab Assets/Data/Widgets/Home/UIHomeOpening.prefab from ../tools/opening/ui.json (32 node(s), 4 asset(s)).",
+        "respondedAtUtc": "2026-11-26T06:06:48.843421Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "ugui",
+      "UIHomeOpening",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\opening/ui.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\opening/materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+      "--no-scene-replace"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+        "instanceId": 1003948,
+        "objectPath": "UIHomeOpening",
+        "requestedComponent": "UIHomeOpening",
+        "resolvedComponent": "UIHomeOpening",
+        "componentInstanceId": -773094,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-26T06:06:49.0031972Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+      "--path",
+      "UIHomeOpening",
+      "--component",
+      "UIHomeOpening"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIHomeOpening",
+        "vmName": "VMHomeOpening",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 27,
+        "boundTargetCount": 27,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "widget-metadata",
+      "UIHomeOpening",
+      "--vm",
+      "VMHomeOpening",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+      "--dry-run"
+    ]
+  },
+  {
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIHomeOpening",
+        "vmName": "VMHomeOpening",
+        "prefabPath": "Assets/Data/Widgets/Home/UIHomeOpening.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 27,
+        "boundTargetCount": 27,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    },
+    "arguments": [
+      "widget-metadata",
+      "UIHomeOpening",
+      "--vm",
+      "VMHomeOpening",
+      "--prefab",
+      "Assets/Data/Widgets/Home/UIHomeOpening.prefab"
+    ]
+  }
+]

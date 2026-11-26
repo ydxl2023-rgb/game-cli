@@ -1,0 +1,843 @@
+[
+  {
+    "arguments": [
+      "asset",
+      "refresh"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "asset database refreshed",
+      "data": {
+        "action": "refresh",
+        "srcPath": "",
+        "dstPath": "",
+        "filter": "",
+        "totalMatched": 0,
+        "returnedCount": 0,
+        "respondedAtUtc": "2026-11-26T06:14:58.0387561Z",
+        "assets": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "compile",
+      "--wait"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "script compilation requested",
+      "data": {
+        "waited": true,
+        "isCompiling": false,
+        "respondedAtUtc": "2026-11-26T06:15:04.0995518Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "run",
+      "play"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "play",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": true,
+        "respondedAtUtc": "2026-11-26T06:15:04.6103151Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowHomeProbe",
+      "--invoke-member",
+      "SetResolution",
+      "--args-json",
+      "[1080,1920]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowHomeProbe",
+        "invokeMember": "SetResolution",
+        "resolvedMember": "SetResolution",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:08.0449034Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "UnityEngine.SceneManagement.SceneManager",
+      "--invoke-member",
+      "LoadScene",
+      "--args-json",
+      "[\"App\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "UnityEngine.SceneManagement.SceneManager",
+        "invokeMember": "LoadScene",
+        "resolvedMember": "LoadScene",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:08.2245482Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "ResetLocalSave",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "ResetLocalSave",
+        "resolvedMember": "ResetLocalSave",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:10.5207002Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:10.712279Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Movie\",\"water\":0,\"task\":60001,\"first\":\"Active\",\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":2.9583333333333335,\"playing\":true,\"prepared\":true,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":true,\"musicClip\":\"start_game\",\"fire\":1,\"buttons\":[\"SkipClick\"]}",
+        "respondedAtUtc": "2026-11-26T06:15:14.0361348Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "Return",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "Return",
+        "resolvedMember": "Return",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:14.1986097Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "CleanupSnapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "CleanupSnapshot",
+        "resolvedMember": "CleanupSnapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"movies\":0,\"overlays\":0,\"scenes\":0,\"runtimes\":0,\"textures\":0}",
+        "respondedAtUtc": "2026-11-26T06:15:15.3595862Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:15.5268083Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Movie\",\"water\":0,\"task\":60001,\"first\":\"Active\",\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":2.1666666666666665,\"playing\":true,\"prepared\":true,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":true,\"musicClip\":\"start_game\",\"fire\":1,\"buttons\":[\"SkipClick\"]}",
+        "respondedAtUtc": "2026-11-26T06:15:17.8310626Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"SkipClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:18.0015292Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ConfirmClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:18.1655059Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:18.3275211Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "WalkToWater",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "WalkToWater",
+        "resolvedMember": "WalkToWater",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:18.497507Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"CarryWater\",\"water\":10,\"task\":60001,\"first\":\"Active\",\"position\":[-20.618412,35.1613922,14.3921642],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":1,\"buttons\":[\"RescueClick\"]}",
+        "respondedAtUtc": "2026-11-26T06:15:20.8373201Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"RescueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:21.0087894Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "Return",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "Return",
+        "resolvedMember": "Return",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:21.1723353Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "CleanupSnapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "CleanupSnapshot",
+        "resolvedMember": "CleanupSnapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"movies\":0,\"overlays\":0,\"scenes\":0,\"runtimes\":0,\"textures\":0}",
+        "respondedAtUtc": "2026-11-26T06:15:22.3459907Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowTaskProbe",
+      "--invoke-member",
+      "EnterGame",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowTaskProbe",
+        "invokeMember": "EnterGame",
+        "resolvedMember": "EnterGame",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:22.5048858Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"CarryWater\",\"water\":10,\"task\":60001,\"first\":\"Active\",\"position\":[-23.90721,35.1613922,14.11279],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":1,\"buttons\":[\"RescueClick\"]}",
+        "respondedAtUtc": "2026-11-26T06:15:24.8093384Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"RescueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:24.9820925Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"Thanks\",\"water\":0,\"task\":60001,\"first\":\"Completed\",\"position\":[-10.4185228,35.1613922,9.531126],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":0,\"buttons\":[\"ContinueClick\"]}",
+        "respondedAtUtc": "2026-11-26T06:15:30.2968657Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Capture",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Capture",
+        "resolvedMember": "Capture",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:30.4588185Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ContinueClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:30.6121543Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Click",
+      "--args-json",
+      "[\"ClaimClick\"]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Click",
+        "resolvedMember": "Click",
+        "returnIsVoid": true,
+        "returnType": "System.Void",
+        "returnSummary": "",
+        "respondedAtUtc": "2026-11-26T06:15:30.7617729Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "call",
+      "--invoke-type",
+      "MiniwowOpeningProbe",
+      "--invoke-member",
+      "Snapshot",
+      "--args-json",
+      "[]"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "reflection call completed",
+      "data": {
+        "invokeType": "MiniwowOpeningProbe",
+        "invokeMember": "Snapshot",
+        "resolvedMember": "Snapshot",
+        "returnIsVoid": false,
+        "returnType": "System.String",
+        "returnSummary": "{\"phase\":\"NextTask\",\"water\":0,\"task\":60002,\"first\":\"Claimed\",\"position\":[-10.4185228,35.1613922,9.531126],\"videoTime\":0.0,\"playing\":false,\"prepared\":false,\"videoLength\":29.75,\"audioTracks\":0,\"musicPlaying\":false,\"musicClip\":\"start_game\",\"fire\":0,\"buttons\":[]}",
+        "respondedAtUtc": "2026-11-26T06:15:30.9412305Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "console",
+      "--type",
+      "error",
+      "--count",
+      "100"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "console logs",
+      "data": {
+        "totalCount": 0,
+        "totalEntries": 0,
+        "returnedCount": 0,
+        "type": "error",
+        "search": "",
+        "respondedAtUtc": "2026-11-26T06:15:31.0975617Z",
+        "entries": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "run",
+      "stop"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "editor run state changed",
+      "data": {
+        "action": "stop",
+        "isPlaying": true,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "respondedAtUtc": "2026-11-26T06:15:31.2506423Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]
