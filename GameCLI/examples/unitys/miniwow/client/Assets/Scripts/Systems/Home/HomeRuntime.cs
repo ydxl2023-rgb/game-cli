@@ -14,6 +14,9 @@ public sealed class HomeRuntime : GameRuntime
     /// <summary>Scene execution for persistent hero recovery.</summary>
     private HomeVillageRuntime village;
 
+    /// <summary>Original recruitment actor movement within the owned scene.</summary>
+    private HomeRecruitRuntime recruitment;
+
     /// <summary>Serializes ownership transfer between old and newly loaded module instances.</summary>
     private static bool sceneOperationInProgress;
 
@@ -136,6 +139,25 @@ public sealed class HomeRuntime : GameRuntime
         widget.BindScene(context);
     }
 
+    /// <summary>Supplies authored recruitment projection to the Home-owned widget.</summary>
+    /// <param name="widget">Initialized world interaction overlay.</param>
+    public void BindRecruitEntry(UIHomeRecruitEntry widget)
+    {
+        widget.BindScene(context.GetRecruitment());
+    }
+
+    /// <summary>Releases only the route owned by an external presentation.</summary>
+    /// <param name="action">Exact navigation owner.</param>
+    public void CancelResidentNavigation(TaskPresentationAction action)
+    {
+        if (!village.CancelNavigation(action))
+            return;
+
+        var home = GetHomeEntity();
+        var player = home.FindActor(context.GetPlayerId());
+        player.SetMoveInput(Vector3.zero);
+    }
+
     /// <summary>Starts the requested auction interaction.</summary>
     public void Rescue()
     {
@@ -171,6 +193,7 @@ public sealed class HomeRuntime : GameRuntime
     {
         opening = new HomeOpeningRuntime(context);
         village = new HomeVillageRuntime(context);
+        recruitment = new HomeRecruitRuntime(context.GetRecruitment());
         Debug.Log("MINIWOW_TOWN_READY");
     }
 
@@ -180,6 +203,7 @@ public sealed class HomeRuntime : GameRuntime
     {
         opening.Tick(deltaTime);
         village.Tick(deltaTime);
+        recruitment.Tick();
     }
 
     /// <summary>Stops gestures immediately before asynchronous scene release.</summary>

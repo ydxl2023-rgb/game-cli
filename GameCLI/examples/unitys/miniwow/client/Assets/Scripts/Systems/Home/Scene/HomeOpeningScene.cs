@@ -163,6 +163,7 @@ public sealed class HomeOpeningScene : MonoBehaviour
         }
 
         garen.gameObject.SetActive(opening.phase == HomeOpeningPhase.AwaitRecruit
-            && village.recovery != HeroRecoveryPhase.Healing && !village.dining);
+            && village.recovery != HeroRecoveryPhase.Healing && !village.dining
+            && village.exploration != ExplorePhase.Traveling && village.exploration != ExplorePhase.Executing);
     }
 }

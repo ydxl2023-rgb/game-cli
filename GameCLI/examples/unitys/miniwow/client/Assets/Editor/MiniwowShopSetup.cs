@@ -158,12 +158,15 @@ public static class MiniwowShopSetup
         {
             ConfigureGraphics(root);
             var nodes = root.GetComponentsInChildren<Transform>(true).ToDictionary(item => item.name);
-            var gold = nodes["Gold"].GetComponent<Text>();
-            gold.color = new Color32(247, 231, 196, 255);
-            gold.rectTransform.anchorMin = new Vector2(0f, 1f);
-            gold.rectTransform.anchorMax = gold.rectTransform.anchorMin;
-            gold.rectTransform.anchoredPosition = new Vector2(300f, -85f);
-            nodes["Title"].GetComponent<Text>().color = new Color32(247, 231, 196, 255);
+            nodes["Gold"].gameObject.SetActive(false);
+            nodes["TierVisible"].gameObject.SetActive(false);
+            nodes["MarketPanel"].GetComponent<Image>().pixelsPerUnitMultiplier = 0.85f;
+            nodes["Title"].GetComponent<Text>().color = new Color32(255, 220, 0, 255);
+            nodes["Title"].GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+            nodes["NpcTitle"].GetComponent<Text>().color = new Color32(65, 179, 53, 255);
+            foreach (string name in new[] { "MaterialClick", "EquipmentClick" })
+                nodes[name].GetComponent<Image>().color = Color.clear;
+
             var viewport = (RectTransform)nodes["Viewport"];
             var content = (RectTransform)nodes["Content"];
             var scroll = nodes["Offers"].GetComponent<ScrollRect>();
@@ -183,11 +186,11 @@ public static class MiniwowShopSetup
 
             hit.color = Color.clear;
             hit.raycastTarget = true;
-            var layout = content.GetComponent<VerticalLayoutGroup>();
+            var layout = content.GetComponent<HorizontalLayoutGroup>();
             if (!layout)
-                layout = content.gameObject.AddComponent<VerticalLayoutGroup>();
+                layout = content.gameObject.AddComponent<HorizontalLayoutGroup>();
 
-            layout.spacing = 12f;
+            layout.spacing = 10f;
             layout.childControlHeight = false;
             layout.childControlWidth = false;
             layout.childForceExpandHeight = false;
@@ -196,7 +199,7 @@ public static class MiniwowShopSetup
             content.anchorMax = new Vector2(1f, 1f);
             content.pivot = new Vector2(0.5f, 1f);
             content.anchoredPosition = Vector2.zero;
-            content.sizeDelta = new Vector2(0f, 710f);
+            content.sizeDelta = new Vector2(0f, 650f);
             var fitter = content.GetComponent<ContentSizeFitter>();
             if (!fitter)
                 fitter = content.gameObject.AddComponent<ContentSizeFitter>();
@@ -214,6 +217,7 @@ public static class MiniwowShopSetup
                 nodes["Room"].gameObject.AddComponent<RectMask2D>();
 
             AddInterior(nodes["RoomSpine"], skeleton);
+            AddPlayer(nodes["Player"]);
             PrefabUtility.SaveAsPrefabAsset(root, path);
         }
         finally
@@ -233,11 +237,13 @@ public static class MiniwowShopSetup
             ConfigureGraphics(root);
             if (!modal)
             {
+                var owned = root.GetComponentsInChildren<Text>(true).Single(item => item.name == "Owned");
+                owned.gameObject.SetActive(false);
                 var rect = (RectTransform)root.transform;
                 rect.anchorMin = new Vector2(0f, 1f);
                 rect.anchorMax = rect.anchorMin;
                 rect.pivot = new Vector2(0.5f, 0.5f);
-                rect.sizeDelta = new Vector2(1020f, 220f);
+                rect.sizeDelta = new Vector2(260f, 650f);
                 rect.localScale = Vector3.one;
             }
 
@@ -260,6 +266,7 @@ public static class MiniwowShopSetup
     private static void ImportBorders()
     {
         var rows = JArray.Parse(File.ReadAllText("../tools/hospital-ui/slice-borders.json"));
+        rows.Merge(JArray.Parse(File.ReadAllText(toolsPath + "slice-borders.json")));
         foreach (JObject row in rows)
         {
             string path = "Assets/Data/Widgets/Shop/Images/" + (string)row["name"] + ".png";
@@ -278,6 +285,15 @@ public static class MiniwowShopSetup
     /// <param name="root">The current prefab root.</param>
     private static void ConfigureGraphics(GameObject root)
     {
+        var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/Data/Widgets/Common/Fonts/hanyijingkai.ttf");
+        Color textColor = root.GetComponent<UIShopPurchase>()
+            ? new Color32(62, 44, 30, 255) : new Color32(247, 231, 196, 255);
+        foreach (var text in root.GetComponentsInChildren<Text>(true))
+        {
+            text.font = font;
+            text.color = textColor;
+        }
+
         foreach (var graphic in root.GetComponentsInChildren<Graphic>(true))
             graphic.raycastTarget = graphic.GetComponent<Button>() || graphic.name == "Background";
 
@@ -311,13 +327,42 @@ public static class MiniwowShopSetup
         graphic.Initialize(true);
         float[] vertices = null;
         graphic.Skeleton.GetBounds(out float x, out float y, out float width, out float height, ref vertices);
-        float scale = 1080f / (width * 100f);
+        float scale = Mathf.Max(1080f / (width * 100f), 730f / (height * 100f));
         node.localScale = Vector3.one * scale;
         var rect = (RectTransform)node;
         rect.anchorMin = new Vector2(0f, 1f);
         rect.anchorMax = rect.anchorMin;
         rect.anchoredPosition = new Vector2(540f - (x + width * 0.5f) * scale * 100f,
             -(y + height) * scale * 100f);
+    }
+
+    /// <summary>Restores the original playable character inside the trading room.</summary>
+    /// <param name="node">Formally generated character mount.</param>
+    private static void AddPlayer(Transform node)
+    {
+        var data = AssetDatabase.LoadAssetAtPath<SkeletonDataAsset>(
+            "Assets/Data/Scenes/Town/Spine/role_01/Skeleton.asset");
+        var graphic = node.GetComponent<SkeletonGraphic>();
+        if (!graphic)
+            graphic = node.gameObject.AddComponent<SkeletonGraphic>();
+
+        graphic.skeletonDataAsset = data;
+        graphic.material = AssetDatabase.LoadAssetAtPath<Material>(spinePath + "Interior.mat");
+        graphic.startingAnimation = ActorAnimationNames.idle;
+        graphic.startingLoop = true;
+        graphic.allowMultipleCanvasRenderers = true;
+        graphic.raycastTarget = false;
+        graphic.Initialize(true);
+        graphic.Update(0f);
+        float[] vertices = null;
+        graphic.Skeleton.GetBounds(out float x, out float y, out float width, out float height, ref vertices);
+        float scale = 210f / (height * 100f);
+        node.localScale = Vector3.one * scale;
+        var rect = (RectTransform)node;
+        rect.anchorMin = new Vector2(0f, 1f);
+        rect.anchorMax = rect.anchorMin;
+        rect.anchoredPosition = new Vector2(400f - (x + width * 0.5f) * scale * 100f,
+            -590f - y * scale * 100f);
     }
 
     /// <summary>Imports the original skeleton, atlas and texture as persistent Unity assets.</summary>

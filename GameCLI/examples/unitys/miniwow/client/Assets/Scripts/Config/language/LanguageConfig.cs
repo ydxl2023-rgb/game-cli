@@ -1322,6 +1322,146 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext29320 = 1100901897;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-30324-Context-294-2-0
+        /// 1级交易行
+        /// </summary>
+        public const int LGCommonTextContext29420 = 399152721;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30325-Context-295-2-0
+        /// 待售材料
+        /// </summary>
+        public const int LGCommonTextContext29520 = 824326677;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30326-Context-296-2-0
+        /// 材料拍卖
+        /// </summary>
+        public const int LGCommonTextContext29620 = 801182233;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30327-Context-297-2-0
+        /// 装备拍卖
+        /// </summary>
+        public const int LGCommonTextContext29720 = 68317317;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30328-Context-298-2-0
+        /// 交易日报尚未接入
+        /// </summary>
+        public const int LGCommonTextContext29820 = 17176753;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30329-Context-299-2-0
+        /// 10级
+        /// </summary>
+        public const int LGCommonTextContext29920 = 1870481997;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16056002-Context-300-2-0
+        /// 兄弟雷恩
+        /// </summary>
+        public const int LGCommonTextContext30020 = 1924668279;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16056003-Context-301-2-0
+        /// 我这副样子，暂时上不了前线了。但我们还没输。
+        /// </summary>
+        public const int LGCommonTextContext30120 = 2037062223;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16056005-Context-303-2-0
+        /// 拿着狮鹫哨去找管理员。附近的骑士听到急召，会知道斯坦恩村还没倒下。
+        /// </summary>
+        public const int LGCommonTextContext30320 = 1012756191;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16058002-Context-304-2-0
+        /// 狮鹫管理员
+        /// </summary>
+        public const int LGCommonTextContext30420 = 1607958897;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16058003-Context-305-2-0
+        ///  这是骑士团的旧式狮鹫哨。还能响，但上面的传令纹已经裂了，急召不了几次。
+        /// </summary>
+        public const int LGCommonTextContext30520 = 2031576769;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16060002-Context-306-2-0
+        /// 快枪托比（猎人）
+        /// </summary>
+        public const int LGCommonTextContext30620 = 2054962714;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16060003-Context-307-2-0
+        /// 急召我收到了。霍尔山的兽群，我追了它们一路。给我一条山道，我就能把路打通。
+        /// </summary>
+        public const int LGCommonTextContext30720 = 1517503202;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16062002-Context-308-2-0
+        /// 影刃凯（盗贼）
+        /// </summary>
+        public const int LGCommonTextContext30820 = 1797225798;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-16062003-Context-309-2-0
+        /// 这哨声真刺耳……不过，我听见了。说吧，谁需要从黑暗里消失？
+        /// </summary>
+        public const int LGCommonTextContext30920 = 1515445974;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308001-Context-312-2-0
+        /// 霍尔山
+        /// </summary>
+        public const int LGCommonTextContext31220 = 1378688148;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308002-Context-313-2-0
+        /// 1.山脚
+        /// </summary>
+        public const int LGCommonTextContext31320 = 1897929878;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308003-Context-314-2-0
+        /// 霍尔山截断了这片平原的去路，进出只有一条残破旧道，断桥与废弃哨站散落沿途。草场上跑着野猪与草原狼，山腰以上是豺狼人的地盘。斯坦恩村是本区仅存的人类聚落。
+        /// </summary>
+        public const int LGCommonTextContext31420 = 491374520;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308004-Context-315-2-0
+        /// 集结
+        /// </summary>
+        public const int LGCommonTextContext31520 = 1684979190;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308005-Context-316-2-0
+        /// 首战入口已解锁
+        /// </summary>
+        public const int LGCommonTextContext31620 = 1577384012;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308006-Context-317-2-0
+        /// 请先招募英雄
+        /// </summary>
+        public const int LGCommonTextContext31720 = 1950126390;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308008-Context-319-2-0
+        /// 推荐战力 {0}
+        /// </summary>
+        public const int LGCommonTextContext31920 = 925279974;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308009-Context-320-2-0
+        /// 已选择霍尔山首关，战斗执行将在后续接入
+        /// </summary>
+        public const int LGCommonTextContext32020 = 155771181;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308010-Context-321-2-0
+        /// 对话
+        /// </summary>
+        public const int LGCommonTextContext32120 = 462492704;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308011-Context-322-2-0
+        /// 招募
+        /// </summary>
+        public const int LGCommonTextContext32220 = 2127142754;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308012-Context-323-2-0
+        /// 吹响哨子
+        /// </summary>
+        public const int LGCommonTextContext32320 = 1142273964;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308013-Context-324-2-0
+        /// 需要残破的狮鹫哨
+        /// </summary>
+        public const int LGCommonTextContext32420 = 1113223554;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-308014-Context-325-2-0
+        /// 点击继续
+        /// </summary>
+        public const int LGCommonTextContext32520 = 833830240;
+        /// <summary>
         /// LG-SceneConfig-Scene-10001-Name-3-2-0
         /// 登录
         /// </summary>

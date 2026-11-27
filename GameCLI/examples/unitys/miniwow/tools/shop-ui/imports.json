@@ -1,11 +1,12 @@
 [
   {
-    "source": "extracted-resources/fairygui/Common/images/common_bg_18.png",
-    "sourceAssetID": "61d6a60ad9113acf11c30b9ac02b3413aba248e13c0d127d9b8ab46656be99de",
-    "destination": "Assets/Data/Widgets/Shop/Images/common_bg_18.png",
-    "sha256": "ad68a365237192b95cd602033f5bd8693f4f57f152f0ee6725ba99dd438e7144",
+    "source": "extracted-resources/fairygui/Activity/images/hub_bg_7.png",
+    "sourceAssetID": "267f844f319c1016d7894b3788e2edc0db79f1fb8c01e79816c5948ba8f44957",
+    "destination": "Assets/Data/Widgets/Shop/Images/hub_bg_7.png",
+    "sha256": "a868d7989c9158df1aea69358d183ed6f2587b1eaf0ec8a39dd8eb47ca012e16",
     "uses": [
-      "Background"
+      "Background",
+      "Footer"
     ]
   },
   {
@@ -18,38 +19,145 @@
     ]
   },
   {
-    "source": "extracted-resources/fairygui/Activity/images/hub_bg_7.png",
-    "sourceAssetID": "267f844f319c1016d7894b3788e2edc0db79f1fb8c01e79816c5948ba8f44957",
-    "destination": "Assets/Data/Widgets/Shop/Images/hub_bg_7.png",
-    "sha256": "a868d7989c9158df1aea69358d183ed6f2587b1eaf0ec8a39dd8eb47ca012e16",
+    "source": "extracted-resources/fairygui/Common/images/goldshop_bg_10.png",
+    "sourceAssetID": "54d0b624d6c5dd554e76ac6cc13709b31645d4525fa421f3c458ac8c81f639ad",
+    "destination": "Assets/Data/Widgets/Shop/Images/goldshop_bg_10.png",
+    "sha256": "6a227d06249addac23e1ab00ac053eb07256f6be8003fb0133669ee6afc46558",
     "uses": [
-      "Footer"
+      "MarketPanel"
     ]
   },
   {
-    "source": "extracted-resources/fairygui/Consumable/Images/cons_bg_7.png",
-    "sourceAssetID": "1daeb4f9b364736f8e0ae0329af50a1f04a53bbc427dfa9cf3ad659de31312ba",
-    "destination": "Assets/Data/Widgets/Shop/Images/cons_bg_7.png",
-    "sha256": "666a9a61e14f9ebce02dde69931f9626f148d71a75df2b315ec811cee84c2862",
+    "source": "extracted-resources/fairygui/Common/images/common_line_2.png",
+    "sourceAssetID": "49cf55f5a3542bb23d02c2d45fd9f89aa535f48a6cacec5466997753cac83429",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_line_2.png",
+    "sha256": "4593b5479f73ca1461a531e5bc6795f3c70054bac646b32a300ea1877156d4e1",
     "uses": [
-      "CloseClick",
+      "RightLine"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/common_line_3.png",
+    "sourceAssetID": "51792a5e2ed8c9cca9c81cfba47bd9aa1246687e3a528e01a146864f2c37e48b",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_line_3.png",
+    "sha256": "719b1bdcceda75e68e1e36be833a152618bf85ee74ddb0cec749069ed26f723a",
+    "uses": [
+      "LeftLine"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Forge/Images/shop_button_2_1.png",
+    "sourceAssetID": "3436de1d25f42630e2699beed0a45208a948969907c1b72f552b3006ccfd74e8",
+    "destination": "Assets/Data/Widgets/Shop/Images/shop_button_2_1.png",
+    "sha256": "094a706d7249151768bedad31dcc72b0a3801938130fb524d31f9be4e6ec9dba",
+    "uses": [
+      "TierClick"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Shop/images/shop_button_3_1.png",
+    "sourceAssetID": "3aeed930ed6a0e5fdf455fd1e5a40b79cec23f43f5c8d4f34103a9f6ed297407",
+    "destination": "Assets/Data/Widgets/Shop/Images/shop_button_3_1.png",
+    "sha256": "0f1e7f474ba79cf947ea80da8b7b8a7346293126f679144bf2be155f5a709948",
+    "uses": [
+      "TierOptionClick"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Shop/images/cons_button_1.png",
+    "sourceAssetID": "cffab43580054188e2313d9e4b03594912a696e2d17134d9f81bd47871d8f56a",
+    "destination": "Assets/Data/Widgets/Shop/Images/cons_button_1.png",
+    "sha256": "699de2e2e947692a2e9e13c4c3f0d85dcb665faf70cdfa6fbbbc70cb071762d3",
+    "uses": [
+      "LogClick"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/common_button_7.png",
+    "sourceAssetID": "246a21ea35746e6a839da5cc4a53dbb0b110096be673927f28c212fce9df66f9",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_button_7.png",
+    "sha256": "bb1c9b5e6a62b62ede3f3c12c365a0d94d9d7e4b87f9e34a5b1364c42441cfb9",
+    "uses": [
+      "CloseClick"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/FunctionIcon/FunctionIcon/Function_7.png",
+    "sourceAssetID": "97f6932ed3a694c70c5dc077e8e536afde4e40c3794d5c741fd1a106db6d0ea1",
+    "destination": "Assets/Data/Widgets/Shop/Images/Function_7.png",
+    "sha256": "69e0369493243a90c6ad166b1f78ca0a696204c694252a9281be35475840fd6b",
+    "uses": [
+      "MaterialIcon"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/FunctionIcon/FunctionIcon/Function_21.png",
+    "sourceAssetID": "de22d046f2ad61044df8ffdc85b665fa4d0a33353ed19db1e1d24ac37447207d",
+    "destination": "Assets/Data/Widgets/Shop/Images/Function_21.png",
+    "sha256": "863390788dbc02e4a0e163e3eb8ce1fcbaab164ba7fd9a9d308708440b2f4388",
+    "uses": [
+      "EquipmentIcon"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/common_icon_16.png",
+    "sourceAssetID": "7d34cc6239cf1bddabd4505753f2c71e93db76688ae7af8bd3fe7f4aee9883c8",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_icon_16.png",
+    "sha256": "1d17419b1d4cb346517216a4f3c64eab34312162eb3b68abbff84f5b77a5717a",
+    "uses": [
+      "Lock"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/common_button_3.png",
+    "sourceAssetID": "363a9ca5de232565e365d284498b5f354fc18c3d834111498db499ca20cc3a5b",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_button_3.png",
+    "sha256": "bc5dd181c2e2fcb0cef414f3169de0165a0564b5b06b9a88592606df4f70e32d",
+    "uses": [
       "ClaimClick"
     ]
   },
   {
-    "source": "extracted-resources/fairygui/Common/images/common_bg_11.png",
-    "sourceAssetID": "240bbc46da902e20c8da888ad861b5842fb1d15bc641cf1a28d96d1fde90b506",
-    "destination": "Assets/Data/Widgets/Shop/Images/common_bg_11.png",
-    "sha256": "a5e99be93f4a144836426e84aa7845e67c28922bd0a37a303d3a06d0d70c71be",
+    "source": "extracted-resources/fairygui/Shop/images/goldshop_bg_11.png",
+    "sourceAssetID": "5eddd65eca0ec86fadb35ff1add3e5df89d6c3eacb46fef5e61d7ee8e7d5112c",
+    "destination": "Assets/Data/Widgets/Shop/Images/goldshop_bg_11.png",
+    "sha256": "0cb89666ad46a65f9bc7f1fdad009a151ddd9877667713f0460a8282bfe925c0",
     "uses": [
       "Card"
     ]
   },
   {
-    "source": "extracted-resources/fairygui/Consumable/Images/cons_bg_7.png",
-    "sourceAssetID": "1daeb4f9b364736f8e0ae0329af50a1f04a53bbc427dfa9cf3ad659de31312ba",
-    "destination": "Assets/Data/Widgets/Shop/Images/cons_bg_7.png",
-    "sha256": "666a9a61e14f9ebce02dde69931f9626f148d71a75df2b315ec811cee84c2862",
+    "source": "extracted-resources/fairygui/Shop/images/goldshop_bg_12.png",
+    "sourceAssetID": "2df1018273da3bbc8a482736b3a3adcc2bfeaec7507188355a60cbd342b75f8e",
+    "destination": "Assets/Data/Widgets/Shop/Images/goldshop_bg_12.png",
+    "sha256": "3e6fe414a926d1b04d1eef388d55e32318b3e886a1f175d2a77ccd5c204a40f9",
+    "uses": [
+      "StockBack"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/common_bg_21.png",
+    "sourceAssetID": "908e51b9d389743f683609449d30630f064d0064a40c3b2857b9c4f1dd73f9a7",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_bg_21.png",
+    "sha256": "b820f39f4fd65d1b1f1a0239e5fd7f128509e10f7a80cd8d0d06866688743a1d",
+    "uses": [
+      "ItemFrame"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/shop_title_1.png",
+    "sourceAssetID": "7c91a82efaa8a219176bd0fce07bbbc7aed6541b357809d755e9784b0cab8199",
+    "destination": "Assets/Data/Widgets/Shop/Images/shop_title_1.png",
+    "sha256": "0252f1bd5d584d0c07ad90bbd70dbbe7bcf3d5066b711ffecba73618aa5d05b4",
+    "uses": [
+      "TierRibbon"
+    ]
+  },
+  {
+    "source": "extracted-resources/fairygui/Common/images/common_button_3.png",
+    "sourceAssetID": "363a9ca5de232565e365d284498b5f354fc18c3d834111498db499ca20cc3a5b",
+    "destination": "Assets/Data/Widgets/Shop/Images/common_button_3.png",
+    "sha256": "bc5dd181c2e2fcb0cef414f3169de0165a0564b5b06b9a88592606df4f70e32d",
     "uses": [
       "SelectClick"
     ]

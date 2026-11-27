@@ -56,6 +56,7 @@ public sealed class InnEntity : XEntity
                 return true;
             case InnAction.Rest:
                 if (next.heroId == 0 || next.innRestEndTicks != 0 || next.energyPercent >= 100
+                    || next.explore.IsAway()
                     || next.recovery == HeroRecoveryPhase.Traveling || next.recovery == HeroRecoveryPhase.Healing
                     || village.Count(service.productId) == 0 || next.heroGold < service.price)
                     return false;

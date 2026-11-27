@@ -59,6 +59,7 @@ public static class MiniwowVillageSetup
         var built = model.Find("priest").gameObject;
         built.SetActive(false);
         var visual = garen.transform.Find("OriginalHeroVisual");
+        visual.rotation = Quaternion.Euler(30f, -135f, 0f);
         visual.localScale = Vector3.one * 1.65f;
         var opening = new SerializedObject(home.GetComponent<HomeOpeningScene>());
         opening.FindProperty("hospitalBuilt").objectReferenceValue = built;

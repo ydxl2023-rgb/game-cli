@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIRecruit",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIRecruit",
+      "name": "UIRecruit",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "DialogueVisible",
+          "name": "DialogueVisible",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": [
+            {
+              "id": "ContinueClick",
+              "name": "ContinueClick",
+              "element": "Button",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1080,
+                "height": 1920
+              },
+              "children": []
+            },
+            {
+              "id": "Portrait",
+              "name": "Portrait",
+              "element": "Image",
+              "rect": {
+                "x": -15,
+                "y": 943.5,
+                "width": 525,
+                "height": 450
+              },
+              "children": []
+            },
+            {
+              "id": "DialoguePanel",
+              "name": "DialoguePanel",
+              "element": "Image",
+              "rect": {
+                "x": 9,
+                "y": 1360.5,
+                "width": 1062,
+                "height": 505.5
+              },
+              "children": []
+            },
+            {
+              "id": "NamePanel",
+              "name": "NamePanel",
+              "element": "Image",
+              "rect": {
+                "x": 0,
+                "y": 1341,
+                "width": 475.5,
+                "height": 99
+              },
+              "children": []
+            },
+            {
+              "id": "Speaker",
+              "name": "Speaker",
+              "element": "Text",
+              "rect": {
+                "x": 60,
+                "y": 1353,
+                "width": 294,
+                "height": 66
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 32,
+                "color": "#F6E6C5",
+                "alignment": "center"
+              }
+            },
+            {
+              "id": "Line",
+              "name": "Line",
+              "element": "Image",
+              "rect": {
+                "x": 34.5,
+                "y": 1453.5,
+                "width": 988.5,
+                "height": 33
+              },
+              "children": []
+            },
+            {
+              "id": "Dialogue",
+              "name": "Dialogue",
+              "element": "Text",
+              "rect": {
+                "x": 90,
+                "y": 1503,
+                "width": 912,
+                "height": 283.5
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 36,
+                "color": "#F6E6C5",
+                "alignment": "center"
+              }
+            },
+            {
+              "id": "Arrow",
+              "name": "Arrow",
+              "element": "Image",
+              "rect": {
+                "x": 900,
+                "y": 1699.5,
+                "width": 37.5,
+                "height": 34.5
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "MovieVisible",
+          "name": "MovieVisible",
+          "element": "Container",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": [
+            {
+              "id": "MovieScreen",
+              "name": "MovieScreen",
+              "element": "Image",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1080,
+                "height": 1920
+              },
+              "children": []
+            },
+            {
+              "id": "RetryVisible",
+              "name": "RetryVisible",
+              "element": "Container",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1080,
+                "height": 1920
+              },
+              "children": [
+                {
+                  "id": "RetryClick",
+                  "name": "RetryClick",
+                  "element": "Button",
+                  "rect": {
+                    "x": 400,
+                    "y": 1500,
+                    "width": 280,
+                    "height": 80
+                  },
+                  "children": [
+                    {
+                      "id": "RetryLabel",
+                      "name": "RetryLabel",
+                      "element": "Text",
+                      "rect": {
+                        "x": 400,
+                        "y": 1500,
+                        "width": 280,
+                        "height": 80
+                      },
+                      "children": [],
+                      "text": {
+                        "content": "重试",
+                        "fontSize": 32,
+                        "color": "#F6E6C5",
+                        "alignment": "center"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CloseClick",
+          "name": "CloseClick",
+          "element": "Button",
+          "rect": {
+            "x": 822,
+            "y": 100,
+            "width": 249,
+            "height": 79.5
+          },
+          "children": [
+            {
+              "id": "CloseLabel",
+              "name": "CloseLabel",
+              "element": "Text",
+              "rect": {
+                "x": 822,
+                "y": 100,
+                "width": 249,
+                "height": 79.5
+              },
+              "children": [],
+              "text": {
+                "content": "返回",
+                "fontSize": 32,
+                "color": "#F6E6C5",
+                "alignment": "center"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -85,6 +85,9 @@ public sealed class MasterSystem : RuntimeSystem
         RequestActivation(TaskConfigurationIds.system, null);
         RequestActivation(10006, null);
         RequestActivation(10007, null);
+        RequestActivation(10009, null);
+        RequestActivation(10010, null);
+        RequestActivation(10011, null);
         RequestActivation(Config.Excel.SYS_HOME, null);
     }
 

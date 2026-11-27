@@ -1,4 +1,5 @@
 using Oathx.Widget;
+using UnityEngine.UI;
 
 /// <summary>Requests returning from trading to Home.</summary>
 public sealed class ReqShopClose : UIRequestEvent { }
@@ -78,6 +79,52 @@ public sealed class UIShop : UIWidget<VMShop>
     {
         vm.CloseClick = Send<ReqShopClose>;
         vm.ClaimClick = Send<ReqShopClaim>;
+        vm.TierClick = OnTierClick;
+        vm.TierOptionClick = OnMaterialClick;
+        vm.MaterialClick = OnMaterialClick;
+        vm.EquipmentClick = OnEquipmentClick;
+        vm.LogClick = OnLogClick;
+
+        return true;
+    }
+
+    /// <summary>Toggles the available configured material tier.</summary>
+    /// <param name="button">Original selector control.</param>
+    /// <returns>Whether the presentation was updated.</returns>
+    private bool OnTierClick(Button button)
+    {
+        vm.TierVisible = !vm.TierVisible;
+
+        return true;
+    }
+
+    /// <summary>Keeps the material tab selected without changing inventory.</summary>
+    /// <param name="button">Original material or tier control.</param>
+    /// <returns>Whether the presentation was updated.</returns>
+    private bool OnMaterialClick(Button button)
+    {
+        vm.TierVisible = false;
+        vm.Feedback = string.Empty;
+
+        return true;
+    }
+
+    /// <summary>Explains the unavailable equipment market without presenting fake offers.</summary>
+    /// <param name="button">Original locked equipment control.</param>
+    /// <returns>Whether feedback was shown.</returns>
+    private bool OnEquipmentClick(Button button)
+    {
+        vm.Feedback = CommonText.Get(Config.Excel.TEXT_TRADE_EQUIPMENT_PENDING);
+
+        return true;
+    }
+
+    /// <summary>Explains the report integration boundary instead of inventing server records.</summary>
+    /// <param name="button">Original report control.</param>
+    /// <returns>Whether feedback was shown.</returns>
+    private bool OnLogClick(Button button)
+    {
+        vm.Feedback = CommonText.Get(Config.Excel.TEXT_TRADE_LOG_PENDING);
 
         return true;
     }

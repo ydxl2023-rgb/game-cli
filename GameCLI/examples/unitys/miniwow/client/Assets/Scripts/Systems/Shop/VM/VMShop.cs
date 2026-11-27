@@ -31,4 +31,28 @@ public partial class VMShop : VM
     [Binding]
     ButtonClick claimClick;
 
+    /// <summary>Opens the configured material tier choices.</summary>
+    [Binding]
+    ButtonClick tierClick;
+
+    /// <summary>Selects the available material tier.</summary>
+    [Binding]
+    ButtonClick tierOptionClick;
+
+    /// <summary>Returns to the material tab.</summary>
+    [Binding]
+    ButtonClick materialClick;
+
+    /// <summary>Explains the locked equipment tab.</summary>
+    [Binding]
+    ButtonClick equipmentClick;
+
+    /// <summary>Requests the trading report entry.</summary>
+    [Binding]
+    ButtonClick logClick;
+
+    /// <summary>Shows the original tier selector popup.</summary>
+    [Binding(typeof(SyncVisible))]
+    bool tierVisible;
+
 }

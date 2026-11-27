@@ -20,6 +20,9 @@ public sealed class HomeVillageRuntime
     /// <summary>Whether this scene instance installed the persisted travel intent.</summary>
     private bool traveling;
 
+    /// <summary>Excursion stage whose actual navigation route is installed in this scene.</summary>
+    private ExplorePhase exploreRoutePhase;
+
     /// <summary>Current player route to a facility interaction point.</summary>
     private Vector3[] navigationRoute;
 
@@ -47,6 +50,7 @@ public sealed class HomeVillageRuntime
         var village = home.village;
         scene.ShowVillage(home.opening, village);
         MoveToDestination(home.FindActor(scene.GetPlayerId()), elapsed);
+        MoveExplorer(home);
         if (village.recovery == HeroRecoveryPhase.Traveling)
         {
             var actor = home.FindActor(village.configuration.ActorID);
@@ -110,6 +114,19 @@ public sealed class HomeVillageRuntime
         }
     }
 
+    /// <summary>Cancels only a route still owned by the specified external presentation.</summary>
+    /// <param name="action">Owner being released.</param>
+    /// <returns>Whether this route belonged to that owner.</returns>
+    public bool CancelNavigation(TaskPresentationAction action)
+    {
+        if (!ReferenceEquals(residentAction, action))
+            return false;
+
+        CancelNavigation();
+
+        return true;
+    }
+
     /// <summary>Replays absolute committed business observations after a transaction or restore.</summary>
     /// <param name="village">Authoritative village state.</param>
     public static void ReportProgress(HomeVillageEntity village)
@@ -131,6 +148,38 @@ public sealed class HomeVillageRuntime
                 && tasks.GetTask(step.ID).status == TaskStatus.Completed)
                 XPluginUtility.PostEvent(new TaskClaimRequested { taskId = step.ID });
         }
+    }
+
+    /// <summary>Moves the excursion actor using the original village navigation.</summary>
+    /// <param name="home">Current authoritative world data.</param>
+    private void MoveExplorer(HomeEntity home)
+    {
+        var village = home.village;
+        var phase = village.exploration;
+        if (phase != ExplorePhase.Leaving && phase != ExplorePhase.Returning)
+        {
+            exploreRoutePhase = phase;
+
+            return;
+        }
+
+        var definition = Config.Excel.exploreJourneyConfig[village.journeyId];
+        var actor = home.FindActor(definition.ActorID);
+        if (exploreRoutePhase != phase)
+        {
+            var destination = phase == ExplorePhase.Leaving
+                ? new Vector3(definition.ExitX, definition.ExitY, definition.ExitZ)
+                : new Vector3(village.configuration.HospitalX,
+                    village.configuration.HospitalY, village.configuration.HospitalZ);
+            var route = scene.CalculateActorRoute(actor.position, destination);
+            if (route.Length == 0 || !actor.FollowRoute(route))
+                throw new System.InvalidOperationException("The configured exploration route is unreachable.");
+
+            exploreRoutePhase = phase;
+        }
+
+        if (actor.phase == ActorPhase.Waiting)
+            XPluginUtility.FireEvent(new ExploreWorldArrived { journeyId = definition.ID });
     }
 
     /// <summary>Advances the player before notifying the interaction owner.</summary>

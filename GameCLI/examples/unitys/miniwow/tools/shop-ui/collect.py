@@ -22,10 +22,10 @@ for good in goods:
                       [text_id+1,f'TEXT_TRADE_DESC_{item["Id"]}',item['Desc']]])
 labels=['交易行','材料','装备交易尚未开放','金币 {0}','剩余 {0}','已拥有 {0}','购买','取消','返回村庄',
         '购买数量','总价 {0} 金币','金币不足','商品余量不足','请先完成医院修复任务','购买成功','请选择商品',
-        '数量超出可购买范围','任务：{0}','领取奖励','−','+','确认购买','10级材料']
+        '数量超出可购买范围','任务：{0}','领取奖励','−','+','确认购买','10级材料','1级交易行','待售材料','材料拍卖','装备拍卖','交易日报尚未接入','10级']
 aliases=['TITLE','MATERIALS','EQUIPMENT_PENDING','GOLD','REMAINING','OWNED','BUY','CANCEL','BACK',
          'QUANTITY','TOTAL','NO_GOLD','SOLD_OUT','LOCKED','SUCCESS','NO_SELECTION','INVALID_QUANTITY',
-         'TASK','CLAIM','MINUS','PLUS','CONFIRM','TIER']
+         'TASK','CLAIM','MINUS','PLUS','CONFIRM','TIER','LEVEL_TITLE','SALE_TITLE','MATERIAL_TAB','EQUIPMENT_TAB','LOG_PENDING','TIER_SHORT']
 languages += [[30301+i,'TEXT_TRADE_'+aliases[i],t] for i,t in enumerate(labels)]
 sheets=[dict(name='ShopGoods',columns=[['ID','int','原商品ID'],['ItemID','int','物品ID'],['Amount','int','每份数量'],
     ['CurrencyID','int','货币ID'],['Price','int','每份价格'],['Order','int','原排序'],['Limit','int','原配置限购上限'],

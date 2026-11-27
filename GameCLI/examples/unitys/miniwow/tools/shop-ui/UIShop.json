@@ -37,7 +37,7 @@
             "x": 0,
             "y": 0,
             "width": 1080,
-            "height": 650
+            "height": 730
           },
           "children": [
             {
@@ -48,9 +48,39 @@
                 "x": 0,
                 "y": 0,
                 "width": 1080,
-                "height": 650
+                "height": 730
               },
               "children": []
+            },
+            {
+              "id": "Player",
+              "name": "Player",
+              "element": "Container",
+              "rect": {
+                "x": 330,
+                "y": 380,
+                "width": 150,
+                "height": 210
+              },
+              "children": []
+            },
+            {
+              "id": "NpcTitle",
+              "name": "NpcTitle",
+              "element": "Text",
+              "rect": {
+                "x": 450,
+                "y": 230,
+                "width": 180,
+                "height": 38
+              },
+              "children": [],
+              "text": {
+                "content": "交易行",
+                "fontSize": 25,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
             }
           ]
         },
@@ -59,15 +89,15 @@
           "name": "Gold",
           "element": "Text",
           "rect": {
-            "x": 25,
-            "y": 50,
-            "width": 550,
-            "height": 70
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
           },
           "children": [],
           "text": {
             "content": "",
-            "fontSize": 34,
+            "fontSize": 1,
             "alignment": "center",
             "color": "#3E2C1E"
           }
@@ -80,7 +110,7 @@
             "x": 0,
             "y": 650,
             "width": 1080,
-            "height": 95
+            "height": 80
           },
           "children": [
             {
@@ -89,14 +119,14 @@
               "element": "Text",
               "rect": {
                 "x": 20,
-                "y": 650,
-                "width": 1040,
-                "height": 95
+                "y": 657,
+                "width": 500,
+                "height": 60
               },
               "children": [],
               "text": {
-                "content": "交易行",
-                "fontSize": 42,
+                "content": "1级交易行",
+                "fontSize": 40,
                 "alignment": "center",
                 "color": "#3E2C1E"
               }
@@ -104,50 +134,111 @@
           ]
         },
         {
-          "id": "TierLabel",
-          "name": "TierLabel",
+          "id": "MarketPanel",
+          "name": "MarketPanel",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 730,
+            "width": 1080,
+            "height": 1025
+          },
+          "children": []
+        },
+        {
+          "id": "SaleTitle",
+          "name": "SaleTitle",
           "element": "Text",
           "rect": {
-            "x": 30,
+            "x": 405,
             "y": 765,
-            "width": 500,
-            "height": 70
+            "width": 270,
+            "height": 55
           },
           "children": [],
           "text": {
-            "content": "10级材料",
-            "fontSize": 32,
+            "content": "待售材料",
+            "fontSize": 36,
             "alignment": "center",
             "color": "#3E2C1E"
           }
         },
         {
-          "id": "EquipmentLabel",
-          "name": "EquipmentLabel",
-          "element": "Text",
+          "id": "LeftLine",
+          "name": "LeftLine",
+          "element": "Image",
           "rect": {
-            "x": 530,
-            "y": 765,
-            "width": 520,
-            "height": 70
+            "x": 345,
+            "y": 783,
+            "width": 90,
+            "height": 12
           },
-          "children": [],
-          "text": {
-            "content": "装备交易尚未开放",
-            "fontSize": 28,
-            "alignment": "center",
-            "color": "#3E2C1E"
-          }
+          "children": []
+        },
+        {
+          "id": "RightLine",
+          "name": "RightLine",
+          "element": "Image",
+          "rect": {
+            "x": 645,
+            "y": 783,
+            "width": 90,
+            "height": 12
+          },
+          "children": []
+        },
+        {
+          "id": "TierClick",
+          "name": "TierClick",
+          "element": "Button",
+          "rect": {
+            "x": 465,
+            "y": 823,
+            "width": 150,
+            "height": 50
+          },
+          "children": [
+            {
+              "id": "TierLabel",
+              "name": "TierLabel",
+              "element": "Text",
+              "rect": {
+                "x": 475,
+                "y": 826,
+                "width": 105,
+                "height": 42
+              },
+              "children": [],
+              "text": {
+                "content": "10级",
+                "fontSize": 25,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "LogClick",
+          "name": "LogClick",
+          "element": "Button",
+          "rect": {
+            "x": 855,
+            "y": 760,
+            "width": 100,
+            "height": 110
+          },
+          "children": []
         },
         {
           "id": "Offers",
           "name": "Offers",
           "element": "Container",
           "rect": {
-            "x": 30,
-            "y": 855,
-            "width": 1020,
-            "height": 710
+            "x": 140,
+            "y": 1000,
+            "width": 800,
+            "height": 660
           },
           "children": [
             {
@@ -155,10 +246,10 @@
               "name": "Viewport",
               "element": "Container",
               "rect": {
-                "x": 30,
-                "y": 855,
-                "width": 1020,
-                "height": 710
+                "x": 140,
+                "y": 1000,
+                "width": 800,
+                "height": 660
               },
               "children": [
                 {
@@ -166,10 +257,10 @@
                   "name": "Content",
                   "element": "Container",
                   "rect": {
-                    "x": 30,
-                    "y": 855,
-                    "width": 1020,
-                    "height": 710
+                    "x": 140,
+                    "y": 1000,
+                    "width": 800,
+                    "height": 660
                   },
                   "children": []
                 }
@@ -182,73 +273,134 @@
           "name": "Feedback",
           "element": "Text",
           "rect": {
-            "x": 30,
-            "y": 1575,
-            "width": 1020,
-            "height": 65
+            "x": 160,
+            "y": 1670,
+            "width": 760,
+            "height": 45
           },
           "children": [],
           "text": {
             "content": "",
-            "fontSize": 30,
+            "fontSize": 27,
             "alignment": "center",
             "color": "#3E2C1E"
           }
         },
         {
-          "id": "TaskText",
-          "name": "TaskText",
-          "element": "Text",
+          "id": "Footer",
+          "name": "Footer",
+          "element": "Image",
           "rect": {
-            "x": 30,
-            "y": 1650,
-            "width": 1020,
-            "height": 90
-          },
-          "children": [],
-          "text": {
-            "content": "",
-            "fontSize": 30,
-            "alignment": "center",
-            "color": "#3E2C1E"
-          }
-        },
-        {
-          "id": "ClaimVisible",
-          "name": "ClaimVisible",
-          "element": "Container",
-          "rect": {
-            "x": 700,
-            "y": 1750,
-            "width": 330,
-            "height": 75
+            "x": 0,
+            "y": 1755,
+            "width": 1080,
+            "height": 165
           },
           "children": [
             {
-              "id": "ClaimClick",
-              "name": "ClaimClick",
+              "id": "CloseClick",
+              "name": "CloseClick",
               "element": "Button",
               "rect": {
-                "x": 700,
-                "y": 1750,
-                "width": 330,
-                "height": 75
+                "x": 20,
+                "y": 1780,
+                "width": 110,
+                "height": 95
+              },
+              "children": []
+            },
+            {
+              "id": "MaterialClick",
+              "name": "MaterialClick",
+              "element": "Button",
+              "rect": {
+                "x": 150,
+                "y": 1760,
+                "width": 145,
+                "height": 145
               },
               "children": [
                 {
-                  "id": "ClaimLabel",
-                  "name": "ClaimLabel",
+                  "id": "MaterialIcon",
+                  "name": "MaterialIcon",
+                  "element": "Image",
+                  "rect": {
+                    "x": 180,
+                    "y": 1770,
+                    "width": 75,
+                    "height": 75
+                  },
+                  "children": []
+                },
+                {
+                  "id": "MaterialLabel",
+                  "name": "MaterialLabel",
                   "element": "Text",
                   "rect": {
-                    "x": 700,
-                    "y": 1750,
-                    "width": 330,
-                    "height": 75
+                    "x": 150,
+                    "y": 1850,
+                    "width": 145,
+                    "height": 40
                   },
                   "children": [],
                   "text": {
-                    "content": "领取奖励",
-                    "fontSize": 30,
+                    "content": "材料拍卖",
+                    "fontSize": 27,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "EquipmentClick",
+              "name": "EquipmentClick",
+              "element": "Button",
+              "rect": {
+                "x": 295,
+                "y": 1760,
+                "width": 145,
+                "height": 145
+              },
+              "children": [
+                {
+                  "id": "EquipmentIcon",
+                  "name": "EquipmentIcon",
+                  "element": "Image",
+                  "rect": {
+                    "x": 325,
+                    "y": 1770,
+                    "width": 75,
+                    "height": 75
+                  },
+                  "children": []
+                },
+                {
+                  "id": "Lock",
+                  "name": "Lock",
+                  "element": "Image",
+                  "rect": {
+                    "x": 347,
+                    "y": 1790,
+                    "width": 35,
+                    "height": 40
+                  },
+                  "children": []
+                },
+                {
+                  "id": "EquipmentLabel",
+                  "name": "EquipmentLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 295,
+                    "y": 1850,
+                    "width": 145,
+                    "height": 40
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "装备拍卖",
+                    "fontSize": 27,
                     "alignment": "center",
                     "color": "#3E2C1E"
                   }
@@ -258,40 +410,102 @@
           ]
         },
         {
-          "id": "Footer",
-          "name": "Footer",
-          "element": "Image",
+          "id": "TierVisible",
+          "name": "TierVisible",
+          "element": "Container",
           "rect": {
-            "x": 0,
-            "y": 1820,
-            "width": 1080,
-            "height": 100
+            "x": 440,
+            "y": 875,
+            "width": 200,
+            "height": 65
           },
           "children": [
             {
-              "id": "CloseClick",
-              "name": "CloseClick",
+              "id": "TierOptionClick",
+              "name": "TierOptionClick",
               "element": "Button",
               "rect": {
-                "x": 25,
-                "y": 1830,
-                "width": 330,
-                "height": 75
+                "x": 440,
+                "y": 875,
+                "width": 200,
+                "height": 65
               },
               "children": [
                 {
-                  "id": "CloseLabel",
-                  "name": "CloseLabel",
+                  "id": "TierOptionLabel",
+                  "name": "TierOptionLabel",
                   "element": "Text",
                   "rect": {
-                    "x": 25,
-                    "y": 1830,
-                    "width": 330,
-                    "height": 75
+                    "x": 450,
+                    "y": 880,
+                    "width": 180,
+                    "height": 50
                   },
                   "children": [],
                   "text": {
-                    "content": "返回村庄",
+                    "content": "10级",
+                    "fontSize": 28,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "TaskText",
+          "name": "TaskText",
+          "element": "Text",
+          "rect": {
+            "x": 400,
+            "y": 1815,
+            "width": 640,
+            "height": 50
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 24,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "ClaimVisible",
+          "name": "ClaimVisible",
+          "element": "Container",
+          "rect": {
+            "x": 735,
+            "y": 1855,
+            "width": 280,
+            "height": 55
+          },
+          "children": [
+            {
+              "id": "ClaimClick",
+              "name": "ClaimClick",
+              "element": "Button",
+              "rect": {
+                "x": 735,
+                "y": 1855,
+                "width": 280,
+                "height": 55
+              },
+              "children": [
+                {
+                  "id": "ClaimLabel",
+                  "name": "ClaimLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 735,
+                    "y": 1855,
+                    "width": 280,
+                    "height": 55
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "领取奖励",
                     "fontSize": 30,
                     "alignment": "center",
                     "color": "#3E2C1E"

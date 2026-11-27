@@ -62,6 +62,7 @@ public sealed class HeroEntity : XEntity
     internal bool RequestTreatment(HomeVillageSave next, HomeHospitalService configuration)
     {
         if (recovery != HeroRecoveryPhase.Idle || configurationId == 0 || next.innRestEndTicks != 0
+            || next.explore.IsAway()
             || !next.buildings.ContainsKey(configuration.buildingId)
             || !next.items.TryGetValue(configuration.productId, out long potions) || potions == 0
             || gold < configuration.price)

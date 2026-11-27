@@ -48,6 +48,8 @@ public sealed class HomeSystem : RuntimeSystem
         Subscribe<HomeFacilityOpened>(OnFacilityOpened);
         Subscribe<HomeResidentSystemReady>(OnResidentSystemReady);
         Subscribe<HomeManualMovementStarted>(OnManualMovementStarted);
+        Subscribe<HomeResidentNavigationRequested>(OnResidentNavigationRequested);
+        Subscribe<HomeResidentNavigationCancelled>(OnResidentNavigationCancelled);
 
         return InstallHome();
     }
@@ -115,7 +117,7 @@ public sealed class HomeSystem : RuntimeSystem
     /// <param name="message">The event payload.</param>
     private void OnHomeMap(ReqHomeMap message)
     {
-        ShowMap(true);
+        XPluginUtility.FireEvent(new BattleEntryOpenRequested());
     }
 
     /// <summary>Handles the ReqHomeCamp event.</summary>
@@ -140,7 +142,7 @@ public sealed class HomeSystem : RuntimeSystem
             });
             if (route == HomeEntryRoute.MapPreview)
             {
-                ShowMap(true);
+                XPluginUtility.FireEvent(new BattleEntryOpenRequested());
 
                 return;
             }
@@ -197,7 +199,8 @@ public sealed class HomeSystem : RuntimeSystem
         System.Type[] widgets = new System.Type[] {
             typeof(UIHome),
             typeof(UIHomeOpening),
-            typeof(UIHomeHospitalEntry)
+            typeof(UIHomeHospitalEntry),
+            typeof(UIHomeRecruitEntry)
         };
 
         UISystem.GetSingleton().CloseWidget(widgets, immediate: true);
@@ -259,6 +262,7 @@ public sealed class HomeSystem : RuntimeSystem
             HomeOpeningRuntime.ReportCompletion(entity.opening);
 
         UISystem.GetSingleton().OpenWidget<UIHomeHospitalEntry>(OnHospitalEntryOpened);
+        UISystem.GetSingleton().OpenWidget<UIHomeRecruitEntry>(OnRecruitEntryOpened);
         RefreshOpening();
         XPluginUtility.FireEvent(new HomeReady());
     }
@@ -501,6 +505,17 @@ public sealed class HomeSystem : RuntimeSystem
         }
     }
 
+    /// <summary>Connects the original recruitment bubbles to their scene mounts.</summary>
+    /// <param name="widget">Newly initialized recruitment overlay.</param>
+    private void OnRecruitEntryOpened(UIHomeRecruitEntry widget)
+    {
+        if (!widget)
+            return;
+
+        var runtime = GetRuntime();
+        runtime.BindRecruitEntry(widget);
+    }
+
 
     /// <summary>Activates the configured trading system and delivers its opening intention.</summary>
     private void OpenShop()
@@ -524,6 +539,22 @@ public sealed class HomeSystem : RuntimeSystem
         message.accepted = true;
         residentGuide = message.action;
         runtime.NavigateResident(buildingId, residentGuide);
+    }
+
+    /// <summary>Executes navigation without taking ownership of another module's interaction.</summary>
+    /// <param name="message">Configured destination and presentation owner.</param>
+    private void OnResidentNavigationRequested(HomeResidentNavigationRequested message)
+    {
+        var runtime = GetRuntime();
+        runtime.NavigateResident(message.buildingId, message.action);
+    }
+
+    /// <summary>Releases a route whose external owner canceled its guide.</summary>
+    /// <param name="message">Navigation cancellation.</param>
+    private void OnResidentNavigationCancelled(HomeResidentNavigationCancelled message)
+    {
+        var runtime = GetRuntime();
+        runtime.CancelResidentNavigation(message.action);
     }
 
     /// <summary>Releases only the movement owned by the canceled guide.</summary>

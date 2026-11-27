@@ -22,6 +22,8 @@ def text(name,x,y,w,h,size=30,id=None):
 def button(name,label,x,y,w,h,id):
     return node(name,'Button',x,y,w,h,[text(label,x,y,w,h,30,id)])
 def write(name,children,bindings,w=1080,h=1920):
+    if name == 'UIShop':
+        children = [n for n in children if n['name'] not in ['TaskText','ClaimVisible']] + [n for n in children if n['name'] in ['TaskText','ClaimVisible']]
     data=dict(schemaVersion='1',uiName=name,referenceResolution=dict(width=w,height=h),
               nodes=[node(name,'Container',0,0,w,h,children)])
     assets=[]
@@ -35,23 +37,42 @@ def write(name,children,bindings,w=1080,h=1920):
     (OUT/(name+'.materials.json')).write_text(json.dumps(dict(schemaVersion='1',uiName=name,assets=assets),indent=2))
 write('UIShop',[
     node('Background','Image',0,0,1080,1920),
-    node('Room','Container',0,0,1080,650,[node('RoomSpine','Container',0,0,1080,650)]),
-    text('Gold',25,50,550,70,34),
-    node('Header','Image',0,650,1080,95,[text('Title',20,650,1040,95,42,30301)]),
-    text('TierLabel',30,765,500,70,32,30323),text('EquipmentLabel',530,765,520,70,28,30303),
-    node('Offers','Container',30,855,1020,710,[node('Viewport','Container',30,855,1020,710,
-        [node('Content','Container',30,855,1020,710)])]),
-    text('Feedback',30,1575,1020,65,30),text('TaskText',30,1650,1020,90,30),
-    node('ClaimVisible','Container',700,1750,330,75,[button('ClaimClick','ClaimLabel',700,1750,330,75,30319)]),
-    node('Footer','Image',0,1820,1080,100,[button('CloseClick','CloseLabel',25,1830,330,75,30309)])
-],{'common_bg_18':['Background'],'shop_bg_1':['Header'],'hub_bg_7':['Footer'],
-   'cons_bg_7':['CloseClick','ClaimClick']})
+    node('Room','Container',0,0,1080,730,[node('RoomSpine','Container',0,0,1080,730),
+        node('Player','Container',330,380,150,210),text('NpcTitle',450,230,180,38,25,30301)]),
+    text('Gold',0,0,1,1,1),
+    node('Header','Image',0,650,1080,80,[text('Title',20,657,500,60,40,30324)]),
+    node('MarketPanel','Image',0,730,1080,1025),
+    text('SaleTitle',405,765,270,55,36,30325),
+    node('LeftLine','Image',345,783,90,12),node('RightLine','Image',645,783,90,12),
+    node('TierClick','Button',465,823,150,50,[text('TierLabel',475,826,105,42,25,30329)]),
+    node('LogClick','Button',855,760,100,110),
+    node('Offers','Container',140,1000,800,660,[node('Viewport','Container',140,1000,800,660,
+        [node('Content','Container',140,1000,800,660)])]),
+    text('Feedback',160,1670,760,45,27),text('TaskText',400,1815,640,50,24),
+    node('ClaimVisible','Container',735,1855,280,55,[button('ClaimClick','ClaimLabel',735,1855,280,55,30319)]),
+    node('Footer','Image',0,1755,1080,165,[node('CloseClick','Button',20,1780,110,95),
+        node('MaterialClick','Button',150,1760,145,145,[node('MaterialIcon','Image',180,1770,75,75),
+            text('MaterialLabel',150,1850,145,40,27,30326)]),
+        node('EquipmentClick','Button',295,1760,145,145,[node('EquipmentIcon','Image',325,1770,75,75),
+            node('Lock','Image',347,1790,35,40),text('EquipmentLabel',295,1850,145,40,27,30327)])]),
+    node('TierVisible','Container',440,875,200,65,[node('TierOptionClick','Button',440,875,200,65,
+        [text('TierOptionLabel',450,880,180,50,28,30329)])])
+],{'hub_bg_7':['Background','Footer'],'shop_bg_1':['Header'],'goldshop_bg_10':['MarketPanel'],
+   'common_line_2':['RightLine'],'common_line_3':['LeftLine'],
+   'shop_button_2_1':['TierClick'],'shop_button_3_1':['TierOptionClick'],
+   'cons_button_1':['LogClick'],'common_button_7':['CloseClick'],
+   'Function_7':['MaterialIcon'],'Function_21':['EquipmentIcon'],'common_icon_16':['Lock'],
+   'common_button_3':['ClaimClick']})
 write('UIShopOffer',[
-    node('Card','Image',0,0,1020,220),node('Icon','Image',30,35,150,150),
-    text('Name',200,10,450,65,36),text('Stock',200,85,450,50,28),text('Owned',200,145,450,50,28),
-    node('SelectClick','Button',690,65,290,100,[node('Currency','Image',710,85,60,60),
-        text('Price',775,75,190,80,32)])
-],{'common_bg_11':['Card'],'cons_bg_7':['SelectClick'],'big_gold':['Currency']},1020,220)
+    node('Card','Image',0,0,260,550),
+    text('Name',10,90,240,65,36),
+    node('ItemFrame','Image',55,190,150,150),node('Icon','Image',65,200,130,130),
+    node('TierRibbon','Image',50,185,63,30),text('ItemTier',50,184,63,32,23,30329),
+    node('StockBack','Image',25,375,210,50),text('Stock',10,375,240,50,30),text('Owned',0,0,1,1,1),
+    node('SelectClick','Button',25,525,210,100,[node('Currency','Image',55,553,44,44),
+        text('Price',100,542,110,65,42)])
+],{'goldshop_bg_11':['Card'],'goldshop_bg_12':['StockBack'],'common_bg_21':['ItemFrame'],'shop_title_1':['TierRibbon'],
+   'common_button_3':['SelectClick'],'big_gold':['Currency']},260,650)
 write('UIShopPurchase',[
     node('Shade','Image',0,0,1080,1920),node('Panel','Image',75,490,930,980),
     node('Icon','Image',120,565,170,170),text('Name',315,535,600,80,42),

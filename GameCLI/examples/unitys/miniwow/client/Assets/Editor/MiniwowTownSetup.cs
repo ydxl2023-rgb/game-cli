@@ -147,7 +147,7 @@ public static class MiniwowTownSetup
         visitorObject.transform.SetParent(rootObject.transform, false);
         var visual = new GameObject("OriginalHeroVisual");
         visual.transform.SetParent(visitorObject.transform, false);
-        visual.transform.rotation = hotel.rotation;
+        visual.transform.rotation = Quaternion.Euler(30f, -135f, 0f);
         visual.transform.localScale = Vector3.one * 2f;
         SkeletonAnimation animation = SkeletonAnimation.AddToGameObject(visual, ImportSkeleton("hero_20025"));
         animation.loop = true;

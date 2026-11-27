@@ -6,6 +6,10 @@ using System.Collections.Generic;
 /// <summary>Owns serialized scene references and routes pointer intent to HomeRuntime.</summary>
 public sealed class HomeScene : MonoBehaviour
 {
+    /// <summary>Original recruitment presentation owned by this scene.</summary>
+    [SerializeField]
+    private HomeRecruitScene recruitment;
+
     /// <summary>Authored opening effects and objective marker.</summary>
     [SerializeField]
     private HomeOpeningScene openingScene;
@@ -113,6 +117,13 @@ public sealed class HomeScene : MonoBehaviour
 
     /// <summary>Reusable UI hit list, preventing clicks through modal pages.</summary>
     private readonly List<RaycastResult> uiHits = new List<RaycastResult>();
+
+    /// <summary>Returns authored recruitment presentation to its runtime owner.</summary>
+    /// <returns>Scene-local recruitment mounts and shapes.</returns>
+    public HomeRecruitScene GetRecruitment()
+    {
+        return recruitment;
+    }
 
     /// <summary>Frames a resident in the upper page viewport or resumes player following.</summary>
     /// <param name="buildingId">Resident identity, or zero to restore player following.</param>
@@ -240,6 +251,13 @@ public sealed class HomeScene : MonoBehaviour
                 {
                     var target = new Vector3(village.configuration.HospitalX,
                         village.configuration.HospitalY, village.configuration.HospitalZ);
+                    if (village.exploration == ExplorePhase.Traveling
+                        || village.exploration == ExplorePhase.Executing
+                        || village.exploration == ExplorePhase.Returning)
+                    {
+                        var journey = Config.Excel.exploreJourneyConfig[village.journeyId];
+                        target = new Vector3(journey.ExitX, journey.ExitY, journey.ExitZ);
+                    }
 
                     var filter = new NavMeshQueryFilter {
                         agentTypeID = config.AgentTypeId,
@@ -248,10 +266,16 @@ public sealed class HomeScene : MonoBehaviour
 
                     if (!NavMesh.SamplePosition(target, out var hospital, 3f, filter))
                         throw new System.InvalidOperationException(
-                            "Hospital actor spawn is outside original navigation.");
+                            "Hero service or exploration spawn is outside original navigation.");
 
                     spawn.route = new[] { hospital.position };
                 }
+            }
+
+            foreach (var recruit in Config.Excel.recruitHeroConfig.Values)
+            {
+                if (spawn.actorId == recruit.ActorID && village.heroes.Contains(recruit.ID))
+                    spawn.route = new[] { new Vector3(recruit.EndX, recruit.EndY, recruit.EndZ) };
             }
 
             definitions[index] = spawn;

@@ -35,6 +35,14 @@ public enum HeroRecoveryPhase
 /// <summary>Atomic local save for village costs, results and reward receipts.</summary>
 public sealed class HomeVillageSave
 {
+    /// <summary>Recruitment ownership and interaction receipts.</summary>
+    public RecruitSave recruit
+    { get; set; } = new RecruitSave();
+
+    /// <summary>Exploration results committed with village receipts.</summary>
+    public ExploreSave explore
+    { get; set; } = new ExploreSave();
+
     /// <summary>Forge inventory and receipts committed with shared costs.</summary>
     public BlacksmithSave blacksmith
     { get; set; } = new BlacksmithSave();
@@ -139,11 +147,23 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
 
     /// <summary>Persistent hero data, separate from its actor and shape.</summary>
     public HeroEntity hero
+    { get { return heroes.primary; } }
+
+    /// <summary>Owned persistent heroes, independent of world presentation.</summary>
+    public HeroCollectionEntity heroes
     { get; private set; }
 
     /// <summary>Current recovery operation.</summary>
     public HeroRecoveryPhase recovery
     { get { return hero.recovery; } }
+
+    /// <summary>Current durable excursion stage.</summary>
+    public ExplorePhase exploration
+    { get { return state.explore.phase; } }
+
+    /// <summary>Current excursion configuration identity.</summary>
+    public int journeyId
+    { get { return state.explore.journeyId; } }
 
     /// <summary>Whether the obtained-hero page is awaiting confirmation.</summary>
     public bool awaitingRecruitmentConfirmation
@@ -173,7 +193,7 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
             state.items.Add(configuration.GoldID, initialGold);
 
         buildings = new BuildingEntity(state.buildings);
-        hero = new HeroEntity(state);
+        heroes = new HeroCollectionEntity(state);
         if (!state.innEnergyInitialized)
         {
             var next = Snapshot();
@@ -304,6 +324,89 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
         return ShopPurchaseResult.Success;
     }
 
+    /// <summary>Commits a recruitment intention with inventory and ownership.</summary>
+    /// <param name="recruit">Recruitment rule owner.</param>
+    /// <param name="step">Configured interaction.</param>
+    /// <param name="tasks">Current task receipts.</param>
+    /// <returns>Whether the interaction committed.</returns>
+    public bool ExecuteRecruit(RecruitEntity recruit, Config.RecruitStep step, TaskCollectionEntity tasks)
+    {
+        var next = Snapshot();
+        if (!recruit.Execute(next, step, tasks))
+            return false;
+
+        Commit(next);
+
+        return true;
+    }
+
+    /// <summary>Reads a committed recruitment receipt without copying the entire village.</summary>
+    /// <param name="stepId">Configured interaction identity.</param>
+    /// <returns>Whether the interaction has committed.</returns>
+    public bool HasRecruitmentReceipt(int stepId)
+    {
+        return state.recruit.completed.Contains(stepId);
+    }
+
+    /// <summary>Finishes the original recruitment movie with no second item deduction.</summary>
+    /// <param name="recruit">Recruitment rule owner.</param>
+    /// <returns>Whether the pending horn operation completed.</returns>
+    public bool CompleteRecruitHorn(RecruitEntity recruit)
+    {
+        var next = Snapshot();
+        if (!recruit.CompleteHorn(next))
+            return false;
+
+        Commit(next);
+
+        return true;
+    }
+
+    /// <summary>Commits a configured exploration departure without changing task progress.</summary>
+    /// <param name="explore">Excursion rule owner.</param>
+    /// <param name="definition">Configured introductory route.</param>
+    /// <returns>Whether the departure committed.</returns>
+    public bool BeginExplore(ExploreEntity explore, Config.ExploreJourney definition)
+    {
+        var next = Snapshot();
+        if (!explore.Begin(next, definition))
+            return false;
+
+        Commit(next);
+
+        return true;
+    }
+
+    /// <summary>Commits actual scene arrival in the same save as exploration state.</summary>
+    /// <param name="explore">Excursion rule owner.</param>
+    /// <param name="definition">Current configured route.</param>
+    /// <returns>Whether the arrival committed.</returns>
+    public bool ArriveExplore(ExploreEntity explore, Config.ExploreJourney definition)
+    {
+        var next = Snapshot();
+        if (!explore.Arrive(next, definition, DateTime.UtcNow.Ticks))
+            return false;
+
+        Commit(next);
+
+        return true;
+    }
+
+    /// <summary>Commits elapsed exploration results once across reloads.</summary>
+    /// <param name="explore">Excursion rule owner.</param>
+    /// <param name="definition">Current configured route.</param>
+    /// <returns>Whether the timed stage committed.</returns>
+    public bool AdvanceExplore(ExploreEntity explore, Config.ExploreJourney definition)
+    {
+        var next = Snapshot();
+        if (!explore.Advance(next, definition, DateTime.UtcNow.Ticks))
+            return false;
+
+        Commit(next);
+
+        return true;
+    }
+
     /// <summary>Commits an inn operation with inventory and hero costs in one durable save.</summary>
     /// <param name="inn">Inn rule owner.</param>
     /// <param name="action">Requested transaction.</param>
@@ -403,7 +506,7 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
     public override void Destroy()
     {
         buildings.Destroy();
-        hero.Destroy();
+        heroes.Destroy();
 
         base.Destroy();
     }
@@ -429,6 +532,6 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
         PlayerPrefs.Save();
         state = next;
         buildings.Restore(state.buildings);
-        hero.Restore(state);
+        heroes.Restore(state);
     }
 }

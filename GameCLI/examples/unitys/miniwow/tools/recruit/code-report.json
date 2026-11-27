@@ -1,0 +1,685 @@
+{
+  "schemaVersion": "gamecli-code-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "system": null,
+  "scope": "project-handwritten",
+  "status": "passed",
+  "passed": true,
+  "policy": "oathx-code/9",
+  "policySha256": "440a4b74b9193bd746a992a35a7a3a4413111fd95c7d709d553824b253d21634",
+  "rules": [
+    {
+      "id": "CS_PARSE",
+      "severity": "error",
+      "description": "C# 语法必须可解析"
+    },
+    {
+      "id": "OX001",
+      "severity": "error",
+      "description": "命名：camelCase / PascalCase"
+    },
+    {
+      "id": "OX002",
+      "severity": "error",
+      "description": "禁止表达式体"
+    },
+    {
+      "id": "OX003",
+      "severity": "error",
+      "description": "SerializeField 私有字段"
+    },
+    {
+      "id": "OX004",
+      "severity": "error",
+      "description": "Binding 独占一行"
+    },
+    {
+      "id": "OX005",
+      "severity": "error",
+      "description": "英文 XML summary"
+    },
+    {
+      "id": "OX006",
+      "severity": "error",
+      "description": "参数与返回值注释"
+    },
+    {
+      "id": "OX007",
+      "severity": "error",
+      "description": "成员声明顺序"
+    },
+    {
+      "id": "OX008",
+      "severity": "error",
+      "description": "成员注释前空行"
+    },
+    {
+      "id": "OX009",
+      "severity": "error",
+      "description": "VM / UI 目录"
+    },
+    {
+      "id": "OX010",
+      "severity": "error",
+      "description": "处理与 return 分组"
+    },
+    {
+      "id": "OX011",
+      "severity": "error",
+      "description": "默认参数禁止中文"
+    },
+    {
+      "id": "OX012",
+      "severity": "error",
+      "description": "OpenWidget 显式回调"
+    },
+    {
+      "id": "OX013",
+      "severity": "error",
+      "description": "CloseWidget 局部 widgets 数组"
+    },
+    {
+      "id": "OX014",
+      "severity": "error",
+      "description": "持久化键生成"
+    },
+    {
+      "id": "OX015",
+      "severity": "review",
+      "description": "运行时 UI 查找人工复核"
+    },
+    {
+      "id": "OX016",
+      "severity": "review",
+      "description": "中文文案归属人工复核"
+    },
+    {
+      "id": "OX017",
+      "severity": "review",
+      "description": "未激活预处理分支人工复核"
+    },
+    {
+      "id": "OX018",
+      "severity": "error",
+      "description": "多行对象或数组初始化局部声明前后空行"
+    },
+    {
+      "id": "OX019",
+      "severity": "error",
+      "description": "代码行不得超过配置列宽；长条件、参数和调用链换行"
+    },
+    {
+      "id": "OX020",
+      "severity": "review",
+      "description": "复核方法参数判空后直接返回或抛出 ArgumentNullException 的分支，包括 || 条件；仅保留有实际语义的判空"
+    },
+    {
+      "id": "OX021",
+      "severity": "error",
+      "description": "OnActive 禁止以 IsActive 或随生命周期翻转的字段重复拦截激活"
+    },
+    {
+      "id": "OX022",
+      "severity": "error",
+      "description": "Subscribe 事件回调必须直接传入 On 加 PascalCase 名称的方法组，禁止匿名回调"
+    },
+    {
+      "id": "OX023",
+      "severity": "error",
+      "description": "QueryEntity<T>() 结果先赋给局部变量，再访问成员或传给其他方法"
+    },
+    {
+      "id": "OX024",
+      "severity": "error",
+      "description": "应用事件统一使用 XPluginUtility，禁止直接 DispatchEvent"
+    },
+    {
+      "id": "OX025",
+      "severity": "review",
+      "description": "固定业务 route 的字符串比较应改为枚举，协议文本由人工分类"
+    },
+    {
+      "id": "OX026",
+      "severity": "error",
+      "description": "系统启动封装到带业务名的安装方法，禁止直接运行协程或隐藏 Install/Uninstall"
+    },
+    {
+      "id": "OX027",
+      "severity": "error",
+      "description": "场景资产路径必须读取配置表，不在业务代码硬编码"
+    },
+    {
+      "id": "OX028",
+      "severity": "review",
+      "description": "动画名使用类前常量类型，复核 SetAnimation/FindAnimation 字面量"
+    },
+    {
+      "id": "OX029",
+      "severity": "error",
+      "description": "每条字段或局部变量声明只允许一个变量"
+    },
+    {
+      "id": "OX030",
+      "severity": "review",
+      "description": "复核业务系统 generation/requestedActive 等重复生命周期字段"
+    }
+  ],
+  "issues": [
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 353,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "line": 213,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "line": 258,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "line": 152,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 246,
+      "rule": "OX016",
+      "severity": "review",
+      "message": "Review text ownership: fixed UI text belongs in propCommonText; dynamic content/logs need classification."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "line": 127,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    }
+  ],
+  "statistics": {
+    "files": 89,
+    "lines": 13402,
+    "blankLines": 2317,
+    "commentLines": 2438,
+    "members": 1625,
+    "documentedMembers": 1625,
+    "blankLineRate": 0.1728846440829727,
+    "commentLineRate": 0.18191314729144903,
+    "documentedMemberRate": 1
+  },
+  "excluded": [
+    "Assets/Scripts/Config/client/ActorConfig.cs",
+    "Assets/Scripts/Config/client/BattleEntryConfig.cs",
+    "Assets/Scripts/Config/client/BlacksmithCostConfig.cs",
+    "Assets/Scripts/Config/client/BlacksmithHeroConfig.cs",
+    "Assets/Scripts/Config/client/BlacksmithMaterialConfig.cs",
+    "Assets/Scripts/Config/client/BlacksmithRecipeConfig.cs",
+    "Assets/Scripts/Config/client/BlacksmithSettingConfig.cs",
+    "Assets/Scripts/Config/client/CommonTextConfig.cs",
+    "Assets/Scripts/Config/client/ExcelEnumDefine.cs",
+    "Assets/Scripts/Config/client/ExploreJourneyConfig.cs",
+    "Assets/Scripts/Config/client/FunctionSystemConfig.cs",
+    "Assets/Scripts/Config/client/HomeBuildingConditionConfig.cs",
+    "Assets/Scripts/Config/client/HomeBuildingConfig.cs",
+    "Assets/Scripts/Config/client/HomeBuildingCostConfig.cs",
+    "Assets/Scripts/Config/client/HomeBuildingGoodsConfig.cs",
+    "Assets/Scripts/Config/client/HomeBuildingItemConfig.cs",
+    "Assets/Scripts/Config/client/HomeBuildingLevelConfig.cs",
+    "Assets/Scripts/Config/client/HomeHospitalSettingConfig.cs",
+    "Assets/Scripts/Config/client/HomeInnSettingConfig.cs",
+    "Assets/Scripts/Config/client/HomeOpeningConfig.cs",
+    "Assets/Scripts/Config/client/OpeningDialogueConfig.cs",
+    "Assets/Scripts/Config/client/OpeningRescueConfig.cs",
+    "Assets/Scripts/Config/client/RecruitDialogueConfig.cs",
+    "Assets/Scripts/Config/client/RecruitHeroConfig.cs",
+    "Assets/Scripts/Config/client/RecruitStepConfig.cs",
+    "Assets/Scripts/Config/client/SceneConfig.cs",
+    "Assets/Scripts/Config/client/ShopGoodsConfig.cs",
+    "Assets/Scripts/Config/client/ShopSettingConfig.cs",
+    "Assets/Scripts/Config/client/TaskChapterConfig.cs",
+    "Assets/Scripts/Config/client/TaskConfig.cs",
+    "Assets/Scripts/Config/client/TaskGuideConfig.cs",
+    "Assets/Scripts/Config/client/TaskSettingConfig.cs",
+    "Assets/Scripts/Config/client/TaskUnlockConfig.cs",
+    "Assets/Scripts/Config/client/VillageSettingConfig.cs",
+    "Assets/Scripts/Config/client/VillageTaskConfig.cs",
+    "Assets/Scripts/Config/common/Excel.cs",
+    "Assets/Scripts/Config/language/LanguageConfig.cs"
+  ],
+  "reviewRequired": [
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 353,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/GamePlugin.cs",
+      "line": 1,
+      "rule": "OX017",
+      "severity": "review",
+      "message": "Inactive preprocessor branches were not analyzed; inspect applicable Unity defines."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "line": 213,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "line": 258,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "line": 152,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "line": 246,
+      "rule": "OX016",
+      "severity": "review",
+      "message": "Review text ownership: fixed UI text belongs in propCommonText; dynamic content/logs need classification."
+    },
+    {
+      "file": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "line": 127,
+      "rule": "OX020",
+      "severity": "review",
+      "message": "Verify null has a defined outcome here; remove guards that mask an invalid required parameter."
+    }
+  ],
+  "limitations": [
+    "Syntax checks only; Unity compilation and business behavior are not verified.",
+    "Multiline initialized local boundaries, member spacing and return spacing are checked; other functional grouping, comment meaning, VM/entity null guards and framework lifecycle ownership require review.",
+    "Assets/Scripts/Config is the generated Excel directory and is excluded from project style checks; inspect excluded paths.",
+    "Only active default preprocessor branches and direct base-class declarations are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/GamePlugin.cs",
+      "sha256": "4bf8271297e3f09205af25e468d654111ffbdd281d7e1b6d2f6151af96cda41b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorConfiguration.cs",
+      "sha256": "f2e9232d43438a37592d1293c32631b9f1e60a21de2c6b8bc831d967b1b47f57"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "sha256": "32275e289234313912c8574d7df2acccddbb950eb3fa3fc61e6f688f4ba5a2c5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorJoystick.cs",
+      "sha256": "8a51c413eb3ae6ebaada699d12fbb91232aa5aa0df95ba2a08a3acdae2f32b89"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorShape.cs",
+      "sha256": "ddd48d001fe38b1fceff3cfff1cbb0d421f080bb51868aab45b87eb7f539492a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/BattleEntryEntity.cs",
+      "sha256": "b4215a9f760257b19e84c87609bbbd51e311aa3b2dfa587764a194cb198e6231"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/BattleEntrySystem.cs",
+      "sha256": "136f53ba051b7b24b37475e4a6de194b118fe325ef47d05fa1088ff6ea2ab86f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/UI/UIBattleEntry.cs",
+      "sha256": "7770e9e9d92c64ac1729b6edc4ed7a5fcea148917d96c26d396b34d03949810d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/VM/VMBattleEntry.cs",
+      "sha256": "1ad568dcd9c11e578ec223d9bded79a97db11a05b030a4f276169f1e4cef8f3a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/BlacksmithEntity.cs",
+      "sha256": "008ee31587353aa86918c84c6374a01bf17665461d1517cd9479cca1da335ae7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/BlacksmithSystem.cs",
+      "sha256": "0bb8c8ea7ebecad029b64423b5acc87431d822a2ddc8f797941790ede8f94920"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/UI/UIBlacksmith.cs",
+      "sha256": "1907db4f346798a2363e9cf6c7c6ae211adb9879bb024e4897fcfd9eebf9f00e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/UI/UIBlacksmithConfirm.cs",
+      "sha256": "fc07c01803f2c14a3ab10af559b09be1c5c179143666bf6bbdbd04c9d6a740d5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/UI/UIBlacksmithEntry.cs",
+      "sha256": "ef6edf95c20b14e045e245bcb737b13edcd7095423de459bb49b05be9c5c233d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/VM/VMBlacksmith.cs",
+      "sha256": "7603b99fbffc147a43ee6b1e03d55fe5d32d75be3b5cb83c08134d2615f50e26"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/VM/VMBlacksmithConfirm.cs",
+      "sha256": "9f46306d461d98a4bc529116673bb7fbb5c3ca839df514f54e3e5f7193977e29"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/VM/VMBlacksmithEntry.cs",
+      "sha256": "294ee7798ac74fd2c8810d4fa0a50d6ed61d51384be80174eb071770e5cbcaaa"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/HomeFacilityEvents.cs",
+      "sha256": "5cbd8cea844d471f6965b86ab595150063576335ea7ce1a8b1d6803097b3b35b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIRequestEvent.cs",
+      "sha256": "74a88539ab4e6821990aad94c3cd08cf2f87dafcf1e7f30d43670e51fec6a3ce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/Utility/CommonText.cs",
+      "sha256": "862cdf420a7c6b5d7bb7e6d6b86eef14547a34d11a38c5dfc92f82105e512c2d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/Utility/StorageKey.cs",
+      "sha256": "4d9d3992809fda276444804306a4ae44eb8afd59dbc12fd96a243d1c23120bd9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Explore/ExploreEntity.cs",
+      "sha256": "dddcf2ff931c649dd38dc2d9a1e1ea302b5ac858b892b1135d3d6cd6a7579205"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Explore/ExploreSystem.cs",
+      "sha256": "f5e12c7a4c603e5f3f40085d5d82a01bcf2ab6f938f756e2f60772b6b13000ca"
+    },
+    {
+      "path": "Assets/Scripts/Systems/GameRuntime.cs",
+      "sha256": "1c688c42e973266a81eb8d3726ade391e79af30668d231119d3e49297790c58f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/BuildingEntity.cs",
+      "sha256": "a3712572de4b7a5971902bc18edf9ef8a8c64b9fcb629a208b1ce72cc8aea813"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSafeArea.cs",
+      "sha256": "05b271f8d6537f4d8cae44fc59a1294e9a7214dba0715c897cf623c89c1311e4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSceneCamera.cs",
+      "sha256": "5e11c849331ae4f52c93ef85d37d4888d4bd3821ec02ca274ac7537043d8521b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HeroCollectionEntity.cs",
+      "sha256": "11974dcf80fcb2de0c93a90b80bc34949d8ca8f8718ab77471331dd3f25098e6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HeroEntity.cs",
+      "sha256": "d7a515d373c07e754b6c76dd2e0253e5872baa3ad46a6d5318ab47b5dea7e475"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "f6706b8a2eeb8ba28ff62e5d7efe3705c7144db9ee0972b3eb09d93b727ab742"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeOpening.cs",
+      "sha256": "781f5656d8b799ce144b72fd6332e2a87cd079c5cc1c1d330f44a11d0197c9e6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeOpeningRuntime.cs",
+      "sha256": "77979cc680b99438d13adaa5484f01b74ab2763b2af31f33745e6271066b5197"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeRecruitRuntime.cs",
+      "sha256": "5e1f937d73cd863d0bab3713c6ac87c7b905822729dfbfd50853164b2ca4d9d9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeRuntime.cs",
+      "sha256": "e58ed4a1465922d19b02462679efaf30cea4907de939b750685c76e37f26b906"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "aaf400755585efd02b08987be0a6b035b9f8b48ec58ba132c4ba4ae6398c42fb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeVillageEntity.cs",
+      "sha256": "8bbd05162a12250ee1cd6246c5f991669e46b16b00dc233decd92186130cf83b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeVillageRuntime.cs",
+      "sha256": "85df36f6fa1fb681fe8ee4cbeb0215b04e15903d0622184628d2997ac644e278"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeNavigation.cs",
+      "sha256": "766ed61de727d23f4c0045756f848cdcba3a2e1881983c5dc6102b6d0e05b546"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeNpcSelection.cs",
+      "sha256": "b7132029a4e65016cd71536fda515209bc38ff8c7e1b68193be371dfc175b977"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeOpeningScene.cs",
+      "sha256": "7fa25943c60493797b95b6d12d4b651e5904cee1bb1664aef1b26b3bbb5b697c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeRecruitScene.cs",
+      "sha256": "3094f1e027be312ea411619b41993e7978d643be4d282de65042c2f9c5b3b1a5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeResidentNavigationRequested.cs",
+      "sha256": "e762c4fd14bde7ec41cea8fadc2f507255a7fb43b4bcbd1ce3cdac7fe8f5f581"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "sha256": "7f8cda98670d432522037302ce4e9f8b37f0531ce4c3a71be3f4c7fa560b2696"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "1239bd6990c41a55ae9187ec830d135359628774cda5b4f1892f60ab1f62ecbb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeEntry.cs",
+      "sha256": "64d3148d98a1fa15a61a51dea7342d363ed5f418d29db26beddd89b00de23028"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeHospitalEntry.cs",
+      "sha256": "cb1706b750a79c1000654afe099843b1372df00d7d8fb63accdbd6f27bdade8d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeOpening.cs",
+      "sha256": "7d97cad4d131a5e0be1b7c9447594858d16c5f385763054964eb9ccd86b99bf1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeRecruitEntry.cs",
+      "sha256": "b73516a777ce099eb1250048df2c213469462a976432cb76e008aef6e0d96795"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "d55e1d6b6ea0782526063ec24b783a499fd0d4e67ea4e0d0b85adebaddfde693"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeEntry.cs",
+      "sha256": "71c47985b237a925b1f0747354afe8af105df416e589d1bd67a89c9133b778e8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeHospitalEntry.cs",
+      "sha256": "10f0b87cb41ad07c6d29ce17a23ecf58eee54d9a6f1e78869da8bbb1ec8e0ec2"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeOpening.cs",
+      "sha256": "d6c349e49f44fd513da34a88daa224c79c07d2160e82f8b38d790017f312128b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeRecruitEntry.cs",
+      "sha256": "ee808b7c34dc38608d58741ed4602d178cce9256e0cc427faa9db6be4fc419b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Hospital/HospitalSystem.cs",
+      "sha256": "30728309a3dcc715eaed6f3257fac7845ccb509c0226e9c6f6c16da60b586664"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Hospital/UI/UIHomeHospital.cs",
+      "sha256": "467b4b717a78f983032dfa50c4abe6f62c9f600dbb0da1cfe257c661b2cd6953"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Hospital/VM/VMHomeHospital.cs",
+      "sha256": "e2283c13233eead1b5f2491805775e08418874623998cff720723a05bbfaa356"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/InnEntity.cs",
+      "sha256": "44bee37314873fe2c3861cee3835d76d6cb97b64b725e9387c5e722b19b3310e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/InnEvents.cs",
+      "sha256": "09cd476681fa5f72d3ec6a28b3750cda328c7e3ddfd1f2ec56a2ebf38eb45818"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/InnSystem.cs",
+      "sha256": "013ad6186510c9bca75bbe3e64738fa896117511ecd89e216b92404053ff5497"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/UI/UIInn.cs",
+      "sha256": "ae24dfe41a84a63744e0ff4b9a1ebbc8618e9f879cc5bbc3d39d69386e28eecb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/VM/VMInn.cs",
+      "sha256": "cba5d9aa9b2d3cc392599cc560a1658d8c3e324a041f40d545d8e07c1001d247"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "sha256": "c2621d468a9f3915211967a604f021f118236f4954c1e0b7dd705df6eeb9411e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "sha256": "4089cc759d900a3fcfbe96a75f3e91e071b169c2c5ae99170fb21d069204cae5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "sha256": "03ac2a4fe493e17a808ea936de2b400d4c06f0fc5e6be039ad284e8b9de415b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "sha256": "e8ac61be8b3077a918934892bcea390533ca750043fcb6840cce36859af7c4de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "sha256": "64544dda5193e3bd2e86b0d88001bea069e63bdac44162097f97afeea5aae44c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterSystem.cs",
+      "sha256": "fca9b680d4e87501e3fbcbd1f0650c0f9710c2540f53da5fd4445975753faa81"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/RecruitEntity.cs",
+      "sha256": "dc7d02c5b01d3c529e60979ea488a213eff99931b057190cdcf6ebd65ab17774"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/RecruitSystem.cs",
+      "sha256": "a7e0c4a746b13ba0643595de38fbc35bcd6f6e633f9fcb47aa110737dff7e794"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/UI/UIRecruit.cs",
+      "sha256": "c6cbb2503b56495b6a0e1573c10288393c169fda8f4a3e6a21ab8a08384f1431"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/VM/VMRecruit.cs",
+      "sha256": "94fa4cf7f8bc267a0aef07f332f95bcfb790bccc34fc57532464da5960587e7c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeManager.cs",
+      "sha256": "49809a3d622fe11e5e67a94b246cda29c2399efd3f1082256f853f9a89396a09"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "sha256": "0dc6418182430c87dbbf37dbc94a15f6a83317c8b4a0e3b181dd5db2cf4f11c9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopEntity.cs",
+      "sha256": "25c67024ce669cfef51c676e9f73c3c021799390a600f20a9cd624c67aa13f17"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopSystem.cs",
+      "sha256": "3097dab4d6e29344cf0d94ec31462c499807f1687dea3cc581610a1b699ae1b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShop.cs",
+      "sha256": "e758ff5e34af835756caa4601ab772420ecf494c0fe3a62799e31528bce7a0a7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopOffer.cs",
+      "sha256": "5e671872d4db6cb733b95d92bfd9a82bee18623c85831fd182d333f19b339244"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopPurchase.cs",
+      "sha256": "3e234d6b50ff9c6168da3dce245be6e072307f087b90fc8a12c9e93bf09f3798"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShop.cs",
+      "sha256": "6e39b9dc58616ea018b9b87248cb2eb684980c616da29ae106ac9fec4ecae277"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopOffer.cs",
+      "sha256": "cbd114415490bb8092ccde2dc83c034ae6caa192990d5422cbd4794d41bf645c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopPurchase.cs",
+      "sha256": "8da7a79ab378d8f2348b5c037a779425c9cb12610f5bbb10834fbdd2e68e12ef"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/ITaskAction.cs",
+      "sha256": "7d4e70aed1312c331581b8fb383b7f5b9a8cf31380eab1ecebbad2036cbf7df3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskCollectionEntity.cs",
+      "sha256": "4d8e894d205015cc8d049e8a22cfa2e347fbd21360dd0879889b0d578ed4b848"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "sha256": "56ff1f03647e30ee951810503e87246b17b8de8057abebb9e5c0209bb9a18eea"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskEvents.cs",
+      "sha256": "8737dc17b43108c1c7e4d320e9598afe510911f20385346f2173e59ff65ed2be"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskFingerAction.cs",
+      "sha256": "ddf31501fc8ac562b056ac94ce3106ad299a37ec118e54fea4f966650d487da0"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskGuideRunner.cs",
+      "sha256": "a0d1e3514e8051face67dcd56cac280d02fa7a87e80780347115aa1616c53c8c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskGuideTarget.cs",
+      "sha256": "8f8b3e94a600fa81cf423704fda5ffaa9297e093bc66057c6b13f50511538d2f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskSystem.cs",
+      "sha256": "b101658f2617d8862e730a200c9ce5bbc97525e7b523d49c25bc787206ecb313"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\52e30da0-08ac-4965-8150-79a4ee94dcad"
+}

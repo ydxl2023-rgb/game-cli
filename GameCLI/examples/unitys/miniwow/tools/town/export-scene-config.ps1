@@ -18,6 +18,8 @@ Copy-Item -LiteralPath "$root/config/propHomeBuilding.xlsx" -Destination "$input
 Copy-Item -LiteralPath "$root/config/propShop.xlsx" -Destination "$inputDirectory/propShop.xlsx" -Force
 Copy-Item -LiteralPath "$root/config/propBlacksmith.xlsx" -Destination "$inputDirectory/propBlacksmith.xlsx" -Force
 Copy-Item -LiteralPath "$root/config/propVillage.xlsx" -Destination "$inputDirectory/propVillage.xlsx" -Force
+Copy-Item -LiteralPath "$root/config/propExplore.xlsx" -Destination "$inputDirectory/propExplore.xlsx" -Force
+Copy-Item -LiteralPath "$root/config/propRecruit.xlsx" -Destination "$inputDirectory/propRecruit.xlsx" -Force
 Copy-Item -LiteralPath "$root/config/propOpening.xlsx" -Destination "$inputDirectory/propOpening.xlsx" -Force
 $exporter = [IO.Path]::GetFullPath("$root/config/bin/Debug/net8.0/e2cs.exe")
 & dotnet build "$root/tools/e2cs/e2cs.csproj" --nologo -v quiet
@@ -34,6 +36,10 @@ if ($LASTEXITCODE -ne 0) { throw 'Hospital configuration verification failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'Trading configuration verification failed.' }
 & python -X utf8 "$root/tools/blacksmith-ui/verify.py" --output $outputDirectory
 if ($LASTEXITCODE -ne 0) { throw 'Blacksmith configuration verification failed.' }
+& python -X utf8 "$root/tools/explore/verify.py" --output $outputDirectory
+if ($LASTEXITCODE -ne 0) { throw 'Exploration configuration verification failed.' }
+& python -X utf8 "$root/tools/recruit/verify.py" --output $outputDirectory
+if ($LASTEXITCODE -ne 0) { throw 'Recruitment configuration verification failed.' }
 $table = Get-Content -Raw "$outputDirectory/json/SceneConfig.bytes" | ConvertFrom-Json
 if (!$table.data.'10001'.Path -or !$table.data.'10002'.Path) { throw 'Required scene entries are missing.' }
 foreach ($file in @('client/SceneConfig.cs', 'client/ActorConfig.cs', 'client/FunctionSystemConfig.cs', 'client/CommonTextConfig.cs', 'client/TaskConfig.cs', 'client/TaskChapterConfig.cs', 'client/TaskUnlockConfig.cs', 'client/TaskGuideConfig.cs', 'client/TaskSettingConfig.cs', 'client/HomeInnSettingConfig.cs', 'client/HomeHospitalSettingConfig.cs', 'client/HomeBuildingConfig.cs', 'client/HomeBuildingLevelConfig.cs', 'client/HomeBuildingCostConfig.cs', 'client/HomeBuildingConditionConfig.cs', 'client/HomeBuildingGoodsConfig.cs', 'client/HomeBuildingItemConfig.cs', 'client/VillageSettingConfig.cs', 'client/VillageTaskConfig.cs', 'client/HomeOpeningConfig.cs', 'client/OpeningDialogueConfig.cs', 'client/OpeningRescueConfig.cs', 'client/ExcelEnumDefine.cs', 'language/LanguageConfig.cs', 'common/Excel.cs')) {
@@ -42,6 +48,12 @@ foreach ($file in @('client/SceneConfig.cs', 'client/ActorConfig.cs', 'client/Fu
     Copy-Item -LiteralPath "$outputDirectory/csharp/$file" -Destination $target -Force
 }
 $destination = "$root/client/Assets/Data/Jsons/Excels"
+foreach ($name in @('RecruitStep', 'RecruitDialogue', 'RecruitHero', 'BattleEntry')) {
+    Copy-Item -LiteralPath "$outputDirectory/csharp/client/${name}Config.cs" -Destination "$root/client/Assets/Scripts/Config/client/${name}Config.cs" -Force
+    Copy-Item -LiteralPath "$outputDirectory/json/${name}Config.bytes" -Destination "$destination/${name}Config.bytes" -Force
+}
+Copy-Item -LiteralPath "$outputDirectory/csharp/client/ExploreJourneyConfig.cs" -Destination "$root/client/Assets/Scripts/Config/client/ExploreJourneyConfig.cs" -Force
+Copy-Item -LiteralPath "$outputDirectory/json/ExploreJourneyConfig.bytes" -Destination "$destination/ExploreJourneyConfig.bytes" -Force
 foreach ($name in @('ShopGoods', 'ShopSetting', 'BlacksmithSetting', 'BlacksmithRecipe', 'BlacksmithCost', 'BlacksmithMaterial', 'BlacksmithHero')) {
     Copy-Item -LiteralPath "$outputDirectory/csharp/client/${name}Config.cs" -Destination "$root/client/Assets/Scripts/Config/client/${name}Config.cs" -Force
     Copy-Item -LiteralPath "$outputDirectory/json/${name}Config.bytes" -Destination "$destination/${name}Config.bytes" -Force

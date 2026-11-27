@@ -337,6 +337,41 @@ namespace Config
         public const int TEXT_FORGE_HERO_179 = 900179;
         public const int TEXT_FORGE_HERO_180 = 900180;
         public const int TEXT_FORGE_HERO_181 = 900181;
+        public const int TEXT_TRADE_LEVEL_TITLE = 30324;
+        public const int TEXT_TRADE_SALE_TITLE = 30325;
+        public const int TEXT_TRADE_MATERIAL_TAB = 30326;
+        public const int TEXT_TRADE_EQUIPMENT_TAB = 30327;
+        public const int TEXT_TRADE_LOG_PENDING = 30328;
+        public const int TEXT_TRADE_TIER_SHORT = 30329;
+        public const int TEXT_RECRUIT_SPEAKER_3028001 = 16056002;
+        public const int TEXT_RECRUIT_DIALOGUE_3028001 = 16056003;
+        public const int TEXT_RECRUIT_SPEAKER_3028002 = 16056004;
+        public const int TEXT_RECRUIT_DIALOGUE_3028002 = 16056005;
+        public const int TEXT_RECRUIT_SPEAKER_3029001 = 16058002;
+        public const int TEXT_RECRUIT_DIALOGUE_3029001 = 16058003;
+        public const int TEXT_RECRUIT_SPEAKER_3030001 = 16060002;
+        public const int TEXT_RECRUIT_DIALOGUE_3030001 = 16060003;
+        public const int TEXT_RECRUIT_SPEAKER_3031001 = 16062002;
+        public const int TEXT_RECRUIT_DIALOGUE_3031001 = 16062003;
+        public const int TEXT_RECRUIT_HERO_129 = 307129;
+        public const int TEXT_RECRUIT_HERO_133 = 307133;
+        public const int TEXT_BATTLE_ENTRY_TITLE = 308001;
+        public const int TEXT_BATTLE_ENTRY_NAME = 308002;
+        public const int TEXT_BATTLE_ENTRY_DESCRIPTION = 308003;
+        public const int TEXT_BATTLE_ENTRY_GATHER = 308004;
+        public const int TEXT_BATTLE_ENTRY_READY = 308005;
+        public const int TEXT_BATTLE_ENTRY_REQUIRES_HERO = 308006;
+        public const int TEXT_BATTLE_ENTRY_LOCKED = 308007;
+        public const int TEXT_BATTLE_ENTRY_POWER = 308008;
+        public const int TEXT_BATTLE_ENTRY_PREPARED = 308009;
+        public const int TEXT_RECRUIT_TALK = 308010;
+        public const int TEXT_RECRUIT_RECEIVE = 308011;
+        public const int TEXT_RECRUIT_HORN = 308012;
+        public const int TEXT_RECRUIT_MISSING = 308013;
+        public const int TEXT_RECRUIT_NEXT = 308014;
+        public const int TEXT_RECRUIT_RETRY = 308015;
+        public const int TEXT_RECRUIT_BROTHER = 308016;
+        public const int TEXT_RECRUIT_HORN_NPC = 308017;
         /// <summary>
         /// config CommonTextConfig table
         /// </summary>

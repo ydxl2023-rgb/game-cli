@@ -1,0 +1,526 @@
+{
+  "schemaVersion": "gamecli-architecture-verification/1",
+  "projectId": "p-fac9bb57-0a72-4db3-9f48-7d42e95f37a3",
+  "unityProjectId": "83c29c9f-21c1-4597-9691-6707ca146fa7",
+  "policy": "oathx-architecture/1",
+  "issues": [],
+  "statistics": {
+    "files": 126,
+    "systems": 11
+  },
+  "status": "passed",
+  "passed": true,
+  "excluded": [],
+  "limitations": [
+    "Source-symbol analysis without Unity assemblies; compilation and runtime behavior require separate verification.",
+    "All handwritten Assets/Scripts sources supply context; Systems/<module> defines the enforced ownership boundary. Composition outside Systems is outside this rule.",
+    "Generated code, interface indirection and arbitrary reflection/dynamic dispatch are not fully covered. Only active default preprocessor branches are analyzed."
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Config/client/ActorConfig.cs",
+      "sha256": "27c5ff82faf247850a7eb3437709afd69365ec8ed58e61b851ccdbd82bb8fd76"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/BattleEntryConfig.cs",
+      "sha256": "053ff4c4f8ff64ccef1e77c60881ae601aa3a39a2e0f26b1668ef29eee3d4271"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/BlacksmithCostConfig.cs",
+      "sha256": "8a2fba65f1f6015cd45defe9f9521a9a328ba951340937cbe796199ab8cf8630"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/BlacksmithHeroConfig.cs",
+      "sha256": "002e7e1b8ce4eff13dbfc5370cb47bfe7ddf8a362d38f3171471b7fa31646a02"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/BlacksmithMaterialConfig.cs",
+      "sha256": "68edc4bd93c558be29d3f0156d37bedd607a9640ea2eabe9533263483dee2110"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/BlacksmithRecipeConfig.cs",
+      "sha256": "1e09ccccdcd90a1f28921c620857a9d7e7f0eb8c9b9ad61c27fed4132bfd2fb5"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/BlacksmithSettingConfig.cs",
+      "sha256": "e26af0953167acd3ea165e8902eff67b3c445934e43f3cf7ae0158da41c1423a"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/CommonTextConfig.cs",
+      "sha256": "8a99cd9dcfac252f60db8da77f172289ee547c734f0156b4eea45845d60eb10d"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/ExcelEnumDefine.cs",
+      "sha256": "fba44839f9d4cd37b5ea3bdc24c87eda087d74bf5c7c64f3155a9e580d055dc4"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/ExploreJourneyConfig.cs",
+      "sha256": "962f3bb673e290ffad5567842d24a1186f44a70f64e3ac874158744acbcf1a44"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/FunctionSystemConfig.cs",
+      "sha256": "da4859170bb0c0eb165adc50e5226ce465e37f765e31cd358ca779bd0b3c0147"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeBuildingConditionConfig.cs",
+      "sha256": "fbcd79ec502b9f5a2c9af4c052e2327c429e81038ddcdcdd9678f6b646038872"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeBuildingConfig.cs",
+      "sha256": "5251a8fdb28da7e643d720716bacadda4b219907d6a1a982af2c32558817f653"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeBuildingCostConfig.cs",
+      "sha256": "ef46f0f2d89d70da18227930c64a1da284753785f82607a6525704f6b559026a"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeBuildingGoodsConfig.cs",
+      "sha256": "ea5f033cb956bbe664b2ed8fcf95e0b6a07d0b77dc21603eb84479eb890561d3"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeBuildingItemConfig.cs",
+      "sha256": "1227095b8b3045d23a4cf986c800a030432e053f1842d52ce13b84c8c87c0c86"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeBuildingLevelConfig.cs",
+      "sha256": "1e460633a2e1ac96e6e8c608ce073f058d2a9f42f54ddc47fdd40428d6bf2f9a"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeHospitalSettingConfig.cs",
+      "sha256": "a287360a5821b7201e42f7017fbc779efa56aef3c3326e519c008d535364814a"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeInnSettingConfig.cs",
+      "sha256": "b0f9167bffb7b549414382e2a7b3d2e5f97bf5dd0d73122f05a3ddda795a0ee1"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/HomeOpeningConfig.cs",
+      "sha256": "8375bb5adba420bf4eecf75e2254fd2e1ee681ea69f16894ea4ccbc07b364c16"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/OpeningDialogueConfig.cs",
+      "sha256": "73d39566dadc7e80238311e8aea57b4788464da1212686fb9b5edecd50078a34"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/OpeningRescueConfig.cs",
+      "sha256": "d4bfe06272442d20a8fe807ef263e58bde2d695349af3aee8e7d91fd6892ba27"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/RecruitDialogueConfig.cs",
+      "sha256": "0e1c7e34f1c2829f126a00ade8ec95f74b184d9f2b62a0d2a9cdf3d5e5280dca"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/RecruitHeroConfig.cs",
+      "sha256": "3fb0439ea0ba82ca5de9dd54c08a905513ae630987a390f514c7a036ec33c627"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/RecruitStepConfig.cs",
+      "sha256": "f44e1b2bdc8953e88f5ce647499e6177a971e2edc71591155bf632dff872440c"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/SceneConfig.cs",
+      "sha256": "b0f343696a89edc906436ec8353647f18fb1369fbcb337d9d68cb7059e10bfe3"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/ShopGoodsConfig.cs",
+      "sha256": "c07f96e0e6d8d95270c9a035d877424d609831b9eba02379c96986e8b659d1b8"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/ShopSettingConfig.cs",
+      "sha256": "d31f733ef1231497d92651f45fce7ee35de8d9e79d00621698f7882238a30978"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/TaskChapterConfig.cs",
+      "sha256": "12a726d5fa2d66ef4d30b37c70792c295f4dd0f5b788fb547c71a6d0014eb8e4"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/TaskConfig.cs",
+      "sha256": "1359b4f5b0ef1cfc723df561efc616d19a8b554026b564d9e1275380a8c3e01c"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/TaskGuideConfig.cs",
+      "sha256": "cc8113d70764f284b557152afaf09927abcc1b08b42c41f484c5a0b825a48a9a"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/TaskSettingConfig.cs",
+      "sha256": "745e845684d3ea262ca35fcca825dd898f1d7a9012ac8e92aa2f6f4a0939d5f1"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/TaskUnlockConfig.cs",
+      "sha256": "e25acf4d472792f40d82b2c8aff055d10c8e0461a2cd02f74f966635246b1c3c"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/VillageSettingConfig.cs",
+      "sha256": "031853f775512e672bdb76e2b2ba698d4c4f0df64151170c562d2ee6562d1f53"
+    },
+    {
+      "path": "Assets/Scripts/Config/client/VillageTaskConfig.cs",
+      "sha256": "e8d6f7c4d1525d98b3d2a6271a13f462689dd1d0a96f394793c83c4d19ae66f6"
+    },
+    {
+      "path": "Assets/Scripts/Config/common/Excel.cs",
+      "sha256": "862d05bcfb5199a595900103f6857ec47e22ca8b2aa7ac15b7b40b346662deed"
+    },
+    {
+      "path": "Assets/Scripts/Config/language/LanguageConfig.cs",
+      "sha256": "e32274e1a32d1f15968f809cc5cbb5471783709ba9c4f2a4c66cb3df390c68cf"
+    },
+    {
+      "path": "Assets/Scripts/GamePlugin.cs",
+      "sha256": "4bf8271297e3f09205af25e468d654111ffbdd281d7e1b6d2f6151af96cda41b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorConfiguration.cs",
+      "sha256": "f2e9232d43438a37592d1293c32631b9f1e60a21de2c6b8bc831d967b1b47f57"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorEntity.cs",
+      "sha256": "32275e289234313912c8574d7df2acccddbb950eb3fa3fc61e6f688f4ba5a2c5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorJoystick.cs",
+      "sha256": "8a51c413eb3ae6ebaada699d12fbb91232aa5aa0df95ba2a08a3acdae2f32b89"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Actor/ActorShape.cs",
+      "sha256": "ddd48d001fe38b1fceff3cfff1cbb0d421f080bb51868aab45b87eb7f539492a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/BattleEntryEntity.cs",
+      "sha256": "b4215a9f760257b19e84c87609bbbd51e311aa3b2dfa587764a194cb198e6231"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/BattleEntrySystem.cs",
+      "sha256": "136f53ba051b7b24b37475e4a6de194b118fe325ef47d05fa1088ff6ea2ab86f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/UI/UIBattleEntry.cs",
+      "sha256": "7770e9e9d92c64ac1729b6edc4ed7a5fcea148917d96c26d396b34d03949810d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/BattleEntry/VM/VMBattleEntry.cs",
+      "sha256": "1ad568dcd9c11e578ec223d9bded79a97db11a05b030a4f276169f1e4cef8f3a"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/BlacksmithEntity.cs",
+      "sha256": "008ee31587353aa86918c84c6374a01bf17665461d1517cd9479cca1da335ae7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/BlacksmithSystem.cs",
+      "sha256": "0bb8c8ea7ebecad029b64423b5acc87431d822a2ddc8f797941790ede8f94920"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/UI/UIBlacksmith.cs",
+      "sha256": "1907db4f346798a2363e9cf6c7c6ae211adb9879bb024e4897fcfd9eebf9f00e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/UI/UIBlacksmithConfirm.cs",
+      "sha256": "fc07c01803f2c14a3ab10af559b09be1c5c179143666bf6bbdbd04c9d6a740d5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/UI/UIBlacksmithEntry.cs",
+      "sha256": "ef6edf95c20b14e045e245bcb737b13edcd7095423de459bb49b05be9c5c233d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/VM/VMBlacksmith.cs",
+      "sha256": "7603b99fbffc147a43ee6b1e03d55fe5d32d75be3b5cb83c08134d2615f50e26"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/VM/VMBlacksmithConfirm.cs",
+      "sha256": "9f46306d461d98a4bc529116673bb7fbb5c3ca839df514f54e3e5f7193977e29"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Blacksmith/VM/VMBlacksmithEntry.cs",
+      "sha256": "294ee7798ac74fd2c8810d4fa0a50d6ed61d51384be80174eb071770e5cbcaaa"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/HomeFacilityEvents.cs",
+      "sha256": "5cbd8cea844d471f6965b86ab595150063576335ea7ce1a8b1d6803097b3b35b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/UI/UIRequestEvent.cs",
+      "sha256": "74a88539ab4e6821990aad94c3cd08cf2f87dafcf1e7f30d43670e51fec6a3ce"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/Utility/CommonText.cs",
+      "sha256": "862cdf420a7c6b5d7bb7e6d6b86eef14547a34d11a38c5dfc92f82105e512c2d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Common/Utility/StorageKey.cs",
+      "sha256": "4d9d3992809fda276444804306a4ae44eb8afd59dbc12fd96a243d1c23120bd9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Explore/ExploreEntity.cs",
+      "sha256": "dddcf2ff931c649dd38dc2d9a1e1ea302b5ac858b892b1135d3d6cd6a7579205"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Explore/ExploreSystem.cs",
+      "sha256": "f5e12c7a4c603e5f3f40085d5d82a01bcf2ab6f938f756e2f60772b6b13000ca"
+    },
+    {
+      "path": "Assets/Scripts/Systems/GameRuntime.cs",
+      "sha256": "1c688c42e973266a81eb8d3726ade391e79af30668d231119d3e49297790c58f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/BuildingEntity.cs",
+      "sha256": "a3712572de4b7a5971902bc18edf9ef8a8c64b9fcb629a208b1ce72cc8aea813"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSafeArea.cs",
+      "sha256": "05b271f8d6537f4d8cae44fc59a1294e9a7214dba0715c897cf623c89c1311e4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Common/HomeSceneCamera.cs",
+      "sha256": "5e11c849331ae4f52c93ef85d37d4888d4bd3821ec02ca274ac7537043d8521b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HeroCollectionEntity.cs",
+      "sha256": "11974dcf80fcb2de0c93a90b80bc34949d8ca8f8718ab77471331dd3f25098e6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HeroEntity.cs",
+      "sha256": "d7a515d373c07e754b6c76dd2e0253e5872baa3ad46a6d5318ab47b5dea7e475"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeEntity.cs",
+      "sha256": "f6706b8a2eeb8ba28ff62e5d7efe3705c7144db9ee0972b3eb09d93b727ab742"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeOpening.cs",
+      "sha256": "781f5656d8b799ce144b72fd6332e2a87cd079c5cc1c1d330f44a11d0197c9e6"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeOpeningRuntime.cs",
+      "sha256": "77979cc680b99438d13adaa5484f01b74ab2763b2af31f33745e6271066b5197"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeRecruitRuntime.cs",
+      "sha256": "5e1f937d73cd863d0bab3713c6ac87c7b905822729dfbfd50853164b2ca4d9d9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeRuntime.cs",
+      "sha256": "e58ed4a1465922d19b02462679efaf30cea4907de939b750685c76e37f26b906"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeSystem.cs",
+      "sha256": "aaf400755585efd02b08987be0a6b035b9f8b48ec58ba132c4ba4ae6398c42fb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeVillageEntity.cs",
+      "sha256": "8bbd05162a12250ee1cd6246c5f991669e46b16b00dc233decd92186130cf83b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/HomeVillageRuntime.cs",
+      "sha256": "85df36f6fa1fb681fe8ee4cbeb0215b04e15903d0622184628d2997ac644e278"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeNavigation.cs",
+      "sha256": "766ed61de727d23f4c0045756f848cdcba3a2e1881983c5dc6102b6d0e05b546"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeNpcSelection.cs",
+      "sha256": "b7132029a4e65016cd71536fda515209bc38ff8c7e1b68193be371dfc175b977"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeOpeningScene.cs",
+      "sha256": "7fa25943c60493797b95b6d12d4b651e5904cee1bb1664aef1b26b3bbb5b697c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeRecruitScene.cs",
+      "sha256": "3094f1e027be312ea411619b41993e7978d643be4d282de65042c2f9c5b3b1a5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeResidentNavigationRequested.cs",
+      "sha256": "e762c4fd14bde7ec41cea8fadc2f507255a7fb43b4bcbd1ce3cdac7fe8f5f581"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/Scene/HomeScene.cs",
+      "sha256": "7f8cda98670d432522037302ce4e9f8b37f0531ce4c3a71be3f4c7fa560b2696"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHome.cs",
+      "sha256": "1239bd6990c41a55ae9187ec830d135359628774cda5b4f1892f60ab1f62ecbb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeEntry.cs",
+      "sha256": "64d3148d98a1fa15a61a51dea7342d363ed5f418d29db26beddd89b00de23028"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeHospitalEntry.cs",
+      "sha256": "cb1706b750a79c1000654afe099843b1372df00d7d8fb63accdbd6f27bdade8d"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeOpening.cs",
+      "sha256": "7d97cad4d131a5e0be1b7c9447594858d16c5f385763054964eb9ccd86b99bf1"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/UI/UIHomeRecruitEntry.cs",
+      "sha256": "b73516a777ce099eb1250048df2c213469462a976432cb76e008aef6e0d96795"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHome.cs",
+      "sha256": "d55e1d6b6ea0782526063ec24b783a499fd0d4e67ea4e0d0b85adebaddfde693"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeEntry.cs",
+      "sha256": "71c47985b237a925b1f0747354afe8af105df416e589d1bd67a89c9133b778e8"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeHospitalEntry.cs",
+      "sha256": "10f0b87cb41ad07c6d29ce17a23ecf58eee54d9a6f1e78869da8bbb1ec8e0ec2"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeOpening.cs",
+      "sha256": "d6c349e49f44fd513da34a88daa224c79c07d2160e82f8b38d790017f312128b"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Home/VM/VMHomeRecruitEntry.cs",
+      "sha256": "ee808b7c34dc38608d58741ed4602d178cce9256e0cc427faa9db6be4fc419b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Hospital/HospitalSystem.cs",
+      "sha256": "30728309a3dcc715eaed6f3257fac7845ccb509c0226e9c6f6c16da60b586664"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Hospital/UI/UIHomeHospital.cs",
+      "sha256": "467b4b717a78f983032dfa50c4abe6f62c9f600dbb0da1cfe257c661b2cd6953"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Hospital/VM/VMHomeHospital.cs",
+      "sha256": "e2283c13233eead1b5f2491805775e08418874623998cff720723a05bbfaa356"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/InnEntity.cs",
+      "sha256": "44bee37314873fe2c3861cee3835d76d6cb97b64b725e9387c5e722b19b3310e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/InnEvents.cs",
+      "sha256": "09cd476681fa5f72d3ec6a28b3750cda328c7e3ddfd1f2ec56a2ebf38eb45818"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/InnSystem.cs",
+      "sha256": "013ad6186510c9bca75bbe3e64738fa896117511ecd89e216b92404053ff5497"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/UI/UIInn.cs",
+      "sha256": "ae24dfe41a84a63744e0ff4b9a1ebbc8618e9f879cc5bbc3d39d69386e28eecb"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Inn/VM/VMInn.cs",
+      "sha256": "cba5d9aa9b2d3cc392599cc560a1658d8c3e324a041f40d545d8e07c1001d247"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginEntity.cs",
+      "sha256": "c2621d468a9f3915211967a604f021f118236f4954c1e0b7dd705df6eeb9411e"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/LoginSystem.cs",
+      "sha256": "4089cc759d900a3fcfbe96a75f3e91e071b169c2c5ae99170fb21d069204cae5"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/UI/UILogin.cs",
+      "sha256": "03ac2a4fe493e17a808ea936de2b400d4c06f0fc5e6be039ad284e8b9de415b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Login/VM/VMLogin.cs",
+      "sha256": "e8ac61be8b3077a918934892bcea390533ca750043fcb6840cce36859af7c4de"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterEntity.cs",
+      "sha256": "64544dda5193e3bd2e86b0d88001bea069e63bdac44162097f97afeea5aae44c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Master/MasterSystem.cs",
+      "sha256": "fca9b680d4e87501e3fbcbd1f0650c0f9710c2540f53da5fd4445975753faa81"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/RecruitEntity.cs",
+      "sha256": "dc7d02c5b01d3c529e60979ea488a213eff99931b057190cdcf6ebd65ab17774"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/RecruitSystem.cs",
+      "sha256": "a7e0c4a746b13ba0643595de38fbc35bcd6f6e633f9fcb47aa110737dff7e794"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/UI/UIRecruit.cs",
+      "sha256": "c6cbb2503b56495b6a0e1573c10288393c169fda8f4a3e6a21ab8a08384f1431"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Recruit/VM/VMRecruit.cs",
+      "sha256": "94fa4cf7f8bc267a0aef07f332f95bcfb790bccc34fc57532464da5960587e7c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeManager.cs",
+      "sha256": "49809a3d622fe11e5e67a94b246cda29c2399efd3f1082256f853f9a89396a09"
+    },
+    {
+      "path": "Assets/Scripts/Systems/RuntimeSystem.cs",
+      "sha256": "0dc6418182430c87dbbf37dbc94a15f6a83317c8b4a0e3b181dd5db2cf4f11c9"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopEntity.cs",
+      "sha256": "25c67024ce669cfef51c676e9f73c3c021799390a600f20a9cd624c67aa13f17"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/ShopSystem.cs",
+      "sha256": "3097dab4d6e29344cf0d94ec31462c499807f1687dea3cc581610a1b699ae1b4"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShop.cs",
+      "sha256": "e758ff5e34af835756caa4601ab772420ecf494c0fe3a62799e31528bce7a0a7"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopOffer.cs",
+      "sha256": "5e671872d4db6cb733b95d92bfd9a82bee18623c85831fd182d333f19b339244"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/UI/UIShopPurchase.cs",
+      "sha256": "3e234d6b50ff9c6168da3dce245be6e072307f087b90fc8a12c9e93bf09f3798"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShop.cs",
+      "sha256": "6e39b9dc58616ea018b9b87248cb2eb684980c616da29ae106ac9fec4ecae277"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopOffer.cs",
+      "sha256": "cbd114415490bb8092ccde2dc83c034ae6caa192990d5422cbd4794d41bf645c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Shop/VM/VMShopPurchase.cs",
+      "sha256": "8da7a79ab378d8f2348b5c037a779425c9cb12610f5bbb10834fbdd2e68e12ef"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/ITaskAction.cs",
+      "sha256": "7d4e70aed1312c331581b8fb383b7f5b9a8cf31380eab1ecebbad2036cbf7df3"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskCollectionEntity.cs",
+      "sha256": "4d8e894d205015cc8d049e8a22cfa2e347fbd21360dd0879889b0d578ed4b848"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskEntity.cs",
+      "sha256": "56ff1f03647e30ee951810503e87246b17b8de8057abebb9e5c0209bb9a18eea"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskEvents.cs",
+      "sha256": "8737dc17b43108c1c7e4d320e9598afe510911f20385346f2173e59ff65ed2be"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskFingerAction.cs",
+      "sha256": "ddf31501fc8ac562b056ac94ce3106ad299a37ec118e54fea4f966650d487da0"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskGuideRunner.cs",
+      "sha256": "a0d1e3514e8051face67dcd56cac280d02fa7a87e80780347115aa1616c53c8c"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskGuideTarget.cs",
+      "sha256": "8f8b3e94a600fa81cf423704fda5ffaa9297e093bc66057c6b13f50511538d2f"
+    },
+    {
+      "path": "Assets/Scripts/Systems/Task/TaskSystem.cs",
+      "sha256": "b101658f2617d8862e730a200c9ce5bbc97525e7b523d49c25bc787206ecb313"
+    }
+  ],
+  "evidenceDirectory": "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\client\\Library\\GameCLI\\Verify\\0f567430-1ed7-4a42-ae5f-0edb0a435bf1"
+}
