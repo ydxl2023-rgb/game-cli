@@ -38,8 +38,10 @@ public static class MiniwowShopSetup
         {
             MigrateHospital();
             ImportIcons();
+            ImportBorders();
             var skeleton = ImportInterior();
             ConfigurePrefab("Assets/Data/Widgets/Common/Micros/UIShopOffer.prefab", false);
+            BindOfferGuide();
             BindShop(skeleton);
             ConfigurePrefab("Assets/Data/Widgets/Shop/UIShopPurchase.prefab", true);
             AssetDatabase.SaveAssets();
@@ -52,6 +54,57 @@ public static class MiniwowShopSetup
                 ["error"] = exception.ToString()
             }.ToString());
             Debug.LogException(exception);
+        }
+    }
+
+    /// <summary>Binds the original contextual purchase finger to the real offer button.</summary>
+    private static void BindOfferGuide()
+    {
+        const string path = "Assets/Data/Widgets/Common/Micros/UIShopOffer.prefab";
+        var root = PrefabUtility.LoadPrefabContents(path);
+        try
+        {
+            var button = root.GetComponentInChildren<Button>(true);
+            var target = button.GetComponent<TaskGuideTarget>();
+            if (!target)
+                target = button.gameObject.AddComponent<TaskGuideTarget>();
+
+            target.enabled = false;
+            var marker = AssetDatabase.LoadAssetAtPath<GameObject>(
+                "Assets/Data/Widgets/Task/UITaskGuideFinger.prefab");
+            var existing = button.transform.Find(marker.name);
+            var finger = existing ? existing.gameObject
+                : (GameObject)PrefabUtility.InstantiatePrefab(marker, button.transform);
+            var rect = (RectTransform)finger.transform;
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            rect.localScale = Vector3.one;
+            var icon = (RectTransform)rect.GetChild(0);
+            icon.anchorMin = new Vector2(0.5f, 0.5f);
+            icon.anchorMax = icon.anchorMin;
+            icon.pivot = new Vector2(0f, 1f);
+            icon.anchoredPosition = Vector2.zero;
+            icon.localRotation = Quaternion.Euler(0f, 0f, 90f);
+            icon.sizeDelta = new Vector2(100f, 100f);
+            foreach (var graphic in finger.GetComponentsInChildren<Graphic>(true))
+                graphic.raycastTarget = false;
+
+            finger.SetActive(false);
+            var definition = JObject.Parse(File.ReadAllText(toolsPath + "guide-target.json"));
+            var binding = new SerializedObject(target);
+            binding.FindProperty("targetKey").stringValue = (string)definition["key"];
+            binding.FindProperty("finger").objectReferenceValue = finger;
+            binding.ApplyModifiedPropertiesWithoutUndo();
+            var card = new SerializedObject(root.GetComponent<UIShopOffer>());
+            card.FindProperty("guideTarget").objectReferenceValue = target;
+            card.ApplyModifiedPropertiesWithoutUndo();
+            PrefabUtility.SaveAsPrefabAsset(root, path);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(root);
         }
     }
 
@@ -203,12 +256,41 @@ public static class MiniwowShopSetup
         }
     }
 
-    /// <summary>Leaves decorative graphics transparent to input and enables actual controls.</summary>
+    /// <summary>Restores original slice borders for the subset of shared images used by trading.</summary>
+    private static void ImportBorders()
+    {
+        var rows = JArray.Parse(File.ReadAllText("../tools/hospital-ui/slice-borders.json"));
+        foreach (JObject row in rows)
+        {
+            string path = "Assets/Data/Widgets/Shop/Images/" + (string)row["name"] + ".png";
+            if (!File.Exists(path))
+                continue;
+
+            var importer = (TextureImporter)AssetImporter.GetAtPath(path);
+            var border = row["border"];
+            importer.spriteBorder = new Vector4((float)border[0], (float)border[1],
+                (float)border[2], (float)border[3]);
+            importer.SaveAndReimport();
+        }
+    }
+
+    /// <summary>Restores sliced panels and leaves decorative graphics transparent to input.</summary>
     /// <param name="root">The current prefab root.</param>
     private static void ConfigureGraphics(GameObject root)
     {
         foreach (var graphic in root.GetComponentsInChildren<Graphic>(true))
             graphic.raycastTarget = graphic.GetComponent<Button>() || graphic.name == "Background";
+
+        var buttonFrame = AssetDatabase.LoadAssetAtPath<Sprite>(
+            "Assets/Data/Widgets/Shop/Images/common_bg_11.png");
+        foreach (var image in root.GetComponentsInChildren<Image>(true))
+        {
+            if (image.sprite && image.sprite.name == "cons_bg_7")
+                image.sprite = buttonFrame;
+
+            if (image.sprite && image.sprite.border != Vector4.zero)
+                image.type = Image.Type.Sliced;
+        }
     }
 
     /// <summary>Fits the original animated room to the portrait upper panel without stretching.</summary>

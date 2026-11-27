@@ -20,11 +20,17 @@ public sealed class HomeVillageRuntime
     /// <summary>Whether this scene instance installed the persisted travel intent.</summary>
     private bool traveling;
 
-    /// <summary>Current requested player route to the hospital.</summary>
-    private Vector3[] hospitalRoute;
+    /// <summary>Current player route to a facility interaction point.</summary>
+    private Vector3[] navigationRoute;
 
-    /// <summary>Next corner in the active hospital route.</summary>
-    private int hospitalCorner;
+    /// <summary>Next corner in the active player route.</summary>
+    private int navigationCorner;
+
+    /// <summary>Resident destination, or zero for the existing hospital visit route.</summary>
+    private int residentDestination;
+
+    /// <summary>Exact task presentation owning the current resident route.</summary>
+    private TaskPresentationAction residentAction;
 
     /// <summary>Creates the scene adapter; business state remains in its entity.</summary>
     /// <param name="context">Current Home scene.</param>
@@ -40,7 +46,7 @@ public sealed class HomeVillageRuntime
         var home = XEntityManager.GetSingleton().QueryEntity<HomeEntity>();
         var village = home.village;
         scene.ShowVillage(home.opening, village);
-        MoveToHospital(home.FindActor(scene.GetPlayerId()), elapsed);
+        MoveToDestination(home.FindActor(scene.GetPlayerId()), elapsed);
         if (village.recovery == HeroRecoveryPhase.Traveling)
         {
             var actor = home.FindActor(village.configuration.ActorID);
@@ -67,14 +73,41 @@ public sealed class HomeVillageRuntime
     /// <summary>Requests a real player route on the recovered navigation mesh.</summary>
     public void NavigateHospital()
     {
-        hospitalRoute = scene.CalculateHospitalRoute();
-        hospitalCorner = 0;
+        CancelNavigation();
+        navigationRoute = scene.CalculateHospitalRoute();
+        navigationCorner = 0;
+    }
+
+    /// <summary>Starts a resident route without changing the task or opening a page prematurely.</summary>
+    /// <param name="buildingId">Original resident building identity.</param>
+    /// <param name="action">Task presentation entitled to receive this route's result.</param>
+    public void NavigateResident(int buildingId, TaskPresentationAction action)
+    {
+        CancelNavigation();
+        navigationRoute = scene.CalculateResidentRoute(buildingId);
+        navigationCorner = 0;
+        residentDestination = buildingId;
+        residentAction = action;
     }
 
     /// <summary>Cancels only the player interaction route when manual input takes over.</summary>
     public void CancelNavigation()
     {
-        hospitalRoute = null;
+        int cancelled = residentDestination;
+        var action = residentAction;
+        residentDestination = 0;
+        residentAction = null;
+        navigationRoute = null;
+        if (cancelled != 0)
+        {
+            var finished = new HomeResidentNavigationFinished {
+                action = action,
+                buildingId = cancelled,
+                arrived = false
+            };
+
+            XPluginUtility.FireEvent(finished);
+        }
     }
 
     /// <summary>Replays absolute committed business observations after a transaction or restore.</summary>
@@ -103,18 +136,18 @@ public sealed class HomeVillageRuntime
     /// <summary>Advances the player before notifying the interaction owner.</summary>
     /// <param name="actor">Authoritative playable actor.</param>
     /// <param name="elapsed">Simulation interval.</param>
-    private void MoveToHospital(ActorEntity actor, float elapsed)
+    private void MoveToDestination(ActorEntity actor, float elapsed)
     {
-        if (hospitalRoute == null)
+        if (navigationRoute == null)
             return;
 
-        while (hospitalCorner < hospitalRoute.Length)
+        while (navigationCorner < navigationRoute.Length)
         {
-            Vector3 offset = hospitalRoute[hospitalCorner] - actor.position;
+            Vector3 offset = navigationRoute[navigationCorner] - actor.position;
             offset.y = 0f;
             if (offset.magnitude < 0.15f)
             {
-                hospitalCorner++;
+                navigationCorner++;
 
                 continue;
             }
@@ -125,10 +158,24 @@ public sealed class HomeVillageRuntime
             return;
         }
 
-        bool arrived = hospitalRoute.Length > 0;
-        hospitalRoute = null;
+        bool arrived = navigationRoute.Length > 0;
+        int destination = residentDestination;
+        var action = residentAction;
+        residentDestination = 0;
+        residentAction = null;
+        navigationRoute = null;
         actor.SetMoveInput(Vector3.zero);
-        if (arrived)
+        if (destination != 0)
+        {
+            var finished = new HomeResidentNavigationFinished {
+                action = action,
+                buildingId = destination,
+                arrived = arrived
+            };
+
+            XPluginUtility.PostEvent(finished);
+        }
+        else if (arrived)
             XPluginUtility.PostEvent(new HomeHospitalArrived());
     }
 

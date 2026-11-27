@@ -169,6 +169,14 @@ public sealed class UIHome : UIWidget<VMHome>
         vm.FeedbackVisible = true;
     }
 
+    /// <summary>Hides camp controls while a facility uses the town camera.</summary>
+    /// <param name="visible">Whether the facility owns the upper viewport.</param>
+    public void ShowFacility(bool visible)
+    {
+        vm.CampVisible = !visible;
+        vm.MapVisible = false;
+    }
+
     /// <summary>Maps an entry result to a localized presentation message.</summary>
     /// <param name="result">The entry access result supplied by Home.</param>
     public void ShowFeedback(HomeEntryResult result)

@@ -2,13 +2,14 @@
   "exportStatus": "passed",
   "scope": "configuration-only",
   "tables": {
-    "HomeBuilding": 1,
-    "HomeBuildingLevel": 200,
-    "HomeBuildingCost": 200,
-    "HomeBuildingCondition": 21,
-    "HomeBuildingGoods": 1050,
-    "HomeBuildingItem": 13,
-    "HomeHospitalSetting": 1
+    "HomeBuilding": 2,
+    "HomeBuildingLevel": 400,
+    "HomeBuildingCost": 400,
+    "HomeBuildingCondition": 42,
+    "HomeBuildingGoods": 2100,
+    "HomeBuildingItem": 25,
+    "HomeHospitalSetting": 1,
+    "HomeInnSetting": 1
   },
   "firstLevel": {
     "repairGold": 280,
@@ -16,6 +17,6 @@
     "useSeconds": 4,
     "recoveryPercent": 100
   },
-  "unresolvedOriginalGoods": 150,
+  "unresolvedOriginalGoods": 300,
   "limitation": "Level 51-200 first good has negative original ResponseEffect index; not executable."
 }

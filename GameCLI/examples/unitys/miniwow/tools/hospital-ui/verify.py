@@ -33,8 +33,8 @@ def main():
     for row in level.values():
         assert row['ID'] == row['BuildingID']*1000+row['Level']
     source = ROOT/'research/config-study/tables'
-    original = [r for r in json.loads((source/'tbbuildinglevel.json').read_text()) if r['ID']//1000==60018]
-    assert len(level) == len(original) == 200
+    original = [r for r in json.loads((source/'tbbuildinglevel.json').read_text()) if r['ID']//1000 in (60017,60018)]
+    assert len(level) == len(original) == 400
     response = json.loads((source/'tbglobal.json').read_text())[0]['ResponseEffect']
     failures = []
     for row in original:
@@ -50,7 +50,12 @@ def main():
                 assert product['RecoveryPercent']==-1
             else:
                 assert product['RecoveryPercent']==response[position]
-    assert failures == [r['goodsID'] for r in manifest['unresolved']]
+    assert sorted(failures) == sorted(r['goodsID'] for r in manifest['unresolved'])
+    inn = actual['HomeBuildingGoods']['600170011']
+    assert inn['RecoveryPercent']==100 and inn['ServiceBasePrice']==17
+    assert inn['MaterialID']==77011 and inn['ProductID']==77111
+    assert actual['HomeBuildingCost']['600170011']['Amount']==280
+    assert actual['HomeBuildingCondition']['10091']['Value']==60101
     first = actual['HomeBuildingGoods']['600180011']
     assert first['RecoveryPercent']==100 and first['ServiceBasePrice']==50
     assert items['77101']['UseSeconds']-level['60018001']['CutSeconds']==4

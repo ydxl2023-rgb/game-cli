@@ -108,6 +108,14 @@ public sealed class TaskCollectionEntity : XEntity
         return tasks[id];
     }
 
+    /// <summary>Checks a reward receipt, including tasks not yet dispatched.</summary>
+    /// <param name="id">Original task identity.</param>
+    /// <returns>Whether the task reward has been claimed.</returns>
+    public bool IsClaimed(int id)
+    {
+        return tasks.TryGetValue(id, out var task) && task.status == TaskStatus.Claimed;
+    }
+
     /// <summary>Finds the first pending reward, then the first active task in chapter order.</summary>
     /// <returns>The selected task, or null when the chapter has been fully claimed.</returns>
     public TaskEntity GetTrackedTask()

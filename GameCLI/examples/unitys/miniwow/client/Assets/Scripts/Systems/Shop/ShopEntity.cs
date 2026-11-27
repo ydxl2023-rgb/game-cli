@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Oathx.Entity;
 
@@ -41,6 +42,15 @@ public sealed class ShopEntity : XEntity
         return tasks.GetTask(setting.RequiredTaskID).status == TaskStatus.Claimed;
     }
 
+    /// <summary>Identifies tasks assigned to the auction house by their original building category.</summary>
+    /// <param name="task">Tracked task, or null after the chapter has been claimed.</param>
+    /// <returns>Whether this task belongs to the trading building.</returns>
+    public bool IsTaskRelevant(TaskEntity task)
+    {
+        return task != null
+            && task.configuration.TaskBuildingType == Config.ETaskBuildingType.AuctionHouse;
+    }
+
     /// <summary>Returns stable original offer identities in catalog order.</summary>
     /// <returns>The currently supported first-tier offer IDs.</returns>
     public int[] GetOffers()
@@ -49,6 +59,16 @@ public sealed class ShopEntity : XEntity
 
         return Config.Excel.shopGoodsConfig.Values.Where(row => row.Tier == tier)
             .OrderBy(row => row.Order).ThenBy(row => row.ID).Select(row => row.ID).ToArray();
+    }
+
+    /// <summary>Aggregates saved purchases by delivered item across configured offers.</summary>
+    /// <param name="inventory">Committed offer usage and onboarding migration.</param>
+    /// <returns>Absolute purchased item quantities for task conditions.</returns>
+    public IReadOnlyDictionary<int, long> GetPurchaseCounts(HomeVillageEntity inventory)
+    {
+        return Config.Excel.shopGoodsConfig.Values.GroupBy(offer => offer.ItemID)
+            .ToDictionary(group => group.Key,
+                group => group.Sum(offer => checked(inventory.Purchased(offer) * offer.Amount)));
     }
 
     /// <summary>Selects an offer without changing inventory.</summary>

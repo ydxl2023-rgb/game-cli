@@ -35,6 +35,10 @@ public enum HeroRecoveryPhase
 /// <summary>Atomic local save for village costs, results and reward receipts.</summary>
 public sealed class HomeVillageSave
 {
+    /// <summary>Forge inventory and receipts committed with shared costs.</summary>
+    public BlacksmithSave blacksmith
+    { get; set; } = new BlacksmithSave();
+
     /// <summary>Inventory quantities keyed by item ID.</summary>
     public Dictionary<int, long> items
     { get; set; } = new Dictionary<int, long>();
@@ -87,6 +91,30 @@ public sealed class HomeVillageSave
     public long hospitalRevenue
     { get; set; }
 
+    /// <summary>Whether the local inn energy field has been migrated.</summary>
+    public bool innEnergyInitialized
+    { get; set; }
+
+    /// <summary>Cumulative paid meals, independent of current food stock.</summary>
+    public long innMeals
+    { get; set; }
+
+    /// <summary>Local normalized hero energy for the inn service.</summary>
+    public int energyPercent
+    { get; set; }
+
+    /// <summary>UTC meal deadline; zero means no meal is active.</summary>
+    public long innRestEndTicks
+    { get; set; }
+
+    /// <summary>Cumulative committed food batches.</summary>
+    public long innCrafts
+    { get; set; }
+
+    /// <summary>Inn service revenue retained independently of player gold.</summary>
+    public long innRevenue
+    { get; set; }
+
     /// <summary>Accumulated task quest value.</summary>
     public long questValue
     { get; set; }
@@ -125,6 +153,10 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
     public float remainingSeconds
     { get { return hero.remainingSeconds; } }
 
+    /// <summary>Whether the hero owns a paid meal that has not completed yet.</summary>
+    public bool dining
+    { get { return state.innRestEndTicks != 0; } }
+
     /// <summary>Current configured hospital medicine and service values.</summary>
     public HomeHospitalService service
     { get { return buildings.GetService(configuration.BuildingID); } }
@@ -142,6 +174,13 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
 
         buildings = new BuildingEntity(state.buildings);
         hero = new HeroEntity(state);
+        if (!state.innEnergyInitialized)
+        {
+            var next = Snapshot();
+            next.energyPercent = Config.Excel.homeInnSettingConfig[60017].InitialEnergyPercent;
+            next.innEnergyInitialized = true;
+            Commit(next);
+        }
     }
 
     /// <summary>Returns a detached diagnostic or persistence snapshot.</summary>
@@ -190,7 +229,7 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
                     return false;
                 break;
             case HomeVillageAction.Repair:
-                if (!buildings.Construct(next, configuration))
+                if (!buildings.Construct(next, configuration.BuildingID))
                     return false;
                 break;
             case HomeVillageAction.Purchase:
@@ -263,6 +302,40 @@ public sealed class HomeVillageEntity : XEntity, ITaskRewardReceiver
         Commit(next);
 
         return ShopPurchaseResult.Success;
+    }
+
+    /// <summary>Commits an inn operation with inventory and hero costs in one durable save.</summary>
+    /// <param name="inn">Inn rule owner.</param>
+    /// <param name="action">Requested transaction.</param>
+    /// <param name="tasks">Current task prerequisites.</param>
+    /// <returns>Whether the transaction committed.</returns>
+    public bool ExecuteInn(InnEntity inn, InnAction action, TaskCollectionEntity tasks)
+    {
+        var next = Snapshot();
+        if (!inn.Execute(action, next, this, tasks))
+            return false;
+
+        Commit(next);
+
+        return true;
+    }
+
+    /// <summary>Persists forge costs and ownership changes in the village transaction.</summary>
+    /// <param name="forge">Forge rule owner.</param>
+    /// <param name="action">Requested business operation.</param>
+    /// <param name="tasks">Current task prerequisites.</param>
+    /// <returns>Zero on success or a localized rejection.</returns>
+    public int ExecuteBlacksmith(BlacksmithEntity forge, BlacksmithAction action, TaskCollectionEntity tasks)
+    {
+        var next = Snapshot();
+        int result = forge.Execute(action, next, tasks);
+        if (result != 0)
+            return result;
+
+        Commit(next);
+        forge.Cancel();
+
+        return 0;
     }
 
     /// <summary>Consumes medicine only after the logical actor actually reaches the hospital.</summary>

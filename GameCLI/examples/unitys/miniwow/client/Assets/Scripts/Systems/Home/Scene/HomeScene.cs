@@ -58,6 +58,9 @@ public sealed class HomeScene : MonoBehaviour
     /// <summary>Camera offset established once when binding the player.</summary>
     private Vector3 cameraOffset;
 
+    /// <summary>Optional facility framing while an interior page owns the camera.</summary>
+    private Vector3? facilityCameraPosition;
+
     /// <summary>Whether an accepted gesture owns the joystick.</summary>
     private bool gestureActive;
 
@@ -110,6 +113,24 @@ public sealed class HomeScene : MonoBehaviour
 
     /// <summary>Reusable UI hit list, preventing clicks through modal pages.</summary>
     private readonly List<RaycastResult> uiHits = new List<RaycastResult>();
+
+    /// <summary>Frames a resident in the upper page viewport or resumes player following.</summary>
+    /// <param name="buildingId">Resident identity, or zero to restore player following.</param>
+    public void FocusFacility(int buildingId)
+    {
+        if (buildingId == 0)
+        {
+            facilityCameraPosition = null;
+
+            return;
+        }
+
+        var resident = GetResident(buildingId);
+        Vector3 focus = resident.GetNavigationPosition();
+        float depth = sceneCamera.WorldToViewportPoint(focus).z;
+        Vector3 framed = sceneCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.84f, depth));
+        facilityCameraPosition = sceneCamera.transform.parent.position + focus - framed;
+    }
 
     /// <summary>Validates scene bindings and initializes the scene visitor.</summary>
     /// <param name="system">The explicit scene lifecycle owner.</param>
@@ -414,6 +435,18 @@ public sealed class HomeScene : MonoBehaviour
         return CalculateRoute(hospitalCollider.transform.position);
     }
 
+    /// <summary>Routes to an authored resident using the original navigation surface.</summary>
+    /// <param name="buildingId">Original resident building identity.</param>
+    /// <returns>A complete route, or an empty array when no reachable entrance exists.</returns>
+    public Vector3[] CalculateResidentRoute(int buildingId)
+    {
+        var resident = GetResident(buildingId);
+        if (!NavMesh.SamplePosition(resident.GetNavigationPosition(), out var ground, 3f, NavMesh.AllAreas))
+            return System.Array.Empty<Vector3>();
+
+        return CalculateRoute(ground.position);
+    }
+
     /// <summary>Tests the player's original agent radius against the original entrance collider.</summary>
     /// <returns>Whether the player overlaps the hospital interaction area.</returns>
     public bool IsPlayerAtHospital()
@@ -588,7 +621,7 @@ public sealed class HomeScene : MonoBehaviour
         Transform handle = sceneCamera.transform.parent;
         handle.position = Vector3.Lerp(
             handle.position,
-            player.position + cameraOffset,
+            facilityCameraPosition ?? player.position + cameraOffset,
             1f - Mathf.Exp(-playerConfig.FollowRate * Time.deltaTime));
         joystick.Follow(player.position, sceneCamera);
         foreach (var selection in npcSelections)

@@ -98,7 +98,7 @@ public sealed class BuildingEntity : XEntity
             if ((HomeBuildingConditionType)condition.Type != HomeBuildingConditionType.ChapterTask)
                 throw new NotSupportedException("Unsupported hospital feature condition: " + condition.Type);
 
-            if (tasks.GetTask(condition.Value).status != TaskStatus.Claimed)
+            if (!tasks.IsClaimed(condition.Value))
                 return false;
         }
 
@@ -133,14 +133,14 @@ public sealed class BuildingEntity : XEntity
 
     /// <summary>Validates construction and writes its cost and result into an isolated transaction.</summary>
     /// <param name="next">Transaction candidate committed by the village owner.</param>
-    /// <param name="configuration">Configured hospital identity.</param>
+    /// <param name="buildingId">Configured building identity.</param>
     /// <returns>Whether the construction transaction is valid.</returns>
-    internal bool Construct(HomeVillageSave next, Config.VillageSetting configuration)
+    internal bool Construct(HomeVillageSave next, int buildingId)
     {
-        if (Level(configuration.BuildingID) > 0)
+        if (Level(buildingId) > 0)
             return false;
 
-        var costs = GetRepairCosts(configuration.BuildingID);
+        var costs = GetRepairCosts(buildingId);
         foreach (var cost in costs)
         {
             if (!next.items.TryGetValue(cost.ItemID, out long count) || count < cost.Amount)
@@ -150,7 +150,7 @@ public sealed class BuildingEntity : XEntity
         foreach (var cost in costs)
             next.items[cost.ItemID] -= cost.Amount;
 
-        next.buildings.Add(configuration.BuildingID, 1);
+        next.buildings.Add(buildingId, 1);
 
         return true;
     }

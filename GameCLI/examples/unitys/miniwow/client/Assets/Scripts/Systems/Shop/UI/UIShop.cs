@@ -44,7 +44,7 @@ public sealed class UIShop : UIWidget<VMShop>
             foreach (int id in shop.GetOffers())
             {
                 var item = new VMShopOffer { offerId = id };
-                RefreshOffer(item, inventory);
+                RefreshOffer(item, inventory, shop.IsTaskRelevant(task) ? task.configuration.Param1 : 0);
                 offers.Add(item);
             }
 
@@ -53,14 +53,17 @@ public sealed class UIShop : UIWidget<VMShop>
         else
         {
             foreach (VMShopOffer item in vm.Offers)
-                RefreshOffer(item, inventory);
+                RefreshOffer(item, inventory, shop.IsTaskRelevant(task) ? task.configuration.Param1 : 0);
         }
 
         vm.Gold = string.Format(CommonText.Get(Config.Excel.TEXT_TRADE_GOLD),
             inventory.Count(inventory.configuration.GoldID));
-        vm.TaskText = string.Format(CommonText.Get(Config.Excel.TEXT_TRADE_TASK),
-            Config.Excel.propLanguageById(int.Parse(task.configuration.Description)));
-        vm.ClaimVisible = task.status == TaskStatus.Completed;
+        bool relevant = shop.IsTaskRelevant(task);
+        vm.TaskText = relevant
+            ? string.Format(CommonText.Get(Config.Excel.TEXT_TRADE_TASK),
+                Config.Excel.propLanguageById(int.Parse(task.configuration.Description)))
+            : string.Empty;
+        vm.ClaimVisible = relevant && task.status == TaskStatus.Completed;
     }
 
     /// <summary>Displays a successfully committed purchase.</summary>
@@ -82,9 +85,11 @@ public sealed class UIShop : UIWidget<VMShop>
     /// <summary>Updates an existing card without recreating its binding.</summary>
     /// <param name="item">The existing card view model.</param>
     /// <param name="inventory">Committed inventory and usage.</param>
-    private void RefreshOffer(VMShopOffer item, HomeVillageEntity inventory)
+    /// <param name="guideItemId">Item requested by the tracked task, or zero when unrelated.</param>
+    private void RefreshOffer(VMShopOffer item, HomeVillageEntity inventory, int guideItemId)
     {
         var offer = Config.Excel.shopGoodsConfig[item.offerId];
+        item.isGuideTarget = offer.ItemID == guideItemId;
         item.Name = CommonText.Get(offer.NameTextID);
         item.Icon = offer.IconPath;
         item.Price = offer.Price.ToString();

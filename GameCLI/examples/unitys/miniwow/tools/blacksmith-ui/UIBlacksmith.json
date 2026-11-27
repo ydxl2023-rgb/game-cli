@@ -1,0 +1,462 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIBlacksmith",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIBlacksmith",
+      "name": "UIBlacksmith",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "InputBlock",
+          "name": "InputBlock",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": []
+        },
+        {
+          "id": "Gold",
+          "name": "Gold",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 60,
+            "width": 500,
+            "height": 70
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 32,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Background",
+          "name": "Background",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 570,
+            "width": 1080,
+            "height": 1350
+          },
+          "children": []
+        },
+        {
+          "id": "Header",
+          "name": "Header",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 570,
+            "width": 1080,
+            "height": 95
+          },
+          "children": [
+            {
+              "id": "Title",
+              "name": "Title",
+              "element": "Text",
+              "rect": {
+                "x": 30,
+                "y": 570,
+                "width": 1020,
+                "height": 95
+              },
+              "children": [],
+              "text": {
+                "content": "铁匠铺",
+                "fontSize": 42,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "LocalRule",
+          "name": "LocalRule",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 680,
+            "width": 1020,
+            "height": 55
+          },
+          "children": [],
+          "text": {
+            "content": "首级武器 · 打造并出售给英雄",
+            "fontSize": 28,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Revenue",
+          "name": "Revenue",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 750,
+            "width": 620,
+            "height": 65
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 32,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "CollectClick",
+          "name": "CollectClick",
+          "element": "Button",
+          "rect": {
+            "x": 700,
+            "y": 745,
+            "width": 330,
+            "height": 75
+          },
+          "children": [
+            {
+              "id": "CollectLabel",
+              "name": "CollectLabel",
+              "element": "Text",
+              "rect": {
+                "x": 700,
+                "y": 745,
+                "width": 330,
+                "height": 75
+              },
+              "children": [],
+              "text": {
+                "content": "收取收入",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "RepairVisible",
+          "name": "RepairVisible",
+          "element": "Container",
+          "rect": {
+            "x": 80,
+            "y": 900,
+            "width": 920,
+            "height": 240
+          },
+          "children": [
+            {
+              "id": "RepairClick",
+              "name": "RepairClick",
+              "element": "Button",
+              "rect": {
+                "x": 110,
+                "y": 950,
+                "width": 860,
+                "height": 100
+              },
+              "children": [
+                {
+                  "id": "RepairText",
+                  "name": "RepairText",
+                  "element": "Text",
+                  "rect": {
+                    "x": 110,
+                    "y": 950,
+                    "width": 860,
+                    "height": 100
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "",
+                    "fontSize": 30,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CatalogVisible",
+          "name": "CatalogVisible",
+          "element": "Container",
+          "rect": {
+            "x": 30,
+            "y": 860,
+            "width": 1020,
+            "height": 750
+          },
+          "children": [
+            {
+              "id": "Entries",
+              "name": "Entries",
+              "element": "Container",
+              "rect": {
+                "x": 30,
+                "y": 860,
+                "width": 1020,
+                "height": 750
+              },
+              "children": [
+                {
+                  "id": "Viewport",
+                  "name": "Viewport",
+                  "element": "Container",
+                  "rect": {
+                    "x": 30,
+                    "y": 860,
+                    "width": 1020,
+                    "height": 750
+                  },
+                  "children": [
+                    {
+                      "id": "Content",
+                      "name": "Content",
+                      "element": "Container",
+                      "rect": {
+                        "x": 30,
+                        "y": 860,
+                        "width": 1020,
+                        "height": 750
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "HeroVisible",
+          "name": "HeroVisible",
+          "element": "Container",
+          "rect": {
+            "x": 30,
+            "y": 860,
+            "width": 1020,
+            "height": 750
+          },
+          "children": [
+            {
+              "id": "HeroText",
+              "name": "HeroText",
+              "element": "Text",
+              "rect": {
+                "x": 60,
+                "y": 940,
+                "width": 960,
+                "height": 180
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 40,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            },
+            {
+              "id": "EquipmentText",
+              "name": "EquipmentText",
+              "element": "Text",
+              "rect": {
+                "x": 60,
+                "y": 1170,
+                "width": 960,
+                "height": 160
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 36,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "Feedback",
+          "name": "Feedback",
+          "element": "Text",
+          "rect": {
+            "x": 30,
+            "y": 1630,
+            "width": 1020,
+            "height": 90
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "RecipesClick",
+          "name": "RecipesClick",
+          "element": "Button",
+          "rect": {
+            "x": 40,
+            "y": 1740,
+            "width": 310,
+            "height": 80
+          },
+          "children": [
+            {
+              "id": "RecipesLabel",
+              "name": "RecipesLabel",
+              "element": "Text",
+              "rect": {
+                "x": 40,
+                "y": 1740,
+                "width": 310,
+                "height": 80
+              },
+              "children": [],
+              "text": {
+                "content": "配方",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ShelfClick",
+          "name": "ShelfClick",
+          "element": "Button",
+          "rect": {
+            "x": 385,
+            "y": 1740,
+            "width": 310,
+            "height": 80
+          },
+          "children": [
+            {
+              "id": "ShelfLabel",
+              "name": "ShelfLabel",
+              "element": "Text",
+              "rect": {
+                "x": 385,
+                "y": 1740,
+                "width": 310,
+                "height": 80
+              },
+              "children": [],
+              "text": {
+                "content": "货架",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "HeroClick",
+          "name": "HeroClick",
+          "element": "Button",
+          "rect": {
+            "x": 730,
+            "y": 1740,
+            "width": 310,
+            "height": 80
+          },
+          "children": [
+            {
+              "id": "HeroLabel",
+              "name": "HeroLabel",
+              "element": "Text",
+              "rect": {
+                "x": 730,
+                "y": 1740,
+                "width": 310,
+                "height": 80
+              },
+              "children": [],
+              "text": {
+                "content": "英雄",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "Footer",
+          "name": "Footer",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 1840,
+            "width": 1080,
+            "height": 80
+          },
+          "children": [
+            {
+              "id": "CloseClick",
+              "name": "CloseClick",
+              "element": "Button",
+              "rect": {
+                "x": 25,
+                "y": 1845,
+                "width": 330,
+                "height": 70
+              },
+              "children": [
+                {
+                  "id": "CloseLabel",
+                  "name": "CloseLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 25,
+                    "y": 1845,
+                    "width": 330,
+                    "height": 70
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "返回村庄",
+                    "fontSize": 30,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

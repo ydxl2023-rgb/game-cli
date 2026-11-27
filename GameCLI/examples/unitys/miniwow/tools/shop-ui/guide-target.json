@@ -1,0 +1,6 @@
+{
+  "key": "Shop/TradeMarketPage/SellItems/0/BuyBtn",
+  "selection": "TaskBuildingType.AuctionHouse and Task.Param1 match ShopGoods.ItemID",
+  "originalEvidence": "UITradeMarketView.RefreshMaterials filters server materialItems by tier and sorts by CfgShop.Sort; index zero is not a stable item identity.",
+  "adaptation": "The local full catalog preserves the guide token and highlights the task-required item instead of assuming the first card."
+}

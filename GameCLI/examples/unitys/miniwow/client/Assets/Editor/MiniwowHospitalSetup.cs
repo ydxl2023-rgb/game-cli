@@ -49,8 +49,12 @@ public static class MiniwowHospitalSetup
             ImportBorders();
             var skeleton = ImportInterior();
             BindPage(skeleton);
-            BindEntry();
-            BindScene();
+            if (!pageOnly)
+            {
+                BindEntry();
+                BindScene();
+            }
+
             AssetDatabase.SaveAssets();
             File.WriteAllText(toolsPath + "bind-result.json", "{\"ok\":true}");
         }

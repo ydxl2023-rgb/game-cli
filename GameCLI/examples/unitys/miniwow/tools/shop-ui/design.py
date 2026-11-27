@@ -7,14 +7,17 @@ for f in (ROOT/'extracted-resources/fairygui').rglob('*.json'):
     row=json.loads(f.read_text(encoding='utf8'))
     if row.get('name') and f.with_suffix('.png').exists():
         records[(row.get('package_name'),row['name'])]=(f.with_suffix('.png'),row)
-manifest=json.loads((OUT/'configuration-source.json').read_text())
-language={r[0]:r[2] for r in manifest['languages']}
+manifest=json.loads((OUT/'configuration-source.json').read_text(encoding='utf8'))
+common=json.loads((ROOT/'client/Assets/Data/Jsons/Excels/CommonTextConfig.bytes').read_text(encoding='utf8'))['data']
+language=json.loads((ROOT/'client/Assets/Data/Jsons/Excels/LanguageConfig.bytes').read_text(encoding='utf8'))['data']
 imports=[]
 def node(name,kind,x,y,w,h,children=None):
     return dict(id=name,name=name,element=kind,rect=dict(x=x,y=y,width=w,height=h),children=children or [])
 def text(name,x,y,w,h,size=30,id=None):
     n=node(name,'Text',x,y,w,h)
-    n['text']=dict(content=language[id] if id else '',fontSize=size,alignment='center',color='#3E2C1E')
+    context=common[str(id)]['Context'] if id else ''
+    content=language[context] if context.isdecimal() else context
+    n['text']=dict(content=content,fontSize=size,alignment='center',color='#3E2C1E')
     return n
 def button(name,label,x,y,w,h,id):
     return node(name,'Button',x,y,w,h,[text(label,x,y,w,h,30,id)])

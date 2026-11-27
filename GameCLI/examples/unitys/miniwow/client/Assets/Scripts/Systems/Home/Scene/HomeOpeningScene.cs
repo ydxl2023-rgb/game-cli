@@ -27,6 +27,18 @@ public sealed class HomeOpeningScene : MonoBehaviour
     [SerializeField]
     private GameObject hospitalBuilt;
 
+    /// <summary>Original constructed inn model selected by its persisted building level.</summary>
+    [SerializeField]
+    private GameObject hotelBuilt;
+
+    /// <summary>Original constructed forge model.</summary>
+    [SerializeField]
+    private GameObject blacksmithBuilt;
+
+    /// <summary>Original unrepaired forge model.</summary>
+    [SerializeField]
+    private GameObject blacksmithInitial;
+
     /// <summary>Entity-bound Garen shape reused instead of duplicating the prototype visitor.</summary>
     [SerializeField]
     private ActorShape garen;
@@ -130,6 +142,18 @@ public sealed class HomeOpeningScene : MonoBehaviour
     /// <param name="village">Actual ownership and construction data.</param>
     public void ShowVillage(HomeOpening opening, HomeVillageEntity village)
     {
+        bool forgeBuilt = village.buildings.Level(60002) > 0;
+        blacksmithBuilt.SetActive(forgeBuilt);
+        blacksmithInitial.SetActive(!forgeBuilt);
+
+        bool innBuilt = village.buildings.Level(60017) > 0;
+        hotelBuilt.SetActive(innBuilt);
+        if (innBuilt)
+        {
+            foreach (var model in hotelModels)
+                model.SetActive(false);
+        }
+
         bool built = village.buildings.Level(village.configuration.BuildingID) > 0;
         hospitalBuilt.SetActive(built);
         if (built)
@@ -139,6 +163,6 @@ public sealed class HomeOpeningScene : MonoBehaviour
         }
 
         garen.gameObject.SetActive(opening.phase == HomeOpeningPhase.AwaitRecruit
-            && village.recovery != HeroRecoveryPhase.Healing);
+            && village.recovery != HeroRecoveryPhase.Healing && !village.dining);
     }
 }

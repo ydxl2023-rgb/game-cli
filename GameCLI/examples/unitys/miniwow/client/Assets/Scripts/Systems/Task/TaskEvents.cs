@@ -15,6 +15,10 @@ public sealed class TaskProgressReported : IEvent
     public long value
     { get; set; }
 
+    /// <summary>Optional absolute counts keyed by configuration identity for list-filtered conditions.</summary>
+    public System.Collections.Generic.IReadOnlyDictionary<int, long> itemCounts
+    { get; set; }
+
     /// <summary>First condition parameter.</summary>
     public int param1
     { get; set; }

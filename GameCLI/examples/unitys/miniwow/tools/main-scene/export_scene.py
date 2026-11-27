@@ -104,7 +104,7 @@ for tid,o in trs.items():
 # Original runtime attaches InitialModelPath to each empty Model anchor before unlock.
 building_configs=json.loads((Path(__file__).parent/'building-config.json').read_text('utf8'))
 if auction_only:
- building_id,model_path={'hotel':(60017,'Hotel/Hotel_initial_1'),'hospital-burned':(60018,'priest/priest_initial_1'),'hospital-rescued':(60018,'priest/priest_initial_2'),'hospital-cleared':(60018,'priest/priest_initial_3'),'hospital-built':(60018,'priest/priest')}.get(variant,(60019,'auction/auction_initial_1'))
+ building_id,model_path={'weapon-built':(60002,'WeaponStore/WeaponStore'),'hotel':(60017,'Hotel/Hotel_initial_1'),'hotel-built':(60017,'Hotel/Hotel'),'hospital-burned':(60018,'priest/priest_initial_1'),'hospital-rescued':(60018,'priest/priest_initial_2'),'hospital-cleared':(60018,'priest/priest_initial_3'),'hospital-built':(60018,'priest/priest')}.get(variant,(60019,'auction/auction_initial_1'))
  building_configs=[dict(next(c for c in building_configs if c['id']==building_id),initialModelPath=model_path)]
  nodes=[dict(id='root',name='BuildingRoot',parent='none'),dict(id='building',name='Building_'+str(building_id),parent='root'),dict(id='0',name='Model',parent='building')]
 container={}

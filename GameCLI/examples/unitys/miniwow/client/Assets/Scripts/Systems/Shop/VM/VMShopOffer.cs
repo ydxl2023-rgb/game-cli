@@ -7,6 +7,10 @@ public partial class VMShopOffer : VM
     public int offerId
     { get; set; }
 
+    /// <summary>Whether this card represents the item requested by the tracked purchase task.</summary>
+    public bool isGuideTarget
+    { get; set; }
+
     /// <summary>Displays or submits name.</summary>
     [Binding(typeof(SyncText))]
     string name;

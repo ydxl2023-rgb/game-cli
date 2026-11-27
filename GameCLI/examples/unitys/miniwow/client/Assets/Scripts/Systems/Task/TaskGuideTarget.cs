@@ -33,6 +33,16 @@ public sealed class TaskGuideTarget : MonoBehaviour
         return target;
     }
 
+    /// <summary>Selects one contextual list item without registering duplicate target tokens.</summary>
+    /// <param name="selected">Whether this live item represents the current guide target.</param>
+    public void Select(bool selected)
+    {
+        if (selected && targets.TryGetValue(targetKey, out var previous) && previous != this)
+            previous.enabled = false;
+
+        enabled = selected;
+    }
+
     /// <summary>Shows the authored finger without invoking the business button.</summary>
     /// <param name="request">The guide waiting for a real click.</param>
     public void Show(TaskFingerAction request)

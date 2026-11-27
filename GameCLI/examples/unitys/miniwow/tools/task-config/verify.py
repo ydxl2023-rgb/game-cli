@@ -9,6 +9,7 @@ import re
 ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
 parser.add_argument('--output', required=True, type=Path)
+parser.add_argument('--language-changes', type=Path)
 args = parser.parse_args()
 
 
@@ -115,9 +116,14 @@ common = output('CommonText')[str(manifest['tipId'])]
 assert languages[common['Context']] == tips[0]
 retired_language = []
 old_language = ROOT / 'client/Assets/Data/Jsons/Excels/LanguageConfig.bytes'
+language_changes = read(args.language_changes) if args.language_changes else {}
 if old_language.exists():
     for key,value in read(old_language)['data'].items():
         if languages.get(key) != value:
+            if key in language_changes:
+                change = language_changes[key]
+                assert value == change['before'] and languages.get(key) == change['after'], key
+                continue
             assert key not in languages and value in languages.values(), ('Existing language changed',key)
             retired_language.append(key)
 

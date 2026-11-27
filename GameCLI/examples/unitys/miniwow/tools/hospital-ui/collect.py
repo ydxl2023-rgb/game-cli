@@ -114,6 +114,11 @@ def collect():
                                    (30226, 'TEXT_AUCTION_NPC', 60019)]:
         resident = next(row for row in read('tbbuilding') if row['ID'] == building_id)
         languages.append([id, alias, resident['NPCName']])
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('inn_configuration', ROOT/'tools/inn-ui/configuration.py')
+    inn = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(inn)
+    inn.extend(sheets, languages, unresolved)
     files = [TABLES/(name+'.json') for name in
              ['tbbuilding','tbbuildinglevel','tbfeatureunlock','tbitem','tbglobal']]
     code = ROOT/'research/code-study/managed/decompiled/HotUpdate/Zombie'

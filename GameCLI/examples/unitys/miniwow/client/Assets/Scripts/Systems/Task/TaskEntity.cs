@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Config;
 using Oathx.Entity;
 
@@ -95,7 +96,8 @@ public sealed class TaskEntity : XEntity
             || !Matches(observation))
             return false;
 
-        long next = Math.Min(observation.value, configuration.FinishValue);
+        long observed = GetObservedProgress(observation);
+        long next = Math.Min(observed, configuration.FinishValue);
         if (next <= progress)
             return false;
 
@@ -149,6 +151,8 @@ public sealed class TaskEntity : XEntity
     {
         switch (configuration.TaskConditionShape)
         {
+            case ETaskConditionShape.ListParamCondition:
+                return observation.itemCounts != null;
             case ETaskConditionShape.EmptyCondition:
                 return true;
             case ETaskConditionShape.OneParamCondition:
@@ -162,5 +166,32 @@ public sealed class TaskEntity : XEntity
             default:
                 throw new NotSupportedException("Task condition adapter required: " + configuration.TaskConditionShape);
         }
+    }
+
+    /// <summary>Aggregates configured identity filters without hardcoding a task or equipment identity.</summary>
+    /// <param name="observation">Absolute gameplay evidence.</param>
+    /// <returns>Progress selected by the configured condition shape.</returns>
+    private long GetObservedProgress(TaskProgressReported observation)
+    {
+        if (configuration.TaskConditionShape != ETaskConditionShape.ListParamCondition)
+            return observation.value;
+
+        long total = 0;
+        var identities = new HashSet<int>();
+        foreach (var item in configuration.ConditionItems)
+        {
+            if (item.Num != 0)
+                throw new NotSupportedException("Task list value semantics require an adapter: " + configuration.ID);
+
+            if (identities.Add(item.Id) && observation.itemCounts.TryGetValue(item.Id, out long count))
+            {
+                if (count < 0)
+                    throw new InvalidOperationException("Absolute task item counts cannot be negative.");
+
+                total = checked(total + count);
+            }
+        }
+
+        return total;
     }
 }

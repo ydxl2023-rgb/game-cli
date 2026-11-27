@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1",
+  "uiName": "UIBlacksmithConfirm",
+  "referenceResolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "nodes": [
+    {
+      "id": "UIBlacksmithConfirm",
+      "name": "UIBlacksmithConfirm",
+      "element": "Container",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "children": [
+        {
+          "id": "Shade",
+          "name": "Shade",
+          "element": "Image",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "children": []
+        },
+        {
+          "id": "Panel",
+          "name": "Panel",
+          "element": "Image",
+          "rect": {
+            "x": 70,
+            "y": 400,
+            "width": 940,
+            "height": 1120
+          },
+          "children": []
+        },
+        {
+          "id": "Icon",
+          "name": "Icon",
+          "element": "Image",
+          "rect": {
+            "x": 130,
+            "y": 500,
+            "width": 200,
+            "height": 200
+          },
+          "children": []
+        },
+        {
+          "id": "Title",
+          "name": "Title",
+          "element": "Text",
+          "rect": {
+            "x": 350,
+            "y": 500,
+            "width": 580,
+            "height": 120
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 40,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "Cost",
+          "name": "Cost",
+          "element": "Text",
+          "rect": {
+            "x": 130,
+            "y": 740,
+            "width": 820,
+            "height": 240
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 34,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "QuantityVisible",
+          "name": "QuantityVisible",
+          "element": "Container",
+          "rect": {
+            "x": 120,
+            "y": 1020,
+            "width": 840,
+            "height": 90
+          },
+          "children": [
+            {
+              "id": "MinusClick",
+              "name": "MinusClick",
+              "element": "Button",
+              "rect": {
+                "x": 130,
+                "y": 1020,
+                "width": 120,
+                "height": 80
+              },
+              "children": [
+                {
+                  "id": "MinusLabel",
+                  "name": "MinusLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 130,
+                    "y": 1020,
+                    "width": 120,
+                    "height": 80
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "−",
+                    "fontSize": 30,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Quantity",
+              "name": "Quantity",
+              "element": "Text",
+              "rect": {
+                "x": 270,
+                "y": 1020,
+                "width": 540,
+                "height": 80
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 34,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            },
+            {
+              "id": "PlusClick",
+              "name": "PlusClick",
+              "element": "Button",
+              "rect": {
+                "x": 830,
+                "y": 1020,
+                "width": 120,
+                "height": 80
+              },
+              "children": [
+                {
+                  "id": "PlusLabel",
+                  "name": "PlusLabel",
+                  "element": "Text",
+                  "rect": {
+                    "x": 830,
+                    "y": 1020,
+                    "width": 120,
+                    "height": 80
+                  },
+                  "children": [],
+                  "text": {
+                    "content": "+",
+                    "fontSize": 30,
+                    "alignment": "center",
+                    "color": "#3E2C1E"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Feedback",
+          "name": "Feedback",
+          "element": "Text",
+          "rect": {
+            "x": 120,
+            "y": 1130,
+            "width": 840,
+            "height": 90
+          },
+          "children": [],
+          "text": {
+            "content": "",
+            "fontSize": 30,
+            "alignment": "center",
+            "color": "#3E2C1E"
+          }
+        },
+        {
+          "id": "ConfirmClick",
+          "name": "ConfirmClick",
+          "element": "Button",
+          "rect": {
+            "x": 230,
+            "y": 1260,
+            "width": 620,
+            "height": 100
+          },
+          "children": [
+            {
+              "id": "ConfirmText",
+              "name": "ConfirmText",
+              "element": "Text",
+              "rect": {
+                "x": 230,
+                "y": 1260,
+                "width": 620,
+                "height": 100
+              },
+              "children": [],
+              "text": {
+                "content": "",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "CancelClick",
+          "name": "CancelClick",
+          "element": "Button",
+          "rect": {
+            "x": 330,
+            "y": 1400,
+            "width": 420,
+            "height": 75
+          },
+          "children": [
+            {
+              "id": "CancelLabel",
+              "name": "CancelLabel",
+              "element": "Text",
+              "rect": {
+                "x": 330,
+                "y": 1400,
+                "width": 420,
+                "height": 75
+              },
+              "children": [],
+              "text": {
+                "content": "取消",
+                "fontSize": 30,
+                "alignment": "center",
+                "color": "#3E2C1E"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -98,6 +98,7 @@ public sealed class HomeRuntime : GameRuntime
 
         if (direction != Vector3.zero)
         {
+            XPluginUtility.FireEvent(new HomeManualMovementStarted());
             opening.CancelMovement();
             village.CancelNavigation();
         }
@@ -109,6 +110,23 @@ public sealed class HomeRuntime : GameRuntime
     public void NavigateHospital()
     {
         village.NavigateHospital();
+    }
+
+    /// <summary>Starts the configured resident route for a task presentation.</summary>
+    /// <param name="buildingId">Original resident building identity.</param>
+    /// <param name="action">Presentation that owns the navigation request.</param>
+    public void NavigateResident(int buildingId, TaskPresentationAction action)
+    {
+        village.NavigateResident(buildingId, action);
+    }
+
+    /// <summary>Cancels the player route when its guide is replaced or stopped.</summary>
+    public void CancelResidentNavigation()
+    {
+        village.CancelNavigation();
+        var home = GetHomeEntity();
+        var player = home.FindActor(context.GetPlayerId());
+        player.SetMoveInput(Vector3.zero);
     }
 
     /// <summary>Connects the world entry to this runtime's authored scene references.</summary>
@@ -133,6 +151,13 @@ public sealed class HomeRuntime : GameRuntime
 
         if (context)
             context.SetInputEnabled(enabled && IsReady());
+    }
+
+    /// <summary>Routes page-owned camera framing to the current scene.</summary>
+    /// <param name="buildingId">Resident identity or zero to follow the player.</param>
+    public void FocusFacility(int buildingId)
+    {
+        context.FocusFacility(buildingId);
     }
 
     /// <summary>Starts scene initialization through the serialized scene worker.</summary>

@@ -61,7 +61,7 @@ public sealed class HeroEntity : XEntity
     /// <returns>Whether the hero can begin traveling.</returns>
     internal bool RequestTreatment(HomeVillageSave next, HomeHospitalService configuration)
     {
-        if (recovery != HeroRecoveryPhase.Idle || configurationId == 0
+        if (recovery != HeroRecoveryPhase.Idle || configurationId == 0 || next.innRestEndTicks != 0
             || !next.buildings.ContainsKey(configuration.buildingId)
             || !next.items.TryGetValue(configuration.productId, out long potions) || potions == 0
             || gold < configuration.price)
@@ -78,7 +78,7 @@ public sealed class HeroEntity : XEntity
     /// <returns>Whether treatment starts in this candidate.</returns>
     internal bool BeginTreatment(HomeVillageSave next, HomeHospitalService configuration)
     {
-        if (recovery != HeroRecoveryPhase.Traveling
+        if (recovery != HeroRecoveryPhase.Traveling || next.innRestEndTicks != 0
             || !next.items.TryGetValue(configuration.productId, out long potions) || potions == 0
             || gold < configuration.price)
             return false;

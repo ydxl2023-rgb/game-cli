@@ -1,0 +1,169 @@
+[
+  {
+    "arguments": [
+      "ugui",
+      "UIInn",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\inn-ui/UIInn.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\inn-ui/UIInn.materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Inn/UIInn.prefab",
+      "--dry-run",
+      "--no-scene-replace"
+    ],
+    "result": {
+      "ok": true,
+      "status": "validated",
+      "message": "ugui dry-run passed",
+      "data": {
+        "uiName": "UIInn",
+        "jsonFile": "../tools/inn-ui/UIInn.json",
+        "assetManifestPath": "../tools/inn-ui/UIInn.materials.json",
+        "prefabPath": "Assets/Data/Widgets/Inn/UIInn.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Inn/Resources",
+        "dryRun": true,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 62,
+        "assetsCopied": 0,
+        "spritesReferenced": 0,
+        "issues": [],
+        "message": "ugui dry-run passed",
+        "respondedAtUtc": "2026-11-26T11:48:49.5872789Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "ugui",
+      "UIInn",
+      "--json",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\inn-ui/UIInn.json",
+      "--manifest",
+      "G:\\Works\\GameCLI\\GameCLI\\examples\\unitys\\miniwow\\tools\\inn-ui/UIInn.materials.json",
+      "--prefab",
+      "Assets/Data/Widgets/Inn/UIInn.prefab",
+      "--no-scene-replace"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "Created prefab Assets/Data/Widgets/Inn/UIInn.prefab from ../tools/inn-ui/UIInn.json (62 node(s), 15 asset(s)).",
+      "data": {
+        "uiName": "UIInn",
+        "jsonFile": "../tools/inn-ui/UIInn.json",
+        "assetManifestPath": "../tools/inn-ui/UIInn.materials.json",
+        "prefabPath": "Assets/Data/Widgets/Inn/UIInn.prefab",
+        "assetsFolder": "Assets/Data/Widgets/Inn/Resources",
+        "dryRun": false,
+        "sceneInstanceReplaced": false,
+        "nodeCount": 62,
+        "assetsCopied": 15,
+        "spritesReferenced": 67,
+        "issues": [],
+        "message": "Created prefab Assets/Data/Widgets/Inn/UIInn.prefab from ../tools/inn-ui/UIInn.json (62 node(s), 15 asset(s)).",
+        "respondedAtUtc": "2026-11-26T11:48:51.5846703Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "components",
+      "add",
+      "--asset",
+      "Assets/Data/Widgets/Inn/UIInn.prefab",
+      "--path",
+      "UIInn",
+      "--component",
+      "UIInn"
+    ],
+    "result": {
+      "ok": true,
+      "status": "completed",
+      "message": "component added",
+      "data": {
+        "action": "add",
+        "assetPath": "Assets/Data/Widgets/Inn/UIInn.prefab",
+        "instanceId": 2538700,
+        "objectPath": "UIInn",
+        "requestedComponent": "UIInn",
+        "resolvedComponent": "UIInn",
+        "componentInstanceId": -1878038,
+        "added": true,
+        "removed": false,
+        "respondedAtUtc": "2026-11-26T11:48:52.0152767Z"
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIInn",
+      "--vm",
+      "VMInn",
+      "--prefab",
+      "Assets/Data/Widgets/Inn/UIInn.prefab",
+      "--dry-run"
+    ],
+    "result": {
+      "ok": true,
+      "status": "dry-run",
+      "message": "Widget metadata dry-run passed",
+      "data": {
+        "uiName": "UIInn",
+        "vmName": "VMInn",
+        "prefabPath": "Assets/Data/Widgets/Inn/UIInn.prefab",
+        "dryRun": true,
+        "metadataAdded": true,
+        "fieldCount": 29,
+        "boundTargetCount": 29,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  },
+  {
+    "arguments": [
+      "widget-metadata",
+      "UIInn",
+      "--vm",
+      "VMInn",
+      "--prefab",
+      "Assets/Data/Widgets/Inn/UIInn.prefab"
+    ],
+    "result": {
+      "ok": true,
+      "status": "generated",
+      "message": "Widget metadata generation passed",
+      "data": {
+        "uiName": "UIInn",
+        "vmName": "VMInn",
+        "prefabPath": "Assets/Data/Widgets/Inn/UIInn.prefab",
+        "dryRun": false,
+        "metadataAdded": true,
+        "fieldCount": 29,
+        "boundTargetCount": 29,
+        "issues": []
+      },
+      "error": {
+        "code": "",
+        "message": ""
+      }
+    }
+  }
+]

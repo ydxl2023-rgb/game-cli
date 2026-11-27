@@ -116,3 +116,9 @@ TaskSystem按已确认的TaskCollectionEntity/TaskEntity/ITaskAction职责实现
 ## 商店与医院业务归属
 
 ShopSystem 与 HospitalSystem 是独立 RuntimeSystem，Home 只承担 NPC 入口、导航及场景表现。禁止把购买确认、医院页面或治疗时钟重新塞回 HomeSystem。共享库存与原子消费暂由既有 HomeVillageEntity 保存；后续拆分须保留原子提交与旧存档兼容。实现范围、原作证据、资源台账及重建流程见 [商店与医院记录](../../tools/shop-ui/README.md)。
+
+## 旅店业务归属
+
+InnSystem（10007）与 Shop/Hospital 同为独立 RuntimeSystem；Home 只负责 NPC 入口、导航和建筑模型表现。InnEntity 校验修复、食物制作及用餐；共享库存、英雄金币、行动力、截止时间和观察计数仍在 HomeVillageEntity 的单次持久事务中提交，禁止拆为不一致的多个存档写入。Master 每次登录安装 Inn，使已支付的用餐在重进时能结算，不要求玩家再打开旅店。
+
+旅店读取原作 60017 配置；配方批量与旧档行动力初始化等明确本地适配单独放 HomeInnSetting。医院与旅店恢复互斥，满行动力不可用餐，不为演示伪造探索扣能。原作三层 Spine、资源台账、配置重建、任务事件和验收边界见 [旅店实现记录](../../tools/inn-ui/README.md)。已导入配置不等于高等级升级、自动生产、多英雄队列或探索系统已经实现；交付以本轮实际运行证据为准。

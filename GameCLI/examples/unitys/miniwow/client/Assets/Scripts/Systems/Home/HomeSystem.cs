@@ -17,6 +17,9 @@ public sealed class HomeSystem : RuntimeSystem
     /// <summary>Owned initialization operation canceled when Home is deactivated.</summary>
     private Coroutine initialization;
 
+    /// <summary>Current task-owned resident navigation awaiting movement and page readiness.</summary>
+    private TaskPresentationAction residentGuide;
+
     /// <summary>Starts the scene transition and registers the implemented intents.</summary>
     /// <returns>True when the transition has been requested.</returns>
     public override bool OnActive()
@@ -39,6 +42,12 @@ public sealed class HomeSystem : RuntimeSystem
         Subscribe<ReqHomeCamp>(OnHomeCamp);
         Subscribe<ReqHomeEntry>(OnHomeEntry);
         Subscribe<ReqHomeShortcut>(OnHomeShortcut);
+        Subscribe<TaskPresentationRequested>(OnTaskPresentation);
+        Subscribe<TaskPresentationCancelled>(OnTaskPresentationCancelled);
+        Subscribe<HomeResidentNavigationFinished>(OnResidentNavigationFinished);
+        Subscribe<HomeFacilityOpened>(OnFacilityOpened);
+        Subscribe<HomeResidentSystemReady>(OnResidentSystemReady);
+        Subscribe<HomeManualMovementStarted>(OnManualMovementStarted);
 
         return InstallHome();
     }
@@ -172,6 +181,10 @@ public sealed class HomeSystem : RuntimeSystem
     /// <summary>Cancels initialization and releases the Home page and scene runtime.</summary>
     private void UninstallHome()
     {
+        if (residentGuide != null)
+            residentGuide.Complete(false);
+
+        residentGuide = null;
         XPluginUtility.FireEvent(new HomeSessionClosing());
         facilityPages.Clear();
         XPluginUtility.FireEvent(new TaskRewardsRegistered { receiver = null });
@@ -259,13 +272,27 @@ public sealed class HomeSystem : RuntimeSystem
             RefreshOpening();
     }
 
-    /// <summary>Reports unimplemented resident interfaces without executing transactions.</summary>
+    /// <summary>Routes resident entrances to their independently owned facility systems.</summary>
     /// <param name="message">The resident entrance intention.</param>
     private void OnResidentVisit(ReqHomeResidentVisit message)
     {
+        if (message.buildingId == 60002)
+        {
+            XPluginUtility.FireEvent(new SystemActive { id = 10008, complete = new BlacksmithOpenRequested() });
+
+            return;
+        }
+
         if (message.buildingId == 60019)
         {
             OpenShop();
+
+            return;
+        }
+
+        if (message.buildingId == 60017)
+        {
+            XPluginUtility.FireEvent(new SystemActive { id = 10007, complete = new InnOpenRequested() });
 
             return;
         }
@@ -481,6 +508,100 @@ public sealed class HomeSystem : RuntimeSystem
         XPluginUtility.FireEvent(new SystemActive { id = 10005, complete = new ShopOpenRequested() });
     }
 
+    /// <summary>Accepts configured navigation for implemented resident destinations.</summary>
+    /// <param name="message">Task-owned presentation handle and numeric building identity.</param>
+    private void OnTaskPresentation(TaskPresentationRequested message)
+    {
+        if (message.action.operation != TaskPresentation.Navigate)
+            return;
+
+        int buildingId = checked((int)message.action.argument.AsNumber());
+        if (buildingId != 60017 && buildingId != 60019 && buildingId != 60002)
+            return;
+
+        var runtime = GetRuntime();
+        runtime.CancelResidentNavigation();
+        message.accepted = true;
+        residentGuide = message.action;
+        runtime.NavigateResident(buildingId, residentGuide);
+    }
+
+    /// <summary>Releases only the movement owned by the canceled guide.</summary>
+    /// <param name="message">Guide canceled by replacement or TaskSystem shutdown.</param>
+    private void OnTaskPresentationCancelled(TaskPresentationCancelled message)
+    {
+        if (!ReferenceEquals(residentGuide, message.action))
+            return;
+
+        residentGuide = null;
+        var runtime = GetRuntime();
+        runtime.CancelResidentNavigation();
+    }
+
+    /// <summary>Opens the destination only after actual player arrival.</summary>
+    /// <param name="message">Scene movement completion or interruption.</param>
+    private void OnResidentNavigationFinished(HomeResidentNavigationFinished message)
+    {
+        if (residentGuide == null || !ReferenceEquals(residentGuide, message.action))
+            return;
+
+        if (!message.arrived)
+        {
+            residentGuide.Complete(false);
+            residentGuide = null;
+
+            return;
+        }
+
+        var complete = new HomeResidentSystemReady {
+            action = residentGuide,
+            buildingId = message.buildingId
+        };
+
+        XPluginUtility.FireEvent(new SystemActive {
+            id = message.buildingId == 60002 ? 10008 : message.buildingId == 60017 ? 10007 : 10005,
+            complete = complete
+        });
+    }
+
+    /// <summary>Checks guide ownership after deferred activation before opening a destination page.</summary>
+    /// <param name="message">The activation completion carrying its original presentation identity.</param>
+    private void OnResidentSystemReady(HomeResidentSystemReady message)
+    {
+        if (!ReferenceEquals(residentGuide, message.action)
+            || message.action.status != TaskActionStatus.Running)
+            return;
+
+        if (message.buildingId == 60002)
+            XPluginUtility.FireEvent(new BlacksmithOpenRequested { guide = message.action });
+        else if (message.buildingId == 60017)
+            XPluginUtility.FireEvent(new InnOpenRequested { guide = message.action });
+        else
+            XPluginUtility.FireEvent(new ShopOpenRequested { guide = message.action });
+    }
+
+    /// <summary>Stops the task-owned route when the player explicitly takes movement control.</summary>
+    /// <param name="message">Manual movement intention.</param>
+    private void OnManualMovementStarted(HomeManualMovementStarted message)
+    {
+        if (residentGuide == null)
+            return;
+
+        residentGuide.Cancel();
+        residentGuide = null;
+    }
+
+    /// <summary>Completes navigation only after the destination's UI targets are available.</summary>
+    /// <param name="message">Successful page initialization or an explicit opening failure.</param>
+    private void OnFacilityOpened(HomeFacilityOpened message)
+    {
+        if (residentGuide == null || !ReferenceEquals(residentGuide, message.action))
+            return;
+
+        residentGuide.Complete(message.succeeded);
+        residentGuide = null;
+    }
+
     /// <summary>Answers late facility installation using actual scene and UI readiness.</summary>
     /// <param name="message">The facility session query.</param>
     private void OnSessionRequested(HomeSessionRequested message)
@@ -497,6 +618,14 @@ public sealed class HomeSystem : RuntimeSystem
             facilityPages.Add(message.systemId);
         else
             facilityPages.Remove(message.systemId);
+
+        if (message.systemId == 10008)
+        {
+            var runtime = GetRuntime();
+            runtime.FocusFacility(message.visible ? 60002 : 0);
+            if (UISystem.GetSingleton().TryGetWidget<UIHome>(out var home))
+                home.ShowFacility(message.visible);
+        }
 
         RefreshOpening();
     }

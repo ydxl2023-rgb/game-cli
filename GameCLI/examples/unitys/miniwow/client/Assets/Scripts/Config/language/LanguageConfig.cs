@@ -687,6 +687,641 @@ namespace Config
         /// </summary>
         public const int LGCommonTextContext14920 = 1802730868;
         /// <summary>
+        /// LG-CommonTextConfig-CommonText-254024-Context-152-2-0
+        /// 夜鳞鲷鱼
+        /// </summary>
+        public const int LGCommonTextContext15220 = 1312916185;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254025-Context-153-2-0
+        /// 优质的食材，可以在中等难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext15320 = 2005836245;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254026-Context-154-2-0
+        /// 银头鲑鱼
+        /// </summary>
+        public const int LGCommonTextContext15420 = 1624600437;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254027-Context-155-2-0
+        /// 稀有的食材，可以在困难难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext15520 = 1723918345;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254028-Context-156-2-0
+        /// 黑爪龙虾
+        /// </summary>
+        public const int LGCommonTextContext15620 = 1638110249;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254029-Context-157-2-0
+        /// 珍贵的食材，可以在噩梦难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext15720 = 821758573;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254030-Context-158-2-0
+        /// 帝王鲑鱼
+        /// </summary>
+        public const int LGCommonTextContext15820 = 942252934;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254031-Context-159-2-0
+        /// 传说的食材，可以在地狱难度的探索中获得
+        /// </summary>
+        public const int LGCommonTextContext15920 = 711358202;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254032-Context-160-2-0
+        /// 澄光石斑
+        /// </summary>
+        public const int LGCommonTextContext16020 = 1337959623;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254222-Context-162-2-0
+        /// 炸鱼
+        /// </summary>
+        public const int LGCommonTextContext16220 = 1792534030;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254223-Context-163-2-0
+        /// 恢复英雄行动力
+        /// </summary>
+        public const int LGCommonTextContext16320 = 1925501874;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254224-Context-164-2-0
+        /// 夜鳞鱼汤
+        /// </summary>
+        public const int LGCommonTextContext16420 = 486252842;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254226-Context-166-2-0
+        /// 腌制鲑鱼
+        /// </summary>
+        public const int LGCommonTextContext16620 = 27090206;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254228-Context-168-2-0
+        /// 香辣龙虾
+        /// </summary>
+        public const int LGCommonTextContext16820 = 820838370;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254230-Context-170-2-0
+        /// 水煮帝鲑
+        /// </summary>
+        public const int LGCommonTextContext17020 = 509880958;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-254232-Context-172-2-0
+        /// 深海石斑
+        /// </summary>
+        public const int LGCommonTextContext17220 = 2086570846;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30501-Context-174-2-0
+        /// 旅店
+        /// </summary>
+        public const int LGCommonTextContext17420 = 1746919497;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30502-Context-175-2-0
+        /// {0}级 旅店
+        /// </summary>
+        public const int LGCommonTextContext17520 = 1400107395;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30503-Context-176-2-0
+        /// 恢复行动力 {0}% · 用餐 {1}秒 · 英雄支付 {2}金币
+        /// </summary>
+        public const int LGCommonTextContext17620 = 412515217;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30504-Context-177-2-0
+        /// 修复旅店：{0}金币
+        /// </summary>
+        public const int LGCommonTextContext17720 = 367420207;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30505-Context-178-2-0
+        /// 完成并领取医院修复任务后开放旅店
+        /// </summary>
+        public const int LGCommonTextContext17820 = 701417545;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30506-Context-179-2-0
+        /// 原料不足，请到交易行购买鱼
+        /// </summary>
+        public const int LGCommonTextContext17920 = 1303575187;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30507-Context-180-2-0
+        /// 安排英雄用餐
+        /// </summary>
+        public const int LGCommonTextContext18020 = 294636096;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30508-Context-181-2-0
+        /// 用餐中，剩余 {0:0.0}秒
+        /// </summary>
+        public const int LGCommonTextContext18120 = 601768182;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30509-Context-182-2-0
+        /// 英雄行动力 {0}%
+        /// </summary>
+        public const int LGCommonTextContext18220 = 275983520;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30510-Context-183-2-0
+        /// 需要已招募英雄、食物和英雄金币，且行动力未满
+        /// </summary>
+        public const int LGCommonTextContext18320 = 945010585;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30511-Context-184-2-0
+        /// 金币不足，无法修复旅店
+        /// </summary>
+        public const int LGCommonTextContext18420 = 183520591;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30512-Context-185-2-0
+        /// 修复后可以制作食物，供英雄恢复行动力
+        /// </summary>
+        public const int LGCommonTextContext18520 = 497571369;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30513-Context-186-2-0
+        /// 食物制作完成
+        /// </summary>
+        public const int LGCommonTextContext18620 = 685896883;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30514-Context-187-2-0
+        /// 旅店修复完成
+        /// </summary>
+        public const int LGCommonTextContext18720 = 861937401;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-710001-Context-188-2-0
+        /// 学徒大剑
+        /// </summary>
+        public const int LGCommonTextContext18820 = 239258958;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-710002-Context-189-2-0
+        /// 学徒匕首
+        /// </summary>
+        public const int LGCommonTextContext18920 = 1206991244;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-710003-Context-190-2-0
+        /// 学徒火枪
+        /// </summary>
+        public const int LGCommonTextContext19020 = 895396617;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-710004-Context-191-2-0
+        /// 学徒橡木法杖
+        /// </summary>
+        public const int LGCommonTextContext19120 = 236986347;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-710005-Context-192-2-0
+        /// 学徒魔导书
+        /// </summary>
+        public const int LGCommonTextContext19220 = 1818572717;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-876002-Context-195-2-0
+        /// 微光碎片
+        /// </summary>
+        public const int LGCommonTextContext19520 = 582128738;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30601-Context-196-2-0
+        /// 铁匠铺
+        /// </summary>
+        public const int LGCommonTextContext19620 = 1774752952;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30602-Context-197-2-0
+        /// 完成并领取任务 60329 后开放铁匠铺
+        /// </summary>
+        public const int LGCommonTextContext19720 = 1936787506;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30603-Context-198-2-0
+        /// 修复铁匠铺 · {0}金币
+        /// </summary>
+        public const int LGCommonTextContext19820 = 302488116;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30604-Context-199-2-0
+        /// 铁匠铺修复完成
+        /// </summary>
+        public const int LGCommonTextContext19920 = 1142626778;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30605-Context-200-2-0
+        /// 配方
+        /// </summary>
+        public const int LGCommonTextContext20020 = 2136289958;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30606-Context-201-2-0
+        /// 货架
+        /// </summary>
+        public const int LGCommonTextContext20120 = 1490307164;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30607-Context-202-2-0
+        /// 英雄
+        /// </summary>
+        public const int LGCommonTextContext20220 = 1847013442;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30608-Context-203-2-0
+        /// 打造
+        /// </summary>
+        public const int LGCommonTextContext20320 = 1617903076;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30609-Context-204-2-0
+        /// 打造数量 {0}
+        /// </summary>
+        public const int LGCommonTextContext20420 = 1821012958;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30611-Context-206-2-0
+        /// 打造完成，装备已放入货架
+        /// </summary>
+        public const int LGCommonTextContext20620 = 1520062633;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30612-Context-207-2-0
+        /// 材料或金币不足
+        /// </summary>
+        public const int LGCommonTextContext20720 = 1474718767;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30613-Context-208-2-0
+        /// 请先选择配方或装备
+        /// </summary>
+        public const int LGCommonTextContext20820 = 865945969;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30614-Context-209-2-0
+        /// 出售给英雄
+        /// </summary>
+        public const int LGCommonTextContext20920 = 134519443;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30615-Context-210-2-0
+        /// 交易完成，英雄已装备武器
+        /// </summary>
+        public const int LGCommonTextContext21020 = 1816223894;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30616-Context-211-2-0
+        /// 当前英雄职业不适用该武器
+        /// </summary>
+        public const int LGCommonTextContext21120 = 508275828;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30617-Context-212-2-0
+        /// 尚未招募英雄
+        /// </summary>
+        public const int LGCommonTextContext21220 = 1585574230;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30618-Context-213-2-0
+        /// 英雄金币不足
+        /// </summary>
+        public const int LGCommonTextContext21320 = 1501249008;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30619-Context-214-2-0
+        /// 该装备已不在货架上
+        /// </summary>
+        public const int LGCommonTextContext21420 = 135160710;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30620-Context-215-2-0
+        /// 请先修复铁匠铺
+        /// </summary>
+        public const int LGCommonTextContext21520 = 1763198753;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30622-Context-217-2-0
+        /// 售价 {0} 金币
+        /// </summary>
+        public const int LGCommonTextContext21720 = 1294451729;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30623-Context-218-2-0
+        /// 货架 {0} 件
+        /// </summary>
+        public const int LGCommonTextContext21820 = 68435707;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30624-Context-219-2-0
+        /// 已装备：{0}
+        /// </summary>
+        public const int LGCommonTextContext21920 = 236858353;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30625-Context-220-2-0
+        /// 暂无装备
+        /// </summary>
+        public const int LGCommonTextContext22020 = 1931432826;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30626-Context-221-2-0
+        /// 英雄金币 {0}
+        /// </summary>
+        public const int LGCommonTextContext22120 = 1749335572;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30627-Context-222-2-0
+        /// 首级武器 · 打造并出售给英雄
+        /// </summary>
+        public const int LGCommonTextContext22220 = 1879049094;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30628-Context-223-2-0
+        /// 打造中…
+        /// </summary>
+        public const int LGCommonTextContext22320 = 565785068;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30631-Context-226-2-0
+        /// 确认打造
+        /// </summary>
+        public const int LGCommonTextContext22620 = 1748053229;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30634-Context-229-2-0
+        /// 金币不足，无法修复铁匠铺
+        /// </summary>
+        public const int LGCommonTextContext22920 = 903741819;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30635-Context-230-2-0
+        /// 职业 {0}
+        /// </summary>
+        public const int LGCommonTextContext23020 = 1676029026;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30636-Context-231-2-0
+        /// 选择
+        /// </summary>
+        public const int LGCommonTextContext23120 = 753164524;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30637-Context-232-2-0
+        /// 选择配方后确认材料和数量
+        /// </summary>
+        public const int LGCommonTextContext23220 = 681438810;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30639-Context-234-2-0
+        /// 出售并装备 · {0}金币
+        /// </summary>
+        public const int LGCommonTextContext23420 = 954835322;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30640-Context-235-2-0
+        /// 铁匠收入 {0}金币
+        /// </summary>
+        public const int LGCommonTextContext23520 = 1481140925;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-30641-Context-236-2-0
+        /// 收取收入
+        /// </summary>
+        public const int LGCommonTextContext23620 = 1496674255;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900125-Context-237-2-0
+        /// 石盾加伦
+        /// </summary>
+        public const int LGCommonTextContext23720 = 254138813;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900126-Context-238-2-0
+        /// 血刃马克斯
+        /// </summary>
+        public const int LGCommonTextContext23820 = 18350873;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900127-Context-239-2-0
+        /// 铁壁格伦
+        /// </summary>
+        public const int LGCommonTextContext23920 = 230564137;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900128-Context-240-2-0
+        /// 铜肩奥恩
+        /// </summary>
+        public const int LGCommonTextContext24020 = 2060375884;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900129-Context-241-2-0
+        /// 影刃凯
+        /// </summary>
+        public const int LGCommonTextContext24120 = 803886220;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900130-Context-242-2-0
+        /// 窃影杰米
+        /// </summary>
+        public const int LGCommonTextContext24220 = 675522711;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900131-Context-243-2-0
+        /// 快刀罗尔
+        /// </summary>
+        public const int LGCommonTextContext24320 = 1688564631;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900132-Context-244-2-0
+        /// 猎峰维克
+        /// </summary>
+        public const int LGCommonTextContext24420 = 605778551;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900133-Context-245-2-0
+        /// 快枪托比
+        /// </summary>
+        public const int LGCommonTextContext24520 = 1854099239;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900134-Context-246-2-0
+        /// 锐射莱姆
+        /// </summary>
+        public const int LGCommonTextContext24620 = 726126407;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900135-Context-247-2-0
+        /// 致命格雷
+        /// </summary>
+        public const int LGCommonTextContext24720 = 1320863591;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900136-Context-248-2-0
+        /// 追猎沃夫
+        /// </summary>
+        public const int LGCommonTextContext24820 = 621457015;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900137-Context-249-2-0
+        /// 烈焰艾拉
+        /// </summary>
+        public const int LGCommonTextContext24920 = 1462122647;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900138-Context-250-2-0
+        /// 奥术科恩
+        /// </summary>
+        public const int LGCommonTextContext25020 = 369009368;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900139-Context-251-2-0
+        /// 寒冰雷姆
+        /// </summary>
+        public const int LGCommonTextContext25120 = 1040194340;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900140-Context-252-2-0
+        /// 剧毒玛拉
+        /// </summary>
+        public const int LGCommonTextContext25220 = 1052576421;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900141-Context-253-2-0
+        /// 赐福伊莱亚
+        /// </summary>
+        public const int LGCommonTextContext25320 = 1027905945;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900142-Context-254-2-0
+        /// 沐光莉亚
+        /// </summary>
+        public const int LGCommonTextContext25420 = 1029974105;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900143-Context-255-2-0
+        /// 护阵科恩
+        /// </summary>
+        public const int LGCommonTextContext25520 = 864116197;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900144-Context-256-2-0
+        /// 盾卫加雷斯
+        /// </summary>
+        public const int LGCommonTextContext25620 = 1553909493;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900145-Context-257-2-0
+        /// 圣光骑士
+        /// </summary>
+        public const int LGCommonTextContext25720 = 437798561;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900146-Context-258-2-0
+        /// 冰霜女巫
+        /// </summary>
+        public const int LGCommonTextContext25820 = 1686650897;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900147-Context-259-2-0
+        /// 赏金枪客
+        /// </summary>
+        public const int LGCommonTextContext25920 = 1909618149;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900148-Context-260-2-0
+        /// 光明使者
+        /// </summary>
+        public const int LGCommonTextContext26020 = 637615328;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900149-Context-261-2-0
+        /// 精灵游侠
+        /// </summary>
+        public const int LGCommonTextContext26120 = 1572430556;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900150-Context-262-2-0
+        /// 自然之主
+        /// </summary>
+        public const int LGCommonTextContext26220 = 751878603;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900151-Context-263-2-0
+        /// 血蹄酋长
+        /// </summary>
+        public const int LGCommonTextContext26320 = 1128462807;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900152-Context-264-2-0
+        /// 迅疾剑客
+        /// </summary>
+        public const int LGCommonTextContext26420 = 1421389083;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900153-Context-265-2-0
+        /// 毁灭先知
+        /// </summary>
+        public const int LGCommonTextContext26520 = 1823761607;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900154-Context-266-2-0
+        /// 逐日卡尔
+        /// </summary>
+        public const int LGCommonTextContext26620 = 726930163;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900155-Context-267-2-0
+        /// 凝甲精灵
+        /// </summary>
+        public const int LGCommonTextContext26720 = 218863095;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900156-Context-268-2-0
+        /// 强袭牧师
+        /// </summary>
+        public const int LGCommonTextContext26820 = 1510428547;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900157-Context-269-2-0
+        /// 风暴酒仙
+        /// </summary>
+        public const int LGCommonTextContext26920 = 1590279463;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900158-Context-270-2-0
+        /// 恶魔之猎
+        /// </summary>
+        public const int LGCommonTextContext27020 = 216210860;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900159-Context-271-2-0
+        /// 复仇领主
+        /// </summary>
+        public const int LGCommonTextContext27120 = 2010162692;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900160-Context-272-2-0
+        /// 月之祭祀
+        /// </summary>
+        public const int LGCommonTextContext27220 = 1456373085;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900161-Context-273-2-0
+        /// 暗影萨满
+        /// </summary>
+        public const int LGCommonTextContext27320 = 854116837;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900162-Context-274-2-0
+        /// 狂怒狱主
+        /// </summary>
+        public const int LGCommonTextContext27420 = 1485528209;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900163-Context-275-2-0
+        /// 巫妖之王
+        /// </summary>
+        public const int LGCommonTextContext27520 = 2014217185;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900164-Context-276-2-0
+        /// 不朽先知
+        /// </summary>
+        public const int LGCommonTextContext27620 = 281989757;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900165-Context-277-2-0
+        /// 深渊海妖
+        /// </summary>
+        public const int LGCommonTextContext27720 = 853636501;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900166-Context-278-2-0
+        /// 风行使者
+        /// </summary>
+        public const int LGCommonTextContext27820 = 605267945;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900167-Context-279-2-0
+        /// 圣光主教
+        /// </summary>
+        public const int LGCommonTextContext27920 = 673288569;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900168-Context-280-2-0
+        /// 剧毒刃拳
+        /// </summary>
+        public const int LGCommonTextContext28020 = 2118453476;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900169-Context-281-2-0
+        /// 瘟疫毒法
+        /// </summary>
+        public const int LGCommonTextContext28120 = 1072264028;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900170-Context-282-2-0
+        /// 凋零游侠
+        /// </summary>
+        public const int LGCommonTextContext28220 = 1875031831;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900171-Context-283-2-0
+        /// 鬼魅猎手
+        /// </summary>
+        public const int LGCommonTextContext28320 = 217381351;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900172-Context-284-2-0
+        /// 怒斩战士
+        /// </summary>
+        public const int LGCommonTextContext28420 = 961464655;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900173-Context-285-2-0
+        /// 汲血之酋
+        /// </summary>
+        public const int LGCommonTextContext28520 = 483459079;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900174-Context-286-2-0
+        /// 炎魔术士
+        /// </summary>
+        public const int LGCommonTextContext28620 = 1334181479;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900175-Context-287-2-0
+        /// 冰霜术士
+        /// </summary>
+        public const int LGCommonTextContext28720 = 1928316919;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900176-Context-288-2-0
+        /// 圣光使者
+        /// </summary>
+        public const int LGCommonTextContext28820 = 2044784703;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900177-Context-289-2-0
+        /// 神圣主教
+        /// </summary>
+        public const int LGCommonTextContext28920 = 47711831;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900178-Context-290-2-0
+        /// 淬毒猎手
+        /// </summary>
+        public const int LGCommonTextContext29020 = 1910140872;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900179-Context-291-2-0
+        /// 烈焰猎手
+        /// </summary>
+        public const int LGCommonTextContext29120 = 1782023652;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900180-Context-292-2-0
+        /// 暗夜刺客
+        /// </summary>
+        public const int LGCommonTextContext29220 = 325818661;
+        /// <summary>
+        /// LG-CommonTextConfig-CommonText-900181-Context-293-2-0
+        /// 斩杀之刺
+        /// </summary>
+        public const int LGCommonTextContext29320 = 1100901897;
+        /// <summary>
         /// LG-SceneConfig-Scene-10001-Name-3-2-0
         /// 登录
         /// </summary>

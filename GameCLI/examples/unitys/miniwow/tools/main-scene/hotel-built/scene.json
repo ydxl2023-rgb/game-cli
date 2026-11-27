@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "sourceScene": "Building_sdc",
+  "nodes": [
+    {
+      "id": "building-60017-b128b5356d8568828ad9",
+      "sourceGameObjectId": "building-60017-4981725366010264467",
+      "name": "Hotel",
+      "active": true,
+      "layer": 0,
+      "parent": "0",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "omittedComponents": []
+    },
+    {
+      "id": "building-60017-c024db1b779eb297119d",
+      "sourceGameObjectId": "building-60017--1215033585273015889",
+      "name": "Object028",
+      "active": true,
+      "layer": 0,
+      "parent": "building-60017-b128b5356d8568828ad9",
+      "position": {
+        "x": -16.9877986907959,
+        "y": 39.40507888793945,
+        "z": -9.01063060760498
+      },
+      "rotation": {
+        "x": 2.1855694143368964e-08,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "scale": {
+        "x": 36.002742767333984,
+        "y": 36.002742767333984,
+        "z": 36.002742767333984
+      },
+      "mesh": "d6be7d39d258364bb7ca",
+      "materials": [
+        "6c9c19937a7748fc2564"
+      ],
+      "rendererEnabled": true,
+      "omittedComponents": []
+    },
+    {
+      "id": "building-60017-ccc8147c780d4712cbcb",
+      "sourceGameObjectId": "building-60017-1332952250375099183",
+      "name": "Object029",
+      "active": true,
+      "layer": 0,
+      "parent": "building-60017-b128b5356d8568828ad9",
+      "position": {
+        "x": -16.020000457763672,
+        "y": 42.220001220703125,
+        "z": -12.420000076293945
+      },
+      "rotation": {
+        "x": -0.20380768179893494,
+        "y": 0.2620050609111786,
+        "z": 0.10605598986148834,
+        "w": 0.9373195171356201
+      },
+      "scale": {
+        "x": 37.877838134765625,
+        "y": 41.63249969482422,
+        "z": 35.99871063232422
+      },
+      "mesh": "d939ed4404db4e8253ca",
+      "materials": [
+        "6c9c19937a7748fc2564"
+      ],
+      "rendererEnabled": true,
+      "omittedComponents": []
+    }
+  ],
+  "dynamicBuildings": [
+    {
+      "buildingId": 60017,
+      "name": "旅店",
+      "sourcePrefab": "assets/data/models/building/hotel/hotel.prefab",
+      "parent": "0",
+      "state": "original guide model: hotel-built"
+    }
+  ],
+  "meshes": [
+    {
+      "id": "d6be7d39d258364bb7ca",
+      "name": "Object028",
+      "file": "data/d6be7d39d258364bb7ca.mesh.json",
+      "vertices": 67,
+      "submeshes": 1
+    },
+    {
+      "id": "d939ed4404db4e8253ca",
+      "name": "Object029",
+      "file": "data/d939ed4404db4e8253ca.mesh.json",
+      "vertices": 14,
+      "submeshes": 1
+    }
+  ],
+  "materials": [
+    {
+      "id": "6c9c19937a7748fc2564",
+      "name": "New Material 6",
+      "shader": "Zombie/UberShader",
+      "texture": "f9631125a4406b188e36",
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "offset": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "colors": {
+        "_Color": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "_DissolveColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "_EmissionColor": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+        },
+        "_OutlineColor": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+        },
+        "_ShadowColor": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+        },
+        "_ShadowDirection": {
+          "r": -1.0,
+          "g": -1.0,
+          "b": -1.0,
+          "a": 1.0
+        }
+      },
+      "floats": {
+        "_AnimFrame": 0.0,
+        "_BumpScale": 1.0,
+        "_ColorMask": 15.0,
+        "_ColorMaskA": 1.0,
+        "_ColorMaskB": 1.0,
+        "_ColorMaskG": 1.0,
+        "_ColorMaskR": 1.0,
+        "_Cull": 2.0,
+        "_Cutoff": 0.30000001192092896,
+        "_DetailNormalMapScale": 1.0,
+        "_DissolveEdge": 0.20000000298023224,
+        "_DissolveValue": 1.0,
+        "_DissolveWidth": 1.4199999570846558,
+        "_DstAlphaBlend": 1.0,
+        "_DstBlend": 0.0,
+        "_DstColorBlend": 0.0,
+        "_EnableDayNight": 0.0,
+        "_EnableDissolve": 0.0,
+        "_EnableEnvLight": 0.0,
+        "_EnableFog": 0.0,
+        "_EnableGPUSkin": 0.0,
+        "_EnableScreenShadow": 0.0,
+        "_EnableStencil": 0.0,
+        "_EnableSwing": 0.0,
+        "_Glitter": 0.0,
+        "_GlossMapScale": 1.0,
+        "_Glossiness": 0.5,
+        "_GlossyReflections": 1.0,
+        "_GroundHeight": 0.0010000000474974513,
+        "_LitType": 1.0,
+        "_Metallic": 0.0,
+        "_Mode": 0.0,
+        "_OcclusionStrength": 1.0,
+        "_OutlineWidth": 0.0,
+        "_Parallax": 0.019999999552965164,
+        "_QueueOffset": 0.0,
+        "_SmoothnessTextureChannel": 0.0,
+        "_SpecularHighlights": 1.0,
+        "_SrcAlphaBlend": 0.0,
+        "_SrcBlend": 1.0,
+        "_SrcColorBlend": 1.0,
+        "_StencilComp": 8.0,
+        "_StencilFail": 0.0,
+        "_StencilID": 0.0,
+        "_StencilPass": 0.0,
+        "_StencilReadMask": 255.0,
+        "_StencilWriteMask": 255.0,
+        "_StencilZFail": 0.0,
+        "_Surface": 1.0,
+        "_SwingFrequency": 0.0,
+        "_SwingStrength": 0.0,
+        "_UVSec": 0.0,
+        "_ZTest": 4.0,
+        "_ZWrite": 1.0,
+        "__DstAlphaBlend": 1.0,
+        "__DstColorBlend": 10.0,
+        "__SrcAlphaBlend": 0.0,
+        "__SrcColorBlend": 5.0,
+        "__StencilComp": 8.0,
+        "__StencilFail": 0.0,
+        "__StencilID": 0.0,
+        "__StencilPass": 0.0,
+        "__StencilReadMask": 255.0,
+        "__StencilWriteMask": 255.0,
+        "__StencilZFail": 0.0,
+        "__ZWrite": 1.0
+      },
+      "queue": 2450,
+      "keywords": ""
+    }
+  ],
+  "textures": [
+    {
+      "id": "f9631125a4406b188e36",
+      "name": "build1",
+      "file": "data/f9631125a4406b188e36.png"
+    }
+  ],
+  "issues": []
+}

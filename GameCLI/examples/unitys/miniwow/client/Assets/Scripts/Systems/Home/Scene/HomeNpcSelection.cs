@@ -65,6 +65,13 @@ public sealed class HomeNpcSelection
         return entryAnchor.position;
     }
 
+    /// <summary>Returns the authored interaction trigger center for navigation.</summary>
+    /// <returns>The world position of the resident interaction area.</returns>
+    public Vector3 GetNavigationPosition()
+    {
+        return entrance.TransformPoint(center);
+    }
+
     /// <summary>Applies proximity and resident visibility to the shared selection presentation.</summary>
     /// <param name="position">Authoritative player position.</param>
     /// <param name="radius">Original player agent radius.</param>
